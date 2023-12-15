@@ -10,6 +10,9 @@ export const $request = (params = {}) => {
 		let header = {
 			'token': uni.getStorageSync('token')
 		}
+		const timer = setTimeout(() => {
+	      reject(new Error('请求超时'));
+	    }, 5000);
 		uni.request({
 			url: baseUrl + params.url,
 			method: params.method,

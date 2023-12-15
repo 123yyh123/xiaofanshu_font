@@ -15,7 +15,7 @@
 					v-model="passData"
 					type="password"
 					maxlength="20"
-					placeholder="请输入新密码,密码6-16位，必须包含数字和字母"
+					placeholder="密码6-16位，必须包含数字和字母"
 					isShowPass
 				></wInput>
 				
@@ -142,14 +142,16 @@
 				}).then(res=>{
 					if(res.code==20020){
 						uni.showToast({
-							icon: 'none',
+							icon: 'success',
 							mask: true,
 							duration: 1000,
 							title: '重置成功'
 						});
-						uni.navigateBack({
-							delta: 1
-						});
+						setTimeout(function(){
+							uni.navigateBack({
+								delta: 1
+							});
+						},1000)
 					}else{
 						uni.showToast({
 							icon: 'none',

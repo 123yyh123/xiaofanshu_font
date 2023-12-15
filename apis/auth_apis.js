@@ -1,5 +1,12 @@
 import {$request} from '../utils/request.js'
 
+export const checkToken=()=>{
+	return $request({
+		url:'/auth/checkToken',
+		method:'GET'
+	})
+}
+
 export const generalLogin=(params={})=>{
 	return $request({
 		url: '/auth/login?phoneNumber=' + params.phoneNumber+'&password='+params.password,
@@ -17,6 +24,13 @@ export const otherLogin=(params={})=>{
 export const bindNumberPhone=(params={})=>{
 	return $request({
 		url:'/auth/bindPhone',
+		method:'POST',
+		data:params.registerVo
+	})
+}
+export const register=(params={})=>{
+	return $request({
+		url:'/auth/register',
 		method:'POST',
 		data:params.registerVo
 	})

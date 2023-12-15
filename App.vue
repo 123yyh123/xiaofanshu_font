@@ -1,12 +1,23 @@
 <script>
+	import {
+		checkToken
+	} from './apis/auth_apis.js'
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
-			if(uni.getStorageSync('token')==null){
+			if (uni.getStorageSync('token') == null || uni.getStorageSync('token') == '') {
 				uni.reLaunch({
-					url:'/pages/login/login'
+					url: '/pages/login/login'
 				})
+				return
 			}
+			checkToken().then(res => {
+				if (res.code != 200) {
+					uni.reLaunch({
+						url: '/pages/login/login'
+					})
+				}
+			})
 		},
 		onShow: function() {
 			console.log('App Show')

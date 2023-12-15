@@ -13,3 +13,9 @@ export const sendResetPhoneSms=(params={})=>{
 		method:'GET'
 	})
 }
+export const sendRegisterPhoneSms=(params={})=>{
+	return $request({
+		url:'/third/sendRegisterPhoneSms?phoneNumber='+params.phoneNumber,
+		method:'GET'
+	})
+}

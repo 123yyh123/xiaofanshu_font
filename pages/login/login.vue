@@ -103,7 +103,7 @@
 						uni.setStorageSync('userInfo', JSON.stringify(res.data));
 						setTimeout(function() {
 							this.isRotate = false;
-							uni.switchTab({
+							uni.reLaunch({
 								url: '/pages/index/index'
 							});
 						}, 1000);

@@ -17,16 +17,15 @@
 				<wInput
 					v-model="passData"
 					type="password"
-					maxlength="16"
-					placeholder="登录密码"
+					maxlength="20"
+					placeholder="密码6-16位，必须包含数字和字母"
 					isShowPass
 				></wInput>
 				<wInput
 					v-model="verCode"
 					type="number"
-					maxlength="4"
+					maxlength="6"
 					placeholder="验证码"
-					
 					isShowCode
 					ref="runCode"
 					@setCode="getVerCode()"
@@ -59,7 +58,8 @@
 	let _this;
 	import wInput from '../../components/watch-login/watch-input.vue' //input
 	import wButton from '../../components/watch-login/watch-button.vue' //button
-	
+	import {sendRegisterPhoneSms} from '../../apis/third_service.js' //发送验证码
+	import {register}  from '../../apis/auth_apis' //注册
 	export default {
 		data() {
 			return {
@@ -68,7 +68,7 @@
 				phoneData:'', // 用户/电话
 				passData:'', //密码
 				verCode:"", //验证码
-				showAgree:true, //协议是否选择
+				showAgree:false, //协议是否选择
 				isRotate: false, //是否加载旋转
 			}
 		},
@@ -76,47 +76,48 @@
 			wInput,
 			wButton,
 		},
-		mounted() {
-			_this= this;
-		},
 		methods: {
 			isShowAgree(){
 				//是否选择协议
-				_this.showAgree = !_this.showAgree;
+				this.showAgree = !this.showAgree;
 			},
 			getVerCode(){
-				//获取验证码
-				if (_this.phoneData.length != 11) {
-				     uni.showToast({
-				        icon: 'none',
-						position: 'bottom',
-				        title: '手机号不正确'
-				    });
-				    return false;
+				//判断是否输入手机号，手机号是否规范
+				const reg = /^1[3456789]\d{9}$/;
+				if (this.phoneData.length == "" || !reg.test(this.phoneData)) {
+					uni.showToast({
+						icon: 'none',
+						mask: true,
+						duration: 1000,
+						title: '手机号格式不正确'
+					});
+					return;
 				}
 				console.log("获取验证码")
-				this.$refs.runCode.$emit('runCode'); //触发倒计时（一般用于请求成功验证码后调用）
-				uni.showToast({
-				    icon: 'none',
-					position: 'bottom',
-				    title: '模拟倒计时触发'
-				});
-				
-				setTimeout(function(){
-					_this.$refs.runCode.$emit('runCode',0); //假装模拟下需要 终止倒计时
-					uni.showToast({
-					    icon: 'none',
-						position: 'bottom',
-					    title: '模拟倒计时终止'
-					});
-				},3000)
+				//获取验证码
+				sendRegisterPhoneSms({
+					phoneNumber:this.phoneData,
+				}).then(res=>{
+					this.$refs.runCode.$emit('runCode');
+					if(res.code==20010){
+						uni.showToast({
+							icon: 'none',
+							mask: true,
+							duration: 1000,
+							title: '发送成功'
+						});
+					}else{
+						uni.showToast({
+							icon: 'none',
+							mask: true,
+							duration: 1000,
+							title: '发送失败'
+						});
+					}
+				})
 			},
 		    startReg() {
 				//注册
-				if(this.isRotate){
-					//判断是否加载中，避免重复点击请求
-					return false;
-				}
 				if (this.showAgree == false) {
 				    uni.showToast({
 				        icon: 'none',
@@ -125,35 +126,75 @@
 				    });
 				    return false;
 				}
-				if (this.phoneData.length !=11) {
-				    uni.showToast({
-				        icon: 'none',
-						position: 'bottom',
-				        title: '手机号不正确'
-				    });
-				    return false;
+				//判断是否输入手机号，手机号是否规范
+				const reg = /^1[3456789]\d{9}$/;
+				if (this.phoneData.length == "" || !reg.test(this.phoneData)) {
+					uni.showToast({
+						icon: 'none',
+						mask: true,
+						duration: 1000,
+						title: '手机号格式不正确'
+					});
+					return;
 				}
-		        if (this.passData.length < 6) {
-		            uni.showToast({
-		                icon: 'none',
-						position: 'bottom',
-		                title: '密码不正确'
-		            });
-		            return false;
-		        }
-				if (this.verCode.length != 4) {
-				    uni.showToast({
-				        icon: 'none',
-						position: 'bottom',
-				        title: '验证码不正确'
-				    });
-				    return false;
+				//判断是否输入密码，密码是否规范，长度为6-16位，包含数字和字母，可以有特殊字符
+				const phoneReg = /^(?=.*[0-9])(?=.*[a-zA-Z])(.{6,16})$/;
+				if (this.passData.length == "" || this.passData.length < 6 || this.passData.length > 16 || !phoneReg.test(
+						this.passData)) {
+					uni.showToast({
+						icon: 'none',
+						mask: true,
+						duration: 1000,
+						title: '密码格式不正确'
+					});
+					return;
+				}
+				if(this.verCode.length!=6){
+					uni.showToast({
+						icon: 'none',
+						mask: true,
+						duration: 1000,
+						title: '验证码不正确'
+					});
+					return;
 				}
 				console.log("注册成功")
-				_this.isRotate=true
-				setTimeout(function(){
-					_this.isRotate=false
-				},3000)
+				uni.showLoading({
+					mask:true,
+					title:'创建中...',
+				})
+				register({
+					registerVo:{
+						phoneNumber:this.phoneData,
+						password:this.passData,
+						smsCode:this.verCode,
+					}
+				}).then(res=>{
+					console.log(res)
+					if(res.code!=20020){
+						uni.hideLoading();
+						uni.showToast({
+							icon: 'none',
+							mask: true,
+							duration: 500,
+							title: res.msg
+						});
+						return;
+					}else{
+						uni.hideLoading();
+						uni.showToast({
+							icon: 'success',
+							mask: true,
+							duration: 500,
+							title: '注册成功'
+						});
+						setTimeout(function(){
+							uni.reLaunch({
+								url:'/pages/login/login'
+							})
+						},200)
+					}
+				})
 		    }
 		}
 	}
