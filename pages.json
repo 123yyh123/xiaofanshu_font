@@ -6,23 +6,44 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/category/category",
+			"style": {
+				"navigationBarTitleText": "分类"
+			}
+		},
+		{
+			"path": "pages/message/message",
+			"style": {
+				"navigationBarTitleText": "消息"
+			}
+		},
+		{
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationBarTitleText": "我"
 			}
 		},
 		{
 			"path": "pages/login/login",
 			"style": {
-				"navigationBarTitleText": "登录"
+				"navigationBarTitleText": "登录",
+				"enablePullDownRefresh": false
 			}
 		}, {
 			"path": "pages/login/forget",
 			"style": {
-				"navigationBarTitleText": "忘记密码"
+				"navigationBarTitleText": "忘记密码",
+				"enablePullDownRefresh": false
 			}
 		}, {
 			"path": "pages/login/register",
 			"style": {
-				"navigationBarTitleText": "注册"
+				"navigationBarTitleText": "注册",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
@@ -33,11 +54,43 @@
 			}
 		}
 	],
+	"tabBar": {
+		"backgroundColor": "#ffffff",
+		"borderStyle": "#ffffff",
+		"height": "35px",
+		"iconWidth": "37px",
+		"midButton": {
+			"iconPath": "static/image/publish.png",
+			"iconWidth": "50px"
+		},
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "/static/image/index.png",
+				"selectedIconPath": "static/image/index_select.png"
+			},
+			{
+				"pagePath": "pages/category/category",
+				"iconPath": "/static/image/category.png",
+				"selectedIconPath": "static/image/category_select.png"
+			},
+			{
+				"pagePath": "pages/message/message",
+				"iconPath": "/static/image/message.png",
+				"selectedIconPath": "static/image/message_select.png"
+			},
+			{
+				"pagePath": "pages/mine/mine",
+				"iconPath": "static/image/mine.png",
+				"selectedIconPath": "static/image/mine_select.png"
+			}
+		]
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#ffffff"
 	},
 	"uniIdRouter": {}
 }
