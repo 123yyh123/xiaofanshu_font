@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/category",
+    "pages/message/message",
+    "pages/mine/mine",
+    "pages/login/login",
+    "pages/login/forget",
+    "pages/login/register",
+    "pages/login/bindPhone"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#ffffff"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "height": "35px",
+    "iconWidth": "37px",
+    "midButton": {
+      "iconPath": "static/image/publish.png",
+      "iconWidth": "50px"
+    },
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/static/image/index.png",
+        "selectedIconPath": "static/image/index_select.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "iconPath": "/static/image/category.png",
+        "selectedIconPath": "static/image/category_select.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "iconPath": "/static/image/message.png",
+        "selectedIconPath": "static/image/message_select.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/image/mine.png",
+        "selectedIconPath": "static/image/mine_select.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

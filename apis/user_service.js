@@ -6,3 +6,10 @@ export const resetPassword=(params={})=>{
 		method:'POST'
 	})
 }
+
+export const getUserInfo=(params={})=>{
+	return $request({
+		url:'/user/getUserInfo?userId='+params.userId,
+		method:'GET'
+	})
+}

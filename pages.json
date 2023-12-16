@@ -24,7 +24,8 @@
 		{
 			"path": "pages/mine/mine",
 			"style": {
-				"navigationBarTitleText": "我"
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -56,7 +57,7 @@
 	],
 	"tabBar": {
 		"backgroundColor": "#ffffff",
-		"borderStyle": "#ffffff",
+		"borderStyle": "white",
 		"height": "35px",
 		"iconWidth": "37px",
 		"midButton": {

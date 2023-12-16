@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "登录",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "w-input": "/components/watch-login/watch-input",
+    "w-button": "/components/watch-login/watch-button"
+  }
+}
