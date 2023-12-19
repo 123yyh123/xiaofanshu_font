@@ -63,6 +63,13 @@
                 },
                 "payment" : {},
                 "share" : {}
+            },
+            "splashscreen" : {
+                "useOriginalMsgbox" : true,
+                "androidStyle" : "common",
+                "android" : {
+                    "hdpi" : ""
+                }
             }
         }
     },

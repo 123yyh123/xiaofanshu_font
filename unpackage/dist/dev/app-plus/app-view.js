@@ -3858,12 +3858,602 @@ var render = function () {
         },
         [
           _c(
-            "uni-view",
-            { attrs: { _i: 2 } },
+            "v-uni-scroll-view",
+            {
+              staticStyle: { "font-size": "28rpx" },
+              style: _vm._$g(2, "s"),
+              attrs: { "scroll-y": "true", _i: 2 },
+            },
             [
-              _c("v-uni-text", { attrs: { _i: 3 } }, [
-                _vm._v("人生若只如初见，何事秋风悲画扇"),
-              ]),
+              _c("uni-view", {
+                staticStyle: { height: "150rpx" },
+                attrs: { _i: 3 },
+              }),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 4 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(5, "a-src"),
+                      _i: 5,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 6 },
+                    },
+                    [_vm._v("发现好友")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 7 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(8, "a-src"),
+                      _i: 8,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 9 },
+                    },
+                    [_vm._v("创作中心")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 10 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(11, "a-src"),
+                      _i: 11,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 12 },
+                    },
+                    [_vm._v("活动中心")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 13 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(14, "a-src"),
+                      _i: 14,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 15 },
+                    },
+                    [_vm._v("我的草稿")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 16 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(17, "a-src"),
+                      _i: 17,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 18 },
+                    },
+                    [_vm._v("浏览记录")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 19 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(20, "a-src"),
+                      _i: 20,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 21 },
+                    },
+                    [_vm._v("钱包")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 22 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(23, "a-src"),
+                      _i: 23,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 24 },
+                    },
+                    [_vm._v("免流量")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 25 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(26, "a-src"),
+                      _i: 26,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 27 },
+                    },
+                    [_vm._v("好物体验")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 28 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(29, "a-src"),
+                      _i: 29,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 30 },
+                    },
+                    [_vm._v("订单")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 31 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(32, "a-src"),
+                      _i: 32,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 33 },
+                    },
+                    [_vm._v("购物车")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 34 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(35, "a-src"),
+                      _i: 35,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 36 },
+                    },
+                    [_vm._v("卡券")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 37 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(38, "a-src"),
+                      _i: 38,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 39 },
+                    },
+                    [_vm._v("心愿单")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    padding: "0 60rpx 60rpx 60rpx",
+                  },
+                  attrs: { _i: 40 },
+                },
+                [
+                  _c("v-uni-image", {
+                    staticStyle: { height: "60rpx" },
+                    attrs: {
+                      mode: "heightFix",
+                      src: _vm._$g(41, "a-src"),
+                      _i: 41,
+                    },
+                  }),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "margin-left": "20rpx",
+                        "line-height": "60rpx",
+                      },
+                      attrs: { _i: 42 },
+                    },
+                    [_vm._v("社区公约")]
+                  ),
+                ],
+                1
+              ),
+              _c("uni-view", {
+                staticStyle: { height: "200rpx" },
+                attrs: { _i: 43 },
+              }),
+            ],
+            1
+          ),
+          _c(
+            "uni-view",
+            {
+              staticStyle: {
+                position: "fixed",
+                bottom: "0",
+                display: "flex",
+                "justify-content": "space-between",
+                "align-items": "center",
+                width: "525rpx",
+                "background-color": "#ffffff",
+                padding: "20rpx 60rpx",
+                "box-sizing": "border-box",
+                "font-size": "25rpx",
+                color: "#727171",
+              },
+              attrs: { _i: 44 },
+            },
+            [
+              _c(
+                "uni-view",
+                {
+                  staticStyle: { "text-align": "-webkit-center" },
+                  attrs: { _i: 45 },
+                },
+                [
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        display: "flex",
+                        "justify-content": "center",
+                        "align-items": "center",
+                        width: "80rpx",
+                        height: "80rpx",
+                        "background-color": "#dcdddd",
+                        "border-radius": "50%",
+                      },
+                      attrs: { _i: 46 },
+                    },
+                    [
+                      _c("v-uni-image", {
+                        staticStyle: { height: "40rpx" },
+                        attrs: {
+                          mode: "heightFix",
+                          src: _vm._$g(47, "a-src"),
+                          _i: 47,
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "text-align": "center",
+                        "margin-top": "5rpx",
+                      },
+                      attrs: { _i: 48 },
+                    },
+                    [_vm._v("设置")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: { "text-align": "-webkit-center" },
+                  attrs: { _i: 49 },
+                },
+                [
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        display: "flex",
+                        "justify-content": "center",
+                        "align-items": "center",
+                        width: "80rpx",
+                        height: "80rpx",
+                        "background-color": "#dcdddd",
+                        "border-radius": "50%",
+                        "text-align": "-webkit-center",
+                      },
+                      attrs: { _i: 50 },
+                    },
+                    [
+                      _c("v-uni-image", {
+                        staticStyle: { height: "40rpx" },
+                        attrs: {
+                          mode: "heightFix",
+                          src: _vm._$g(51, "a-src"),
+                          _i: 51,
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "text-align": "center",
+                        "margin-top": "5rpx",
+                      },
+                      attrs: { _i: 52 },
+                    },
+                    [_vm._v("帮助与反馈")]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: { "text-align": "-webkit-center" },
+                  attrs: { _i: 53 },
+                },
+                [
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        display: "flex",
+                        "justify-content": "center",
+                        "align-items": "center",
+                        width: "80rpx",
+                        height: "80rpx",
+                        "background-color": "#dcdddd",
+                        "border-radius": "50%",
+                        "text-align": "-webkit-center",
+                      },
+                      attrs: { _i: 54 },
+                    },
+                    [
+                      _c("v-uni-image", {
+                        staticStyle: { height: "40rpx" },
+                        attrs: {
+                          mode: "heightFix",
+                          src: _vm._$g(55, "a-src"),
+                          _i: 55,
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: {
+                        "text-align": "center",
+                        "margin-top": "5rpx",
+                      },
+                      attrs: { _i: 56 },
+                    },
+                    [_vm._v("扫一扫")]
+                  ),
+                ],
+                1
+              ),
             ],
             1
           ),
@@ -3873,27 +4463,27 @@ var render = function () {
       _c(
         "uni-view",
         {
-          staticClass: _vm._$g(4, "sc"),
-          style: _vm._$g(4, "s"),
-          attrs: { _i: 4 },
+          staticClass: _vm._$g(57, "sc"),
+          style: _vm._$g(57, "s"),
+          attrs: { _i: 57 },
         },
         [
           _c("uni-view", {
-            staticClass: _vm._$g(5, "sc"),
-            style: _vm._$g(5, "s"),
-            attrs: { _i: 5 },
+            staticClass: _vm._$g(58, "sc"),
+            style: _vm._$g(58, "s"),
+            attrs: { _i: 58 },
           }),
           _c("uni-view", {
-            staticClass: _vm._$g(6, "sc"),
-            style: _vm._$g(6, "s"),
-            attrs: { _i: 6 },
+            staticClass: _vm._$g(59, "sc"),
+            style: _vm._$g(59, "s"),
+            attrs: { _i: 59 },
           }),
           _c(
             "uni-view",
             {
-              staticClass: _vm._$g(7, "sc"),
-              style: _vm._$g(7, "s"),
-              attrs: { _i: 7 },
+              staticClass: _vm._$g(60, "sc"),
+              style: _vm._$g(60, "s"),
+              attrs: { _i: 60 },
             },
             [
               _c(
@@ -3904,8 +4494,8 @@ var render = function () {
                     left: "40rpx",
                     opacity: "1",
                   },
-                  style: _vm._$g(8, "s"),
-                  attrs: { _i: 8 },
+                  style: _vm._$g(61, "s"),
+                  attrs: { _i: 61 },
                   on: {
                     click: function ($event) {
                       return _vm.$handleViewEvent($event)
@@ -3914,11 +4504,11 @@ var render = function () {
                 },
                 [
                   _c("v-uni-image", {
-                    style: _vm._$g(9, "s"),
+                    style: _vm._$g(62, "s"),
                     attrs: {
-                      src: _vm._$g(9, "a-src"),
+                      src: _vm._$g(62, "a-src"),
                       mode: "heightFix",
-                      _i: 9,
+                      _i: 62,
                     },
                   }),
                 ],
@@ -3932,16 +4522,16 @@ var render = function () {
                     right: "40rpx",
                     opacity: "1",
                   },
-                  style: _vm._$g(10, "s"),
-                  attrs: { _i: 10 },
+                  style: _vm._$g(63, "s"),
+                  attrs: { _i: 63 },
                 },
                 [
                   _c("v-uni-image", {
-                    style: _vm._$g(11, "s"),
+                    style: _vm._$g(64, "s"),
                     attrs: {
-                      src: _vm._$g(11, "a-src"),
+                      src: _vm._$g(64, "a-src"),
                       mode: "heightFix",
-                      _i: 11,
+                      _i: 64,
                     },
                   }),
                 ],
@@ -3951,21 +4541,21 @@ var render = function () {
                 "uni-view",
                 {
                   staticStyle: { opacity: "1" },
-                  style: _vm._$g(12, "s"),
-                  attrs: { _i: 12 },
+                  style: _vm._$g(65, "s"),
+                  attrs: { _i: 65 },
                 },
                 [
                   _c(
                     "u-transition",
-                    { attrs: { _i: 13 } },
+                    { attrs: { _i: 66 } },
                     [
                       _c("v-uni-image", {
                         staticStyle: { "border-radius": "50%" },
-                        style: _vm._$g(14, "s"),
+                        style: _vm._$g(67, "s"),
                         attrs: {
-                          src: _vm._$g(14, "a-src"),
+                          src: _vm._$g(67, "a-src"),
                           mode: "aspectFill",
-                          _i: 14,
+                          _i: 67,
                         },
                       }),
                     ],
@@ -3977,36 +4567,36 @@ var render = function () {
             ],
             1
           ),
-          _c("uni-view", { style: _vm._$g(15, "s"), attrs: { _i: 15 } }),
+          _c("uni-view", { style: _vm._$g(68, "s"), attrs: { _i: 68 } }),
           _c(
             "uni-view",
             {
               staticStyle: { padding: "0 40rpx 20rpx 40rpx" },
-              attrs: { _i: 16 },
+              attrs: { _i: 69 },
             },
             [
               _c(
                 "uni-view",
-                { staticClass: _vm._$g(17, "sc"), attrs: { _i: 17 } },
+                { staticClass: _vm._$g(70, "sc"), attrs: { _i: 70 } },
                 [
                   _c("v-uni-image", {
                     attrs: {
-                      src: _vm._$g(18, "a-src"),
+                      src: _vm._$g(71, "a-src"),
                       mode: "aspectFill",
-                      _i: 18,
+                      _i: 71,
                     },
                   }),
                   _c(
                     "uni-view",
-                    { staticClass: _vm._$g(19, "sc"), attrs: { _i: 19 } },
+                    { staticClass: _vm._$g(72, "sc"), attrs: { _i: 72 } },
                     [
-                      _c("v-uni-text", { attrs: { decode: true, _i: 20 } }, [
-                        _vm._v(_vm._$g(20, "t0-0")),
+                      _c("v-uni-text", { attrs: { decode: true, _i: 73 } }, [
+                        _vm._v(_vm._$g(73, "t0-0")),
                       ]),
-                      _c("v-uni-text", { attrs: { decode: true, _i: 21 } }, [
-                        _vm._v("小番薯号：" + _vm._$g(21, "t0-0")),
+                      _c("v-uni-text", { attrs: { decode: true, _i: 74 } }, [
+                        _vm._v("小番薯号：" + _vm._$g(74, "t0-0")),
                       ]),
-                      _c("v-uni-text", { attrs: { decode: true, _i: 22 } }, [
+                      _c("v-uni-text", { attrs: { decode: true, _i: 75 } }, [
                         _vm._v("IP属地：日本"),
                       ]),
                     ],
@@ -4017,37 +4607,41 @@ var render = function () {
               ),
               _c(
                 "uni-view",
-                { staticClass: _vm._$g(23, "sc"), attrs: { _i: 23 } },
-                [_vm._v(_vm._$g(23, "t0-0"))]
+                { staticClass: _vm._$g(76, "sc"), attrs: { _i: 76 } },
+                [_vm._v(_vm._$g(76, "t0-0"))]
               ),
               _c(
                 "uni-view",
-                { staticStyle: { display: "flex" }, attrs: { _i: 24 } },
+                { staticStyle: { display: "flex" }, attrs: { _i: 77 } },
                 [
-                  _vm._$g(25, "i")
+                  _vm._$g(78, "i")
                     ? _c(
                         "uni-view",
-                        { staticClass: _vm._$g(25, "sc"), attrs: { _i: 25 } },
+                        { staticClass: _vm._$g(78, "sc"), attrs: { _i: 78 } },
                         [
-                          _c("u-icon", { attrs: { _i: 26 } }),
-                          _vm._v(_vm._$g(25, "t1-0") + "岁"),
+                          _c("u-icon", { attrs: { _i: 79 } }),
+                          _vm._$g(80, "i")
+                            ? _c("uni-view", { attrs: { _i: 80 } }, [
+                                _vm._v(_vm._$g(80, "t0-0") + "岁"),
+                              ])
+                            : _vm._e(),
                         ],
                         1
                       )
-                    : _vm._$g(27, "e")
+                    : _vm._$g(81, "e")
                     ? _c(
                         "uni-view",
-                        { staticClass: _vm._$g(27, "sc"), attrs: { _i: 27 } },
+                        { staticClass: _vm._$g(81, "sc"), attrs: { _i: 81 } },
                         [
-                          _c("u-icon", { attrs: { _i: 28 } }),
-                          _vm._v(_vm._$g(27, "t1-0") + "岁"),
+                          _c("u-icon", { attrs: { _i: 82 } }),
+                          _vm._v(_vm._$g(81, "t1-0") + "岁"),
                         ],
                         1
                       )
                     : _vm._e(),
                   _c(
                     "uni-view",
-                    { staticClass: _vm._$g(29, "sc"), attrs: { _i: 29 } },
+                    { staticClass: _vm._$g(83, "sc"), attrs: { _i: 83 } },
                     [_vm._v("日本东京")]
                   ),
                 ],
@@ -4057,7 +4651,7 @@ var render = function () {
                 "uni-view",
                 {
                   staticStyle: { display: "flex", width: "100%" },
-                  attrs: { _i: 30 },
+                  attrs: { _i: 84 },
                 },
                 [
                   _c(
@@ -4068,19 +4662,19 @@ var render = function () {
                         display: "flex",
                         "justify-content": "space-around",
                       },
-                      attrs: { _i: 31 },
+                      attrs: { _i: 85 },
                     },
                     [
                       _c(
                         "uni-view",
-                        { staticClass: _vm._$g(32, "sc"), attrs: { _i: 32 } },
+                        { staticClass: _vm._$g(86, "sc"), attrs: { _i: 86 } },
                         [
-                          _c("uni-view", { attrs: { _i: 33 } }, [_vm._v("8")]),
+                          _c("uni-view", { attrs: { _i: 87 } }, [_vm._v("8")]),
                           _c(
                             "uni-view",
                             {
                               staticStyle: { color: "#e5e4e6" },
-                              attrs: { _i: 34 },
+                              attrs: { _i: 88 },
                             },
                             [_vm._v("关注")]
                           ),
@@ -4089,14 +4683,14 @@ var render = function () {
                       ),
                       _c(
                         "uni-view",
-                        { staticClass: _vm._$g(35, "sc"), attrs: { _i: 35 } },
+                        { staticClass: _vm._$g(89, "sc"), attrs: { _i: 89 } },
                         [
-                          _c("uni-view", { attrs: { _i: 36 } }, [_vm._v("8")]),
+                          _c("uni-view", { attrs: { _i: 90 } }, [_vm._v("8")]),
                           _c(
                             "uni-view",
                             {
                               staticStyle: { color: "#e5e4e6" },
-                              attrs: { _i: 37 },
+                              attrs: { _i: 91 },
                             },
                             [_vm._v("粉丝")]
                           ),
@@ -4105,14 +4699,14 @@ var render = function () {
                       ),
                       _c(
                         "uni-view",
-                        { staticClass: _vm._$g(38, "sc"), attrs: { _i: 38 } },
+                        { staticClass: _vm._$g(92, "sc"), attrs: { _i: 92 } },
                         [
-                          _c("uni-view", { attrs: { _i: 39 } }, [_vm._v("8")]),
+                          _c("uni-view", { attrs: { _i: 93 } }, [_vm._v("8")]),
                           _c(
                             "uni-view",
                             {
                               staticStyle: { color: "#e5e4e6" },
-                              attrs: { _i: 40 },
+                              attrs: { _i: 94 },
                             },
                             [_vm._v("获赞与收藏")]
                           ),
@@ -4131,27 +4725,27 @@ var render = function () {
                         "align-items": "flex-end",
                         "justify-content": "space-around",
                       },
-                      attrs: { _i: 41 },
+                      attrs: { _i: 95 },
                     },
                     [
                       _c(
                         "uni-view",
-                        { staticClass: _vm._$g(42, "sc"), attrs: { _i: 42 } },
+                        { staticClass: _vm._$g(96, "sc"), attrs: { _i: 96 } },
                         [_vm._v("编辑资料")]
                       ),
                       _c(
                         "uni-view",
                         {
-                          staticClass: _vm._$g(43, "sc"),
+                          staticClass: _vm._$g(97, "sc"),
                           staticStyle: { width: "40px", display: "flex" },
-                          attrs: { _i: 43 },
+                          attrs: { _i: 97 },
                         },
                         [
                           _c("v-uni-image", {
                             attrs: {
-                              src: _vm._$g(44, "a-src"),
+                              src: _vm._$g(98, "a-src"),
                               mode: "heightFix",
-                              _i: 44,
+                              _i: 98,
                             },
                           }),
                         ],
@@ -4170,18 +4764,21 @@ var render = function () {
                     display: "flex",
                     "justify-content": "space-between",
                   },
-                  attrs: { _i: 45 },
+                  attrs: { _i: 99 },
                 },
                 [
                   _c(
                     "uni-view",
-                    { staticClass: _vm._$g(46, "sc"), attrs: { _i: 46 } },
+                    { staticClass: _vm._$g(100, "sc"), attrs: { _i: 100 } },
                     [
                       _c(
                         "uni-view",
-                        { staticStyle: { display: "flex" }, attrs: { _i: 47 } },
+                        {
+                          staticStyle: { display: "flex" },
+                          attrs: { _i: 101 },
+                        },
                         [
-                          _c("u-icon", { attrs: { _i: 48 } }),
+                          _c("u-icon", { attrs: { _i: 102 } }),
                           _c(
                             "v-uni-text",
                             {
@@ -4190,7 +4787,7 @@ var render = function () {
                                 "font-size": "27rpx",
                                 "margin-left": "10rpx",
                               },
-                              attrs: { _i: 49 },
+                              attrs: { _i: 103 },
                             },
                             [_vm._v("购物车")]
                           ),
@@ -4204,7 +4801,7 @@ var render = function () {
                             "font-size": "25rpx",
                             color: "#595857",
                           },
-                          attrs: { _i: 50 },
+                          attrs: { _i: 104 },
                         },
                         [_vm._v("查看推荐好物")]
                       ),
@@ -4213,13 +4810,16 @@ var render = function () {
                   ),
                   _c(
                     "uni-view",
-                    { staticClass: _vm._$g(51, "sc"), attrs: { _i: 51 } },
+                    { staticClass: _vm._$g(105, "sc"), attrs: { _i: 105 } },
                     [
                       _c(
                         "uni-view",
-                        { staticStyle: { display: "flex" }, attrs: { _i: 52 } },
+                        {
+                          staticStyle: { display: "flex" },
+                          attrs: { _i: 106 },
+                        },
                         [
-                          _c("u-icon", { attrs: { _i: 53 } }),
+                          _c("u-icon", { attrs: { _i: 107 } }),
                           _c(
                             "v-uni-text",
                             {
@@ -4228,7 +4828,7 @@ var render = function () {
                                 "font-size": "27rpx",
                                 "margin-left": "10rpx",
                               },
-                              attrs: { _i: 54 },
+                              attrs: { _i: 108 },
                             },
                             [_vm._v("创作灵感")]
                           ),
@@ -4242,7 +4842,7 @@ var render = function () {
                             "font-size": "25rpx",
                             color: "#595857",
                           },
-                          attrs: { _i: 55 },
+                          attrs: { _i: 109 },
                         },
                         [_vm._v("学创作找灵感")]
                       ),
@@ -4251,13 +4851,16 @@ var render = function () {
                   ),
                   _c(
                     "uni-view",
-                    { staticClass: _vm._$g(56, "sc"), attrs: { _i: 56 } },
+                    { staticClass: _vm._$g(110, "sc"), attrs: { _i: 110 } },
                     [
                       _c(
                         "uni-view",
-                        { staticStyle: { display: "flex" }, attrs: { _i: 57 } },
+                        {
+                          staticStyle: { display: "flex" },
+                          attrs: { _i: 111 },
+                        },
                         [
-                          _c("u-icon", { attrs: { _i: 58 } }),
+                          _c("u-icon", { attrs: { _i: 112 } }),
                           _c(
                             "v-uni-text",
                             {
@@ -4266,7 +4869,7 @@ var render = function () {
                                 "font-size": "27rpx",
                                 "margin-left": "10rpx",
                               },
-                              attrs: { _i: 59 },
+                              attrs: { _i: 113 },
                             },
                             [_vm._v("浏览记录")]
                           ),
@@ -4280,7 +4883,7 @@ var render = function () {
                             "font-size": "25rpx",
                             color: "#595857",
                           },
-                          attrs: { _i: 60 },
+                          attrs: { _i: 114 },
                         },
                         [_vm._v("看过的笔记")]
                       ),
@@ -4298,7 +4901,7 @@ var render = function () {
       ),
       _c(
         "u-sticky",
-        { attrs: { _i: 61 } },
+        { attrs: { _i: 115 } },
         [
           _c(
             "uni-view",
@@ -4310,11 +4913,11 @@ var render = function () {
                 height: "50px",
                 "align-items": "center",
               },
-              attrs: { _i: 62 },
+              attrs: { _i: 116 },
             },
             [
               _c("u-tabs", {
-                attrs: { _i: 63 },
+                attrs: { _i: 117 },
                 on: {
                   click: function ($event) {
                     return _vm.$handleViewEvent($event)
@@ -4325,9 +4928,9 @@ var render = function () {
                 "uni-view",
                 {
                   staticStyle: { position: "absolute", right: "0" },
-                  attrs: { _i: 64 },
+                  attrs: { _i: 118 },
                 },
-                [_c("u-icon", { attrs: { _i: 65 } })],
+                [_c("u-icon", { attrs: { _i: 119 } })],
                 1
               ),
             ],
@@ -4338,18 +4941,18 @@ var render = function () {
       ),
       _c(
         "uni-view",
-        { attrs: { _i: 66 } },
+        { attrs: { _i: 120 } },
         [
           _c(
             "v-uni-swiper",
             {
-              staticClass: _vm._$g(67, "sc"),
-              style: _vm._$g(67, "s"),
+              staticClass: _vm._$g(121, "sc"),
+              style: _vm._$g(121, "s"),
               attrs: {
-                current: _vm._$g(67, "a-current"),
+                current: _vm._$g(121, "a-current"),
                 duration: 300,
                 "previous-margin": "0",
-                _i: 67,
+                _i: 121,
               },
               on: {
                 change: function ($event) {
@@ -4360,16 +4963,16 @@ var render = function () {
             [
               _c(
                 "v-uni-swiper-item",
-                { attrs: { _i: 68 } },
+                { attrs: { _i: 122 } },
                 [
                   _c(
                     "v-uni-scroll-view",
                     {
-                      style: _vm._$g(69, "s"),
+                      style: _vm._$g(123, "s"),
                       attrs: {
                         "scroll-y": "true",
                         "lower-threshold": "20",
-                        _i: 69,
+                        _i: 123,
                       },
                       on: {
                         scrolltolower: function ($event) {
@@ -4380,13 +4983,13 @@ var render = function () {
                     [
                       _c(
                         "uni-view",
-                        { staticClass: _vm._$g(70, "sc"), attrs: { _i: 70 } },
+                        { staticClass: _vm._$g(124, "sc"), attrs: { _i: 124 } },
                         [
                           _c("water-fall", {
                             ref: "water1",
-                            attrs: { _i: 71 },
+                            attrs: { _i: 125 },
                           }),
-                          _c("u-loadmore", { attrs: { _i: 72 } }),
+                          _c("u-loadmore", { attrs: { _i: 126 } }),
                         ],
                         1
                       ),
@@ -4398,16 +5001,16 @@ var render = function () {
               ),
               _c(
                 "v-uni-swiper-item",
-                { attrs: { _i: 73 } },
+                { attrs: { _i: 127 } },
                 [
                   _c(
                     "v-uni-scroll-view",
                     {
-                      style: _vm._$g(74, "s"),
+                      style: _vm._$g(128, "s"),
                       attrs: {
                         "scroll-y": "true",
                         "lower-threshold": "20",
-                        _i: 74,
+                        _i: 128,
                       },
                       on: {
                         scrolltolower: function ($event) {
@@ -4418,13 +5021,13 @@ var render = function () {
                     [
                       _c(
                         "uni-view",
-                        { staticClass: _vm._$g(75, "sc"), attrs: { _i: 75 } },
+                        { staticClass: _vm._$g(129, "sc"), attrs: { _i: 129 } },
                         [
                           _c("water-fall", {
                             ref: "water2",
-                            attrs: { _i: 76 },
+                            attrs: { _i: 130 },
                           }),
-                          _c("u-loadmore", { attrs: { _i: 77 } }),
+                          _c("u-loadmore", { attrs: { _i: 131 } }),
                         ],
                         1
                       ),
@@ -4436,16 +5039,16 @@ var render = function () {
               ),
               _c(
                 "v-uni-swiper-item",
-                { attrs: { _i: 78 } },
+                { attrs: { _i: 132 } },
                 [
                   _c(
                     "v-uni-scroll-view",
                     {
-                      style: _vm._$g(79, "s"),
+                      style: _vm._$g(133, "s"),
                       attrs: {
                         "scroll-y": "true",
                         "lower-threshold": "20",
-                        _i: 79,
+                        _i: 133,
                       },
                       on: {
                         scrolltolower: function ($event) {
@@ -4456,13 +5059,13 @@ var render = function () {
                     [
                       _c(
                         "uni-view",
-                        { staticClass: _vm._$g(80, "sc"), attrs: { _i: 80 } },
+                        { staticClass: _vm._$g(134, "sc"), attrs: { _i: 134 } },
                         [
                           _c("water-fall", {
                             ref: "water3",
-                            attrs: { _i: 81 },
+                            attrs: { _i: 135 },
                           }),
-                          _c("u-loadmore", { attrs: { _i: 82 } }),
+                          _c("u-loadmore", { attrs: { _i: 136 } }),
                         ],
                         1
                       ),

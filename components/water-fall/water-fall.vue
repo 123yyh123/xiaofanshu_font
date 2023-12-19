@@ -110,6 +110,13 @@
 						}
 					})
 				})
+			},
+			refresh(){
+				this.leftList = []
+				this.rightList = []
+				this.leftHeight = 0
+				this.rightHeight = 0
+				this.init()
 			}
 		},
 	}

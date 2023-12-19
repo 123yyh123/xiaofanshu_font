@@ -101,25 +101,25 @@ var components
 try {
   components = {
     uPopup: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 287))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 241))
     },
     uTransition: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-transition/u-transition */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-transition/u-transition")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-transition/u-transition.vue */ 335))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-transition/u-transition */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-transition/u-transition")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-transition/u-transition.vue */ 249))
     },
     uIcon: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 241))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 259))
     },
     uSticky: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-sticky/u-sticky */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-sticky/u-sticky")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-sticky/u-sticky.vue */ 250))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-sticky/u-sticky */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-sticky/u-sticky")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-sticky/u-sticky.vue */ 268))
     },
     uTabs: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabs/u-tabs.vue */ 258))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabs/u-tabs.vue */ 276))
     },
     waterFall: function () {
-      return __webpack_require__.e(/*! import() | components/water-fall/water-fall */ "components/water-fall/water-fall").then(__webpack_require__.bind(null, /*! @/components/water-fall/water-fall.vue */ 266))
+      return __webpack_require__.e(/*! import() | components/water-fall/water-fall */ "components/water-fall/water-fall").then(__webpack_require__.bind(null, /*! @/components/water-fall/water-fall.vue */ 284))
     },
     uLoadmore: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-loadmore/u-loadmore */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-loadmore/u-loadmore")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-loadmore/u-loadmore.vue */ 384))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-loadmore/u-loadmore */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-loadmore/u-loadmore")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-loadmore/u-loadmore.vue */ 291))
     },
   }
 } catch (e) {
@@ -143,6 +143,17 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var a0 = {
+    "touch-action": "none",
+  }
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        a0: a0,
+      },
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -184,6 +195,84 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _os = __webpack_require__(/*! os */ 186);
 var _user_service = __webpack_require__(/*! ../../apis/user_service.js */ 187);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -500,6 +589,10 @@ var _default = {
   },
   onPullDownRefresh: function onPullDownRefresh() {
     console.log('下拉刷新');
+    this.$refs.water1.refresh();
+    this.$refs.water2.refresh();
+    this.$refs.water3.refresh();
+    uni.stopPullDownRefresh();
     // getUserInfo({
     // 	userId:this.userInfo.id
     // }).then((res)=>{
@@ -518,7 +611,7 @@ var _default = {
     var _this2 = this;
     uni.getSystemInfo({
       success: function success(res) {
-        _this2.screenHeight = res.screenHeight / 2 + 'px';
+        _this2.screenHeight = res.screenHeight / 2;
         _this2.statusBarHeight = res.statusBarHeight;
         _this2.navigationBarHeight = res.statusBarHeight * 1.2 + 'px';
         _this2.stickyHeight = res.statusBarHeight * 2.2 + 'px';
@@ -551,7 +644,7 @@ var _default = {
     } else {
       this.show = false;
     }
-    this.opacity = e.scrollTop / (Number(this.screenHeight.substring(0, this.screenHeight.length - 2)) - 80) >= 0 ? e.scrollTop / (Number(this.screenHeight.substring(0, this.screenHeight.length - 2)) - 80) : e.scrollTop / Number(this.screenHeight.substring(0, this.screenHeight.length - 2));
+    this.opacity = e.scrollTop / (Number(this.screenHeight) - 80) >= 0 ? e.scrollTop / (Number(this.screenHeight) - 80) : e.scrollTop / Number(this.screenHeight);
   },
   onReachBottom: function onReachBottom() {
     console.log('触底了');

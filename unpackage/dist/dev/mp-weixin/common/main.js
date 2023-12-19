@@ -110,15 +110,15 @@ var _default = {
       });
       return;
     }
-    // checkToken().then(res => {
-    // 	if (res.code != 200) {
-    // 		uni.reLaunch({
-    // 			url: '/pages/login/login'
-    // 		})
-    // 	}
-    // })
+    (0, _auth_apis.checkToken)().then(function (res) {
+      if (res.code != 200) {
+        uni.reLaunch({
+          url: '/pages/login/login'
+        });
+      }
+      return;
+    });
   },
-
   onShow: function onShow() {
     console.log('App Show');
   },

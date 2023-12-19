@@ -11,6 +11,7 @@ export const $request = (params = {}) => {
 			'token': uni.getStorageSync('token')
 		}
 		const timer = setTimeout(() => {
+			uni.hideLoading();
 	      reject(new Error('请求超时'));
 	    }, 5000);
 		uni.request({

@@ -1,17 +1,93 @@
 <template>
 	<view>
-		<u-popup :show="moreShow" mode="left" @close="closeMore" :safeAreaInsetTop="true" :safeAreaInsetBottom="false" customStyle="width: 125%">
-				<view>
-		            <text>人生若只如初见，何事秋风悲画扇</text>
+		<u-popup :show="moreShow" mode="left" customStyle="width:525rpx" @close="closeMore" :safeAreaInsetTop="true"
+			:safeAreaInsetBottom="false" :overlayStyle="{'touch-action':'none'}">
+			<scroll-view scroll-y="true" :style="{height: screenHeight*2+'px'}" style="font-size: 28rpx;">
+				<view style="height: 150rpx;"></view>
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/添加好友.png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">发现好友</view>
 				</view>
-			</u-popup>
-		<view class="info" :style="{ height: screenHeight}">
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/创作中心 (1).png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">创作中心</view>
+				</view>
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/活动中心 (1).png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">活动中心</view>
+				</view>
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/我的草稿.png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">我的草稿</view>
+				</view>
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/浏览记录.png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">浏览记录</view>
+				</view>
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/钱包.png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">钱包</view>
+				</view>
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/免流量畅听_52.png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">免流量</view>
+				</view>
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/礼物 活动.png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">好物体验</view>
+				</view>
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/订单 (1).png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">订单</view>
+				</view>
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/购物车.png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">购物车</view>
+				</view>
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/卡券.png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">卡券</view>
+				</view>
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/心愿单.png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">心愿单</view>
+				</view>
+				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/小草.png"></image>
+					<view style="margin-left: 20rpx;line-height: 60rpx;">社区公约</view>
+				</view>
+				<view style="height: 200rpx;"></view>
+			</scroll-view>
+			<view style="position: fixed;bottom: 0;display: flex;justify-content: space-between;align-items: center;width:525rpx;background-color: #ffffff;padding: 20rpx 60rpx;box-sizing: border-box;font-size: 25rpx;color: #727171;">
+				<view style="text-align: -webkit-center">
+					<view style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;">
+						<image style="height: 40rpx;" mode="heightFix" src="../../static/image/设置 (1).png"></image>
+					</view>
+					<view style="text-align: center;margin-top: 5rpx;">设置</view>
+					</view>
+					<view style="text-align: -webkit-center">
+					<view style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;text-align: -webkit-center;">
+						<image style="height: 40rpx;" mode="heightFix" src="../../static/image/客服.png"></image>
+					</view>
+					<view style="text-align: center;margin-top: 5rpx;">帮助与反馈</view>
+					</view>
+					<view style="text-align: -webkit-center">
+					<view style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;text-align: -webkit-center;">
+						<image style="height: 40rpx;" mode="heightFix" src="../../static/image/扫一扫.png"></image>
+					</view>
+					<view style="text-align: center;margin-top: 5rpx;">扫一扫</view>
+					</view>
+			</view>
+		</u-popup>
+
+		<view class="info" :style="{ height: screenHeight+'px'}">
 			<view class="filter" :style="{backgroundImage: 'url(' + userInfo.homePageBackground + ')'}"></view>
 			<view class="status-bar"
 				:style="{height:statusBarHeight+'px',backgroundColor: 'rgba(128,128,128,'+ opacity+')'}"></view>
 			<view class="navigation-bar"
 				:style="{height: navigationBarHeight,top:statusBarHeight+'px',backgroundColor: 'rgba(128,128,128,'+ opacity+')'}">
-				<view :style="{height: iconHeight}" style="position: absolute;left: 40rpx;opacity: 1;" @click="openMore">
+				<view :style="{height: iconHeight}" style="position: absolute;left: 40rpx;opacity: 1;"
+					@click="openMore">
 					<image :style="{height: iconHeight}" src="../../static/image/更多.png" mode="heightFix"></image>
 				</view>
 				<view :style="{height: iconHeight}" style="position: absolute;right: 40rpx;opacity: 1;">
@@ -37,8 +113,10 @@
 				<view class="introduction">{{userInfo.selfIntroductionlen==null?'点击这里，填写简介':userInfo.selfIntroduction}}
 				</view>
 				<view style="display: flex;">
-					<view v-if="userInfo.age!=null||userInfo.sex===1" class="tag"><u-icon name="man" color="#2ca9e1"
-							size="20"></u-icon>{{userInfo.age}}岁</view>
+					<view v-if="userInfo.age!=null||userInfo.sex===1" class="tag">
+						<u-icon name="man" color="#2ca9e1" size="20"></u-icon>
+						<view v-if="userInfo.age!=null">{{userInfo.age}}岁</view>
+					</view>
 					<view v-else-if="userInfo.age!=null||userInfo.sex===0" class="tag"><u-icon name="woman"
 							color="#e198b4" size="20"></u-icon>{{userInfo.age}}岁</view>
 					<view class="tag">日本东京</view>
@@ -176,7 +254,7 @@
 				userInfo: {},
 				actTab: 0,
 				show: false,
-				moreShow:false,
+				moreShow: false,
 				status1: 'nomore',
 				status2: 'nomore',
 				status3: 'nomore',
@@ -264,14 +342,14 @@
 			};
 		},
 		methods: {
-			openMore(){
-				this.moreShow=true
+			openMore() {
+				this.moreShow = true
 				uni.hideTabBar({
 					animation: true
 				})
 			},
-			closeMore(){
-				this.moreShow=false
+			closeMore() {
+				this.moreShow = false
 				uni.showTabBar({
 					animation: true
 				})
@@ -323,6 +401,10 @@
 		},
 		onPullDownRefresh() {
 			console.log('下拉刷新')
+			this.$refs.water1.refresh()
+			this.$refs.water2.refresh()
+			this.$refs.water3.refresh()
+			uni.stopPullDownRefresh()
 			// getUserInfo({
 			// 	userId:this.userInfo.id
 			// }).then((res)=>{
@@ -340,7 +422,7 @@
 		onLoad() {
 			uni.getSystemInfo({
 				success: (res) => {
-					this.screenHeight = res.screenHeight / 2 + 'px'
+					this.screenHeight = res.screenHeight / 2
 					this.statusBarHeight = res.statusBarHeight
 					this.navigationBarHeight = res.statusBarHeight * 1.2 + 'px'
 					this.stickyHeight = res.statusBarHeight * 2.2 + 'px'
@@ -373,9 +455,9 @@
 			} else {
 				this.show = false
 			}
-			this.opacity = e.scrollTop / (Number(this.screenHeight.substring(0, this.screenHeight.length - 2)) - 80) >= 0 ?
-				e.scrollTop / (Number(this.screenHeight.substring(0, this.screenHeight.length - 2)) - 80) : e.scrollTop / (
-					Number(this.screenHeight.substring(0, this.screenHeight.length - 2)));
+			this.opacity = e.scrollTop / (Number(this.screenHeight) - 80) >= 0 ?
+				e.scrollTop / (Number(this.screenHeight) - 80) : e.scrollTop / (
+					Number(this.screenHeight));
 		},
 		onReachBottom() {
 			console.log('触底了')
@@ -522,6 +604,7 @@
 		border-top-left-radius: 20rpx;
 		border-top-right-radius: 20rpx;
 	}
+
 	.notes {
 		width: 750rpx;
 		background-color: #ffffff;
