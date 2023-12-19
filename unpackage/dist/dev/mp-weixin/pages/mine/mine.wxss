@@ -40,6 +40,7 @@
   z-index: -1;
   -webkit-filter: brightness(65%);
           filter: brightness(65%);
+  background-color: #ffffff;
 }
 .status-bar {
   position: fixed;
@@ -52,6 +53,7 @@
   display: flex;
   align-items: center;
   z-index: 1;
+  justify-content: center;
 }
 .userinfo-main {
   display: inline-flex;
@@ -103,15 +105,14 @@
 }
 .tag1 {
   color: #ffffff;
-  margin-top: 20rpx;
-  margin-left: 20rpx;
   height: 30px;
   border-radius: 30rpx;
   border-color: #ffffff;
   border-style: solid;
   line-height: 30px;
-  padding: 5rpx 15rpx 5rpx 15rpx;
+  padding: 0rpx 20rpx 0rpx 20rpx;
   justify-content: center;
+  font-size: 27rpx;
 }
 .tag1 image {
   height: 22px;
@@ -124,28 +125,21 @@
   margin-right: 25rpx;
   text-align: center;
   color: #ffffff;
+  font-size: 24rpx;
 }
 .looked {
   width: 6em;
   margin-top: 30rpx;
-  padding: 10rpx 20rpx;
-  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10rpx 0rpx 10rpx 20rpx;
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20rpx;
 }
-.looked text:nth-child(2) {
-  font-size: 27rpx;
-  color: #95949a;
+ .u-sticky {
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
 }
 .notes {
   width: 750rpx;
-  background-color: #ffffff;
-  overflow: auto;
-}
-.notes-head {
-  position: -webkit-sticky;
-  position: sticky;
-  border-top-left-radius: 20rpx;
-  border-top-right-radius: 20rpx;
   background-color: #ffffff;
 }
 

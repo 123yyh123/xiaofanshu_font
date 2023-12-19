@@ -100,11 +100,26 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
+    uPopup: function () {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 287))
+    },
+    uTransition: function () {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-transition/u-transition */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-transition/u-transition")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-transition/u-transition.vue */ 335))
+    },
     uIcon: function () {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 241))
     },
+    uSticky: function () {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-sticky/u-sticky */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-sticky/u-sticky")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-sticky/u-sticky.vue */ 250))
+    },
     uTabs: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabs/u-tabs.vue */ 357))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabs/u-tabs.vue */ 258))
+    },
+    waterFall: function () {
+      return __webpack_require__.e(/*! import() | components/water-fall/water-fall */ "components/water-fall/water-fall").then(__webpack_require__.bind(null, /*! @/components/water-fall/water-fall.vue */ 266))
+    },
+    uLoadmore: function () {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-loadmore/u-loadmore */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-loadmore/u-loadmore")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-loadmore/u-loadmore.vue */ 384))
     },
   }
 } catch (e) {
@@ -259,10 +274,69 @@ var _user_service = __webpack_require__(/*! ../../apis/user_service.js */ 187);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
-      list1: [{
+      tabsList: [{
         name: '笔记'
       }, {
         name: '收藏'
@@ -275,9 +349,154 @@ var _default = {
       stickyHeight: '',
       notesHeight: '',
       iconHeight: '',
+      // mianInfoHeight:'',
+      swiperHeight: 0,
       opacity: 0,
-      userInfo: {}
+      userInfo: {},
+      actTab: 0,
+      show: false,
+      moreShow: false,
+      status1: 'nomore',
+      status2: 'nomore',
+      status3: 'nomore',
+      loadingText: '努力加载中',
+      loadmoreText: '轻轻上拉',
+      nomoreText: '实在没有了',
+      notesList: [{
+        img: '/static/image/胡桃 原神 可爱小鬼 高清 电脑 壁纸_彼岸壁纸.png',
+        title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
+        nickname: '你好',
+        avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
+        like: 8,
+        views: 10
+      }, {
+        img: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
+        title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
+        nickname: 'dscnj',
+        avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
+        like: 8,
+        views: 110
+      }, {
+        img: '/static/image/原神 雷电将军 雨天.png',
+        title: 'dncjsn生产基地那就计算机吃',
+        nickname: 'd打输出多少打输',
+        avatarUrl: '/static/image/00001.png',
+        like: 8,
+        views: 1033
+      }, {
+        img: '/static/image/《原神》明霄灯海 甘雨 刻晴 游戏壁纸_彼岸壁纸.jpg',
+        title: '时代潮流的基底节打输出',
+        nickname: '你成绩',
+        avatarUrl: '/static/image/00001.png',
+        like: 8,
+        views: 103
+      }, {
+        img: '/static/image/胡桃 原神 可爱小鬼 高清 电脑 壁纸_彼岸壁纸.png',
+        title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
+        nickname: '你好',
+        avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
+        like: 8,
+        views: 10
+      }, {
+        img: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
+        title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
+        nickname: 'dscnj',
+        avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
+        like: 8,
+        views: 110
+      }, {
+        img: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
+        title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
+        nickname: 'dscnj',
+        avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
+        like: 8,
+        views: 110
+      }, {
+        img: '/static/image/《原神》明霄灯海 甘雨 刻晴 游戏壁纸_彼岸壁纸.jpg',
+        title: '时代潮流的基底节打输出',
+        nickname: '你成绩',
+        avatarUrl: '/static/image/00001.png',
+        like: 8,
+        views: 103
+      }, {
+        img: '/static/image/原神 雷电将军 雨天.png',
+        title: 'dncjsn生产基地那就计算机吃',
+        nickname: 'd打输出多少打输',
+        avatarUrl: '/static/image/00001.png',
+        like: 8,
+        views: 1033
+      }, {
+        img: '/static/image/胡桃 原神 可爱小鬼 高清 电脑 壁纸_彼岸壁纸.png',
+        title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
+        nickname: '你好',
+        avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
+        like: 8,
+        views: 10
+      }],
+      leftList: [],
+      rightList: [],
+      leftHeight: 0,
+      rightHeight: 0
     };
+  },
+  methods: {
+    openMore: function openMore() {
+      this.moreShow = true;
+      uni.hideTabBar({
+        animation: true
+      });
+    },
+    closeMore: function closeMore() {
+      this.moreShow = false;
+      uni.showTabBar({
+        animation: true
+      });
+    },
+    rpxToPx: function rpxToPx(rpx) {
+      var screenWidth = uni.getSystemInfoSync().screenWidth;
+      return screenWidth * Number.parseInt(rpx) / 750;
+    },
+    changetabs: function changetabs(e) {
+      this.actTab = e.index;
+    },
+    swipeIndex: function swipeIndex(e) {
+      this.actTab = e.detail.current;
+      this.setSwiperHeight();
+    },
+    setSwiperHeight: function setSwiperHeight() {
+      var _this = this;
+      setTimeout(function () {
+        var query = uni.createSelectorQuery().in(_this);
+        query.selectAll(".component").boundingClientRect(function (data) {
+          console.log(data);
+          _this.swiperHeight = data[_this.actTab].height;
+        }).exec();
+      }, 1000);
+    },
+    // getImageHeight(s) {
+    // 	return new Promise((resolve, reject) => {
+    // 		uni.getImageInfo({
+    // 			src: s,
+    // 			success: (res) => {
+    // 				resolve(res.height)
+    // 			},
+    // 		})
+    // 	})
+    // },
+    onReach: function onReach() {
+      if (this.actTab === 0) {
+        this.status1 = 'loading';
+        this.$refs.water1.addList(this.notesList);
+      }
+      if (this.actTab === 1) {
+        this.status2 = 'loading';
+        this.$refs.water2.addList(this.notesList);
+      }
+      if (this.actTab === 2) {
+        this.status3 = 'loading';
+        this.$refs.water3.addList(this.notesList);
+      }
+    }
   },
   onPullDownRefresh: function onPullDownRefresh() {
     console.log('下拉刷新');
@@ -290,29 +509,62 @@ var _default = {
     // 		uni.showToast({
     // 			icon:'error',
     // 			duration:1000,
-    // 			title:'加载失败'
+    // 			:'加载失败'
     // 		})
     // 	}
     // })
   },
   onLoad: function onLoad() {
-    var _this = this;
+    var _this2 = this;
     uni.getSystemInfo({
       success: function success(res) {
-        _this.screenHeight = res.screenHeight / 2 + 15 + 'px';
-        _this.statusBarHeight = res.statusBarHeight + 'px';
-        _this.navigationBarHeight = res.statusBarHeight * 1.2 + 'px';
-        _this.stickyHeight = res.statusBarHeight * 2.2 + 'px';
+        _this2.screenHeight = res.screenHeight / 2 + 'px';
+        _this2.statusBarHeight = res.statusBarHeight;
+        _this2.navigationBarHeight = res.statusBarHeight * 1.2 + 'px';
+        _this2.stickyHeight = res.statusBarHeight * 2.2 + 'px';
         // 去除导航栏和状态栏的高度，再减去底部tabbar的高度和吸附栏的高度
-        _this.notesHeight = res.screenHeight - res.statusBarHeight * 2.2 - 85 + 'px';
-        _this.iconHeight = res.statusBarHeight * 0.6 + 'px';
+        // this.mianInfoHeight=res.screenHeight / 2 + 15-res.statusBarHeight * 2.2 +'px'
+        _this2.notesHeight = res.screenHeight - res.statusBarHeight * 2.2 - 85 + 'px';
+        _this2.iconHeight = res.statusBarHeight * 0.55 + 'px';
       }
     });
     this.userInfo = JSON.parse(uni.getStorageSync('userInfo'));
     console.log(this.userInfo);
   },
+  onReady: function onReady() {
+    // this.notesList.forEach((item) => {
+    // 	this.getImageHeight(item.img).then(res => {
+    // 		if (this.leftHeight <= this.rightHeight) {
+    // 			this.leftList.push(item)
+    // 			this.leftHeight += res
+    // 		} else {
+    // 			this.rightList.push(item)
+    // 			this.rightHeight += res
+    // 		}
+    // 	})
+    // })
+    this.setSwiperHeight();
+  },
   onPageScroll: function onPageScroll(e) {
+    if (e.scrollTop > this.rpxToPx(200)) {
+      this.show = true;
+    } else {
+      this.show = false;
+    }
     this.opacity = e.scrollTop / (Number(this.screenHeight.substring(0, this.screenHeight.length - 2)) - 80) >= 0 ? e.scrollTop / (Number(this.screenHeight.substring(0, this.screenHeight.length - 2)) - 80) : e.scrollTop / Number(this.screenHeight.substring(0, this.screenHeight.length - 2));
+  },
+  onReachBottom: function onReachBottom() {
+    console.log('触底了');
+    // if(this.actTab===0){
+    // 	this.$refs.water1.addList(this.notesList)
+    // }
+    // if(this.actTab===1){
+    // 	this.$refs.water2.addList(this.notesList)
+    // }
+    // if(this.actTab===2){
+    // 	this.$refs.water3.addList(this.notesList)
+    // }
+    // this.setSwiperHeight()
   }
 };
 exports.default = _default;

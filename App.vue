@@ -11,13 +11,13 @@
 				})
 				return
 			}
-			checkToken().then(res => {
-				if (res.code != 200) {
-					uni.reLaunch({
-						url: '/pages/login/login'
-					})
-				}
-			})
+			// checkToken().then(res => {
+			// 	if (res.code != 200) {
+			// 		uni.reLaunch({
+			// 			url: '/pages/login/login'
+			// 		})
+			// 	}
+			// })
 		},
 		onShow: function() {
 			console.log('App Show')

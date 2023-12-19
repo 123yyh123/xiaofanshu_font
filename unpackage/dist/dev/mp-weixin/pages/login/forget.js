@@ -192,12 +192,12 @@ var _user_service = __webpack_require__(/*! ../../apis/user_service.js */ 187);
 var _this;
 var wInput = function wInput() {
   __webpack_require__.e(/*! require.ensure | components/watch-login/watch-input */ "components/watch-login/watch-input").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/watch-login/watch-input.vue */ 250));
+    return resolve(__webpack_require__(/*! ../../components/watch-login/watch-input.vue */ 273));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var wButton = function wButton() {
   __webpack_require__.e(/*! require.ensure | components/watch-login/watch-button */ "components/watch-login/watch-button").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/watch-login/watch-button.vue */ 257));
+    return resolve(__webpack_require__(/*! ../../components/watch-login/watch-button.vue */ 280));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
