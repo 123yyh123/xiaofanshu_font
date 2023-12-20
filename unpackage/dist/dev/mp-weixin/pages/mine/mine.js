@@ -103,6 +103,9 @@ try {
     uPopup: function () {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 241))
     },
+    "u-Textarea": function () {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--textarea/u--textarea */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--textarea/u--textarea")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--textarea/u--textarea.vue */ 393))
+    },
     uTransition: function () {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-transition/u-transition */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-transition/u-transition")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-transition/u-transition.vue */ 249))
     },
@@ -146,11 +149,15 @@ var render = function () {
   var a0 = {
     "touch-action": "none",
   }
+  var a1 = {
+    "touch-action": "none",
+  }
   _vm.$mp.data = Object.assign(
     {},
     {
       $root: {
         a0: a0,
+        a1: a1,
       },
     }
   )
@@ -422,6 +429,24 @@ var _user_service = __webpack_require__(/*! ../../apis/user_service.js */ 187);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -445,6 +470,7 @@ var _default = {
       actTab: 0,
       show: false,
       moreShow: false,
+      introductionShow: false,
       status1: 'nomore',
       status2: 'nomore',
       status3: 'nomore',
@@ -522,13 +548,80 @@ var _default = {
         like: 8,
         views: 10
       }],
-      leftList: [],
-      rightList: [],
-      leftHeight: 0,
-      rightHeight: 0
+      selfIntroduction: ''
     };
   },
   methods: {
+    changeIntroduction: function changeIntroduction() {
+      this.introductionShow = true;
+    },
+    closeintroductionShow: function closeintroductionShow() {
+      this.introductionShow = false;
+    },
+    viewAvatarUrl: function viewAvatarUrl() {
+      var _this = this;
+      uni.previewImage({
+        urls: [this.userInfo.avatarUrl],
+        current: 0,
+        indicator: 'none',
+        longPressActions: {
+          itemList: ['更换头像', '保存到相册'],
+          success: function success(data) {
+            console.log(data.tapIndex);
+            if (data.tapIndex === 0) {
+              uni.chooseImage({
+                count: 1,
+                sizeType: ['original', 'compressed'],
+                sourceType: ['album'],
+                success: function success(res) {
+                  console.log(res.tempFilePaths);
+                  // TODO 调用后端接口上传文件
+                },
+
+                fail: function fail(err) {
+                  console.log(err.errMsg);
+                }
+              });
+            } else if (data.tapIndex === 1) {
+              _this.downLoadImg(_this.userInfo.avatarUrl);
+            }
+          },
+          fail: function fail(err) {
+            console.log(err.errMsg);
+          }
+        }
+      });
+    },
+    downLoadImg: function downLoadImg(e) {
+      uni.downloadFile({
+        url: e,
+        success: function success(res) {
+          if (res.statusCode === 200) {
+            uni.saveImageToPhotosAlbum({
+              filePath: res.tempFilePath,
+              success: function success() {
+                uni.showToast({
+                  title: "保存成功",
+                  icon: "none"
+                });
+              },
+              fail: function fail() {
+                uni.showToast({
+                  title: "保存失败，请检查应用权限",
+                  icon: "none"
+                });
+              }
+            });
+          }
+        },
+        fail: function fail(err) {
+          uni.showToast({
+            title: "失败啦",
+            icon: "none"
+          });
+        }
+      });
+    },
     openMore: function openMore() {
       this.moreShow = true;
       uni.hideTabBar({
@@ -553,12 +646,12 @@ var _default = {
       this.setSwiperHeight();
     },
     setSwiperHeight: function setSwiperHeight() {
-      var _this = this;
+      var _this2 = this;
       setTimeout(function () {
-        var query = uni.createSelectorQuery().in(_this);
+        var query = uni.createSelectorQuery().in(_this2);
         query.selectAll(".component").boundingClientRect(function (data) {
           console.log(data);
-          _this.swiperHeight = data[_this.actTab].height;
+          _this2.swiperHeight = data[_this2.actTab].height;
         }).exec();
       }, 1000);
     },
@@ -608,17 +701,17 @@ var _default = {
     // })
   },
   onLoad: function onLoad() {
-    var _this2 = this;
+    var _this3 = this;
     uni.getSystemInfo({
       success: function success(res) {
-        _this2.screenHeight = res.screenHeight / 2;
-        _this2.statusBarHeight = res.statusBarHeight;
-        _this2.navigationBarHeight = res.statusBarHeight * 1.2 + 'px';
-        _this2.stickyHeight = res.statusBarHeight * 2.2 + 'px';
+        _this3.screenHeight = res.screenHeight / 2;
+        _this3.statusBarHeight = res.statusBarHeight;
+        _this3.navigationBarHeight = res.statusBarHeight * 1.2 + 'px';
+        _this3.stickyHeight = res.statusBarHeight * 2.2 + 'px';
         // 去除导航栏和状态栏的高度，再减去底部tabbar的高度和吸附栏的高度
         // this.mianInfoHeight=res.screenHeight / 2 + 15-res.statusBarHeight * 2.2 +'px'
-        _this2.notesHeight = res.screenHeight - res.statusBarHeight * 2.2 - 85 + 'px';
-        _this2.iconHeight = res.statusBarHeight * 0.55 + 'px';
+        _this3.notesHeight = res.screenHeight - res.statusBarHeight * 2.2 - 85 + 'px';
+        _this3.iconHeight = res.statusBarHeight * 0.55 + 'px';
       }
     });
     this.userInfo = JSON.parse(uni.getStorageSync('userInfo'));

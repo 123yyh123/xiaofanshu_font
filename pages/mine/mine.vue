@@ -58,28 +58,46 @@
 				</view>
 				<view style="height: 200rpx;"></view>
 			</scroll-view>
-			<view style="position: fixed;bottom: 0;display: flex;justify-content: space-between;align-items: center;width:525rpx;background-color: #ffffff;padding: 20rpx 60rpx;box-sizing: border-box;font-size: 25rpx;color: #727171;">
+			<view
+				style="position: fixed;bottom: 0;display: flex;justify-content: space-between;align-items: center;width:525rpx;background-color: #ffffff;padding: 20rpx 60rpx;box-sizing: border-box;font-size: 25rpx;color: #727171;">
 				<view style="text-align: -webkit-center">
-					<view style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;">
+					<view
+						style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;">
 						<image style="height: 40rpx;" mode="heightFix" src="../../static/image/设置 (1).png"></image>
 					</view>
 					<view style="text-align: center;margin-top: 5rpx;">设置</view>
-					</view>
-					<view style="text-align: -webkit-center">
-					<view style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;text-align: -webkit-center;">
+				</view>
+				<view style="text-align: -webkit-center">
+					<view
+						style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;text-align: -webkit-center;">
 						<image style="height: 40rpx;" mode="heightFix" src="../../static/image/客服.png"></image>
 					</view>
 					<view style="text-align: center;margin-top: 5rpx;">帮助与反馈</view>
-					</view>
-					<view style="text-align: -webkit-center">
-					<view style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;text-align: -webkit-center;">
+				</view>
+				<view style="text-align: -webkit-center">
+					<view
+						style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;text-align: -webkit-center;">
 						<image style="height: 40rpx;" mode="heightFix" src="../../static/image/扫一扫.png"></image>
 					</view>
 					<view style="text-align: center;margin-top: 5rpx;">扫一扫</view>
-					</view>
+				</view>
 			</view>
 		</u-popup>
-
+		<u-popup :show="introductionShow" mode="bottom" :overlayStyle="{'touch-action':'none'}">
+		        <view :style="{height: screenHeight*2-35+'px'}" style="background-color: #f3f3f2;">	
+					<view :style="{height: statusBarHeight+'px'}"></view>
+					<view style="display: flex;justify-content: space-between;height: 50rpx;padding: 20rpx;margin-bottom: 45rpx;">
+						<view style="color: #727171;" @click="closeintroductionShow">取消</view>
+						<view style="31rpx">编辑简介</view>
+						<view v-if="selfIntroduction==''" style="color: #f09199;">保存</view>
+						<view v-else style="color: #d9333f;">保存</view>
+					</view>
+					<text style="margin-left: 50rpx;color: #727171;font-size: 30rpx;">可以自定义简介哦</text>
+					<view style="margin: 30rpx;background-color: #ffffff;border-radius: 30rpx;padding: 35rpx;">
+						<u--textarea v-model="selfIntroduction" count maxlength="100" placeholder="点击填写兴趣爱好,生活方式等个人简介" height="200rpx" border="none" placeholderStyle="color: #727171" style="color: #000000;"></u--textarea>
+					</view>
+		        </view>
+			</u-popup>
 		<view class="info" :style="{ height: screenHeight+'px'}">
 			<view class="filter" :style="{backgroundImage: 'url(' + userInfo.homePageBackground + ')'}"></view>
 			<view class="status-bar"
@@ -103,14 +121,14 @@
 			<view :style="{height:stickyHeight}"></view>
 			<view style="padding: 0 40rpx 20rpx 40rpx;">
 				<view class="userinfo-main">
-					<image :src="userInfo.avatarUrl" mode="aspectFill"></image>
+					<image :src="userInfo.avatarUrl" mode="aspectFill" @click="viewAvatarUrl"></image>
 					<view class="userinfo-main-right">
 						<text :decode="true">{{userInfo.nickname}}</text>
 						<text :decode="true">小番薯号：{{userInfo.uid}}</text>
 						<text :decode="true">IP属地：日本</text>
 					</view>
 				</view>
-				<view class="introduction">{{userInfo.selfIntroductionlen==null?'点击这里，填写简介':userInfo.selfIntroduction}}
+				<view class="introduction" @click="changeIntroduction">{{userInfo.selfIntroductionlen==null?'点击这里，填写简介':userInfo.selfIntroduction}}
 				</view>
 				<view style="display: flex;">
 					<view v-if="userInfo.age!=null||userInfo.sex===1" class="tag">
@@ -255,6 +273,7 @@
 				actTab: 0,
 				show: false,
 				moreShow: false,
+				introductionShow: false,
 				status1: 'nomore',
 				status2: 'nomore',
 				status3: 'nomore',
@@ -335,13 +354,78 @@
 					},
 
 				],
-				leftList: [],
-				rightList: [],
-				leftHeight: 0,
-				rightHeight: 0,
+				selfIntroduction:'',
 			};
 		},
 		methods: {
+			changeIntroduction(){
+				this.introductionShow=true;
+			},
+			closeintroductionShow(){
+				this.introductionShow=false;
+			},
+			viewAvatarUrl() {
+				uni.previewImage({
+					urls: [this.userInfo.avatarUrl],
+					current: 0,
+					indicator: 'none',
+					longPressActions: {
+						itemList: ['更换头像', '保存到相册'],
+						success: (data)=>{
+							console.log(data.tapIndex)
+							if(data.tapIndex===0){
+								uni.chooseImage({
+									count: 1,
+									sizeType: ['original', 'compressed'],
+									sourceType: ['album'],
+									success: (res) => {
+										console.log(res.tempFilePaths)
+										// TODO 调用后端接口上传文件
+									},
+									fail: (err) => {
+										console.log(err.errMsg)
+									}
+								})
+							}else if (data.tapIndex === 1) {
+								this.downLoadImg(this.userInfo.avatarUrl);
+							}
+						},
+						fail: (err)=>{
+							console.log(err.errMsg);
+						}
+					}
+				})
+			},
+			downLoadImg(e) {
+				uni.downloadFile({
+					url: e,
+					success: (res) => {
+						if (res.statusCode === 200) {
+							uni.saveImageToPhotosAlbum({
+								filePath: res.tempFilePath,
+								success: function() {
+									uni.showToast({
+										title: "保存成功",
+										icon: "none"
+									});
+								},
+								fail: function() {
+									uni.showToast({
+										title: "保存失败，请检查应用权限",
+										icon: "none"
+									});
+								}
+							});
+						}
+					},
+					fail: (err) => {
+						uni.showToast({
+							title: "失败啦",
+							icon: "none"
+						});
+					}
+				})
+			},
 			openMore() {
 				this.moreShow = true
 				uni.hideTabBar({
