@@ -42,6 +42,9 @@
           filter: brightness(65%);
   background-color: #ffffff;
 }
+.top-main {
+  padding: 0 40rpx 20rpx 40rpx;
+}
 .status-bar {
   position: fixed;
   width: 100%;

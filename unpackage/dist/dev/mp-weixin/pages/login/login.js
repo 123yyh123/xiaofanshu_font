@@ -101,7 +101,7 @@ var components
 try {
   components = {
     uIcon: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 259))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 265))
     },
   }
 } catch (e) {
@@ -206,12 +206,12 @@ var _auth_apis = __webpack_require__(/*! ../../apis/auth_apis.js */ 30);
 var _this;
 var wInput = function wInput() {
   __webpack_require__.e(/*! require.ensure | components/watch-login/watch-input */ "components/watch-login/watch-input").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/watch-login/watch-input.vue */ 299));
+    return resolve(__webpack_require__(/*! ../../components/watch-login/watch-input.vue */ 305));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var wButton = function wButton() {
   __webpack_require__.e(/*! require.ensure | components/watch-login/watch-button */ "components/watch-login/watch-button").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/watch-login/watch-button.vue */ 306));
+    return resolve(__webpack_require__(/*! ../../components/watch-login/watch-button.vue */ 312));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

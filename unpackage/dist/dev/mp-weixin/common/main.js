@@ -101,6 +101,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _auth_apis = __webpack_require__(/*! ./apis/auth_apis.js */ 30);
+var _user_service = __webpack_require__(/*! ./apis/user_service.js */ 187);
 var _default = {
   onLaunch: function onLaunch() {
     console.log('App Launch');
@@ -110,11 +111,9 @@ var _default = {
       });
       return;
     }
-    (0, _auth_apis.checkToken)().then(function (res) {
-      if (res.code != 200) {
-        uni.reLaunch({
-          url: '/pages/login/login'
-        });
+    (0, _user_service.getUserInfo)().then(function (res) {
+      if (res.code === 20021) {
+        uni.setStorageSync('userInfo', JSON.stringify(res.data));
       }
       return;
     });

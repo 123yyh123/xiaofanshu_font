@@ -1,7 +1,8 @@
 <script>
 	import {
 		checkToken
-	} from './apis/auth_apis.js'
+	} from './apis/auth_apis.js';
+	import {getUserInfo} from './apis/user_service.js'
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
@@ -11,11 +12,9 @@
 				})
 				return
 			}
-			checkToken().then(res => {
-				if (res.code != 200) {
-					uni.reLaunch({
-						url: '/pages/login/login'
-					})
+			getUserInfo().then(res=>{
+				if(res.code===20021){
+					uni.setStorageSync('userInfo', JSON.stringify(res.data));
 				}
 				return
 			})

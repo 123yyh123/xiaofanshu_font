@@ -84,20 +84,23 @@
 			</view>
 		</u-popup>
 		<u-popup :show="introductionShow" mode="bottom" :overlayStyle="{'touch-action':'none'}">
-		        <view :style="{height: screenHeight*2-35+'px'}" style="background-color: #f3f3f2;">	
-					<view :style="{height: statusBarHeight+'px'}"></view>
-					<view style="display: flex;justify-content: space-between;height: 50rpx;padding: 20rpx;margin-bottom: 45rpx;">
-						<view style="color: #727171;" @click="closeintroductionShow">取消</view>
-						<view style="31rpx">编辑简介</view>
-						<view v-if="selfIntroduction==''" style="color: #f09199;">保存</view>
-						<view v-else style="color: #d9333f;">保存</view>
-					</view>
-					<text style="margin-left: 50rpx;color: #727171;font-size: 30rpx;">可以自定义简介哦</text>
-					<view style="margin: 30rpx;background-color: #ffffff;border-radius: 30rpx;padding: 35rpx;">
-						<u--textarea v-model="selfIntroduction" count maxlength="100" placeholder="点击填写兴趣爱好,生活方式等个人简介" height="200rpx" border="none" placeholderStyle="color: #727171" style="color: #000000;"></u--textarea>
-					</view>
-		        </view>
-			</u-popup>
+			<view :style="{height: screenHeight*2+'px'}" style="background-color: #f3f3f2;">
+				<view :style="{height: statusBarHeight+'px'}"></view>
+				<view
+					style="display: flex;justify-content: space-between;height: 50rpx;padding: 20rpx;margin-bottom: 45rpx;">
+					<view style="color: #727171;" @click="closeintroductionShow">取消</view>
+					<view style="31rpx">编辑简介</view>
+					<view v-if="selfIntroduction==''" style="color: #f09199;">保存</view>
+					<view v-else style="color: #d9333f;">保存</view>
+				</view>
+				<text style="margin-left: 50rpx;color: #727171;font-size: 30rpx;">可以自定义简介哦</text>
+				<view style="margin: 30rpx;background-color: #ffffff;border-radius: 30rpx;padding: 35rpx;">
+					<u--textarea v-model="selfIntroduction" count maxlength="100" placeholder="点击填写兴趣爱好,生活方式等个人简介"
+						height="200rpx" border="none" placeholderStyle="color: #727171"
+						style="color: #000000;"></u--textarea>
+				</view>
+			</view>
+		</u-popup>
 		<view class="info" :style="{ height: screenHeight+'px'}">
 			<view class="filter" :style="{backgroundImage: 'url(' + userInfo.homePageBackground + ')'}"></view>
 			<view class="status-bar"
@@ -118,8 +121,8 @@
 					</u-transition>
 				</view>
 			</view>
-			<view :style="{height:stickyHeight}"></view>
-			<view style="padding: 0 40rpx 20rpx 40rpx;">
+			<view :style="{height:stickyHeight+'px'}"></view>
+			<view class="top-main">
 				<view class="userinfo-main">
 					<image :src="userInfo.avatarUrl" mode="aspectFill" @click="viewAvatarUrl"></image>
 					<view class="userinfo-main-right">
@@ -128,7 +131,8 @@
 						<text :decode="true">IP属地：日本</text>
 					</view>
 				</view>
-				<view class="introduction" @click="changeIntroduction">{{userInfo.selfIntroductionlen==null?'点击这里，填写简介':userInfo.selfIntroduction}}
+				<view class="introduction" @click="changeIntroduction">
+					{{userInfo.selfIntroductionlen==null?'点击这里，填写简介':userInfo.selfIntroduction}}
 				</view>
 				<view style="display: flex;">
 					<view v-if="userInfo.age!=null||userInfo.sex===1" class="tag">
@@ -186,7 +190,7 @@
 				</view>
 			</view>
 		</view>
-		<u-sticky bgColor="#fff" :offset-top="stickyHeight">
+		<u-sticky bgColor="#fff" :offset-top="stickyHeight+'px'">
 			<view style="display: flex;position: relative;justify-content: center;height: 50px;align-items: center;">
 				<u-tabs @click='changetabs' :current="actTab" :list="tabsList" lineWidth="40" lineColor="#f56c6c"
 					:activeStyle="{
@@ -209,7 +213,7 @@
 			<swiper class="data_list" @change="swipeIndex" :current="actTab" :duration="300" previous-margin="0"
 				:style="{height:notesHeight}">
 				<swiper-item>
-					<scroll-view scroll-y="true" :style="{height:notesHeight}" @scrolltolower="onReach"
+					<scroll-view :scroll-y="isScroll" :style="{height:notesHeight}" @scrolltolower="onReach"
 						lower-threshold="20">
 						<view class="component">
 							<water-fall :list="notesList" ref="water1"></water-fall>
@@ -219,7 +223,7 @@
 					</scroll-view>
 				</swiper-item>
 				<swiper-item>
-					<scroll-view scroll-y="true" :style="{height:notesHeight}" @scrolltolower="onReach"
+					<scroll-view :scroll-y="isScroll" :style="{height:notesHeight}" @scrolltolower="onReach"
 						lower-threshold="20">
 						<view class="component">
 							<water-fall :list="notesList" ref="water2"></water-fall>
@@ -229,7 +233,7 @@
 					</scroll-view>
 				</swiper-item>
 				<swiper-item>
-					<scroll-view scroll-y="true" :style="{height:notesHeight}" @scrolltolower="onReach"
+					<scroll-view :scroll-y="isScroll" :style="{height:notesHeight}" @scrolltolower="onReach"
 						lower-threshold="20">
 						<view class="component">
 							<water-fall :list="notesList" ref="water3"></water-fall>
@@ -245,11 +249,11 @@
 </template>
 <script>
 	import {
-		userInfo
-	} from 'os';
-	import {
 		getUserInfo
 	} from '../../apis/user_service.js';
+	import {
+		baseUrl
+	} from '../../config/index.js';
 	export default {
 		data() {
 			return {
@@ -266,11 +270,12 @@
 				stickyHeight: '',
 				notesHeight: '',
 				iconHeight: '',
-				// mianInfoHeight:'',
+				mainInfoHeight: 0,
 				swiperHeight: 0,
 				opacity: 0,
 				userInfo: {},
 				actTab: 0,
+				isScroll: false,
 				show: false,
 				moreShow: false,
 				introductionShow: false,
@@ -354,15 +359,21 @@
 					},
 
 				],
-				selfIntroduction:'',
+				selfIntroduction: '',
 			};
 		},
 		methods: {
-			changeIntroduction(){
-				this.introductionShow=true;
+			changeIntroduction() {
+				this.introductionShow = true
+				uni.hideTabBar({
+					animation: true
+				})
 			},
-			closeintroductionShow(){
-				this.introductionShow=false;
+			closeintroductionShow() {
+				this.introductionShow = false
+				uni.showTabBar({
+					animation: true
+				})
 			},
 			viewAvatarUrl() {
 				uni.previewImage({
@@ -371,26 +382,54 @@
 					indicator: 'none',
 					longPressActions: {
 						itemList: ['更换头像', '保存到相册'],
-						success: (data)=>{
+						success: (data) => {
 							console.log(data.tapIndex)
-							if(data.tapIndex===0){
+							if (data.tapIndex === 0) {
 								uni.chooseImage({
 									count: 1,
 									sizeType: ['original', 'compressed'],
 									sourceType: ['album'],
 									success: (res) => {
 										console.log(res.tempFilePaths)
-										// TODO 调用后端接口上传文件
+										uni.uploadFile({
+											url: baseUrl + '/third/uploadImg',
+											filePath: res.tempFilePaths[0],
+											name: 'file',
+											header: {
+												'token': uni.getStorageSync('token')
+											},
+											success: (res) => {
+												let data = JSON.parse(res.data)
+												if (data.code === 20020) {
+													console.log(data.data)
+													uni.showToast({
+														title: '更换成功',
+														icon: 'success',
+														duration: 500,
+														mask: true
+													})
+													this.userInfo.avatarUrl = data.data
+													uni.setStorageSync('userInfo', JSON.stringify(this.userInfo))
+												}
+											},
+											complete() {
+												uni.closePreviewImage({
+													success: function() {
+														console.log('关闭成功')
+													}
+												})
+											}
+										})
 									},
 									fail: (err) => {
 										console.log(err.errMsg)
 									}
 								})
-							}else if (data.tapIndex === 1) {
+							} else if (data.tapIndex === 1) {
 								this.downLoadImg(this.userInfo.avatarUrl);
 							}
 						},
-						fail: (err)=>{
+						fail: (err) => {
 							console.log(err.errMsg);
 						}
 					}
@@ -447,7 +486,7 @@
 			},
 			swipeIndex(e) {
 				this.actTab = e.detail.current
-				this.setSwiperHeight()
+				// this.setSwiperHeight()
 			},
 			setSwiperHeight() {
 				setTimeout(() => {
@@ -509,31 +548,31 @@
 					this.screenHeight = res.screenHeight / 2
 					this.statusBarHeight = res.statusBarHeight
 					this.navigationBarHeight = res.statusBarHeight * 1.2 + 'px'
-					this.stickyHeight = res.statusBarHeight * 2.2 + 'px'
+					this.stickyHeight = res.statusBarHeight * 2.2
 					// 去除导航栏和状态栏的高度，再减去底部tabbar的高度和吸附栏的高度
 					// this.mianInfoHeight=res.screenHeight / 2 + 15-res.statusBarHeight * 2.2 +'px'
 					this.notesHeight = res.screenHeight - res.statusBarHeight * 2.2 - 85 + 'px'
 					this.iconHeight = res.statusBarHeight * 0.55 + 'px'
+					// this.mainInfoHeight=this.screenHeight-this.stickyHeight;
 				}
 			})
 			this.userInfo = JSON.parse(uni.getStorageSync('userInfo'));
 			console.log(this.userInfo)
 		},
 		onReady() {
-			// this.notesList.forEach((item) => {
-			// 	this.getImageHeight(item.img).then(res => {
-			// 		if (this.leftHeight <= this.rightHeight) {
-			// 			this.leftList.push(item)
-			// 			this.leftHeight += res
-			// 		} else {
-			// 			this.rightList.push(item)
-			// 			this.rightHeight += res
-			// 		}
-			// 	})
-			// })
-			this.setSwiperHeight();
+			let query = uni.createSelectorQuery().in(this);
+			query.selectAll(".info").boundingClientRect(data => {
+				console.log(data)
+				this.mainInfoHeight = data[0].height - this.stickyHeight - 5
+			}).exec()
 		},
 		onPageScroll(e) {
+			// console.log(e.scrollTop+'_'+this.mainInfoHeight)
+			if (e.scrollTop < this.mainInfoHeight) {
+				this.isScroll = false
+			} else {
+				this.isScroll = true
+			}
 			if (e.scrollTop > this.rpxToPx(200)) {
 				this.show = true
 			} else {
@@ -542,6 +581,16 @@
 			this.opacity = e.scrollTop / (Number(this.screenHeight) - 80) >= 0 ?
 				e.scrollTop / (Number(this.screenHeight) - 80) : e.scrollTop / (
 					Number(this.screenHeight));
+		},
+		onBackPress() {
+			if (this.moreShow) {
+				this.closeMore()
+				return true
+			}
+			if (this.introductionShow) {
+				this.closeintroductionShow()
+				return true
+			}
 		},
 		onReachBottom() {
 			console.log('触底了')
@@ -576,6 +625,10 @@
 		z-index: -1;
 		filter: brightness(65%);
 		background-color: #ffffff;
+	}
+
+	.top-main {
+		padding: 0 40rpx 20rpx 40rpx;
 	}
 
 	.status-bar {

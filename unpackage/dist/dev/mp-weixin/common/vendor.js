@@ -9626,7 +9626,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.baseUrl = void 0;
-var baseUrl = "http://192.168.123.102:9000";
+var baseUrl = "http://192.168.90.102:9000";
 exports.baseUrl = baseUrl;
 
 /***/ }),
@@ -19401,65 +19401,7 @@ exports.default = _default;
 /* 183 */,
 /* 184 */,
 /* 185 */,
-/* 186 */
-/*!***********************************************!*\
-  !*** ./node_modules/os-browserify/browser.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-exports.endianness = function () { return 'LE' };
-
-exports.hostname = function () {
-    if (typeof location !== 'undefined') {
-        return location.hostname
-    }
-    else return '';
-};
-
-exports.loadavg = function () { return [] };
-
-exports.uptime = function () { return 0 };
-
-exports.freemem = function () {
-    return Number.MAX_VALUE;
-};
-
-exports.totalmem = function () {
-    return Number.MAX_VALUE;
-};
-
-exports.cpus = function () { return [] };
-
-exports.type = function () { return 'Browser' };
-
-exports.release = function () {
-    if (typeof navigator !== 'undefined') {
-        return navigator.appVersion;
-    }
-    return '';
-};
-
-exports.networkInterfaces
-= exports.getNetworkInterfaces
-= function () { return {} };
-
-exports.arch = function () { return 'javascript' };
-
-exports.platform = function () { return 'browser' };
-
-exports.tmpdir = exports.tmpDir = function () {
-    return '/tmp';
-};
-
-exports.EOL = '\n';
-
-exports.homedir = function () {
-	return '/'
-};
-
-
-/***/ }),
+/* 186 */,
 /* 187 */
 /*!*****************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/apis/user_service.js ***!
@@ -20015,6 +19957,148 @@ exports.default = _default;
 /* 252 */,
 /* 253 */,
 /* 254 */
+/*!************************************************************************************************!*\
+  !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-textarea/props.js ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  props: {
+    // 输入框的内容
+    value: {
+      type: [String, Number],
+      default: uni.$u.props.textarea.value
+    },
+    // 输入框为空时占位符
+    placeholder: {
+      type: [String, Number],
+      default: uni.$u.props.textarea.placeholder
+    },
+    // 指定placeholder的样式类，注意页面或组件的style中写了scoped时，需要在类名前写/deep/
+    placeholderClass: {
+      type: String,
+      default: uni.$u.props.input.placeholderClass
+    },
+    // 指定placeholder的样式
+    placeholderStyle: {
+      type: [String, Object],
+      default: uni.$u.props.input.placeholderStyle
+    },
+    // 输入框高度
+    height: {
+      type: [String, Number],
+      default: uni.$u.props.textarea.height
+    },
+    // 设置键盘右下角按钮的文字，仅微信小程序，App-vue和H5有效
+    confirmType: {
+      type: String,
+      default: uni.$u.props.textarea.confirmType
+    },
+    // 是否禁用
+    disabled: {
+      type: Boolean,
+      default: uni.$u.props.textarea.disabled
+    },
+    // 是否显示统计字数
+    count: {
+      type: Boolean,
+      default: uni.$u.props.textarea.count
+    },
+    // 是否自动获取焦点，nvue不支持，H5取决于浏览器的实现
+    focus: {
+      type: Boolean,
+      default: uni.$u.props.textarea.focus
+    },
+    // 是否自动增加高度
+    autoHeight: {
+      type: Boolean,
+      default: uni.$u.props.textarea.autoHeight
+    },
+    // 如果textarea是在一个position:fixed的区域，需要显示指定属性fixed为true
+    fixed: {
+      type: Boolean,
+      default: uni.$u.props.textarea.fixed
+    },
+    // 指定光标与键盘的距离
+    cursorSpacing: {
+      type: Number,
+      default: uni.$u.props.textarea.cursorSpacing
+    },
+    // 指定focus时的光标位置
+    cursor: {
+      type: [String, Number],
+      default: uni.$u.props.textarea.cursor
+    },
+    // 是否显示键盘上方带有”完成“按钮那一栏，
+    showConfirmBar: {
+      type: Boolean,
+      default: uni.$u.props.textarea.showConfirmBar
+    },
+    // 光标起始位置，自动聚焦时有效，需与selection-end搭配使用
+    selectionStart: {
+      type: Number,
+      default: uni.$u.props.textarea.selectionStart
+    },
+    // 光标结束位置，自动聚焦时有效，需与selection-start搭配使用
+    selectionEnd: {
+      type: Number,
+      default: uni.$u.props.textarea.selectionEnd
+    },
+    // 键盘弹起时，是否自动上推页面
+    adjustPosition: {
+      type: Boolean,
+      default: uni.$u.props.textarea.adjustPosition
+    },
+    // 是否去掉 iOS 下的默认内边距，只微信小程序有效
+    disableDefaultPadding: {
+      type: Boolean,
+      default: uni.$u.props.textarea.disableDefaultPadding
+    },
+    // focus时，点击页面的时候不收起键盘，只微信小程序有效
+    holdKeyboard: {
+      type: Boolean,
+      default: uni.$u.props.textarea.holdKeyboard
+    },
+    // 最大输入长度，设置为 -1 的时候不限制最大长度
+    maxlength: {
+      type: [String, Number],
+      default: uni.$u.props.textarea.maxlength
+    },
+    // 边框类型，surround-四周边框，bottom-底部边框
+    border: {
+      type: String,
+      default: uni.$u.props.textarea.border
+    },
+    // 用于处理或者过滤输入框内容的方法
+    formatter: {
+      type: [Function, null],
+      default: uni.$u.props.textarea.formatter
+    },
+    // 是否忽略组件内对文本合成系统事件的处理
+    ignoreCompositionEvent: {
+      type: Boolean,
+      default: true
+    }
+  }
+};
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-transition/props.js ***!
   \**************************************************************************************************/
@@ -20056,7 +20140,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 255 */
+/* 261 */
 /*!*******************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-transition/transition.js ***!
   \*******************************************************************************************************/
@@ -20073,7 +20157,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 59));
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 61));
-var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 256));
+var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 262));
 // 定义一个一定时间后自动成功的promise，让调用nextTick方法处，进入下一个then方法
 var nextTick = function nextTick() {
   return new Promise(function (resolve) {
@@ -20165,7 +20249,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 256 */
+/* 262 */
 /*!*********************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-transition/nvue.ani-map.js ***!
   \*********************************************************************************************************/
@@ -20358,14 +20442,14 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 257 */,
-/* 258 */,
-/* 259 */,
-/* 260 */,
-/* 261 */,
-/* 262 */,
 /* 263 */,
-/* 264 */
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-icon/icons.js ***!
   \********************************************************************************************/
@@ -20596,7 +20680,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 265 */
+/* 271 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-icon/props.js ***!
   \********************************************************************************************/
@@ -20703,14 +20787,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 266 */,
-/* 267 */,
-/* 268 */,
-/* 269 */,
-/* 270 */,
-/* 271 */,
 /* 272 */,
-/* 273 */
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */
 /*!**********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-sticky/props.js ***!
   \**********************************************************************************************/
@@ -20762,14 +20846,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 274 */,
-/* 275 */,
-/* 276 */,
-/* 277 */,
-/* 278 */,
-/* 279 */,
 /* 280 */,
-/* 281 */
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-tabs/props.js ***!
   \********************************************************************************************/
@@ -20851,12 +20935,6 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */,
-/* 286 */,
-/* 287 */,
 /* 288 */,
 /* 289 */,
 /* 290 */,
@@ -20865,7 +20943,13 @@ exports.default = _default;
 /* 293 */,
 /* 294 */,
 /* 295 */,
-/* 296 */
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-loadmore/props.js ***!
   \************************************************************************************************/
@@ -20977,12 +21061,6 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 297 */,
-/* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */,
-/* 302 */,
 /* 303 */,
 /* 304 */,
 /* 305 */,
@@ -20998,7 +21076,13 @@ exports.default = _default;
 /* 315 */,
 /* 316 */,
 /* 317 */,
-/* 318 */
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-line/props.js ***!
   \********************************************************************************************/
@@ -21049,14 +21133,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 319 */,
-/* 320 */,
-/* 321 */,
-/* 322 */,
-/* 323 */,
-/* 324 */,
 /* 325 */,
-/* 326 */
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */
 /*!****************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-loading-icon/props.js ***!
   \****************************************************************************************************/
@@ -21133,14 +21217,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 327 */,
-/* 328 */,
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */,
 /* 333 */,
-/* 334 */
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-gap/props.js ***!
   \*******************************************************************************************/
@@ -21182,14 +21266,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */,
-/* 340 */,
 /* 341 */,
-/* 342 */
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-overlay/props.js ***!
   \***********************************************************************************************/
@@ -21231,14 +21315,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 343 */,
-/* 344 */,
-/* 345 */,
-/* 346 */,
-/* 347 */,
-/* 348 */,
 /* 349 */,
-/* 350 */
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-status-bar/props.js ***!
   \**************************************************************************************************/
@@ -21264,14 +21348,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 351 */,
-/* 352 */,
-/* 353 */,
-/* 354 */,
-/* 355 */,
-/* 356 */,
 /* 357 */,
-/* 358 */
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */
 /*!***************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-safe-bottom/props.js ***!
   \***************************************************************************************************/
@@ -21291,14 +21375,21 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 359 */,
-/* 360 */,
-/* 361 */,
-/* 362 */,
-/* 363 */,
-/* 364 */,
 /* 365 */,
-/* 366 */
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-badge/props.js ***!
   \*********************************************************************************************/
@@ -21381,174 +21472,6 @@ var _default = {
     absolute: {
       type: Boolean,
       default: uni.$u.props.badge.absolute
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 367 */,
-/* 368 */,
-/* 369 */,
-/* 370 */,
-/* 371 */,
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */,
-/* 376 */,
-/* 377 */,
-/* 378 */,
-/* 379 */,
-/* 380 */,
-/* 381 */,
-/* 382 */,
-/* 383 */,
-/* 384 */,
-/* 385 */,
-/* 386 */,
-/* 387 */,
-/* 388 */,
-/* 389 */,
-/* 390 */,
-/* 391 */,
-/* 392 */,
-/* 393 */,
-/* 394 */,
-/* 395 */,
-/* 396 */,
-/* 397 */,
-/* 398 */
-/*!************************************************************************************************!*\
-  !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-textarea/props.js ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 输入框的内容
-    value: {
-      type: [String, Number],
-      default: uni.$u.props.textarea.value
-    },
-    // 输入框为空时占位符
-    placeholder: {
-      type: [String, Number],
-      default: uni.$u.props.textarea.placeholder
-    },
-    // 指定placeholder的样式类，注意页面或组件的style中写了scoped时，需要在类名前写/deep/
-    placeholderClass: {
-      type: String,
-      default: uni.$u.props.input.placeholderClass
-    },
-    // 指定placeholder的样式
-    placeholderStyle: {
-      type: [String, Object],
-      default: uni.$u.props.input.placeholderStyle
-    },
-    // 输入框高度
-    height: {
-      type: [String, Number],
-      default: uni.$u.props.textarea.height
-    },
-    // 设置键盘右下角按钮的文字，仅微信小程序，App-vue和H5有效
-    confirmType: {
-      type: String,
-      default: uni.$u.props.textarea.confirmType
-    },
-    // 是否禁用
-    disabled: {
-      type: Boolean,
-      default: uni.$u.props.textarea.disabled
-    },
-    // 是否显示统计字数
-    count: {
-      type: Boolean,
-      default: uni.$u.props.textarea.count
-    },
-    // 是否自动获取焦点，nvue不支持，H5取决于浏览器的实现
-    focus: {
-      type: Boolean,
-      default: uni.$u.props.textarea.focus
-    },
-    // 是否自动增加高度
-    autoHeight: {
-      type: Boolean,
-      default: uni.$u.props.textarea.autoHeight
-    },
-    // 如果textarea是在一个position:fixed的区域，需要显示指定属性fixed为true
-    fixed: {
-      type: Boolean,
-      default: uni.$u.props.textarea.fixed
-    },
-    // 指定光标与键盘的距离
-    cursorSpacing: {
-      type: Number,
-      default: uni.$u.props.textarea.cursorSpacing
-    },
-    // 指定focus时的光标位置
-    cursor: {
-      type: [String, Number],
-      default: uni.$u.props.textarea.cursor
-    },
-    // 是否显示键盘上方带有”完成“按钮那一栏，
-    showConfirmBar: {
-      type: Boolean,
-      default: uni.$u.props.textarea.showConfirmBar
-    },
-    // 光标起始位置，自动聚焦时有效，需与selection-end搭配使用
-    selectionStart: {
-      type: Number,
-      default: uni.$u.props.textarea.selectionStart
-    },
-    // 光标结束位置，自动聚焦时有效，需与selection-start搭配使用
-    selectionEnd: {
-      type: Number,
-      default: uni.$u.props.textarea.selectionEnd
-    },
-    // 键盘弹起时，是否自动上推页面
-    adjustPosition: {
-      type: Boolean,
-      default: uni.$u.props.textarea.adjustPosition
-    },
-    // 是否去掉 iOS 下的默认内边距，只微信小程序有效
-    disableDefaultPadding: {
-      type: Boolean,
-      default: uni.$u.props.textarea.disableDefaultPadding
-    },
-    // focus时，点击页面的时候不收起键盘，只微信小程序有效
-    holdKeyboard: {
-      type: Boolean,
-      default: uni.$u.props.textarea.holdKeyboard
-    },
-    // 最大输入长度，设置为 -1 的时候不限制最大长度
-    maxlength: {
-      type: [String, Number],
-      default: uni.$u.props.textarea.maxlength
-    },
-    // 边框类型，surround-四周边框，bottom-底部边框
-    border: {
-      type: String,
-      default: uni.$u.props.textarea.border
-    },
-    // 用于处理或者过滤输入框内容的方法
-    formatter: {
-      type: [Function, null],
-      default: uni.$u.props.textarea.formatter
-    },
-    // 是否忽略组件内对文本合成系统事件的处理
-    ignoreCompositionEvent: {
-      type: Boolean,
-      default: true
     }
   }
 };
