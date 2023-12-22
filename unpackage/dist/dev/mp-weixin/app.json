@@ -7,7 +7,8 @@
     "pages/login/login",
     "pages/login/forget",
     "pages/login/register",
-    "pages/login/bindPhone"
+    "pages/login/bindPhone",
+    "pages/editData/editData"
   ],
   "subPackages": [],
   "window": {

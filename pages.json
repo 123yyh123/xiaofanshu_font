@@ -54,6 +54,14 @@
 				"navigationBarTitleText": "绑定手机号",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path" : "pages/editData/editData",
+			"style" : 
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"tabBar": {

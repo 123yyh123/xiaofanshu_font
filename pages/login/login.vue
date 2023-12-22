@@ -100,7 +100,7 @@
 					if (res.code == 20020) {
 						console.log("登录成功")
 						uni.setStorageSync('token', res.msg);
-						uni.setStorageSync('userInfo', JSON.stringify(res.data));
+						uni.setStorageSync('userInfo', res.data);
 						setTimeout(function() {
 							this.isRotate = false;
 							uni.reLaunch({
@@ -143,7 +143,7 @@
 							})
 							if(res.code == 20020){
 								uni.setStorageSync('token', res.msg);
-								uni.setStorageSync('userInfo', JSON.stringify(res.data));
+								uni.setStorageSync('userInfo', res.data);
 								setTimeout(function() {
 									uni.hideLoading();
 								}, 1000);

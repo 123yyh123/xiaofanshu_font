@@ -132,16 +132,21 @@
 					</view>
 				</view>
 				<view class="introduction" @click="changeIntroduction">
-					{{userInfo.selfIntroductionlen==null?'点击这里，填写简介':userInfo.selfIntroduction}}
+					{{userInfo.selfIntroduction==null?'点击这里，填写简介':userInfo.selfIntroduction}}
 				</view>
 				<view style="display: flex;">
-					<view v-if="userInfo.age!=null||userInfo.sex===1" class="tag">
+					<view v-if="userInfo.age!=null&&userInfo.sex===1" class="tag">
 						<u-icon name="man" color="#2ca9e1" size="20"></u-icon>
 						<view v-if="userInfo.age!=null">{{userInfo.age}}岁</view>
 					</view>
-					<view v-else-if="userInfo.age!=null||userInfo.sex===0" class="tag"><u-icon name="woman"
-							color="#e198b4" size="20"></u-icon>{{userInfo.age}}岁</view>
-					<view class="tag">日本东京</view>
+					<view v-else-if="userInfo.age!=null&&userInfo.sex===0" class="tag">
+						<u-icon name="woman" color="#e198b4" size="20"></u-icon>
+						<view v-if="userInfo.age!=null">{{userInfo.age}}岁</view>
+					</view>
+					<view v-else-if="userInfo.age!=null">
+						<view>{{userInfo.age}}岁</view>
+					</view>
+					<view class="tag">{{area}}</view>
 				</view>
 				<view style="display: flex;width: 100%;">
 					<view style="width: 50%;display: flex;justify-content: space-around;">
@@ -159,7 +164,7 @@
 						</view>
 					</view>
 					<view style="width: 50%;display: flex;align-items: flex-end;justify-content: space-around;">
-						<view class="tag1">编辑资料</view>
+						<view class="tag1" @click="editData">编辑资料</view>
 						<view class="tag1" style="width: 40px;display: flex;">
 							<image src="../../static/image/设置.png" mode="heightFix"></image>
 						</view>
@@ -249,7 +254,8 @@
 </template>
 <script>
 	import {
-		getUserInfo
+		getUserInfo,
+		updateAvatarUrl
 	} from '../../apis/user_service.js';
 	import {
 		baseUrl
@@ -264,6 +270,7 @@
 				}, {
 					name: '赞过',
 				}],
+				area:'',
 				screenHeight: '',
 				statusBarHeight: '',
 				navigationBarHeight: '',
@@ -363,6 +370,11 @@
 			};
 		},
 		methods: {
+			editData(){
+				uni.navigateTo({
+					url: '/pages/editData/editData'
+				})
+			},
 			changeIntroduction() {
 				this.introductionShow = true
 				uni.hideTabBar({
@@ -384,6 +396,7 @@
 						itemList: ['更换头像', '保存到相册'],
 						success: (data) => {
 							console.log(data.tapIndex)
+							plus.nativeUI.closePreviewImage();
 							if (data.tapIndex === 0) {
 								uni.chooseImage({
 									count: 1,
@@ -402,14 +415,30 @@
 												let data = JSON.parse(res.data)
 												if (data.code === 20020) {
 													console.log(data.data)
-													uni.showToast({
-														title: '更换成功',
-														icon: 'success',
-														duration: 500,
-														mask: true
+													updateAvatarUrl({
+														userVO: {
+															id: this.userInfo.id,
+															avatarUrl: data.data
+														}
+													}).then(res=>{
+														if(res.code===20020){
+															uni.showToast({
+																title: '更换成功',
+																icon: 'success',
+																duration: 500,
+																mask: true
+															})
+															this.userInfo.avatarUrl = data.data
+															uni.setStorageSync('userInfo', this.userInfo)
+														}else{
+															uni.showToast({
+																title: '更换失败',
+																icon: 'none',
+																duration: 500,
+																mask: true
+															})
+														}
 													})
-													this.userInfo.avatarUrl = data.data
-													uni.setStorageSync('userInfo', JSON.stringify(this.userInfo))
 												}
 											},
 											complete() {
@@ -523,7 +552,21 @@
 			},
 		},
 		onPullDownRefresh() {
-			console.log('下拉刷新')
+			getUserInfo({
+				userId: uni.getStorageSync('userInfo').id
+			}).then(res=>{
+				if(res.code===20010){
+					uni.setStorageSync('userInfo',res.data)
+				}else{
+					uni.showToast({
+						icon:'error',
+						duration:1000,
+						title:'加载失败'
+					})
+				}
+			}).catch(err=>{
+				console.log(err)
+			})
 			this.$refs.water1.refresh()
 			this.$refs.water2.refresh()
 			this.$refs.water3.refresh()
@@ -556,15 +599,32 @@
 					// this.mainInfoHeight=this.screenHeight-this.stickyHeight;
 				}
 			})
-			this.userInfo = JSON.parse(uni.getStorageSync('userInfo'));
-			console.log(this.userInfo)
 		},
 		onReady() {
 			let query = uni.createSelectorQuery().in(this);
 			query.selectAll(".info").boundingClientRect(data => {
-				console.log(data)
 				this.mainInfoHeight = data[0].height - this.stickyHeight - 5
 			}).exec()
+		},
+		onShow() {
+			this.userInfo = uni.getStorageSync('userInfo');
+			this.area=''
+			if(this.userInfo.area!=null&&this.userInfo.area!=''){
+				let s=this.userInfo.area.split(' ')
+				if(s.length===2){
+				s.forEach((item,index)=>{
+					this.area+=item.substring(0,item.length-1)
+				})
+				}else if(s.length===3){
+					// 只显示省市
+					s.forEach((item,index)=>{
+						if(index!=2){
+							this.area+=item.substring(0,item.length-1)
+						}
+					})
+				}
+			}
+			console.log(this.area)
 		},
 		onPageScroll(e) {
 			// console.log(e.scrollTop+'_'+this.mainInfoHeight)
@@ -625,6 +685,9 @@
 		z-index: -1;
 		filter: brightness(65%);
 		background-color: #ffffff;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
 	}
 
 	.top-main {

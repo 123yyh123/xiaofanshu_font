@@ -41,6 +41,9 @@
   -webkit-filter: brightness(65%);
           filter: brightness(65%);
   background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .top-main {
   padding: 0 40rpx 20rpx 40rpx;

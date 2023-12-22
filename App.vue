@@ -12,9 +12,16 @@
 				})
 				return
 			}
-			getUserInfo().then(res=>{
-				if(res.code===20021){
-					uni.setStorageSync('userInfo', JSON.stringify(res.data));
+			checkToken().then(res=>{
+				if(res.code===200){
+					getUserInfo({
+						userId: uni.getStorageSync('userInfo').id
+					}).then(res=>{
+						console.log(res)
+						if(res.code===20010){
+							uni.setStorageSync('userInfo',res.data)
+						}
+					})
 				}
 				return
 			})
