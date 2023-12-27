@@ -78,6 +78,7 @@
 			<u-cell title="性别" :isLink="true" :value="userInfo.sex===0?'女':userInfo.sex===1?'男':''" :name="4"
 				@click="openPopup"></u-cell>
 			<u-cell title="生日" :isLink="true" :value="userInfo.birthday" :name="5" @click="openPopup"></u-cell>
+			<u-cell title="职业" :isLink="true" :value="userInfo.occupation" @click="chooseOccupation"></u-cell>
 			<u-cell title="地区" :isLink="true" :value="userInfo.area" :name="6" @click="openPopup"></u-cell>
 			<u-cell title="背景图" :isLink="true" @click="chooseBackgroundImage">
 				<view slot='value'>
@@ -136,6 +137,15 @@
 			}
 		},
 		methods: {
+			chooseOccupation(){
+				uni.showToast({
+					title: '暂未开放',
+					icon: 'none',
+					duration: 1000,
+					mask: true
+				})
+				return
+			},
 			chooseAvatar(){
 				uni.chooseImage({
 					count: 1,

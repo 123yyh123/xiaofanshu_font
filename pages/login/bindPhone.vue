@@ -142,6 +142,7 @@
 						});
 						uni.setStorageSync('token',res.msg)
 						uni.setStorageSync('userInfo',res.data)
+						this.$ws.init()
 						setTimeout(function(){
 							uni.reLaunch({
 								url:'/pages/index/index'

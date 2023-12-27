@@ -144,6 +144,7 @@
 							if(res.code == 20020){
 								uni.setStorageSync('token', res.msg);
 								uni.setStorageSync('userInfo', res.data);
+								this.$ws.init();
 								setTimeout(function() {
 									uni.hideLoading();
 								}, 1000);

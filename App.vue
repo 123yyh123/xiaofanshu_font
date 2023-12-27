@@ -20,6 +20,7 @@
 						console.log(res)
 						if(res.code===20010){
 							uni.setStorageSync('userInfo',res.data)
+							this.$ws.init();
 						}
 					})
 				}
@@ -28,6 +29,7 @@
 		},
 		onShow: function() {
 			console.log('App Show')
+			this.$ws.init()
 		},
 		onHide: function() {
 			console.log('App Hide')

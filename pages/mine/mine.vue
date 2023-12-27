@@ -139,12 +139,18 @@
 						<u-icon name="man" color="#2ca9e1" size="20"></u-icon>
 						<view v-if="userInfo.age!=null">{{userInfo.age}}岁</view>
 					</view>
-					<view v-else-if="userInfo.age!=null&&userInfo.sex===0" class="tag">
+					<view v-if="userInfo.age!=null&&userInfo.sex===0" class="tag">
 						<u-icon name="woman" color="#e198b4" size="20"></u-icon>
 						<view v-if="userInfo.age!=null">{{userInfo.age}}岁</view>
 					</view>
-					<view v-else-if="userInfo.age!=null">
+					<view v-if="userInfo.age!=null&&userInfo.sex===2">
 						<view>{{userInfo.age}}岁</view>
+					</view>
+					<view v-if="userInfo.age==null&&userInfo.sex==1">
+						<u-icon name="man" color="#2ca9e1" size="20"></u-icon>
+					</view>
+					<view v-if="userInfo.age==null&&userInfo.sex==0">
+						<u-icon name="woman" color="#e198b4" size="20"></u-icon>
 					</view>
 					<view class="tag">{{area}}</view>
 				</view>
@@ -176,21 +182,21 @@
 							<u-icon name="bag" color="#ffffff" size="18"></u-icon>
 							<text style="color: #ffffff;font-size: 27rpx;margin-left: 10rpx;">购物车</text>
 						</view>
-						<text style="font-size: 25rpx;color: #595857;">查看推荐好物</text>
+						<text style="font-size: 25rpx;color: #afafb0;">查看推荐好物</text>
 					</view>
 					<view class="looked">
 						<view style="display: flex;">
 							<u-icon name="question-circle" color="#ffffff" size="18"></u-icon>
 							<text style="color: #ffffff;font-size: 27rpx;margin-left: 10rpx;">创作灵感</text>
 						</view>
-						<text style="font-size: 25rpx;color: #595857;">学创作找灵感</text>
+						<text style="font-size: 25rpx;color: #afafb0;">学创作找灵感</text>
 					</view>
 					<view class="looked">
 						<view style="display: flex;">
 							<u-icon name="clock" color="#ffffff" size="18"></u-icon>
 							<text style="color: #ffffff;font-size: 27rpx;margin-left: 10rpx;">浏览记录</text>
 						</view>
-						<text style="font-size: 25rpx;color: #595857;">看过的笔记</text>
+						<text style="font-size: 25rpx;color: #afafb0;">看过的笔记</text>
 					</view>
 				</view>
 			</view>
@@ -796,7 +802,7 @@
 		width: 6em;
 		margin-top: 30rpx;
 		padding: 10rpx 0rpx 10rpx 20rpx;
-		background-color: rgba(255, 255, 255, 0.2);
+		background-color: rgba(89, 88, 87,0.6);
 		border-radius: 20rpx;
 	}
 
