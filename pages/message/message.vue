@@ -1,22 +1,82 @@
 <template>
 	<view>
-		
+		<view style="display: flex;justify-content: space-around;font-size: 30rpx;margin-top: 30rpx;padding: 10rpx 20rpx;">
+			<view style="text-align: center;">
+				<view>
+					<image style="width: 85rpx;" mode="widthFix" src="../../static/image/精品收藏.png"></image>
+				</view>
+				<text>赞和收藏</text>
+			</view>
+			<view style="text-align: center;">
+				<view>
+					<image style="width: 85rpx;" mode="widthFix" src="../../static/image/人员信息.png"></image>
+				</view>
+				<text>新增关注</text>
+			</view>
+			<view style="text-align: center;">
+				<view>
+					<image style="width: 85rpx;" mode="widthFix" src="../../static/image/icon-kfckfc.png"></image>
+				</view>
+				<text>评论和@</text>
+			</view>
+		</view>
+		<view style="margin-top: 30rpx;">
+			<view style="display: flex;padding: 30rpx;">
+				<image style="width: 90rpx;height: 90rpx;border-radius: 50%;margin: 0 10rpx;" mode="aspectFill"
+					src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2023/12/22/9c5eb93b6f8a4f08b50388f8bcc01eeb97e9ae63fb4d460f80a6aa9e1287673fmmexport1666442061586.jpg">
+				</image>
+				<view style="margin-left: 15rpx;flex: 1;">
+					<view style="display: flex;width: 100%;position: relative;">
+						<view>你好</view>
+						<view style="position: absolute;right: 0;color: #949495;font-size: 30rpx;">12-12</view>
+					</view>
+					<view class="simpleMessage">生活的很</view>
+				</view>
+			</view>
+			<view style="display: flex;padding: 30rpx;">
+				<image style="width: 90rpx;height: 90rpx;border-radius: 50%;margin: 0 10rpx;" mode="aspectFill"
+					src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2023/12/22/9c5eb93b6f8a4f08b50388f8bcc01eeb97e9ae63fb4d460f80a6aa9e1287673fmmexport1666442061586.jpg">
+				</image>
+				<view style="margin-left: 15rpx;flex: 1;">
+					<view style="display: flex;width: 100%;position: relative;">
+						<view>你好</view>
+						<view style="position: absolute;right: 0;color: #949495;font-size: 30rpx;">12-12</view>
+					</view>
+					<view class="simpleMessage">生活的很</view>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
+	import {sqliteUtil} from '../../utils/sqliteUtil.js'
 	export default {
 		data() {
 			return {
-				
 			}
 		},
 		methods: {
-			
+
+		},
+		onLoad() {
 		}
 	}
 </script>
 
-<style lang="scss">
 
+<style lang="scss">
+	page{
+		background-color: #ffffff;
+	}
+	.simpleMessage {
+		color: #949495;
+		font-size: 30rpx;
+		text-overflow: ellipsis;
+		word-break: break-all;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+		display: -webkit-box;
+		overflow: hidden;
+	}
 </style>

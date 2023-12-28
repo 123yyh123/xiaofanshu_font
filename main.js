@@ -5,7 +5,9 @@ import Vue from 'vue'
 import './uni.promisify.adaptor'
 import uView from '@/uni_modules/uview-ui'
 import ws from './utils/websocket.js'
+import sqliteUtil from './utils/sqliteUtil.js'
 Vue.prototype.$ws = ws
+Vue.prototype.$sqliteUtil = sqliteUtil
 Vue.use(uView)
 Vue.config.productionTip = false
 App.mpType = 'app'

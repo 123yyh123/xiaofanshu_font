@@ -60,6 +60,8 @@
 			wInput,
 			wButton,
 		},
+		onLoad() {
+		},
 		methods: {
 			startLogin(e) {
 				//登录
@@ -101,6 +103,7 @@
 						console.log("登录成功")
 						uni.setStorageSync('token', res.msg);
 						uni.setStorageSync('userInfo', res.data);
+						this.$ws.init();
 						setTimeout(function() {
 							this.isRotate = false;
 							uni.reLaunch({

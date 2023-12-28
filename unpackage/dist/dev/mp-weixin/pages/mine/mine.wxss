@@ -137,7 +137,7 @@
   width: 6em;
   margin-top: 30rpx;
   padding: 10rpx 0rpx 10rpx 20rpx;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(89, 88, 87, 0.6);
   border-radius: 20rpx;
 }
  .u-sticky {

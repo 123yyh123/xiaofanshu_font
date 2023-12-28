@@ -1,8 +1,9 @@
 import {
 	baseUrl
 } from '../config/index'
+import ws from './websocket.js'
 export const $request = (params = {}) => {
-	return new Promise(function (resolve, reject) {
+	return new Promise(function(resolve, reject){
 		uni.showLoading({
 			title: '加载中',
 			mask: true
@@ -11,17 +12,18 @@ export const $request = (params = {}) => {
 			'token': uni.getStorageSync('token')
 		}
 		const timer = setTimeout(() => {
-			uni.hideLoading();
-	      reject(new Error('请求超时'));
+			uni.hideLoading()
+	      reject(new Error('请求超时'))
 	    }, 5000);
 		uni.request({
 			url: baseUrl + params.url,
 			method: params.method,
 			header: header,
 			data: params.data,
-			success(res) {
+			success:(res) =>{
 				if(res.data.code===40310||res.data.code===40320||res.data.code===40330){
 					uni.hideLoading();
+					ws.completeClose()
 					uni.showToast({
 						icon: "none",
 						title: "用户未认证或登录过期,请重新登录",
@@ -39,6 +41,7 @@ export const $request = (params = {}) => {
 			},
 			fail(err) {
 				reject(err)
+				ws.completeClose()
 			},
 			complete() {
 				uni.hideLoading()

@@ -18,7 +18,8 @@
         },
         /* 模块配置 */
         "modules" : {
-            "OAuth" : {}
+            "OAuth" : {},
+            "SQLite" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -62,7 +63,11 @@
                     }
                 },
                 "payment" : {},
-                "share" : {}
+                "share" : {},
+                "maps" : {},
+                "ad" : {
+                    "gg" : {}
+                }
             },
             "splashscreen" : {
                 "useOriginalMsgbox" : true,

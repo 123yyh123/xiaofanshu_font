@@ -37,10 +37,11 @@ let ws = {
 }
 
 function init() {
-	completeClose(); // 关闭之前的连接
 	socketTask = uni.connectSocket({
 		url: wsUrl,
-		complete: () => {}
+		fail: (res) => {
+			console.log(res);
+		}
 	})
 	socketTask.onOpen(() => {
 		clearInterval(heartBeatInterval);
@@ -55,6 +56,11 @@ function init() {
 	})
 	socketTask.onMessage((res) => {
 		console.log(res);
+		let meaasge=JSON.parse(res)
+		// 聊天信息
+		if(meaasge.messageType===3){
+			
+		}
 	})
 	socketTask.onClose(() => {
 		isOpenSocket = false;
@@ -74,12 +80,10 @@ function heartBeat() {
 }
 
 function send(value) {
-	console.log(value)
 	if (ws.socketTask.readyState === 1) {
 		ws.socketTask.send({
 			data: JSON.stringify(value),
 			success() {
-				console.log("消息发送成功");
 			},
 			fail() {
 				console.log("消息发送失败");
@@ -112,6 +116,7 @@ function reconnect() {
 }
 
 function completeClose() {
+	console.log("关闭连接")
 	clearInterval(heartBeatInterval);
 	clearInterval(reconnectInterval);
 	canReconnect = false;
