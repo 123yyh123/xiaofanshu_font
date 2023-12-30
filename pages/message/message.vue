@@ -1,6 +1,7 @@
 <template>
 	<view>
-		<view style="display: flex;justify-content: space-around;font-size: 30rpx;margin-top: 30rpx;padding: 10rpx 20rpx;">
+		<view
+			style="display: flex;justify-content: space-around;font-size: 30rpx;margin-top: 30rpx;padding: 10rpx 20rpx;">
 			<view style="text-align: center;">
 				<view>
 					<image style="width: 85rpx;" mode="widthFix" src="../../static/image/精品收藏.png"></image>
@@ -21,54 +22,67 @@
 			</view>
 		</view>
 		<view style="margin-top: 30rpx;">
-			<view style="display: flex;padding: 30rpx;">
-				<image style="width: 90rpx;height: 90rpx;border-radius: 50%;margin: 0 10rpx;" mode="aspectFill"
-					src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2023/12/22/9c5eb93b6f8a4f08b50388f8bcc01eeb97e9ae63fb4d460f80a6aa9e1287673fmmexport1666442061586.jpg">
-				</image>
-				<view style="margin-left: 15rpx;flex: 1;">
-					<view style="display: flex;width: 100%;position: relative;">
-						<view>你好</view>
-						<view style="position: absolute;right: 0;color: #949495;font-size: 30rpx;">12-12</view>
+			<block v-for="(item,index) in list" :key="index">
+				<view style="display: flex;padding: 20rpx;height: 110rpx;">
+					<image style="width: 110rpx;height: 110rpx;border-radius: 50%;margin: 0 10rpx;" mode="aspectFill"
+						:src="item.avatar_url">
+					</image>
+					<view style="margin:0 15rpx;flex: 1;align-self: center;">
+						<view>{{item.user_name}}</view>
+						<view class="simpleMessage">{{item.last_message}}</view>
 					</view>
-					<view class="simpleMessage">生活的很</view>
-				</view>
-			</view>
-			<view style="display: flex;padding: 30rpx;">
-				<image style="width: 90rpx;height: 90rpx;border-radius: 50%;margin: 0 10rpx;" mode="aspectFill"
-					src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2023/12/22/9c5eb93b6f8a4f08b50388f8bcc01eeb97e9ae63fb4d460f80a6aa9e1287673fmmexport1666442061586.jpg">
-				</image>
-				<view style="margin-left: 15rpx;flex: 1;">
-					<view style="display: flex;width: 100%;position: relative;">
-						<view>你好</view>
-						<view style="position: absolute;right: 0;color: #949495;font-size: 30rpx;">12-12</view>
+					<view style="align-self: center;text-align: end;">
+						<view style="color: #949495;font-size: 24rpx;">{{item.last_time}}</view>
+						<view v-if="item.unread_num>0" style="display: inline-block;">
+							<u-badge numberType="overflow" max="99" :value="item.unread_num"></u-badge>
+						</view>
 					</view>
-					<view class="simpleMessage">生活的很</view>
 				</view>
-			</view>
+			</block>
 		</view>
 	</view>
 </template>
 
 <script>
-	import {sqliteUtil} from '../../utils/sqliteUtil.js'
+	import {
+		sqliteUtil
+	} from '../../utils/sqliteUtil.js'
+	import {timestampFormat,stringDateFormat} from '../../utils/util.js'
 	export default {
 		data() {
 			return {
+				list: [],
 			}
 		},
 		methods: {
-
 		},
 		onLoad() {
+			uni.$on('updateMessageList', () => {
+				this.$sqliteUtil.SqlSelect(`SELECT * FROM message_list ORDER BY last_time DESC`).then(res => {
+					res.forEach(item => {
+						item.last_time = timestampFormat(item.last_time)
+					})
+					this.list = res
+				})
+			})
+		},
+		onShow() {
+			this.$sqliteUtil.SqlSelect(`SELECT * FROM message_list ORDER BY last_time DESC`).then(res => {
+				res.forEach(item => {
+					item.last_time = timestampFormat(item.last_time)
+				})
+				this.list = res
+			})
 		}
 	}
 </script>
 
 
 <style lang="scss">
-	page{
+	page {
 		background-color: #ffffff;
 	}
+
 	.simpleMessage {
 		color: #949495;
 		font-size: 30rpx;

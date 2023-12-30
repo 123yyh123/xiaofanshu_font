@@ -220,7 +220,6 @@
 			</view>
 		</u-sticky>
 		<view>
-			<!-- 			<scroll-view scroll-y="true" :style="{height:notesHeight}"> -->
 			<swiper class="data_list" @change="swipeIndex" :current="actTab" :duration="300" previous-margin="0"
 				:style="{height:notesHeight}">
 				<swiper-item>

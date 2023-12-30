@@ -178,13 +178,10 @@ const sqliteUtil = {
 						condition.push(` ${item[0]} = ${item[1]} `)
 					}
 				}
-
 			})
 			condition = condition.join('AND')
 			sql = `SELECT * FROM ${dbTable} WHERE ${condition}`
 		}
-
-
 		return this.SqlSelect(sql)
 	},
 	//通过对象获取
@@ -200,7 +197,6 @@ const sqliteUtil = {
 						condition.push(` ${item[0]} = ${item[1]} `)
 					}
 				}
-			
 			})
 			condition = condition.join(',')
 			sql = `UPDATE ${dbTable} SET ${condition} where id = ${data.id}`

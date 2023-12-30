@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "消息",
-  "usingComponents": {}
+  "usingComponents": {
+    "u-badge": "/uni_modules/uview-ui/components/u-badge/u-badge"
+  }
 }

@@ -1,6 +1,10 @@
 import {
 	baseUrl
-} from '../config/index.js'
+} from '@/config'
+import sqliteUtil from '../utils/sqliteUtil.js'
+import {
+	imageUrlToBase64
+} from '../utils/util.js'
 //是否已经连接上ws
 let isOpenSocket = false
 //心跳间隔，单位毫秒
@@ -16,7 +20,7 @@ let heartBeatText = {
 let reconnectTimes = 10
 let reconnectInterval = null
 //重连间隔，单位毫秒
-let reconnectDelay = 3000
+let reconnectDelay = 10000
 
 let wsUrl = baseUrl + '/ws/xfs'
 
@@ -33,6 +37,7 @@ let canReconnect = false
 let ws = {
 	socketTask: null,
 	init,
+	send,
 	completeClose
 }
 
@@ -56,10 +61,34 @@ function init() {
 	})
 	socketTask.onMessage((res) => {
 		console.log(res);
-		let meaasge=JSON.parse(res)
+		let message = JSON.parse(res.data)
+		console.log(message)
 		// 聊天信息
-		if(meaasge.messageType===3){
-			
+		if (message.messageType === 3) {
+			console.log('聊天信息')
+			if (sqliteUtil.isOpen()) {
+				console.log('数据库打开成功')
+				let s = `select * from message_list where user_id='${message.from}'`
+				sqliteUtil.SqlSelect(s).then(res => {
+					console.log(res)
+					imageUrlToBase64(message.fromAvatar).then(img => {
+						if (res.length > 0) {
+							let sql =
+								`UPDATE message_list SET last_message='${message.content}', last_time=${message.time}, stranger=${message.friendType}, avatar_url='${img}', user_name='${message.fromName}', unread_num=unread_num+1 WHERE user_id='${message.from}'`;
+							sqliteUtil.SqlExecute(sql).then(res => {
+								console.log(res)
+							})
+						} else {
+							let sql =
+								`INSERT INTO message_list (user_id, stranger, last_message, last_time, avatar_url, user_name, unread_num) VALUES ('${message.from}', ${message.friendType}, '${message.content}', ${message.time}, '${img}', '${message.fromName}', 1)`;
+							sqliteUtil.SqlExecute(sql).then(res => {
+								console.log(res)
+							})
+						}
+						uni.$emit('updateMessageList')
+					})
+				})
+			}
 		}
 	})
 	socketTask.onClose(() => {
@@ -83,30 +112,34 @@ function send(value) {
 	if (ws.socketTask.readyState === 1) {
 		ws.socketTask.send({
 			data: JSON.stringify(value),
-			success() {
+			success(res) {
+				console.log(res)
+				console.log("消息发送成功");
+				return true;
 			},
 			fail() {
 				console.log("消息发送失败");
 				completeClose();
+				return false;
 			}
 		});
 	} else {
 		console.log("WebSocket 连接已关闭，无法发送消息");
 		completeClose();
+		return false;
 	}
 }
 
 function reconnect() {
 	//停止发送心跳
-	clearInterval(heartBeatInterval)
 	//如果不是人为关闭的话，进行重连
 	if (!isOpenSocket) {
+		completeClose();
 		let count = 0;
 		reconnectInterval = setInterval(() => {
 			console.log("正在尝试重连")
 			init();
 			count++
-			//重连一定次数后就不再重连
 			if (count >= reconnectTimes) {
 				clearInterval(reconnectInterval)
 				console.log("网络异常或服务器错误")
@@ -120,6 +153,7 @@ function completeClose() {
 	clearInterval(heartBeatInterval);
 	clearInterval(reconnectInterval);
 	canReconnect = false;
+	ws.socketTask = null;
 	if (ws.socketTask) {
 		ws.socketTask.close();
 	}

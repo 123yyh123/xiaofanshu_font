@@ -5,10 +5,12 @@
 	import {
 		getUserInfo
 	} from './apis/user_service.js'
+import list from './uni_modules/uview-ui/libs/config/props/list.js';
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
 			this.$sqliteUtil.openSqlite().then(res => {
+				console.log(res)
 				this.$sqliteUtil.SqlExecute(`CREATE TABLE IF NOT EXISTS message_list (
 					"id"
 					INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -16,12 +18,10 @@
 					avatar_url TEXT,
 					user_name TEXT,
 					last_message TEXT,
-					last_time TEXT,
+					last_time INTEGER,
 					unread_num INTEGER,
 					stranger BOOLEAN
-				);`).then(res => {
-					console.log(res)
-				})
+				);`)
 			})
 			if (uni.getStorageSync('token') == null || uni.getStorageSync('token') == '') {
 				this.$ws.completeClose()
@@ -55,7 +55,9 @@
 						duration: 1000,
 						mask: true
 					})
-					this.$ws.init()
+					if(this.$ws.socketTask==null&&uni.getStorageInfoSync('userInfo')!=null){
+						this.$ws.init()
+					}
 				} else {
 					uni.showToast({
 						title: '网络已断开',

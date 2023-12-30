@@ -18,11 +18,13 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 25));
 __webpack_require__(/*! ./uni.promisify.adaptor */ 38);
 var _uviewUi = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/uview-ui */ 39));
 var _websocket = _interopRequireDefault(__webpack_require__(/*! ./utils/websocket.js */ 33));
+var _sqliteUtil = _interopRequireDefault(__webpack_require__(/*! ./utils/sqliteUtil.js */ 164));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 // @ts-ignore
 wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
 _vue.default.prototype.$ws = _websocket.default;
+_vue.default.prototype.$sqliteUtil = _sqliteUtil.default;
 _vue.default.use(_uviewUi.default);
 _vue.default.config.productionTip = false;
 _App.default.mpType = 'app';
@@ -108,6 +110,9 @@ var _default = {
   onLaunch: function onLaunch() {
     var _this = this;
     console.log('App Launch');
+    this.$sqliteUtil.openSqlite().then(function (res) {
+      _this.$sqliteUtil.SqlExecute("CREATE TABLE IF NOT EXISTS message_list (\n\t\t\t\t\"id\"\n\t\t\t\tINTEGER PRIMARY KEY AUTOINCREMENT,\n\t\t\t\tuser_id TEXT UNIQUE,\n\t\t\t\tavatar_url TEXT,\n\t\t\t\tuser_name TEXT,\n\t\t\t\tlast_message TEXT,\n\t\t\t\tlast_time TEXT,\n\t\t\t\tunread_num INTEGER,\n\t\t\t\tstranger BOOLEAN\n\t\t\t);");
+    });
     if (uni.getStorageSync('token') == null || uni.getStorageSync('token') == '') {
       this.$ws.completeClose();
       uni.reLaunch({
