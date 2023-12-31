@@ -23,21 +23,23 @@
 		</view>
 		<view style="margin-top: 30rpx;">
 			<block v-for="(item,index) in list" :key="index">
-				<view style="display: flex;padding: 20rpx;height: 110rpx;">
-					<image style="width: 110rpx;height: 110rpx;border-radius: 50%;margin: 0 10rpx;" mode="aspectFill"
-						:src="item.avatar_url">
-					</image>
-					<view style="margin:0 15rpx;flex: 1;align-self: center;">
-						<view>{{item.user_name}}</view>
-						<view class="simpleMessage">{{item.last_message}}</view>
-					</view>
-					<view style="align-self: center;text-align: end;">
-						<view style="color: #949495;font-size: 24rpx;">{{item.last_time}}</view>
-						<view v-if="item.unread_num>0" style="display: inline-block;">
-							<u-badge numberType="overflow" max="99" :value="item.unread_num"></u-badge>
+				<liu-swipe-action :index="item.user_id" @clickItem="clickItem" :btnList="operation" :ref="'ref'+index">
+					<view style="display: flex;padding: 20rpx;height: 110rpx;" @touchmove="touchmove(index)">
+						<image style="width: 110rpx;height: 110rpx;border-radius: 50%;margin: 0 10rpx;"
+							mode="aspectFill" :src="item.avatar_url">
+						</image>
+						<view style="margin:0 15rpx;flex: 1;align-self: center;">
+							<view>{{item.user_name}}</view>
+							<view class="simpleMessage">{{item.last_message}}</view>
+						</view>
+						<view style="align-self: center;text-align: end;">
+							<view style="color: #949495;font-size: 24rpx;">{{item.last_time}}</view>
+							<view v-if="item.unread_num>0" style="display: inline-block;">
+								<u-badge numberType="overflow" max="99" :value="item.unread_num"></u-badge>
+							</view>
 						</view>
 					</view>
-				</view>
+				</liu-swipe-action>
 			</block>
 		</view>
 	</view>
@@ -47,32 +49,87 @@
 	import {
 		sqliteUtil
 	} from '../../utils/sqliteUtil.js'
-	import {timestampFormat,stringDateFormat} from '../../utils/util.js'
+	import {
+		timestampFormat,
+		stringDateFormat
+	} from '../../utils/util.js'
 	export default {
 		data() {
 			return {
+				operation: [{
+					id: 1,
+					name: '已读',
+					width: '150rpx',
+					bgColor: '#5f92f7',
+					color: '#FFFFFF',
+					fontSize: '28rpx'
+				}, {
+					id: 2,
+					name: '删除',
+					width: '150rpx',
+					bgColor: '#ed656d',
+					color: '#FFFFFF',
+					fontSize: '28rpx'
+				}],
 				list: [],
 			}
 		},
 		methods: {
-		},
-		onLoad() {
-			uni.$on('updateMessageList', () => {
+			clickItem(e) {
+				if (e.id === 1) {
+					let sql = `UPDATE message_list SET unread_num=0 WHERE user_id='${e.index}'`
+					this.$sqliteUtil.SqlExecute(sql).then(res => {
+						this.refreshList()
+						this.resetAll()
+						this.$ws.setCornerMark()
+					})
+				} else if (e.id === 2) {
+					let sql = `DELETE FROM message_list WHERE user_id='${e.index}'`
+					this.$sqliteUtil.SqlExecute(sql).then(res => {
+						this.refreshList()
+						this.resetAll()
+						this.$ws.setCornerMark()
+					})
+				}
+			},
+			resetAll() {
+				this.list.forEach((res, index) => {
+					this.$refs['ref' + index][0].reset()
+				})
+			},
+			touchmove(index){
+				this.list.forEach((res,i)=>{
+					if(index!=i){
+						this.$refs['ref' + i][0].reset()
+					}
+				})
+			},
+			refreshList() {
 				this.$sqliteUtil.SqlSelect(`SELECT * FROM message_list ORDER BY last_time DESC`).then(res => {
 					res.forEach(item => {
 						item.last_time = timestampFormat(item.last_time)
 					})
 					this.list = res
 				})
+			}
+		},
+		onLoad() {
+			uni.$on('updateMessageList', () => {
+				this.refreshList()
 			})
 		},
 		onShow() {
-			this.$sqliteUtil.SqlSelect(`SELECT * FROM message_list ORDER BY last_time DESC`).then(res => {
-				res.forEach(item => {
-					item.last_time = timestampFormat(item.last_time)
-				})
-				this.list = res
-			})
+			this.refreshList()
+		},
+		onPullDownRefresh() {
+			this.refreshList()
+			const refreshText = {
+				from: uni.getStorageSync('userInfo').id,
+				content: "刷新一下",
+				messageType: 1,
+			}
+			this.$ws.send(refreshText)
+			uni.stopPullDownRefresh()
 		}
 	}
 </script>

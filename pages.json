@@ -19,7 +19,8 @@
 		{
 			"path": "pages/message/message",
 			"style": {
-				"navigationBarTitleText": "消息"
+				"navigationBarTitleText": "消息",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -67,7 +68,7 @@
 	"tabBar": {
 		"backgroundColor": "#ffffff",
 		"borderStyle": "white",
-		"height": "35px",
+		"height": "40px",
 		"iconWidth": "37px",
 		"midButton": {
 			"iconPath": "static/image/publish.png",

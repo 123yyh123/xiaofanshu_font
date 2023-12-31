@@ -47,6 +47,7 @@ import list from './uni_modules/uview-ui/libs/config/props/list.js';
 		},
 		onShow: function() {
 			console.log('App Show')
+			this.$ws.setCornerMark()
 			uni.onNetworkStatusChange(res => {
 				if (res.isConnected) {
 					uni.showToast({

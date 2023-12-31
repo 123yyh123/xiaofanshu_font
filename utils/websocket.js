@@ -38,7 +38,8 @@ let ws = {
 	socketTask: null,
 	init,
 	send,
-	completeClose
+	completeClose,
+	setCornerMark,
 }
 
 function init() {
@@ -76,13 +77,13 @@ function init() {
 							let sql =
 								`UPDATE message_list SET last_message='${message.content}', last_time=${message.time}, stranger=${message.friendType}, avatar_url='${img}', user_name='${message.fromName}', unread_num=unread_num+1 WHERE user_id='${message.from}'`;
 							sqliteUtil.SqlExecute(sql).then(res => {
-								console.log(res)
+								setCornerMark()
 							})
 						} else {
 							let sql =
 								`INSERT INTO message_list (user_id, stranger, last_message, last_time, avatar_url, user_name, unread_num) VALUES ('${message.from}', ${message.friendType}, '${message.content}', ${message.time}, '${img}', '${message.fromName}', 1)`;
 							sqliteUtil.SqlExecute(sql).then(res => {
-								console.log(res)
+								setCornerMark()
 							})
 						}
 						uni.$emit('updateMessageList')
@@ -113,19 +114,20 @@ function send(value) {
 		ws.socketTask.send({
 			data: JSON.stringify(value),
 			success(res) {
-				console.log(res)
 				console.log("消息发送成功");
 				return true;
 			},
 			fail() {
 				console.log("消息发送失败");
 				completeClose();
+				init();
 				return false;
 			}
 		});
 	} else {
 		console.log("WebSocket 连接已关闭，无法发送消息");
 		completeClose();
+		init();
 		return false;
 	}
 }
@@ -157,6 +159,24 @@ function completeClose() {
 	if (ws.socketTask) {
 		ws.socketTask.close();
 	}
+}
+
+function setCornerMark(){
+	// 获取消息列表的总未读数
+	let s = `select sum(unread_num) as total from message_list`
+	sqliteUtil.SqlSelect(s).then(res => {
+		if(res[0].total>0){
+			uni.setTabBarBadge({
+				index:2,
+				text: res[0].total>99?'99+':res[0].total.toString()
+			})
+			console.log(res[0].total)
+		}else{
+			uni.removeTabBarBadge({
+				index:2
+			})
+		}
+	})
 }
 
 module.exports = ws
