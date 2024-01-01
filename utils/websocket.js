@@ -4,7 +4,7 @@ import {
 import sqliteUtil from '../utils/sqliteUtil.js'
 import {
 	imageUrlToBase64
-} from '../utils/util.js'
+} from '../utils/util.js';
 //是否已经连接上ws
 let isOpenSocket = false
 //心跳间隔，单位毫秒

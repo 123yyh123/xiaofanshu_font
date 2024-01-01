@@ -11,9 +11,9 @@ const sqliteUtil = {
 		})
 		return open
 	},
-
+	// sd
 	// 创建数据库 或 有该数据库就打开
-	openSqlite() {
+	openSqlite() { 
 		return new Promise((resolve, reject) => {
 			// 打开数据库
 			plus.sqlite.openDatabase({
