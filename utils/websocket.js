@@ -69,6 +69,7 @@ function init() {
 			console.log('聊天信息')
 			if (sqliteUtil.isOpen()) {
 				console.log('数据库打开成功')
+				// 更新消息列表
 				let s = `select * from message_list where user_id='${message.from}'`
 				sqliteUtil.SqlSelect(s).then(res => {
 					console.log(res)
@@ -89,7 +90,28 @@ function init() {
 						uni.$emit('updateMessageList')
 					})
 				})
+
+				// 更新聊天记录，先判断是否存在与该用户的聊天记录表，如果不存在则创建
+				let s2 = `create table if not exists chat_${message.from} (
+				id integer primary key autoincrement, 
+				from_id text, 
+				to_id text, 
+				content text, 
+				time integer, 
+				chat_type integer, 
+				is_read integer,
+				is_send integer);`
+				sqliteUtil.SqlExecute(s2).then(res => {
+					// 插入聊天记录
+					let sql =
+						`INSERT INTO chat_${message.from} (from_id, to_id, content, time, chat_type,is_read, is_send) VALUES ('${message.from}', '${message.to}', '${message.content}', ${message.time}, ${message.chatType}, 0,0)`
+					sqliteUtil.SqlExecute(sql).then(res=>{
+						console.log('插入聊天记录成功')
+						uni.$emit('updateChatRecord')
+					})
+				})
 			}
+
 		}
 	})
 	socketTask.onClose(() => {
@@ -114,7 +136,7 @@ function send(value) {
 		ws.socketTask.send({
 			data: JSON.stringify(value),
 			success(res) {
-				console.log("消息发送成功");
+				// console.log("消息发送成功");
 				return true;
 			},
 			fail() {
@@ -161,19 +183,19 @@ function completeClose() {
 	}
 }
 
-function setCornerMark(){
+function setCornerMark() {
 	// 获取消息列表的总未读数
 	let s = `select sum(unread_num) as total from message_list`
 	sqliteUtil.SqlSelect(s).then(res => {
-		if(res[0].total>0){
+		if (res[0].total > 0) {
 			uni.setTabBarBadge({
-				index:2,
-				text: res[0].total>99?'99+':res[0].total.toString()
+				index: 2,
+				text: res[0].total > 99 ? '99+' : res[0].total.toString()
 			})
 			console.log(res[0].total)
-		}else{
+		} else {
 			uni.removeTabBarBadge({
-				index:2
+				index: 2
 			})
 		}
 	})

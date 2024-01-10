@@ -57,11 +57,17 @@
 			}
 		},
 		{
-			"path" : "pages/editData/editData",
-			"style" : 
-			{
+			"path": "pages/editData/editData",
+			"style": {
 				"navigationStyle": "custom",
-				"enablePullDownRefresh" : false
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/chat/chat",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
 			}
 		}
 	],
@@ -74,8 +80,7 @@
 			"iconPath": "static/image/publish.png",
 			"iconWidth": "50px"
 		},
-		"list": [
-			{
+		"list": [{
 				"pagePath": "pages/index/index",
 				"iconPath": "/static/image/index.png",
 				"selectedIconPath": "static/image/index_select.png"

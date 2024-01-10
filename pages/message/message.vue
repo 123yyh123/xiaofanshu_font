@@ -24,7 +24,7 @@
 		<view style="margin-top: 30rpx;">
 			<block v-for="(item,index) in list" :key="index">
 				<liu-swipe-action :index="item.user_id" @clickItem="clickItem" :btnList="operation" :ref="'ref'+index">
-					<view style="display: flex;padding: 20rpx;height: 110rpx;" @touchmove="touchmove(index)">
+					<view style="display: flex;padding: 20rpx;height: 110rpx;" @touchmove="touchmove(index)" @click="goToChat(item)">
 						<image style="width: 110rpx;height: 110rpx;border-radius: 50%;margin: 0 10rpx;"
 							mode="aspectFill" :src="item.avatar_url">
 						</image>
@@ -110,6 +110,13 @@
 						item.last_time = timestampFormat(item.last_time)
 					})
 					this.list = res
+				})
+			},
+			goToChat(item) {
+				console.log(item)
+				item.avatar_url=encodeURIComponent(item.avatar_url)
+				uni.navigateTo({
+					url: `/pages/chat/chat?userId=${item.user_id}&userName=${item.user_name}&avatarUrl=${item.avatar_url}`
 				})
 			}
 		},
