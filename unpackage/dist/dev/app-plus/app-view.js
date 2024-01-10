@@ -12228,6 +12228,14 @@ try {
   components = {
     uIcon: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 39)
       .default,
+    uLoadmore:
+      __webpack_require__(/*! @/uni_modules/uview-ui/components/u-loadmore/u-loadmore.vue */ 169)
+        .default,
+    uTransition:
+      __webpack_require__(/*! @/uni_modules/uview-ui/components/u-transition/u-transition.vue */ 14)
+        .default,
+    uButton: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 89)
+      .default,
   }
 } catch (e) {
   if (
@@ -12255,7 +12263,7 @@ var render = function () {
     { attrs: { _i: 0 } },
     [
       _c("uni-view", {
-        staticStyle: { position: "fixed", "z-index": "1", width: "100%" },
+        staticStyle: { position: "fixed", "z-index": "100", width: "100%" },
         style: _vm._$g(1, "s"),
         attrs: { _i: 1 },
       }),
@@ -12267,7 +12275,7 @@ var render = function () {
             height: "44px",
             "align-items": "center",
             position: "fixed",
-            "z-index": "1",
+            "z-index": "100",
             width: "100%",
           },
           style: _vm._$g(2, "s"),
@@ -12330,165 +12338,290 @@ var render = function () {
       _c("uni-view", { style: _vm._$g(10, "s"), attrs: { _i: 10 } }),
       _c(
         "v-uni-scroll-view",
-        { attrs: { _i: 11 } },
-        _vm._l(_vm._$g(12, "f"), function (item, index, $20, $30) {
-          return _c(
+        {
+          style: _vm._$g(11, "s"),
+          attrs: {
+            id: "scrollChat",
+            "scroll-y": true,
+            "scroll-with-animation": _vm._$g(11, "a-scroll-with-animation"),
+            "scroll-top": _vm._$g(11, "a-scroll-top"),
+            "upper-threshold": 100,
+            _i: 11,
+          },
+          on: {
+            scrolltoupper: function ($event) {
+              return _vm.$handleViewEvent($event)
+            },
+          },
+        },
+        [
+          _c(
             "uni-view",
-            { key: item, attrs: { _i: "12-" + $30 } },
+            { attrs: { id: "scrollMsg", _i: 12 } },
             [
-              _vm._$g("13-" + $30, "i")
-                ? _c(
-                    "uni-view",
-                    {
-                      staticStyle: {
-                        "text-align": "center",
-                        margin: "15rpx",
-                        "font-size": "25rpx",
-                        color: "#95949a",
-                      },
-                      attrs: { _i: "13-" + $30 },
-                    },
-                    [_vm._v(_vm._$g("13-" + $30, "t0-0"))]
-                  )
-                : _vm._e(),
-              _vm._$g("14-" + $30, "i")
-                ? _c(
-                    "uni-view",
-                    {
-                      staticStyle: {
-                        display: "flex",
-                        padding: "20rpx",
-                        "justify-content": "flex-start",
-                      },
-                      attrs: { _i: "14-" + $30 },
-                    },
-                    [
-                      _c(
-                        "uni-view",
-                        {
-                          staticStyle: { "margin-left": "15rpx" },
-                          attrs: { _i: "15-" + $30 },
-                        },
-                        [
-                          _c("v-uni-image", {
+              _c("u-loadmore", { attrs: { _i: 13 } }),
+              _vm._l(_vm._$g(14, "f"), function (item, index, $20, $30) {
+                return _c(
+                  "uni-view",
+                  { key: item, attrs: { _i: "14-" + $30 } },
+                  [
+                    _vm._$g("15-" + $30, "i")
+                      ? _c(
+                          "uni-view",
+                          {
                             staticStyle: {
-                              height: "80rpx",
-                              width: "80rpx",
-                              "border-radius": "50%",
+                              "text-align": "center",
+                              margin: "15rpx",
+                              "font-size": "25rpx",
+                              color: "#95949a",
                             },
-                            attrs: {
-                              mode: "aspectFill",
-                              src: _vm._$g("16-" + $30, "a-src"),
-                              _i: "16-" + $30,
-                            },
-                          }),
-                        ],
-                        1
-                      ),
-                      _c(
-                        "uni-view",
-                        {
-                          staticStyle: {
-                            padding: "15rpx",
-                            "background-color": "#ffffff",
-                            display: "flex",
-                            "margin-left": "15rpx",
-                            "margin-right": "110rpx",
-                            "border-radius": "30rpx",
+                            attrs: { _i: "15-" + $30 },
                           },
-                          attrs: { _i: "17-" + $30 },
-                        },
-                        [
-                          _c(
-                            "uni-view",
-                            {
-                              staticStyle: {
-                                "margin-right": "auto",
-                                "max-width": "460rpx",
-                                color: "#000000",
-                                "word-wrap": "break-word",
-                                "word-break": "break-all",
-                              },
-                              attrs: { _i: "18-" + $30 },
-                            },
-                            [_vm._v(_vm._$g("18-" + $30, "t0-0"))]
-                          ),
-                        ],
-                        1
-                      ),
-                    ],
-                    1
-                  )
-                : _c(
-                    "uni-view",
-                    {
-                      staticStyle: {
-                        display: "flex",
-                        padding: "20rpx",
-                        "justify-content": "flex-end",
-                      },
-                      attrs: { _i: "19-" + $30 },
-                    },
-                    [
-                      _c(
-                        "uni-view",
-                        {
-                          staticStyle: {
-                            padding: "15rpx",
-                            display: "flex",
-                            "background-color": "#518FF1",
-                            "border-radius": "30rpx",
-                            "margin-right": "15rpx",
-                          },
-                          attrs: { _i: "20-" + $30 },
-                        },
-                        [
-                          _c(
-                            "uni-view",
-                            {
-                              staticStyle: {
-                                "margin-left": "auto",
-                                "max-width": "460rpx",
-                                color: "#ffffff",
-                                "word-wrap": "break-word",
-                                "word-break": "break-all",
-                              },
-                              attrs: { _i: "21-" + $30 },
-                            },
-                            [_vm._v(_vm._$g("21-" + $30, "t0-0"))]
-                          ),
-                        ],
-                        1
-                      ),
-                      _c(
-                        "uni-view",
-                        {
-                          staticStyle: { "margin-right": "15rpx" },
-                          attrs: { _i: "22-" + $30 },
-                        },
-                        [
-                          _c("v-uni-image", {
+                          [_vm._v(_vm._$g("15-" + $30, "t0-0"))]
+                        )
+                      : _vm._e(),
+                    _vm._$g("16-" + $30, "i")
+                      ? _c(
+                          "uni-view",
+                          {
                             staticStyle: {
-                              height: "80rpx",
-                              width: "80rpx",
-                              "border-radius": "50%",
+                              display: "flex",
+                              padding: "20rpx",
+                              "justify-content": "flex-start",
                             },
-                            attrs: {
-                              mode: "aspectFill",
-                              src: _vm._$g("23-" + $30, "a-src"),
-                              _i: "23-" + $30,
+                            attrs: { _i: "16-" + $30 },
+                          },
+                          [
+                            _c(
+                              "uni-view",
+                              {
+                                staticStyle: { "margin-left": "15rpx" },
+                                attrs: { _i: "17-" + $30 },
+                              },
+                              [
+                                _c("v-uni-image", {
+                                  staticStyle: {
+                                    height: "80rpx",
+                                    width: "80rpx",
+                                    "border-radius": "50%",
+                                  },
+                                  attrs: {
+                                    mode: "aspectFill",
+                                    src: _vm._$g("18-" + $30, "a-src"),
+                                    _i: "18-" + $30,
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _c(
+                              "uni-view",
+                              {
+                                staticStyle: {
+                                  padding: "15rpx",
+                                  "background-color": "#ffffff",
+                                  display: "flex",
+                                  "margin-left": "15rpx",
+                                  "margin-right": "110rpx",
+                                  "border-radius": "30rpx",
+                                },
+                                attrs: { _i: "19-" + $30 },
+                              },
+                              [
+                                _c(
+                                  "uni-view",
+                                  {
+                                    staticStyle: {
+                                      "margin-right": "auto",
+                                      "max-width": "460rpx",
+                                      color: "#000000",
+                                      "word-wrap": "break-word",
+                                      "word-break": "break-all",
+                                    },
+                                    attrs: { _i: "20-" + $30 },
+                                  },
+                                  [_vm._v(_vm._$g("20-" + $30, "t0-0"))]
+                                ),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        )
+                      : _c(
+                          "uni-view",
+                          {
+                            staticStyle: {
+                              display: "flex",
+                              padding: "20rpx",
+                              "justify-content": "flex-end",
                             },
-                          }),
-                        ],
-                        1
-                      ),
-                    ],
-                    1
-                  ),
+                            attrs: { _i: "21-" + $30 },
+                          },
+                          [
+                            _c(
+                              "uni-view",
+                              {
+                                staticStyle: {
+                                  padding: "15rpx",
+                                  display: "flex",
+                                  "background-color": "#518FF1",
+                                  "border-radius": "30rpx",
+                                  "margin-right": "15rpx",
+                                },
+                                attrs: { _i: "22-" + $30 },
+                              },
+                              [
+                                _c(
+                                  "uni-view",
+                                  {
+                                    staticStyle: {
+                                      "margin-left": "auto",
+                                      "max-width": "460rpx",
+                                      color: "#ffffff",
+                                      "word-wrap": "break-word",
+                                      "word-break": "break-all",
+                                    },
+                                    attrs: { _i: "23-" + $30 },
+                                  },
+                                  [_vm._v(_vm._$g("23-" + $30, "t0-0"))]
+                                ),
+                              ],
+                              1
+                            ),
+                            _c(
+                              "uni-view",
+                              {
+                                staticStyle: { "margin-right": "15rpx" },
+                                attrs: { _i: "24-" + $30 },
+                              },
+                              [
+                                _c("v-uni-image", {
+                                  staticStyle: {
+                                    height: "80rpx",
+                                    width: "80rpx",
+                                    "border-radius": "50%",
+                                  },
+                                  attrs: {
+                                    mode: "aspectFill",
+                                    src: _vm._$g("25-" + $30, "a-src"),
+                                    _i: "25-" + $30,
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        ),
+                  ],
+                  1
+                )
+              }),
+            ],
+            2
+          ),
+        ],
+        1
+      ),
+      _c(
+        "uni-view",
+        {
+          staticStyle: {
+            display: "flex",
+            padding: "20rpx",
+            "align-items": "flex-end",
+            height: "100px",
+            "box-sizing": "border-box",
+          },
+          attrs: { _i: 26 },
+        },
+        [
+          _c(
+            "uni-view",
+            {
+              staticStyle: {
+                "background-color": "#ffffff",
+                padding: "20rpx",
+                "border-radius": "20rpx",
+                flex: "1",
+              },
+              attrs: { _i: 27 },
+            },
+            [
+              _c("v-uni-textarea", {
+                staticStyle: { width: "100%" },
+                attrs: {
+                  placeholder: "请输入消息内容",
+                  "auto-height": true,
+                  "adjust-position": false,
+                  "auto-blur": true,
+                  _i: 28,
+                },
+                on: {
+                  focus: function ($event) {
+                    return _vm.$handleViewEvent($event)
+                  },
+                  blur: function ($event) {
+                    return _vm.$handleViewEvent($event)
+                  },
+                },
+                model: {
+                  value: _vm._$g(28, "v-model"),
+                  callback: function ($$v) {
+                    _vm.$handleVModelEvent(28, $$v)
+                  },
+                  expression: "messageValue",
+                },
+              }),
             ],
             1
-          )
-        }),
+          ),
+          _c(
+            "uni-view",
+            { staticStyle: { "margin-left": "20rpx" }, attrs: { _i: 29 } },
+            [
+              _c("v-uni-image", {
+                staticStyle: { width: "70rpx" },
+                attrs: { src: _vm._$g(30, "a-src"), mode: "widthFix", _i: 30 },
+              }),
+            ],
+            1
+          ),
+          _c(
+            "u-transition",
+            {
+              staticStyle: {
+                display: "flex",
+                "padding-top": "5rpx",
+                "padding-bottom": "5rpx",
+              },
+              attrs: { _i: 31 },
+            },
+            [
+              _c("v-uni-image", {
+                staticStyle: { width: "79rpx" },
+                attrs: { src: _vm._$g(32, "a-src"), mode: "widthFix", _i: 32 },
+              }),
+            ],
+            1
+          ),
+          _c(
+            "u-transition",
+            { staticStyle: { "margin-left": "10rpx" }, attrs: { _i: 33 } },
+            [
+              _c("u-button", {
+                attrs: { _i: 34 },
+                on: {
+                  click: function ($event) {
+                    return _vm.$handleViewEvent($event)
+                  },
+                },
+              }),
+            ],
+            1
+          ),
+        ],
         1
       ),
     ],
@@ -12589,7 +12722,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 22);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\nbody {\r\n  background-color: #f5f5f5;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\nbody {\r\n  background-color: #f5f5f5;\n}\n .uni-textarea-wrapper {\r\n  max-height: 70px;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

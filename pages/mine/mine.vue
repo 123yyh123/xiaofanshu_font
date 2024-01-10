@@ -275,7 +275,7 @@
 				}, {
 					name: '赞过',
 				}],
-				area:'',
+				area: '',
 				screenHeight: '',
 				statusBarHeight: '',
 				navigationBarHeight: '',
@@ -375,7 +375,7 @@
 			};
 		},
 		methods: {
-			editData(){
+			editData() {
 				uni.navigateTo({
 					url: '/pages/editData/editData'
 				})
@@ -422,20 +422,28 @@
 													console.log(data.data)
 													updateAvatarUrl({
 														userVO: {
-															id: this.userInfo.id,
-															avatarUrl: data.data
+															id: this.userInfo
+																.id,
+															avatarUrl: data
+																.data
 														}
-													}).then(res=>{
-														if(res.code===20020){
+													}).then(res => {
+														if (res.code ===
+															20020) {
 															uni.showToast({
 																title: '更换成功',
 																icon: 'success',
 																duration: 500,
 																mask: true
 															})
-															this.userInfo.avatarUrl = data.data
-															uni.setStorageSync('userInfo', this.userInfo)
-														}else{
+															this.userInfo
+																.avatarUrl =
+																data.data
+															uni.setStorageSync(
+																'userInfo',
+																this
+																.userInfo)
+														} else {
 															uni.showToast({
 																title: '更换失败',
 																icon: 'none',
@@ -559,17 +567,17 @@
 		onPullDownRefresh() {
 			getUserInfo({
 				userId: uni.getStorageSync('userInfo').id
-			}).then(res=>{
-				if(res.code===20010){
-					uni.setStorageSync('userInfo',res.data)
-				}else{
+			}).then(res => {
+				if (res.code === 20010) {
+					uni.setStorageSync('userInfo', res.data)
+				} else {
 					uni.showToast({
-						icon:'error',
-						duration:1000,
-						title:'加载失败'
+						icon: 'error',
+						duration: 1000,
+						title: '加载失败'
 					})
 				}
-			}).catch(err=>{
+			}).catch(err => {
 				console.log(err)
 			})
 			this.$refs.water1.refresh()
@@ -613,18 +621,18 @@
 		},
 		onShow() {
 			this.userInfo = uni.getStorageSync('userInfo');
-			this.area=''
-			if(this.userInfo.area!=null&&this.userInfo.area!=''){
-				let s=this.userInfo.area.split(' ')
-				if(s.length===2){
-				s.forEach((item,index)=>{
-					this.area+=item.substring(0,item.length-1)
-				})
-				}else if(s.length===3){
+			this.area = ''
+			if (this.userInfo.area != null && this.userInfo.area != '') {
+				let s = this.userInfo.area.split(' ')
+				if (s.length === 2) {
+					s.forEach((item, index) => {
+						this.area += item.substring(0, item.length - 1)
+					})
+				} else if (s.length === 3) {
 					// 只显示省市
-					s.forEach((item,index)=>{
-						if(index!=2){
-							this.area+=item.substring(0,item.length-1)
+					s.forEach((item, index) => {
+						if (index != 2) {
+							this.area += item.substring(0, item.length - 1)
 						}
 					})
 				}
@@ -801,7 +809,7 @@
 		width: 6em;
 		margin-top: 30rpx;
 		padding: 10rpx 0rpx 10rpx 20rpx;
-		background-color: rgba(89, 88, 87,0.6);
+		background-color: rgba(89, 88, 87, 0.6);
 		border-radius: 20rpx;
 	}
 
