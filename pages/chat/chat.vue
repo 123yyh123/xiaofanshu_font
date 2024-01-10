@@ -16,10 +16,11 @@
 			</view>
 		</view>
 		<view :style="{height: statusBarHeight+44+'px'}"></view>
+		<u-notify ref="uNotify"></u-notify>
 		<scroll-view id="scrollChat" scroll-y :scroll-with-animation="scrollAnimation" :scroll-top="scrollTop"
-			:style="{height: chatMsgHeight+'px'}" @scrolltoupper="getChatHistory(page)" :upper-threshold='100'>
+			:style="{height: chatMsgHeight+'px'}" @scrolltoupper="getChatHistory(page)" upper-threshold="100">
 			<view id="scrollMsg">
-				<u-loadmore :status="msgLoading" />
+				<u-loadmore v-if="msgLoading==='nomore'" :status="msgLoading" line font-size="12"/>
 				<view v-for="(item,index) in messageList" v-bind:key="item.id">
 					<view v-if="item.showTime"
 						style="text-align: center;margin: 15rpx;font-size: 25rpx;color: #95949a;">
@@ -40,7 +41,11 @@
 							</view>
 						</view>
 					</view>
-					<view v-else style="display: flex;padding: 20rpx;justify-content: flex-end;">
+					<view v-else style="display: flex;padding: 20rpx;justify-content: flex-end;align-items: center;">
+						<view style="margin-right: 20rpx;">
+							<u-icon v-if="item.isSend===2" name="error-circle-fill" color="#E43D30" size="20"></u-icon>
+							<u-loading-icon size="17" :show="item.isSend===0"></u-loading-icon>
+						</view>
 						<view
 							style="padding:15rpx;display: flex;background-color: #518FF1;border-radius: 30rpx;margin-right: 15rpx;">
 							<view
@@ -105,7 +110,7 @@
 				messageList: [],
 				page: 1,
 				scrollTop: 0,
-				msgLoading: 'loadmore',
+				msgLoading: 'loading',
 				scrollAnimation: false,
 				messageValue: ''
 			};
@@ -116,28 +121,51 @@
 				if (this.messageValue.trim() == '') {
 					return
 				}
-				let sql =
-					`insert into chat_${this.targetUser.userId} (from_id,to_id,content,time,chat_type,is_read,is_send) values ('${this.userInfo.userId}','${this.targetUser.userId}','${this.messageValue}',${new Date().getTime()},1,1,1)`
-				this.$sqliteUtil.SqlExecute(sql).then(res => {
-					let sql1 = `select * from chat_${this.targetUser.userId} order by id desc limit 1`
-					this.$sqliteUtil.SqlSelect(sql1).then(res => {
-						let s = this.$ws.send({
-							id: res[0].id,
-							from: this.userInfo.userId,
-							fromName: this.userInfo.userName,
-							fromAvatar: this.userInfo.avatarUrl,
-							to: this.targetUser.userId,
-							content: this.messageValue,
-							time: new Date().getTime(),
-							messageType: 3,
-							chatType: 1
+				let s2 = `create table if not exists chat_${this.targetUser.userId} (
+				id integer primary key autoincrement, 
+				from_id text, 
+				to_id text, 
+				content text, 
+				time integer, 
+				chat_type integer, 
+				is_read integer,
+				is_send integer);`
+				this.$sqliteUtil.SqlExecute(s2).then(res => {
+					let sql =
+						`insert into chat_${this.targetUser.userId} (from_id,to_id,content,time,chat_type,is_read,is_send) values ('${this.userInfo.userId}','${this.targetUser.userId}','${this.messageValue}',${new Date().getTime()},1,1,0)`
+					this.$sqliteUtil.SqlExecute(sql).then(res => {
+						let sql1 = `select * from chat_${this.targetUser.userId} order by id desc limit 1`
+						this.$sqliteUtil.SqlSelect(sql1).then(res => {
+							res = transData(res)
+							res[0].time = weChatTimeFormat(res[0].time)
+							this.messageValue = ''
+							this.messageList.push(res[0])
+							this.scrollToBottom()
+							console.log(this.messageList)
+							this.$ws.send({
+								id: res[0].id,
+								from: this.userInfo.userId,
+								fromName: this.userInfo.userName,
+								fromAvatar: this.userInfo.avatarUrl,
+								to: this.targetUser.userId,
+								content: this.messageValue,
+								time: new Date().getTime(),
+								messageType: 3,
+								chatType: 1
+							})
 						})
-						res = transData(res)
-						res[0].time = weChatTimeFormat(res[0].time)
-						this.messageValue = ''
-						this.messageList.push(res[0])
-						this.scrollToBottom()
 					})
+				})
+				// 更新消息列表
+				let sql2 = `select * from message_list where user_id='${this.targetUser.userId}'`
+				this.$sqliteUtil.SqlSelect(sql2).then(res => {
+					if (res.length == 0) {
+						let sql3 = `insert into message_list (user_id,avatar_url,user_name,last_message,last_time,unread_num,stranger) values ('${this.targetUser.userId}','${this.targetUser.avatarUrl}','${this.targetUser.userName}','${this.messageValue}',${new Date().getTime()},0,0)`
+						this.$sqliteUtil.SqlExecute(sql3)
+					} else {
+						let sql4 = `update message_list set last_message='${this.messageValue}',last_time=${new Date().getTime()} where user_id='${this.targetUser.userId}'`
+						this.$sqliteUtil.SqlExecute(sql4)
+					}
 				})
 			},
 			backLastPage() {
@@ -174,7 +202,7 @@
 					if (res.length < 15) {
 						this.msgLoading = 'nomore'
 					} else {
-						this.msgLoading = 'loadmore'
+						this.msgLoading = 'loading'
 						this.page++
 					}
 				})
@@ -242,16 +270,40 @@
 					this.scrollToBottom()
 				})
 			})
+			uni.$on('updateMsgStatus', (data) => {
+				console.log(data)
+				for (let i = this.messageList.length - 1; i >= 0; i--) {
+					if (this.messageList[i].id == data.id) {
+						console.log('找到了')
+						this.messageList[i].isSend = data.status
+						this.$set(this.messageList, i, this.messageList[i])
+						if (data.status == 2) {
+							console.log('发送失败')
+							this.$refs.uNotify.show({
+								type: 'error',
+								message: data.content,
+								duration: 1500,
+								safeAreaInsetTop: true
+							})
+						}
+						break
+					}
+				}
+			})
 		},
 	}
 </script>
-
 <style lang="scss">
 	page {
 		background-color: #f5f5f5;
 	}
-
-	/deep/ .uni-textarea-wrapper {
+</style>
+<style lang="scss" scoped>
+	::v-deep .uni-textarea-wrapper {
 		max-height: 70px;
+	}
+
+	::v-deep .u-tag {
+		border-style: none;
 	}
 </style>

@@ -147,60 +147,82 @@ function isShowWeekDay(sub, weekDay) {
 
 // 仿微信时间显示格式转换 @time 时间戳毫秒
 export const weChatTimeFormat = (time) => {
-	const today = new Date().getTime()
-	// 当前时间减去获取到的时间
-	const sub = today - time
-	const day = 1000 * 60 * 60 * 24
-	const timeDate = new Date(time)
-	const currentYear = new Date().getFullYear()
-	const getYear = new Date(time).getFullYear()
-	const HHmm = `${formatTime2("hh", timeDate)}:${formatTime2("mm", timeDate)}`
-	const showWeekDay = isShowWeekDay(sub, timeDate.getDay())
-	if (currentYear > getYear) {
-		return `${formatTime2("yyyy年MM月dd日", timeDate)} ${todayTimeFormat(timeDate.getHours())} ${formatTime2("hh:mm", timeDate)}`
-	} else if (showWeekDay) {
-		return `${weekFormat(timeDate.getDay())} ${HHmm}`
-	} else if (sub > day && sub < day * 2) {
-		return `昨天 ${HHmm}`
-	} else if (sub <= day) {
-		return HHmm
-	} else {
-		return `${formatTime2("MM月dd日", timeDate)} ${todayTimeFormat(timeDate.getHours())} ${formatTime2("hh:mm", timeDate)}`
+	const today = new Date();
+	const timeDate = new Date(time);
+
+	// 获取当前时间的年月日时分秒
+	const currentYear = today.getFullYear();
+	const currentMonth = today.getMonth();
+	const currentDay = today.getDate();
+	const currentHour = today.getHours();
+	const currentMinute = today.getMinutes();
+
+	// 获取消息时间的年月日时分秒
+	const messageYear = timeDate.getFullYear();
+	const messageMonth = timeDate.getMonth();
+	const messageDay = timeDate.getDate();
+	const messageHour = timeDate.getHours();
+	const messageMinute = timeDate.getMinutes();
+
+	const subDays = currentDay - messageDay;
+
+	if (currentYear > messageYear) {
+		// 显示完整日期时间
+		return `${formatTime2("yyyy年MM月dd日", timeDate)} ${todayTimeFormat(messageHour)} ${formatTime2("hh:mm", timeDate)}`;
+	} else if (subDays === 0) {
+		// 今天
+		return `${todayTimeFormat(messageHour)} ${formatTime2("hh:mm", timeDate)}`;
+	} else if (subDays === 1) {
+		// 昨天
+		return `昨天 ${formatTime2("hh:mm", timeDate)}`;
+	} else if (subDays === 2) {
+		// 前天
+		return `前天 ${formatTime2("hh:mm", timeDate)}`;
+	} else if (isShowWeekDay(subDays, timeDate.getDay())) {
+		// 一周内，显示周几
+		return `${weekFormat(timeDate.getDay())} ${formatTime2("hh:mm", timeDate)}`;
+	} else if (currentYear === messageYear) {
+		// 其他情况，显示日期和时间
+		return `${formatTime2("MM月dd日", timeDate)} ${todayTimeFormat(messageHour)} ${formatTime2("hh:mm", timeDate)}`;
 	}
 }
 
+
+
+
+
 // 1) 将字符串转换成驼峰写法
 function toHump(str) {
- // 将字符串通过 下划线 拆分成多段 形成一个数组
- var strArr = str.split('_');
+	// 将字符串通过 下划线 拆分成多段 形成一个数组
+	var strArr = str.split('_');
 
- // 将数组中每个元素的第一个字母修改成大写形式
- // charAt(0) 返回该元素的第一个字母 user -> u
- // substring(1) 将字符串从第一个字母开始截取 user -> ser
- for (let i = 1; i < strArr.length; i++) {
-  strArr[i] = strArr[i].charAt(0).toUpperCase() + strArr[i].substring(1);
- }
+	// 将数组中每个元素的第一个字母修改成大写形式
+	// charAt(0) 返回该元素的第一个字母 user -> u
+	// substring(1) 将字符串从第一个字母开始截取 user -> ser
+	for (let i = 1; i < strArr.length; i++) {
+		strArr[i] = strArr[i].charAt(0).toUpperCase() + strArr[i].substring(1);
+	}
 
- // 数组转换成字符串
- return strArr.join('');
+	// 数组转换成字符串
+	return strArr.join('');
 }
 
 // 2) 格式化数组中的对象
-export const transData=(souceData)=>{
- return souceData.map(item => {
- // 准备最后返回的对象
- let obj = {}
+export const transData = (souceData) => {
+	return souceData.map(item => {
+		// 准备最后返回的对象
+		let obj = {}
 
- Object.keys(item).forEach(key => {
-  if (/\_(\w)/.test(key)) {
-   // 如果需要转化 则进行驼峰转化
-   let _key = toHump(key)
-   obj[_key] = item[key]
-  } else {
-   // 如果不需要直接赋值
-   obj[key] = item[key]
-  }
- })
-  return obj
- })
+		Object.keys(item).forEach(key => {
+			if (/\_(\w)/.test(key)) {
+				// 如果需要转化 则进行驼峰转化
+				let _key = toHump(key)
+				obj[_key] = item[key]
+			} else {
+				// 如果不需要直接赋值
+				obj[key] = item[key]
+			}
+		})
+		return obj
+	})
 }

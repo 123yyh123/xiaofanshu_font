@@ -41,6 +41,8 @@ let ws = {
 	completeClose,
 	setCornerMark,
 }
+// 定时器，10秒内服务器未应答,没有将对应的消息定时器清除，将对应的消息状态设置为发送失败
+let timer = {}
 
 function init() {
 	socketTask = uni.connectSocket({
@@ -104,14 +106,35 @@ function init() {
 				sqliteUtil.SqlExecute(s2).then(res => {
 					// 插入聊天记录
 					let sql =
-						`INSERT INTO chat_${message.from} (from_id, to_id, content, time, chat_type,is_read, is_send) VALUES ('${message.from}', '${message.to}', '${message.content}', ${message.time}, ${message.chatType}, 0,0)`
-					sqliteUtil.SqlExecute(sql).then(res=>{
+						`INSERT INTO chat_${message.from} (from_id, to_id, content, time, chat_type,is_read, is_send) VALUES ('${message.from}', '${message.to}', '${message.content}', ${message.time}, ${message.chatType}, 0,1)`
+					sqliteUtil.SqlExecute(sql).then(res => {
 						console.log('插入聊天记录成功')
 						uni.$emit('updateChatRecord')
 					})
 				})
 			}
-
+		}
+		// 服务器应答
+		if (message.messageType === 5) {
+			console.log('服务器应答')
+			if (sqliteUtil.isOpen()) {
+				// 0代表发送中，1代表发送成功，2代表发送失败
+				// 0未读，1已读
+				let status = 1
+				if (message.content) {
+					status = 2
+				}
+				message.status = status
+				// 清除定时器
+				clearTimeout(timer['time' + message.to + message.id])
+				// 更新聊天记录
+				let sql =
+					`UPDATE chat_${message.to} SET is_send=${status} WHERE id=${message.id} and from_id='${message.from}' and to_id='${message.to}'`
+				sqliteUtil.SqlExecute(sql).then(res => {
+					console.log('更新聊天记录成功')
+					uni.$emit('updateMsgStatus', message)
+				})
+			}
 		}
 	})
 	socketTask.onClose(() => {
@@ -132,6 +155,21 @@ function heartBeat() {
 }
 
 function send(value) {
+	if(value.messageType===3){
+		timer['time' + value.to + value.id] = setTimeout(() => {
+			console.log('发送超时')
+			if (sqliteUtil.isOpen()) {
+				let sql =
+					`UPDATE chat_${value.to} SET is_send=2 WHERE id=${value.id} and from_id='${value.from}' and to_id='${value.to}'`
+				sqliteUtil.SqlExecute(sql).then(res => {
+					console.log('更新消息状态成功')
+					value.status = 2
+					value.content = '发送失败'
+					uni.$emit('updateMsgStatus', value)
+				})
+			}
+		}, 10000)
+	}
 	if (ws.socketTask.readyState === 1) {
 		ws.socketTask.send({
 			data: JSON.stringify(value),
