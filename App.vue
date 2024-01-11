@@ -4,7 +4,7 @@
 	} from './apis/auth_apis.js';
 	import {
 		getUserInfo
-	} from './apis/user_service.js'
+	} from './apis/user_service.js';
 import list from './uni_modules/uview-ui/libs/config/props/list.js';
 	export default {
 		onLaunch: function() {

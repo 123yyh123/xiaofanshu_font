@@ -312,6 +312,14 @@ var render = function () {
         },
         [_vm._v("打开ActionSheet")]
       ),
+      _c("v-uni-image", {
+        staticStyle: { width: "120px", height: "120px" },
+        attrs: {
+          src: "https://gitee.com/yyh12345678/image/raw/master/image/不高兴.gif",
+          mode: "aspectFill",
+          _i: 3,
+        },
+      }),
     ],
     1
   )
@@ -3867,14 +3875,13 @@ var render = function () {
                           _c("uni-view", { attrs: { _i: "20-" + $30 } }, [
                             _vm._v(_vm._$g("20-" + $30, "t0-0")),
                           ]),
-                          _c(
-                            "uni-view",
-                            {
-                              staticClass: _vm._$g("21-" + $30, "sc"),
-                              attrs: { _i: "21-" + $30 },
+                          _c("v-uni-rich-text", {
+                            staticClass: _vm._$g("21-" + $30, "sc"),
+                            attrs: {
+                              nodes: _vm._$g("21-" + $30, "a-nodes"),
+                              _i: "21-" + $30,
                             },
-                            [_vm._v(_vm._$g("21-" + $30, "t0-0"))]
-                          ),
+                          }),
                         ],
                         1
                       ),
@@ -12360,6 +12367,9 @@ var render = function () {
             scrolltoupper: function ($event) {
               return _vm.$handleViewEvent($event)
             },
+            click: function ($event) {
+              return _vm.$handleViewEvent($event)
+            },
           },
         },
         [
@@ -12424,37 +12434,52 @@ var render = function () {
                               ],
                               1
                             ),
-                            _c(
-                              "uni-view",
-                              {
-                                staticStyle: {
-                                  padding: "15rpx",
-                                  "background-color": "#ffffff",
-                                  display: "flex",
-                                  "margin-left": "15rpx",
-                                  "margin-right": "110rpx",
-                                  "border-radius": "30rpx",
-                                },
-                                attrs: { _i: "20-" + $30 },
-                              },
-                              [
-                                _c(
+                            _vm._$g("20-" + $30, "i")
+                              ? _c(
                                   "uni-view",
                                   {
                                     staticStyle: {
-                                      "margin-right": "auto",
-                                      "max-width": "460rpx",
-                                      color: "#000000",
-                                      "word-wrap": "break-word",
-                                      "word-break": "break-all",
+                                      padding: "15rpx",
+                                      "background-color": "#ffffff",
+                                      display: "flex",
+                                      "margin-left": "15rpx",
+                                      "margin-right": "110rpx",
+                                      "border-radius": "30rpx",
                                     },
-                                    attrs: { _i: "21-" + $30 },
+                                    attrs: { _i: "20-" + $30 },
                                   },
-                                  [_vm._v(_vm._$g("21-" + $30, "t0-0"))]
-                                ),
-                              ],
-                              1
-                            ),
+                                  [
+                                    _c("v-uni-rich-text", {
+                                      staticStyle: {
+                                        "margin-right": "auto",
+                                        "max-width": "460rpx",
+                                        color: "#2b2b2b",
+                                        "word-wrap": "break-word",
+                                        "word-break": "break-all",
+                                      },
+                                      attrs: {
+                                        nodes: _vm._$g("21-" + $30, "a-nodes"),
+                                        _i: "21-" + $30,
+                                      },
+                                    }),
+                                  ],
+                                  1
+                                )
+                              : _vm._$g("22-" + $30, "e")
+                              ? _c(
+                                  "uni-view",
+                                  { attrs: { _i: "22-" + $30 } },
+                                  [
+                                    _c("v-uni-rich-text", {
+                                      attrs: {
+                                        nodes: _vm._$g("23-" + $30, "a-nodes"),
+                                        _i: "23-" + $30,
+                                      },
+                                    }),
+                                  ],
+                                  1
+                                )
+                              : _vm._e(),
                           ],
                           1
                         )
@@ -12467,60 +12492,75 @@ var render = function () {
                               "justify-content": "flex-end",
                               "align-items": "center",
                             },
-                            attrs: { _i: "22-" + $30 },
+                            attrs: { _i: "24-" + $30 },
                           },
                           [
                             _c(
                               "uni-view",
                               {
                                 staticStyle: { "margin-right": "20rpx" },
-                                attrs: { _i: "23-" + $30 },
+                                attrs: { _i: "25-" + $30 },
                               },
                               [
-                                _vm._$g("24-" + $30, "i")
-                                  ? _c("u-icon", { attrs: { _i: "24-" + $30 } })
+                                _vm._$g("26-" + $30, "i")
+                                  ? _c("u-icon", { attrs: { _i: "26-" + $30 } })
                                   : _vm._e(),
                                 _c("u-loading-icon", {
-                                  attrs: { _i: "25-" + $30 },
+                                  attrs: { _i: "27-" + $30 },
                                 }),
                               ],
                               1
                             ),
-                            _c(
-                              "uni-view",
-                              {
-                                staticStyle: {
-                                  padding: "15rpx",
-                                  display: "flex",
-                                  "background-color": "#518FF1",
-                                  "border-radius": "30rpx",
-                                  "margin-right": "15rpx",
-                                },
-                                attrs: { _i: "26-" + $30 },
-                              },
-                              [
-                                _c(
+                            _vm._$g("28-" + $30, "i")
+                              ? _c(
                                   "uni-view",
                                   {
                                     staticStyle: {
-                                      "margin-left": "auto",
-                                      "max-width": "460rpx",
-                                      color: "#ffffff",
-                                      "word-wrap": "break-word",
-                                      "word-break": "break-all",
+                                      padding: "15rpx",
+                                      display: "flex",
+                                      "background-color": "#518FF1",
+                                      "border-radius": "30rpx",
+                                      "margin-right": "15rpx",
                                     },
-                                    attrs: { _i: "27-" + $30 },
+                                    attrs: { _i: "28-" + $30 },
                                   },
-                                  [_vm._v(_vm._$g("27-" + $30, "t0-0"))]
-                                ),
-                              ],
-                              1
-                            ),
+                                  [
+                                    _c("v-uni-rich-text", {
+                                      staticStyle: {
+                                        "margin-left": "auto",
+                                        "max-width": "460rpx",
+                                        color: "#ffffff",
+                                        "word-wrap": "break-word",
+                                        "word-break": "break-all",
+                                      },
+                                      attrs: {
+                                        nodes: _vm._$g("29-" + $30, "a-nodes"),
+                                        _i: "29-" + $30,
+                                      },
+                                    }),
+                                  ],
+                                  1
+                                )
+                              : _vm._$g("30-" + $30, "e")
+                              ? _c(
+                                  "uni-view",
+                                  { attrs: { _i: "30-" + $30 } },
+                                  [
+                                    _c("v-uni-rich-text", {
+                                      attrs: {
+                                        nodes: _vm._$g("31-" + $30, "a-nodes"),
+                                        _i: "31-" + $30,
+                                      },
+                                    }),
+                                  ],
+                                  1
+                                )
+                              : _vm._e(),
                             _c(
                               "uni-view",
                               {
                                 staticStyle: { "margin-right": "15rpx" },
-                                attrs: { _i: "28-" + $30 },
+                                attrs: { _i: "32-" + $30 },
                               },
                               [
                                 _c("v-uni-image", {
@@ -12531,8 +12571,8 @@ var render = function () {
                                   },
                                   attrs: {
                                     mode: "aspectFill",
-                                    src: _vm._$g("29-" + $30, "a-src"),
-                                    _i: "29-" + $30,
+                                    src: _vm._$g("33-" + $30, "a-src"),
+                                    _i: "33-" + $30,
                                   },
                                 }),
                               ],
@@ -12560,8 +12600,9 @@ var render = function () {
             "align-items": "flex-end",
             height: "100px",
             "box-sizing": "border-box",
+            width: "100%",
           },
-          attrs: { _i: 30 },
+          attrs: { _i: 34 },
         },
         [
           _c(
@@ -12573,17 +12614,23 @@ var render = function () {
                 "border-radius": "20rpx",
                 flex: "1",
               },
-              attrs: { _i: 31 },
+              attrs: { _i: 35 },
             },
             [
               _c("v-uni-textarea", {
-                staticStyle: { width: "100%" },
+                staticStyle: {
+                  width: "100%",
+                  "caret-color": "#F56C6C",
+                  color: "#2b2b2b",
+                },
                 attrs: {
                   placeholder: "请输入消息内容",
                   "auto-height": true,
                   "adjust-position": false,
                   "auto-blur": true,
-                  _i: 32,
+                  focus: _vm._$g(36, "a-focus"),
+                  cursor: _vm._$g(36, "a-cursor"),
+                  _i: 36,
                 },
                 on: {
                   focus: function ($event) {
@@ -12594,9 +12641,9 @@ var render = function () {
                   },
                 },
                 model: {
-                  value: _vm._$g(32, "v-model"),
+                  value: _vm._$g(36, "v-model"),
                   callback: function ($$v) {
-                    _vm.$handleVModelEvent(32, $$v)
+                    _vm.$handleVModelEvent(36, $$v)
                   },
                   expression: "messageValue",
                 },
@@ -12606,11 +12653,19 @@ var render = function () {
           ),
           _c(
             "uni-view",
-            { staticStyle: { "margin-left": "20rpx" }, attrs: { _i: 33 } },
+            {
+              staticStyle: { "margin-left": "20rpx" },
+              attrs: { _i: 37 },
+              on: {
+                click: function ($event) {
+                  return _vm.$handleViewEvent($event)
+                },
+              },
+            },
             [
               _c("v-uni-image", {
                 staticStyle: { width: "70rpx" },
-                attrs: { src: _vm._$g(34, "a-src"), mode: "widthFix", _i: 34 },
+                attrs: { src: _vm._$g(38, "a-src"), mode: "widthFix", _i: 38 },
               }),
             ],
             1
@@ -12623,22 +12678,22 @@ var render = function () {
                 "padding-top": "5rpx",
                 "padding-bottom": "5rpx",
               },
-              attrs: { _i: 35 },
+              attrs: { _i: 39 },
             },
             [
               _c("v-uni-image", {
                 staticStyle: { width: "79rpx" },
-                attrs: { src: _vm._$g(36, "a-src"), mode: "widthFix", _i: 36 },
+                attrs: { src: _vm._$g(40, "a-src"), mode: "widthFix", _i: 40 },
               }),
             ],
             1
           ),
           _c(
             "u-transition",
-            { staticStyle: { "margin-left": "10rpx" }, attrs: { _i: 37 } },
+            { staticStyle: { "margin-left": "10rpx" }, attrs: { _i: 41 } },
             [
               _c("u-button", {
-                attrs: { _i: 38 },
+                attrs: { _i: 42 },
                 on: {
                   click: function ($event) {
                     return _vm.$handleViewEvent($event)
@@ -12651,6 +12706,63 @@ var render = function () {
         ],
         1
       ),
+      _vm._$g(43, "i")
+        ? _c(
+            "v-uni-scroll-view",
+            {
+              staticStyle: { "background-color": "aliceblue" },
+              style: _vm._$g(43, "s"),
+              attrs: { "scroll-y": true, _i: 43 },
+            },
+            [
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    "flex-wrap": "wrap",
+                    padding: "20rpx",
+                    "justify-content": "space-around",
+                  },
+                  attrs: { _i: 44 },
+                },
+                [
+                  _vm._l(_vm._$g(45, "f"), function (item, index, $21, $31) {
+                    return [
+                      _c(
+                        "uni-view",
+                        {
+                          key: item["k0"],
+                          staticStyle: { margin: "20rpx" },
+                          attrs: { _i: "46-" + $31 },
+                          on: {
+                            click: function ($event) {
+                              return _vm.$handleViewEvent($event)
+                            },
+                          },
+                        },
+                        [
+                          _c("v-uni-image", {
+                            staticStyle: { width: "100rpx", height: "100rpx" },
+                            attrs: {
+                              src: _vm._$g("47-" + $31, "a-src"),
+                              mode: "widthFix",
+                              "lazy-load": true,
+                              _i: "47-" + $31,
+                            },
+                          }),
+                        ],
+                        1
+                      ),
+                    ]
+                  }),
+                ],
+                2
+              ),
+            ],
+            1
+          )
+        : _vm._e(),
     ],
     1
   )

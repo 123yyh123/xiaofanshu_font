@@ -66,7 +66,6 @@ const sqliteUtil = {
 	//-----------------------js对象方法，简化操作-------------
 	///原生的sql操作
 	SqlExecute(sql) {
-		console.log(sql)
 		return new Promise((resolve, reject) => {
 			plus.sqlite.executeSql({
 				name: this.dbName,
@@ -84,7 +83,6 @@ const sqliteUtil = {
 	},
 	//执行原生的select语句
 	SqlSelect(sql) {
-		console.log(sql)
 		return new Promise((resolve, reject) => {
 			plus.sqlite.selectSql({
 				name: this.dbName,

@@ -31,7 +31,7 @@
 						</image>
 						<view style="margin:0 15rpx;flex: 1;align-self: center;">
 							<view>{{item.user_name}}</view>
-							<view class="simpleMessage">{{item.last_message}}</view>
+							<rich-text class="simpleMessage" :nodes="item.last_message"></rich-text>
 						</view>
 						<view style="align-self: center;text-align: end;">
 							<view style="color: #949495;font-size: 24rpx;">{{item.last_time}}</view>
@@ -52,7 +52,8 @@
 	} from '../../utils/sqliteUtil.js'
 	import {
 		timestampFormat,
-		stringDateFormat
+		stringDateFormat,
+		replaceImageTags
 	} from '../../utils/util.js'
 	export default {
 		data() {
@@ -108,10 +109,13 @@
 			},
 			refreshList() {
 				this.$sqliteUtil.SqlSelect(`SELECT * FROM message_list ORDER BY last_time DESC`).then(res => {
+					console.log(res)
 					res.forEach(item => {
-						item.last_time = timestampFormat(item.last_time)
+						item.last_time = timestampFormat(Number(item.last_time))
+						item.last_message = replaceImageTags(item.last_message)	
 					})
 					this.list = res
+					console.log(this.list)
 				})
 			},
 			goToChat(item) {

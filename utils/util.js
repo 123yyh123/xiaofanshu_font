@@ -1,6 +1,7 @@
 import {
 	pathToBase64
 } from '../js_sdk/mmmm-image-tools/index.js'
+import {emojiList} from './emojiUtil'
 export const timestampFormat = timespan => {
 	var dateTime = new Date(timespan) // 将传进来的字符串或者毫秒转为标准时间
 	return dateTimeFormat(dateTime)
@@ -225,4 +226,22 @@ export const transData = (souceData) => {
 		})
 		return obj
 	})
+}
+
+export const replaceImageTags=(message)=>{
+    // 正则表达式匹配<image>标签
+    const imageTagRegex = /<img src='(.*?)' style='width: (\d+)px;height: (\d+)px;'><\/img>/g;
+    // 使用replace函数进行替换
+    return message.replace(imageTagRegex, function (match, src, width, height) {
+        // 这里可以根据需要进行调整，例如将width和height应用到表情显示的样式中
+        return `[${getEmojiNameFromUrl(src)}XFS]`;
+    });
+}
+
+// 获取表情名称
+function getEmojiNameFromUrl(url) {
+    // 在这里根据url获取表情名称，你可能需要维护一个表情名称和url的映射关系
+    // 这里只是一个示例，实际情况需要根据你的数据结构进行调整
+    const emoji = emojiList.find(item => item.url === url);
+    return emoji ? emoji.name : '';
 }

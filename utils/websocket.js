@@ -78,13 +78,13 @@ function init() {
 					imageUrlToBase64(message.fromAvatar).then(img => {
 						if (res.length > 0) {
 							let sql =
-								`UPDATE message_list SET last_message='${message.content}', last_time=${message.time}, stranger=${message.friendType}, avatar_url='${img}', user_name='${message.fromName}', unread_num=unread_num+1 WHERE user_id='${message.from}'`;
+								`UPDATE message_list SET last_message="${message.content}", last_time=${message.time}, stranger=${message.friendType}, avatar_url='${img}', user_name='${message.fromName}', unread_num=unread_num+1 WHERE user_id='${message.from}'`;
 							sqliteUtil.SqlExecute(sql).then(res => {
 								setCornerMark()
 							})
 						} else {
 							let sql =
-								`INSERT INTO message_list (user_id, stranger, last_message, last_time, avatar_url, user_name, unread_num) VALUES ('${message.from}', ${message.friendType}, '${message.content}', ${message.time}, '${img}', '${message.fromName}', 1)`;
+								`INSERT INTO message_list (user_id, stranger, last_message, last_time, avatar_url, user_name, unread_num) VALUES ('${message.from}', ${message.friendType}, "${message.content}", ${message.time}, '${img}', '${message.fromName}', 1)`;
 							sqliteUtil.SqlExecute(sql).then(res => {
 								setCornerMark()
 							})
@@ -106,7 +106,7 @@ function init() {
 				sqliteUtil.SqlExecute(s2).then(res => {
 					// 插入聊天记录
 					let sql =
-						`INSERT INTO chat_${message.from} (from_id, to_id, content, time, chat_type,is_read, is_send) VALUES ('${message.from}', '${message.to}', '${message.content}', ${message.time}, ${message.chatType}, 0,1)`
+						`INSERT INTO chat_${message.from} (from_id, to_id, content, time, chat_type,is_read, is_send) VALUES ('${message.from}', '${message.to}', "${message.content}", ${message.time}, ${message.chatType}, 0,1)`
 					sqliteUtil.SqlExecute(sql).then(res => {
 						console.log('插入聊天记录成功')
 						uni.$emit('updateChatRecord')
