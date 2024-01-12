@@ -19,7 +19,7 @@
 		<u-notify ref="uNotify"></u-notify>
 		<scroll-view id="scrollChat" scroll-y :scroll-with-animation="scrollAnimation" :scroll-top="scrollTop"
 			:style="{height: chatMsgHeight+'px'}" @scrolltoupper="getChatHistory(page)" upper-threshold="100"
-			@click="closeEmoji">
+			@click="closeME">
 			<view id="scrollMsg">
 				<u-loadmore v-if="msgLoading==='nomore'" :status="msgLoading" line font-size="12" />
 				<view v-for="(item,index) in messageList" v-bind:key="item.id">
@@ -40,11 +40,12 @@
 								style="margin-right: auto;max-width: 460rpx;color: #2b2b2b;word-wrap: break-word;word-break: break-all;"
 								:nodes="item.content"></rich-text>
 						</view>
-						<view v-else-if="item.chatType===2">
-							<rich-text :nodes="item.content"></rich-text>
+						<view v-else-if="item.chatType===2" style="padding: 15rpx;margin-left: 15rpx;">
+							<rich-text @click="preImage" :nodes="item.content" :data-node="item.content"></rich-text>
 						</view>
 					</view>
-					<view v-else style="display: flex;padding: 20rpx;justify-content: flex-end;align-items: center;">
+					<view v-else
+						style="display: flex;padding: 20rpx;justify-content: flex-end;align-items: flex-start;">
 						<view style="margin-right: 20rpx;">
 							<u-icon v-if="item.isSend===2" name="error-circle-fill" color="#E43D30" size="20"></u-icon>
 							<u-loading-icon size="17" :show="item.isSend===0"></u-loading-icon>
@@ -55,8 +56,8 @@
 								style="margin-left: auto;max-width: 460rpx;color:#ffffff;word-wrap: break-word;word-break: break-all;"
 								:nodes="item.content"></rich-text>
 						</view>
-						<view v-else-if="item.chatType===2">
-							<rich-text :nodes="item.content"></rich-text>
+						<view v-else-if="item.chatType===2" style="padding:15rpx;padding-right: 15rpx;">
+							<rich-text @click="preImage" :nodes="item.content" :data-node="item.content"></rich-text>
 						</view>
 						<view style="margin-right: 15rpx;">
 							<image mode="aspectFill" style="height: 80rpx;width: 80rpx;border-radius: 50%;"
@@ -73,29 +74,66 @@
 			<view style="background-color: #ffffff;padding: 20rpx;border-radius: 20rpx;flex: 1;">
 				<textarea v-model="messageValue" style="width: 100%;caret-color: #F56C6C;color: #2b2b2b;"
 					placeholder="请输入消息内容" auto-height :adjust-position="false" @focus="focus" @blur="blur" auto-blur
-					:focus="fo" :cursor="cursor"></textarea>
+					:cursor="cursor"></textarea>
 			</view>
 			<view style="margin-left: 20rpx;" @click="openEmoji">
 				<image src="../../static/image/表情.png" style="width: 70rpx;" mode="widthFix"></image>
 			</view>
 			<u-transition :show="!isShowSend" mode="slide-down" :duration="300"
-				style="display: flex;padding-top: 5rpx;padding-bottom: 5rpx;">
+				style="display: flex;padding-top: 5rpx;padding-bottom: 5rpx;" @click="openMore">
 				<image src="../../static/image/加 (1).png" style="width: 79rpx;" mode="widthFix"></image>
 			</u-transition>
 			<u-transition :show="isShowSend" mode="fade-right" :duration="700" style="margin-left: 10rpx;">
 				<u-button type="error" text="发送" @click="sendMessage"></u-button>
 			</u-transition>
 		</view>
-		<scroll-view v-if="showEmoji" :style="{height: keyboardHeight+'px'}" scroll-y
-			style="background-color: aliceblue;">
-			<view style="display: flex;flex-wrap: wrap;padding: 20rpx;justify-content: space-around;">
-				<block v-for="(item,index) in emojiList" v-bind:key="index">
-					<view style="margin: 20rpx;" @click="addEmoji(item.name)">
-						<image :src="item.url" style="width: 100rpx;height: 100rpx;" mode="widthFix" lazy-load></image>
+		<view v-if="showEmoji">
+			<scroll-view :style="{height: keyboardHeight+'px'}" scroll-y style="background-color: aliceblue;">
+				<view style="display: flex;flex-wrap: wrap;padding: 20rpx;justify-content: space-around;">
+					<block v-for="(item,index) in emojiList" v-bind:key="index">
+						<view style="margin: 20rpx;" @click="addEmoji(item.name)">
+							<image :src="item.url" style="width: 100rpx;height: 100rpx;" mode="widthFix" lazy-load>
+							</image>
+						</view>
+					</block>
+				</view>
+			</scroll-view>
+		</view>
+		<view v-if="showMore" :style="{height: keyboardHeight+'px'}" style="background-color: #f5f5f5;color: #2b2b2b;">
+			<view style="display: flex;padding: 20rpx;justify-content: space-around;">
+				<view style="text-align: center;" @click="chooseImage">
+					<view style="padding: 30rpx 40rpx;background-color: #ffffff;border-radius: 30rpx;">
+						<image src="../../static/image/相册 (1).png" style="width: 80rpx;border-radius: 20rpx;"
+							mode="widthFix"></image>
 					</view>
-				</block>
+					<view>相册</view>
+				</view>
+				<view style="text-align: center;">
+					<view style="padding: 30rpx 40rpx;background-color: #ffffff;border-radius: 30rpx;">
+						<image src="../../static/image/拍照.png" style="width: 80rpx;border-radius: 20rpx;"
+							mode="widthFix">
+						</image>
+					</view>
+					<view>拍照</view>
+				</view>
+				<view style="text-align: center;">
+					<view style="padding: 30rpx 40rpx;background-color: #ffffff;border-radius: 30rpx;">
+						<image src="../../static/image/电话.png" style="width: 80rpx;border-radius: 20rpx;"
+							mode="widthFix">
+						</image>
+					</view>
+					<view>电话</view>
+				</view>
+				<view style="text-align: center;">
+					<view style="padding: 30rpx 40rpx;background-color: #ffffff;border-radius: 30rpx;">
+						<image src="../../static/image/文件.png" style="width: 80rpx;border-radius: 20rpx;"
+							mode="widthFix">
+						</image>
+					</view>
+					<view>文件</view>
+				</view>
 			</view>
-		</scroll-view>
+		</view>
 	</view>
 </template>
 
@@ -103,11 +141,18 @@
 	import {
 		timestampFormat,
 		weChatTimeFormat,
-		transData
+		transData,
+		replaceImageMessage,
 	} from '@/utils/util.js'
 	import {
 		emojiList
 	} from '@/utils/emojiUtil.js'
+	import {
+		baseUrl
+	} from '@/config/index.js'
+	import {
+		zoomOutImage
+	} from '@/utils/fileUtil.js'
 	export default {
 		data() {
 			return {
@@ -132,33 +177,166 @@
 				scrollAnimation: false,
 				messageValue: '',
 				showEmoji: false,
-				fo: false,
-				emojiList: emojiList,
-				cursor: 0
+				// fo: false,
+				emojiList: [],
+				cursor: 0,
+				showMore: false
 			};
 		},
 		methods: {
+			preImage(e) {
+				let s = e.target.dataset.node
+				// <img src='${url}' style='max-width: 200px;height: auto;'></img>`
+				// 使用正则表达式匹配<img>标签中的src属性值
+				const srcRegex = /<img[^>]*src=['"]([^'"]+)['"][^>]*>/;
+				const match = s.match(srcRegex);
+				if (match) {
+					const imgSrc = match[1];
+					uni.previewImage({
+						urls: [imgSrc]
+					});
+				}
+
+			},
+			chooseImage() {
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['original', 'compressed'],
+					sourceType: ['album'],
+					success: (res) => {
+						res.tempFilePaths.forEach(item => {
+							uni.uploadFile({
+								url: baseUrl + '/third/uploadImg',
+								filePath: item,
+								name: 'file',
+								header: {
+									'token': uni.getStorageSync('token')
+								},
+								success: (res) => {
+									let data = JSON.parse(res.data)
+									if (data.code == 20020) {
+										console.log(data)
+										this.sendImage(data.data)
+									}
+								}
+
+							})
+						})
+					}
+				})
+			},
+			sendImage(url) {
+				let sql1 = `create table if not exists chat_${this.targetUser.userId} (
+				id integer primary key autoincrement, 
+				from_id text, 
+				to_id text, 
+				content text, 
+				time integer, 
+				chat_type integer, 
+				is_read integer,
+				is_send integer);`
+				this.$sqliteUtil.SqlExecute(sql1).then(res => {
+					zoomOutImage(url).then(result => {
+						console.log(result)
+						let content =
+							`<img src='${result.src}' style='width: ${result.width}px;height: ${result.height}px;'></img>`
+						let sql2 =
+							`insert into chat_${this.targetUser.userId} (from_id,to_id,content,time,chat_type,is_read,is_send) values ('${this.userInfo.userId}','${this.targetUser.userId}',"${content}",${new Date().getTime()},2,1,0)`
+						this.$sqliteUtil.SqlExecute(sql2).then(res => {
+							let sql3 =
+								`select * from chat_${this.targetUser.userId} order by id desc limit 1`
+							this.$sqliteUtil.SqlSelect(sql3).then(res => {
+								res = transData(res)
+								res[0].time = weChatTimeFormat(res[0].time)
+								this.messageList.push(res[0])
+								this.scrollToBottom()
+								this.$ws.send({
+									id: res[0].id,
+									from: this.userInfo.userId,
+									fromName: this.userInfo.userName,
+									fromAvatar: this.userInfo.avatarUrl,
+									to: this.targetUser.userId,
+									content: content,
+									time: new Date().getTime(),
+									messageType: 3,
+									chatType: 2,
+									friendType: 0
+								})
+							})
+						})
+					})
+				})
+				let sql4 = `select * from message_list where user_id='${this.targetUser.userId}'`
+				this.$sqliteUtil.SqlSelect(sql4).then(res => {
+					if (res.length == 0) {
+						let sql5 =
+							`insert into message_list (user_id,avatar_url,user_name,last_message,last_time,unread_num,stranger) values ('${this.targetUser.userId}','${this.targetUser.avatarUrl}','${this.targetUser.userName}',"[图片]",${new Date().getTime()},0,0)`
+						this.$sqliteUtil.SqlExecute(sql5)
+					} else {
+						let sql6 =
+							`update message_list set last_message="[图片]",last_time=${new Date().getTime()} where user_id='${this.targetUser.userId}'`
+						this.$sqliteUtil.SqlExecute(sql6)
+					}
+				})
+			},
+			openMore() {
+				if (this.showMore) {
+					this.showMore = false
+					this.chatMsgHeight = this.chatMsgHeight + this.keyboardHeight
+					this.scrollToBottom()
+					return
+				} else {
+					if (this.showEmoji) {
+						this.showEmoji = false
+						this.chatMsgHeight = this.chatMsgHeight + this.keyboardHeight
+						this.scrollToBottom()
+					}
+					this.showMore = true
+					this.chatMsgHeight = this.chatMsgHeight - this.keyboardHeight
+					this.scrollToBottom()
+				}
+			},
 			addEmoji(name) {
 				name = '[' + name + 'XFS]'
-				this.messageValue = this.messageValue.slice(0, this.cursor) + name + this.messageValue.slice(this.cursor)
+				this.messageValue = this.messageValue.slice(0, this.cursor) + name + this.messageValue.slice(
+					this
+					.cursor)
 				this.cursor = this.cursor + name.length
-				this.fo = true
 			},
 			openEmoji() {
 				if (this.showEmoji) {
 					return
 				}
+				if (this.showMore) {
+					this.showMore = false
+					this.chatMsgHeight = this.chatMsgHeight + this.keyboardHeight
+					this.scrollToBottom()
+				}
 				this.chatMsgHeight = this.chatMsgHeight - this.keyboardHeight
 				this.scrollToBottom()
 				this.showEmoji = true
 			},
-			closeEmoji() {
-				if (this.showEmoji) {
+			closeME() {
+				if (this.showEmoji && this.showMore) {
+					this.showEmoji = false
+					this.showMore = false
 					this.chatMsgHeight = this.chatMsgHeight + this.keyboardHeight
 					this.scrollToBottom()
-					this.showEmoji = false
+					return
 				}
-				this.fo = false
+				if (this.showEmoji) {
+					this.showEmoji = false
+					this.chatMsgHeight = this.chatMsgHeight + this.keyboardHeight
+					this.scrollToBottom()
+					return
+				}
+				if (this.showMore) {
+					this.showMore = false
+					this.chatMsgHeight = this.chatMsgHeight + this.keyboardHeight
+					this.scrollToBottom()
+					return
+				}
+
 			},
 			sendMessage() {
 				// 发送消息
@@ -207,14 +385,14 @@
 					let sql =
 						`insert into chat_${this.targetUser.userId} (from_id,to_id,content,time,chat_type,is_read,is_send) values ('${this.userInfo.userId}','${this.targetUser.userId}',"${content}",${new Date().getTime()},${chatType},1,0)`
 					this.$sqliteUtil.SqlExecute(sql).then(res => {
-						let sql1 = `select * from chat_${this.targetUser.userId} order by id desc limit 1`
+						let sql1 =
+							`select * from chat_${this.targetUser.userId} order by id desc limit 1`
 						this.$sqliteUtil.SqlSelect(sql1).then(res => {
 							res = transData(res)
 							res[0].time = weChatTimeFormat(res[0].time)
 							this.messageValue = ''
 							this.messageList.push(res[0])
 							this.scrollToBottom()
-							console.log(this.messageList)
 							this.$ws.send({
 								id: res[0].id,
 								from: this.userInfo.userId,
@@ -249,13 +427,24 @@
 					delta: 1
 				})
 			},
+			// 异步将数据库中的网络图片路径转换为本地路径
+			async updateChatContent(message) {
+				let content = message.content
+				replaceImageMessage(content).then(res => {
+					content = res
+					let sql =
+						`update chat_${this.targetUser.userId} set content="${content}" where id=${message.id}`
+					this.$sqliteUtil.SqlExecute(sql)
+				})
+			},
 			getChatHistory(page) {
 				if (this.msgLoading == 'nomore') {
 					return
 				}
 				this.msgLoading = 'loading'
 				let offset = (page - 1) * 15
-				let sql = `select * from chat_${this.targetUser.userId} order by id desc limit 15 offset ${offset}`
+				let sql =
+					`select * from chat_${this.targetUser.userId} order by id desc limit 15 offset ${offset}`
 				this.$sqliteUtil.SqlSelect(sql).then(res => {
 					res = res.reverse()
 					for (let i = 0; i < res.length; i++) {
@@ -267,6 +456,7 @@
 								res[i].showTime = false
 							}
 						}
+						this.updateChatContent(res[i])
 					}
 					res.forEach(item => {
 						item.time = weChatTimeFormat(item.time)
@@ -289,7 +479,6 @@
 					query.select('#scrollChat').boundingClientRect()
 					query.select('#scrollMsg').boundingClientRect()
 					query.exec((res) => {
-						console.log(res)
 						if (res[1].height > res[0].height) {
 							this.scrollTop = res[1].height - res[0].height
 						}
@@ -303,11 +492,10 @@
 				this.scrollToBottom()
 			},
 			blur(e) {
-				console.log(e)
 				this.cursor = e.detail.cursor
 				this.chatMsgHeight = this.chatMsgHeight + this.keyboardHeight
 				this.scrollToBottom()
-			},
+			}
 		},
 		watch: {
 			// 监听messageValue的值，如果有值则显示发送按钮
@@ -328,9 +516,17 @@
 			this.userInfo.avatarUrl = uni.getStorageSync('userInfo').avatarUrl
 			uni.getSystemInfo({
 				success: (res) => {
-					console.log(res)
 					this.statusBarHeight = res.statusBarHeight
 					this.chatMsgHeight = res.screenHeight - res.statusBarHeight - 44 - 100
+				}
+			})
+			// 获取表情列表
+			let sql = `select * from emoji_list`
+			this.$sqliteUtil.SqlSelect(sql).then(res => {
+				if (res.length == 0) {
+					this.emojiList = emojiList
+				} else {
+					this.emojiList = res
 				}
 			})
 			this.getChatHistory(1)
@@ -348,7 +544,6 @@
 				})
 			})
 			uni.$on('updateMsgStatus', (data) => {
-				console.log(data)
 				for (let i = this.messageList.length - 1; i >= 0; i--) {
 					if (this.messageList[i].id == data.id) {
 						console.log('找到了')

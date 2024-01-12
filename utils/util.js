@@ -1,7 +1,12 @@
 import {
 	pathToBase64
 } from '../js_sdk/mmmm-image-tools/index.js'
-import {emojiList} from './emojiUtil'
+import {
+	emojiList
+} from './emojiUtil'
+import {
+	saveFile
+} from './fileUtil.js'
 export const timestampFormat = timespan => {
 	var dateTime = new Date(timespan) // 将传进来的字符串或者毫秒转为标准时间
 	return dateTimeFormat(dateTime)
@@ -228,20 +233,57 @@ export const transData = (souceData) => {
 	})
 }
 
-export const replaceImageTags=(message)=>{
-    // 正则表达式匹配<image>标签
-    const imageTagRegex = /<img src='(.*?)' style='width: (\d+)px;height: (\d+)px;'><\/img>/g;
-    // 使用replace函数进行替换
-    return message.replace(imageTagRegex, function (match, src, width, height) {
-        // 这里可以根据需要进行调整，例如将width和height应用到表情显示的样式中
-        return `[${getEmojiNameFromUrl(src)}XFS]`;
-    });
+export const replaceImageTags = (message) => {
+	// 正则表达式匹配<image>标签
+	const imageTagRegex = /<img src='(.*?)' style='width: (\d+)px;height: (\d+)px;'><\/img>/g;
+	// 使用replace函数进行替换
+	return message.replace(imageTagRegex, function(match, src, width, height) {
+		// 这里可以根据需要进行调整，例如将width和height应用到表情显示的样式中
+		// return `[${getEmojiNameFromUrl(src)}XFS]`;
+		let name = getEmojiNameFromUrl(src)
+		if (name == '') {
+			return '[图片]'
+		}
+		return `[${name}XFS]`;
+	});
 }
 
 // 获取表情名称
 function getEmojiNameFromUrl(url) {
-    // 在这里根据url获取表情名称，你可能需要维护一个表情名称和url的映射关系
-    // 这里只是一个示例，实际情况需要根据你的数据结构进行调整
-    const emoji = emojiList.find(item => item.url === url);
-    return emoji ? emoji.name : '';
+	// 在这里根据url获取表情名称，你可能需要维护一个表情名称和url的映射关系
+	const emoji = emojiList.find(item => item.url === url);
+	return emoji ? emoji.name : '';
+}
+
+
+// 匹配对方发来的聊天消息中的图片标签，将src属性的值替换为本地路径
+export const replaceImageMessage = (message) => {
+	// 正则表达式匹配<img>标签
+	const imageTagRegex = /<img src='(.*?)' style='width: (\d+)px;height: (\d+)px;'><\/img>/g;
+	const promises = []; // 用于存储保存文件的Promise数组
+	// 使用replace函数进行替换
+	const replacedMessage = message.replace(imageTagRegex, function(match, src, width, height) {
+		// 如果src是本地路径，则不进行替换
+		if (src.indexOf('http') === -1) {
+			return match;
+		}
+		// 保存文件，并将Promise加入数组
+		const promise = saveFile(src)
+			.then(localFilePath => {
+				console.log(localFilePath);
+				return `<img src='${localFilePath}' style='width: ${width}px;height: ${height}px;'></img>`;
+			})
+			.catch(error => {
+				console.error(error);
+				return match; // 如果保存失败，保持原样
+			});
+		promises.push(promise);
+		return ''; // 将匹配的内容替换为空字符串，等待Promise完成后再进行拼接
+	});
+
+	// 使用Promise.all等待所有的异步操作完成
+	return Promise.all(promises).then(results => {
+		// 将替换后的内容和原始消息拼接起来
+		return replacedMessage.replace(/$/, results.join(''));
+	});
 }

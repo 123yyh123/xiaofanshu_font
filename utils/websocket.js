@@ -1,9 +1,14 @@
 import {
 	baseUrl
 } from '@/config'
+import {
+	saveFile
+} from '../utils/fileUtil.js'
 import sqliteUtil from '../utils/sqliteUtil.js'
 import {
-	imageUrlToBase64
+	imageUrlToBase64,
+	replaceImageMessage,
+	replaceImageTags
 } from '../utils/util.js';
 //是否已经连接上ws
 let isOpenSocket = false
@@ -63,7 +68,6 @@ function init() {
 		heartBeat();
 	})
 	socketTask.onMessage((res) => {
-		console.log(res);
 		let message = JSON.parse(res.data)
 		console.log(message)
 		// 聊天信息
@@ -76,15 +80,16 @@ function init() {
 				sqliteUtil.SqlSelect(s).then(res => {
 					console.log(res)
 					imageUrlToBase64(message.fromAvatar).then(img => {
+						let con = replaceImageTags(message.content)
 						if (res.length > 0) {
 							let sql =
-								`UPDATE message_list SET last_message="${message.content}", last_time=${message.time}, stranger=${message.friendType}, avatar_url='${img}', user_name='${message.fromName}', unread_num=unread_num+1 WHERE user_id='${message.from}'`;
+								`UPDATE message_list SET last_message="${con}", last_time=${message.time}, stranger=${message.friendType}, avatar_url='${img}', user_name='${message.fromName}', unread_num=unread_num+1 WHERE user_id='${message.from}'`;
 							sqliteUtil.SqlExecute(sql).then(res => {
 								setCornerMark()
 							})
 						} else {
 							let sql =
-								`INSERT INTO message_list (user_id, stranger, last_message, last_time, avatar_url, user_name, unread_num) VALUES ('${message.from}', ${message.friendType}, "${message.content}", ${message.time}, '${img}', '${message.fromName}', 1)`;
+								`INSERT INTO message_list (user_id, stranger, last_message, last_time, avatar_url, user_name, unread_num) VALUES ('${message.from}', ${message.friendType}, "${con}", ${message.time}, '${img}', '${message.fromName}', 1)`;
 							sqliteUtil.SqlExecute(sql).then(res => {
 								setCornerMark()
 							})
@@ -92,7 +97,6 @@ function init() {
 						uni.$emit('updateMessageList')
 					})
 				})
-
 				// 更新聊天记录，先判断是否存在与该用户的聊天记录表，如果不存在则创建
 				let s2 = `create table if not exists chat_${message.from} (
 				id integer primary key autoincrement, 
@@ -103,13 +107,17 @@ function init() {
 				chat_type integer, 
 				is_read integer,
 				is_send integer);`
-				sqliteUtil.SqlExecute(s2).then(res => {
-					// 插入聊天记录
-					let sql =
-						`INSERT INTO chat_${message.from} (from_id, to_id, content, time, chat_type,is_read, is_send) VALUES ('${message.from}', '${message.to}', "${message.content}", ${message.time}, ${message.chatType}, 0,1)`
-					sqliteUtil.SqlExecute(sql).then(res => {
-						console.log('插入聊天记录成功')
-						uni.$emit('updateChatRecord')
+				replaceImageMessage(message.content).then(res => {
+					message.content = res
+					console.log(message.content)
+					sqliteUtil.SqlExecute(s2).then(res => {
+						// 插入聊天记录
+						let sql =
+							`INSERT INTO chat_${message.from} (from_id, to_id, content, time, chat_type,is_read, is_send) VALUES ('${message.from}', '${message.to}', "${message.content}", ${message.time}, ${message.chatType}, 0,1)`
+						sqliteUtil.SqlExecute(sql).then(res => {
+							console.log('插入聊天记录成功')
+							uni.$emit('updateChatRecord')
+						})
 					})
 				})
 			}
@@ -155,7 +163,7 @@ function heartBeat() {
 }
 
 function send(value) {
-	if(value.messageType===3){
+	if (value.messageType === 3) {
 		timer['time' + value.to + value.id] = setTimeout(() => {
 			console.log('发送超时')
 			if (sqliteUtil.isOpen()) {

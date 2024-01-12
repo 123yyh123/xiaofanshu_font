@@ -109,13 +109,11 @@
 			},
 			refreshList() {
 				this.$sqliteUtil.SqlSelect(`SELECT * FROM message_list ORDER BY last_time DESC`).then(res => {
-					console.log(res)
 					res.forEach(item => {
 						item.last_time = timestampFormat(Number(item.last_time))
 						item.last_message = replaceImageTags(item.last_message)	
 					})
 					this.list = res
-					console.log(this.list)
 				})
 			},
 			goToChat(item) {

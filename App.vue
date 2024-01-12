@@ -5,6 +5,8 @@
 	import {
 		getUserInfo
 	} from './apis/user_service.js';
+import {emojiList} from './utils/emojiUtil.js'
+import {saveFile} from './utils/fileUtil.js'
 import list from './uni_modules/uview-ui/libs/config/props/list.js';
 	export default {
 		onLaunch: function() {
@@ -22,6 +24,18 @@ import list from './uni_modules/uview-ui/libs/config/props/list.js';
 					unread_num INTEGER,
 					stranger BOOLEAN
 				);`)
+				// 创建一个存储表情的表
+				this.$sqliteUtil.SqlExecute(`CREATE TABLE IF NOT EXISTS emoji_list (
+					"id"
+					INTEGER PRIMARY KEY AUTOINCREMENT,
+					url TEXT UNIQUE,
+					name TEXT UNIQUE
+				);`).then(res=>{
+					// 判断表情是否存在，不存在则插入，异步方法
+					emojiList.forEach((res,index)=>{
+						this.insertEmoji(res)
+					})
+				})
 			})
 			if (uni.getStorageSync('token') == null || uni.getStorageSync('token') == '') {
 				this.$ws.completeClose()
@@ -72,6 +86,20 @@ import list from './uni_modules/uview-ui/libs/config/props/list.js';
 		},
 		onHide: function() {
 			console.log('App Hide')
+		},
+		methods:{
+			// 插入表情
+			async insertEmoji(item){
+				let sql1=`SELECT * FROM emoji_list WHERE name='${item.name}'`
+				this.$sqliteUtil.SqlSelect(sql1).then(res=>{
+					if(res.length==0){
+						saveFile(item.url).then(res=>{
+							let sql2=`INSERT INTO emoji_list (url,name) VALUES ("${res}","${item.name}")`
+							this.$sqliteUtil.SqlExecute(sql2)
+						})
+					}
+				})
+			}
 		}
 	}
 </script>
