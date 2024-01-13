@@ -24,6 +24,7 @@ import list from './uni_modules/uview-ui/libs/config/props/list.js';
 					unread_num INTEGER,
 					stranger BOOLEAN
 				);`)
+				// this.$sqliteUtil.SqlExecute(`ALTER TABLE chat_1735294666611408897 ADD COLUMN audio_time INTEGER;`)
 				// 创建一个存储表情的表
 				this.$sqliteUtil.SqlExecute(`CREATE TABLE IF NOT EXISTS emoji_list (
 					"id"

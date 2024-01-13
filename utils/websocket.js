@@ -81,6 +81,9 @@ function init() {
 					console.log(res)
 					imageUrlToBase64(message.fromAvatar).then(img => {
 						let con = replaceImageTags(message.content)
+						if(message.chatType===4){
+							con = '[语音]'
+						}
 						if (res.length > 0) {
 							let sql =
 								`UPDATE message_list SET last_message="${con}", last_time=${message.time}, stranger=${message.friendType}, avatar_url='${img}', user_name='${message.fromName}', unread_num=unread_num+1 WHERE user_id='${message.from}'`;
@@ -106,14 +109,15 @@ function init() {
 				time integer, 
 				chat_type integer, 
 				is_read integer,
-				is_send integer);`
+				is_send integer,
+				audio_time integer);`
 				replaceImageMessage(message.content).then(res => {
 					message.content = res
 					console.log(message.content)
 					sqliteUtil.SqlExecute(s2).then(res => {
 						// 插入聊天记录
 						let sql =
-							`INSERT INTO chat_${message.from} (from_id, to_id, content, time, chat_type,is_read, is_send) VALUES ('${message.from}', '${message.to}', "${message.content}", ${message.time}, ${message.chatType}, 0,1)`
+							`INSERT INTO chat_${message.from} (from_id, to_id, content, time, chat_type,is_read, is_send,audio_time) VALUES ('${message.from}', '${message.to}', "${message.content}", ${message.time}, ${message.chatType},0,1,${message.audioTime})`
 						sqliteUtil.SqlExecute(sql).then(res => {
 							console.log('插入聊天记录成功')
 							uni.$emit('updateChatRecord')
@@ -196,6 +200,33 @@ function send(value) {
 		console.log("WebSocket 连接已关闭，无法发送消息");
 		completeClose();
 		init();
+		// 观察10次，如果10次都没有连接成功，则不再发送消息
+		let count = 0;
+		// 每1秒观察一次是否连接成功，连接成功后发送消息
+		let interval = setInterval(() => {	
+			if (count >= 10) {
+				clearInterval(interval)
+				return false;
+			}
+			console.log('连接状态：' + ws.socketTask.readyState)
+			if (ws.socketTask.readyState === 1) {
+				ws.socketTask.send({
+					data: JSON.stringify(value),
+					success(res) {
+						// console.log("消息发送成功");
+						clearInterval(interval)
+						return true;
+					},
+					fail() {
+						console.log("消息发送失败");
+						completeClose();
+						init();
+						return false;
+					}
+				});
+			}
+			count++
+		}, 1000)
 		return false;
 	}
 }

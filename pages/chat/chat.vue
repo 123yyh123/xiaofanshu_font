@@ -34,14 +34,25 @@
 								:src="targetUser.avatarUrl">
 							</image>
 						</view>
+						<!-- 文本消息 -->
 						<view v-if="item.chatType===1"
-							style="padding:15rpx;background-color: aqua;display: flex;margin-left: 15rpx;margin-right:110rpx;background-color: #ffffff;border-radius: 30rpx;">
+							style="padding:15rpx;display: flex;margin-left: 15rpx;margin-right:110rpx;background-color: #ffffff;border-radius: 30rpx;">
 							<rich-text
 								style="margin-right: auto;max-width: 460rpx;color: #2b2b2b;word-wrap: break-word;word-break: break-all;"
 								:nodes="item.content"></rich-text>
 						</view>
+						<!-- 图片消息 -->
 						<view v-else-if="item.chatType===2" style="padding: 15rpx;margin-left: 15rpx;">
 							<rich-text @click="preImage" :nodes="item.content" :data-node="item.content"></rich-text>
+						</view>
+						<!-- 语音消息 -->
+						<view v-else-if="item.chatType===4" :style="{width: handleVoiceWidth(item.audioTime)}"
+							@tap="playAudio(item)"
+							style="padding:15rpx;display: flex;margin-left: 15rpx;margin-right:110rpx;background-color: #ffffff;border-radius: 30rpx;">
+							<view style="display: flex;align-items: center;">
+								<a-trumpet :isPlay="currentPlay===item.id" direction="right" color="#2b2b2b" :size="30"></a-trumpet>
+								<view>{{item.audioTime}}"</view>
+							</view>
 						</view>
 					</view>
 					<view v-else
@@ -58,6 +69,14 @@
 						</view>
 						<view v-else-if="item.chatType===2" style="padding:15rpx;padding-right: 15rpx;">
 							<rich-text @click="preImage" :nodes="item.content" :data-node="item.content"></rich-text>
+						</view>
+						<view v-else-if="item.chatType===4" :style="{width: handleVoiceWidth(item.audioTime)}"
+							@tap="playAudio(item)"
+							style="padding:15rpx;display: flex;background-color: #518FF1;border-radius: 30rpx;margin-right: 15rpx;">
+							<view style="display: flex;align-items: center;margin-left: auto;">
+								<view style="color: #ffffff;">{{item.audioTime}}"</view>
+								<a-trumpet :isPlay="currentPlay===item.id" direction="left" color="#ffffff" :size="30"></a-trumpet>
+							</view>
 						</view>
 						<view style="margin-right: 15rpx;">
 							<image mode="aspectFill" style="height: 80rpx;width: 80rpx;border-radius: 50%;"
@@ -87,11 +106,41 @@
 				<u-button type="error" text="发送" @click="sendMessage"></u-button>
 			</u-transition>
 		</view>
+		<u-popup :show="showRecordPop" mode="bottom" :round="10" @close="closeRecordPop"
+			customStyle="background-color: #f5f5f5">
+			<view
+				style="text-align: center;padding: 30rpx;padding-bottom: 10rpx;display: flex;flex-direction: column;justify-content:center;">
+				<view :class="['mic-layer',{'mic-layer-talking':isTalking}]">
+					<!-- 按钮样式 -->
+					<view :class="isTalking?'mic-btn-talking':'mic-btn'" @touchstart="touchStart" @touchend="onEnd"
+						@longpress="onStart" @touchmove="handleRecordMove">
+						<view v-show="!isTalking">
+							<image src="../../static/image/录音 (1).png" style="height: 100px;" mode="heightFix"></image>
+						</view>
+						<view v-show="isTalking" class="mic-btn-talking_text">说话中...</view>
+						<view v-show="isTalking&&!sendLock" class="tip-text"><text class="mr-10">松开</text>发送</view>
+					</view>
+					<!-- 语音音阶动画 -->
+					<view v-if="isTalking" :class="['record-animate-box',{'active':sendLock}]">
+						<view class="voice-scale">
+							<view class="item" v-for="(item,index) in 10" :key="index"></view>
+						</view>
+					</view>
+					<!-- 取消发送 -->
+					<view v-if="isTalking" :class="['record-cancel',{'active':sendLock}]">
+						<text class="close-icon">x</text>
+						<view class="tip-text" v-show="sendLock"><text class="mr-10">松开</text>取消</view>
+					</view>
+				</view>
+				<view style="margin-top: 30rpx;">按住开始录音</view>
+			</view>
+		</u-popup>
 		<view v-if="showEmoji">
 			<scroll-view :style="{height: keyboardHeight+'px'}" scroll-y style="background-color: aliceblue;">
-				<view style="display: flex;flex-wrap: wrap;padding: 20rpx;justify-content: space-around;">
+				<view
+					style="display: grid;padding: 20rpx;;grid-template-columns: repeat(5,1fr);gap: 20rpx;text-align: center;">
 					<block v-for="(item,index) in emojiList" v-bind:key="index">
-						<view style="margin: 20rpx;" @click="addEmoji(item.name)">
+						<view @click="addEmoji(item.name)">
 							<image :src="item.url" style="width: 100rpx;height: 100rpx;" mode="widthFix" lazy-load>
 							</image>
 						</view>
@@ -100,7 +149,8 @@
 			</scroll-view>
 		</view>
 		<view v-if="showMore" :style="{height: keyboardHeight+'px'}" style="background-color: #f5f5f5;color: #2b2b2b;">
-			<view style="display: flex;padding: 20rpx;justify-content: space-around;">
+			<view
+				style="display: grid;text-align: center;;grid-template-columns: repeat(4,1fr);padding: 20rpx;gap: 20rpx;row-gap: 50rpx;">
 				<view style="text-align: center;" @click="chooseImage">
 					<view style="padding: 30rpx 40rpx;background-color: #ffffff;border-radius: 30rpx;">
 						<image src="../../static/image/相册 (1).png" style="width: 80rpx;border-radius: 20rpx;"
@@ -108,7 +158,7 @@
 					</view>
 					<view>相册</view>
 				</view>
-				<view style="text-align: center;">
+				<view style="text-align: center;" @click="takePhoto">
 					<view style="padding: 30rpx 40rpx;background-color: #ffffff;border-radius: 30rpx;">
 						<image src="../../static/image/拍照.png" style="width: 80rpx;border-radius: 20rpx;"
 							mode="widthFix">
@@ -132,12 +182,22 @@
 					</view>
 					<view>文件</view>
 				</view>
+				<view style="text-align: center;flex-basis: calc((100% - 3 * 20rpx) / 4);"
+					@click="showRecordPop = true">
+					<view style="padding: 30rpx 40rpx;background-color: #ffffff;border-radius: 30rpx;">
+						<image src="../../static/image/语音 (1).png" style="width: 80rpx;border-radius: 20rpx;"
+							mode="widthFix">
+						</image>
+					</view>
+					<view>语音</view>
+				</view>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	const innerAudioContext = uni.createInnerAudioContext();
 	import {
 		timestampFormat,
 		weChatTimeFormat,
@@ -156,6 +216,13 @@
 	export default {
 		data() {
 			return {
+				isTalking: false, // 是否正在讲话
+				sendLock: false, // 语音是否发送锁，true-不发送，false-发送（用于上滑取消发送）
+				record: null, // 语音对象
+				startPoint: {}, //记录长按录音开始点信息,用于后面计算滑动距离。
+				timer: null, // 计时器
+				leng: 0, // 计时器时间
+				currentPlay: '', // 当前播放的语音id
 				statusBarHeight: '',
 				chatMsgHeight: '',
 				keyboardHeight: 302,
@@ -180,10 +247,211 @@
 				// fo: false,
 				emojiList: [],
 				cursor: 0,
-				showMore: false
+				showMore: false,
+				showRecordPop: false,
 			};
 		},
 		methods: {
+			playAudio(item) {
+				if (this.currentPlay === item.id) {
+					innerAudioContext.pause()
+					this.currentPlay = ''
+					return
+				}
+				if (this.currentPlay !== '') {
+					innerAudioContext.stop()
+				}
+				this.currentPlay = item.id
+				innerAudioContext.src = item.content
+				innerAudioContext.play()
+				innerAudioContext.onEnded(() => {
+					this.currentPlay = ''
+				})
+			},
+			/**
+			 * 开始录音
+			 */
+			onStart() {
+				const option = {
+					format: 'mp3'
+				}
+				console.log('start');
+				this.isTalking = true
+				uni.vibrateShort(); // 震动
+				this.leng = 0
+				this.timer = setInterval(() => {
+					this.leng++
+					if (this.leng >= 60) {
+						this.onEnd()
+						return
+					}
+				}, 1000)
+				this.record.start(option)
+				this.record.onStart(res => {
+					console.log('start', res);
+				})
+				this.record.onError(res => {
+					console.log('录音错误事件：', res);
+				})
+			},
+			/**
+			 * 结束录音
+			 */
+			onEnd() {
+				this.isTalking = false
+				this.record.stop()
+				clearTimeout(this.timer)
+				this.record.onStop(res => {
+					console.log(res, "录音回调地址");
+					if (this.sendLock) {
+						this.sendLock = false // 恢复锁状态
+						console.log('取消发送');
+						return
+					} // 取消发送
+					if (res.duration < 1000) {
+						uni.showToast({
+							icon: 'error',
+							title: '说话时间太短'
+						})
+						return
+					}
+					uni.uploadFile({
+						url: baseUrl + '/third/uploadAudio',
+						filePath: res.tempFilePath,
+						name: 'file',
+						header: {
+							'token': uni.getStorageSync('token')
+						},
+						success: (res) => {
+							let data = JSON.parse(res.data)
+							if (data.code == 20020) {
+								console.log(data)
+								this.sendAudio(data.data, this.leng)
+							}
+						}
+					})
+				})
+			},
+			sendAudio(url, time) {
+				let sql1 = `create table if not exists chat_${this.targetUser.userId} (
+				id integer primary key autoincrement, 
+				from_id text, 
+				to_id text, 
+				content text, 
+				time integer, 
+				chat_type integer, 
+				is_read integer,
+				is_send integer,
+				audio_time integer);`
+				this.$sqliteUtil.SqlExecute(sql1).then(res => {
+					let content = url
+					let sql2 =
+						`insert into chat_${this.targetUser.userId} (from_id,to_id,content,time,chat_type,is_read,is_send,audio_time) values ('${this.userInfo.userId}','${this.targetUser.userId}',"${content}",${new Date().getTime()},4,1,0,${time})`
+					this.$sqliteUtil.SqlExecute(sql2).then(res => {
+						let sql3 =
+							`select * from chat_${this.targetUser.userId} order by id desc limit 1`
+						this.$sqliteUtil.SqlSelect(sql3).then(res => {
+							res = transData(res)
+							res[0].time = weChatTimeFormat(res[0].time)
+							this.messageList.push(res[0])
+							this.scrollToBottom()
+							this.$ws.send({
+								id: res[0].id,
+								from: this.userInfo.userId,
+								fromName: this.userInfo.userName,
+								fromAvatar: this.userInfo.avatarUrl,
+								to: this.targetUser.userId,
+								content: content,
+								time: new Date().getTime(),
+								messageType: 3,
+								chatType: 4,
+								friendType: 0,
+								audioTime: time
+							})
+						})
+					})
+				})
+				let sql4 = `select * from message_list where user_id='${this.targetUser.userId}'`
+				this.$sqliteUtil.SqlSelect(sql4).then(res => {
+					if (res.length == 0) {
+						let sql5 =
+							`insert into message_list (user_id,avatar_url,user_name,last_message,last_time,unread_num,stranger) values ('${this.targetUser.userId}','${this.targetUser.avatarUrl}','${this.targetUser.userName}',"[语音]",${new Date().getTime()},0,0)`
+						this.$sqliteUtil.SqlExecute(sql5)
+					} else {
+						let sql6 =
+							`update message_list set last_message="[语音]",last_time=${new Date().getTime()},unread_num=0 where user_id='${this.targetUser.userId}'`
+						this.$sqliteUtil.SqlExecute(sql6)
+					}
+				})
+			},
+			/**
+			 * 开始触屏
+			 * @param {Object} e
+			 */
+			touchStart(e) {
+				this.startPoint.clientX = e.changedTouches[0].clientX; //手指按下时的X坐标
+				this.startPoint.clientY = e.changedTouches[0].clientY; //手指按下时的Y坐标
+			},
+			/**
+			 * 录音时手指滑动
+			 * @param {Object} e
+			 */
+			handleRecordMove(e) {
+				let touchData = e.touches[0]; //滑动过程中，手指滑动的坐标信息
+				let moveX = touchData.clientX - this.startPoint.clientX;
+				let moveY = touchData.clientY - this.startPoint.clientY;
+				if (moveY > -45) { // 滑动距离不够则不取消发送
+					this.sendLock = false
+				} else {
+					this.sendLock = true
+				}
+			},
+			// 处理语音长度
+			handleVoiceWidth(lenght) {
+				lenght = lenght - 1;
+				let Lmin = 138;
+				let Lmax = 366
+				let barCanChangeLen = Lmax - Lmin;
+
+				// 11秒以内的语音
+				if (lenght < 11) {
+					// VoicePlayTimes 为10秒时，正好为可变长度的一半
+					return (Lmin + lenght * 0.05 * barCanChangeLen) + 'rpx';
+				} else {
+					// 12-60秒的语音
+					return (Lmin + 0.5 * barCanChangeLen + (lenght - 10) * 0.01 * barCanChangeLen) + 'rpx';
+				}
+			},
+			closeRecordPop() {
+				this.showRecordPop = false
+			},
+			takePhoto() {
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['original', 'compressed'],
+					sourceType: ['camera'],
+					success: (res) => {
+						res.tempFilePaths.forEach(item => {
+							uni.uploadFile({
+								url: baseUrl + '/third/uploadImg',
+								filePath: item,
+								name: 'file',
+								header: {
+									'token': uni.getStorageSync('token')
+								},
+								success: (res) => {
+									let data = JSON.parse(res.data)
+									if (data.code == 20020) {
+										console.log(data)
+										this.sendImage(data.data)
+									}
+								}
+
+							})
+						})
+					}
+				})
+			},
 			preImage(e) {
 				let s = e.target.dataset.node
 				// <img src='${url}' style='max-width: 200px;height: auto;'></img>`
@@ -234,14 +502,15 @@
 				time integer, 
 				chat_type integer, 
 				is_read integer,
-				is_send integer);`
+				is_send integer,
+				audio_time integer);`
 				this.$sqliteUtil.SqlExecute(sql1).then(res => {
 					zoomOutImage(url).then(result => {
 						console.log(result)
 						let content =
 							`<img src='${result.src}' style='width: ${result.width}px;height: ${result.height}px;'></img>`
 						let sql2 =
-							`insert into chat_${this.targetUser.userId} (from_id,to_id,content,time,chat_type,is_read,is_send) values ('${this.userInfo.userId}','${this.targetUser.userId}',"${content}",${new Date().getTime()},2,1,0)`
+							`insert into chat_${this.targetUser.userId} (from_id,to_id,content,time,chat_type,is_read,is_send,audio_time) values ('${this.userInfo.userId}','${this.targetUser.userId}',"${content}",${new Date().getTime()},2,1,0,0)`
 						this.$sqliteUtil.SqlExecute(sql2).then(res => {
 							let sql3 =
 								`select * from chat_${this.targetUser.userId} order by id desc limit 1`
@@ -260,7 +529,8 @@
 									time: new Date().getTime(),
 									messageType: 3,
 									chatType: 2,
-									friendType: 0
+									friendType: 0,
+									audioTime: 0
 								})
 							})
 						})
@@ -380,10 +650,11 @@
 				time integer, 
 				chat_type integer, 
 				is_read integer,
-				is_send integer);`
+				is_send integer,
+				audio_time integer);`
 				this.$sqliteUtil.SqlExecute(s2).then(res => {
 					let sql =
-						`insert into chat_${this.targetUser.userId} (from_id,to_id,content,time,chat_type,is_read,is_send) values ('${this.userInfo.userId}','${this.targetUser.userId}',"${content}",${new Date().getTime()},${chatType},1,0)`
+						`insert into chat_${this.targetUser.userId} (from_id,to_id,content,time,chat_type,is_read,is_send,audio_time) values ('${this.userInfo.userId}','${this.targetUser.userId}',"${content}",${new Date().getTime()},${chatType},1,0,0)`
 					this.$sqliteUtil.SqlExecute(sql).then(res => {
 						let sql1 =
 							`select * from chat_${this.targetUser.userId} order by id desc limit 1`
@@ -403,7 +674,8 @@
 								time: new Date().getTime(),
 								messageType: 3,
 								chatType: chatType,
-								friendType: 0
+								friendType: 0,
+								audioTime: 0
 							})
 						})
 					})
@@ -529,6 +801,7 @@
 					this.emojiList = res
 				}
 			})
+			this.record = uni.getRecorderManager()
 			this.getChatHistory(1)
 			this.scrollToBottom()
 			setTimeout(() => {
@@ -563,11 +836,191 @@
 				}
 			})
 		},
+		onBackPress() {
+			if (this.showEmoji || this.showMore) {
+				this.closeME()
+				return true
+			}
+			return false
+		}
 	}
 </script>
 <style lang="scss">
 	page {
 		background-color: #f5f5f5;
+	}
+
+	.mr-10 {
+		margin-right: 10rpx;
+	}
+
+	.mic-layer {
+		position: fixed;
+		bottom: 40rpx;
+		left: 0;
+		right: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	/* 讲话中样式 */
+	.mic-layer-talking {
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		left: 0;
+		top: 0;
+		background-color: rgba(0, 0, 0, .6);
+
+		.mic-btn-talking {
+			position: absolute;
+			bottom: 0;
+			width: 100vw;
+			height: 200rpx;
+			border-radius: 80px 80px 0 0;
+			background-color: #F2F2F2;
+
+			&_text {
+				color: #999999;
+				padding: 60rpx 0;
+				text-align: center;
+			}
+		}
+
+		/* 发送、取消提示文字 */
+		.tip-text {
+			position: absolute;
+			top: -60rpx;
+			left: 50%;
+			width: 160rpx;
+			text-align: center;
+			transform: translateX(-50%);
+			color: #E3E4EA;
+			font-size: 24rpx;
+		}
+
+		/* 上方语音动画 */
+		.record-animate-box {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 300rpx;
+			height: 140rpx;
+			background-color: #2878F4;
+			border-radius: 28rpx;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all .3s;
+
+			&.active {
+				background-color: #f56c6c;
+				width: 140rpx;
+			}
+
+			/* 语音音阶 */
+			.voice-scale {
+				width: 60%;
+				height: 40rpx;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				.item {
+					display: block;
+					background: #333333;
+					width: 4rpx;
+					height: 10%;
+					margin-right: 2.5px;
+					float: left;
+
+					&:last-child {
+						margin-right: 0px;
+					}
+
+					&:nth-child(1) {
+						animation: load 1s 0.8s infinite linear;
+					}
+
+					&:nth-child(2) {
+						animation: load 1s 0.6s infinite linear;
+					}
+
+					&:nth-child(3) {
+						animation: load 1s 0.4s infinite linear;
+					}
+
+					&:nth-child(4) {
+						animation: load 1s 0.2s infinite linear;
+					}
+
+					&:nth-child(5) {
+						animation: load 1s 0s infinite linear;
+					}
+
+					&:nth-child(6) {
+						animation: load 1s 0.2s infinite linear;
+					}
+
+					&:nth-child(7) {
+						animation: load 1s 0.4s infinite linear;
+					}
+
+					&:nth-child(8) {
+						animation: load 1s 0.6s infinite linear;
+					}
+
+					&:nth-child(9) {
+						animation: load 1s 0.8s infinite linear;
+					}
+
+					&:nth-child(10) {
+						animation: load 1s 1s infinite linear;
+					}
+				}
+			}
+
+			@keyframes load {
+				0% {
+					height: 10%;
+				}
+
+				50% {
+					height: 100%;
+				}
+
+				100% {
+					height: 10%;
+				}
+			}
+		}
+
+		/* 取消按钮 */
+		.record-cancel {
+			position: absolute;
+			left: 50%;
+			bottom: 300rpx;
+			transform: translateX(-50%);
+			width: 100rpx;
+			height: 100rpx;
+			border-radius: 50%;
+			background-color: rgba(0, 0, 0, .2);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			transition: all .3s;
+
+			&.active {
+				transform: translateX(-50%) scale(1.2);
+				background-color: #f56c6c;
+			}
+
+			.close-icon {
+				font-size: 40rpx;
+				color: #FFFFFF;
+			}
+		}
 	}
 </style>
 <style lang="scss" scoped>
