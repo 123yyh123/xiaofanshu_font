@@ -4,13 +4,13 @@
 			style="display: flex;justify-content: space-around;font-size: 30rpx;margin-top: 30rpx;padding: 10rpx 20rpx;">
 			<view style="text-align: center;">
 				<view>
-					<image style="width: 85rpx;" mode="widthFix" src="../../static/image/精品收藏.png"></image>
+					<image style="width: 85rpx;" mode="widthFix" src="../../static/image/collect.png"></image>
 				</view>
 				<text>赞和收藏</text>
 			</view>
 			<view style="text-align: center;">
 				<view>
-					<image style="width: 85rpx;" mode="widthFix" src="../../static/image/人员信息.png"></image>
+					<image style="width: 85rpx;" mode="widthFix" src="../../static/image/peopleInfo.png"></image>
 				</view>
 				<text>新增关注</text>
 			</view>
@@ -111,7 +111,7 @@
 				this.$sqliteUtil.SqlSelect(`SELECT * FROM message_list ORDER BY last_time DESC`).then(res => {
 					res.forEach(item => {
 						item.last_time = timestampFormat(Number(item.last_time))
-						item.last_message = replaceImageTags(item.last_message)	
+						item.last_message = replaceImageTags(item.last_message)
 					})
 					this.list = res
 				})

@@ -30,6 +30,15 @@
 				show: false,
 			}
 		},
+		methods: {
+			toComment(index) {
+				uni.vibrateLong({
+					success: function () {
+						console.log('success');
+					}
+				})
+			}
+		}
 	};
 </script>
 <style>

@@ -50,7 +50,8 @@
 							@tap="playAudio(item)"
 							style="padding:15rpx;display: flex;margin-left: 15rpx;margin-right:110rpx;background-color: #ffffff;border-radius: 30rpx;">
 							<view style="display: flex;align-items: center;">
-								<a-trumpet :isPlay="currentPlay===item.id" direction="right" color="#2b2b2b" :size="30"></a-trumpet>
+								<a-trumpet :isPlay="currentPlay===item.id" direction="right" color="#2b2b2b"
+									:size="30"></a-trumpet>
 								<view>{{item.audioTime}}"</view>
 							</view>
 						</view>
@@ -75,7 +76,8 @@
 							style="padding:15rpx;display: flex;background-color: #518FF1;border-radius: 30rpx;margin-right: 15rpx;">
 							<view style="display: flex;align-items: center;margin-left: auto;">
 								<view style="color: #ffffff;">{{item.audioTime}}"</view>
-								<a-trumpet :isPlay="currentPlay===item.id" direction="left" color="#ffffff" :size="30"></a-trumpet>
+								<a-trumpet :isPlay="currentPlay===item.id" direction="left" color="#ffffff"
+									:size="30"></a-trumpet>
 							</view>
 						</view>
 						<view style="margin-right: 15rpx;">
@@ -96,11 +98,11 @@
 					:cursor="cursor"></textarea>
 			</view>
 			<view style="margin-left: 20rpx;" @click="openEmoji">
-				<image src="../../static/image/表情.png" style="width: 70rpx;" mode="widthFix"></image>
+				<image src="../../static/image/expression.png" style="width: 70rpx;" mode="widthFix"></image>
 			</view>
 			<u-transition :show="!isShowSend" mode="slide-down" :duration="300"
 				style="display: flex;padding-top: 5rpx;padding-bottom: 5rpx;" @click="openMore">
-				<image src="../../static/image/加 (1).png" style="width: 79rpx;" mode="widthFix"></image>
+				<image src="../../static/image/add.png" style="width: 79rpx;" mode="widthFix"></image>
 			</u-transition>
 			<u-transition :show="isShowSend" mode="fade-right" :duration="700" style="margin-left: 10rpx;">
 				<u-button type="error" text="发送" @click="sendMessage"></u-button>
@@ -115,7 +117,8 @@
 					<view :class="isTalking?'mic-btn-talking':'mic-btn'" @touchstart="touchStart" @touchend="onEnd"
 						@longpress="onStart" @touchmove="handleRecordMove">
 						<view v-show="!isTalking">
-							<image src="../../static/image/录音 (1).png" style="height: 100px;" mode="heightFix"></image>
+							<image src="../../static/image/recorded.png" style="height: 100px;" mode="heightFix">
+							</image>
 						</view>
 						<view v-show="isTalking" class="mic-btn-talking_text">说话中...</view>
 						<view v-show="isTalking&&!sendLock" class="tip-text"><text class="mr-10">松开</text>发送</view>
@@ -148,27 +151,32 @@
 				</view>
 			</scroll-view>
 		</view>
+		<u-action-sheet :actions="phoneTypeList" :closeOnClickOverlay="true" :closeOnClickAction="true"
+			:show="showChoosePhoneType" @select="telPhone" @close="showChoosePhoneType = false"></u-action-sheet>
+		<view style="padding: 20rpx;">
+			<view style="text-align: center;">选择通话类型</view>
+		</view>
 		<view v-if="showMore" :style="{height: keyboardHeight+'px'}" style="background-color: #f5f5f5;color: #2b2b2b;">
 			<view
 				style="display: grid;text-align: center;;grid-template-columns: repeat(4,1fr);padding: 20rpx;gap: 20rpx;row-gap: 50rpx;">
 				<view style="text-align: center;" @click="chooseImage">
 					<view style="padding: 30rpx 40rpx;background-color: #ffffff;border-radius: 30rpx;">
-						<image src="../../static/image/相册 (1).png" style="width: 80rpx;border-radius: 20rpx;"
+						<image src="../../static/image/photoList.png" style="width: 80rpx;border-radius: 20rpx;"
 							mode="widthFix"></image>
 					</view>
 					<view>相册</view>
 				</view>
 				<view style="text-align: center;" @click="takePhoto">
 					<view style="padding: 30rpx 40rpx;background-color: #ffffff;border-radius: 30rpx;">
-						<image src="../../static/image/拍照.png" style="width: 80rpx;border-radius: 20rpx;"
+						<image src="../../static/image/takePhoto.png" style="width: 80rpx;border-radius: 20rpx;"
 							mode="widthFix">
 						</image>
 					</view>
 					<view>拍照</view>
 				</view>
-				<view style="text-align: center;">
+				<view style="text-align: center;" @click="showChoosePhoneType = true">
 					<view style="padding: 30rpx 40rpx;background-color: #ffffff;border-radius: 30rpx;">
-						<image src="../../static/image/电话.png" style="width: 80rpx;border-radius: 20rpx;"
+						<image src="../../static/image/phone.png" style="width: 80rpx;border-radius: 20rpx;"
 							mode="widthFix">
 						</image>
 					</view>
@@ -176,7 +184,7 @@
 				</view>
 				<view style="text-align: center;">
 					<view style="padding: 30rpx 40rpx;background-color: #ffffff;border-radius: 30rpx;">
-						<image src="../../static/image/文件.png" style="width: 80rpx;border-radius: 20rpx;"
+						<image src="../../static/image/files.png" style="width: 80rpx;border-radius: 20rpx;"
 							mode="widthFix">
 						</image>
 					</view>
@@ -185,7 +193,7 @@
 				<view style="text-align: center;flex-basis: calc((100% - 3 * 20rpx) / 4);"
 					@click="showRecordPop = true">
 					<view style="padding: 30rpx 40rpx;background-color: #ffffff;border-radius: 30rpx;">
-						<image src="../../static/image/语音 (1).png" style="width: 80rpx;border-radius: 20rpx;"
+						<image src="../../static/image/voice.png" style="width: 80rpx;border-radius: 20rpx;"
 							mode="widthFix">
 						</image>
 					</view>
@@ -216,6 +224,16 @@
 	export default {
 		data() {
 			return {
+				phoneTypeList: [{
+					id:1,
+					name: '语音通话',
+					color: '#2b2b2b'
+				}, {
+					id:2,
+					name: '视频通话',
+					color: '#2b2b2b'
+				}],
+				showChoosePhoneType: false,
 				isTalking: false, // 是否正在讲话
 				sendLock: false, // 语音是否发送锁，true-不发送，false-发送（用于上滑取消发送）
 				record: null, // 语音对象
@@ -252,6 +270,20 @@
 			};
 		},
 		methods: {
+			telPhone(index) {
+				this.showChoosePhoneType = false
+				console.log(index.id)
+				uni.$TUICallKit.call({
+					userID: this.targetUser.userId,
+					callMediaType: index.id, // 语音通话(1)、视频通话(2)
+				}, (res) => {
+					if (res.code === 0) {
+						console.log('call success');
+					} else {
+						console.log(res.msg);
+					}
+				});
+			},
 			playAudio(item) {
 				if (this.currentPlay === item.id) {
 					innerAudioContext.pause()
@@ -277,8 +309,8 @@
 				}
 				console.log('start');
 				this.isTalking = true
-				uni.vibrateShort(); // 震动
 				this.leng = 0
+				uni.vibrateLong()
 				this.timer = setInterval(() => {
 					this.leng++
 					if (this.leng >= 60) {
@@ -837,6 +869,10 @@
 			})
 		},
 		onBackPress() {
+			if (this.showRecordPop) {
+				this.closeRecordPop()
+				return true
+			}
 			if (this.showEmoji || this.showMore) {
 				this.closeME()
 				return true

@@ -68,7 +68,7 @@
 						mode="aspectFill"></image>
 					<view
 						style="text-align: center;background-color: #000000;border-radius: 50%;width: 50rpx;height: 50rpx;padding: 5rpx;position: absolute;bottom: 5rpx;right: 5rpx;">
-						<image style="width: 40rpx;" src="../../static/image/相机.png" mode="widthFix"></image>
+						<image style="width: 40rpx;" src="../../static/image/camera.png" mode="widthFix"></image>
 					</view>
 				</view>
 			</view>

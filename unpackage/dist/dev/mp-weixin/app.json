@@ -8,7 +8,9 @@
     "pages/login/forget",
     "pages/login/register",
     "pages/login/bindPhone",
-    "pages/editData/editData"
+    "pages/editData/editData",
+    "pages/chat/chat",
+    "pages/category/test/test"
   ],
   "subPackages": [],
   "window": {
@@ -20,7 +22,7 @@
   "tabBar": {
     "backgroundColor": "#ffffff",
     "borderStyle": "white",
-    "height": "35px",
+    "height": "40px",
     "iconWidth": "37px",
     "midButton": {
       "iconPath": "static/image/publish.png",
@@ -33,7 +35,7 @@
         "selectedIconPath": "static/image/index_select.png"
       },
       {
-        "pagePath": "pages/category/category",
+        "pagePath": "pages/category/test/test",
         "iconPath": "/static/image/category.png",
         "selectedIconPath": "static/image/category_select.png"
       },

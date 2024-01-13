@@ -41,9 +41,9 @@
 	import wButton from '../../components/watch-login/watch-button.vue' //button
 	import {
 		generalLogin,
-		otherLogin
+		otherLogin,
+		getTrtcUserSig
 	} from '../../apis/auth_apis.js'
-
 	export default {
 		data() {
 			return {
@@ -148,12 +148,34 @@
 								uni.setStorageSync('token', res.msg);
 								uni.setStorageSync('userInfo', res.data);
 								this.$ws.init();
-								setTimeout(function() {
-									uni.hideLoading();
-								}, 1000);
-								uni.reLaunch({
-									url: '/pages/index/index'
-								});
+								getTrtcUserSig({
+									userId: res.data.id
+								}).then(res=>{
+									let s={
+										userID: res.data.userId,
+										userSig: res.data.userSig,
+										SDKAppID: Number(res.data.sdkAppId),
+									}
+									uni.$TUICallKit.login(s, (res) => {
+										if (res.code === 0) {
+											console.log('login success');
+											uni.$TUICallKit.setSelfInfo({
+												avatar: uni.getStorageSync('userInfo').avatarUrl,
+												nickName: uni.getStorageSync('userInfo').nickname
+											});
+										} else {
+											console.log(`login failed, error message = ${res.msg}`);
+										}
+									});
+									setTimeout(function() {
+										uni.hideLoading();
+									}, 1000);
+									uni.reLaunch({
+										url: '/pages/index/index'
+									});
+								}).catch(err=>{
+									console.log(err);
+								})
 							}else{
 							uni.getUserInfo({
 								provider: typeName,

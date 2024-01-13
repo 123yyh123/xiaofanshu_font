@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "消息",
+  "enablePullDownRefresh": true,
   "usingComponents": {
+    "liu-swipe-action": "/uni_modules/liu-swipe-action/components/liu-swipe-action/liu-swipe-action",
     "u-badge": "/uni_modules/uview-ui/components/u-badge/u-badge"
   }
 }

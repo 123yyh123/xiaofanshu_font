@@ -776,7 +776,7 @@ function populateParameters(result) {
 
   var parameters = {
     appId: "__UNI__BA62897",
-    appName: "xiaofanshu",
+    appName: "com.xiaofanshu",
     appVersion: "1.0.0",
     appVersionCode: "100",
     appLanguage: getAppLanguage(hostLanguage),
@@ -875,7 +875,7 @@ var getAppBaseInfo = {
     var hostLanguage = language.replace('_', '-');
     result = sortObject(Object.assign(result, {
       appId: "__UNI__BA62897",
-      appName: "xiaofanshu",
+      appName: "com.xiaofanshu",
       appVersion: "1.0.0",
       appVersionCode: "100",
       appLanguage: getAppLanguage(hostLanguage),
@@ -1557,7 +1557,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xiaofanshu","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"com.xiaofanshu","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8934,7 +8934,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xiaofanshu","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"com.xiaofanshu","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8955,14 +8955,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xiaofanshu","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"com.xiaofanshu","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xiaofanshu","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"com.xiaofanshu","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9058,7 +9058,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xiaofanshu","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"com.xiaofanshu","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9490,6 +9490,380 @@ internalMixin(Vue);
 /* 28 */,
 /* 29 */,
 /* 30 */
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// TODO(Babel 8): Remove this file.
+
+var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 31)();
+module.exports = runtime;
+
+/***/ }),
+/* 31 */
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
+function _regeneratorRuntime() {
+  "use strict";
+
+  /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+  module.exports = _regeneratorRuntime = function _regeneratorRuntime() {
+    return exports;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
+  var exports = {},
+    Op = Object.prototype,
+    hasOwn = Op.hasOwnProperty,
+    defineProperty = Object.defineProperty || function (obj, key, desc) {
+      obj[key] = desc.value;
+    },
+    $Symbol = "function" == typeof Symbol ? Symbol : {},
+    iteratorSymbol = $Symbol.iterator || "@@iterator",
+    asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator",
+    toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+  function define(obj, key, value) {
+    return Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }), obj[key];
+  }
+  try {
+    define({}, "");
+  } catch (err) {
+    define = function define(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator,
+      generator = Object.create(protoGenerator.prototype),
+      context = new Context(tryLocsList || []);
+    return defineProperty(generator, "_invoke", {
+      value: makeInvokeMethod(innerFn, self, context)
+    }), generator;
+  }
+  function tryCatch(fn, obj, arg) {
+    try {
+      return {
+        type: "normal",
+        arg: fn.call(obj, arg)
+      };
+    } catch (err) {
+      return {
+        type: "throw",
+        arg: err
+      };
+    }
+  }
+  exports.wrap = wrap;
+  var ContinueSentinel = {};
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+  var IteratorPrototype = {};
+  define(IteratorPrototype, iteratorSymbol, function () {
+    return this;
+  });
+  var getProto = Object.getPrototypeOf,
+    NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype);
+  var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function (method) {
+      define(prototype, method, function (arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if ("throw" !== record.type) {
+        var result = record.arg,
+          value = result.value;
+        return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) {
+          invoke("next", value, resolve, reject);
+        }, function (err) {
+          invoke("throw", err, resolve, reject);
+        }) : PromiseImpl.resolve(value).then(function (unwrapped) {
+          result.value = unwrapped, resolve(result);
+        }, function (error) {
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+      reject(record.arg);
+    }
+    var previousPromise;
+    defineProperty(this, "_invoke", {
+      value: function value(method, arg) {
+        function callInvokeWithMethodAndArg() {
+          return new PromiseImpl(function (resolve, reject) {
+            invoke(method, arg, resolve, reject);
+          });
+        }
+        return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+      }
+    });
+  }
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = "suspendedStart";
+    return function (method, arg) {
+      if ("executing" === state) throw new Error("Generator is already running");
+      if ("completed" === state) {
+        if ("throw" === method) throw arg;
+        return doneResult();
+      }
+      for (context.method = method, context.arg = arg;;) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+        if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) {
+          if ("suspendedStart" === state) throw state = "completed", context.arg;
+          context.dispatchException(context.arg);
+        } else "return" === context.method && context.abrupt("return", context.arg);
+        state = "executing";
+        var record = tryCatch(innerFn, self, context);
+        if ("normal" === record.type) {
+          if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue;
+          return {
+            value: record.arg,
+            done: context.done
+          };
+        }
+        "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg);
+      }
+    };
+  }
+  function maybeInvokeDelegate(delegate, context) {
+    var methodName = context.method,
+      method = delegate.iterator[methodName];
+    if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel;
+    var record = tryCatch(method, delegate.iterator, context.arg);
+    if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel;
+    var info = record.arg;
+    return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel);
+  }
+  function pushTryEntry(locs) {
+    var entry = {
+      tryLoc: locs[0]
+    };
+    1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry);
+  }
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal", delete record.arg, entry.completion = record;
+  }
+  function Context(tryLocsList) {
+    this.tryEntries = [{
+      tryLoc: "root"
+    }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0);
+  }
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) return iteratorMethod.call(iterable);
+      if ("function" == typeof iterable.next) return iterable;
+      if (!isNaN(iterable.length)) {
+        var i = -1,
+          next = function next() {
+            for (; ++i < iterable.length;) {
+              if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
+            }
+            return next.value = undefined, next.done = !0, next;
+          };
+        return next.next = next;
+      }
+    }
+    return {
+      next: doneResult
+    };
+  }
+  function doneResult() {
+    return {
+      value: undefined,
+      done: !0
+    };
+  }
+  return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", {
+    value: GeneratorFunctionPrototype,
+    configurable: !0
+  }), defineProperty(GeneratorFunctionPrototype, "constructor", {
+    value: GeneratorFunction,
+    configurable: !0
+  }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) {
+    var ctor = "function" == typeof genFun && genFun.constructor;
+    return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name));
+  }, exports.mark = function (genFun) {
+    return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun;
+  }, exports.awrap = function (arg) {
+    return {
+      __await: arg
+    };
+  }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
+    return this;
+  }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    void 0 === PromiseImpl && (PromiseImpl = Promise);
+    var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
+    return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) {
+      return result.done ? result.value : iter.next();
+    });
+  }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () {
+    return this;
+  }), define(Gp, "toString", function () {
+    return "[object Generator]";
+  }), exports.keys = function (val) {
+    var object = Object(val),
+      keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    return keys.reverse(), function next() {
+      for (; keys.length;) {
+        var key = keys.pop();
+        if (key in object) return next.value = key, next.done = !1, next;
+      }
+      return next.done = !0, next;
+    };
+  }, exports.values = values, Context.prototype = {
+    constructor: Context,
+    reset: function reset(skipTempReset) {
+      if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) {
+        "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined);
+      }
+    },
+    stop: function stop() {
+      this.done = !0;
+      var rootRecord = this.tryEntries[0].completion;
+      if ("throw" === rootRecord.type) throw rootRecord.arg;
+      return this.rval;
+    },
+    dispatchException: function dispatchException(exception) {
+      if (this.done) throw exception;
+      var context = this;
+      function handle(loc, caught) {
+        return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught;
+      }
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i],
+          record = entry.completion;
+        if ("root" === entry.tryLoc) return handle("end");
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc"),
+            hasFinally = hasOwn.call(entry, "finallyLoc");
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
+            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
+          } else {
+            if (!hasFinally) throw new Error("try statement without catch or finally");
+            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
+          }
+        }
+      }
+    },
+    abrupt: function abrupt(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+      finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null);
+      var record = finallyEntry ? finallyEntry.completion : {};
+      return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record);
+    },
+    complete: function complete(record, afterLoc) {
+      if ("throw" === record.type) throw record.arg;
+      return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel;
+    },
+    finish: function finish(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel;
+      }
+    },
+    "catch": function _catch(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if ("throw" === record.type) {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+      throw new Error("illegal catch attempt");
+    },
+    delegateYield: function delegateYield(iterable, resultName, nextLoc) {
+      return this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      }, "next" === this.method && (this.arg = undefined), ContinueSentinel;
+    }
+  }, exports;
+}
+module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+/* 32 */
+/*!*****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+      args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+      _next(undefined);
+    });
+  };
+}
+module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+/* 33 */
 /*!**************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/apis/auth_apis.js ***!
   \**************************************************************/
@@ -9503,7 +9877,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.register = exports.otherLogin = exports.generalLogin = exports.checkToken = exports.bindNumberPhone = void 0;
-var _request = __webpack_require__(/*! ../utils/request.js */ 31);
+var _request = __webpack_require__(/*! ../utils/request.js */ 34);
 var checkToken = function checkToken() {
   return (0, _request.$request)({
     url: '/auth/checkToken',
@@ -9547,7 +9921,7 @@ var register = function register() {
 exports.register = register;
 
 /***/ }),
-/* 31 */
+/* 34 */
 /*!*************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/utils/request.js ***!
   \*************************************************************/
@@ -9562,8 +9936,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.$request = void 0;
-var _index = __webpack_require__(/*! ../config/index */ 32);
-var _websocket = _interopRequireDefault(__webpack_require__(/*! ./websocket.js */ 33));
+var _index = __webpack_require__(/*! ../config/index */ 35);
+var _websocket = _interopRequireDefault(__webpack_require__(/*! ./websocket.js */ 36));
 var $request = function $request() {
   var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return new Promise(function (resolve, reject) {
@@ -9616,7 +9990,7 @@ exports.$request = $request;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 32 */
+/* 35 */
 /*!************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/config/index.js ***!
   \************************************************************/
@@ -9630,11 +10004,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.baseUrl = void 0;
-var baseUrl = "http://192.168.116.102:9000";
+var baseUrl = "http://192.168.1.10:9000";
 exports.baseUrl = baseUrl;
 
 /***/ }),
-/* 33 */
+/* 36 */
 /*!***************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/utils/websocket.js ***!
   \***************************************************************/
@@ -9644,7 +10018,11 @@ exports.baseUrl = baseUrl;
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
-var _index = __webpack_require__(/*! ../config/index.js */ 32);
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+var _config = __webpack_require__(/*! @/config */ 35);
+var _fileUtil = __webpack_require__(/*! ../utils/fileUtil.js */ 37);
+var _sqliteUtil = _interopRequireDefault(__webpack_require__(/*! ../utils/sqliteUtil.js */ 38));
+var _util = __webpack_require__(/*! ../utils/util.js */ 39);
 //是否已经连接上ws
 var isOpenSocket = false;
 //心跳间隔，单位毫秒
@@ -9660,8 +10038,8 @@ var heartBeatText = {
 var reconnectTimes = 10;
 var reconnectInterval = null;
 //重连间隔，单位毫秒
-var reconnectDelay = 3000;
-var wsUrl = _index.baseUrl + '/ws/xfs';
+var reconnectDelay = 10000;
+var wsUrl = _config.baseUrl + '/ws/xfs';
 var socketTask = null;
 
 //这个参数是防止重连失败之后onClose方法会重复执行reconnect方法，导致重连定时器出问题
@@ -9675,8 +10053,12 @@ var canReconnect = false;
 var ws = {
   socketTask: null,
   init: init,
-  completeClose: completeClose
+  send: send,
+  completeClose: completeClose,
+  setCornerMark: setCornerMark
 };
+// 定时器，10秒内服务器未应答,没有将对应的消息定时器清除，将对应的消息状态设置为发送失败
+var timer = {};
 function init() {
   socketTask = uni.connectSocket({
     url: wsUrl,
@@ -9696,10 +10078,73 @@ function init() {
     heartBeat();
   });
   socketTask.onMessage(function (res) {
-    console.log(res);
-    var meaasge = JSON.parse(res);
+    var message = JSON.parse(res.data);
+    console.log(message);
     // 聊天信息
-    if (meaasge.messageType === 3) {}
+    if (message.messageType === 3) {
+      console.log('聊天信息');
+      if (_sqliteUtil.default.isOpen()) {
+        console.log('数据库打开成功');
+        // 更新消息列表
+        var s = "select * from message_list where user_id='".concat(message.from, "'");
+        _sqliteUtil.default.SqlSelect(s).then(function (res) {
+          console.log(res);
+          (0, _util.imageUrlToBase64)(message.fromAvatar).then(function (img) {
+            var con = (0, _util.replaceImageTags)(message.content);
+            if (message.chatType === 4) {
+              con = '[语音]';
+            }
+            if (res.length > 0) {
+              var sql = "UPDATE message_list SET last_message=\"".concat(con, "\", last_time=").concat(message.time, ", stranger=").concat(message.friendType, ", avatar_url='").concat(img, "', user_name='").concat(message.fromName, "', unread_num=unread_num+1 WHERE user_id='").concat(message.from, "'");
+              _sqliteUtil.default.SqlExecute(sql).then(function (res) {
+                setCornerMark();
+              });
+            } else {
+              var _sql = "INSERT INTO message_list (user_id, stranger, last_message, last_time, avatar_url, user_name, unread_num) VALUES ('".concat(message.from, "', ").concat(message.friendType, ", \"").concat(con, "\", ").concat(message.time, ", '").concat(img, "', '").concat(message.fromName, "', 1)");
+              _sqliteUtil.default.SqlExecute(_sql).then(function (res) {
+                setCornerMark();
+              });
+            }
+            uni.$emit('updateMessageList');
+          });
+        });
+        // 更新聊天记录，先判断是否存在与该用户的聊天记录表，如果不存在则创建
+        var s2 = "create table if not exists chat_".concat(message.from, " (\n\t\t\t\tid integer primary key autoincrement, \n\t\t\t\tfrom_id text, \n\t\t\t\tto_id text, \n\t\t\t\tcontent text, \n\t\t\t\ttime integer, \n\t\t\t\tchat_type integer, \n\t\t\t\tis_read integer,\n\t\t\t\tis_send integer,\n\t\t\t\taudio_time integer);");
+        (0, _util.replaceImageMessage)(message.content).then(function (res) {
+          message.content = res;
+          console.log(message.content);
+          _sqliteUtil.default.SqlExecute(s2).then(function (res) {
+            // 插入聊天记录
+            var sql = "INSERT INTO chat_".concat(message.from, " (from_id, to_id, content, time, chat_type,is_read, is_send,audio_time) VALUES ('").concat(message.from, "', '").concat(message.to, "', \"").concat(message.content, "\", ").concat(message.time, ", ").concat(message.chatType, ",0,1,").concat(message.audioTime, ")");
+            _sqliteUtil.default.SqlExecute(sql).then(function (res) {
+              console.log('插入聊天记录成功');
+              uni.$emit('updateChatRecord');
+            });
+          });
+        });
+      }
+    }
+    // 服务器应答
+    if (message.messageType === 5) {
+      console.log('服务器应答');
+      if (_sqliteUtil.default.isOpen()) {
+        // 0代表发送中，1代表发送成功，2代表发送失败
+        // 0未读，1已读
+        var status = 1;
+        if (message.content) {
+          status = 2;
+        }
+        message.status = status;
+        // 清除定时器
+        clearTimeout(timer['time' + message.to + message.id]);
+        // 更新聊天记录
+        var sql = "UPDATE chat_".concat(message.to, " SET is_send=").concat(status, " WHERE id=").concat(message.id, " and from_id='").concat(message.from, "' and to_id='").concat(message.to, "'");
+        _sqliteUtil.default.SqlExecute(sql).then(function (res) {
+          console.log('更新聊天记录成功');
+          uni.$emit('updateMsgStatus', message);
+        });
+      }
+    }
   });
   socketTask.onClose(function () {
     isOpenSocket = false;
@@ -9716,31 +10161,78 @@ function heartBeat() {
   }, heartBeatDelay);
 }
 function send(value) {
+  if (value.messageType === 3) {
+    timer['time' + value.to + value.id] = setTimeout(function () {
+      console.log('发送超时');
+      if (_sqliteUtil.default.isOpen()) {
+        var sql = "UPDATE chat_".concat(value.to, " SET is_send=2 WHERE id=").concat(value.id, " and from_id='").concat(value.from, "' and to_id='").concat(value.to, "'");
+        _sqliteUtil.default.SqlExecute(sql).then(function (res) {
+          console.log('更新消息状态成功');
+          value.status = 2;
+          value.content = '发送失败';
+          uni.$emit('updateMsgStatus', value);
+        });
+      }
+    }, 10000);
+  }
   if (ws.socketTask.readyState === 1) {
     ws.socketTask.send({
       data: JSON.stringify(value),
-      success: function success() {},
+      success: function success(res) {
+        // console.log("消息发送成功");
+        return true;
+      },
       fail: function fail() {
         console.log("消息发送失败");
         completeClose();
+        init();
+        return false;
       }
     });
   } else {
     console.log("WebSocket 连接已关闭，无法发送消息");
     completeClose();
+    init();
+    // 观察10次，如果10次都没有连接成功，则不再发送消息
+    var count = 0;
+    // 每1秒观察一次是否连接成功，连接成功后发送消息
+    var interval = setInterval(function () {
+      if (count >= 10) {
+        clearInterval(interval);
+        return false;
+      }
+      console.log('连接状态：' + ws.socketTask.readyState);
+      if (ws.socketTask.readyState === 1) {
+        ws.socketTask.send({
+          data: JSON.stringify(value),
+          success: function success(res) {
+            // console.log("消息发送成功");
+            clearInterval(interval);
+            return true;
+          },
+          fail: function fail() {
+            console.log("消息发送失败");
+            completeClose();
+            init();
+            return false;
+          }
+        });
+      }
+      count++;
+    }, 1000);
+    return false;
   }
 }
 function reconnect() {
   //停止发送心跳
-  clearInterval(heartBeatInterval);
   //如果不是人为关闭的话，进行重连
   if (!isOpenSocket) {
+    completeClose();
     var count = 0;
     reconnectInterval = setInterval(function () {
       console.log("正在尝试重连");
       init();
       count++;
-      //重连一定次数后就不再重连
       if (count >= reconnectTimes) {
         clearInterval(reconnectInterval);
         console.log("网络异常或服务器错误");
@@ -9753,15 +10245,1122 @@ function completeClose() {
   clearInterval(heartBeatInterval);
   clearInterval(reconnectInterval);
   canReconnect = false;
+  ws.socketTask = null;
   if (ws.socketTask) {
     ws.socketTask.close();
   }
+}
+function setCornerMark() {
+  // 获取消息列表的总未读数
+  var s = "select sum(unread_num) as total from message_list";
+  _sqliteUtil.default.SqlSelect(s).then(function (res) {
+    if (res[0].total > 0) {
+      uni.setTabBarBadge({
+        index: 2,
+        text: res[0].total > 99 ? '99+' : res[0].total.toString()
+      });
+      console.log(res[0].total);
+    } else {
+      uni.removeTabBarBadge({
+        index: 2
+      });
+    }
+  });
 }
 module.exports = ws;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 34 */
+/* 37 */
+/*!**************************************************************!*\
+  !*** D:/webProject/mallproject/xiaofanshu/utils/fileUtil.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.zoomOutImage = exports.saveFile = void 0;
+// 将文件网址下载到本地保存，返回本地保存的临时文件路径
+function downloadFile(url) {
+  return new Promise(function (resolve, reject) {
+    uni.downloadFile({
+      url: url,
+      success: function success(res) {
+        if (res.statusCode === 200) {
+          resolve(res.tempFilePath);
+        } else {
+          reject(res);
+        }
+      },
+      fail: function fail(err) {
+        reject(err);
+      }
+    });
+  });
+}
+
+// 根据url保存永久保存到本地，返回本地保存的文件路径
+var saveFile = function saveFile(url) {
+  return new Promise(function (resolve, reject) {
+    downloadFile(url).then(function (filePath) {
+      uni.saveFile({
+        tempFilePath: filePath,
+        success: function success(res) {
+          resolve(res.savedFilePath);
+        },
+        fail: function fail(err) {
+          reject(err);
+        }
+      });
+    }).catch(function (err) {
+      reject(err);
+    });
+  });
+};
+exports.saveFile = saveFile;
+var zoomOutImage = function zoomOutImage(src) {
+  return new Promise(function (resolve, reject) {
+    // 获取屏幕宽高
+    var screenWidth = uni.getSystemInfoSync().screenWidth;
+    var screenHeight = uni.getSystemInfoSync().screenHeight;
+
+    // 获取本地图片信息
+    uni.getImageInfo({
+      src: src,
+      success: function success(imageInfo) {
+        // 图片原始宽高
+        var imgWidth = imageInfo.width;
+        var imgHeight = imageInfo.height;
+
+        // 计算缩放比例
+        var scale = Math.min(screenWidth / (2 * imgWidth), screenHeight / (2 * imgHeight));
+
+        // 计算缩小后的宽高
+        var actualWidth = Math.floor(imgWidth * scale);
+        var actualHeight = Math.floor(imgHeight * scale);
+
+        // 执行成功，将结果传递给 Promise 的 resolve
+        resolve({
+          width: actualWidth,
+          height: actualHeight,
+          src: src
+        });
+      },
+      fail: function fail(error) {
+        // 执行失败，将错误信息传递给 Promise 的 reject
+        reject(error);
+      }
+    });
+  });
+};
+exports.zoomOutImage = zoomOutImage;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 38 */
+/*!****************************************************************!*\
+  !*** D:/webProject/mallproject/xiaofanshu/utils/sqliteUtil.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ 13);
+var sqliteUtil = {
+  dbName: 'xfsDB',
+  // 数据库名称
+  dbPath: '_doc/xfs.db',
+  // 数据库地址,推荐以下划线为开头   _doc/xxx.db
+  //id，user_id，avatar_url，user_name，last_message，last_time，unread_num，stranger
+  // 判断数据库是否打开
+  isOpen: function isOpen() {
+    // 数据库打开了就返回 true,否则返回 false
+    var open = plus.sqlite.isOpenDatabase({
+      name: this.dbName,
+      // 数据库名称
+      path: this.dbPath // 数据库地址
+    });
+
+    return open;
+  },
+  // sd
+  // 创建数据库 或 有该数据库就打开
+  openSqlite: function openSqlite() {
+    var _this = this;
+    return new Promise(function (resolve, reject) {
+      // 打开数据库
+      plus.sqlite.openDatabase({
+        name: _this.dbName,
+        path: _this.dbPath,
+        success: function success(e) {
+          resolve(e); // 成功回调
+        },
+        fail: function fail(e) {
+          reject(e); // 失败回调
+        }
+      });
+    });
+  },
+  // 关闭数据库
+  closeSqlite: function closeSqlite() {
+    var _this2 = this;
+    return new Promise(function (resolve, reject) {
+      plus.sqlite.closeDatabase({
+        name: _this2.dbName,
+        success: function success(e) {
+          resolve(e);
+        },
+        fail: function fail(e) {
+          reject(e);
+        }
+      });
+    });
+  },
+  // 数据库删表 sql:'DROP TABLE dbTable'
+  dropTable: function dropTable(dbTable) {
+    var _this3 = this;
+    console.log("DROP TABLE ".concat(dbTable));
+    return new Promise(function (resolve, reject) {
+      plus.sqlite.executeSql({
+        name: _this3.dbName,
+        sql: "DROP TABLE ".concat(dbTable),
+        success: function success(e) {
+          resolve(e);
+        },
+        fail: function fail(e) {
+          reject(e);
+        }
+      });
+    });
+  },
+  //-----------------------js对象方法，简化操作-------------
+  ///原生的sql操作
+  SqlExecute: function SqlExecute(sql) {
+    var _this4 = this;
+    return new Promise(function (resolve, reject) {
+      plus.sqlite.executeSql({
+        name: _this4.dbName,
+        sql: sql,
+        success: function success(e) {
+          // console.log(e)
+          resolve(e);
+        },
+        fail: function fail(e) {
+          console.log(e);
+          reject(e);
+        }
+      });
+    });
+  },
+  //执行原生的select语句
+  SqlSelect: function SqlSelect(sql) {
+    var _this5 = this;
+    return new Promise(function (resolve, reject) {
+      plus.sqlite.selectSql({
+        name: _this5.dbName,
+        sql: sql,
+        success: function success(e) {
+          console.log(e);
+          resolve(e);
+        },
+        fail: function fail(e) {
+          console.log(e);
+          reject(e);
+        }
+      });
+    });
+  },
+  //通过对象创建数据表,使用对象参数
+  JsCreateTable: function JsCreateTable(dbTable, data) {
+    data = Object.entries(data).map(function (item) {
+      return item[0] + ' ' + item[1];
+    }).join(',');
+    var sql = "CREATE TABLE IF NOT EXISTS ".concat(dbTable, "(\"id\" INTEGER PRIMARY KEY AUTOINCREMENT,").concat(data, ")");
+    return this.SqlExecute(sql);
+  },
+  //通过对象创建数据表,使用对象的数据类型
+  JsCreateTableType: function JsCreateTableType(dbTable, data) {
+    data = Object.entries(data).map(function (item) {
+      var typeName = '';
+      switch (item[1].constructor) {
+        case Number:
+          if (Math.floor(item[1]) == item[1]) {
+            typeName = 'INTEGER';
+          } else {
+            typeName = 'REAL';
+          }
+          break;
+        case String:
+          typeName = 'TEXT';
+          break;
+        case Boolean:
+          typeName = 'BOOLEAN';
+          break;
+        case Date:
+          typeName = 'TEXT';
+          break;
+      }
+      return item[0] + ' ' + typeName;
+    }).join(',');
+    var sql = "CREATE TABLE IF NOT EXISTS ".concat(dbTable, "(\"id\" INTEGER PRIMARY KEY AUTOINCREMENT,").concat(data, ")");
+    console.log(sql);
+    return this.SqlExecute(sql);
+  },
+  //通过对象插入数据
+  JsInsertTableData: function JsInsertTableData(dbTable, data) {
+    var condition = [];
+    var sqlValue = [];
+    Object.entries(data).forEach(function (item) {
+      condition.push("'".concat(item[0], "'"));
+      if (item[1] != undefined) {
+        if (item[1].constructor == String) {
+          sqlValue.push("'".concat(item[1], "'"));
+        } else if (item[1].constructor == Date) {
+          sqlValue.push("'".concat(item[1].format('yyyy-MM-dd hh:mm:ss'), "'"));
+        } else {
+          sqlValue.push(item[1]);
+        }
+      }
+    });
+    condition = condition.join(',');
+    sqlValue = sqlValue.join(',');
+    var sql = "INSERT INTO ".concat(dbTable, " (").concat(condition, ") VALUES(").concat(sqlValue, ")");
+    return this.SqlExecute(sql);
+  },
+  //通过对象选择数据
+  JsSelectTableData: function JsSelectTableData(dbTable, data) {
+    var sql = '';
+    var condition = [];
+    if (data == undefined || data == null || data == {}) {
+      sql = "SELECT * FROM ".concat(dbTable);
+    } else if (data.constructor == Number) {
+      sql = "SELECT * FROM ".concat(daTable, " where id = ").concat(data);
+    } else {
+      Object.entries(data).forEach(function (item) {
+        if (item[1] != undefined && item[0] != 'id') {
+          if (_typeof(item[1] == 'string')) {
+            condition.push(" ".concat(item[0], " = '").concat(item[1], "' "));
+          } else {
+            condition.push(" ".concat(item[0], " = ").concat(item[1], " "));
+          }
+        }
+      });
+      condition = condition.join('AND');
+      sql = "SELECT * FROM ".concat(dbTable, " WHERE ").concat(condition);
+    }
+    return this.SqlSelect(sql);
+  },
+  //通过对象获取
+  JsUpdate: function JsUpdate(dbTable, data) {
+    try {
+      var sql = '';
+      var condition = [];
+      Object.entries(data).forEach(function (item) {
+        if (item[1] != undefined && item[0] != 'id') {
+          if (_typeof(item[1] == 'string')) {
+            condition.push(" ".concat(item[0], " = '").concat(item[1], "' "));
+          } else {
+            condition.push(" ".concat(item[0], " = ").concat(item[1], " "));
+          }
+        }
+      });
+      condition = condition.join(',');
+      sql = "UPDATE ".concat(dbTable, " SET ").concat(condition, " where id = ").concat(data.id);
+      return this.SqlExecute(sql);
+    } catch (e) {
+      console.log(e);
+      //TODO handle the exception
+    }
+  },
+  JsDelete: function JsDelete(dbTable, data) {
+    var sql = '';
+    // debugger
+    var condition = [];
+    try {
+      if (data.constructor == Number) {
+        sql = "DELETE FROM ".concat(dbTable, " where id = ").concat(data);
+      } else {
+        Object.entries(data).forEach(function (item) {
+          if (item[1] != undefined && item[0] != 'id') {
+            if (_typeof(item[1] == 'string')) {
+              condition.push(" ".concat(item[0], " = '").concat(item[1], "' "));
+            } else {
+              condition.push(" ".concat(item[0], " = ").concat(item[1], " "));
+            }
+          }
+        });
+        condition = condition.join('AND');
+        sql = "Delete FROM ".concat(dbTable, " WHERE ").concat(condition);
+      }
+      return this.SqlExecute(sql);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+};
+module.exports = sqliteUtil;
+
+/***/ }),
+/* 39 */
+/*!**********************************************************!*\
+  !*** D:/webProject/mallproject/xiaofanshu/utils/util.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.weChatTimeFormat = exports.transData = exports.timestampFormat = exports.stringDateFormat = exports.replaceImageTags = exports.replaceImageMessage = exports.imageUrlToBase64 = void 0;
+var _index = __webpack_require__(/*! ../js_sdk/mmmm-image-tools/index.js */ 40);
+var _emojiUtil = __webpack_require__(/*! ./emojiUtil */ 41);
+var _fileUtil = __webpack_require__(/*! ./fileUtil.js */ 37);
+var timestampFormat = function timestampFormat(timespan) {
+  var dateTime = new Date(timespan); // 将传进来的字符串或者毫秒转为标准时间
+  return dateTimeFormat(dateTime);
+};
+exports.timestampFormat = timestampFormat;
+var stringDateFormat = function stringDateFormat(params) {
+  var fullDate = params.split(" ")[0].split("-");
+  var fullTime = params.split(" ")[1].split(":");
+  var dateTime = new Date(fullDate[0], fullDate[1] - 1, fullDate[2], fullTime[0] != null ? fullTime[0] : 0, fullTime[1] != null ? fullTime[1] : 0, fullTime[2] != null ? fullTime[2] : 0);
+  console.log(dateTime);
+  return dateTimeFormat(dateTime);
+};
+exports.stringDateFormat = stringDateFormat;
+function dateTimeFormat(dateTime) {
+  var year = dateTime.getFullYear();
+  var month = padZero(dateTime.getMonth() + 1); // 补零
+  var day = padZero(dateTime.getDate()); // 补零
+  var hour = padZero(dateTime.getHours()); // 补零
+  var minute = padZero(dateTime.getMinutes()); // 补零
+  var millisecond = dateTime.getTime(); // 将当前编辑的时间转换为毫秒
+  var now = new Date(); // 获取本机当前的时间
+  var nowNew = now.getTime(); // 将本机的时间转换为毫秒
+  var milliseconds = 0;
+  var timeSpanStr;
+  milliseconds = nowNew - millisecond;
+  if (milliseconds <= 1000 * 60 * 1) {
+    // 小于一分钟展示为刚刚
+    timeSpanStr = '刚刚';
+  } else if (1000 * 60 * 1 < milliseconds && milliseconds <= 1000 * 60 * 60) {
+    // 大于一分钟小于一小时展示为分钟
+    timeSpanStr = Math.round(milliseconds / (1000 * 60)) + '分钟前';
+  } else if (1000 * 60 * 60 * 1 < milliseconds && milliseconds <= 1000 * 60 * 60 * 24) {
+    // 大于一小时小于一天展示为小时
+    timeSpanStr = Math.round(milliseconds / (1000 * 60 * 60)) + '小时前';
+  } else if (1000 * 60 * 60 * 24 < milliseconds && milliseconds <= 1000 * 60 * 60 * 24 * 15) {
+    // 大于一天小于十五天展示位天
+    timeSpanStr = Math.round(milliseconds / (1000 * 60 * 60 * 24)) + '天前';
+  } else if (milliseconds > 1000 * 60 * 60 * 24 * 15 && year === now.getFullYear()) {
+    timeSpanStr = month + '-' + day;
+  } else {
+    timeSpanStr = year + '-' + month + '-' + day;
+  }
+  return timeSpanStr;
+  // 补零函数
+  function padZero(number) {
+    return number < 10 ? '0' + number : number;
+  }
+}
+var imageUrlToBase64 = function imageUrlToBase64(url) {
+  return new Promise(function (resolve, reject) {
+    uni.getImageInfo({
+      src: url,
+      success: function success(res) {
+        (0, _index.pathToBase64)(res.path).then(function (base64) {
+          resolve(base64);
+        });
+      }
+    });
+  });
+};
+exports.imageUrlToBase64 = imageUrlToBase64;
+function formatTime2(fmt, timestamp) {
+  var date = new Date(timestamp); // 兼容safari
+  var o = {
+    'M+': date.getMonth() + 1,
+    'd+': date.getDate(),
+    'h+': date.getHours(),
+    'm+': date.getMinutes(),
+    's+': date.getSeconds(),
+    'q+': Math.floor((date.getMonth() + 3) / 3),
+    'S': date.getMilliseconds()
+  };
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+  }
+  for (var k in o) {
+    if (new RegExp('(' + k + ')').test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, RegExp.$1.length === 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length));
+    }
+  }
+  return fmt;
+}
+
+// 星期格式转换 0-6：周日到周六
+function weekFormat(e) {
+  var prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "周";
+  switch (e) {
+    case 0:
+      return prefix + "日";
+      break;
+    case 1:
+      return prefix + "一";
+      break;
+    case 2:
+      return prefix + "二";
+      break;
+    case 3:
+      return prefix + "三";
+      break;
+    case 4:
+      return prefix + "四";
+      break;
+    case 5:
+      return prefix + "五";
+      break;
+    case 6:
+      return prefix + "六";
+      break;
+    default:
+      return "";
+      break;
+  }
+}
+// 转换今日的时辰格式
+function todayTimeFormat(e) {
+  if (e >= 0 && e < 7) {
+    return "凌晨";
+  } else if (e >= 7 && e < 11) {
+    return "上午";
+  } else if (e >= 11 && e < 13) {
+    return "中午";
+  } else if (e >= 13 && e < 18) {
+    return "下午";
+  } else if (e >= 18 && e < 24) {
+    return "晚上";
+  } else {
+    return "";
+  }
+}
+
+// 是否显示周几
+function isShowWeekDay(sub, weekDay) {
+  var currentWeekDay = new Date().getDay();
+  var dayTime = 1000 * 60 * 60 * 24;
+  // 1.当前时间与消息时间相差必须大于2天小于7天
+  // 2.当前时间距离本周一相差必须大于2天且小于当前距离周一的天数
+  // 3.消息时间不可能是0-周日，因为周日没有给后面时间留空间，不会走这里的逻辑，而是走今天的逻辑
+  if (sub >= dayTime * 2 && weekDay !== 0 && sub <= dayTime * currentWeekDay) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// 仿微信时间显示格式转换 @time 时间戳毫秒
+var weChatTimeFormat = function weChatTimeFormat(time) {
+  var today = new Date();
+  var timeDate = new Date(time);
+
+  // 获取当前时间的年月日时分秒
+  var currentYear = today.getFullYear();
+  var currentMonth = today.getMonth();
+  var currentDay = today.getDate();
+  var currentHour = today.getHours();
+  var currentMinute = today.getMinutes();
+
+  // 获取消息时间的年月日时分秒
+  var messageYear = timeDate.getFullYear();
+  var messageMonth = timeDate.getMonth();
+  var messageDay = timeDate.getDate();
+  var messageHour = timeDate.getHours();
+  var messageMinute = timeDate.getMinutes();
+  var subDays = currentDay - messageDay;
+  if (currentYear > messageYear) {
+    // 显示完整日期时间
+    return "".concat(formatTime2("yyyy年MM月dd日", timeDate), " ").concat(todayTimeFormat(messageHour), " ").concat(formatTime2("hh:mm", timeDate));
+  } else if (subDays === 0) {
+    // 今天
+    return "".concat(todayTimeFormat(messageHour), " ").concat(formatTime2("hh:mm", timeDate));
+  } else if (subDays === 1) {
+    // 昨天
+    return "\u6628\u5929 ".concat(formatTime2("hh:mm", timeDate));
+  } else if (subDays === 2) {
+    // 前天
+    return "\u524D\u5929 ".concat(formatTime2("hh:mm", timeDate));
+  } else if (isShowWeekDay(subDays, timeDate.getDay())) {
+    // 一周内，显示周几
+    return "".concat(weekFormat(timeDate.getDay()), " ").concat(formatTime2("hh:mm", timeDate));
+  } else if (currentYear === messageYear) {
+    // 其他情况，显示日期和时间
+    return "".concat(formatTime2("MM月dd日", timeDate), " ").concat(todayTimeFormat(messageHour), " ").concat(formatTime2("hh:mm", timeDate));
+  }
+};
+
+// 1) 将字符串转换成驼峰写法
+exports.weChatTimeFormat = weChatTimeFormat;
+function toHump(str) {
+  // 将字符串通过 下划线 拆分成多段 形成一个数组
+  var strArr = str.split('_');
+
+  // 将数组中每个元素的第一个字母修改成大写形式
+  // charAt(0) 返回该元素的第一个字母 user -> u
+  // substring(1) 将字符串从第一个字母开始截取 user -> ser
+  for (var i = 1; i < strArr.length; i++) {
+    strArr[i] = strArr[i].charAt(0).toUpperCase() + strArr[i].substring(1);
+  }
+
+  // 数组转换成字符串
+  return strArr.join('');
+}
+
+// 2) 格式化数组中的对象
+var transData = function transData(souceData) {
+  return souceData.map(function (item) {
+    // 准备最后返回的对象
+    var obj = {};
+    Object.keys(item).forEach(function (key) {
+      if (/\_(\w)/.test(key)) {
+        // 如果需要转化 则进行驼峰转化
+        var _key = toHump(key);
+        obj[_key] = item[key];
+      } else {
+        // 如果不需要直接赋值
+        obj[key] = item[key];
+      }
+    });
+    return obj;
+  });
+};
+exports.transData = transData;
+var replaceImageTags = function replaceImageTags(message) {
+  // 正则表达式匹配<image>标签
+  var imageTagRegex = /<img src='(.*?)' style='width: (\d+)px;height: (\d+)px;'><\/img>/g;
+  // 使用replace函数进行替换
+  return message.replace(imageTagRegex, function (match, src, width, height) {
+    // 这里可以根据需要进行调整，例如将width和height应用到表情显示的样式中
+    // return `[${getEmojiNameFromUrl(src)}XFS]`;
+    var name = getEmojiNameFromUrl(src);
+    if (name == '') {
+      return '[图片]';
+    }
+    return "[".concat(name, "XFS]");
+  });
+};
+
+// 获取表情名称
+exports.replaceImageTags = replaceImageTags;
+function getEmojiNameFromUrl(url) {
+  // 在这里根据url获取表情名称，你可能需要维护一个表情名称和url的映射关系
+  var emoji = _emojiUtil.emojiList.find(function (item) {
+    return item.url === url;
+  });
+  return emoji ? emoji.name : '';
+}
+
+// 匹配对方发来的聊天消息中的图片标签，将src属性的值替换为本地路径
+var replaceImageMessage = function replaceImageMessage(message) {
+  // 正则表达式匹配<img>标签
+  var imageTagRegex = /<img src='(.*?)' style='width: (\d+)px;height: (\d+)px;'><\/img>/g;
+  var promises = []; // 用于存储保存文件的Promise数组
+  // 使用replace函数进行替换
+  var replacedMessage = message.replace(imageTagRegex, function (match, src, width, height) {
+    // 如果src是本地路径，则不进行替换
+    if (src.indexOf('http') === -1) {
+      return match;
+    }
+    // 保存文件，并将Promise加入数组
+    var promise = (0, _fileUtil.saveFile)(src).then(function (localFilePath) {
+      console.log(localFilePath);
+      return "<img src='".concat(localFilePath, "' style='width: ").concat(width, "px;height: ").concat(height, "px;'></img>");
+    }).catch(function (error) {
+      console.error(error);
+      return match; // 如果保存失败，保持原样
+    });
+
+    promises.push(promise);
+    return ''; // 将匹配的内容替换为空字符串，等待Promise完成后再进行拼接
+  });
+
+  // 使用Promise.all等待所有的异步操作完成
+  return Promise.all(promises).then(function (results) {
+    // 将替换后的内容和原始消息拼接起来
+    return replacedMessage.replace(/$/, results.join(''));
+  });
+};
+exports.replaceImageMessage = replaceImageMessage;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 40 */
+/*!*****************************************************************************!*\
+  !*** D:/webProject/mallproject/xiaofanshu/js_sdk/mmmm-image-tools/index.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(wx) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.base64ToPath = base64ToPath;
+exports.pathToBase64 = pathToBase64;
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+function getLocalFilePath(path) {
+  if (path.indexOf('_www') === 0 || path.indexOf('_doc') === 0 || path.indexOf('_documents') === 0 || path.indexOf('_downloads') === 0) {
+    return path;
+  }
+  if (path.indexOf('file://') === 0) {
+    return path;
+  }
+  if (path.indexOf('/storage/emulated/0/') === 0) {
+    return path;
+  }
+  if (path.indexOf('/') === 0) {
+    var localFilePath = plus.io.convertAbsoluteFileSystem(path);
+    if (localFilePath !== path) {
+      return localFilePath;
+    } else {
+      path = path.substr(1);
+    }
+  }
+  return '_www/' + path;
+}
+function dataUrlToBase64(str) {
+  var array = str.split(',');
+  return array[array.length - 1];
+}
+var index = 0;
+function getNewFileId() {
+  return Date.now() + String(index++);
+}
+function biggerThan(v1, v2) {
+  var v1Array = v1.split('.');
+  var v2Array = v2.split('.');
+  var update = false;
+  for (var index = 0; index < v2Array.length; index++) {
+    var diff = v1Array[index] - v2Array[index];
+    if (diff !== 0) {
+      update = diff > 0;
+      break;
+    }
+  }
+  return update;
+}
+function pathToBase64(path) {
+  return new Promise(function (resolve, reject) {
+    if ((typeof window === "undefined" ? "undefined" : (0, _typeof2.default)(window)) === 'object' && 'document' in window) {
+      if (typeof FileReader === 'function') {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', path, true);
+        xhr.responseType = 'blob';
+        xhr.onload = function () {
+          if (this.status === 200) {
+            var fileReader = new FileReader();
+            fileReader.onload = function (e) {
+              resolve(e.target.result);
+            };
+            fileReader.onerror = reject;
+            fileReader.readAsDataURL(this.response);
+          }
+        };
+        xhr.onerror = reject;
+        xhr.send();
+        return;
+      }
+      var canvas = document.createElement('canvas');
+      var c2x = canvas.getContext('2d');
+      var img = new Image();
+      img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        c2x.drawImage(img, 0, 0);
+        resolve(canvas.toDataURL());
+        canvas.height = canvas.width = 0;
+      };
+      img.onerror = reject;
+      img.src = path;
+      return;
+    }
+    if ((typeof plus === "undefined" ? "undefined" : (0, _typeof2.default)(plus)) === 'object') {
+      plus.io.resolveLocalFileSystemURL(getLocalFilePath(path), function (entry) {
+        entry.file(function (file) {
+          var fileReader = new plus.io.FileReader();
+          fileReader.onload = function (data) {
+            resolve(data.target.result);
+          };
+          fileReader.onerror = function (error) {
+            reject(error);
+          };
+          fileReader.readAsDataURL(file);
+        }, function (error) {
+          reject(error);
+        });
+      }, function (error) {
+        reject(error);
+      });
+      return;
+    }
+    if ((typeof wx === "undefined" ? "undefined" : (0, _typeof2.default)(wx)) === 'object' && wx.canIUse('getFileSystemManager')) {
+      wx.getFileSystemManager().readFile({
+        filePath: path,
+        encoding: 'base64',
+        success: function success(res) {
+          resolve('data:image/png;base64,' + res.data);
+        },
+        fail: function fail(error) {
+          reject(error);
+        }
+      });
+      return;
+    }
+    reject(new Error('not support'));
+  });
+}
+function base64ToPath(base64) {
+  return new Promise(function (resolve, reject) {
+    if ((typeof window === "undefined" ? "undefined" : (0, _typeof2.default)(window)) === 'object' && 'document' in window) {
+      base64 = base64.split(',');
+      var type = base64[0].match(/:(.*?);/)[1];
+      var str = atob(base64[1]);
+      var n = str.length;
+      var array = new Uint8Array(n);
+      while (n--) {
+        array[n] = str.charCodeAt(n);
+      }
+      return resolve((window.URL || window.webkitURL).createObjectURL(new Blob([array], {
+        type: type
+      })));
+    }
+    var extName = base64.split(',')[0].match(/data\:\S+\/(\S+);/);
+    if (extName) {
+      extName = extName[1];
+    } else {
+      reject(new Error('base64 error'));
+    }
+    var fileName = getNewFileId() + '.' + extName;
+    if ((typeof plus === "undefined" ? "undefined" : (0, _typeof2.default)(plus)) === 'object') {
+      var basePath = '_doc';
+      var dirPath = 'uniapp_temp';
+      var filePath = basePath + '/' + dirPath + '/' + fileName;
+      if (!biggerThan(plus.os.name === 'Android' ? '1.9.9.80627' : '1.9.9.80472', plus.runtime.innerVersion)) {
+        plus.io.resolveLocalFileSystemURL(basePath, function (entry) {
+          entry.getDirectory(dirPath, {
+            create: true,
+            exclusive: false
+          }, function (entry) {
+            entry.getFile(fileName, {
+              create: true,
+              exclusive: false
+            }, function (entry) {
+              entry.createWriter(function (writer) {
+                writer.onwrite = function () {
+                  resolve(filePath);
+                };
+                writer.onerror = reject;
+                writer.seek(0);
+                writer.writeAsBinary(dataUrlToBase64(base64));
+              }, reject);
+            }, reject);
+          }, reject);
+        }, reject);
+        return;
+      }
+      var bitmap = new plus.nativeObj.Bitmap(fileName);
+      bitmap.loadBase64Data(base64, function () {
+        bitmap.save(filePath, {}, function () {
+          bitmap.clear();
+          resolve(filePath);
+        }, function (error) {
+          bitmap.clear();
+          reject(error);
+        });
+      }, function (error) {
+        bitmap.clear();
+        reject(error);
+      });
+      return;
+    }
+    if ((typeof wx === "undefined" ? "undefined" : (0, _typeof2.default)(wx)) === 'object' && wx.canIUse('getFileSystemManager')) {
+      var filePath = wx.env.USER_DATA_PATH + '/' + fileName;
+      wx.getFileSystemManager().writeFile({
+        filePath: filePath,
+        data: dataUrlToBase64(base64),
+        encoding: 'base64',
+        success: function success() {
+          resolve(filePath);
+        },
+        fail: function fail(error) {
+          reject(error);
+        }
+      });
+      return;
+    }
+    reject(new Error('not support'));
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"]))
+
+/***/ }),
+/* 41 */
+/*!***************************************************************!*\
+  !*** D:/webProject/mallproject/xiaofanshu/utils/emojiUtil.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.emojiList = void 0;
+var emojiList = [{
+  name: '不高兴',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/不高兴.gif'
+}, {
+  name: '书呆子脸',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/书呆子脸.gif'
+}, {
+  name: '亲亲',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/亲亲.gif'
+}, {
+  name: '倒脸',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/倒脸.gif'
+}, {
+  name: '傲慢',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/傲慢.gif'
+}, {
+  name: '冷汗',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/冷汗.gif'
+}, {
+  name: '冷漠',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/冷漠.gif'
+}, {
+  name: '单眼吐舌',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/单眼吐舌.gif'
+}, {
+  name: '发烧',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/发烧.gif'
+}, {
+  name: '发财',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/发财.gif'
+}, {
+  name: '受伤',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/受伤.gif'
+}, {
+  name: '吃惊',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/吃惊.gif'
+}, {
+  name: '吐舌',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/吐舌.gif'
+}, {
+  name: '吓死了',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/吓死了.gif'
+}, {
+  name: '呲牙咧嘴',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/呲牙咧嘴.gif'
+}, {
+  name: '呵呵',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/呵呵.gif'
+}, {
+  name: '呼气',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/呼气.gif'
+}, {
+  name: '哈哈',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/哈哈.gif'
+}, {
+  name: '哭',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/哭.gif'
+}, {
+  name: '啊',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/啊.gif'
+}, {
+  name: '嘻嘻',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/嘻嘻.gif'
+}, {
+  name: '嘿嘿',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/嘿嘿.gif'
+}, {
+  name: '困',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/困.gif'
+}, {
+  name: '困惑',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/困惑.gif'
+}, {
+  name: '困扰',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/困扰.gif'
+}, {
+  name: '墨镜笑脸',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/墨镜笑脸.gif'
+}, {
+  name: '大笑',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/大笑.gif'
+}, {
+  name: '失望',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/失望.gif'
+}, {
+  name: '失望但如释重负',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/失望但如释重负.gif'
+}, {
+  name: '好吃',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/好吃.gif'
+}, {
+  name: '害怕',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/害怕.gif'
+}, {
+  name: '小丑脸',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/小丑脸.gif'
+}, {
+  name: '屎',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/屎.gif'
+}, {
+  name: '得意',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/得意.gif'
+}, {
+  name: '微笑亲亲',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/微笑亲亲.gif'
+}, {
+  name: '微笑天使',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/微笑天使.gif'
+}, {
+  name: '怒火中烧',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/怒火中烧.gif'
+}, {
+  name: '恶魔微笑',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/恶魔微笑.gif'
+}, {
+  name: '想一想',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/想一想.gif'
+}, {
+  name: '打哈欠',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/打哈欠.gif'
+}, {
+  name: '打喷嚏',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/打喷嚏.gif'
+}, {
+  name: '抱抱',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/抱抱.gif'
+}, {
+  name: '担心',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/担心.gif'
+}, {
+  name: '拇指向上',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/拇指向上.gif'
+}, {
+  name: '挑眉',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/挑眉.gif'
+}, {
+  name: '捏合的手势',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/捏合的手势.gif'
+}, {
+  name: '捏手指',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/捏手指.gif'
+}, {
+  name: '放声大哭',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/放声大哭.gif'
+}, {
+  name: '斜眼笑',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/斜眼笑.gif'
+}, {
+  name: '晕',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/晕.gif'
+}, {
+  name: '松了口气',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/松了口气.gif'
+}, {
+  name: '极度痛苦',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/极度痛苦.gif'
+}, {
+  name: '汗',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/汗.gif'
+}, {
+  name: '沉思',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/沉思.gif'
+}, {
+  name: '滑稽',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/滑稽.gif'
+}, {
+  name: '生气',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/生气.gif'
+}, {
+  name: '痛苦',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/痛苦.gif'
+}, {
+  name: '眨眼',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/眨眼.gif'
+}, {
+  name: '眯眼吐舌',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/眯眼吐舌.gif'
+}, {
+  name: '睡着了',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/睡着了.gif'
+}, {
+  name: '竖中指',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/竖中指.gif'
+}, {
+  name: '笑哭了',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/笑哭了.gif'
+}, {
+  name: '笑的满地打滚',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/笑的满地打滚.gif'
+}, {
+  name: '累',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/累.gif'
+}, {
+  name: '缄默',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/缄默.gif'
+}, {
+  name: '羞涩亲亲',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/羞涩亲亲.gif'
+}, {
+  name: '羞涩微笑',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/羞涩微笑.gif'
+}, {
+  name: '翻白眼',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/翻白眼.gif'
+}, {
+  name: '脸红',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/脸红.gif'
+}, {
+  name: '花痴',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/花痴.gif'
+}, {
+  name: '苦笑',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/苦笑.gif'
+}, {
+  name: '说谎',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/说谎.gif'
+}, {
+  name: '迷茫',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/迷茫.gif'
+}, {
+  name: '闭嘴',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/闭嘴.gif'
+}, {
+  name: '震惊',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/震惊.gif'
+}, {
+  name: '飞吻',
+  url: 'https://gitee.com/yyh12345678/image/raw/master/image/飞吻.gif'
+}];
+exports.emojiList = emojiList;
+
+/***/ }),
+/* 42 */
 /*!*****************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/apis/user_service.js ***!
   \*****************************************************************/
@@ -9775,7 +11374,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.updateSex = exports.updateNickname = exports.updateIntroduction = exports.updateBirthday = exports.updateBackgroundImage = exports.updateAvatarUrl = exports.updateArea = exports.resetPassword = exports.getUserInfo = void 0;
-var _request = __webpack_require__(/*! ../utils/request.js */ 31);
+var _request = __webpack_require__(/*! ../utils/request.js */ 34);
 var resetPassword = function resetPassword() {
   var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return (0, _request.$request)({
@@ -9857,9 +11456,5866 @@ var updateArea = function updateArea() {
 exports.updateArea = updateArea;
 
 /***/ }),
-/* 35 */,
-/* 36 */,
-/* 37 */
+/* 43 */
+/*!*******************************************************************************************!*\
+  !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/list.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+/*
+ * @Author       : LQ
+ * @Description  :
+ * @version      : 1.0
+ * @Date         : 2021-08-20 16:44:21
+ * @LastAuthor   : LQ
+ * @lastTime     : 2021-08-20 17:14:53
+ * @FilePath     : /u-view2.0/uview-ui/libs/config/props/list.js
+ */
+var _default = {
+  // list 组件
+  list: {
+    showScrollbar: false,
+    lowerThreshold: 50,
+    upperThreshold: 0,
+    scrollTop: 0,
+    offsetAccuracy: 10,
+    enableFlex: false,
+    pagingEnabled: false,
+    scrollable: true,
+    scrollIntoView: '',
+    scrollWithAnimation: false,
+    enableBackToTop: false,
+    height: 0,
+    width: 0,
+    preLoadScreen: 1
+  }
+};
+exports.default = _default;
+
+/***/ }),
+/* 44 */
+/*!*************************************************************************!*\
+  !*** D:/webProject/mallproject/xiaofanshu/debug/GenerateTestUserSig.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _libGenerateTestUsersigEsMin = _interopRequireDefault(__webpack_require__(/*! ./lib-generate-test-usersig-es.min.js */ 45));
+/**
+ * 腾讯云 SDKAppId，需要替换为您自己账号下的 SDKAppId。
+ *
+ * 进入腾讯云实时音视频[控制台](https://console.cloud.tencent.com/rav ) 创建应用，即可看到 SDKAppId，
+ * 它是腾讯云用于区分客户的唯一标识。
+ */
+
+var SDKAPPID = 1600020686;
+/**
+ * 签名过期时间，建议不要设置的过短
+ * <p>
+ * 时间单位：秒
+ * 默认时间：7 x 24 x 60 x 60 = 604800 = 7 天
+ */
+
+var EXPIRETIME = 604800;
+/**
+ * 计算签名用的加密密钥，获取步骤如下：
+ *
+ * step1. 进入腾讯云实时音视频[控制台](https://console.cloud.tencent.com/rav )，如果还没有应用就创建一个，
+ * step2. 单击“应用配置”进入基础配置页面，并进一步找到“帐号体系集成”部分。
+ * step3. 点击“查看密钥”按钮，就可以看到计算 UserSig 使用的加密的密钥了，请将其拷贝并复制到如下的变量中
+ *
+ * 注意：该方案仅适用于调试Demo，正式上线前请将 UserSig 计算代码和密钥迁移到您的后台服务器上，以避免加密密钥泄露导致的流量盗用。
+ * 文档：https://cloud.tencent.com/document/product/647/17275#Server
+ */
+
+var SECRETKEY = '7c5d95ae326c78682566915ef95198181be72378abe22dfb41b384f7665cb537';
+/*
+ * Module:   GenerateTestUserSig
+ *
+ * Function: 用于生成测试用的 UserSig，UserSig 是腾讯云为其云服务设计的一种安全保护签名。
+ *           其计算方法是对 SDKAppID、UserID 和 EXPIRETIME 进行加密，加密算法为 HMAC-SHA256。
+ *
+ * Attention: 请不要将如下代码发布到您的线上正式版本的 App 中，原因如下：
+ *
+ *            本文件中的代码虽然能够正确计算出 UserSig，但仅适合快速调通 SDK 的基本功能，不适合线上产品，
+ *            这是因为客户端代码中的 SECRETKEY 很容易被反编译逆向破解，尤其是 Web 端的代码被破解的难度几乎为零。
+ *            一旦您的密钥泄露，攻击者就可以计算出正确的 UserSig 来盗用您的腾讯云流量。
+ *
+ *            正确的做法是将 UserSig 的计算代码和加密密钥放在您的业务服务器上，然后由 App 按需向您的服务器获取实时算出的 UserSig。
+ *            由于破解服务器的成本要高于破解客户端 App，所以服务器计算的方案能够更好地保护您的加密密钥。
+ *
+ * Reference：https://cloud.tencent.com/document/product/647/17275#Server
+ */
+
+function genTestUserSig(userID) {
+  var generator = new _libGenerateTestUsersigEsMin.default(SDKAPPID, SECRETKEY, EXPIRETIME);
+  var userSig = generator.genTestUserSig(userID);
+  return {
+    sdkAppId: SDKAPPID,
+    userSig: userSig
+  };
+}
+
+// module.exports = {
+//   genTestUserSig,
+// };
+
+// HBuilder 选择 vue3 时, 上面的打包无法通过 import 进行引入
+var _default = genTestUserSig;
+exports.default = _default;
+
+/***/ }),
+/* 45 */
+/*!**************************************************************************************!*\
+  !*** D:/webProject/mallproject/xiaofanshu/debug/lib-generate-test-usersig-es.min.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+/*eslint-disable*/
+var e = "undefined" != typeof global ? global : "undefined" != typeof self ? self : "undefined" != typeof window ? window : {},
+  t = [],
+  r = [],
+  n = "undefined" != typeof Uint8Array ? Uint8Array : Array,
+  i = !1;
+function o() {
+  i = !0;
+  for (var e = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/", n = 0, o = e.length; n < o; ++n) {
+    t[n] = e[n], r[e.charCodeAt(n)] = n;
+  }
+  r["-".charCodeAt(0)] = 62, r["_".charCodeAt(0)] = 63;
+}
+function a(e, r, n) {
+  for (var i, o, a = [], s = r; s < n; s += 3) {
+    i = (e[s] << 16) + (e[s + 1] << 8) + e[s + 2], a.push(t[(o = i) >> 18 & 63] + t[o >> 12 & 63] + t[o >> 6 & 63] + t[63 & o]);
+  }
+  return a.join("");
+}
+function s(e) {
+  var r;
+  i || o();
+  for (var n = e.length, s = n % 3, h = "", l = [], f = 0, c = n - s; f < c; f += 16383) {
+    l.push(a(e, f, f + 16383 > c ? c : f + 16383));
+  }
+  return 1 === s ? (r = e[n - 1], h += t[r >> 2], h += t[r << 4 & 63], h += "==") : 2 === s && (r = (e[n - 2] << 8) + e[n - 1], h += t[r >> 10], h += t[r >> 4 & 63], h += t[r << 2 & 63], h += "="), l.push(h), l.join("");
+}
+function h(e, t, r, n, i) {
+  var o,
+    a,
+    s = 8 * i - n - 1,
+    h = (1 << s) - 1,
+    l = h >> 1,
+    f = -7,
+    c = r ? i - 1 : 0,
+    u = r ? -1 : 1,
+    d = e[t + c];
+  for (c += u, o = d & (1 << -f) - 1, d >>= -f, f += s; f > 0; o = 256 * o + e[t + c], c += u, f -= 8) {
+    ;
+  }
+  for (a = o & (1 << -f) - 1, o >>= -f, f += n; f > 0; a = 256 * a + e[t + c], c += u, f -= 8) {
+    ;
+  }
+  if (0 === o) o = 1 - l;else {
+    if (o === h) return a ? NaN : 1 / 0 * (d ? -1 : 1);
+    a += Math.pow(2, n), o -= l;
+  }
+  return (d ? -1 : 1) * a * Math.pow(2, o - n);
+}
+function l(e, t, r, n, i, o) {
+  var a,
+    s,
+    h,
+    l = 8 * o - i - 1,
+    f = (1 << l) - 1,
+    c = f >> 1,
+    u = 23 === i ? Math.pow(2, -24) - Math.pow(2, -77) : 0,
+    d = n ? 0 : o - 1,
+    p = n ? 1 : -1,
+    _ = t < 0 || 0 === t && 1 / t < 0 ? 1 : 0;
+  for (t = Math.abs(t), isNaN(t) || t === 1 / 0 ? (s = isNaN(t) ? 1 : 0, a = f) : (a = Math.floor(Math.log(t) / Math.LN2), t * (h = Math.pow(2, -a)) < 1 && (a--, h *= 2), (t += a + c >= 1 ? u / h : u * Math.pow(2, 1 - c)) * h >= 2 && (a++, h /= 2), a + c >= f ? (s = 0, a = f) : a + c >= 1 ? (s = (t * h - 1) * Math.pow(2, i), a += c) : (s = t * Math.pow(2, c - 1) * Math.pow(2, i), a = 0)); i >= 8; e[r + d] = 255 & s, d += p, s /= 256, i -= 8) {
+    ;
+  }
+  for (a = a << i | s, l += i; l > 0; e[r + d] = 255 & a, d += p, a /= 256, l -= 8) {
+    ;
+  }
+  e[r + d - p] |= 128 * _;
+}
+var f = {}.toString,
+  c = Array.isArray || function (e) {
+    return "[object Array]" == f.call(e);
+  };
+function u() {
+  return p.TYPED_ARRAY_SUPPORT ? 2147483647 : 1073741823;
+}
+function d(e, t) {
+  if (u() < t) throw new RangeError("Invalid typed array length");
+  return p.TYPED_ARRAY_SUPPORT ? (e = new Uint8Array(t)).__proto__ = p.prototype : (null === e && (e = new p(t)), e.length = t), e;
+}
+function p(e, t, r) {
+  if (!(p.TYPED_ARRAY_SUPPORT || this instanceof p)) return new p(e, t, r);
+  if ("number" == typeof e) {
+    if ("string" == typeof t) throw new Error("If encoding is specified then the first argument must be a string");
+    return v(this, e);
+  }
+  return _(this, e, t, r);
+}
+function _(e, t, r, n) {
+  if ("number" == typeof t) throw new TypeError('"value" argument must not be a number');
+  return "undefined" != typeof ArrayBuffer && t instanceof ArrayBuffer ? function (e, t, r, n) {
+    if (t.byteLength, r < 0 || t.byteLength < r) throw new RangeError("'offset' is out of bounds");
+    if (t.byteLength < r + (n || 0)) throw new RangeError("'length' is out of bounds");
+    t = void 0 === r && void 0 === n ? new Uint8Array(t) : void 0 === n ? new Uint8Array(t, r) : new Uint8Array(t, r, n);
+    p.TYPED_ARRAY_SUPPORT ? (e = t).__proto__ = p.prototype : e = w(e, t);
+    return e;
+  }(e, t, r, n) : "string" == typeof t ? function (e, t, r) {
+    "string" == typeof r && "" !== r || (r = "utf8");
+    if (!p.isEncoding(r)) throw new TypeError('"encoding" must be a valid string encoding');
+    var n = 0 | m(t, r),
+      i = (e = d(e, n)).write(t, r);
+    i !== n && (e = e.slice(0, i));
+    return e;
+  }(e, t, r) : function (e, t) {
+    if (y(t)) {
+      var r = 0 | b(t.length);
+      return 0 === (e = d(e, r)).length ? e : (t.copy(e, 0, 0, r), e);
+    }
+    if (t) {
+      if ("undefined" != typeof ArrayBuffer && t.buffer instanceof ArrayBuffer || "length" in t) return "number" != typeof t.length || (n = t.length) != n ? d(e, 0) : w(e, t);
+      if ("Buffer" === t.type && c(t.data)) return w(e, t.data);
+    }
+    var n;
+    throw new TypeError("First argument must be a string, Buffer, ArrayBuffer, Array, or array-like object.");
+  }(e, t);
+}
+function g(e) {
+  if ("number" != typeof e) throw new TypeError('"size" argument must be a number');
+  if (e < 0) throw new RangeError('"size" argument must not be negative');
+}
+function v(e, t) {
+  if (g(t), e = d(e, t < 0 ? 0 : 0 | b(t)), !p.TYPED_ARRAY_SUPPORT) for (var r = 0; r < t; ++r) {
+    e[r] = 0;
+  }
+  return e;
+}
+function w(e, t) {
+  var r = t.length < 0 ? 0 : 0 | b(t.length);
+  e = d(e, r);
+  for (var n = 0; n < r; n += 1) {
+    e[n] = 255 & t[n];
+  }
+  return e;
+}
+function b(e) {
+  if (e >= u()) throw new RangeError("Attempt to allocate Buffer larger than maximum size: 0x" + u().toString(16) + " bytes");
+  return 0 | e;
+}
+function y(e) {
+  return !(null == e || !e._isBuffer);
+}
+function m(e, t) {
+  if (y(e)) return e.length;
+  if ("undefined" != typeof ArrayBuffer && "function" == typeof ArrayBuffer.isView && (ArrayBuffer.isView(e) || e instanceof ArrayBuffer)) return e.byteLength;
+  "string" != typeof e && (e = "" + e);
+  var r = e.length;
+  if (0 === r) return 0;
+  for (var n = !1;;) {
+    switch (t) {
+      case "ascii":
+      case "latin1":
+      case "binary":
+        return r;
+      case "utf8":
+      case "utf-8":
+      case void 0:
+        return q(e).length;
+      case "ucs2":
+      case "ucs-2":
+      case "utf16le":
+      case "utf-16le":
+        return 2 * r;
+      case "hex":
+        return r >>> 1;
+      case "base64":
+        return V(e).length;
+      default:
+        if (n) return q(e).length;
+        t = ("" + t).toLowerCase(), n = !0;
+    }
+  }
+}
+function k(e, t, r) {
+  var n = !1;
+  if ((void 0 === t || t < 0) && (t = 0), t > this.length) return "";
+  if ((void 0 === r || r > this.length) && (r = this.length), r <= 0) return "";
+  if ((r >>>= 0) <= (t >>>= 0)) return "";
+  for (e || (e = "utf8");;) {
+    switch (e) {
+      case "hex":
+        return O(this, t, r);
+      case "utf8":
+      case "utf-8":
+        return C(this, t, r);
+      case "ascii":
+        return I(this, t, r);
+      case "latin1":
+      case "binary":
+        return P(this, t, r);
+      case "base64":
+        return M(this, t, r);
+      case "ucs2":
+      case "ucs-2":
+      case "utf16le":
+      case "utf-16le":
+        return U(this, t, r);
+      default:
+        if (n) throw new TypeError("Unknown encoding: " + e);
+        e = (e + "").toLowerCase(), n = !0;
+    }
+  }
+}
+function E(e, t, r) {
+  var n = e[t];
+  e[t] = e[r], e[r] = n;
+}
+function S(e, t, r, n, i) {
+  if (0 === e.length) return -1;
+  if ("string" == typeof r ? (n = r, r = 0) : r > 2147483647 ? r = 2147483647 : r < -2147483648 && (r = -2147483648), r = +r, isNaN(r) && (r = i ? 0 : e.length - 1), r < 0 && (r = e.length + r), r >= e.length) {
+    if (i) return -1;
+    r = e.length - 1;
+  } else if (r < 0) {
+    if (!i) return -1;
+    r = 0;
+  }
+  if ("string" == typeof t && (t = p.from(t, n)), y(t)) return 0 === t.length ? -1 : x(e, t, r, n, i);
+  if ("number" == typeof t) return t &= 255, p.TYPED_ARRAY_SUPPORT && "function" == typeof Uint8Array.prototype.indexOf ? i ? Uint8Array.prototype.indexOf.call(e, t, r) : Uint8Array.prototype.lastIndexOf.call(e, t, r) : x(e, [t], r, n, i);
+  throw new TypeError("val must be string, number or Buffer");
+}
+function x(e, t, r, n, i) {
+  var o,
+    a = 1,
+    s = e.length,
+    h = t.length;
+  if (void 0 !== n && ("ucs2" === (n = String(n).toLowerCase()) || "ucs-2" === n || "utf16le" === n || "utf-16le" === n)) {
+    if (e.length < 2 || t.length < 2) return -1;
+    a = 2, s /= 2, h /= 2, r /= 2;
+  }
+  function l(e, t) {
+    return 1 === a ? e[t] : e.readUInt16BE(t * a);
+  }
+  if (i) {
+    var f = -1;
+    for (o = r; o < s; o++) {
+      if (l(e, o) === l(t, -1 === f ? 0 : o - f)) {
+        if (-1 === f && (f = o), o - f + 1 === h) return f * a;
+      } else -1 !== f && (o -= o - f), f = -1;
+    }
+  } else for (r + h > s && (r = s - h), o = r; o >= 0; o--) {
+    for (var c = !0, u = 0; u < h; u++) {
+      if (l(e, o + u) !== l(t, u)) {
+        c = !1;
+        break;
+      }
+    }
+    if (c) return o;
+  }
+  return -1;
+}
+function R(e, t, r, n) {
+  r = Number(r) || 0;
+  var i = e.length - r;
+  n ? (n = Number(n)) > i && (n = i) : n = i;
+  var o = t.length;
+  if (o % 2 != 0) throw new TypeError("Invalid hex string");
+  n > o / 2 && (n = o / 2);
+  for (var a = 0; a < n; ++a) {
+    var s = parseInt(t.substr(2 * a, 2), 16);
+    if (isNaN(s)) return a;
+    e[r + a] = s;
+  }
+  return a;
+}
+function A(e, t, r, n) {
+  return G(q(t, e.length - r), e, r, n);
+}
+function B(e, t, r, n) {
+  return G(function (e) {
+    for (var t = [], r = 0; r < e.length; ++r) {
+      t.push(255 & e.charCodeAt(r));
+    }
+    return t;
+  }(t), e, r, n);
+}
+function z(e, t, r, n) {
+  return B(e, t, r, n);
+}
+function L(e, t, r, n) {
+  return G(V(t), e, r, n);
+}
+function T(e, t, r, n) {
+  return G(function (e, t) {
+    for (var r, n, i, o = [], a = 0; a < e.length && !((t -= 2) < 0); ++a) {
+      r = e.charCodeAt(a), n = r >> 8, i = r % 256, o.push(i), o.push(n);
+    }
+    return o;
+  }(t, e.length - r), e, r, n);
+}
+function M(e, t, r) {
+  return 0 === t && r === e.length ? s(e) : s(e.slice(t, r));
+}
+function C(e, t, r) {
+  r = Math.min(e.length, r);
+  for (var n = [], i = t; i < r;) {
+    var o,
+      a,
+      s,
+      h,
+      l = e[i],
+      f = null,
+      c = l > 239 ? 4 : l > 223 ? 3 : l > 191 ? 2 : 1;
+    if (i + c <= r) switch (c) {
+      case 1:
+        l < 128 && (f = l);
+        break;
+      case 2:
+        128 == (192 & (o = e[i + 1])) && (h = (31 & l) << 6 | 63 & o) > 127 && (f = h);
+        break;
+      case 3:
+        o = e[i + 1], a = e[i + 2], 128 == (192 & o) && 128 == (192 & a) && (h = (15 & l) << 12 | (63 & o) << 6 | 63 & a) > 2047 && (h < 55296 || h > 57343) && (f = h);
+        break;
+      case 4:
+        o = e[i + 1], a = e[i + 2], s = e[i + 3], 128 == (192 & o) && 128 == (192 & a) && 128 == (192 & s) && (h = (15 & l) << 18 | (63 & o) << 12 | (63 & a) << 6 | 63 & s) > 65535 && h < 1114112 && (f = h);
+    }
+    null === f ? (f = 65533, c = 1) : f > 65535 && (f -= 65536, n.push(f >>> 10 & 1023 | 55296), f = 56320 | 1023 & f), n.push(f), i += c;
+  }
+  return function (e) {
+    var t = e.length;
+    if (t <= D) return String.fromCharCode.apply(String, e);
+    var r = "",
+      n = 0;
+    for (; n < t;) {
+      r += String.fromCharCode.apply(String, e.slice(n, n += D));
+    }
+    return r;
+  }(n);
+}
+p.TYPED_ARRAY_SUPPORT = void 0 === e.TYPED_ARRAY_SUPPORT || e.TYPED_ARRAY_SUPPORT, p.poolSize = 8192, p._augment = function (e) {
+  return e.__proto__ = p.prototype, e;
+}, p.from = function (e, t, r) {
+  return _(null, e, t, r);
+}, p.TYPED_ARRAY_SUPPORT && (p.prototype.__proto__ = Uint8Array.prototype, p.__proto__ = Uint8Array), p.alloc = function (e, t, r) {
+  return function (e, t, r, n) {
+    return g(t), t <= 0 ? d(e, t) : void 0 !== r ? "string" == typeof n ? d(e, t).fill(r, n) : d(e, t).fill(r) : d(e, t);
+  }(null, e, t, r);
+}, p.allocUnsafe = function (e) {
+  return v(null, e);
+}, p.allocUnsafeSlow = function (e) {
+  return v(null, e);
+}, p.isBuffer = $, p.compare = function (e, t) {
+  if (!y(e) || !y(t)) throw new TypeError("Arguments must be Buffers");
+  if (e === t) return 0;
+  for (var r = e.length, n = t.length, i = 0, o = Math.min(r, n); i < o; ++i) {
+    if (e[i] !== t[i]) {
+      r = e[i], n = t[i];
+      break;
+    }
+  }
+  return r < n ? -1 : n < r ? 1 : 0;
+}, p.isEncoding = function (e) {
+  switch (String(e).toLowerCase()) {
+    case "hex":
+    case "utf8":
+    case "utf-8":
+    case "ascii":
+    case "latin1":
+    case "binary":
+    case "base64":
+    case "ucs2":
+    case "ucs-2":
+    case "utf16le":
+    case "utf-16le":
+      return !0;
+    default:
+      return !1;
+  }
+}, p.concat = function (e, t) {
+  if (!c(e)) throw new TypeError('"list" argument must be an Array of Buffers');
+  if (0 === e.length) return p.alloc(0);
+  var r;
+  if (void 0 === t) for (t = 0, r = 0; r < e.length; ++r) {
+    t += e[r].length;
+  }
+  var n = p.allocUnsafe(t),
+    i = 0;
+  for (r = 0; r < e.length; ++r) {
+    var o = e[r];
+    if (!y(o)) throw new TypeError('"list" argument must be an Array of Buffers');
+    o.copy(n, i), i += o.length;
+  }
+  return n;
+}, p.byteLength = m, p.prototype._isBuffer = !0, p.prototype.swap16 = function () {
+  var e = this.length;
+  if (e % 2 != 0) throw new RangeError("Buffer size must be a multiple of 16-bits");
+  for (var t = 0; t < e; t += 2) {
+    E(this, t, t + 1);
+  }
+  return this;
+}, p.prototype.swap32 = function () {
+  var e = this.length;
+  if (e % 4 != 0) throw new RangeError("Buffer size must be a multiple of 32-bits");
+  for (var t = 0; t < e; t += 4) {
+    E(this, t, t + 3), E(this, t + 1, t + 2);
+  }
+  return this;
+}, p.prototype.swap64 = function () {
+  var e = this.length;
+  if (e % 8 != 0) throw new RangeError("Buffer size must be a multiple of 64-bits");
+  for (var t = 0; t < e; t += 8) {
+    E(this, t, t + 7), E(this, t + 1, t + 6), E(this, t + 2, t + 5), E(this, t + 3, t + 4);
+  }
+  return this;
+}, p.prototype.toString = function () {
+  var e = 0 | this.length;
+  return 0 === e ? "" : 0 === arguments.length ? C(this, 0, e) : k.apply(this, arguments);
+}, p.prototype.equals = function (e) {
+  if (!y(e)) throw new TypeError("Argument must be a Buffer");
+  return this === e || 0 === p.compare(this, e);
+}, p.prototype.inspect = function () {
+  var e = "";
+  return this.length > 0 && (e = this.toString("hex", 0, 50).match(/.{2}/g).join(" "), this.length > 50 && (e += " ... ")), "<Buffer " + e + ">";
+}, p.prototype.compare = function (e, t, r, n, i) {
+  if (!y(e)) throw new TypeError("Argument must be a Buffer");
+  if (void 0 === t && (t = 0), void 0 === r && (r = e ? e.length : 0), void 0 === n && (n = 0), void 0 === i && (i = this.length), t < 0 || r > e.length || n < 0 || i > this.length) throw new RangeError("out of range index");
+  if (n >= i && t >= r) return 0;
+  if (n >= i) return -1;
+  if (t >= r) return 1;
+  if (this === e) return 0;
+  for (var o = (i >>>= 0) - (n >>>= 0), a = (r >>>= 0) - (t >>>= 0), s = Math.min(o, a), h = this.slice(n, i), l = e.slice(t, r), f = 0; f < s; ++f) {
+    if (h[f] !== l[f]) {
+      o = h[f], a = l[f];
+      break;
+    }
+  }
+  return o < a ? -1 : a < o ? 1 : 0;
+}, p.prototype.includes = function (e, t, r) {
+  return -1 !== this.indexOf(e, t, r);
+}, p.prototype.indexOf = function (e, t, r) {
+  return S(this, e, t, r, !0);
+}, p.prototype.lastIndexOf = function (e, t, r) {
+  return S(this, e, t, r, !1);
+}, p.prototype.write = function (e, t, r, n) {
+  if (void 0 === t) n = "utf8", r = this.length, t = 0;else if (void 0 === r && "string" == typeof t) n = t, r = this.length, t = 0;else {
+    if (!isFinite(t)) throw new Error("Buffer.write(string, encoding, offset[, length]) is no longer supported");
+    t |= 0, isFinite(r) ? (r |= 0, void 0 === n && (n = "utf8")) : (n = r, r = void 0);
+  }
+  var i = this.length - t;
+  if ((void 0 === r || r > i) && (r = i), e.length > 0 && (r < 0 || t < 0) || t > this.length) throw new RangeError("Attempt to write outside buffer bounds");
+  n || (n = "utf8");
+  for (var o = !1;;) {
+    switch (n) {
+      case "hex":
+        return R(this, e, t, r);
+      case "utf8":
+      case "utf-8":
+        return A(this, e, t, r);
+      case "ascii":
+        return B(this, e, t, r);
+      case "latin1":
+      case "binary":
+        return z(this, e, t, r);
+      case "base64":
+        return L(this, e, t, r);
+      case "ucs2":
+      case "ucs-2":
+      case "utf16le":
+      case "utf-16le":
+        return T(this, e, t, r);
+      default:
+        if (o) throw new TypeError("Unknown encoding: " + n);
+        n = ("" + n).toLowerCase(), o = !0;
+    }
+  }
+}, p.prototype.toJSON = function () {
+  return {
+    type: "Buffer",
+    data: Array.prototype.slice.call(this._arr || this, 0)
+  };
+};
+var D = 4096;
+function I(e, t, r) {
+  var n = "";
+  r = Math.min(e.length, r);
+  for (var i = t; i < r; ++i) {
+    n += String.fromCharCode(127 & e[i]);
+  }
+  return n;
+}
+function P(e, t, r) {
+  var n = "";
+  r = Math.min(e.length, r);
+  for (var i = t; i < r; ++i) {
+    n += String.fromCharCode(e[i]);
+  }
+  return n;
+}
+function O(e, t, r) {
+  var n = e.length;
+  (!t || t < 0) && (t = 0), (!r || r < 0 || r > n) && (r = n);
+  for (var i = "", o = t; o < r; ++o) {
+    i += X(e[o]);
+  }
+  return i;
+}
+function U(e, t, r) {
+  for (var n = e.slice(t, r), i = "", o = 0; o < n.length; o += 2) {
+    i += String.fromCharCode(n[o] + 256 * n[o + 1]);
+  }
+  return i;
+}
+function H(e, t, r) {
+  if (e % 1 != 0 || e < 0) throw new RangeError("offset is not uint");
+  if (e + t > r) throw new RangeError("Trying to access beyond buffer length");
+}
+function F(e, t, r, n, i, o) {
+  if (!y(e)) throw new TypeError('"buffer" argument must be a Buffer instance');
+  if (t > i || t < o) throw new RangeError('"value" argument is out of bounds');
+  if (r + n > e.length) throw new RangeError("Index out of range");
+}
+function N(e, t, r, n) {
+  t < 0 && (t = 65535 + t + 1);
+  for (var i = 0, o = Math.min(e.length - r, 2); i < o; ++i) {
+    e[r + i] = (t & 255 << 8 * (n ? i : 1 - i)) >>> 8 * (n ? i : 1 - i);
+  }
+}
+function Z(e, t, r, n) {
+  t < 0 && (t = 4294967295 + t + 1);
+  for (var i = 0, o = Math.min(e.length - r, 4); i < o; ++i) {
+    e[r + i] = t >>> 8 * (n ? i : 3 - i) & 255;
+  }
+}
+function j(e, t, r, n, i, o) {
+  if (r + n > e.length) throw new RangeError("Index out of range");
+  if (r < 0) throw new RangeError("Index out of range");
+}
+function W(e, t, r, n, i) {
+  return i || j(e, 0, r, 4), l(e, t, r, n, 23, 4), r + 4;
+}
+function Y(e, t, r, n, i) {
+  return i || j(e, 0, r, 8), l(e, t, r, n, 52, 8), r + 8;
+}
+p.prototype.slice = function (e, t) {
+  var r,
+    n = this.length;
+  if ((e = ~~e) < 0 ? (e += n) < 0 && (e = 0) : e > n && (e = n), (t = void 0 === t ? n : ~~t) < 0 ? (t += n) < 0 && (t = 0) : t > n && (t = n), t < e && (t = e), p.TYPED_ARRAY_SUPPORT) (r = this.subarray(e, t)).__proto__ = p.prototype;else {
+    var i = t - e;
+    r = new p(i, void 0);
+    for (var o = 0; o < i; ++o) {
+      r[o] = this[o + e];
+    }
+  }
+  return r;
+}, p.prototype.readUIntLE = function (e, t, r) {
+  e |= 0, t |= 0, r || H(e, t, this.length);
+  for (var n = this[e], i = 1, o = 0; ++o < t && (i *= 256);) {
+    n += this[e + o] * i;
+  }
+  return n;
+}, p.prototype.readUIntBE = function (e, t, r) {
+  e |= 0, t |= 0, r || H(e, t, this.length);
+  for (var n = this[e + --t], i = 1; t > 0 && (i *= 256);) {
+    n += this[e + --t] * i;
+  }
+  return n;
+}, p.prototype.readUInt8 = function (e, t) {
+  return t || H(e, 1, this.length), this[e];
+}, p.prototype.readUInt16LE = function (e, t) {
+  return t || H(e, 2, this.length), this[e] | this[e + 1] << 8;
+}, p.prototype.readUInt16BE = function (e, t) {
+  return t || H(e, 2, this.length), this[e] << 8 | this[e + 1];
+}, p.prototype.readUInt32LE = function (e, t) {
+  return t || H(e, 4, this.length), (this[e] | this[e + 1] << 8 | this[e + 2] << 16) + 16777216 * this[e + 3];
+}, p.prototype.readUInt32BE = function (e, t) {
+  return t || H(e, 4, this.length), 16777216 * this[e] + (this[e + 1] << 16 | this[e + 2] << 8 | this[e + 3]);
+}, p.prototype.readIntLE = function (e, t, r) {
+  e |= 0, t |= 0, r || H(e, t, this.length);
+  for (var n = this[e], i = 1, o = 0; ++o < t && (i *= 256);) {
+    n += this[e + o] * i;
+  }
+  return n >= (i *= 128) && (n -= Math.pow(2, 8 * t)), n;
+}, p.prototype.readIntBE = function (e, t, r) {
+  e |= 0, t |= 0, r || H(e, t, this.length);
+  for (var n = t, i = 1, o = this[e + --n]; n > 0 && (i *= 256);) {
+    o += this[e + --n] * i;
+  }
+  return o >= (i *= 128) && (o -= Math.pow(2, 8 * t)), o;
+}, p.prototype.readInt8 = function (e, t) {
+  return t || H(e, 1, this.length), 128 & this[e] ? -1 * (255 - this[e] + 1) : this[e];
+}, p.prototype.readInt16LE = function (e, t) {
+  t || H(e, 2, this.length);
+  var r = this[e] | this[e + 1] << 8;
+  return 32768 & r ? 4294901760 | r : r;
+}, p.prototype.readInt16BE = function (e, t) {
+  t || H(e, 2, this.length);
+  var r = this[e + 1] | this[e] << 8;
+  return 32768 & r ? 4294901760 | r : r;
+}, p.prototype.readInt32LE = function (e, t) {
+  return t || H(e, 4, this.length), this[e] | this[e + 1] << 8 | this[e + 2] << 16 | this[e + 3] << 24;
+}, p.prototype.readInt32BE = function (e, t) {
+  return t || H(e, 4, this.length), this[e] << 24 | this[e + 1] << 16 | this[e + 2] << 8 | this[e + 3];
+}, p.prototype.readFloatLE = function (e, t) {
+  return t || H(e, 4, this.length), h(this, e, !0, 23, 4);
+}, p.prototype.readFloatBE = function (e, t) {
+  return t || H(e, 4, this.length), h(this, e, !1, 23, 4);
+}, p.prototype.readDoubleLE = function (e, t) {
+  return t || H(e, 8, this.length), h(this, e, !0, 52, 8);
+}, p.prototype.readDoubleBE = function (e, t) {
+  return t || H(e, 8, this.length), h(this, e, !1, 52, 8);
+}, p.prototype.writeUIntLE = function (e, t, r, n) {
+  (e = +e, t |= 0, r |= 0, n) || F(this, e, t, r, Math.pow(2, 8 * r) - 1, 0);
+  var i = 1,
+    o = 0;
+  for (this[t] = 255 & e; ++o < r && (i *= 256);) {
+    this[t + o] = e / i & 255;
+  }
+  return t + r;
+}, p.prototype.writeUIntBE = function (e, t, r, n) {
+  (e = +e, t |= 0, r |= 0, n) || F(this, e, t, r, Math.pow(2, 8 * r) - 1, 0);
+  var i = r - 1,
+    o = 1;
+  for (this[t + i] = 255 & e; --i >= 0 && (o *= 256);) {
+    this[t + i] = e / o & 255;
+  }
+  return t + r;
+}, p.prototype.writeUInt8 = function (e, t, r) {
+  return e = +e, t |= 0, r || F(this, e, t, 1, 255, 0), p.TYPED_ARRAY_SUPPORT || (e = Math.floor(e)), this[t] = 255 & e, t + 1;
+}, p.prototype.writeUInt16LE = function (e, t, r) {
+  return e = +e, t |= 0, r || F(this, e, t, 2, 65535, 0), p.TYPED_ARRAY_SUPPORT ? (this[t] = 255 & e, this[t + 1] = e >>> 8) : N(this, e, t, !0), t + 2;
+}, p.prototype.writeUInt16BE = function (e, t, r) {
+  return e = +e, t |= 0, r || F(this, e, t, 2, 65535, 0), p.TYPED_ARRAY_SUPPORT ? (this[t] = e >>> 8, this[t + 1] = 255 & e) : N(this, e, t, !1), t + 2;
+}, p.prototype.writeUInt32LE = function (e, t, r) {
+  return e = +e, t |= 0, r || F(this, e, t, 4, 4294967295, 0), p.TYPED_ARRAY_SUPPORT ? (this[t + 3] = e >>> 24, this[t + 2] = e >>> 16, this[t + 1] = e >>> 8, this[t] = 255 & e) : Z(this, e, t, !0), t + 4;
+}, p.prototype.writeUInt32BE = function (e, t, r) {
+  return e = +e, t |= 0, r || F(this, e, t, 4, 4294967295, 0), p.TYPED_ARRAY_SUPPORT ? (this[t] = e >>> 24, this[t + 1] = e >>> 16, this[t + 2] = e >>> 8, this[t + 3] = 255 & e) : Z(this, e, t, !1), t + 4;
+}, p.prototype.writeIntLE = function (e, t, r, n) {
+  if (e = +e, t |= 0, !n) {
+    var i = Math.pow(2, 8 * r - 1);
+    F(this, e, t, r, i - 1, -i);
+  }
+  var o = 0,
+    a = 1,
+    s = 0;
+  for (this[t] = 255 & e; ++o < r && (a *= 256);) {
+    e < 0 && 0 === s && 0 !== this[t + o - 1] && (s = 1), this[t + o] = (e / a >> 0) - s & 255;
+  }
+  return t + r;
+}, p.prototype.writeIntBE = function (e, t, r, n) {
+  if (e = +e, t |= 0, !n) {
+    var i = Math.pow(2, 8 * r - 1);
+    F(this, e, t, r, i - 1, -i);
+  }
+  var o = r - 1,
+    a = 1,
+    s = 0;
+  for (this[t + o] = 255 & e; --o >= 0 && (a *= 256);) {
+    e < 0 && 0 === s && 0 !== this[t + o + 1] && (s = 1), this[t + o] = (e / a >> 0) - s & 255;
+  }
+  return t + r;
+}, p.prototype.writeInt8 = function (e, t, r) {
+  return e = +e, t |= 0, r || F(this, e, t, 1, 127, -128), p.TYPED_ARRAY_SUPPORT || (e = Math.floor(e)), e < 0 && (e = 255 + e + 1), this[t] = 255 & e, t + 1;
+}, p.prototype.writeInt16LE = function (e, t, r) {
+  return e = +e, t |= 0, r || F(this, e, t, 2, 32767, -32768), p.TYPED_ARRAY_SUPPORT ? (this[t] = 255 & e, this[t + 1] = e >>> 8) : N(this, e, t, !0), t + 2;
+}, p.prototype.writeInt16BE = function (e, t, r) {
+  return e = +e, t |= 0, r || F(this, e, t, 2, 32767, -32768), p.TYPED_ARRAY_SUPPORT ? (this[t] = e >>> 8, this[t + 1] = 255 & e) : N(this, e, t, !1), t + 2;
+}, p.prototype.writeInt32LE = function (e, t, r) {
+  return e = +e, t |= 0, r || F(this, e, t, 4, 2147483647, -2147483648), p.TYPED_ARRAY_SUPPORT ? (this[t] = 255 & e, this[t + 1] = e >>> 8, this[t + 2] = e >>> 16, this[t + 3] = e >>> 24) : Z(this, e, t, !0), t + 4;
+}, p.prototype.writeInt32BE = function (e, t, r) {
+  return e = +e, t |= 0, r || F(this, e, t, 4, 2147483647, -2147483648), e < 0 && (e = 4294967295 + e + 1), p.TYPED_ARRAY_SUPPORT ? (this[t] = e >>> 24, this[t + 1] = e >>> 16, this[t + 2] = e >>> 8, this[t + 3] = 255 & e) : Z(this, e, t, !1), t + 4;
+}, p.prototype.writeFloatLE = function (e, t, r) {
+  return W(this, e, t, !0, r);
+}, p.prototype.writeFloatBE = function (e, t, r) {
+  return W(this, e, t, !1, r);
+}, p.prototype.writeDoubleLE = function (e, t, r) {
+  return Y(this, e, t, !0, r);
+}, p.prototype.writeDoubleBE = function (e, t, r) {
+  return Y(this, e, t, !1, r);
+}, p.prototype.copy = function (e, t, r, n) {
+  if (r || (r = 0), n || 0 === n || (n = this.length), t >= e.length && (t = e.length), t || (t = 0), n > 0 && n < r && (n = r), n === r) return 0;
+  if (0 === e.length || 0 === this.length) return 0;
+  if (t < 0) throw new RangeError("targetStart out of bounds");
+  if (r < 0 || r >= this.length) throw new RangeError("sourceStart out of bounds");
+  if (n < 0) throw new RangeError("sourceEnd out of bounds");
+  n > this.length && (n = this.length), e.length - t < n - r && (n = e.length - t + r);
+  var i,
+    o = n - r;
+  if (this === e && r < t && t < n) for (i = o - 1; i >= 0; --i) {
+    e[i + t] = this[i + r];
+  } else if (o < 1e3 || !p.TYPED_ARRAY_SUPPORT) for (i = 0; i < o; ++i) {
+    e[i + t] = this[i + r];
+  } else Uint8Array.prototype.set.call(e, this.subarray(r, r + o), t);
+  return o;
+}, p.prototype.fill = function (e, t, r, n) {
+  if ("string" == typeof e) {
+    if ("string" == typeof t ? (n = t, t = 0, r = this.length) : "string" == typeof r && (n = r, r = this.length), 1 === e.length) {
+      var i = e.charCodeAt(0);
+      i < 256 && (e = i);
+    }
+    if (void 0 !== n && "string" != typeof n) throw new TypeError("encoding must be a string");
+    if ("string" == typeof n && !p.isEncoding(n)) throw new TypeError("Unknown encoding: " + n);
+  } else "number" == typeof e && (e &= 255);
+  if (t < 0 || this.length < t || this.length < r) throw new RangeError("Out of range index");
+  if (r <= t) return this;
+  var o;
+  if (t >>>= 0, r = void 0 === r ? this.length : r >>> 0, e || (e = 0), "number" == typeof e) for (o = t; o < r; ++o) {
+    this[o] = e;
+  } else {
+    var a = y(e) ? e : q(new p(e, n).toString()),
+      s = a.length;
+    for (o = 0; o < r - t; ++o) {
+      this[o + t] = a[o % s];
+    }
+  }
+  return this;
+};
+var K = /[^+\/0-9A-Za-z-_]/g;
+function X(e) {
+  return e < 16 ? "0" + e.toString(16) : e.toString(16);
+}
+function q(e, t) {
+  var r;
+  t = t || 1 / 0;
+  for (var n = e.length, i = null, o = [], a = 0; a < n; ++a) {
+    if ((r = e.charCodeAt(a)) > 55295 && r < 57344) {
+      if (!i) {
+        if (r > 56319) {
+          (t -= 3) > -1 && o.push(239, 191, 189);
+          continue;
+        }
+        if (a + 1 === n) {
+          (t -= 3) > -1 && o.push(239, 191, 189);
+          continue;
+        }
+        i = r;
+        continue;
+      }
+      if (r < 56320) {
+        (t -= 3) > -1 && o.push(239, 191, 189), i = r;
+        continue;
+      }
+      r = 65536 + (i - 55296 << 10 | r - 56320);
+    } else i && (t -= 3) > -1 && o.push(239, 191, 189);
+    if (i = null, r < 128) {
+      if ((t -= 1) < 0) break;
+      o.push(r);
+    } else if (r < 2048) {
+      if ((t -= 2) < 0) break;
+      o.push(r >> 6 | 192, 63 & r | 128);
+    } else if (r < 65536) {
+      if ((t -= 3) < 0) break;
+      o.push(r >> 12 | 224, r >> 6 & 63 | 128, 63 & r | 128);
+    } else {
+      if (!(r < 1114112)) throw new Error("Invalid code point");
+      if ((t -= 4) < 0) break;
+      o.push(r >> 18 | 240, r >> 12 & 63 | 128, r >> 6 & 63 | 128, 63 & r | 128);
+    }
+  }
+  return o;
+}
+function V(e) {
+  return function (e) {
+    var t, a, s, h, l, f;
+    i || o();
+    var c = e.length;
+    if (c % 4 > 0) throw new Error("Invalid string. Length must be a multiple of 4");
+    l = "=" === e[c - 2] ? 2 : "=" === e[c - 1] ? 1 : 0, f = new n(3 * c / 4 - l), s = l > 0 ? c - 4 : c;
+    var u = 0;
+    for (t = 0, a = 0; t < s; t += 4, a += 3) {
+      h = r[e.charCodeAt(t)] << 18 | r[e.charCodeAt(t + 1)] << 12 | r[e.charCodeAt(t + 2)] << 6 | r[e.charCodeAt(t + 3)], f[u++] = h >> 16 & 255, f[u++] = h >> 8 & 255, f[u++] = 255 & h;
+    }
+    return 2 === l ? (h = r[e.charCodeAt(t)] << 2 | r[e.charCodeAt(t + 1)] >> 4, f[u++] = 255 & h) : 1 === l && (h = r[e.charCodeAt(t)] << 10 | r[e.charCodeAt(t + 1)] << 4 | r[e.charCodeAt(t + 2)] >> 2, f[u++] = h >> 8 & 255, f[u++] = 255 & h), f;
+  }(function (e) {
+    if ((e = function (e) {
+      return e.trim ? e.trim() : e.replace(/^\s+|\s+$/g, "");
+    }(e).replace(K, "")).length < 2) return "";
+    for (; e.length % 4 != 0;) {
+      e += "=";
+    }
+    return e;
+  }(e));
+}
+function G(e, t, r, n) {
+  for (var i = 0; i < n && !(i + r >= t.length || i >= e.length); ++i) {
+    t[i + r] = e[i];
+  }
+  return i;
+}
+function $(e) {
+  return null != e && (!!e._isBuffer || J(e) || function (e) {
+    return "function" == typeof e.readFloatLE && "function" == typeof e.slice && J(e.slice(0, 0));
+  }(e));
+}
+function J(e) {
+  return !!e.constructor && "function" == typeof e.constructor.isBuffer && e.constructor.isBuffer(e);
+}
+"undefined" != typeof globalThis ? globalThis : "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self && self;
+function Q(e, t) {
+  return e(t = {
+    exports: {}
+  }, t.exports), t.exports;
+}
+var ee = Q(function (e, t) {
+    var r;
+    e.exports = (r = r || function (e, t) {
+      var r = Object.create || function () {
+          function e() {}
+          return function (t) {
+            var r;
+            return e.prototype = t, r = new e(), e.prototype = null, r;
+          };
+        }(),
+        n = {},
+        i = n.lib = {},
+        o = i.Base = {
+          extend: function extend(e) {
+            var t = r(this);
+            return e && t.mixIn(e), t.hasOwnProperty("init") && this.init !== t.init || (t.init = function () {
+              t.$super.init.apply(this, arguments);
+            }), t.init.prototype = t, t.$super = this, t;
+          },
+          create: function create() {
+            var e = this.extend();
+            return e.init.apply(e, arguments), e;
+          },
+          init: function init() {},
+          mixIn: function mixIn(e) {
+            for (var t in e) {
+              e.hasOwnProperty(t) && (this[t] = e[t]);
+            }
+            e.hasOwnProperty("toString") && (this.toString = e.toString);
+          },
+          clone: function clone() {
+            return this.init.prototype.extend(this);
+          }
+        },
+        a = i.WordArray = o.extend({
+          init: function init(e, t) {
+            e = this.words = e || [], this.sigBytes = null != t ? t : 4 * e.length;
+          },
+          toString: function toString(e) {
+            return (e || h).stringify(this);
+          },
+          concat: function concat(e) {
+            var t = this.words,
+              r = e.words,
+              n = this.sigBytes,
+              i = e.sigBytes;
+            if (this.clamp(), n % 4) for (var o = 0; o < i; o++) {
+              var a = r[o >>> 2] >>> 24 - o % 4 * 8 & 255;
+              t[n + o >>> 2] |= a << 24 - (n + o) % 4 * 8;
+            } else for (var o = 0; o < i; o += 4) {
+              t[n + o >>> 2] = r[o >>> 2];
+            }
+            return this.sigBytes += i, this;
+          },
+          clamp: function clamp() {
+            var t = this.words,
+              r = this.sigBytes;
+            t[r >>> 2] &= 4294967295 << 32 - r % 4 * 8, t.length = e.ceil(r / 4);
+          },
+          clone: function clone() {
+            var e = o.clone.call(this);
+            return e.words = this.words.slice(0), e;
+          },
+          random: function random(t) {
+            for (var r, n = [], i = function i(t) {
+                var t = t,
+                  r = 987654321,
+                  n = 4294967295;
+                return function () {
+                  var i = ((r = 36969 * (65535 & r) + (r >> 16) & n) << 16) + (t = 18e3 * (65535 & t) + (t >> 16) & n) & n;
+                  return i /= 4294967296, (i += .5) * (e.random() > .5 ? 1 : -1);
+                };
+              }, o = 0; o < t; o += 4) {
+              var s = i(4294967296 * (r || e.random()));
+              r = 987654071 * s(), n.push(4294967296 * s() | 0);
+            }
+            return new a.init(n, t);
+          }
+        }),
+        s = n.enc = {},
+        h = s.Hex = {
+          stringify: function stringify(e) {
+            for (var t = e.words, r = e.sigBytes, n = [], i = 0; i < r; i++) {
+              var o = t[i >>> 2] >>> 24 - i % 4 * 8 & 255;
+              n.push((o >>> 4).toString(16)), n.push((15 & o).toString(16));
+            }
+            return n.join("");
+          },
+          parse: function parse(e) {
+            for (var t = e.length, r = [], n = 0; n < t; n += 2) {
+              r[n >>> 3] |= parseInt(e.substr(n, 2), 16) << 24 - n % 8 * 4;
+            }
+            return new a.init(r, t / 2);
+          }
+        },
+        l = s.Latin1 = {
+          stringify: function stringify(e) {
+            for (var t = e.words, r = e.sigBytes, n = [], i = 0; i < r; i++) {
+              var o = t[i >>> 2] >>> 24 - i % 4 * 8 & 255;
+              n.push(String.fromCharCode(o));
+            }
+            return n.join("");
+          },
+          parse: function parse(e) {
+            for (var t = e.length, r = [], n = 0; n < t; n++) {
+              r[n >>> 2] |= (255 & e.charCodeAt(n)) << 24 - n % 4 * 8;
+            }
+            return new a.init(r, t);
+          }
+        },
+        f = s.Utf8 = {
+          stringify: function stringify(e) {
+            try {
+              return decodeURIComponent(escape(l.stringify(e)));
+            } catch (e) {
+              throw new Error("Malformed UTF-8 data");
+            }
+          },
+          parse: function parse(e) {
+            return l.parse(unescape(encodeURIComponent(e)));
+          }
+        },
+        c = i.BufferedBlockAlgorithm = o.extend({
+          reset: function reset() {
+            this._data = new a.init(), this._nDataBytes = 0;
+          },
+          _append: function _append(e) {
+            "string" == typeof e && (e = f.parse(e)), this._data.concat(e), this._nDataBytes += e.sigBytes;
+          },
+          _process: function _process(t) {
+            var r = this._data,
+              n = r.words,
+              i = r.sigBytes,
+              o = this.blockSize,
+              s = 4 * o,
+              h = i / s,
+              l = (h = t ? e.ceil(h) : e.max((0 | h) - this._minBufferSize, 0)) * o,
+              f = e.min(4 * l, i);
+            if (l) {
+              for (var c = 0; c < l; c += o) {
+                this._doProcessBlock(n, c);
+              }
+              var u = n.splice(0, l);
+              r.sigBytes -= f;
+            }
+            return new a.init(u, f);
+          },
+          clone: function clone() {
+            var e = o.clone.call(this);
+            return e._data = this._data.clone(), e;
+          },
+          _minBufferSize: 0
+        }),
+        u = (i.Hasher = c.extend({
+          cfg: o.extend(),
+          init: function init(e) {
+            this.cfg = this.cfg.extend(e), this.reset();
+          },
+          reset: function reset() {
+            c.reset.call(this), this._doReset();
+          },
+          update: function update(e) {
+            return this._append(e), this._process(), this;
+          },
+          finalize: function finalize(e) {
+            e && this._append(e);
+            var t = this._doFinalize();
+            return t;
+          },
+          blockSize: 16,
+          _createHelper: function _createHelper(e) {
+            return function (t, r) {
+              return new e.init(r).finalize(t);
+            };
+          },
+          _createHmacHelper: function _createHmacHelper(e) {
+            return function (t, r) {
+              return new u.HMAC.init(e, r).finalize(t);
+            };
+          }
+        }), n.algo = {});
+      return n;
+    }(Math), r);
+  }),
+  te = (Q(function (e, t) {
+    var r, n, i, o, a, s;
+    e.exports = (i = (n = r = ee).lib, o = i.Base, a = i.WordArray, (s = n.x64 = {}).Word = o.extend({
+      init: function init(e, t) {
+        this.high = e, this.low = t;
+      }
+    }), s.WordArray = o.extend({
+      init: function init(e, t) {
+        e = this.words = e || [], this.sigBytes = null != t ? t : 8 * e.length;
+      },
+      toX32: function toX32() {
+        for (var e = this.words, t = e.length, r = [], n = 0; n < t; n++) {
+          var i = e[n];
+          r.push(i.high), r.push(i.low);
+        }
+        return a.create(r, this.sigBytes);
+      },
+      clone: function clone() {
+        for (var e = o.clone.call(this), t = e.words = this.words.slice(0), r = t.length, n = 0; n < r; n++) {
+          t[n] = t[n].clone();
+        }
+        return e;
+      }
+    }), r);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = (r = ee, function () {
+      if ("function" == typeof ArrayBuffer) {
+        var e = r.lib.WordArray,
+          t = e.init;
+        (e.init = function (e) {
+          if (e instanceof ArrayBuffer && (e = new Uint8Array(e)), (e instanceof Int8Array || "undefined" != typeof Uint8ClampedArray && e instanceof Uint8ClampedArray || e instanceof Int16Array || e instanceof Uint16Array || e instanceof Int32Array || e instanceof Uint32Array || e instanceof Float32Array || e instanceof Float64Array) && (e = new Uint8Array(e.buffer, e.byteOffset, e.byteLength)), e instanceof Uint8Array) {
+            for (var r = e.byteLength, n = [], i = 0; i < r; i++) {
+              n[i >>> 2] |= e[i] << 24 - i % 4 * 8;
+            }
+            t.call(this, n, r);
+          } else t.apply(this, arguments);
+        }).prototype = e;
+      }
+    }(), r.lib.WordArray);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = (r = ee, function () {
+      var e = r,
+        t = e.lib.WordArray,
+        n = e.enc;
+      function i(e) {
+        return e << 8 & 4278255360 | e >>> 8 & 16711935;
+      }
+      n.Utf16 = n.Utf16BE = {
+        stringify: function stringify(e) {
+          for (var t = e.words, r = e.sigBytes, n = [], i = 0; i < r; i += 2) {
+            var o = t[i >>> 2] >>> 16 - i % 4 * 8 & 65535;
+            n.push(String.fromCharCode(o));
+          }
+          return n.join("");
+        },
+        parse: function parse(e) {
+          for (var r = e.length, n = [], i = 0; i < r; i++) {
+            n[i >>> 1] |= e.charCodeAt(i) << 16 - i % 2 * 16;
+          }
+          return t.create(n, 2 * r);
+        }
+      }, n.Utf16LE = {
+        stringify: function stringify(e) {
+          for (var t = e.words, r = e.sigBytes, n = [], o = 0; o < r; o += 2) {
+            var a = i(t[o >>> 2] >>> 16 - o % 4 * 8 & 65535);
+            n.push(String.fromCharCode(a));
+          }
+          return n.join("");
+        },
+        parse: function parse(e) {
+          for (var r = e.length, n = [], o = 0; o < r; o++) {
+            n[o >>> 1] |= i(e.charCodeAt(o) << 16 - o % 2 * 16);
+          }
+          return t.create(n, 2 * r);
+        }
+      };
+    }(), r.enc.Utf16);
+  }), Q(function (e, t) {
+    var r, n, i;
+    e.exports = (i = (n = r = ee).lib.WordArray, n.enc.Base64 = {
+      stringify: function stringify(e) {
+        var t = e.words,
+          r = e.sigBytes,
+          n = this._map;
+        e.clamp();
+        for (var i = [], o = 0; o < r; o += 3) {
+          for (var a = (t[o >>> 2] >>> 24 - o % 4 * 8 & 255) << 16 | (t[o + 1 >>> 2] >>> 24 - (o + 1) % 4 * 8 & 255) << 8 | t[o + 2 >>> 2] >>> 24 - (o + 2) % 4 * 8 & 255, s = 0; s < 4 && o + .75 * s < r; s++) {
+            i.push(n.charAt(a >>> 6 * (3 - s) & 63));
+          }
+        }
+        var h = n.charAt(64);
+        if (h) for (; i.length % 4;) {
+          i.push(h);
+        }
+        return i.join("");
+      },
+      parse: function parse(e) {
+        var t = e.length,
+          r = this._map,
+          n = this._reverseMap;
+        if (!n) {
+          n = this._reverseMap = [];
+          for (var o = 0; o < r.length; o++) {
+            n[r.charCodeAt(o)] = o;
+          }
+        }
+        var a = r.charAt(64);
+        if (a) {
+          var s = e.indexOf(a);
+          -1 !== s && (t = s);
+        }
+        return function (e, t, r) {
+          for (var n = [], o = 0, a = 0; a < t; a++) {
+            if (a % 4) {
+              var s = r[e.charCodeAt(a - 1)] << a % 4 * 2,
+                h = r[e.charCodeAt(a)] >>> 6 - a % 4 * 2;
+              n[o >>> 2] |= (s | h) << 24 - o % 4 * 8, o++;
+            }
+          }
+          return i.create(n, o);
+        }(e, t, n);
+      },
+      _map: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
+    }, r.enc.Base64);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = (r = ee, function (e) {
+      var t = r,
+        n = t.lib,
+        i = n.WordArray,
+        o = n.Hasher,
+        a = t.algo,
+        s = [];
+      !function () {
+        for (var t = 0; t < 64; t++) {
+          s[t] = 4294967296 * e.abs(e.sin(t + 1)) | 0;
+        }
+      }();
+      var h = a.MD5 = o.extend({
+        _doReset: function _doReset() {
+          this._hash = new i.init([1732584193, 4023233417, 2562383102, 271733878]);
+        },
+        _doProcessBlock: function _doProcessBlock(e, t) {
+          for (var r = 0; r < 16; r++) {
+            var n = t + r,
+              i = e[n];
+            e[n] = 16711935 & (i << 8 | i >>> 24) | 4278255360 & (i << 24 | i >>> 8);
+          }
+          var o = this._hash.words,
+            a = e[t + 0],
+            h = e[t + 1],
+            d = e[t + 2],
+            p = e[t + 3],
+            _ = e[t + 4],
+            g = e[t + 5],
+            v = e[t + 6],
+            w = e[t + 7],
+            b = e[t + 8],
+            y = e[t + 9],
+            m = e[t + 10],
+            k = e[t + 11],
+            E = e[t + 12],
+            S = e[t + 13],
+            x = e[t + 14],
+            R = e[t + 15],
+            A = o[0],
+            B = o[1],
+            z = o[2],
+            L = o[3];
+          A = l(A, B, z, L, a, 7, s[0]), L = l(L, A, B, z, h, 12, s[1]), z = l(z, L, A, B, d, 17, s[2]), B = l(B, z, L, A, p, 22, s[3]), A = l(A, B, z, L, _, 7, s[4]), L = l(L, A, B, z, g, 12, s[5]), z = l(z, L, A, B, v, 17, s[6]), B = l(B, z, L, A, w, 22, s[7]), A = l(A, B, z, L, b, 7, s[8]), L = l(L, A, B, z, y, 12, s[9]), z = l(z, L, A, B, m, 17, s[10]), B = l(B, z, L, A, k, 22, s[11]), A = l(A, B, z, L, E, 7, s[12]), L = l(L, A, B, z, S, 12, s[13]), z = l(z, L, A, B, x, 17, s[14]), A = f(A, B = l(B, z, L, A, R, 22, s[15]), z, L, h, 5, s[16]), L = f(L, A, B, z, v, 9, s[17]), z = f(z, L, A, B, k, 14, s[18]), B = f(B, z, L, A, a, 20, s[19]), A = f(A, B, z, L, g, 5, s[20]), L = f(L, A, B, z, m, 9, s[21]), z = f(z, L, A, B, R, 14, s[22]), B = f(B, z, L, A, _, 20, s[23]), A = f(A, B, z, L, y, 5, s[24]), L = f(L, A, B, z, x, 9, s[25]), z = f(z, L, A, B, p, 14, s[26]), B = f(B, z, L, A, b, 20, s[27]), A = f(A, B, z, L, S, 5, s[28]), L = f(L, A, B, z, d, 9, s[29]), z = f(z, L, A, B, w, 14, s[30]), A = c(A, B = f(B, z, L, A, E, 20, s[31]), z, L, g, 4, s[32]), L = c(L, A, B, z, b, 11, s[33]), z = c(z, L, A, B, k, 16, s[34]), B = c(B, z, L, A, x, 23, s[35]), A = c(A, B, z, L, h, 4, s[36]), L = c(L, A, B, z, _, 11, s[37]), z = c(z, L, A, B, w, 16, s[38]), B = c(B, z, L, A, m, 23, s[39]), A = c(A, B, z, L, S, 4, s[40]), L = c(L, A, B, z, a, 11, s[41]), z = c(z, L, A, B, p, 16, s[42]), B = c(B, z, L, A, v, 23, s[43]), A = c(A, B, z, L, y, 4, s[44]), L = c(L, A, B, z, E, 11, s[45]), z = c(z, L, A, B, R, 16, s[46]), A = u(A, B = c(B, z, L, A, d, 23, s[47]), z, L, a, 6, s[48]), L = u(L, A, B, z, w, 10, s[49]), z = u(z, L, A, B, x, 15, s[50]), B = u(B, z, L, A, g, 21, s[51]), A = u(A, B, z, L, E, 6, s[52]), L = u(L, A, B, z, p, 10, s[53]), z = u(z, L, A, B, m, 15, s[54]), B = u(B, z, L, A, h, 21, s[55]), A = u(A, B, z, L, b, 6, s[56]), L = u(L, A, B, z, R, 10, s[57]), z = u(z, L, A, B, v, 15, s[58]), B = u(B, z, L, A, S, 21, s[59]), A = u(A, B, z, L, _, 6, s[60]), L = u(L, A, B, z, k, 10, s[61]), z = u(z, L, A, B, d, 15, s[62]), B = u(B, z, L, A, y, 21, s[63]), o[0] = o[0] + A | 0, o[1] = o[1] + B | 0, o[2] = o[2] + z | 0, o[3] = o[3] + L | 0;
+        },
+        _doFinalize: function _doFinalize() {
+          var t = this._data,
+            r = t.words,
+            n = 8 * this._nDataBytes,
+            i = 8 * t.sigBytes;
+          r[i >>> 5] |= 128 << 24 - i % 32;
+          var o = e.floor(n / 4294967296),
+            a = n;
+          r[15 + (i + 64 >>> 9 << 4)] = 16711935 & (o << 8 | o >>> 24) | 4278255360 & (o << 24 | o >>> 8), r[14 + (i + 64 >>> 9 << 4)] = 16711935 & (a << 8 | a >>> 24) | 4278255360 & (a << 24 | a >>> 8), t.sigBytes = 4 * (r.length + 1), this._process();
+          for (var s = this._hash, h = s.words, l = 0; l < 4; l++) {
+            var f = h[l];
+            h[l] = 16711935 & (f << 8 | f >>> 24) | 4278255360 & (f << 24 | f >>> 8);
+          }
+          return s;
+        },
+        clone: function clone() {
+          var e = o.clone.call(this);
+          return e._hash = this._hash.clone(), e;
+        }
+      });
+      function l(e, t, r, n, i, o, a) {
+        var s = e + (t & r | ~t & n) + i + a;
+        return (s << o | s >>> 32 - o) + t;
+      }
+      function f(e, t, r, n, i, o, a) {
+        var s = e + (t & n | r & ~n) + i + a;
+        return (s << o | s >>> 32 - o) + t;
+      }
+      function c(e, t, r, n, i, o, a) {
+        var s = e + (t ^ r ^ n) + i + a;
+        return (s << o | s >>> 32 - o) + t;
+      }
+      function u(e, t, r, n, i, o, a) {
+        var s = e + (r ^ (t | ~n)) + i + a;
+        return (s << o | s >>> 32 - o) + t;
+      }
+      t.MD5 = o._createHelper(h), t.HmacMD5 = o._createHmacHelper(h);
+    }(Math), r.MD5);
+  }), Q(function (e, t) {
+    var r, n, i, o, a, s, h, l;
+    e.exports = (i = (n = r = ee).lib, o = i.WordArray, a = i.Hasher, s = n.algo, h = [], l = s.SHA1 = a.extend({
+      _doReset: function _doReset() {
+        this._hash = new o.init([1732584193, 4023233417, 2562383102, 271733878, 3285377520]);
+      },
+      _doProcessBlock: function _doProcessBlock(e, t) {
+        for (var r = this._hash.words, n = r[0], i = r[1], o = r[2], a = r[3], s = r[4], l = 0; l < 80; l++) {
+          if (l < 16) h[l] = 0 | e[t + l];else {
+            var f = h[l - 3] ^ h[l - 8] ^ h[l - 14] ^ h[l - 16];
+            h[l] = f << 1 | f >>> 31;
+          }
+          var c = (n << 5 | n >>> 27) + s + h[l];
+          c += l < 20 ? 1518500249 + (i & o | ~i & a) : l < 40 ? 1859775393 + (i ^ o ^ a) : l < 60 ? (i & o | i & a | o & a) - 1894007588 : (i ^ o ^ a) - 899497514, s = a, a = o, o = i << 30 | i >>> 2, i = n, n = c;
+        }
+        r[0] = r[0] + n | 0, r[1] = r[1] + i | 0, r[2] = r[2] + o | 0, r[3] = r[3] + a | 0, r[4] = r[4] + s | 0;
+      },
+      _doFinalize: function _doFinalize() {
+        var e = this._data,
+          t = e.words,
+          r = 8 * this._nDataBytes,
+          n = 8 * e.sigBytes;
+        return t[n >>> 5] |= 128 << 24 - n % 32, t[14 + (n + 64 >>> 9 << 4)] = Math.floor(r / 4294967296), t[15 + (n + 64 >>> 9 << 4)] = r, e.sigBytes = 4 * t.length, this._process(), this._hash;
+      },
+      clone: function clone() {
+        var e = a.clone.call(this);
+        return e._hash = this._hash.clone(), e;
+      }
+    }), n.SHA1 = a._createHelper(l), n.HmacSHA1 = a._createHmacHelper(l), r.SHA1);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = (r = ee, function (e) {
+      var t = r,
+        n = t.lib,
+        i = n.WordArray,
+        o = n.Hasher,
+        a = t.algo,
+        s = [],
+        h = [];
+      !function () {
+        function t(t) {
+          for (var r = e.sqrt(t), n = 2; n <= r; n++) {
+            if (!(t % n)) return !1;
+          }
+          return !0;
+        }
+        function r(e) {
+          return 4294967296 * (e - (0 | e)) | 0;
+        }
+        for (var n = 2, i = 0; i < 64;) {
+          t(n) && (i < 8 && (s[i] = r(e.pow(n, .5))), h[i] = r(e.pow(n, 1 / 3)), i++), n++;
+        }
+      }();
+      var l = [],
+        f = a.SHA256 = o.extend({
+          _doReset: function _doReset() {
+            this._hash = new i.init(s.slice(0));
+          },
+          _doProcessBlock: function _doProcessBlock(e, t) {
+            for (var r = this._hash.words, n = r[0], i = r[1], o = r[2], a = r[3], s = r[4], f = r[5], c = r[6], u = r[7], d = 0; d < 64; d++) {
+              if (d < 16) l[d] = 0 | e[t + d];else {
+                var p = l[d - 15],
+                  _ = (p << 25 | p >>> 7) ^ (p << 14 | p >>> 18) ^ p >>> 3,
+                  g = l[d - 2],
+                  v = (g << 15 | g >>> 17) ^ (g << 13 | g >>> 19) ^ g >>> 10;
+                l[d] = _ + l[d - 7] + v + l[d - 16];
+              }
+              var w = n & i ^ n & o ^ i & o,
+                b = (n << 30 | n >>> 2) ^ (n << 19 | n >>> 13) ^ (n << 10 | n >>> 22),
+                y = u + ((s << 26 | s >>> 6) ^ (s << 21 | s >>> 11) ^ (s << 7 | s >>> 25)) + (s & f ^ ~s & c) + h[d] + l[d];
+              u = c, c = f, f = s, s = a + y | 0, a = o, o = i, i = n, n = y + (b + w) | 0;
+            }
+            r[0] = r[0] + n | 0, r[1] = r[1] + i | 0, r[2] = r[2] + o | 0, r[3] = r[3] + a | 0, r[4] = r[4] + s | 0, r[5] = r[5] + f | 0, r[6] = r[6] + c | 0, r[7] = r[7] + u | 0;
+          },
+          _doFinalize: function _doFinalize() {
+            var t = this._data,
+              r = t.words,
+              n = 8 * this._nDataBytes,
+              i = 8 * t.sigBytes;
+            return r[i >>> 5] |= 128 << 24 - i % 32, r[14 + (i + 64 >>> 9 << 4)] = e.floor(n / 4294967296), r[15 + (i + 64 >>> 9 << 4)] = n, t.sigBytes = 4 * r.length, this._process(), this._hash;
+          },
+          clone: function clone() {
+            var e = o.clone.call(this);
+            return e._hash = this._hash.clone(), e;
+          }
+        });
+      t.SHA256 = o._createHelper(f), t.HmacSHA256 = o._createHmacHelper(f);
+    }(Math), r.SHA256);
+  }), Q(function (e, t) {
+    var r, n, i, o, a, s;
+    e.exports = (i = (n = r = ee).lib.WordArray, o = n.algo, a = o.SHA256, s = o.SHA224 = a.extend({
+      _doReset: function _doReset() {
+        this._hash = new i.init([3238371032, 914150663, 812702999, 4144912697, 4290775857, 1750603025, 1694076839, 3204075428]);
+      },
+      _doFinalize: function _doFinalize() {
+        var e = a._doFinalize.call(this);
+        return e.sigBytes -= 4, e;
+      }
+    }), n.SHA224 = a._createHelper(s), n.HmacSHA224 = a._createHmacHelper(s), r.SHA224);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = (r = ee, function () {
+      var e = r,
+        t = e.lib.Hasher,
+        n = e.x64,
+        i = n.Word,
+        o = n.WordArray,
+        a = e.algo;
+      function s() {
+        return i.create.apply(i, arguments);
+      }
+      var h = [s(1116352408, 3609767458), s(1899447441, 602891725), s(3049323471, 3964484399), s(3921009573, 2173295548), s(961987163, 4081628472), s(1508970993, 3053834265), s(2453635748, 2937671579), s(2870763221, 3664609560), s(3624381080, 2734883394), s(310598401, 1164996542), s(607225278, 1323610764), s(1426881987, 3590304994), s(1925078388, 4068182383), s(2162078206, 991336113), s(2614888103, 633803317), s(3248222580, 3479774868), s(3835390401, 2666613458), s(4022224774, 944711139), s(264347078, 2341262773), s(604807628, 2007800933), s(770255983, 1495990901), s(1249150122, 1856431235), s(1555081692, 3175218132), s(1996064986, 2198950837), s(2554220882, 3999719339), s(2821834349, 766784016), s(2952996808, 2566594879), s(3210313671, 3203337956), s(3336571891, 1034457026), s(3584528711, 2466948901), s(113926993, 3758326383), s(338241895, 168717936), s(666307205, 1188179964), s(773529912, 1546045734), s(1294757372, 1522805485), s(1396182291, 2643833823), s(1695183700, 2343527390), s(1986661051, 1014477480), s(2177026350, 1206759142), s(2456956037, 344077627), s(2730485921, 1290863460), s(2820302411, 3158454273), s(3259730800, 3505952657), s(3345764771, 106217008), s(3516065817, 3606008344), s(3600352804, 1432725776), s(4094571909, 1467031594), s(275423344, 851169720), s(430227734, 3100823752), s(506948616, 1363258195), s(659060556, 3750685593), s(883997877, 3785050280), s(958139571, 3318307427), s(1322822218, 3812723403), s(1537002063, 2003034995), s(1747873779, 3602036899), s(1955562222, 1575990012), s(2024104815, 1125592928), s(2227730452, 2716904306), s(2361852424, 442776044), s(2428436474, 593698344), s(2756734187, 3733110249), s(3204031479, 2999351573), s(3329325298, 3815920427), s(3391569614, 3928383900), s(3515267271, 566280711), s(3940187606, 3454069534), s(4118630271, 4000239992), s(116418474, 1914138554), s(174292421, 2731055270), s(289380356, 3203993006), s(460393269, 320620315), s(685471733, 587496836), s(852142971, 1086792851), s(1017036298, 365543100), s(1126000580, 2618297676), s(1288033470, 3409855158), s(1501505948, 4234509866), s(1607167915, 987167468), s(1816402316, 1246189591)],
+        l = [];
+      !function () {
+        for (var e = 0; e < 80; e++) {
+          l[e] = s();
+        }
+      }();
+      var f = a.SHA512 = t.extend({
+        _doReset: function _doReset() {
+          this._hash = new o.init([new i.init(1779033703, 4089235720), new i.init(3144134277, 2227873595), new i.init(1013904242, 4271175723), new i.init(2773480762, 1595750129), new i.init(1359893119, 2917565137), new i.init(2600822924, 725511199), new i.init(528734635, 4215389547), new i.init(1541459225, 327033209)]);
+        },
+        _doProcessBlock: function _doProcessBlock(e, t) {
+          for (var r = this._hash.words, n = r[0], i = r[1], o = r[2], a = r[3], s = r[4], f = r[5], c = r[6], u = r[7], d = n.high, p = n.low, _ = i.high, g = i.low, v = o.high, w = o.low, b = a.high, y = a.low, m = s.high, k = s.low, E = f.high, S = f.low, x = c.high, R = c.low, A = u.high, B = u.low, z = d, L = p, T = _, M = g, C = v, D = w, I = b, P = y, O = m, U = k, H = E, F = S, N = x, Z = R, j = A, W = B, Y = 0; Y < 80; Y++) {
+            var K = l[Y];
+            if (Y < 16) var X = K.high = 0 | e[t + 2 * Y],
+              q = K.low = 0 | e[t + 2 * Y + 1];else {
+              var V = l[Y - 15],
+                G = V.high,
+                $ = V.low,
+                J = (G >>> 1 | $ << 31) ^ (G >>> 8 | $ << 24) ^ G >>> 7,
+                Q = ($ >>> 1 | G << 31) ^ ($ >>> 8 | G << 24) ^ ($ >>> 7 | G << 25),
+                ee = l[Y - 2],
+                te = ee.high,
+                re = ee.low,
+                ne = (te >>> 19 | re << 13) ^ (te << 3 | re >>> 29) ^ te >>> 6,
+                ie = (re >>> 19 | te << 13) ^ (re << 3 | te >>> 29) ^ (re >>> 6 | te << 26),
+                oe = l[Y - 7],
+                ae = oe.high,
+                se = oe.low,
+                he = l[Y - 16],
+                le = he.high,
+                fe = he.low;
+              X = (X = (X = J + ae + ((q = Q + se) >>> 0 < Q >>> 0 ? 1 : 0)) + ne + ((q += ie) >>> 0 < ie >>> 0 ? 1 : 0)) + le + ((q += fe) >>> 0 < fe >>> 0 ? 1 : 0), K.high = X, K.low = q;
+            }
+            var ce,
+              ue = O & H ^ ~O & N,
+              de = U & F ^ ~U & Z,
+              pe = z & T ^ z & C ^ T & C,
+              _e = L & M ^ L & D ^ M & D,
+              ge = (z >>> 28 | L << 4) ^ (z << 30 | L >>> 2) ^ (z << 25 | L >>> 7),
+              ve = (L >>> 28 | z << 4) ^ (L << 30 | z >>> 2) ^ (L << 25 | z >>> 7),
+              we = (O >>> 14 | U << 18) ^ (O >>> 18 | U << 14) ^ (O << 23 | U >>> 9),
+              be = (U >>> 14 | O << 18) ^ (U >>> 18 | O << 14) ^ (U << 23 | O >>> 9),
+              ye = h[Y],
+              me = ye.high,
+              ke = ye.low,
+              Ee = j + we + ((ce = W + be) >>> 0 < W >>> 0 ? 1 : 0),
+              Se = ve + _e;
+            j = N, W = Z, N = H, Z = F, H = O, F = U, O = I + (Ee = (Ee = (Ee = Ee + ue + ((ce += de) >>> 0 < de >>> 0 ? 1 : 0)) + me + ((ce += ke) >>> 0 < ke >>> 0 ? 1 : 0)) + X + ((ce += q) >>> 0 < q >>> 0 ? 1 : 0)) + ((U = P + ce | 0) >>> 0 < P >>> 0 ? 1 : 0) | 0, I = C, P = D, C = T, D = M, T = z, M = L, z = Ee + (ge + pe + (Se >>> 0 < ve >>> 0 ? 1 : 0)) + ((L = ce + Se | 0) >>> 0 < ce >>> 0 ? 1 : 0) | 0;
+          }
+          p = n.low = p + L, n.high = d + z + (p >>> 0 < L >>> 0 ? 1 : 0), g = i.low = g + M, i.high = _ + T + (g >>> 0 < M >>> 0 ? 1 : 0), w = o.low = w + D, o.high = v + C + (w >>> 0 < D >>> 0 ? 1 : 0), y = a.low = y + P, a.high = b + I + (y >>> 0 < P >>> 0 ? 1 : 0), k = s.low = k + U, s.high = m + O + (k >>> 0 < U >>> 0 ? 1 : 0), S = f.low = S + F, f.high = E + H + (S >>> 0 < F >>> 0 ? 1 : 0), R = c.low = R + Z, c.high = x + N + (R >>> 0 < Z >>> 0 ? 1 : 0), B = u.low = B + W, u.high = A + j + (B >>> 0 < W >>> 0 ? 1 : 0);
+        },
+        _doFinalize: function _doFinalize() {
+          var e = this._data,
+            t = e.words,
+            r = 8 * this._nDataBytes,
+            n = 8 * e.sigBytes;
+          return t[n >>> 5] |= 128 << 24 - n % 32, t[30 + (n + 128 >>> 10 << 5)] = Math.floor(r / 4294967296), t[31 + (n + 128 >>> 10 << 5)] = r, e.sigBytes = 4 * t.length, this._process(), this._hash.toX32();
+        },
+        clone: function clone() {
+          var e = t.clone.call(this);
+          return e._hash = this._hash.clone(), e;
+        },
+        blockSize: 32
+      });
+      e.SHA512 = t._createHelper(f), e.HmacSHA512 = t._createHmacHelper(f);
+    }(), r.SHA512);
+  }), Q(function (e, t) {
+    var r, n, i, o, a, s, h, l;
+    e.exports = (i = (n = r = ee).x64, o = i.Word, a = i.WordArray, s = n.algo, h = s.SHA512, l = s.SHA384 = h.extend({
+      _doReset: function _doReset() {
+        this._hash = new a.init([new o.init(3418070365, 3238371032), new o.init(1654270250, 914150663), new o.init(2438529370, 812702999), new o.init(355462360, 4144912697), new o.init(1731405415, 4290775857), new o.init(2394180231, 1750603025), new o.init(3675008525, 1694076839), new o.init(1203062813, 3204075428)]);
+      },
+      _doFinalize: function _doFinalize() {
+        var e = h._doFinalize.call(this);
+        return e.sigBytes -= 16, e;
+      }
+    }), n.SHA384 = h._createHelper(l), n.HmacSHA384 = h._createHmacHelper(l), r.SHA384);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = (r = ee, function (e) {
+      var t = r,
+        n = t.lib,
+        i = n.WordArray,
+        o = n.Hasher,
+        a = t.x64.Word,
+        s = t.algo,
+        h = [],
+        l = [],
+        f = [];
+      !function () {
+        for (var e = 1, t = 0, r = 0; r < 24; r++) {
+          h[e + 5 * t] = (r + 1) * (r + 2) / 2 % 64;
+          var n = (2 * e + 3 * t) % 5;
+          e = t % 5, t = n;
+        }
+        for (e = 0; e < 5; e++) {
+          for (t = 0; t < 5; t++) {
+            l[e + 5 * t] = t + (2 * e + 3 * t) % 5 * 5;
+          }
+        }
+        for (var i = 1, o = 0; o < 24; o++) {
+          for (var s = 0, c = 0, u = 0; u < 7; u++) {
+            if (1 & i) {
+              var d = (1 << u) - 1;
+              d < 32 ? c ^= 1 << d : s ^= 1 << d - 32;
+            }
+            128 & i ? i = i << 1 ^ 113 : i <<= 1;
+          }
+          f[o] = a.create(s, c);
+        }
+      }();
+      var c = [];
+      !function () {
+        for (var e = 0; e < 25; e++) {
+          c[e] = a.create();
+        }
+      }();
+      var u = s.SHA3 = o.extend({
+        cfg: o.cfg.extend({
+          outputLength: 512
+        }),
+        _doReset: function _doReset() {
+          for (var e = this._state = [], t = 0; t < 25; t++) {
+            e[t] = new a.init();
+          }
+          this.blockSize = (1600 - 2 * this.cfg.outputLength) / 32;
+        },
+        _doProcessBlock: function _doProcessBlock(e, t) {
+          for (var r = this._state, n = this.blockSize / 2, i = 0; i < n; i++) {
+            var o = e[t + 2 * i],
+              a = e[t + 2 * i + 1];
+            o = 16711935 & (o << 8 | o >>> 24) | 4278255360 & (o << 24 | o >>> 8), a = 16711935 & (a << 8 | a >>> 24) | 4278255360 & (a << 24 | a >>> 8), (B = r[i]).high ^= a, B.low ^= o;
+          }
+          for (var s = 0; s < 24; s++) {
+            for (var u = 0; u < 5; u++) {
+              for (var d = 0, p = 0, _ = 0; _ < 5; _++) {
+                d ^= (B = r[u + 5 * _]).high, p ^= B.low;
+              }
+              var g = c[u];
+              g.high = d, g.low = p;
+            }
+            for (u = 0; u < 5; u++) {
+              var v = c[(u + 4) % 5],
+                w = c[(u + 1) % 5],
+                b = w.high,
+                y = w.low;
+              for (d = v.high ^ (b << 1 | y >>> 31), p = v.low ^ (y << 1 | b >>> 31), _ = 0; _ < 5; _++) {
+                (B = r[u + 5 * _]).high ^= d, B.low ^= p;
+              }
+            }
+            for (var m = 1; m < 25; m++) {
+              var k = (B = r[m]).high,
+                E = B.low,
+                S = h[m];
+              S < 32 ? (d = k << S | E >>> 32 - S, p = E << S | k >>> 32 - S) : (d = E << S - 32 | k >>> 64 - S, p = k << S - 32 | E >>> 64 - S);
+              var x = c[l[m]];
+              x.high = d, x.low = p;
+            }
+            var R = c[0],
+              A = r[0];
+            for (R.high = A.high, R.low = A.low, u = 0; u < 5; u++) {
+              for (_ = 0; _ < 5; _++) {
+                var B = r[m = u + 5 * _],
+                  z = c[m],
+                  L = c[(u + 1) % 5 + 5 * _],
+                  T = c[(u + 2) % 5 + 5 * _];
+                B.high = z.high ^ ~L.high & T.high, B.low = z.low ^ ~L.low & T.low;
+              }
+            }
+            B = r[0];
+            var M = f[s];
+            B.high ^= M.high, B.low ^= M.low;
+          }
+        },
+        _doFinalize: function _doFinalize() {
+          var t = this._data,
+            r = t.words,
+            n = (this._nDataBytes, 8 * t.sigBytes),
+            o = 32 * this.blockSize;
+          r[n >>> 5] |= 1 << 24 - n % 32, r[(e.ceil((n + 1) / o) * o >>> 5) - 1] |= 128, t.sigBytes = 4 * r.length, this._process();
+          for (var a = this._state, s = this.cfg.outputLength / 8, h = s / 8, l = [], f = 0; f < h; f++) {
+            var c = a[f],
+              u = c.high,
+              d = c.low;
+            u = 16711935 & (u << 8 | u >>> 24) | 4278255360 & (u << 24 | u >>> 8), d = 16711935 & (d << 8 | d >>> 24) | 4278255360 & (d << 24 | d >>> 8), l.push(d), l.push(u);
+          }
+          return new i.init(l, s);
+        },
+        clone: function clone() {
+          for (var e = o.clone.call(this), t = e._state = this._state.slice(0), r = 0; r < 25; r++) {
+            t[r] = t[r].clone();
+          }
+          return e;
+        }
+      });
+      t.SHA3 = o._createHelper(u), t.HmacSHA3 = o._createHmacHelper(u);
+    }(Math), r.SHA3);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = (r = ee, function (e) {
+      var t = r,
+        n = t.lib,
+        i = n.WordArray,
+        o = n.Hasher,
+        a = t.algo,
+        s = i.create([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 7, 4, 13, 1, 10, 6, 15, 3, 12, 0, 9, 5, 2, 14, 11, 8, 3, 10, 14, 4, 9, 15, 8, 1, 2, 7, 0, 6, 13, 11, 5, 12, 1, 9, 11, 10, 0, 8, 12, 4, 13, 3, 7, 15, 14, 5, 6, 2, 4, 0, 5, 9, 7, 12, 2, 10, 14, 1, 3, 8, 11, 6, 15, 13]),
+        h = i.create([5, 14, 7, 0, 9, 2, 11, 4, 13, 6, 15, 8, 1, 10, 3, 12, 6, 11, 3, 7, 0, 13, 5, 10, 14, 15, 8, 12, 4, 9, 1, 2, 15, 5, 1, 3, 7, 14, 6, 9, 11, 8, 12, 2, 10, 0, 4, 13, 8, 6, 4, 1, 3, 11, 15, 0, 5, 12, 2, 13, 9, 7, 10, 14, 12, 15, 10, 4, 1, 5, 8, 7, 6, 2, 13, 14, 0, 3, 9, 11]),
+        l = i.create([11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8, 7, 6, 8, 13, 11, 9, 7, 15, 7, 12, 15, 9, 11, 7, 13, 12, 11, 13, 6, 7, 14, 9, 13, 15, 14, 8, 13, 6, 5, 12, 7, 5, 11, 12, 14, 15, 14, 15, 9, 8, 9, 14, 5, 6, 8, 6, 5, 12, 9, 15, 5, 11, 6, 8, 13, 12, 5, 12, 13, 14, 11, 8, 5, 6]),
+        f = i.create([8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6, 9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11, 9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5, 15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8, 8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11]),
+        c = i.create([0, 1518500249, 1859775393, 2400959708, 2840853838]),
+        u = i.create([1352829926, 1548603684, 1836072691, 2053994217, 0]),
+        d = a.RIPEMD160 = o.extend({
+          _doReset: function _doReset() {
+            this._hash = i.create([1732584193, 4023233417, 2562383102, 271733878, 3285377520]);
+          },
+          _doProcessBlock: function _doProcessBlock(e, t) {
+            for (var r = 0; r < 16; r++) {
+              var n = t + r,
+                i = e[n];
+              e[n] = 16711935 & (i << 8 | i >>> 24) | 4278255360 & (i << 24 | i >>> 8);
+            }
+            var o,
+              a,
+              d,
+              y,
+              m,
+              k,
+              E,
+              S,
+              x,
+              R,
+              A,
+              B = this._hash.words,
+              z = c.words,
+              L = u.words,
+              T = s.words,
+              M = h.words,
+              C = l.words,
+              D = f.words;
+            for (k = o = B[0], E = a = B[1], S = d = B[2], x = y = B[3], R = m = B[4], r = 0; r < 80; r += 1) {
+              A = o + e[t + T[r]] | 0, A += r < 16 ? p(a, d, y) + z[0] : r < 32 ? _(a, d, y) + z[1] : r < 48 ? g(a, d, y) + z[2] : r < 64 ? v(a, d, y) + z[3] : w(a, d, y) + z[4], A = (A = b(A |= 0, C[r])) + m | 0, o = m, m = y, y = b(d, 10), d = a, a = A, A = k + e[t + M[r]] | 0, A += r < 16 ? w(E, S, x) + L[0] : r < 32 ? v(E, S, x) + L[1] : r < 48 ? g(E, S, x) + L[2] : r < 64 ? _(E, S, x) + L[3] : p(E, S, x) + L[4], A = (A = b(A |= 0, D[r])) + R | 0, k = R, R = x, x = b(S, 10), S = E, E = A;
+            }
+            A = B[1] + d + x | 0, B[1] = B[2] + y + R | 0, B[2] = B[3] + m + k | 0, B[3] = B[4] + o + E | 0, B[4] = B[0] + a + S | 0, B[0] = A;
+          },
+          _doFinalize: function _doFinalize() {
+            var e = this._data,
+              t = e.words,
+              r = 8 * this._nDataBytes,
+              n = 8 * e.sigBytes;
+            t[n >>> 5] |= 128 << 24 - n % 32, t[14 + (n + 64 >>> 9 << 4)] = 16711935 & (r << 8 | r >>> 24) | 4278255360 & (r << 24 | r >>> 8), e.sigBytes = 4 * (t.length + 1), this._process();
+            for (var i = this._hash, o = i.words, a = 0; a < 5; a++) {
+              var s = o[a];
+              o[a] = 16711935 & (s << 8 | s >>> 24) | 4278255360 & (s << 24 | s >>> 8);
+            }
+            return i;
+          },
+          clone: function clone() {
+            var e = o.clone.call(this);
+            return e._hash = this._hash.clone(), e;
+          }
+        });
+      function p(e, t, r) {
+        return e ^ t ^ r;
+      }
+      function _(e, t, r) {
+        return e & t | ~e & r;
+      }
+      function g(e, t, r) {
+        return (e | ~t) ^ r;
+      }
+      function v(e, t, r) {
+        return e & r | t & ~r;
+      }
+      function w(e, t, r) {
+        return e ^ (t | ~r);
+      }
+      function b(e, t) {
+        return e << t | e >>> 32 - t;
+      }
+      t.RIPEMD160 = o._createHelper(d), t.HmacRIPEMD160 = o._createHmacHelper(d);
+    }(), r.RIPEMD160);
+  }), Q(function (e, t) {
+    var r, n, i, o, a, s;
+    e.exports = (n = (r = ee).lib, i = n.Base, o = r.enc, a = o.Utf8, s = r.algo, void (s.HMAC = i.extend({
+      init: function init(e, t) {
+        e = this._hasher = new e.init(), "string" == typeof t && (t = a.parse(t));
+        var r = e.blockSize,
+          n = 4 * r;
+        t.sigBytes > n && (t = e.finalize(t)), t.clamp();
+        for (var i = this._oKey = t.clone(), o = this._iKey = t.clone(), s = i.words, h = o.words, l = 0; l < r; l++) {
+          s[l] ^= 1549556828, h[l] ^= 909522486;
+        }
+        i.sigBytes = o.sigBytes = n, this.reset();
+      },
+      reset: function reset() {
+        var e = this._hasher;
+        e.reset(), e.update(this._iKey);
+      },
+      update: function update(e) {
+        return this._hasher.update(e), this;
+      },
+      finalize: function finalize(e) {
+        var t = this._hasher,
+          r = t.finalize(e);
+        t.reset();
+        var n = t.finalize(this._oKey.clone().concat(r));
+        return n;
+      }
+    })));
+  }), Q(function (e, t) {
+    var r, n, i, o, a, s, h, l, f;
+    e.exports = (i = (n = r = ee).lib, o = i.Base, a = i.WordArray, s = n.algo, h = s.SHA1, l = s.HMAC, f = s.PBKDF2 = o.extend({
+      cfg: o.extend({
+        keySize: 4,
+        hasher: h,
+        iterations: 1
+      }),
+      init: function init(e) {
+        this.cfg = this.cfg.extend(e);
+      },
+      compute: function compute(e, t) {
+        for (var r = this.cfg, n = l.create(r.hasher, e), i = a.create(), o = a.create([1]), s = i.words, h = o.words, f = r.keySize, c = r.iterations; s.length < f;) {
+          var u = n.update(t).finalize(o);
+          n.reset();
+          for (var d = u.words, p = d.length, _ = u, g = 1; g < c; g++) {
+            _ = n.finalize(_), n.reset();
+            for (var v = _.words, w = 0; w < p; w++) {
+              d[w] ^= v[w];
+            }
+          }
+          i.concat(u), h[0]++;
+        }
+        return i.sigBytes = 4 * f, i;
+      }
+    }), n.PBKDF2 = function (e, t, r) {
+      return f.create(r).compute(e, t);
+    }, r.PBKDF2);
+  }), Q(function (e, t) {
+    var r, n, i, o, a, s, h, l;
+    e.exports = (i = (n = r = ee).lib, o = i.Base, a = i.WordArray, s = n.algo, h = s.MD5, l = s.EvpKDF = o.extend({
+      cfg: o.extend({
+        keySize: 4,
+        hasher: h,
+        iterations: 1
+      }),
+      init: function init(e) {
+        this.cfg = this.cfg.extend(e);
+      },
+      compute: function compute(e, t) {
+        for (var r = this.cfg, n = r.hasher.create(), i = a.create(), o = i.words, s = r.keySize, h = r.iterations; o.length < s;) {
+          l && n.update(l);
+          var l = n.update(e).finalize(t);
+          n.reset();
+          for (var f = 1; f < h; f++) {
+            l = n.finalize(l), n.reset();
+          }
+          i.concat(l);
+        }
+        return i.sigBytes = 4 * s, i;
+      }
+    }), n.EvpKDF = function (e, t, r) {
+      return l.create(r).compute(e, t);
+    }, r.EvpKDF);
+  }), Q(function (e, t) {
+    var r, n, i, o, a, s, h, l, f, c, u, d, p, _, g, v, w, b, y, m, k, E, S, x;
+    e.exports = void ((r = ee).lib.Cipher || (i = r, o = i.lib, a = o.Base, s = o.WordArray, h = o.BufferedBlockAlgorithm, l = i.enc, l.Utf8, f = l.Base64, c = i.algo, u = c.EvpKDF, d = o.Cipher = h.extend({
+      cfg: a.extend(),
+      createEncryptor: function createEncryptor(e, t) {
+        return this.create(this._ENC_XFORM_MODE, e, t);
+      },
+      createDecryptor: function createDecryptor(e, t) {
+        return this.create(this._DEC_XFORM_MODE, e, t);
+      },
+      init: function init(e, t, r) {
+        this.cfg = this.cfg.extend(r), this._xformMode = e, this._key = t, this.reset();
+      },
+      reset: function reset() {
+        h.reset.call(this), this._doReset();
+      },
+      process: function process(e) {
+        return this._append(e), this._process();
+      },
+      finalize: function finalize(e) {
+        e && this._append(e);
+        var t = this._doFinalize();
+        return t;
+      },
+      keySize: 4,
+      ivSize: 4,
+      _ENC_XFORM_MODE: 1,
+      _DEC_XFORM_MODE: 2,
+      _createHelper: function () {
+        function e(e) {
+          return "string" == typeof e ? x : k;
+        }
+        return function (t) {
+          return {
+            encrypt: function encrypt(r, n, i) {
+              return e(n).encrypt(t, r, n, i);
+            },
+            decrypt: function decrypt(r, n, i) {
+              return e(n).decrypt(t, r, n, i);
+            }
+          };
+        };
+      }()
+    }), o.StreamCipher = d.extend({
+      _doFinalize: function _doFinalize() {
+        var e = this._process(!0);
+        return e;
+      },
+      blockSize: 1
+    }), p = i.mode = {}, _ = o.BlockCipherMode = a.extend({
+      createEncryptor: function createEncryptor(e, t) {
+        return this.Encryptor.create(e, t);
+      },
+      createDecryptor: function createDecryptor(e, t) {
+        return this.Decryptor.create(e, t);
+      },
+      init: function init(e, t) {
+        this._cipher = e, this._iv = t;
+      }
+    }), g = p.CBC = function () {
+      var e = _.extend();
+      function t(e, t, r) {
+        var i = this._iv;
+        if (i) {
+          var o = i;
+          this._iv = n;
+        } else var o = this._prevBlock;
+        for (var a = 0; a < r; a++) {
+          e[t + a] ^= o[a];
+        }
+      }
+      return e.Encryptor = e.extend({
+        processBlock: function processBlock(e, r) {
+          var n = this._cipher,
+            i = n.blockSize;
+          t.call(this, e, r, i), n.encryptBlock(e, r), this._prevBlock = e.slice(r, r + i);
+        }
+      }), e.Decryptor = e.extend({
+        processBlock: function processBlock(e, r) {
+          var n = this._cipher,
+            i = n.blockSize,
+            o = e.slice(r, r + i);
+          n.decryptBlock(e, r), t.call(this, e, r, i), this._prevBlock = o;
+        }
+      }), e;
+    }(), v = i.pad = {}, w = v.Pkcs7 = {
+      pad: function pad(e, t) {
+        for (var r = 4 * t, n = r - e.sigBytes % r, i = n << 24 | n << 16 | n << 8 | n, o = [], a = 0; a < n; a += 4) {
+          o.push(i);
+        }
+        var h = s.create(o, n);
+        e.concat(h);
+      },
+      unpad: function unpad(e) {
+        var t = 255 & e.words[e.sigBytes - 1 >>> 2];
+        e.sigBytes -= t;
+      }
+    }, o.BlockCipher = d.extend({
+      cfg: d.cfg.extend({
+        mode: g,
+        padding: w
+      }),
+      reset: function reset() {
+        d.reset.call(this);
+        var e = this.cfg,
+          t = e.iv,
+          r = e.mode;
+        if (this._xformMode == this._ENC_XFORM_MODE) var n = r.createEncryptor;else {
+          var n = r.createDecryptor;
+          this._minBufferSize = 1;
+        }
+        this._mode && this._mode.__creator == n ? this._mode.init(this, t && t.words) : (this._mode = n.call(r, this, t && t.words), this._mode.__creator = n);
+      },
+      _doProcessBlock: function _doProcessBlock(e, t) {
+        this._mode.processBlock(e, t);
+      },
+      _doFinalize: function _doFinalize() {
+        var e = this.cfg.padding;
+        if (this._xformMode == this._ENC_XFORM_MODE) {
+          e.pad(this._data, this.blockSize);
+          var t = this._process(!0);
+        } else {
+          var t = this._process(!0);
+          e.unpad(t);
+        }
+        return t;
+      },
+      blockSize: 4
+    }), b = o.CipherParams = a.extend({
+      init: function init(e) {
+        this.mixIn(e);
+      },
+      toString: function toString(e) {
+        return (e || this.formatter).stringify(this);
+      }
+    }), y = i.format = {}, m = y.OpenSSL = {
+      stringify: function stringify(e) {
+        var t = e.ciphertext,
+          r = e.salt;
+        if (r) var n = s.create([1398893684, 1701076831]).concat(r).concat(t);else var n = t;
+        return n.toString(f);
+      },
+      parse: function parse(e) {
+        var t = f.parse(e),
+          r = t.words;
+        if (1398893684 == r[0] && 1701076831 == r[1]) {
+          var n = s.create(r.slice(2, 4));
+          r.splice(0, 4), t.sigBytes -= 16;
+        }
+        return b.create({
+          ciphertext: t,
+          salt: n
+        });
+      }
+    }, k = o.SerializableCipher = a.extend({
+      cfg: a.extend({
+        format: m
+      }),
+      encrypt: function encrypt(e, t, r, n) {
+        n = this.cfg.extend(n);
+        var i = e.createEncryptor(r, n),
+          o = i.finalize(t),
+          a = i.cfg;
+        return b.create({
+          ciphertext: o,
+          key: r,
+          iv: a.iv,
+          algorithm: e,
+          mode: a.mode,
+          padding: a.padding,
+          blockSize: e.blockSize,
+          formatter: n.format
+        });
+      },
+      decrypt: function decrypt(e, t, r, n) {
+        n = this.cfg.extend(n), t = this._parse(t, n.format);
+        var i = e.createDecryptor(r, n).finalize(t.ciphertext);
+        return i;
+      },
+      _parse: function _parse(e, t) {
+        return "string" == typeof e ? t.parse(e, this) : e;
+      }
+    }), E = i.kdf = {}, S = E.OpenSSL = {
+      execute: function execute(e, t, r, n) {
+        n || (n = s.random(8));
+        var i = u.create({
+            keySize: t + r
+          }).compute(e, n),
+          o = s.create(i.words.slice(t), 4 * r);
+        return i.sigBytes = 4 * t, b.create({
+          key: i,
+          iv: o,
+          salt: n
+        });
+      }
+    }, x = o.PasswordBasedCipher = k.extend({
+      cfg: k.cfg.extend({
+        kdf: S
+      }),
+      encrypt: function encrypt(e, t, r, n) {
+        var i = (n = this.cfg.extend(n)).kdf.execute(r, e.keySize, e.ivSize);
+        n.iv = i.iv;
+        var o = k.encrypt.call(this, e, t, i.key, n);
+        return o.mixIn(i), o;
+      },
+      decrypt: function decrypt(e, t, r, n) {
+        n = this.cfg.extend(n), t = this._parse(t, n.format);
+        var i = n.kdf.execute(r, e.keySize, e.ivSize, t.salt);
+        n.iv = i.iv;
+        var o = k.decrypt.call(this, e, t, i.key, n);
+        return o;
+      }
+    })));
+  }), Q(function (e, t) {
+    var r;
+    e.exports = ((r = ee).mode.CFB = function () {
+      var e = r.lib.BlockCipherMode.extend();
+      function t(e, t, r, n) {
+        var i = this._iv;
+        if (i) {
+          var o = i.slice(0);
+          this._iv = void 0;
+        } else o = this._prevBlock;
+        n.encryptBlock(o, 0);
+        for (var a = 0; a < r; a++) {
+          e[t + a] ^= o[a];
+        }
+      }
+      return e.Encryptor = e.extend({
+        processBlock: function processBlock(e, r) {
+          var n = this._cipher,
+            i = n.blockSize;
+          t.call(this, e, r, i, n), this._prevBlock = e.slice(r, r + i);
+        }
+      }), e.Decryptor = e.extend({
+        processBlock: function processBlock(e, r) {
+          var n = this._cipher,
+            i = n.blockSize,
+            o = e.slice(r, r + i);
+          t.call(this, e, r, i, n), this._prevBlock = o;
+        }
+      }), e;
+    }(), r.mode.CFB);
+  }), Q(function (e, t) {
+    var r, n, i;
+    e.exports = ((r = ee).mode.CTR = (n = r.lib.BlockCipherMode.extend(), i = n.Encryptor = n.extend({
+      processBlock: function processBlock(e, t) {
+        var r = this._cipher,
+          n = r.blockSize,
+          i = this._iv,
+          o = this._counter;
+        i && (o = this._counter = i.slice(0), this._iv = void 0);
+        var a = o.slice(0);
+        r.encryptBlock(a, 0), o[n - 1] = o[n - 1] + 1 | 0;
+        for (var s = 0; s < n; s++) {
+          e[t + s] ^= a[s];
+        }
+      }
+    }), n.Decryptor = i, n), r.mode.CTR);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = ((r = ee).mode.CTRGladman = function () {
+      var e = r.lib.BlockCipherMode.extend();
+      function t(e) {
+        if (255 == (e >> 24 & 255)) {
+          var t = e >> 16 & 255,
+            r = e >> 8 & 255,
+            n = 255 & e;
+          255 === t ? (t = 0, 255 === r ? (r = 0, 255 === n ? n = 0 : ++n) : ++r) : ++t, e = 0, e += t << 16, e += r << 8, e += n;
+        } else e += 1 << 24;
+        return e;
+      }
+      var n = e.Encryptor = e.extend({
+        processBlock: function processBlock(e, r) {
+          var n = this._cipher,
+            i = n.blockSize,
+            o = this._iv,
+            a = this._counter;
+          o && (a = this._counter = o.slice(0), this._iv = void 0), function (e) {
+            0 === (e[0] = t(e[0])) && (e[1] = t(e[1]));
+          }(a);
+          var s = a.slice(0);
+          n.encryptBlock(s, 0);
+          for (var h = 0; h < i; h++) {
+            e[r + h] ^= s[h];
+          }
+        }
+      });
+      return e.Decryptor = n, e;
+    }(), r.mode.CTRGladman);
+  }), Q(function (e, t) {
+    var r, n, i;
+    e.exports = ((r = ee).mode.OFB = (n = r.lib.BlockCipherMode.extend(), i = n.Encryptor = n.extend({
+      processBlock: function processBlock(e, t) {
+        var r = this._cipher,
+          n = r.blockSize,
+          i = this._iv,
+          o = this._keystream;
+        i && (o = this._keystream = i.slice(0), this._iv = void 0), r.encryptBlock(o, 0);
+        for (var a = 0; a < n; a++) {
+          e[t + a] ^= o[a];
+        }
+      }
+    }), n.Decryptor = i, n), r.mode.OFB);
+  }), Q(function (e, t) {
+    var r, n;
+    e.exports = ((r = ee).mode.ECB = ((n = r.lib.BlockCipherMode.extend()).Encryptor = n.extend({
+      processBlock: function processBlock(e, t) {
+        this._cipher.encryptBlock(e, t);
+      }
+    }), n.Decryptor = n.extend({
+      processBlock: function processBlock(e, t) {
+        this._cipher.decryptBlock(e, t);
+      }
+    }), n), r.mode.ECB);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = ((r = ee).pad.AnsiX923 = {
+      pad: function pad(e, t) {
+        var r = e.sigBytes,
+          n = 4 * t,
+          i = n - r % n,
+          o = r + i - 1;
+        e.clamp(), e.words[o >>> 2] |= i << 24 - o % 4 * 8, e.sigBytes += i;
+      },
+      unpad: function unpad(e) {
+        var t = 255 & e.words[e.sigBytes - 1 >>> 2];
+        e.sigBytes -= t;
+      }
+    }, r.pad.Ansix923);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = ((r = ee).pad.Iso10126 = {
+      pad: function pad(e, t) {
+        var n = 4 * t,
+          i = n - e.sigBytes % n;
+        e.concat(r.lib.WordArray.random(i - 1)).concat(r.lib.WordArray.create([i << 24], 1));
+      },
+      unpad: function unpad(e) {
+        var t = 255 & e.words[e.sigBytes - 1 >>> 2];
+        e.sigBytes -= t;
+      }
+    }, r.pad.Iso10126);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = ((r = ee).pad.Iso97971 = {
+      pad: function pad(e, t) {
+        e.concat(r.lib.WordArray.create([2147483648], 1)), r.pad.ZeroPadding.pad(e, t);
+      },
+      unpad: function unpad(e) {
+        r.pad.ZeroPadding.unpad(e), e.sigBytes--;
+      }
+    }, r.pad.Iso97971);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = ((r = ee).pad.ZeroPadding = {
+      pad: function pad(e, t) {
+        var r = 4 * t;
+        e.clamp(), e.sigBytes += r - (e.sigBytes % r || r);
+      },
+      unpad: function unpad(e) {
+        for (var t = e.words, r = e.sigBytes - 1; !(t[r >>> 2] >>> 24 - r % 4 * 8 & 255);) {
+          r--;
+        }
+        e.sigBytes = r + 1;
+      }
+    }, r.pad.ZeroPadding);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = ((r = ee).pad.NoPadding = {
+      pad: function pad() {},
+      unpad: function unpad() {}
+    }, r.pad.NoPadding);
+  }), Q(function (e, t) {
+    var r, n, i, o;
+    e.exports = (i = (n = r = ee).lib.CipherParams, o = n.enc.Hex, n.format.Hex = {
+      stringify: function stringify(e) {
+        return e.ciphertext.toString(o);
+      },
+      parse: function parse(e) {
+        var t = o.parse(e);
+        return i.create({
+          ciphertext: t
+        });
+      }
+    }, r.format.Hex);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = (r = ee, function () {
+      var e = r,
+        t = e.lib.BlockCipher,
+        n = e.algo,
+        i = [],
+        o = [],
+        a = [],
+        s = [],
+        h = [],
+        l = [],
+        f = [],
+        c = [],
+        u = [],
+        d = [];
+      !function () {
+        for (var e = [], t = 0; t < 256; t++) {
+          e[t] = t < 128 ? t << 1 : t << 1 ^ 283;
+        }
+        var r = 0,
+          n = 0;
+        for (t = 0; t < 256; t++) {
+          var p = n ^ n << 1 ^ n << 2 ^ n << 3 ^ n << 4;
+          p = p >>> 8 ^ 255 & p ^ 99, i[r] = p, o[p] = r;
+          var _ = e[r],
+            g = e[_],
+            v = e[g],
+            w = 257 * e[p] ^ 16843008 * p;
+          a[r] = w << 24 | w >>> 8, s[r] = w << 16 | w >>> 16, h[r] = w << 8 | w >>> 24, l[r] = w, w = 16843009 * v ^ 65537 * g ^ 257 * _ ^ 16843008 * r, f[p] = w << 24 | w >>> 8, c[p] = w << 16 | w >>> 16, u[p] = w << 8 | w >>> 24, d[p] = w, r ? (r = _ ^ e[e[e[v ^ _]]], n ^= e[e[n]]) : r = n = 1;
+        }
+      }();
+      var p = [0, 1, 2, 4, 8, 16, 32, 64, 128, 27, 54],
+        _ = n.AES = t.extend({
+          _doReset: function _doReset() {
+            if (!this._nRounds || this._keyPriorReset !== this._key) {
+              for (var e = this._keyPriorReset = this._key, t = e.words, r = e.sigBytes / 4, n = 4 * ((this._nRounds = r + 6) + 1), o = this._keySchedule = [], a = 0; a < n; a++) {
+                if (a < r) o[a] = t[a];else {
+                  var s = o[a - 1];
+                  a % r ? r > 6 && a % r == 4 && (s = i[s >>> 24] << 24 | i[s >>> 16 & 255] << 16 | i[s >>> 8 & 255] << 8 | i[255 & s]) : (s = i[(s = s << 8 | s >>> 24) >>> 24] << 24 | i[s >>> 16 & 255] << 16 | i[s >>> 8 & 255] << 8 | i[255 & s], s ^= p[a / r | 0] << 24), o[a] = o[a - r] ^ s;
+                }
+              }
+              for (var h = this._invKeySchedule = [], l = 0; l < n; l++) {
+                a = n - l, s = l % 4 ? o[a] : o[a - 4], h[l] = l < 4 || a <= 4 ? s : f[i[s >>> 24]] ^ c[i[s >>> 16 & 255]] ^ u[i[s >>> 8 & 255]] ^ d[i[255 & s]];
+              }
+            }
+          },
+          encryptBlock: function encryptBlock(e, t) {
+            this._doCryptBlock(e, t, this._keySchedule, a, s, h, l, i);
+          },
+          decryptBlock: function decryptBlock(e, t) {
+            var r = e[t + 1];
+            e[t + 1] = e[t + 3], e[t + 3] = r, this._doCryptBlock(e, t, this._invKeySchedule, f, c, u, d, o), r = e[t + 1], e[t + 1] = e[t + 3], e[t + 3] = r;
+          },
+          _doCryptBlock: function _doCryptBlock(e, t, r, n, i, o, a, s) {
+            for (var h = this._nRounds, l = e[t] ^ r[0], f = e[t + 1] ^ r[1], c = e[t + 2] ^ r[2], u = e[t + 3] ^ r[3], d = 4, p = 1; p < h; p++) {
+              var _ = n[l >>> 24] ^ i[f >>> 16 & 255] ^ o[c >>> 8 & 255] ^ a[255 & u] ^ r[d++],
+                g = n[f >>> 24] ^ i[c >>> 16 & 255] ^ o[u >>> 8 & 255] ^ a[255 & l] ^ r[d++],
+                v = n[c >>> 24] ^ i[u >>> 16 & 255] ^ o[l >>> 8 & 255] ^ a[255 & f] ^ r[d++],
+                w = n[u >>> 24] ^ i[l >>> 16 & 255] ^ o[f >>> 8 & 255] ^ a[255 & c] ^ r[d++];
+              l = _, f = g, c = v, u = w;
+            }
+            _ = (s[l >>> 24] << 24 | s[f >>> 16 & 255] << 16 | s[c >>> 8 & 255] << 8 | s[255 & u]) ^ r[d++], g = (s[f >>> 24] << 24 | s[c >>> 16 & 255] << 16 | s[u >>> 8 & 255] << 8 | s[255 & l]) ^ r[d++], v = (s[c >>> 24] << 24 | s[u >>> 16 & 255] << 16 | s[l >>> 8 & 255] << 8 | s[255 & f]) ^ r[d++], w = (s[u >>> 24] << 24 | s[l >>> 16 & 255] << 16 | s[f >>> 8 & 255] << 8 | s[255 & c]) ^ r[d++], e[t] = _, e[t + 1] = g, e[t + 2] = v, e[t + 3] = w;
+          },
+          keySize: 8
+        });
+      e.AES = t._createHelper(_);
+    }(), r.AES);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = (r = ee, function () {
+      var e = r,
+        t = e.lib,
+        n = t.WordArray,
+        i = t.BlockCipher,
+        o = e.algo,
+        a = [57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34, 26, 18, 10, 2, 59, 51, 43, 35, 27, 19, 11, 3, 60, 52, 44, 36, 63, 55, 47, 39, 31, 23, 15, 7, 62, 54, 46, 38, 30, 22, 14, 6, 61, 53, 45, 37, 29, 21, 13, 5, 28, 20, 12, 4],
+        s = [14, 17, 11, 24, 1, 5, 3, 28, 15, 6, 21, 10, 23, 19, 12, 4, 26, 8, 16, 7, 27, 20, 13, 2, 41, 52, 31, 37, 47, 55, 30, 40, 51, 45, 33, 48, 44, 49, 39, 56, 34, 53, 46, 42, 50, 36, 29, 32],
+        h = [1, 2, 4, 6, 8, 10, 12, 14, 15, 17, 19, 21, 23, 25, 27, 28],
+        l = [{
+          0: 8421888,
+          268435456: 32768,
+          536870912: 8421378,
+          805306368: 2,
+          1073741824: 512,
+          1342177280: 8421890,
+          1610612736: 8389122,
+          1879048192: 8388608,
+          2147483648: 514,
+          2415919104: 8389120,
+          2684354560: 33280,
+          2952790016: 8421376,
+          3221225472: 32770,
+          3489660928: 8388610,
+          3758096384: 0,
+          4026531840: 33282,
+          134217728: 0,
+          402653184: 8421890,
+          671088640: 33282,
+          939524096: 32768,
+          1207959552: 8421888,
+          1476395008: 512,
+          1744830464: 8421378,
+          2013265920: 2,
+          2281701376: 8389120,
+          2550136832: 33280,
+          2818572288: 8421376,
+          3087007744: 8389122,
+          3355443200: 8388610,
+          3623878656: 32770,
+          3892314112: 514,
+          4160749568: 8388608,
+          1: 32768,
+          268435457: 2,
+          536870913: 8421888,
+          805306369: 8388608,
+          1073741825: 8421378,
+          1342177281: 33280,
+          1610612737: 512,
+          1879048193: 8389122,
+          2147483649: 8421890,
+          2415919105: 8421376,
+          2684354561: 8388610,
+          2952790017: 33282,
+          3221225473: 514,
+          3489660929: 8389120,
+          3758096385: 32770,
+          4026531841: 0,
+          134217729: 8421890,
+          402653185: 8421376,
+          671088641: 8388608,
+          939524097: 512,
+          1207959553: 32768,
+          1476395009: 8388610,
+          1744830465: 2,
+          2013265921: 33282,
+          2281701377: 32770,
+          2550136833: 8389122,
+          2818572289: 514,
+          3087007745: 8421888,
+          3355443201: 8389120,
+          3623878657: 0,
+          3892314113: 33280,
+          4160749569: 8421378
+        }, {
+          0: 1074282512,
+          16777216: 16384,
+          33554432: 524288,
+          50331648: 1074266128,
+          67108864: 1073741840,
+          83886080: 1074282496,
+          100663296: 1073758208,
+          117440512: 16,
+          134217728: 540672,
+          150994944: 1073758224,
+          167772160: 1073741824,
+          184549376: 540688,
+          201326592: 524304,
+          218103808: 0,
+          234881024: 16400,
+          251658240: 1074266112,
+          8388608: 1073758208,
+          25165824: 540688,
+          41943040: 16,
+          58720256: 1073758224,
+          75497472: 1074282512,
+          92274688: 1073741824,
+          109051904: 524288,
+          125829120: 1074266128,
+          142606336: 524304,
+          159383552: 0,
+          176160768: 16384,
+          192937984: 1074266112,
+          209715200: 1073741840,
+          226492416: 540672,
+          243269632: 1074282496,
+          260046848: 16400,
+          268435456: 0,
+          285212672: 1074266128,
+          301989888: 1073758224,
+          318767104: 1074282496,
+          335544320: 1074266112,
+          352321536: 16,
+          369098752: 540688,
+          385875968: 16384,
+          402653184: 16400,
+          419430400: 524288,
+          436207616: 524304,
+          452984832: 1073741840,
+          469762048: 540672,
+          486539264: 1073758208,
+          503316480: 1073741824,
+          520093696: 1074282512,
+          276824064: 540688,
+          293601280: 524288,
+          310378496: 1074266112,
+          327155712: 16384,
+          343932928: 1073758208,
+          360710144: 1074282512,
+          377487360: 16,
+          394264576: 1073741824,
+          411041792: 1074282496,
+          427819008: 1073741840,
+          444596224: 1073758224,
+          461373440: 524304,
+          478150656: 0,
+          494927872: 16400,
+          511705088: 1074266128,
+          528482304: 540672
+        }, {
+          0: 260,
+          1048576: 0,
+          2097152: 67109120,
+          3145728: 65796,
+          4194304: 65540,
+          5242880: 67108868,
+          6291456: 67174660,
+          7340032: 67174400,
+          8388608: 67108864,
+          9437184: 67174656,
+          10485760: 65792,
+          11534336: 67174404,
+          12582912: 67109124,
+          13631488: 65536,
+          14680064: 4,
+          15728640: 256,
+          524288: 67174656,
+          1572864: 67174404,
+          2621440: 0,
+          3670016: 67109120,
+          4718592: 67108868,
+          5767168: 65536,
+          6815744: 65540,
+          7864320: 260,
+          8912896: 4,
+          9961472: 256,
+          11010048: 67174400,
+          12058624: 65796,
+          13107200: 65792,
+          14155776: 67109124,
+          15204352: 67174660,
+          16252928: 67108864,
+          16777216: 67174656,
+          17825792: 65540,
+          18874368: 65536,
+          19922944: 67109120,
+          20971520: 256,
+          22020096: 67174660,
+          23068672: 67108868,
+          24117248: 0,
+          25165824: 67109124,
+          26214400: 67108864,
+          27262976: 4,
+          28311552: 65792,
+          29360128: 67174400,
+          30408704: 260,
+          31457280: 65796,
+          32505856: 67174404,
+          17301504: 67108864,
+          18350080: 260,
+          19398656: 67174656,
+          20447232: 0,
+          21495808: 65540,
+          22544384: 67109120,
+          23592960: 256,
+          24641536: 67174404,
+          25690112: 65536,
+          26738688: 67174660,
+          27787264: 65796,
+          28835840: 67108868,
+          29884416: 67109124,
+          30932992: 67174400,
+          31981568: 4,
+          33030144: 65792
+        }, {
+          0: 2151682048,
+          65536: 2147487808,
+          131072: 4198464,
+          196608: 2151677952,
+          262144: 0,
+          327680: 4198400,
+          393216: 2147483712,
+          458752: 4194368,
+          524288: 2147483648,
+          589824: 4194304,
+          655360: 64,
+          720896: 2147487744,
+          786432: 2151678016,
+          851968: 4160,
+          917504: 4096,
+          983040: 2151682112,
+          32768: 2147487808,
+          98304: 64,
+          163840: 2151678016,
+          229376: 2147487744,
+          294912: 4198400,
+          360448: 2151682112,
+          425984: 0,
+          491520: 2151677952,
+          557056: 4096,
+          622592: 2151682048,
+          688128: 4194304,
+          753664: 4160,
+          819200: 2147483648,
+          884736: 4194368,
+          950272: 4198464,
+          1015808: 2147483712,
+          1048576: 4194368,
+          1114112: 4198400,
+          1179648: 2147483712,
+          1245184: 0,
+          1310720: 4160,
+          1376256: 2151678016,
+          1441792: 2151682048,
+          1507328: 2147487808,
+          1572864: 2151682112,
+          1638400: 2147483648,
+          1703936: 2151677952,
+          1769472: 4198464,
+          1835008: 2147487744,
+          1900544: 4194304,
+          1966080: 64,
+          2031616: 4096,
+          1081344: 2151677952,
+          1146880: 2151682112,
+          1212416: 0,
+          1277952: 4198400,
+          1343488: 4194368,
+          1409024: 2147483648,
+          1474560: 2147487808,
+          1540096: 64,
+          1605632: 2147483712,
+          1671168: 4096,
+          1736704: 2147487744,
+          1802240: 2151678016,
+          1867776: 4160,
+          1933312: 2151682048,
+          1998848: 4194304,
+          2064384: 4198464
+        }, {
+          0: 128,
+          4096: 17039360,
+          8192: 262144,
+          12288: 536870912,
+          16384: 537133184,
+          20480: 16777344,
+          24576: 553648256,
+          28672: 262272,
+          32768: 16777216,
+          36864: 537133056,
+          40960: 536871040,
+          45056: 553910400,
+          49152: 553910272,
+          53248: 0,
+          57344: 17039488,
+          61440: 553648128,
+          2048: 17039488,
+          6144: 553648256,
+          10240: 128,
+          14336: 17039360,
+          18432: 262144,
+          22528: 537133184,
+          26624: 553910272,
+          30720: 536870912,
+          34816: 537133056,
+          38912: 0,
+          43008: 553910400,
+          47104: 16777344,
+          51200: 536871040,
+          55296: 553648128,
+          59392: 16777216,
+          63488: 262272,
+          65536: 262144,
+          69632: 128,
+          73728: 536870912,
+          77824: 553648256,
+          81920: 16777344,
+          86016: 553910272,
+          90112: 537133184,
+          94208: 16777216,
+          98304: 553910400,
+          102400: 553648128,
+          106496: 17039360,
+          110592: 537133056,
+          114688: 262272,
+          118784: 536871040,
+          122880: 0,
+          126976: 17039488,
+          67584: 553648256,
+          71680: 16777216,
+          75776: 17039360,
+          79872: 537133184,
+          83968: 536870912,
+          88064: 17039488,
+          92160: 128,
+          96256: 553910272,
+          100352: 262272,
+          104448: 553910400,
+          108544: 0,
+          112640: 553648128,
+          116736: 16777344,
+          120832: 262144,
+          124928: 537133056,
+          129024: 536871040
+        }, {
+          0: 268435464,
+          256: 8192,
+          512: 270532608,
+          768: 270540808,
+          1024: 268443648,
+          1280: 2097152,
+          1536: 2097160,
+          1792: 268435456,
+          2048: 0,
+          2304: 268443656,
+          2560: 2105344,
+          2816: 8,
+          3072: 270532616,
+          3328: 2105352,
+          3584: 8200,
+          3840: 270540800,
+          128: 270532608,
+          384: 270540808,
+          640: 8,
+          896: 2097152,
+          1152: 2105352,
+          1408: 268435464,
+          1664: 268443648,
+          1920: 8200,
+          2176: 2097160,
+          2432: 8192,
+          2688: 268443656,
+          2944: 270532616,
+          3200: 0,
+          3456: 270540800,
+          3712: 2105344,
+          3968: 268435456,
+          4096: 268443648,
+          4352: 270532616,
+          4608: 270540808,
+          4864: 8200,
+          5120: 2097152,
+          5376: 268435456,
+          5632: 268435464,
+          5888: 2105344,
+          6144: 2105352,
+          6400: 0,
+          6656: 8,
+          6912: 270532608,
+          7168: 8192,
+          7424: 268443656,
+          7680: 270540800,
+          7936: 2097160,
+          4224: 8,
+          4480: 2105344,
+          4736: 2097152,
+          4992: 268435464,
+          5248: 268443648,
+          5504: 8200,
+          5760: 270540808,
+          6016: 270532608,
+          6272: 270540800,
+          6528: 270532616,
+          6784: 8192,
+          7040: 2105352,
+          7296: 2097160,
+          7552: 0,
+          7808: 268435456,
+          8064: 268443656
+        }, {
+          0: 1048576,
+          16: 33555457,
+          32: 1024,
+          48: 1049601,
+          64: 34604033,
+          80: 0,
+          96: 1,
+          112: 34603009,
+          128: 33555456,
+          144: 1048577,
+          160: 33554433,
+          176: 34604032,
+          192: 34603008,
+          208: 1025,
+          224: 1049600,
+          240: 33554432,
+          8: 34603009,
+          24: 0,
+          40: 33555457,
+          56: 34604032,
+          72: 1048576,
+          88: 33554433,
+          104: 33554432,
+          120: 1025,
+          136: 1049601,
+          152: 33555456,
+          168: 34603008,
+          184: 1048577,
+          200: 1024,
+          216: 34604033,
+          232: 1,
+          248: 1049600,
+          256: 33554432,
+          272: 1048576,
+          288: 33555457,
+          304: 34603009,
+          320: 1048577,
+          336: 33555456,
+          352: 34604032,
+          368: 1049601,
+          384: 1025,
+          400: 34604033,
+          416: 1049600,
+          432: 1,
+          448: 0,
+          464: 34603008,
+          480: 33554433,
+          496: 1024,
+          264: 1049600,
+          280: 33555457,
+          296: 34603009,
+          312: 1,
+          328: 33554432,
+          344: 1048576,
+          360: 1025,
+          376: 34604032,
+          392: 33554433,
+          408: 34603008,
+          424: 0,
+          440: 34604033,
+          456: 1049601,
+          472: 1024,
+          488: 33555456,
+          504: 1048577
+        }, {
+          0: 134219808,
+          1: 131072,
+          2: 134217728,
+          3: 32,
+          4: 131104,
+          5: 134350880,
+          6: 134350848,
+          7: 2048,
+          8: 134348800,
+          9: 134219776,
+          10: 133120,
+          11: 134348832,
+          12: 2080,
+          13: 0,
+          14: 134217760,
+          15: 133152,
+          2147483648: 2048,
+          2147483649: 134350880,
+          2147483650: 134219808,
+          2147483651: 134217728,
+          2147483652: 134348800,
+          2147483653: 133120,
+          2147483654: 133152,
+          2147483655: 32,
+          2147483656: 134217760,
+          2147483657: 2080,
+          2147483658: 131104,
+          2147483659: 134350848,
+          2147483660: 0,
+          2147483661: 134348832,
+          2147483662: 134219776,
+          2147483663: 131072,
+          16: 133152,
+          17: 134350848,
+          18: 32,
+          19: 2048,
+          20: 134219776,
+          21: 134217760,
+          22: 134348832,
+          23: 131072,
+          24: 0,
+          25: 131104,
+          26: 134348800,
+          27: 134219808,
+          28: 134350880,
+          29: 133120,
+          30: 2080,
+          31: 134217728,
+          2147483664: 131072,
+          2147483665: 2048,
+          2147483666: 134348832,
+          2147483667: 133152,
+          2147483668: 32,
+          2147483669: 134348800,
+          2147483670: 134217728,
+          2147483671: 134219808,
+          2147483672: 134350880,
+          2147483673: 134217760,
+          2147483674: 134219776,
+          2147483675: 0,
+          2147483676: 133120,
+          2147483677: 2080,
+          2147483678: 131104,
+          2147483679: 134350848
+        }],
+        f = [4160749569, 528482304, 33030144, 2064384, 129024, 8064, 504, 2147483679],
+        c = o.DES = i.extend({
+          _doReset: function _doReset() {
+            for (var e = this._key.words, t = [], r = 0; r < 56; r++) {
+              var n = a[r] - 1;
+              t[r] = e[n >>> 5] >>> 31 - n % 32 & 1;
+            }
+            for (var i = this._subKeys = [], o = 0; o < 16; o++) {
+              var l = i[o] = [],
+                f = h[o];
+              for (r = 0; r < 24; r++) {
+                l[r / 6 | 0] |= t[(s[r] - 1 + f) % 28] << 31 - r % 6, l[4 + (r / 6 | 0)] |= t[28 + (s[r + 24] - 1 + f) % 28] << 31 - r % 6;
+              }
+              for (l[0] = l[0] << 1 | l[0] >>> 31, r = 1; r < 7; r++) {
+                l[r] = l[r] >>> 4 * (r - 1) + 3;
+              }
+              l[7] = l[7] << 5 | l[7] >>> 27;
+            }
+            var c = this._invSubKeys = [];
+            for (r = 0; r < 16; r++) {
+              c[r] = i[15 - r];
+            }
+          },
+          encryptBlock: function encryptBlock(e, t) {
+            this._doCryptBlock(e, t, this._subKeys);
+          },
+          decryptBlock: function decryptBlock(e, t) {
+            this._doCryptBlock(e, t, this._invSubKeys);
+          },
+          _doCryptBlock: function _doCryptBlock(e, t, r) {
+            this._lBlock = e[t], this._rBlock = e[t + 1], u.call(this, 4, 252645135), u.call(this, 16, 65535), d.call(this, 2, 858993459), d.call(this, 8, 16711935), u.call(this, 1, 1431655765);
+            for (var n = 0; n < 16; n++) {
+              for (var i = r[n], o = this._lBlock, a = this._rBlock, s = 0, h = 0; h < 8; h++) {
+                s |= l[h][((a ^ i[h]) & f[h]) >>> 0];
+              }
+              this._lBlock = a, this._rBlock = o ^ s;
+            }
+            var c = this._lBlock;
+            this._lBlock = this._rBlock, this._rBlock = c, u.call(this, 1, 1431655765), d.call(this, 8, 16711935), d.call(this, 2, 858993459), u.call(this, 16, 65535), u.call(this, 4, 252645135), e[t] = this._lBlock, e[t + 1] = this._rBlock;
+          },
+          keySize: 2,
+          ivSize: 2,
+          blockSize: 2
+        });
+      function u(e, t) {
+        var r = (this._lBlock >>> e ^ this._rBlock) & t;
+        this._rBlock ^= r, this._lBlock ^= r << e;
+      }
+      function d(e, t) {
+        var r = (this._rBlock >>> e ^ this._lBlock) & t;
+        this._lBlock ^= r, this._rBlock ^= r << e;
+      }
+      e.DES = i._createHelper(c);
+      var p = o.TripleDES = i.extend({
+        _doReset: function _doReset() {
+          var e = this._key.words;
+          this._des1 = c.createEncryptor(n.create(e.slice(0, 2))), this._des2 = c.createEncryptor(n.create(e.slice(2, 4))), this._des3 = c.createEncryptor(n.create(e.slice(4, 6)));
+        },
+        encryptBlock: function encryptBlock(e, t) {
+          this._des1.encryptBlock(e, t), this._des2.decryptBlock(e, t), this._des3.encryptBlock(e, t);
+        },
+        decryptBlock: function decryptBlock(e, t) {
+          this._des3.decryptBlock(e, t), this._des2.encryptBlock(e, t), this._des1.decryptBlock(e, t);
+        },
+        keySize: 6,
+        ivSize: 2,
+        blockSize: 2
+      });
+      e.TripleDES = i._createHelper(p);
+    }(), r.TripleDES);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = (r = ee, function () {
+      var e = r,
+        t = e.lib.StreamCipher,
+        n = e.algo,
+        i = n.RC4 = t.extend({
+          _doReset: function _doReset() {
+            for (var e = this._key, t = e.words, r = e.sigBytes, n = this._S = [], i = 0; i < 256; i++) {
+              n[i] = i;
+            }
+            i = 0;
+            for (var o = 0; i < 256; i++) {
+              var a = i % r,
+                s = t[a >>> 2] >>> 24 - a % 4 * 8 & 255;
+              o = (o + n[i] + s) % 256;
+              var h = n[i];
+              n[i] = n[o], n[o] = h;
+            }
+            this._i = this._j = 0;
+          },
+          _doProcessBlock: function _doProcessBlock(e, t) {
+            e[t] ^= o.call(this);
+          },
+          keySize: 8,
+          ivSize: 0
+        });
+      function o() {
+        for (var e = this._S, t = this._i, r = this._j, n = 0, i = 0; i < 4; i++) {
+          r = (r + e[t = (t + 1) % 256]) % 256;
+          var o = e[t];
+          e[t] = e[r], e[r] = o, n |= e[(e[t] + e[r]) % 256] << 24 - 8 * i;
+        }
+        return this._i = t, this._j = r, n;
+      }
+      e.RC4 = t._createHelper(i);
+      var a = n.RC4Drop = i.extend({
+        cfg: i.cfg.extend({
+          drop: 192
+        }),
+        _doReset: function _doReset() {
+          i._doReset.call(this);
+          for (var e = this.cfg.drop; e > 0; e--) {
+            o.call(this);
+          }
+        }
+      });
+      e.RC4Drop = t._createHelper(a);
+    }(), r.RC4);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = (r = ee, function () {
+      var e = r,
+        t = e.lib.StreamCipher,
+        n = e.algo,
+        i = [],
+        o = [],
+        a = [],
+        s = n.Rabbit = t.extend({
+          _doReset: function _doReset() {
+            for (var e = this._key.words, t = this.cfg.iv, r = 0; r < 4; r++) {
+              e[r] = 16711935 & (e[r] << 8 | e[r] >>> 24) | 4278255360 & (e[r] << 24 | e[r] >>> 8);
+            }
+            var n = this._X = [e[0], e[3] << 16 | e[2] >>> 16, e[1], e[0] << 16 | e[3] >>> 16, e[2], e[1] << 16 | e[0] >>> 16, e[3], e[2] << 16 | e[1] >>> 16],
+              i = this._C = [e[2] << 16 | e[2] >>> 16, 4294901760 & e[0] | 65535 & e[1], e[3] << 16 | e[3] >>> 16, 4294901760 & e[1] | 65535 & e[2], e[0] << 16 | e[0] >>> 16, 4294901760 & e[2] | 65535 & e[3], e[1] << 16 | e[1] >>> 16, 4294901760 & e[3] | 65535 & e[0]];
+            for (this._b = 0, r = 0; r < 4; r++) {
+              h.call(this);
+            }
+            for (r = 0; r < 8; r++) {
+              i[r] ^= n[r + 4 & 7];
+            }
+            if (t) {
+              var o = t.words,
+                a = o[0],
+                s = o[1],
+                l = 16711935 & (a << 8 | a >>> 24) | 4278255360 & (a << 24 | a >>> 8),
+                f = 16711935 & (s << 8 | s >>> 24) | 4278255360 & (s << 24 | s >>> 8),
+                c = l >>> 16 | 4294901760 & f,
+                u = f << 16 | 65535 & l;
+              for (i[0] ^= l, i[1] ^= c, i[2] ^= f, i[3] ^= u, i[4] ^= l, i[5] ^= c, i[6] ^= f, i[7] ^= u, r = 0; r < 4; r++) {
+                h.call(this);
+              }
+            }
+          },
+          _doProcessBlock: function _doProcessBlock(e, t) {
+            var r = this._X;
+            h.call(this), i[0] = r[0] ^ r[5] >>> 16 ^ r[3] << 16, i[1] = r[2] ^ r[7] >>> 16 ^ r[5] << 16, i[2] = r[4] ^ r[1] >>> 16 ^ r[7] << 16, i[3] = r[6] ^ r[3] >>> 16 ^ r[1] << 16;
+            for (var n = 0; n < 4; n++) {
+              i[n] = 16711935 & (i[n] << 8 | i[n] >>> 24) | 4278255360 & (i[n] << 24 | i[n] >>> 8), e[t + n] ^= i[n];
+            }
+          },
+          blockSize: 4,
+          ivSize: 2
+        });
+      function h() {
+        for (var e = this._X, t = this._C, r = 0; r < 8; r++) {
+          o[r] = t[r];
+        }
+        for (t[0] = t[0] + 1295307597 + this._b | 0, t[1] = t[1] + 3545052371 + (t[0] >>> 0 < o[0] >>> 0 ? 1 : 0) | 0, t[2] = t[2] + 886263092 + (t[1] >>> 0 < o[1] >>> 0 ? 1 : 0) | 0, t[3] = t[3] + 1295307597 + (t[2] >>> 0 < o[2] >>> 0 ? 1 : 0) | 0, t[4] = t[4] + 3545052371 + (t[3] >>> 0 < o[3] >>> 0 ? 1 : 0) | 0, t[5] = t[5] + 886263092 + (t[4] >>> 0 < o[4] >>> 0 ? 1 : 0) | 0, t[6] = t[6] + 1295307597 + (t[5] >>> 0 < o[5] >>> 0 ? 1 : 0) | 0, t[7] = t[7] + 3545052371 + (t[6] >>> 0 < o[6] >>> 0 ? 1 : 0) | 0, this._b = t[7] >>> 0 < o[7] >>> 0 ? 1 : 0, r = 0; r < 8; r++) {
+          var n = e[r] + t[r],
+            i = 65535 & n,
+            s = n >>> 16,
+            h = ((i * i >>> 17) + i * s >>> 15) + s * s,
+            l = ((4294901760 & n) * n | 0) + ((65535 & n) * n | 0);
+          a[r] = h ^ l;
+        }
+        e[0] = a[0] + (a[7] << 16 | a[7] >>> 16) + (a[6] << 16 | a[6] >>> 16) | 0, e[1] = a[1] + (a[0] << 8 | a[0] >>> 24) + a[7] | 0, e[2] = a[2] + (a[1] << 16 | a[1] >>> 16) + (a[0] << 16 | a[0] >>> 16) | 0, e[3] = a[3] + (a[2] << 8 | a[2] >>> 24) + a[1] | 0, e[4] = a[4] + (a[3] << 16 | a[3] >>> 16) + (a[2] << 16 | a[2] >>> 16) | 0, e[5] = a[5] + (a[4] << 8 | a[4] >>> 24) + a[3] | 0, e[6] = a[6] + (a[5] << 16 | a[5] >>> 16) + (a[4] << 16 | a[4] >>> 16) | 0, e[7] = a[7] + (a[6] << 8 | a[6] >>> 24) + a[5] | 0;
+      }
+      e.Rabbit = t._createHelper(s);
+    }(), r.Rabbit);
+  }), Q(function (e, t) {
+    var r;
+    e.exports = (r = ee, function () {
+      var e = r,
+        t = e.lib.StreamCipher,
+        n = e.algo,
+        i = [],
+        o = [],
+        a = [],
+        s = n.RabbitLegacy = t.extend({
+          _doReset: function _doReset() {
+            var e = this._key.words,
+              t = this.cfg.iv,
+              r = this._X = [e[0], e[3] << 16 | e[2] >>> 16, e[1], e[0] << 16 | e[3] >>> 16, e[2], e[1] << 16 | e[0] >>> 16, e[3], e[2] << 16 | e[1] >>> 16],
+              n = this._C = [e[2] << 16 | e[2] >>> 16, 4294901760 & e[0] | 65535 & e[1], e[3] << 16 | e[3] >>> 16, 4294901760 & e[1] | 65535 & e[2], e[0] << 16 | e[0] >>> 16, 4294901760 & e[2] | 65535 & e[3], e[1] << 16 | e[1] >>> 16, 4294901760 & e[3] | 65535 & e[0]];
+            this._b = 0;
+            for (var i = 0; i < 4; i++) {
+              h.call(this);
+            }
+            for (i = 0; i < 8; i++) {
+              n[i] ^= r[i + 4 & 7];
+            }
+            if (t) {
+              var o = t.words,
+                a = o[0],
+                s = o[1],
+                l = 16711935 & (a << 8 | a >>> 24) | 4278255360 & (a << 24 | a >>> 8),
+                f = 16711935 & (s << 8 | s >>> 24) | 4278255360 & (s << 24 | s >>> 8),
+                c = l >>> 16 | 4294901760 & f,
+                u = f << 16 | 65535 & l;
+              for (n[0] ^= l, n[1] ^= c, n[2] ^= f, n[3] ^= u, n[4] ^= l, n[5] ^= c, n[6] ^= f, n[7] ^= u, i = 0; i < 4; i++) {
+                h.call(this);
+              }
+            }
+          },
+          _doProcessBlock: function _doProcessBlock(e, t) {
+            var r = this._X;
+            h.call(this), i[0] = r[0] ^ r[5] >>> 16 ^ r[3] << 16, i[1] = r[2] ^ r[7] >>> 16 ^ r[5] << 16, i[2] = r[4] ^ r[1] >>> 16 ^ r[7] << 16, i[3] = r[6] ^ r[3] >>> 16 ^ r[1] << 16;
+            for (var n = 0; n < 4; n++) {
+              i[n] = 16711935 & (i[n] << 8 | i[n] >>> 24) | 4278255360 & (i[n] << 24 | i[n] >>> 8), e[t + n] ^= i[n];
+            }
+          },
+          blockSize: 4,
+          ivSize: 2
+        });
+      function h() {
+        for (var e = this._X, t = this._C, r = 0; r < 8; r++) {
+          o[r] = t[r];
+        }
+        for (t[0] = t[0] + 1295307597 + this._b | 0, t[1] = t[1] + 3545052371 + (t[0] >>> 0 < o[0] >>> 0 ? 1 : 0) | 0, t[2] = t[2] + 886263092 + (t[1] >>> 0 < o[1] >>> 0 ? 1 : 0) | 0, t[3] = t[3] + 1295307597 + (t[2] >>> 0 < o[2] >>> 0 ? 1 : 0) | 0, t[4] = t[4] + 3545052371 + (t[3] >>> 0 < o[3] >>> 0 ? 1 : 0) | 0, t[5] = t[5] + 886263092 + (t[4] >>> 0 < o[4] >>> 0 ? 1 : 0) | 0, t[6] = t[6] + 1295307597 + (t[5] >>> 0 < o[5] >>> 0 ? 1 : 0) | 0, t[7] = t[7] + 3545052371 + (t[6] >>> 0 < o[6] >>> 0 ? 1 : 0) | 0, this._b = t[7] >>> 0 < o[7] >>> 0 ? 1 : 0, r = 0; r < 8; r++) {
+          var n = e[r] + t[r],
+            i = 65535 & n,
+            s = n >>> 16,
+            h = ((i * i >>> 17) + i * s >>> 15) + s * s,
+            l = ((4294901760 & n) * n | 0) + ((65535 & n) * n | 0);
+          a[r] = h ^ l;
+        }
+        e[0] = a[0] + (a[7] << 16 | a[7] >>> 16) + (a[6] << 16 | a[6] >>> 16) | 0, e[1] = a[1] + (a[0] << 8 | a[0] >>> 24) + a[7] | 0, e[2] = a[2] + (a[1] << 16 | a[1] >>> 16) + (a[0] << 16 | a[0] >>> 16) | 0, e[3] = a[3] + (a[2] << 8 | a[2] >>> 24) + a[1] | 0, e[4] = a[4] + (a[3] << 16 | a[3] >>> 16) + (a[2] << 16 | a[2] >>> 16) | 0, e[5] = a[5] + (a[4] << 8 | a[4] >>> 24) + a[3] | 0, e[6] = a[6] + (a[5] << 16 | a[5] >>> 16) + (a[4] << 16 | a[4] >>> 16) | 0, e[7] = a[7] + (a[6] << 8 | a[6] >>> 24) + a[5] | 0;
+      }
+      e.RabbitLegacy = t._createHelper(s);
+    }(), r.RabbitLegacy);
+  }), Q(function (e, t) {
+    e.exports = ee;
+  }));
+function re() {
+  throw new Error("setTimeout has not been defined");
+}
+function ne() {
+  throw new Error("clearTimeout has not been defined");
+}
+var ie = re,
+  oe = ne;
+function ae(e) {
+  if (ie === setTimeout) return setTimeout(e, 0);
+  if ((ie === re || !ie) && setTimeout) return ie = setTimeout, setTimeout(e, 0);
+  try {
+    return ie(e, 0);
+  } catch (t) {
+    try {
+      return ie.call(null, e, 0);
+    } catch (t) {
+      return ie.call(this, e, 0);
+    }
+  }
+}
+"function" == typeof e.setTimeout && (ie = setTimeout), "function" == typeof e.clearTimeout && (oe = clearTimeout);
+var se,
+  he = [],
+  le = !1,
+  fe = -1;
+function ce() {
+  le && se && (le = !1, se.length ? he = se.concat(he) : fe = -1, he.length && ue());
+}
+function ue() {
+  if (!le) {
+    var e = ae(ce);
+    le = !0;
+    for (var t = he.length; t;) {
+      for (se = he, he = []; ++fe < t;) {
+        se && se[fe].run();
+      }
+      fe = -1, t = he.length;
+    }
+    se = null, le = !1, function (e) {
+      if (oe === clearTimeout) return clearTimeout(e);
+      if ((oe === ne || !oe) && clearTimeout) return oe = clearTimeout, clearTimeout(e);
+      try {
+        oe(e);
+      } catch (t) {
+        try {
+          return oe.call(null, e);
+        } catch (t) {
+          return oe.call(this, e);
+        }
+      }
+    }(e);
+  }
+}
+function de(e) {
+  var t = new Array(arguments.length - 1);
+  if (arguments.length > 1) for (var r = 1; r < arguments.length; r++) {
+    t[r - 1] = arguments[r];
+  }
+  he.push(new pe(e, t)), 1 !== he.length || le || ae(ue);
+}
+function pe(e, t) {
+  this.fun = e, this.array = t;
+}
+pe.prototype.run = function () {
+  this.fun.apply(null, this.array);
+};
+var _e = {};
+_e.now || _e.mozNow || _e.msNow || _e.oNow || _e.webkitNow;
+function ge() {}
+function ve() {
+  ve.init.call(this);
+}
+function we(e) {
+  return void 0 === e._maxListeners ? ve.defaultMaxListeners : e._maxListeners;
+}
+function be(e, t, r) {
+  if (t) e.call(r);else for (var n = e.length, i = Ae(e, n), o = 0; o < n; ++o) {
+    i[o].call(r);
+  }
+}
+function ye(e, t, r, n) {
+  if (t) e.call(r, n);else for (var i = e.length, o = Ae(e, i), a = 0; a < i; ++a) {
+    o[a].call(r, n);
+  }
+}
+function me(e, t, r, n, i) {
+  if (t) e.call(r, n, i);else for (var o = e.length, a = Ae(e, o), s = 0; s < o; ++s) {
+    a[s].call(r, n, i);
+  }
+}
+function ke(e, t, r, n, i, o) {
+  if (t) e.call(r, n, i, o);else for (var a = e.length, s = Ae(e, a), h = 0; h < a; ++h) {
+    s[h].call(r, n, i, o);
+  }
+}
+function Ee(e, t, r, n) {
+  if (t) e.apply(r, n);else for (var i = e.length, o = Ae(e, i), a = 0; a < i; ++a) {
+    o[a].apply(r, n);
+  }
+}
+function Se(e, t, r, n) {
+  var i, o, a, s;
+  if ("function" != typeof r) throw new TypeError('"listener" argument must be a function');
+  if ((o = e._events) ? (o.newListener && (e.emit("newListener", t, r.listener ? r.listener : r), o = e._events), a = o[t]) : (o = e._events = new ge(), e._eventsCount = 0), a) {
+    if ("function" == typeof a ? a = o[t] = n ? [r, a] : [a, r] : n ? a.unshift(r) : a.push(r), !a.warned && (i = we(e)) && i > 0 && a.length > i) {
+      a.warned = !0;
+      var h = new Error("Possible EventEmitter memory leak detected. " + a.length + " " + t + " listeners added. Use emitter.setMaxListeners() to increase limit");
+      h.name = "MaxListenersExceededWarning", h.emitter = e, h.type = t, h.count = a.length, s = h, "function" == typeof console.warn ? console.warn(s) : console.log(s);
+    }
+  } else a = o[t] = r, ++e._eventsCount;
+  return e;
+}
+function xe(e, t, r) {
+  var n = !1;
+  function i() {
+    e.removeListener(t, i), n || (n = !0, r.apply(e, arguments));
+  }
+  return i.listener = r, i;
+}
+function Re(e) {
+  var t = this._events;
+  if (t) {
+    var r = t[e];
+    if ("function" == typeof r) return 1;
+    if (r) return r.length;
+  }
+  return 0;
+}
+function Ae(e, t) {
+  for (var r = new Array(t); t--;) {
+    r[t] = e[t];
+  }
+  return r;
+}
+ge.prototype = Object.create(null), ve.EventEmitter = ve, ve.usingDomains = !1, ve.prototype.domain = void 0, ve.prototype._events = void 0, ve.prototype._maxListeners = void 0, ve.defaultMaxListeners = 10, ve.init = function () {
+  this.domain = null, ve.usingDomains && (void 0).active && (void 0).Domain, this._events && this._events !== Object.getPrototypeOf(this)._events || (this._events = new ge(), this._eventsCount = 0), this._maxListeners = this._maxListeners || void 0;
+}, ve.prototype.setMaxListeners = function (e) {
+  if ("number" != typeof e || e < 0 || isNaN(e)) throw new TypeError('"n" argument must be a positive number');
+  return this._maxListeners = e, this;
+}, ve.prototype.getMaxListeners = function () {
+  return we(this);
+}, ve.prototype.emit = function (e) {
+  var t,
+    r,
+    n,
+    i,
+    o,
+    a,
+    s,
+    h = "error" === e;
+  if (a = this._events) h = h && null == a.error;else if (!h) return !1;
+  if (s = this.domain, h) {
+    if (t = arguments[1], !s) {
+      if (t instanceof Error) throw t;
+      var l = new Error('Uncaught, unspecified "error" event. (' + t + ")");
+      throw l.context = t, l;
+    }
+    return t || (t = new Error('Uncaught, unspecified "error" event')), t.domainEmitter = this, t.domain = s, t.domainThrown = !1, s.emit("error", t), !1;
+  }
+  if (!(r = a[e])) return !1;
+  var f = "function" == typeof r;
+  switch (n = arguments.length) {
+    case 1:
+      be(r, f, this);
+      break;
+    case 2:
+      ye(r, f, this, arguments[1]);
+      break;
+    case 3:
+      me(r, f, this, arguments[1], arguments[2]);
+      break;
+    case 4:
+      ke(r, f, this, arguments[1], arguments[2], arguments[3]);
+      break;
+    default:
+      for (i = new Array(n - 1), o = 1; o < n; o++) {
+        i[o - 1] = arguments[o];
+      }
+      Ee(r, f, this, i);
+  }
+  return !0;
+}, ve.prototype.addListener = function (e, t) {
+  return Se(this, e, t, !1);
+}, ve.prototype.on = ve.prototype.addListener, ve.prototype.prependListener = function (e, t) {
+  return Se(this, e, t, !0);
+}, ve.prototype.once = function (e, t) {
+  if ("function" != typeof t) throw new TypeError('"listener" argument must be a function');
+  return this.on(e, xe(this, e, t)), this;
+}, ve.prototype.prependOnceListener = function (e, t) {
+  if ("function" != typeof t) throw new TypeError('"listener" argument must be a function');
+  return this.prependListener(e, xe(this, e, t)), this;
+}, ve.prototype.removeListener = function (e, t) {
+  var r, n, i, o, a;
+  if ("function" != typeof t) throw new TypeError('"listener" argument must be a function');
+  if (!(n = this._events)) return this;
+  if (!(r = n[e])) return this;
+  if (r === t || r.listener && r.listener === t) 0 == --this._eventsCount ? this._events = new ge() : (delete n[e], n.removeListener && this.emit("removeListener", e, r.listener || t));else if ("function" != typeof r) {
+    for (i = -1, o = r.length; o-- > 0;) {
+      if (r[o] === t || r[o].listener && r[o].listener === t) {
+        a = r[o].listener, i = o;
+        break;
+      }
+    }
+    if (i < 0) return this;
+    if (1 === r.length) {
+      if (r[0] = void 0, 0 == --this._eventsCount) return this._events = new ge(), this;
+      delete n[e];
+    } else !function (e, t) {
+      for (var r = t, n = r + 1, i = e.length; n < i; r += 1, n += 1) {
+        e[r] = e[n];
+      }
+      e.pop();
+    }(r, i);
+    n.removeListener && this.emit("removeListener", e, a || t);
+  }
+  return this;
+}, ve.prototype.removeAllListeners = function (e) {
+  var t, r;
+  if (!(r = this._events)) return this;
+  if (!r.removeListener) return 0 === arguments.length ? (this._events = new ge(), this._eventsCount = 0) : r[e] && (0 == --this._eventsCount ? this._events = new ge() : delete r[e]), this;
+  if (0 === arguments.length) {
+    for (var n, i = Object.keys(r), o = 0; o < i.length; ++o) {
+      "removeListener" !== (n = i[o]) && this.removeAllListeners(n);
+    }
+    return this.removeAllListeners("removeListener"), this._events = new ge(), this._eventsCount = 0, this;
+  }
+  if ("function" == typeof (t = r[e])) this.removeListener(e, t);else if (t) do {
+    this.removeListener(e, t[t.length - 1]);
+  } while (t[0]);
+  return this;
+}, ve.prototype.listeners = function (e) {
+  var t,
+    r = this._events;
+  return r && (t = r[e]) ? "function" == typeof t ? [t.listener || t] : function (e) {
+    for (var t = new Array(e.length), r = 0; r < t.length; ++r) {
+      t[r] = e[r].listener || e[r];
+    }
+    return t;
+  }(t) : [];
+}, ve.listenerCount = function (e, t) {
+  return "function" == typeof e.listenerCount ? e.listenerCount(t) : Re.call(e, t);
+}, ve.prototype.listenerCount = Re, ve.prototype.eventNames = function () {
+  return this._eventsCount > 0 ? Reflect.ownKeys(this._events) : [];
+};
+var Be = "function" == typeof Object.create ? function (e, t) {
+    e.super_ = t, e.prototype = Object.create(t.prototype, {
+      constructor: {
+        value: e,
+        enumerable: !1,
+        writable: !0,
+        configurable: !0
+      }
+    });
+  } : function (e, t) {
+    e.super_ = t;
+    var r = function r() {};
+    r.prototype = t.prototype, e.prototype = new r(), e.prototype.constructor = e;
+  },
+  ze = /%[sdj%]/g;
+function Le(e) {
+  if (!Ze(e)) {
+    for (var t = [], r = 0; r < arguments.length; r++) {
+      t.push(De(arguments[r]));
+    }
+    return t.join(" ");
+  }
+  r = 1;
+  for (var n = arguments, i = n.length, o = String(e).replace(ze, function (e) {
+      if ("%%" === e) return "%";
+      if (r >= i) return e;
+      switch (e) {
+        case "%s":
+          return String(n[r++]);
+        case "%d":
+          return Number(n[r++]);
+        case "%j":
+          try {
+            return JSON.stringify(n[r++]);
+          } catch (e) {
+            return "[Circular]";
+          }
+        default:
+          return e;
+      }
+    }), a = n[r]; r < i; a = n[++r]) {
+    Ne(a) || !Ye(a) ? o += " " + a : o += " " + De(a);
+  }
+  return o;
+}
+function Te(t, r) {
+  if (je(e.process)) return function () {
+    return Te(t, r).apply(this, arguments);
+  };
+  var n = !1;
+  return function () {
+    return n || (console.error(r), n = !0), t.apply(this, arguments);
+  };
+}
+var Me,
+  Ce = {};
+function De(e, t) {
+  var r = {
+    seen: [],
+    stylize: Pe
+  };
+  return arguments.length >= 3 && (r.depth = arguments[2]), arguments.length >= 4 && (r.colors = arguments[3]), Fe(t) ? r.showHidden = t : t && function (e, t) {
+    if (!t || !Ye(t)) return e;
+    var r = Object.keys(t),
+      n = r.length;
+    for (; n--;) {
+      e[r[n]] = t[r[n]];
+    }
+  }(r, t), je(r.showHidden) && (r.showHidden = !1), je(r.depth) && (r.depth = 2), je(r.colors) && (r.colors = !1), je(r.customInspect) && (r.customInspect = !0), r.colors && (r.stylize = Ie), Oe(r, e, r.depth);
+}
+function Ie(e, t) {
+  var r = De.styles[t];
+  return r ? "[" + De.colors[r][0] + "m" + e + "[" + De.colors[r][1] + "m" : e;
+}
+function Pe(e, t) {
+  return e;
+}
+function Oe(e, t, r) {
+  if (e.customInspect && t && qe(t.inspect) && t.inspect !== De && (!t.constructor || t.constructor.prototype !== t)) {
+    var n = t.inspect(r, e);
+    return Ze(n) || (n = Oe(e, n, r)), n;
+  }
+  var i = function (e, t) {
+    if (je(t)) return e.stylize("undefined", "undefined");
+    if (Ze(t)) {
+      var r = "'" + JSON.stringify(t).replace(/^"|"$/g, "").replace(/'/g, "\\'").replace(/\\"/g, '"') + "'";
+      return e.stylize(r, "string");
+    }
+    if (n = t, "number" == typeof n) return e.stylize("" + t, "number");
+    var n;
+    if (Fe(t)) return e.stylize("" + t, "boolean");
+    if (Ne(t)) return e.stylize("null", "null");
+  }(e, t);
+  if (i) return i;
+  var o = Object.keys(t),
+    a = function (e) {
+      var t = {};
+      return e.forEach(function (e, r) {
+        t[e] = !0;
+      }), t;
+    }(o);
+  if (e.showHidden && (o = Object.getOwnPropertyNames(t)), Xe(t) && (o.indexOf("message") >= 0 || o.indexOf("description") >= 0)) return Ue(t);
+  if (0 === o.length) {
+    if (qe(t)) {
+      var s = t.name ? ": " + t.name : "";
+      return e.stylize("[Function" + s + "]", "special");
+    }
+    if (We(t)) return e.stylize(RegExp.prototype.toString.call(t), "regexp");
+    if (Ke(t)) return e.stylize(Date.prototype.toString.call(t), "date");
+    if (Xe(t)) return Ue(t);
+  }
+  var h,
+    l,
+    f = "",
+    c = !1,
+    u = ["{", "}"];
+  (h = t, Array.isArray(h) && (c = !0, u = ["[", "]"]), qe(t)) && (f = " [Function" + (t.name ? ": " + t.name : "") + "]");
+  return We(t) && (f = " " + RegExp.prototype.toString.call(t)), Ke(t) && (f = " " + Date.prototype.toUTCString.call(t)), Xe(t) && (f = " " + Ue(t)), 0 !== o.length || c && 0 != t.length ? r < 0 ? We(t) ? e.stylize(RegExp.prototype.toString.call(t), "regexp") : e.stylize("[Object]", "special") : (e.seen.push(t), l = c ? function (e, t, r, n, i) {
+    for (var o = [], a = 0, s = t.length; a < s; ++a) {
+      Ge(t, String(a)) ? o.push(He(e, t, r, n, String(a), !0)) : o.push("");
+    }
+    return i.forEach(function (i) {
+      i.match(/^\d+$/) || o.push(He(e, t, r, n, i, !0));
+    }), o;
+  }(e, t, r, a, o) : o.map(function (n) {
+    return He(e, t, r, a, n, c);
+  }), e.seen.pop(), function (e, t, r) {
+    if (e.reduce(function (e, t) {
+      return t.indexOf("\n"), e + t.replace(/\u001b\[\d\d?m/g, "").length + 1;
+    }, 0) > 60) return r[0] + ("" === t ? "" : t + "\n ") + " " + e.join(",\n  ") + " " + r[1];
+    return r[0] + t + " " + e.join(", ") + " " + r[1];
+  }(l, f, u)) : u[0] + f + u[1];
+}
+function Ue(e) {
+  return "[" + Error.prototype.toString.call(e) + "]";
+}
+function He(e, t, r, n, i, o) {
+  var a, s, h;
+  if ((h = Object.getOwnPropertyDescriptor(t, i) || {
+    value: t[i]
+  }).get ? s = h.set ? e.stylize("[Getter/Setter]", "special") : e.stylize("[Getter]", "special") : h.set && (s = e.stylize("[Setter]", "special")), Ge(n, i) || (a = "[" + i + "]"), s || (e.seen.indexOf(h.value) < 0 ? (s = Ne(r) ? Oe(e, h.value, null) : Oe(e, h.value, r - 1)).indexOf("\n") > -1 && (s = o ? s.split("\n").map(function (e) {
+    return "  " + e;
+  }).join("\n").substr(2) : "\n" + s.split("\n").map(function (e) {
+    return "   " + e;
+  }).join("\n")) : s = e.stylize("[Circular]", "special")), je(a)) {
+    if (o && i.match(/^\d+$/)) return s;
+    (a = JSON.stringify("" + i)).match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/) ? (a = a.substr(1, a.length - 2), a = e.stylize(a, "name")) : (a = a.replace(/'/g, "\\'").replace(/\\"/g, '"').replace(/(^"|"$)/g, "'"), a = e.stylize(a, "string"));
+  }
+  return a + ": " + s;
+}
+function Fe(e) {
+  return "boolean" == typeof e;
+}
+function Ne(e) {
+  return null === e;
+}
+function Ze(e) {
+  return "string" == typeof e;
+}
+function je(e) {
+  return void 0 === e;
+}
+function We(e) {
+  return Ye(e) && "[object RegExp]" === Ve(e);
+}
+function Ye(e) {
+  return "object" == (0, _typeof2.default)(e) && null !== e;
+}
+function Ke(e) {
+  return Ye(e) && "[object Date]" === Ve(e);
+}
+function Xe(e) {
+  return Ye(e) && ("[object Error]" === Ve(e) || e instanceof Error);
+}
+function qe(e) {
+  return "function" == typeof e;
+}
+function Ve(e) {
+  return Object.prototype.toString.call(e);
+}
+function Ge(e, t) {
+  return Object.prototype.hasOwnProperty.call(e, t);
+}
+function $e() {
+  this.head = null, this.tail = null, this.length = 0;
+}
+De.colors = {
+  bold: [1, 22],
+  italic: [3, 23],
+  underline: [4, 24],
+  inverse: [7, 27],
+  white: [37, 39],
+  grey: [90, 39],
+  black: [30, 39],
+  blue: [34, 39],
+  cyan: [36, 39],
+  green: [32, 39],
+  magenta: [35, 39],
+  red: [31, 39],
+  yellow: [33, 39]
+}, De.styles = {
+  special: "cyan",
+  number: "yellow",
+  boolean: "yellow",
+  undefined: "grey",
+  null: "bold",
+  string: "green",
+  date: "magenta",
+  regexp: "red"
+}, $e.prototype.push = function (e) {
+  var t = {
+    data: e,
+    next: null
+  };
+  this.length > 0 ? this.tail.next = t : this.head = t, this.tail = t, ++this.length;
+}, $e.prototype.unshift = function (e) {
+  var t = {
+    data: e,
+    next: this.head
+  };
+  0 === this.length && (this.tail = t), this.head = t, ++this.length;
+}, $e.prototype.shift = function () {
+  if (0 !== this.length) {
+    var e = this.head.data;
+    return 1 === this.length ? this.head = this.tail = null : this.head = this.head.next, --this.length, e;
+  }
+}, $e.prototype.clear = function () {
+  this.head = this.tail = null, this.length = 0;
+}, $e.prototype.join = function (e) {
+  if (0 === this.length) return "";
+  for (var t = this.head, r = "" + t.data; t = t.next;) {
+    r += e + t.data;
+  }
+  return r;
+}, $e.prototype.concat = function (e) {
+  if (0 === this.length) return p.alloc(0);
+  if (1 === this.length) return this.head.data;
+  for (var t = p.allocUnsafe(e >>> 0), r = this.head, n = 0; r;) {
+    r.data.copy(t, n), n += r.data.length, r = r.next;
+  }
+  return t;
+};
+var Je = p.isEncoding || function (e) {
+  switch (e && e.toLowerCase()) {
+    case "hex":
+    case "utf8":
+    case "utf-8":
+    case "ascii":
+    case "binary":
+    case "base64":
+    case "ucs2":
+    case "ucs-2":
+    case "utf16le":
+    case "utf-16le":
+    case "raw":
+      return !0;
+    default:
+      return !1;
+  }
+};
+function Qe(e) {
+  switch (this.encoding = (e || "utf8").toLowerCase().replace(/[-_]/, ""), function (e) {
+    if (e && !Je(e)) throw new Error("Unknown encoding: " + e);
+  }(e), this.encoding) {
+    case "utf8":
+      this.surrogateSize = 3;
+      break;
+    case "ucs2":
+    case "utf16le":
+      this.surrogateSize = 2, this.detectIncompleteChar = tt;
+      break;
+    case "base64":
+      this.surrogateSize = 3, this.detectIncompleteChar = rt;
+      break;
+    default:
+      return void (this.write = et);
+  }
+  this.charBuffer = new p(6), this.charReceived = 0, this.charLength = 0;
+}
+function et(e) {
+  return e.toString(this.encoding);
+}
+function tt(e) {
+  this.charReceived = e.length % 2, this.charLength = this.charReceived ? 2 : 0;
+}
+function rt(e) {
+  this.charReceived = e.length % 3, this.charLength = this.charReceived ? 3 : 0;
+}
+Qe.prototype.write = function (e) {
+  for (var t = ""; this.charLength;) {
+    var r = e.length >= this.charLength - this.charReceived ? this.charLength - this.charReceived : e.length;
+    if (e.copy(this.charBuffer, this.charReceived, 0, r), this.charReceived += r, this.charReceived < this.charLength) return "";
+    if (e = e.slice(r, e.length), !((i = (t = this.charBuffer.slice(0, this.charLength).toString(this.encoding)).charCodeAt(t.length - 1)) >= 55296 && i <= 56319)) {
+      if (this.charReceived = this.charLength = 0, 0 === e.length) return t;
+      break;
+    }
+    this.charLength += this.surrogateSize, t = "";
+  }
+  this.detectIncompleteChar(e);
+  var n = e.length;
+  this.charLength && (e.copy(this.charBuffer, 0, e.length - this.charReceived, n), n -= this.charReceived);
+  var i;
+  n = (t += e.toString(this.encoding, 0, n)).length - 1;
+  if ((i = t.charCodeAt(n)) >= 55296 && i <= 56319) {
+    var o = this.surrogateSize;
+    return this.charLength += o, this.charReceived += o, this.charBuffer.copy(this.charBuffer, o, 0, o), e.copy(this.charBuffer, 0, 0, o), t.substring(0, n);
+  }
+  return t;
+}, Qe.prototype.detectIncompleteChar = function (e) {
+  for (var t = e.length >= 3 ? 3 : e.length; t > 0; t--) {
+    var r = e[e.length - t];
+    if (1 == t && r >> 5 == 6) {
+      this.charLength = 2;
+      break;
+    }
+    if (t <= 2 && r >> 4 == 14) {
+      this.charLength = 3;
+      break;
+    }
+    if (t <= 3 && r >> 3 == 30) {
+      this.charLength = 4;
+      break;
+    }
+  }
+  this.charReceived = t;
+}, Qe.prototype.end = function (e) {
+  var t = "";
+  if (e && e.length && (t = this.write(e)), this.charReceived) {
+    var r = this.charReceived,
+      n = this.charBuffer,
+      i = this.encoding;
+    t += n.slice(0, r).toString(i);
+  }
+  return t;
+}, ot.ReadableState = it;
+var nt = function (e) {
+  je(Me) && (Me = ""), e = e.toUpperCase(), Ce[e] || (new RegExp("\\b" + e + "\\b", "i").test(Me) ? Ce[e] = function () {
+    var t = Le.apply(null, arguments);
+    console.error("%s %d: %s", e, 0, t);
+  } : Ce[e] = function () {});
+  return Ce[e];
+}("stream");
+function it(e, t) {
+  e = e || {}, this.objectMode = !!e.objectMode, t instanceof Ct && (this.objectMode = this.objectMode || !!e.readableObjectMode);
+  var r = e.highWaterMark,
+    n = this.objectMode ? 16 : 16384;
+  this.highWaterMark = r || 0 === r ? r : n, this.highWaterMark = ~~this.highWaterMark, this.buffer = new $e(), this.length = 0, this.pipes = null, this.pipesCount = 0, this.flowing = null, this.ended = !1, this.endEmitted = !1, this.reading = !1, this.sync = !0, this.needReadable = !1, this.emittedReadable = !1, this.readableListening = !1, this.resumeScheduled = !1, this.defaultEncoding = e.defaultEncoding || "utf8", this.ranOut = !1, this.awaitDrain = 0, this.readingMore = !1, this.decoder = null, this.encoding = null, e.encoding && (this.decoder = new Qe(e.encoding), this.encoding = e.encoding);
+}
+function ot(e) {
+  if (!(this instanceof ot)) return new ot(e);
+  this._readableState = new it(e, this), this.readable = !0, e && "function" == typeof e.read && (this._read = e.read), ve.call(this);
+}
+function at(e, t, r, n, i) {
+  var o = function (e, t) {
+    var r = null;
+    $(t) || "string" == typeof t || null == t || e.objectMode || (r = new TypeError("Invalid non-string/buffer chunk"));
+    return r;
+  }(t, r);
+  if (o) e.emit("error", o);else if (null === r) t.reading = !1, function (e, t) {
+    if (t.ended) return;
+    if (t.decoder) {
+      var r = t.decoder.end();
+      r && r.length && (t.buffer.push(r), t.length += t.objectMode ? 1 : r.length);
+    }
+    t.ended = !0, lt(e);
+  }(e, t);else if (t.objectMode || r && r.length > 0) {
+    if (t.ended && !i) {
+      var a = new Error("stream.push() after EOF");
+      e.emit("error", a);
+    } else if (t.endEmitted && i) {
+      var s = new Error("stream.unshift() after end event");
+      e.emit("error", s);
+    } else {
+      var h;
+      !t.decoder || i || n || (r = t.decoder.write(r), h = !t.objectMode && 0 === r.length), i || (t.reading = !1), h || (t.flowing && 0 === t.length && !t.sync ? (e.emit("data", r), e.read(0)) : (t.length += t.objectMode ? 1 : r.length, i ? t.buffer.unshift(r) : t.buffer.push(r), t.needReadable && lt(e))), function (e, t) {
+        t.readingMore || (t.readingMore = !0, de(ct, e, t));
+      }(e, t);
+    }
+  } else i || (t.reading = !1);
+  return function (e) {
+    return !e.ended && (e.needReadable || e.length < e.highWaterMark || 0 === e.length);
+  }(t);
+}
+Be(ot, ve), ot.prototype.push = function (e, t) {
+  var r = this._readableState;
+  return r.objectMode || "string" != typeof e || (t = t || r.defaultEncoding) !== r.encoding && (e = p.from(e, t), t = ""), at(this, r, e, t, !1);
+}, ot.prototype.unshift = function (e) {
+  return at(this, this._readableState, e, "", !0);
+}, ot.prototype.isPaused = function () {
+  return !1 === this._readableState.flowing;
+}, ot.prototype.setEncoding = function (e) {
+  return this._readableState.decoder = new Qe(e), this._readableState.encoding = e, this;
+};
+var st = 8388608;
+function ht(e, t) {
+  return e <= 0 || 0 === t.length && t.ended ? 0 : t.objectMode ? 1 : e != e ? t.flowing && t.length ? t.buffer.head.data.length : t.length : (e > t.highWaterMark && (t.highWaterMark = function (e) {
+    return e >= st ? e = st : (e--, e |= e >>> 1, e |= e >>> 2, e |= e >>> 4, e |= e >>> 8, e |= e >>> 16, e++), e;
+  }(e)), e <= t.length ? e : t.ended ? t.length : (t.needReadable = !0, 0));
+}
+function lt(e) {
+  var t = e._readableState;
+  t.needReadable = !1, t.emittedReadable || (nt("emitReadable", t.flowing), t.emittedReadable = !0, t.sync ? de(ft, e) : ft(e));
+}
+function ft(e) {
+  nt("emit readable"), e.emit("readable"), pt(e);
+}
+function ct(e, t) {
+  for (var r = t.length; !t.reading && !t.flowing && !t.ended && t.length < t.highWaterMark && (nt("maybeReadMore read 0"), e.read(0), r !== t.length);) {
+    r = t.length;
+  }
+  t.readingMore = !1;
+}
+function ut(e) {
+  nt("readable nexttick read 0"), e.read(0);
+}
+function dt(e, t) {
+  t.reading || (nt("resume read 0"), e.read(0)), t.resumeScheduled = !1, t.awaitDrain = 0, e.emit("resume"), pt(e), t.flowing && !t.reading && e.read(0);
+}
+function pt(e) {
+  var t = e._readableState;
+  for (nt("flow", t.flowing); t.flowing && null !== e.read();) {
+    ;
+  }
+}
+function _t(e, t) {
+  return 0 === t.length ? null : (t.objectMode ? r = t.buffer.shift() : !e || e >= t.length ? (r = t.decoder ? t.buffer.join("") : 1 === t.buffer.length ? t.buffer.head.data : t.buffer.concat(t.length), t.buffer.clear()) : r = function (e, t, r) {
+    var n;
+    e < t.head.data.length ? (n = t.head.data.slice(0, e), t.head.data = t.head.data.slice(e)) : n = e === t.head.data.length ? t.shift() : r ? function (e, t) {
+      var r = t.head,
+        n = 1,
+        i = r.data;
+      e -= i.length;
+      for (; r = r.next;) {
+        var o = r.data,
+          a = e > o.length ? o.length : e;
+        if (a === o.length ? i += o : i += o.slice(0, e), 0 === (e -= a)) {
+          a === o.length ? (++n, r.next ? t.head = r.next : t.head = t.tail = null) : (t.head = r, r.data = o.slice(a));
+          break;
+        }
+        ++n;
+      }
+      return t.length -= n, i;
+    }(e, t) : function (e, t) {
+      var r = p.allocUnsafe(e),
+        n = t.head,
+        i = 1;
+      n.data.copy(r), e -= n.data.length;
+      for (; n = n.next;) {
+        var o = n.data,
+          a = e > o.length ? o.length : e;
+        if (o.copy(r, r.length - e, 0, a), 0 === (e -= a)) {
+          a === o.length ? (++i, n.next ? t.head = n.next : t.head = t.tail = null) : (t.head = n, n.data = o.slice(a));
+          break;
+        }
+        ++i;
+      }
+      return t.length -= i, r;
+    }(e, t);
+    return n;
+  }(e, t.buffer, t.decoder), r);
+  var r;
+}
+function gt(e) {
+  var t = e._readableState;
+  if (t.length > 0) throw new Error('"endReadable()" called on non-empty stream');
+  t.endEmitted || (t.ended = !0, de(vt, t, e));
+}
+function vt(e, t) {
+  e.endEmitted || 0 !== e.length || (e.endEmitted = !0, t.readable = !1, t.emit("end"));
+}
+function wt(e, t) {
+  for (var r = 0, n = e.length; r < n; r++) {
+    if (e[r] === t) return r;
+  }
+  return -1;
+}
+function bt() {}
+function yt(e, t, r) {
+  this.chunk = e, this.encoding = t, this.callback = r, this.next = null;
+}
+function mt(e, t) {
+  Object.defineProperty(this, "buffer", {
+    get: Te(function () {
+      return this.getBuffer();
+    }, "_writableState.buffer is deprecated. Use _writableState.getBuffer instead.")
+  }), e = e || {}, this.objectMode = !!e.objectMode, t instanceof Ct && (this.objectMode = this.objectMode || !!e.writableObjectMode);
+  var r = e.highWaterMark,
+    n = this.objectMode ? 16 : 16384;
+  this.highWaterMark = r || 0 === r ? r : n, this.highWaterMark = ~~this.highWaterMark, this.needDrain = !1, this.ending = !1, this.ended = !1, this.finished = !1;
+  var i = !1 === e.decodeStrings;
+  this.decodeStrings = !i, this.defaultEncoding = e.defaultEncoding || "utf8", this.length = 0, this.writing = !1, this.corked = 0, this.sync = !0, this.bufferProcessing = !1, this.onwrite = function (e) {
+    !function (e, t) {
+      var r = e._writableState,
+        n = r.sync,
+        i = r.writecb;
+      if (function (e) {
+        e.writing = !1, e.writecb = null, e.length -= e.writelen, e.writelen = 0;
+      }(r), t) !function (e, t, r, n, i) {
+        --t.pendingcb, r ? de(i, n) : i(n);
+        e._writableState.errorEmitted = !0, e.emit("error", n);
+      }(e, r, n, t, i);else {
+        var o = Rt(r);
+        o || r.corked || r.bufferProcessing || !r.bufferedRequest || xt(e, r), n ? de(St, e, r, o, i) : St(e, r, o, i);
+      }
+    }(t, e);
+  }, this.writecb = null, this.writelen = 0, this.bufferedRequest = null, this.lastBufferedRequest = null, this.pendingcb = 0, this.prefinished = !1, this.errorEmitted = !1, this.bufferedRequestCount = 0, this.corkedRequestsFree = new zt(this);
+}
+function kt(e) {
+  if (!(this instanceof kt || this instanceof Ct)) return new kt(e);
+  this._writableState = new mt(e, this), this.writable = !0, e && ("function" == typeof e.write && (this._write = e.write), "function" == typeof e.writev && (this._writev = e.writev)), ve.call(this);
+}
+function Et(e, t, r, n, i, o, a) {
+  t.writelen = n, t.writecb = a, t.writing = !0, t.sync = !0, r ? e._writev(i, t.onwrite) : e._write(i, o, t.onwrite), t.sync = !1;
+}
+function St(e, t, r, n) {
+  r || function (e, t) {
+    0 === t.length && t.needDrain && (t.needDrain = !1, e.emit("drain"));
+  }(e, t), t.pendingcb--, n(), Bt(e, t);
+}
+function xt(e, t) {
+  t.bufferProcessing = !0;
+  var r = t.bufferedRequest;
+  if (e._writev && r && r.next) {
+    var n = t.bufferedRequestCount,
+      i = new Array(n),
+      o = t.corkedRequestsFree;
+    o.entry = r;
+    for (var a = 0; r;) {
+      i[a] = r, r = r.next, a += 1;
+    }
+    Et(e, t, !0, t.length, i, "", o.finish), t.pendingcb++, t.lastBufferedRequest = null, o.next ? (t.corkedRequestsFree = o.next, o.next = null) : t.corkedRequestsFree = new zt(t);
+  } else {
+    for (; r;) {
+      var s = r.chunk,
+        h = r.encoding,
+        l = r.callback;
+      if (Et(e, t, !1, t.objectMode ? 1 : s.length, s, h, l), r = r.next, t.writing) break;
+    }
+    null === r && (t.lastBufferedRequest = null);
+  }
+  t.bufferedRequestCount = 0, t.bufferedRequest = r, t.bufferProcessing = !1;
+}
+function Rt(e) {
+  return e.ending && 0 === e.length && null === e.bufferedRequest && !e.finished && !e.writing;
+}
+function At(e, t) {
+  t.prefinished || (t.prefinished = !0, e.emit("prefinish"));
+}
+function Bt(e, t) {
+  var r = Rt(t);
+  return r && (0 === t.pendingcb ? (At(e, t), t.finished = !0, e.emit("finish")) : At(e, t)), r;
+}
+function zt(e) {
+  var t = this;
+  this.next = null, this.entry = null, this.finish = function (r) {
+    var n = t.entry;
+    for (t.entry = null; n;) {
+      var i = n.callback;
+      e.pendingcb--, i(r), n = n.next;
+    }
+    e.corkedRequestsFree ? e.corkedRequestsFree.next = t : e.corkedRequestsFree = t;
+  };
+}
+ot.prototype.read = function (e) {
+  nt("read", e), e = parseInt(e, 10);
+  var t = this._readableState,
+    r = e;
+  if (0 !== e && (t.emittedReadable = !1), 0 === e && t.needReadable && (t.length >= t.highWaterMark || t.ended)) return nt("read: emitReadable", t.length, t.ended), 0 === t.length && t.ended ? gt(this) : lt(this), null;
+  if (0 === (e = ht(e, t)) && t.ended) return 0 === t.length && gt(this), null;
+  var n,
+    i = t.needReadable;
+  return nt("need readable", i), (0 === t.length || t.length - e < t.highWaterMark) && nt("length less than watermark", i = !0), t.ended || t.reading ? nt("reading or ended", i = !1) : i && (nt("do read"), t.reading = !0, t.sync = !0, 0 === t.length && (t.needReadable = !0), this._read(t.highWaterMark), t.sync = !1, t.reading || (e = ht(r, t))), null === (n = e > 0 ? _t(e, t) : null) ? (t.needReadable = !0, e = 0) : t.length -= e, 0 === t.length && (t.ended || (t.needReadable = !0), r !== e && t.ended && gt(this)), null !== n && this.emit("data", n), n;
+}, ot.prototype._read = function (e) {
+  this.emit("error", new Error("not implemented"));
+}, ot.prototype.pipe = function (e, t) {
+  var r = this,
+    n = this._readableState;
+  switch (n.pipesCount) {
+    case 0:
+      n.pipes = e;
+      break;
+    case 1:
+      n.pipes = [n.pipes, e];
+      break;
+    default:
+      n.pipes.push(e);
+  }
+  n.pipesCount += 1, nt("pipe count=%d opts=%j", n.pipesCount, t);
+  var i = !t || !1 !== t.end ? a : l;
+  function o(e) {
+    nt("onunpipe"), e === r && l();
+  }
+  function a() {
+    nt("onend"), e.end();
+  }
+  n.endEmitted ? de(i) : r.once("end", i), e.on("unpipe", o);
+  var s = function (e) {
+    return function () {
+      var t = e._readableState;
+      nt("pipeOnDrain", t.awaitDrain), t.awaitDrain && t.awaitDrain--, 0 === t.awaitDrain && e.listeners("data").length && (t.flowing = !0, pt(e));
+    };
+  }(r);
+  e.on("drain", s);
+  var h = !1;
+  function l() {
+    nt("cleanup"), e.removeListener("close", d), e.removeListener("finish", p), e.removeListener("drain", s), e.removeListener("error", u), e.removeListener("unpipe", o), r.removeListener("end", a), r.removeListener("end", l), r.removeListener("data", c), h = !0, !n.awaitDrain || e._writableState && !e._writableState.needDrain || s();
+  }
+  var f = !1;
+  function c(t) {
+    nt("ondata"), f = !1, !1 !== e.write(t) || f || ((1 === n.pipesCount && n.pipes === e || n.pipesCount > 1 && -1 !== wt(n.pipes, e)) && !h && (nt("false write response, pause", r._readableState.awaitDrain), r._readableState.awaitDrain++, f = !0), r.pause());
+  }
+  function u(t) {
+    var r;
+    nt("onerror", t), _(), e.removeListener("error", u), 0 === (r = "error", e.listeners(r).length) && e.emit("error", t);
+  }
+  function d() {
+    e.removeListener("finish", p), _();
+  }
+  function p() {
+    nt("onfinish"), e.removeListener("close", d), _();
+  }
+  function _() {
+    nt("unpipe"), r.unpipe(e);
+  }
+  return r.on("data", c), function (e, t, r) {
+    if ("function" == typeof e.prependListener) return e.prependListener(t, r);
+    e._events && e._events[t] ? Array.isArray(e._events[t]) ? e._events[t].unshift(r) : e._events[t] = [r, e._events[t]] : e.on(t, r);
+  }(e, "error", u), e.once("close", d), e.once("finish", p), e.emit("pipe", r), n.flowing || (nt("pipe resume"), r.resume()), e;
+}, ot.prototype.unpipe = function (e) {
+  var t = this._readableState;
+  if (0 === t.pipesCount) return this;
+  if (1 === t.pipesCount) return e && e !== t.pipes ? this : (e || (e = t.pipes), t.pipes = null, t.pipesCount = 0, t.flowing = !1, e && e.emit("unpipe", this), this);
+  if (!e) {
+    var r = t.pipes,
+      n = t.pipesCount;
+    t.pipes = null, t.pipesCount = 0, t.flowing = !1;
+    for (var i = 0; i < n; i++) {
+      r[i].emit("unpipe", this);
+    }
+    return this;
+  }
+  var o = wt(t.pipes, e);
+  return -1 === o ? this : (t.pipes.splice(o, 1), t.pipesCount -= 1, 1 === t.pipesCount && (t.pipes = t.pipes[0]), e.emit("unpipe", this), this);
+}, ot.prototype.on = function (e, t) {
+  var r = ve.prototype.on.call(this, e, t);
+  if ("data" === e) !1 !== this._readableState.flowing && this.resume();else if ("readable" === e) {
+    var n = this._readableState;
+    n.endEmitted || n.readableListening || (n.readableListening = n.needReadable = !0, n.emittedReadable = !1, n.reading ? n.length && lt(this) : de(ut, this));
+  }
+  return r;
+}, ot.prototype.addListener = ot.prototype.on, ot.prototype.resume = function () {
+  var e = this._readableState;
+  return e.flowing || (nt("resume"), e.flowing = !0, function (e, t) {
+    t.resumeScheduled || (t.resumeScheduled = !0, de(dt, e, t));
+  }(this, e)), this;
+}, ot.prototype.pause = function () {
+  return nt("call pause flowing=%j", this._readableState.flowing), !1 !== this._readableState.flowing && (nt("pause"), this._readableState.flowing = !1, this.emit("pause")), this;
+}, ot.prototype.wrap = function (e) {
+  var t = this._readableState,
+    r = !1,
+    n = this;
+  for (var i in e.on("end", function () {
+    if (nt("wrapped end"), t.decoder && !t.ended) {
+      var e = t.decoder.end();
+      e && e.length && n.push(e);
+    }
+    n.push(null);
+  }), e.on("data", function (i) {
+    (nt("wrapped data"), t.decoder && (i = t.decoder.write(i)), t.objectMode && null == i) || (t.objectMode || i && i.length) && (n.push(i) || (r = !0, e.pause()));
+  }), e) {
+    void 0 === this[i] && "function" == typeof e[i] && (this[i] = function (t) {
+      return function () {
+        return e[t].apply(e, arguments);
+      };
+    }(i));
+  }
+  return function (e, t) {
+    for (var r = 0, n = e.length; r < n; r++) {
+      t(e[r], r);
+    }
+  }(["error", "close", "destroy", "pause", "resume"], function (t) {
+    e.on(t, n.emit.bind(n, t));
+  }), n._read = function (t) {
+    nt("wrapped _read", t), r && (r = !1, e.resume());
+  }, n;
+}, ot._fromList = _t, kt.WritableState = mt, Be(kt, ve), mt.prototype.getBuffer = function () {
+  for (var e = this.bufferedRequest, t = []; e;) {
+    t.push(e), e = e.next;
+  }
+  return t;
+}, kt.prototype.pipe = function () {
+  this.emit("error", new Error("Cannot pipe, not readable"));
+}, kt.prototype.write = function (e, t, r) {
+  var n = this._writableState,
+    i = !1;
+  return "function" == typeof t && (r = t, t = null), p.isBuffer(e) ? t = "buffer" : t || (t = n.defaultEncoding), "function" != typeof r && (r = bt), n.ended ? function (e, t) {
+    var r = new Error("write after end");
+    e.emit("error", r), de(t, r);
+  }(this, r) : function (e, t, r, n) {
+    var i = !0,
+      o = !1;
+    return null === r ? o = new TypeError("May not write null values to stream") : p.isBuffer(r) || "string" == typeof r || void 0 === r || t.objectMode || (o = new TypeError("Invalid non-string/buffer chunk")), o && (e.emit("error", o), de(n, o), i = !1), i;
+  }(this, n, e, r) && (n.pendingcb++, i = function (e, t, r, n, i) {
+    r = function (e, t, r) {
+      return e.objectMode || !1 === e.decodeStrings || "string" != typeof t || (t = p.from(t, r)), t;
+    }(t, r, n), p.isBuffer(r) && (n = "buffer");
+    var o = t.objectMode ? 1 : r.length;
+    t.length += o;
+    var a = t.length < t.highWaterMark;
+    a || (t.needDrain = !0);
+    if (t.writing || t.corked) {
+      var s = t.lastBufferedRequest;
+      t.lastBufferedRequest = new yt(r, n, i), s ? s.next = t.lastBufferedRequest : t.bufferedRequest = t.lastBufferedRequest, t.bufferedRequestCount += 1;
+    } else Et(e, t, !1, o, r, n, i);
+    return a;
+  }(this, n, e, t, r)), i;
+}, kt.prototype.cork = function () {
+  this._writableState.corked++;
+}, kt.prototype.uncork = function () {
+  var e = this._writableState;
+  e.corked && (e.corked--, e.writing || e.corked || e.finished || e.bufferProcessing || !e.bufferedRequest || xt(this, e));
+}, kt.prototype.setDefaultEncoding = function (e) {
+  if ("string" == typeof e && (e = e.toLowerCase()), !(["hex", "utf8", "utf-8", "ascii", "binary", "base64", "ucs2", "ucs-2", "utf16le", "utf-16le", "raw"].indexOf((e + "").toLowerCase()) > -1)) throw new TypeError("Unknown encoding: " + e);
+  return this._writableState.defaultEncoding = e, this;
+}, kt.prototype._write = function (e, t, r) {
+  r(new Error("not implemented"));
+}, kt.prototype._writev = null, kt.prototype.end = function (e, t, r) {
+  var n = this._writableState;
+  "function" == typeof e ? (r = e, e = null, t = null) : "function" == typeof t && (r = t, t = null), null != e && this.write(e, t), n.corked && (n.corked = 1, this.uncork()), n.ending || n.finished || function (e, t, r) {
+    t.ending = !0, Bt(e, t), r && (t.finished ? de(r) : e.once("finish", r));
+    t.ended = !0, e.writable = !1;
+  }(this, n, r);
+}, Be(Ct, ot);
+for (var Lt = Object.keys(kt.prototype), Tt = 0; Tt < Lt.length; Tt++) {
+  var Mt = Lt[Tt];
+  Ct.prototype[Mt] || (Ct.prototype[Mt] = kt.prototype[Mt]);
+}
+function Ct(e) {
+  if (!(this instanceof Ct)) return new Ct(e);
+  ot.call(this, e), kt.call(this, e), e && !1 === e.readable && (this.readable = !1), e && !1 === e.writable && (this.writable = !1), this.allowHalfOpen = !0, e && !1 === e.allowHalfOpen && (this.allowHalfOpen = !1), this.once("end", Dt);
+}
+function Dt() {
+  this.allowHalfOpen || this._writableState.ended || de(It, this);
+}
+function It(e) {
+  e.end();
+}
+function Pt(e) {
+  this.afterTransform = function (t, r) {
+    return function (e, t, r) {
+      var n = e._transformState;
+      n.transforming = !1;
+      var i = n.writecb;
+      if (!i) return e.emit("error", new Error("no writecb in Transform class"));
+      n.writechunk = null, n.writecb = null, null != r && e.push(r);
+      i(t);
+      var o = e._readableState;
+      o.reading = !1, (o.needReadable || o.length < o.highWaterMark) && e._read(o.highWaterMark);
+    }(e, t, r);
+  }, this.needTransform = !1, this.transforming = !1, this.writecb = null, this.writechunk = null, this.writeencoding = null;
+}
+function Ot(e) {
+  if (!(this instanceof Ot)) return new Ot(e);
+  Ct.call(this, e), this._transformState = new Pt(this);
+  var t = this;
+  this._readableState.needReadable = !0, this._readableState.sync = !1, e && ("function" == typeof e.transform && (this._transform = e.transform), "function" == typeof e.flush && (this._flush = e.flush)), this.once("prefinish", function () {
+    "function" == typeof this._flush ? this._flush(function (e) {
+      Ut(t, e);
+    }) : Ut(t);
+  });
+}
+function Ut(e, t) {
+  if (t) return e.emit("error", t);
+  var r = e._writableState,
+    n = e._transformState;
+  if (r.length) throw new Error("Calling transform done when ws.length != 0");
+  if (n.transforming) throw new Error("Calling transform done when still transforming");
+  return e.push(null);
+}
+function Ht(e) {
+  if (!(this instanceof Ht)) return new Ht(e);
+  Ot.call(this, e);
+}
+function Ft() {
+  ve.call(this);
+}
+Be(Ot, Ct), Ot.prototype.push = function (e, t) {
+  return this._transformState.needTransform = !1, Ct.prototype.push.call(this, e, t);
+}, Ot.prototype._transform = function (e, t, r) {
+  throw new Error("Not implemented");
+}, Ot.prototype._write = function (e, t, r) {
+  var n = this._transformState;
+  if (n.writecb = r, n.writechunk = e, n.writeencoding = t, !n.transforming) {
+    var i = this._readableState;
+    (n.needTransform || i.needReadable || i.length < i.highWaterMark) && this._read(i.highWaterMark);
+  }
+}, Ot.prototype._read = function (e) {
+  var t = this._transformState;
+  null !== t.writechunk && t.writecb && !t.transforming ? (t.transforming = !0, this._transform(t.writechunk, t.writeencoding, t.afterTransform)) : t.needTransform = !0;
+}, Be(Ht, Ot), Ht.prototype._transform = function (e, t, r) {
+  r(null, e);
+}, Be(Ft, ve), Ft.Readable = ot, Ft.Writable = kt, Ft.Duplex = Ct, Ft.Transform = Ot, Ft.PassThrough = Ht, Ft.Stream = Ft, Ft.prototype.pipe = function (e, t) {
+  var r = this;
+  function n(t) {
+    e.writable && !1 === e.write(t) && r.pause && r.pause();
+  }
+  function i() {
+    r.readable && r.resume && r.resume();
+  }
+  r.on("data", n), e.on("drain", i), e._isStdio || t && !1 === t.end || (r.on("end", a), r.on("close", s));
+  var o = !1;
+  function a() {
+    o || (o = !0, e.end());
+  }
+  function s() {
+    o || (o = !0, "function" == typeof e.destroy && e.destroy());
+  }
+  function h(e) {
+    if (l(), 0 === ve.listenerCount(this, "error")) throw e;
+  }
+  function l() {
+    r.removeListener("data", n), e.removeListener("drain", i), r.removeListener("end", a), r.removeListener("close", s), r.removeListener("error", h), e.removeListener("error", h), r.removeListener("end", l), r.removeListener("close", l), e.removeListener("close", l);
+  }
+  return r.on("error", h), e.on("error", h), r.on("end", l), r.on("close", l), e.on("close", l), e.emit("pipe", r), e;
+};
+var Nt = {
+  2: "need dictionary",
+  1: "stream end",
+  0: "",
+  "-1": "file error",
+  "-2": "stream error",
+  "-3": "data error",
+  "-4": "insufficient memory",
+  "-5": "buffer error",
+  "-6": "incompatible version"
+};
+function Zt() {
+  this.input = null, this.next_in = 0, this.avail_in = 0, this.total_in = 0, this.output = null, this.next_out = 0, this.avail_out = 0, this.total_out = 0, this.msg = "", this.state = null, this.data_type = 2, this.adler = 0;
+}
+function jt(e, t, r, n, i) {
+  if (t.subarray && e.subarray) e.set(t.subarray(r, r + n), i);else for (var o = 0; o < n; o++) {
+    e[i + o] = t[r + o];
+  }
+}
+var Wt = Uint8Array,
+  Yt = Uint16Array,
+  Kt = Int32Array,
+  Xt = 4,
+  qt = 0,
+  Vt = 1,
+  Gt = 2;
+function $t(e) {
+  for (var t = e.length; --t >= 0;) {
+    e[t] = 0;
+  }
+}
+var Jt = 0,
+  Qt = 1,
+  er = 2,
+  tr = 29,
+  rr = 256,
+  nr = rr + 1 + tr,
+  ir = 30,
+  or = 19,
+  ar = 2 * nr + 1,
+  sr = 15,
+  hr = 16,
+  lr = 7,
+  fr = 256,
+  cr = 16,
+  ur = 17,
+  dr = 18,
+  pr = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0],
+  _r = [0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13],
+  gr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 7],
+  vr = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15],
+  wr = new Array(2 * (nr + 2));
+$t(wr);
+var br = new Array(2 * ir);
+$t(br);
+var yr = new Array(512);
+$t(yr);
+var mr = new Array(256);
+$t(mr);
+var kr = new Array(tr);
+$t(kr);
+var Er,
+  Sr,
+  xr,
+  Rr = new Array(ir);
+function Ar(e, t, r, n, i) {
+  this.static_tree = e, this.extra_bits = t, this.extra_base = r, this.elems = n, this.max_length = i, this.has_stree = e && e.length;
+}
+function Br(e, t) {
+  this.dyn_tree = e, this.max_code = 0, this.stat_desc = t;
+}
+function zr(e) {
+  return e < 256 ? yr[e] : yr[256 + (e >>> 7)];
+}
+function Lr(e, t) {
+  e.pending_buf[e.pending++] = 255 & t, e.pending_buf[e.pending++] = t >>> 8 & 255;
+}
+function Tr(e, t, r) {
+  e.bi_valid > hr - r ? (e.bi_buf |= t << e.bi_valid & 65535, Lr(e, e.bi_buf), e.bi_buf = t >> hr - e.bi_valid, e.bi_valid += r - hr) : (e.bi_buf |= t << e.bi_valid & 65535, e.bi_valid += r);
+}
+function Mr(e, t, r) {
+  Tr(e, r[2 * t], r[2 * t + 1]);
+}
+function Cr(e, t) {
+  var r = 0;
+  do {
+    r |= 1 & e, e >>>= 1, r <<= 1;
+  } while (--t > 0);
+  return r >>> 1;
+}
+function Dr(e, t, r) {
+  var n,
+    i,
+    o = new Array(sr + 1),
+    a = 0;
+  for (n = 1; n <= sr; n++) {
+    o[n] = a = a + r[n - 1] << 1;
+  }
+  for (i = 0; i <= t; i++) {
+    var s = e[2 * i + 1];
+    0 !== s && (e[2 * i] = Cr(o[s]++, s));
+  }
+}
+function Ir(e) {
+  var t;
+  for (t = 0; t < nr; t++) {
+    e.dyn_ltree[2 * t] = 0;
+  }
+  for (t = 0; t < ir; t++) {
+    e.dyn_dtree[2 * t] = 0;
+  }
+  for (t = 0; t < or; t++) {
+    e.bl_tree[2 * t] = 0;
+  }
+  e.dyn_ltree[2 * fr] = 1, e.opt_len = e.static_len = 0, e.last_lit = e.matches = 0;
+}
+function Pr(e) {
+  e.bi_valid > 8 ? Lr(e, e.bi_buf) : e.bi_valid > 0 && (e.pending_buf[e.pending++] = e.bi_buf), e.bi_buf = 0, e.bi_valid = 0;
+}
+function Or(e, t, r, n) {
+  var i = 2 * t,
+    o = 2 * r;
+  return e[i] < e[o] || e[i] === e[o] && n[t] <= n[r];
+}
+function Ur(e, t, r) {
+  for (var n = e.heap[r], i = r << 1; i <= e.heap_len && (i < e.heap_len && Or(t, e.heap[i + 1], e.heap[i], e.depth) && i++, !Or(t, n, e.heap[i], e.depth));) {
+    e.heap[r] = e.heap[i], r = i, i <<= 1;
+  }
+  e.heap[r] = n;
+}
+function Hr(e, t, r) {
+  var n,
+    i,
+    o,
+    a,
+    s = 0;
+  if (0 !== e.last_lit) do {
+    n = e.pending_buf[e.d_buf + 2 * s] << 8 | e.pending_buf[e.d_buf + 2 * s + 1], i = e.pending_buf[e.l_buf + s], s++, 0 === n ? Mr(e, i, t) : (Mr(e, (o = mr[i]) + rr + 1, t), 0 !== (a = pr[o]) && Tr(e, i -= kr[o], a), Mr(e, o = zr(--n), r), 0 !== (a = _r[o]) && Tr(e, n -= Rr[o], a));
+  } while (s < e.last_lit);
+  Mr(e, fr, t);
+}
+function Fr(e, t) {
+  var r,
+    n,
+    i,
+    o = t.dyn_tree,
+    a = t.stat_desc.static_tree,
+    s = t.stat_desc.has_stree,
+    h = t.stat_desc.elems,
+    l = -1;
+  for (e.heap_len = 0, e.heap_max = ar, r = 0; r < h; r++) {
+    0 !== o[2 * r] ? (e.heap[++e.heap_len] = l = r, e.depth[r] = 0) : o[2 * r + 1] = 0;
+  }
+  for (; e.heap_len < 2;) {
+    o[2 * (i = e.heap[++e.heap_len] = l < 2 ? ++l : 0)] = 1, e.depth[i] = 0, e.opt_len--, s && (e.static_len -= a[2 * i + 1]);
+  }
+  for (t.max_code = l, r = e.heap_len >> 1; r >= 1; r--) {
+    Ur(e, o, r);
+  }
+  i = h;
+  do {
+    r = e.heap[1], e.heap[1] = e.heap[e.heap_len--], Ur(e, o, 1), n = e.heap[1], e.heap[--e.heap_max] = r, e.heap[--e.heap_max] = n, o[2 * i] = o[2 * r] + o[2 * n], e.depth[i] = (e.depth[r] >= e.depth[n] ? e.depth[r] : e.depth[n]) + 1, o[2 * r + 1] = o[2 * n + 1] = i, e.heap[1] = i++, Ur(e, o, 1);
+  } while (e.heap_len >= 2);
+  e.heap[--e.heap_max] = e.heap[1], function (e, t) {
+    var r,
+      n,
+      i,
+      o,
+      a,
+      s,
+      h = t.dyn_tree,
+      l = t.max_code,
+      f = t.stat_desc.static_tree,
+      c = t.stat_desc.has_stree,
+      u = t.stat_desc.extra_bits,
+      d = t.stat_desc.extra_base,
+      p = t.stat_desc.max_length,
+      _ = 0;
+    for (o = 0; o <= sr; o++) {
+      e.bl_count[o] = 0;
+    }
+    for (h[2 * e.heap[e.heap_max] + 1] = 0, r = e.heap_max + 1; r < ar; r++) {
+      (o = h[2 * h[2 * (n = e.heap[r]) + 1] + 1] + 1) > p && (o = p, _++), h[2 * n + 1] = o, n > l || (e.bl_count[o]++, a = 0, n >= d && (a = u[n - d]), s = h[2 * n], e.opt_len += s * (o + a), c && (e.static_len += s * (f[2 * n + 1] + a)));
+    }
+    if (0 !== _) {
+      do {
+        for (o = p - 1; 0 === e.bl_count[o];) {
+          o--;
+        }
+        e.bl_count[o]--, e.bl_count[o + 1] += 2, e.bl_count[p]--, _ -= 2;
+      } while (_ > 0);
+      for (o = p; 0 !== o; o--) {
+        for (n = e.bl_count[o]; 0 !== n;) {
+          (i = e.heap[--r]) > l || (h[2 * i + 1] !== o && (e.opt_len += (o - h[2 * i + 1]) * h[2 * i], h[2 * i + 1] = o), n--);
+        }
+      }
+    }
+  }(e, t), Dr(o, l, e.bl_count);
+}
+function Nr(e, t, r) {
+  var n,
+    i,
+    o = -1,
+    a = t[1],
+    s = 0,
+    h = 7,
+    l = 4;
+  for (0 === a && (h = 138, l = 3), t[2 * (r + 1) + 1] = 65535, n = 0; n <= r; n++) {
+    i = a, a = t[2 * (n + 1) + 1], ++s < h && i === a || (s < l ? e.bl_tree[2 * i] += s : 0 !== i ? (i !== o && e.bl_tree[2 * i]++, e.bl_tree[2 * cr]++) : s <= 10 ? e.bl_tree[2 * ur]++ : e.bl_tree[2 * dr]++, s = 0, o = i, 0 === a ? (h = 138, l = 3) : i === a ? (h = 6, l = 3) : (h = 7, l = 4));
+  }
+}
+function Zr(e, t, r) {
+  var n,
+    i,
+    o = -1,
+    a = t[1],
+    s = 0,
+    h = 7,
+    l = 4;
+  for (0 === a && (h = 138, l = 3), n = 0; n <= r; n++) {
+    if (i = a, a = t[2 * (n + 1) + 1], !(++s < h && i === a)) {
+      if (s < l) do {
+        Mr(e, i, e.bl_tree);
+      } while (0 != --s);else 0 !== i ? (i !== o && (Mr(e, i, e.bl_tree), s--), Mr(e, cr, e.bl_tree), Tr(e, s - 3, 2)) : s <= 10 ? (Mr(e, ur, e.bl_tree), Tr(e, s - 3, 3)) : (Mr(e, dr, e.bl_tree), Tr(e, s - 11, 7));
+      s = 0, o = i, 0 === a ? (h = 138, l = 3) : i === a ? (h = 6, l = 3) : (h = 7, l = 4);
+    }
+  }
+}
+$t(Rr);
+var jr = !1;
+function Wr(e) {
+  jr || (!function () {
+    var e,
+      t,
+      r,
+      n,
+      i,
+      o = new Array(sr + 1);
+    for (r = 0, n = 0; n < tr - 1; n++) {
+      for (kr[n] = r, e = 0; e < 1 << pr[n]; e++) {
+        mr[r++] = n;
+      }
+    }
+    for (mr[r - 1] = n, i = 0, n = 0; n < 16; n++) {
+      for (Rr[n] = i, e = 0; e < 1 << _r[n]; e++) {
+        yr[i++] = n;
+      }
+    }
+    for (i >>= 7; n < ir; n++) {
+      for (Rr[n] = i << 7, e = 0; e < 1 << _r[n] - 7; e++) {
+        yr[256 + i++] = n;
+      }
+    }
+    for (t = 0; t <= sr; t++) {
+      o[t] = 0;
+    }
+    for (e = 0; e <= 143;) {
+      wr[2 * e + 1] = 8, e++, o[8]++;
+    }
+    for (; e <= 255;) {
+      wr[2 * e + 1] = 9, e++, o[9]++;
+    }
+    for (; e <= 279;) {
+      wr[2 * e + 1] = 7, e++, o[7]++;
+    }
+    for (; e <= 287;) {
+      wr[2 * e + 1] = 8, e++, o[8]++;
+    }
+    for (Dr(wr, nr + 1, o), e = 0; e < ir; e++) {
+      br[2 * e + 1] = 5, br[2 * e] = Cr(e, 5);
+    }
+    Er = new Ar(wr, pr, rr + 1, nr, sr), Sr = new Ar(br, _r, 0, ir, sr), xr = new Ar(new Array(0), gr, 0, or, lr);
+  }(), jr = !0), e.l_desc = new Br(e.dyn_ltree, Er), e.d_desc = new Br(e.dyn_dtree, Sr), e.bl_desc = new Br(e.bl_tree, xr), e.bi_buf = 0, e.bi_valid = 0, Ir(e);
+}
+function Yr(e, t, r, n) {
+  Tr(e, (Jt << 1) + (n ? 1 : 0), 3), function (e, t, r, n) {
+    Pr(e), n && (Lr(e, r), Lr(e, ~r)), jt(e.pending_buf, e.window, t, r, e.pending), e.pending += r;
+  }(e, t, r, !0);
+}
+function Kr(e) {
+  Tr(e, Qt << 1, 3), Mr(e, fr, wr), function (e) {
+    16 === e.bi_valid ? (Lr(e, e.bi_buf), e.bi_buf = 0, e.bi_valid = 0) : e.bi_valid >= 8 && (e.pending_buf[e.pending++] = 255 & e.bi_buf, e.bi_buf >>= 8, e.bi_valid -= 8);
+  }(e);
+}
+function Xr(e, t, r, n) {
+  var i,
+    o,
+    a = 0;
+  e.level > 0 ? (e.strm.data_type === Gt && (e.strm.data_type = function (e) {
+    var t,
+      r = 4093624447;
+    for (t = 0; t <= 31; t++, r >>>= 1) {
+      if (1 & r && 0 !== e.dyn_ltree[2 * t]) return qt;
+    }
+    if (0 !== e.dyn_ltree[18] || 0 !== e.dyn_ltree[20] || 0 !== e.dyn_ltree[26]) return Vt;
+    for (t = 32; t < rr; t++) {
+      if (0 !== e.dyn_ltree[2 * t]) return Vt;
+    }
+    return qt;
+  }(e)), Fr(e, e.l_desc), Fr(e, e.d_desc), a = function (e) {
+    var t;
+    for (Nr(e, e.dyn_ltree, e.l_desc.max_code), Nr(e, e.dyn_dtree, e.d_desc.max_code), Fr(e, e.bl_desc), t = or - 1; t >= 3 && 0 === e.bl_tree[2 * vr[t] + 1]; t--) {
+      ;
+    }
+    return e.opt_len += 3 * (t + 1) + 5 + 5 + 4, t;
+  }(e), i = e.opt_len + 3 + 7 >>> 3, (o = e.static_len + 3 + 7 >>> 3) <= i && (i = o)) : i = o = r + 5, r + 4 <= i && -1 !== t ? Yr(e, t, r, n) : e.strategy === Xt || o === i ? (Tr(e, (Qt << 1) + (n ? 1 : 0), 3), Hr(e, wr, br)) : (Tr(e, (er << 1) + (n ? 1 : 0), 3), function (e, t, r, n) {
+    var i;
+    for (Tr(e, t - 257, 5), Tr(e, r - 1, 5), Tr(e, n - 4, 4), i = 0; i < n; i++) {
+      Tr(e, e.bl_tree[2 * vr[i] + 1], 3);
+    }
+    Zr(e, e.dyn_ltree, t - 1), Zr(e, e.dyn_dtree, r - 1);
+  }(e, e.l_desc.max_code + 1, e.d_desc.max_code + 1, a + 1), Hr(e, e.dyn_ltree, e.dyn_dtree)), Ir(e), n && Pr(e);
+}
+function qr(e, t, r) {
+  return e.pending_buf[e.d_buf + 2 * e.last_lit] = t >>> 8 & 255, e.pending_buf[e.d_buf + 2 * e.last_lit + 1] = 255 & t, e.pending_buf[e.l_buf + e.last_lit] = 255 & r, e.last_lit++, 0 === t ? e.dyn_ltree[2 * r]++ : (e.matches++, t--, e.dyn_ltree[2 * (mr[r] + rr + 1)]++, e.dyn_dtree[2 * zr(t)]++), e.last_lit === e.lit_bufsize - 1;
+}
+function Vr(e, t, r, n) {
+  for (var i = 65535 & e | 0, o = e >>> 16 & 65535 | 0, a = 0; 0 !== r;) {
+    r -= a = r > 2e3 ? 2e3 : r;
+    do {
+      o = o + (i = i + t[n++] | 0) | 0;
+    } while (--a);
+    i %= 65521, o %= 65521;
+  }
+  return i | o << 16 | 0;
+}
+var Gr = function () {
+  for (var e, t = [], r = 0; r < 256; r++) {
+    e = r;
+    for (var n = 0; n < 8; n++) {
+      e = 1 & e ? 3988292384 ^ e >>> 1 : e >>> 1;
+    }
+    t[r] = e;
+  }
+  return t;
+}();
+function $r(e, t, r, n) {
+  var i = Gr,
+    o = n + r;
+  e ^= -1;
+  for (var a = n; a < o; a++) {
+    e = e >>> 8 ^ i[255 & (e ^ t[a])];
+  }
+  return -1 ^ e;
+}
+var Jr,
+  Qr = 0,
+  en = 1,
+  tn = 3,
+  rn = 4,
+  nn = 5,
+  on = 0,
+  an = 1,
+  sn = -2,
+  hn = -3,
+  ln = -5,
+  fn = -1,
+  cn = 1,
+  un = 2,
+  dn = 3,
+  pn = 4,
+  _n = 2,
+  gn = 8,
+  vn = 9,
+  wn = 286,
+  bn = 30,
+  yn = 19,
+  mn = 2 * wn + 1,
+  kn = 15,
+  En = 3,
+  Sn = 258,
+  xn = Sn + En + 1,
+  Rn = 32,
+  An = 42,
+  Bn = 69,
+  zn = 73,
+  Ln = 91,
+  Tn = 103,
+  Mn = 113,
+  Cn = 666,
+  Dn = 1,
+  In = 2,
+  Pn = 3,
+  On = 4,
+  Un = 3;
+function Hn(e, t) {
+  return e.msg = Nt[t], t;
+}
+function Fn(e) {
+  return (e << 1) - (e > 4 ? 9 : 0);
+}
+function Nn(e) {
+  for (var t = e.length; --t >= 0;) {
+    e[t] = 0;
+  }
+}
+function Zn(e) {
+  var t = e.state,
+    r = t.pending;
+  r > e.avail_out && (r = e.avail_out), 0 !== r && (jt(e.output, t.pending_buf, t.pending_out, r, e.next_out), e.next_out += r, t.pending_out += r, e.total_out += r, e.avail_out -= r, t.pending -= r, 0 === t.pending && (t.pending_out = 0));
+}
+function jn(e, t) {
+  Xr(e, e.block_start >= 0 ? e.block_start : -1, e.strstart - e.block_start, t), e.block_start = e.strstart, Zn(e.strm);
+}
+function Wn(e, t) {
+  e.pending_buf[e.pending++] = t;
+}
+function Yn(e, t) {
+  e.pending_buf[e.pending++] = t >>> 8 & 255, e.pending_buf[e.pending++] = 255 & t;
+}
+function Kn(e, t) {
+  var r,
+    n,
+    i = e.max_chain_length,
+    o = e.strstart,
+    a = e.prev_length,
+    s = e.nice_match,
+    h = e.strstart > e.w_size - xn ? e.strstart - (e.w_size - xn) : 0,
+    l = e.window,
+    f = e.w_mask,
+    c = e.prev,
+    u = e.strstart + Sn,
+    d = l[o + a - 1],
+    p = l[o + a];
+  e.prev_length >= e.good_match && (i >>= 2), s > e.lookahead && (s = e.lookahead);
+  do {
+    if (l[(r = t) + a] === p && l[r + a - 1] === d && l[r] === l[o] && l[++r] === l[o + 1]) {
+      o += 2, r++;
+      do {} while (l[++o] === l[++r] && l[++o] === l[++r] && l[++o] === l[++r] && l[++o] === l[++r] && l[++o] === l[++r] && l[++o] === l[++r] && l[++o] === l[++r] && l[++o] === l[++r] && o < u);
+      if (n = Sn - (u - o), o = u - Sn, n > a) {
+        if (e.match_start = t, a = n, n >= s) break;
+        d = l[o + a - 1], p = l[o + a];
+      }
+    }
+  } while ((t = c[t & f]) > h && 0 != --i);
+  return a <= e.lookahead ? a : e.lookahead;
+}
+function Xn(e) {
+  var t,
+    r,
+    n,
+    i,
+    o,
+    a,
+    s,
+    h,
+    l,
+    f,
+    c = e.w_size;
+  do {
+    if (i = e.window_size - e.lookahead - e.strstart, e.strstart >= c + (c - xn)) {
+      jt(e.window, e.window, c, c, 0), e.match_start -= c, e.strstart -= c, e.block_start -= c, t = r = e.hash_size;
+      do {
+        n = e.head[--t], e.head[t] = n >= c ? n - c : 0;
+      } while (--r);
+      t = r = c;
+      do {
+        n = e.prev[--t], e.prev[t] = n >= c ? n - c : 0;
+      } while (--r);
+      i += c;
+    }
+    if (0 === e.strm.avail_in) break;
+    if (a = e.strm, s = e.window, h = e.strstart + e.lookahead, l = i, f = void 0, (f = a.avail_in) > l && (f = l), r = 0 === f ? 0 : (a.avail_in -= f, jt(s, a.input, a.next_in, f, h), 1 === a.state.wrap ? a.adler = Vr(a.adler, s, f, h) : 2 === a.state.wrap && (a.adler = $r(a.adler, s, f, h)), a.next_in += f, a.total_in += f, f), e.lookahead += r, e.lookahead + e.insert >= En) for (o = e.strstart - e.insert, e.ins_h = e.window[o], e.ins_h = (e.ins_h << e.hash_shift ^ e.window[o + 1]) & e.hash_mask; e.insert && (e.ins_h = (e.ins_h << e.hash_shift ^ e.window[o + En - 1]) & e.hash_mask, e.prev[o & e.w_mask] = e.head[e.ins_h], e.head[e.ins_h] = o, o++, e.insert--, !(e.lookahead + e.insert < En));) {
+      ;
+    }
+  } while (e.lookahead < xn && 0 !== e.strm.avail_in);
+}
+function qn(e, t) {
+  for (var r, n;;) {
+    if (e.lookahead < xn) {
+      if (Xn(e), e.lookahead < xn && t === Qr) return Dn;
+      if (0 === e.lookahead) break;
+    }
+    if (r = 0, e.lookahead >= En && (e.ins_h = (e.ins_h << e.hash_shift ^ e.window[e.strstart + En - 1]) & e.hash_mask, r = e.prev[e.strstart & e.w_mask] = e.head[e.ins_h], e.head[e.ins_h] = e.strstart), 0 !== r && e.strstart - r <= e.w_size - xn && (e.match_length = Kn(e, r)), e.match_length >= En) {
+      if (n = qr(e, e.strstart - e.match_start, e.match_length - En), e.lookahead -= e.match_length, e.match_length <= e.max_lazy_match && e.lookahead >= En) {
+        e.match_length--;
+        do {
+          e.strstart++, e.ins_h = (e.ins_h << e.hash_shift ^ e.window[e.strstart + En - 1]) & e.hash_mask, r = e.prev[e.strstart & e.w_mask] = e.head[e.ins_h], e.head[e.ins_h] = e.strstart;
+        } while (0 != --e.match_length);
+        e.strstart++;
+      } else e.strstart += e.match_length, e.match_length = 0, e.ins_h = e.window[e.strstart], e.ins_h = (e.ins_h << e.hash_shift ^ e.window[e.strstart + 1]) & e.hash_mask;
+    } else n = qr(e, 0, e.window[e.strstart]), e.lookahead--, e.strstart++;
+    if (n && (jn(e, !1), 0 === e.strm.avail_out)) return Dn;
+  }
+  return e.insert = e.strstart < En - 1 ? e.strstart : En - 1, t === rn ? (jn(e, !0), 0 === e.strm.avail_out ? Pn : On) : e.last_lit && (jn(e, !1), 0 === e.strm.avail_out) ? Dn : In;
+}
+function Vn(e, t) {
+  for (var r, n, i;;) {
+    if (e.lookahead < xn) {
+      if (Xn(e), e.lookahead < xn && t === Qr) return Dn;
+      if (0 === e.lookahead) break;
+    }
+    if (r = 0, e.lookahead >= En && (e.ins_h = (e.ins_h << e.hash_shift ^ e.window[e.strstart + En - 1]) & e.hash_mask, r = e.prev[e.strstart & e.w_mask] = e.head[e.ins_h], e.head[e.ins_h] = e.strstart), e.prev_length = e.match_length, e.prev_match = e.match_start, e.match_length = En - 1, 0 !== r && e.prev_length < e.max_lazy_match && e.strstart - r <= e.w_size - xn && (e.match_length = Kn(e, r), e.match_length <= 5 && (e.strategy === cn || e.match_length === En && e.strstart - e.match_start > 4096) && (e.match_length = En - 1)), e.prev_length >= En && e.match_length <= e.prev_length) {
+      i = e.strstart + e.lookahead - En, n = qr(e, e.strstart - 1 - e.prev_match, e.prev_length - En), e.lookahead -= e.prev_length - 1, e.prev_length -= 2;
+      do {
+        ++e.strstart <= i && (e.ins_h = (e.ins_h << e.hash_shift ^ e.window[e.strstart + En - 1]) & e.hash_mask, r = e.prev[e.strstart & e.w_mask] = e.head[e.ins_h], e.head[e.ins_h] = e.strstart);
+      } while (0 != --e.prev_length);
+      if (e.match_available = 0, e.match_length = En - 1, e.strstart++, n && (jn(e, !1), 0 === e.strm.avail_out)) return Dn;
+    } else if (e.match_available) {
+      if ((n = qr(e, 0, e.window[e.strstart - 1])) && jn(e, !1), e.strstart++, e.lookahead--, 0 === e.strm.avail_out) return Dn;
+    } else e.match_available = 1, e.strstart++, e.lookahead--;
+  }
+  return e.match_available && (n = qr(e, 0, e.window[e.strstart - 1]), e.match_available = 0), e.insert = e.strstart < En - 1 ? e.strstart : En - 1, t === rn ? (jn(e, !0), 0 === e.strm.avail_out ? Pn : On) : e.last_lit && (jn(e, !1), 0 === e.strm.avail_out) ? Dn : In;
+}
+function Gn(e, t, r, n, i) {
+  this.good_length = e, this.max_lazy = t, this.nice_length = r, this.max_chain = n, this.func = i;
+}
+function $n() {
+  this.strm = null, this.status = 0, this.pending_buf = null, this.pending_buf_size = 0, this.pending_out = 0, this.pending = 0, this.wrap = 0, this.gzhead = null, this.gzindex = 0, this.method = gn, this.last_flush = -1, this.w_size = 0, this.w_bits = 0, this.w_mask = 0, this.window = null, this.window_size = 0, this.prev = null, this.head = null, this.ins_h = 0, this.hash_size = 0, this.hash_bits = 0, this.hash_mask = 0, this.hash_shift = 0, this.block_start = 0, this.match_length = 0, this.prev_match = 0, this.match_available = 0, this.strstart = 0, this.match_start = 0, this.lookahead = 0, this.prev_length = 0, this.max_chain_length = 0, this.max_lazy_match = 0, this.level = 0, this.strategy = 0, this.good_match = 0, this.nice_match = 0, this.dyn_ltree = new Yt(2 * mn), this.dyn_dtree = new Yt(2 * (2 * bn + 1)), this.bl_tree = new Yt(2 * (2 * yn + 1)), Nn(this.dyn_ltree), Nn(this.dyn_dtree), Nn(this.bl_tree), this.l_desc = null, this.d_desc = null, this.bl_desc = null, this.bl_count = new Yt(kn + 1), this.heap = new Yt(2 * wn + 1), Nn(this.heap), this.heap_len = 0, this.heap_max = 0, this.depth = new Yt(2 * wn + 1), Nn(this.depth), this.l_buf = 0, this.lit_bufsize = 0, this.last_lit = 0, this.d_buf = 0, this.opt_len = 0, this.static_len = 0, this.matches = 0, this.insert = 0, this.bi_buf = 0, this.bi_valid = 0;
+}
+function Jn(e) {
+  var t,
+    r = function (e) {
+      var t;
+      return e && e.state ? (e.total_in = e.total_out = 0, e.data_type = _n, (t = e.state).pending = 0, t.pending_out = 0, t.wrap < 0 && (t.wrap = -t.wrap), t.status = t.wrap ? An : Mn, e.adler = 2 === t.wrap ? 0 : 1, t.last_flush = Qr, Wr(t), on) : Hn(e, sn);
+    }(e);
+  return r === on && ((t = e.state).window_size = 2 * t.w_size, Nn(t.head), t.max_lazy_match = Jr[t.level].max_lazy, t.good_match = Jr[t.level].good_length, t.nice_match = Jr[t.level].nice_length, t.max_chain_length = Jr[t.level].max_chain, t.strstart = 0, t.block_start = 0, t.lookahead = 0, t.insert = 0, t.match_length = t.prev_length = En - 1, t.match_available = 0, t.ins_h = 0), r;
+}
+function Qn(e, t) {
+  var r, n, i, o;
+  if (!e || !e.state || t > nn || t < 0) return e ? Hn(e, sn) : sn;
+  if (n = e.state, !e.output || !e.input && 0 !== e.avail_in || n.status === Cn && t !== rn) return Hn(e, 0 === e.avail_out ? ln : sn);
+  if (n.strm = e, r = n.last_flush, n.last_flush = t, n.status === An) if (2 === n.wrap) e.adler = 0, Wn(n, 31), Wn(n, 139), Wn(n, 8), n.gzhead ? (Wn(n, (n.gzhead.text ? 1 : 0) + (n.gzhead.hcrc ? 2 : 0) + (n.gzhead.extra ? 4 : 0) + (n.gzhead.name ? 8 : 0) + (n.gzhead.comment ? 16 : 0)), Wn(n, 255 & n.gzhead.time), Wn(n, n.gzhead.time >> 8 & 255), Wn(n, n.gzhead.time >> 16 & 255), Wn(n, n.gzhead.time >> 24 & 255), Wn(n, 9 === n.level ? 2 : n.strategy >= un || n.level < 2 ? 4 : 0), Wn(n, 255 & n.gzhead.os), n.gzhead.extra && n.gzhead.extra.length && (Wn(n, 255 & n.gzhead.extra.length), Wn(n, n.gzhead.extra.length >> 8 & 255)), n.gzhead.hcrc && (e.adler = $r(e.adler, n.pending_buf, n.pending, 0)), n.gzindex = 0, n.status = Bn) : (Wn(n, 0), Wn(n, 0), Wn(n, 0), Wn(n, 0), Wn(n, 0), Wn(n, 9 === n.level ? 2 : n.strategy >= un || n.level < 2 ? 4 : 0), Wn(n, Un), n.status = Mn);else {
+    var a = gn + (n.w_bits - 8 << 4) << 8;
+    a |= (n.strategy >= un || n.level < 2 ? 0 : n.level < 6 ? 1 : 6 === n.level ? 2 : 3) << 6, 0 !== n.strstart && (a |= Rn), a += 31 - a % 31, n.status = Mn, Yn(n, a), 0 !== n.strstart && (Yn(n, e.adler >>> 16), Yn(n, 65535 & e.adler)), e.adler = 1;
+  }
+  if (n.status === Bn) if (n.gzhead.extra) {
+    for (i = n.pending; n.gzindex < (65535 & n.gzhead.extra.length) && (n.pending !== n.pending_buf_size || (n.gzhead.hcrc && n.pending > i && (e.adler = $r(e.adler, n.pending_buf, n.pending - i, i)), Zn(e), i = n.pending, n.pending !== n.pending_buf_size));) {
+      Wn(n, 255 & n.gzhead.extra[n.gzindex]), n.gzindex++;
+    }
+    n.gzhead.hcrc && n.pending > i && (e.adler = $r(e.adler, n.pending_buf, n.pending - i, i)), n.gzindex === n.gzhead.extra.length && (n.gzindex = 0, n.status = zn);
+  } else n.status = zn;
+  if (n.status === zn) if (n.gzhead.name) {
+    i = n.pending;
+    do {
+      if (n.pending === n.pending_buf_size && (n.gzhead.hcrc && n.pending > i && (e.adler = $r(e.adler, n.pending_buf, n.pending - i, i)), Zn(e), i = n.pending, n.pending === n.pending_buf_size)) {
+        o = 1;
+        break;
+      }
+      o = n.gzindex < n.gzhead.name.length ? 255 & n.gzhead.name.charCodeAt(n.gzindex++) : 0, Wn(n, o);
+    } while (0 !== o);
+    n.gzhead.hcrc && n.pending > i && (e.adler = $r(e.adler, n.pending_buf, n.pending - i, i)), 0 === o && (n.gzindex = 0, n.status = Ln);
+  } else n.status = Ln;
+  if (n.status === Ln) if (n.gzhead.comment) {
+    i = n.pending;
+    do {
+      if (n.pending === n.pending_buf_size && (n.gzhead.hcrc && n.pending > i && (e.adler = $r(e.adler, n.pending_buf, n.pending - i, i)), Zn(e), i = n.pending, n.pending === n.pending_buf_size)) {
+        o = 1;
+        break;
+      }
+      o = n.gzindex < n.gzhead.comment.length ? 255 & n.gzhead.comment.charCodeAt(n.gzindex++) : 0, Wn(n, o);
+    } while (0 !== o);
+    n.gzhead.hcrc && n.pending > i && (e.adler = $r(e.adler, n.pending_buf, n.pending - i, i)), 0 === o && (n.status = Tn);
+  } else n.status = Tn;
+  if (n.status === Tn && (n.gzhead.hcrc ? (n.pending + 2 > n.pending_buf_size && Zn(e), n.pending + 2 <= n.pending_buf_size && (Wn(n, 255 & e.adler), Wn(n, e.adler >> 8 & 255), e.adler = 0, n.status = Mn)) : n.status = Mn), 0 !== n.pending) {
+    if (Zn(e), 0 === e.avail_out) return n.last_flush = -1, on;
+  } else if (0 === e.avail_in && Fn(t) <= Fn(r) && t !== rn) return Hn(e, ln);
+  if (n.status === Cn && 0 !== e.avail_in) return Hn(e, ln);
+  if (0 !== e.avail_in || 0 !== n.lookahead || t !== Qr && n.status !== Cn) {
+    var s = n.strategy === un ? function (e, t) {
+      for (var r;;) {
+        if (0 === e.lookahead && (Xn(e), 0 === e.lookahead)) {
+          if (t === Qr) return Dn;
+          break;
+        }
+        if (e.match_length = 0, r = qr(e, 0, e.window[e.strstart]), e.lookahead--, e.strstart++, r && (jn(e, !1), 0 === e.strm.avail_out)) return Dn;
+      }
+      return e.insert = 0, t === rn ? (jn(e, !0), 0 === e.strm.avail_out ? Pn : On) : e.last_lit && (jn(e, !1), 0 === e.strm.avail_out) ? Dn : In;
+    }(n, t) : n.strategy === dn ? function (e, t) {
+      for (var r, n, i, o, a = e.window;;) {
+        if (e.lookahead <= Sn) {
+          if (Xn(e), e.lookahead <= Sn && t === Qr) return Dn;
+          if (0 === e.lookahead) break;
+        }
+        if (e.match_length = 0, e.lookahead >= En && e.strstart > 0 && (n = a[i = e.strstart - 1]) === a[++i] && n === a[++i] && n === a[++i]) {
+          o = e.strstart + Sn;
+          do {} while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && i < o);
+          e.match_length = Sn - (o - i), e.match_length > e.lookahead && (e.match_length = e.lookahead);
+        }
+        if (e.match_length >= En ? (r = qr(e, 1, e.match_length - En), e.lookahead -= e.match_length, e.strstart += e.match_length, e.match_length = 0) : (r = qr(e, 0, e.window[e.strstart]), e.lookahead--, e.strstart++), r && (jn(e, !1), 0 === e.strm.avail_out)) return Dn;
+      }
+      return e.insert = 0, t === rn ? (jn(e, !0), 0 === e.strm.avail_out ? Pn : On) : e.last_lit && (jn(e, !1), 0 === e.strm.avail_out) ? Dn : In;
+    }(n, t) : Jr[n.level].func(n, t);
+    if (s !== Pn && s !== On || (n.status = Cn), s === Dn || s === Pn) return 0 === e.avail_out && (n.last_flush = -1), on;
+    if (s === In && (t === en ? Kr(n) : t !== nn && (Yr(n, 0, 0, !1), t === tn && (Nn(n.head), 0 === n.lookahead && (n.strstart = 0, n.block_start = 0, n.insert = 0))), Zn(e), 0 === e.avail_out)) return n.last_flush = -1, on;
+  }
+  return t !== rn ? on : n.wrap <= 0 ? an : (2 === n.wrap ? (Wn(n, 255 & e.adler), Wn(n, e.adler >> 8 & 255), Wn(n, e.adler >> 16 & 255), Wn(n, e.adler >> 24 & 255), Wn(n, 255 & e.total_in), Wn(n, e.total_in >> 8 & 255), Wn(n, e.total_in >> 16 & 255), Wn(n, e.total_in >> 24 & 255)) : (Yn(n, e.adler >>> 16), Yn(n, 65535 & e.adler)), Zn(e), n.wrap > 0 && (n.wrap = -n.wrap), 0 !== n.pending ? on : an);
+}
+Jr = [new Gn(0, 0, 0, 0, function (e, t) {
+  var r = 65535;
+  for (r > e.pending_buf_size - 5 && (r = e.pending_buf_size - 5);;) {
+    if (e.lookahead <= 1) {
+      if (Xn(e), 0 === e.lookahead && t === Qr) return Dn;
+      if (0 === e.lookahead) break;
+    }
+    e.strstart += e.lookahead, e.lookahead = 0;
+    var n = e.block_start + r;
+    if ((0 === e.strstart || e.strstart >= n) && (e.lookahead = e.strstart - n, e.strstart = n, jn(e, !1), 0 === e.strm.avail_out)) return Dn;
+    if (e.strstart - e.block_start >= e.w_size - xn && (jn(e, !1), 0 === e.strm.avail_out)) return Dn;
+  }
+  return e.insert = 0, t === rn ? (jn(e, !0), 0 === e.strm.avail_out ? Pn : On) : (e.strstart > e.block_start && (jn(e, !1), e.strm.avail_out), Dn);
+}), new Gn(4, 4, 8, 4, qn), new Gn(4, 5, 16, 8, qn), new Gn(4, 6, 32, 32, qn), new Gn(4, 4, 16, 16, Vn), new Gn(8, 16, 32, 32, Vn), new Gn(8, 16, 128, 128, Vn), new Gn(8, 32, 128, 256, Vn), new Gn(32, 128, 258, 1024, Vn), new Gn(32, 258, 258, 4096, Vn)];
+var ei = 30,
+  ti = 12;
+function ri(e, t) {
+  var r, n, i, o, a, s, h, l, f, c, u, d, p, _, g, v, w, b, y, m, k, E, S, x, R;
+  r = e.state, n = e.next_in, x = e.input, i = n + (e.avail_in - 5), o = e.next_out, R = e.output, a = o - (t - e.avail_out), s = o + (e.avail_out - 257), h = r.dmax, l = r.wsize, f = r.whave, c = r.wnext, u = r.window, d = r.hold, p = r.bits, _ = r.lencode, g = r.distcode, v = (1 << r.lenbits) - 1, w = (1 << r.distbits) - 1;
+  e: do {
+    p < 15 && (d += x[n++] << p, p += 8, d += x[n++] << p, p += 8), b = _[d & v];
+    t: for (;;) {
+      if (d >>>= y = b >>> 24, p -= y, 0 === (y = b >>> 16 & 255)) R[o++] = 65535 & b;else {
+        if (!(16 & y)) {
+          if (0 == (64 & y)) {
+            b = _[(65535 & b) + (d & (1 << y) - 1)];
+            continue t;
+          }
+          if (32 & y) {
+            r.mode = ti;
+            break e;
+          }
+          e.msg = "invalid literal/length code", r.mode = ei;
+          break e;
+        }
+        m = 65535 & b, (y &= 15) && (p < y && (d += x[n++] << p, p += 8), m += d & (1 << y) - 1, d >>>= y, p -= y), p < 15 && (d += x[n++] << p, p += 8, d += x[n++] << p, p += 8), b = g[d & w];
+        r: for (;;) {
+          if (d >>>= y = b >>> 24, p -= y, !(16 & (y = b >>> 16 & 255))) {
+            if (0 == (64 & y)) {
+              b = g[(65535 & b) + (d & (1 << y) - 1)];
+              continue r;
+            }
+            e.msg = "invalid distance code", r.mode = ei;
+            break e;
+          }
+          if (k = 65535 & b, p < (y &= 15) && (d += x[n++] << p, (p += 8) < y && (d += x[n++] << p, p += 8)), (k += d & (1 << y) - 1) > h) {
+            e.msg = "invalid distance too far back", r.mode = ei;
+            break e;
+          }
+          if (d >>>= y, p -= y, k > (y = o - a)) {
+            if ((y = k - y) > f && r.sane) {
+              e.msg = "invalid distance too far back", r.mode = ei;
+              break e;
+            }
+            if (E = 0, S = u, 0 === c) {
+              if (E += l - y, y < m) {
+                m -= y;
+                do {
+                  R[o++] = u[E++];
+                } while (--y);
+                E = o - k, S = R;
+              }
+            } else if (c < y) {
+              if (E += l + c - y, (y -= c) < m) {
+                m -= y;
+                do {
+                  R[o++] = u[E++];
+                } while (--y);
+                if (E = 0, c < m) {
+                  m -= y = c;
+                  do {
+                    R[o++] = u[E++];
+                  } while (--y);
+                  E = o - k, S = R;
+                }
+              }
+            } else if (E += c - y, y < m) {
+              m -= y;
+              do {
+                R[o++] = u[E++];
+              } while (--y);
+              E = o - k, S = R;
+            }
+            for (; m > 2;) {
+              R[o++] = S[E++], R[o++] = S[E++], R[o++] = S[E++], m -= 3;
+            }
+            m && (R[o++] = S[E++], m > 1 && (R[o++] = S[E++]));
+          } else {
+            E = o - k;
+            do {
+              R[o++] = R[E++], R[o++] = R[E++], R[o++] = R[E++], m -= 3;
+            } while (m > 2);
+            m && (R[o++] = R[E++], m > 1 && (R[o++] = R[E++]));
+          }
+          break;
+        }
+      }
+      break;
+    }
+  } while (n < i && o < s);
+  n -= m = p >> 3, d &= (1 << (p -= m << 3)) - 1, e.next_in = n, e.next_out = o, e.avail_in = n < i ? i - n + 5 : 5 - (n - i), e.avail_out = o < s ? s - o + 257 : 257 - (o - s), r.hold = d, r.bits = p;
+}
+var ni = 15,
+  ii = 852,
+  oi = 592,
+  ai = 0,
+  si = 1,
+  hi = 2,
+  li = [3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258, 0, 0],
+  fi = [16, 16, 16, 16, 16, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 16, 72, 78],
+  ci = [1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577, 0, 0],
+  ui = [16, 16, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26, 27, 27, 28, 28, 29, 29, 64, 64];
+function di(e, t, r, n, i, o, a, s) {
+  var h,
+    l,
+    f,
+    c,
+    u,
+    d,
+    p,
+    _,
+    g,
+    v = s.bits,
+    w = 0,
+    b = 0,
+    y = 0,
+    m = 0,
+    k = 0,
+    E = 0,
+    S = 0,
+    x = 0,
+    R = 0,
+    A = 0,
+    B = null,
+    z = 0,
+    L = new Yt(ni + 1),
+    T = new Yt(ni + 1),
+    M = null,
+    C = 0;
+  for (w = 0; w <= ni; w++) {
+    L[w] = 0;
+  }
+  for (b = 0; b < n; b++) {
+    L[t[r + b]]++;
+  }
+  for (k = v, m = ni; m >= 1 && 0 === L[m]; m--) {
+    ;
+  }
+  if (k > m && (k = m), 0 === m) return i[o++] = 20971520, i[o++] = 20971520, s.bits = 1, 0;
+  for (y = 1; y < m && 0 === L[y]; y++) {
+    ;
+  }
+  for (k < y && (k = y), x = 1, w = 1; w <= ni; w++) {
+    if (x <<= 1, (x -= L[w]) < 0) return -1;
+  }
+  if (x > 0 && (e === ai || 1 !== m)) return -1;
+  for (T[1] = 0, w = 1; w < ni; w++) {
+    T[w + 1] = T[w] + L[w];
+  }
+  for (b = 0; b < n; b++) {
+    0 !== t[r + b] && (a[T[t[r + b]]++] = b);
+  }
+  if (e === ai ? (B = M = a, d = 19) : e === si ? (B = li, z -= 257, M = fi, C -= 257, d = 256) : (B = ci, M = ui, d = -1), A = 0, b = 0, w = y, u = o, E = k, S = 0, f = -1, c = (R = 1 << k) - 1, e === si && R > ii || e === hi && R > oi) return 1;
+  for (;;) {
+    p = w - S, a[b] < d ? (_ = 0, g = a[b]) : a[b] > d ? (_ = M[C + a[b]], g = B[z + a[b]]) : (_ = 96, g = 0), h = 1 << w - S, y = l = 1 << E;
+    do {
+      i[u + (A >> S) + (l -= h)] = p << 24 | _ << 16 | g | 0;
+    } while (0 !== l);
+    for (h = 1 << w - 1; A & h;) {
+      h >>= 1;
+    }
+    if (0 !== h ? (A &= h - 1, A += h) : A = 0, b++, 0 == --L[w]) {
+      if (w === m) break;
+      w = t[r + a[b]];
+    }
+    if (w > k && (A & c) !== f) {
+      for (0 === S && (S = k), u += y, x = 1 << (E = w - S); E + S < m && !((x -= L[E + S]) <= 0);) {
+        E++, x <<= 1;
+      }
+      if (R += 1 << E, e === si && R > ii || e === hi && R > oi) return 1;
+      i[f = A & c] = k << 24 | E << 16 | u - o | 0;
+    }
+  }
+  return 0 !== A && (i[u + A] = w - S << 24 | 64 << 16 | 0), s.bits = k, 0;
+}
+var pi = 0,
+  _i = 1,
+  gi = 2,
+  vi = 4,
+  wi = 5,
+  bi = 6,
+  yi = 0,
+  mi = 1,
+  ki = 2,
+  Ei = -2,
+  Si = -3,
+  xi = -4,
+  Ri = -5,
+  Ai = 8,
+  Bi = 1,
+  zi = 2,
+  Li = 3,
+  Ti = 4,
+  Mi = 5,
+  Ci = 6,
+  Di = 7,
+  Ii = 8,
+  Pi = 9,
+  Oi = 10,
+  Ui = 11,
+  Hi = 12,
+  Fi = 13,
+  Ni = 14,
+  Zi = 15,
+  ji = 16,
+  Wi = 17,
+  Yi = 18,
+  Ki = 19,
+  Xi = 20,
+  qi = 21,
+  Vi = 22,
+  Gi = 23,
+  $i = 24,
+  Ji = 25,
+  Qi = 26,
+  eo = 27,
+  to = 28,
+  ro = 29,
+  no = 30,
+  io = 31,
+  oo = 32,
+  ao = 852,
+  so = 592;
+function ho(e) {
+  return (e >>> 24 & 255) + (e >>> 8 & 65280) + ((65280 & e) << 8) + ((255 & e) << 24);
+}
+function lo() {
+  this.mode = 0, this.last = !1, this.wrap = 0, this.havedict = !1, this.flags = 0, this.dmax = 0, this.check = 0, this.total = 0, this.head = null, this.wbits = 0, this.wsize = 0, this.whave = 0, this.wnext = 0, this.window = null, this.hold = 0, this.bits = 0, this.length = 0, this.offset = 0, this.extra = 0, this.lencode = null, this.distcode = null, this.lenbits = 0, this.distbits = 0, this.ncode = 0, this.nlen = 0, this.ndist = 0, this.have = 0, this.next = null, this.lens = new Yt(320), this.work = new Yt(288), this.lendyn = null, this.distdyn = null, this.sane = 0, this.back = 0, this.was = 0;
+}
+function fo(e) {
+  var t;
+  return e && e.state ? ((t = e.state).wsize = 0, t.whave = 0, t.wnext = 0, function (e) {
+    var t;
+    return e && e.state ? (t = e.state, e.total_in = e.total_out = t.total = 0, e.msg = "", t.wrap && (e.adler = 1 & t.wrap), t.mode = Bi, t.last = 0, t.havedict = 0, t.dmax = 32768, t.head = null, t.hold = 0, t.bits = 0, t.lencode = t.lendyn = new Kt(ao), t.distcode = t.distdyn = new Kt(so), t.sane = 1, t.back = -1, yi) : Ei;
+  }(e)) : Ei;
+}
+function co(e, t) {
+  var r, n;
+  return e ? (n = new lo(), e.state = n, n.window = null, (r = function (e, t) {
+    var r, n;
+    return e && e.state ? (n = e.state, t < 0 ? (r = 0, t = -t) : (r = 1 + (t >> 4), t < 48 && (t &= 15)), t && (t < 8 || t > 15) ? Ei : (null !== n.window && n.wbits !== t && (n.window = null), n.wrap = r, n.wbits = t, fo(e))) : Ei;
+  }(e, t)) !== yi && (e.state = null), r) : Ei;
+}
+var uo,
+  po,
+  _o = !0;
+function go(e) {
+  if (_o) {
+    var t;
+    for (uo = new Kt(512), po = new Kt(32), t = 0; t < 144;) {
+      e.lens[t++] = 8;
+    }
+    for (; t < 256;) {
+      e.lens[t++] = 9;
+    }
+    for (; t < 280;) {
+      e.lens[t++] = 7;
+    }
+    for (; t < 288;) {
+      e.lens[t++] = 8;
+    }
+    for (di(_i, e.lens, 0, 288, uo, 0, e.work, {
+      bits: 9
+    }), t = 0; t < 32;) {
+      e.lens[t++] = 5;
+    }
+    di(gi, e.lens, 0, 32, po, 0, e.work, {
+      bits: 5
+    }), _o = !1;
+  }
+  e.lencode = uo, e.lenbits = 9, e.distcode = po, e.distbits = 5;
+}
+function vo(e, t) {
+  var r,
+    n,
+    i,
+    o,
+    a,
+    s,
+    h,
+    l,
+    f,
+    c,
+    u,
+    d,
+    p,
+    _,
+    g,
+    v,
+    w,
+    b,
+    y,
+    m,
+    k,
+    E,
+    S,
+    x,
+    R = 0,
+    A = new Wt(4),
+    B = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15];
+  if (!e || !e.state || !e.output || !e.input && 0 !== e.avail_in) return Ei;
+  (r = e.state).mode === Hi && (r.mode = Fi), a = e.next_out, i = e.output, h = e.avail_out, o = e.next_in, n = e.input, s = e.avail_in, l = r.hold, f = r.bits, c = s, u = h, E = yi;
+  e: for (;;) {
+    switch (r.mode) {
+      case Bi:
+        if (0 === r.wrap) {
+          r.mode = Fi;
+          break;
+        }
+        for (; f < 16;) {
+          if (0 === s) break e;
+          s--, l += n[o++] << f, f += 8;
+        }
+        if (2 & r.wrap && 35615 === l) {
+          r.check = 0, A[0] = 255 & l, A[1] = l >>> 8 & 255, r.check = $r(r.check, A, 2, 0), l = 0, f = 0, r.mode = zi;
+          break;
+        }
+        if (r.flags = 0, r.head && (r.head.done = !1), !(1 & r.wrap) || (((255 & l) << 8) + (l >> 8)) % 31) {
+          e.msg = "incorrect header check", r.mode = no;
+          break;
+        }
+        if ((15 & l) !== Ai) {
+          e.msg = "unknown compression method", r.mode = no;
+          break;
+        }
+        if (f -= 4, k = 8 + (15 & (l >>>= 4)), 0 === r.wbits) r.wbits = k;else if (k > r.wbits) {
+          e.msg = "invalid window size", r.mode = no;
+          break;
+        }
+        r.dmax = 1 << k, e.adler = r.check = 1, r.mode = 512 & l ? Oi : Hi, l = 0, f = 0;
+        break;
+      case zi:
+        for (; f < 16;) {
+          if (0 === s) break e;
+          s--, l += n[o++] << f, f += 8;
+        }
+        if (r.flags = l, (255 & r.flags) !== Ai) {
+          e.msg = "unknown compression method", r.mode = no;
+          break;
+        }
+        if (57344 & r.flags) {
+          e.msg = "unknown header flags set", r.mode = no;
+          break;
+        }
+        r.head && (r.head.text = l >> 8 & 1), 512 & r.flags && (A[0] = 255 & l, A[1] = l >>> 8 & 255, r.check = $r(r.check, A, 2, 0)), l = 0, f = 0, r.mode = Li;
+      case Li:
+        for (; f < 32;) {
+          if (0 === s) break e;
+          s--, l += n[o++] << f, f += 8;
+        }
+        r.head && (r.head.time = l), 512 & r.flags && (A[0] = 255 & l, A[1] = l >>> 8 & 255, A[2] = l >>> 16 & 255, A[3] = l >>> 24 & 255, r.check = $r(r.check, A, 4, 0)), l = 0, f = 0, r.mode = Ti;
+      case Ti:
+        for (; f < 16;) {
+          if (0 === s) break e;
+          s--, l += n[o++] << f, f += 8;
+        }
+        r.head && (r.head.xflags = 255 & l, r.head.os = l >> 8), 512 & r.flags && (A[0] = 255 & l, A[1] = l >>> 8 & 255, r.check = $r(r.check, A, 2, 0)), l = 0, f = 0, r.mode = Mi;
+      case Mi:
+        if (1024 & r.flags) {
+          for (; f < 16;) {
+            if (0 === s) break e;
+            s--, l += n[o++] << f, f += 8;
+          }
+          r.length = l, r.head && (r.head.extra_len = l), 512 & r.flags && (A[0] = 255 & l, A[1] = l >>> 8 & 255, r.check = $r(r.check, A, 2, 0)), l = 0, f = 0;
+        } else r.head && (r.head.extra = null);
+        r.mode = Ci;
+      case Ci:
+        if (1024 & r.flags && ((d = r.length) > s && (d = s), d && (r.head && (k = r.head.extra_len - r.length, r.head.extra || (r.head.extra = new Array(r.head.extra_len)), jt(r.head.extra, n, o, d, k)), 512 & r.flags && (r.check = $r(r.check, n, d, o)), s -= d, o += d, r.length -= d), r.length)) break e;
+        r.length = 0, r.mode = Di;
+      case Di:
+        if (2048 & r.flags) {
+          if (0 === s) break e;
+          d = 0;
+          do {
+            k = n[o + d++], r.head && k && r.length < 65536 && (r.head.name += String.fromCharCode(k));
+          } while (k && d < s);
+          if (512 & r.flags && (r.check = $r(r.check, n, d, o)), s -= d, o += d, k) break e;
+        } else r.head && (r.head.name = null);
+        r.length = 0, r.mode = Ii;
+      case Ii:
+        if (4096 & r.flags) {
+          if (0 === s) break e;
+          d = 0;
+          do {
+            k = n[o + d++], r.head && k && r.length < 65536 && (r.head.comment += String.fromCharCode(k));
+          } while (k && d < s);
+          if (512 & r.flags && (r.check = $r(r.check, n, d, o)), s -= d, o += d, k) break e;
+        } else r.head && (r.head.comment = null);
+        r.mode = Pi;
+      case Pi:
+        if (512 & r.flags) {
+          for (; f < 16;) {
+            if (0 === s) break e;
+            s--, l += n[o++] << f, f += 8;
+          }
+          if (l !== (65535 & r.check)) {
+            e.msg = "header crc mismatch", r.mode = no;
+            break;
+          }
+          l = 0, f = 0;
+        }
+        r.head && (r.head.hcrc = r.flags >> 9 & 1, r.head.done = !0), e.adler = r.check = 0, r.mode = Hi;
+        break;
+      case Oi:
+        for (; f < 32;) {
+          if (0 === s) break e;
+          s--, l += n[o++] << f, f += 8;
+        }
+        e.adler = r.check = ho(l), l = 0, f = 0, r.mode = Ui;
+      case Ui:
+        if (0 === r.havedict) return e.next_out = a, e.avail_out = h, e.next_in = o, e.avail_in = s, r.hold = l, r.bits = f, ki;
+        e.adler = r.check = 1, r.mode = Hi;
+      case Hi:
+        if (t === wi || t === bi) break e;
+      case Fi:
+        if (r.last) {
+          l >>>= 7 & f, f -= 7 & f, r.mode = eo;
+          break;
+        }
+        for (; f < 3;) {
+          if (0 === s) break e;
+          s--, l += n[o++] << f, f += 8;
+        }
+        switch (r.last = 1 & l, f -= 1, 3 & (l >>>= 1)) {
+          case 0:
+            r.mode = Ni;
+            break;
+          case 1:
+            if (go(r), r.mode = Xi, t === bi) {
+              l >>>= 2, f -= 2;
+              break e;
+            }
+            break;
+          case 2:
+            r.mode = Wi;
+            break;
+          case 3:
+            e.msg = "invalid block type", r.mode = no;
+        }
+        l >>>= 2, f -= 2;
+        break;
+      case Ni:
+        for (l >>>= 7 & f, f -= 7 & f; f < 32;) {
+          if (0 === s) break e;
+          s--, l += n[o++] << f, f += 8;
+        }
+        if ((65535 & l) != (l >>> 16 ^ 65535)) {
+          e.msg = "invalid stored block lengths", r.mode = no;
+          break;
+        }
+        if (r.length = 65535 & l, l = 0, f = 0, r.mode = Zi, t === bi) break e;
+      case Zi:
+        r.mode = ji;
+      case ji:
+        if (d = r.length) {
+          if (d > s && (d = s), d > h && (d = h), 0 === d) break e;
+          jt(i, n, o, d, a), s -= d, o += d, h -= d, a += d, r.length -= d;
+          break;
+        }
+        r.mode = Hi;
+        break;
+      case Wi:
+        for (; f < 14;) {
+          if (0 === s) break e;
+          s--, l += n[o++] << f, f += 8;
+        }
+        if (r.nlen = 257 + (31 & l), l >>>= 5, f -= 5, r.ndist = 1 + (31 & l), l >>>= 5, f -= 5, r.ncode = 4 + (15 & l), l >>>= 4, f -= 4, r.nlen > 286 || r.ndist > 30) {
+          e.msg = "too many length or distance symbols", r.mode = no;
+          break;
+        }
+        r.have = 0, r.mode = Yi;
+      case Yi:
+        for (; r.have < r.ncode;) {
+          for (; f < 3;) {
+            if (0 === s) break e;
+            s--, l += n[o++] << f, f += 8;
+          }
+          r.lens[B[r.have++]] = 7 & l, l >>>= 3, f -= 3;
+        }
+        for (; r.have < 19;) {
+          r.lens[B[r.have++]] = 0;
+        }
+        if (r.lencode = r.lendyn, r.lenbits = 7, S = {
+          bits: r.lenbits
+        }, E = di(pi, r.lens, 0, 19, r.lencode, 0, r.work, S), r.lenbits = S.bits, E) {
+          e.msg = "invalid code lengths set", r.mode = no;
+          break;
+        }
+        r.have = 0, r.mode = Ki;
+      case Ki:
+        for (; r.have < r.nlen + r.ndist;) {
+          for (; v = (R = r.lencode[l & (1 << r.lenbits) - 1]) >>> 16 & 255, w = 65535 & R, !((g = R >>> 24) <= f);) {
+            if (0 === s) break e;
+            s--, l += n[o++] << f, f += 8;
+          }
+          if (w < 16) l >>>= g, f -= g, r.lens[r.have++] = w;else {
+            if (16 === w) {
+              for (x = g + 2; f < x;) {
+                if (0 === s) break e;
+                s--, l += n[o++] << f, f += 8;
+              }
+              if (l >>>= g, f -= g, 0 === r.have) {
+                e.msg = "invalid bit length repeat", r.mode = no;
+                break;
+              }
+              k = r.lens[r.have - 1], d = 3 + (3 & l), l >>>= 2, f -= 2;
+            } else if (17 === w) {
+              for (x = g + 3; f < x;) {
+                if (0 === s) break e;
+                s--, l += n[o++] << f, f += 8;
+              }
+              f -= g, k = 0, d = 3 + (7 & (l >>>= g)), l >>>= 3, f -= 3;
+            } else {
+              for (x = g + 7; f < x;) {
+                if (0 === s) break e;
+                s--, l += n[o++] << f, f += 8;
+              }
+              f -= g, k = 0, d = 11 + (127 & (l >>>= g)), l >>>= 7, f -= 7;
+            }
+            if (r.have + d > r.nlen + r.ndist) {
+              e.msg = "invalid bit length repeat", r.mode = no;
+              break;
+            }
+            for (; d--;) {
+              r.lens[r.have++] = k;
+            }
+          }
+        }
+        if (r.mode === no) break;
+        if (0 === r.lens[256]) {
+          e.msg = "invalid code -- missing end-of-block", r.mode = no;
+          break;
+        }
+        if (r.lenbits = 9, S = {
+          bits: r.lenbits
+        }, E = di(_i, r.lens, 0, r.nlen, r.lencode, 0, r.work, S), r.lenbits = S.bits, E) {
+          e.msg = "invalid literal/lengths set", r.mode = no;
+          break;
+        }
+        if (r.distbits = 6, r.distcode = r.distdyn, S = {
+          bits: r.distbits
+        }, E = di(gi, r.lens, r.nlen, r.ndist, r.distcode, 0, r.work, S), r.distbits = S.bits, E) {
+          e.msg = "invalid distances set", r.mode = no;
+          break;
+        }
+        if (r.mode = Xi, t === bi) break e;
+      case Xi:
+        r.mode = qi;
+      case qi:
+        if (s >= 6 && h >= 258) {
+          e.next_out = a, e.avail_out = h, e.next_in = o, e.avail_in = s, r.hold = l, r.bits = f, ri(e, u), a = e.next_out, i = e.output, h = e.avail_out, o = e.next_in, n = e.input, s = e.avail_in, l = r.hold, f = r.bits, r.mode === Hi && (r.back = -1);
+          break;
+        }
+        for (r.back = 0; v = (R = r.lencode[l & (1 << r.lenbits) - 1]) >>> 16 & 255, w = 65535 & R, !((g = R >>> 24) <= f);) {
+          if (0 === s) break e;
+          s--, l += n[o++] << f, f += 8;
+        }
+        if (v && 0 == (240 & v)) {
+          for (b = g, y = v, m = w; v = (R = r.lencode[m + ((l & (1 << b + y) - 1) >> b)]) >>> 16 & 255, w = 65535 & R, !(b + (g = R >>> 24) <= f);) {
+            if (0 === s) break e;
+            s--, l += n[o++] << f, f += 8;
+          }
+          l >>>= b, f -= b, r.back += b;
+        }
+        if (l >>>= g, f -= g, r.back += g, r.length = w, 0 === v) {
+          r.mode = Qi;
+          break;
+        }
+        if (32 & v) {
+          r.back = -1, r.mode = Hi;
+          break;
+        }
+        if (64 & v) {
+          e.msg = "invalid literal/length code", r.mode = no;
+          break;
+        }
+        r.extra = 15 & v, r.mode = Vi;
+      case Vi:
+        if (r.extra) {
+          for (x = r.extra; f < x;) {
+            if (0 === s) break e;
+            s--, l += n[o++] << f, f += 8;
+          }
+          r.length += l & (1 << r.extra) - 1, l >>>= r.extra, f -= r.extra, r.back += r.extra;
+        }
+        r.was = r.length, r.mode = Gi;
+      case Gi:
+        for (; v = (R = r.distcode[l & (1 << r.distbits) - 1]) >>> 16 & 255, w = 65535 & R, !((g = R >>> 24) <= f);) {
+          if (0 === s) break e;
+          s--, l += n[o++] << f, f += 8;
+        }
+        if (0 == (240 & v)) {
+          for (b = g, y = v, m = w; v = (R = r.distcode[m + ((l & (1 << b + y) - 1) >> b)]) >>> 16 & 255, w = 65535 & R, !(b + (g = R >>> 24) <= f);) {
+            if (0 === s) break e;
+            s--, l += n[o++] << f, f += 8;
+          }
+          l >>>= b, f -= b, r.back += b;
+        }
+        if (l >>>= g, f -= g, r.back += g, 64 & v) {
+          e.msg = "invalid distance code", r.mode = no;
+          break;
+        }
+        r.offset = w, r.extra = 15 & v, r.mode = $i;
+      case $i:
+        if (r.extra) {
+          for (x = r.extra; f < x;) {
+            if (0 === s) break e;
+            s--, l += n[o++] << f, f += 8;
+          }
+          r.offset += l & (1 << r.extra) - 1, l >>>= r.extra, f -= r.extra, r.back += r.extra;
+        }
+        if (r.offset > r.dmax) {
+          e.msg = "invalid distance too far back", r.mode = no;
+          break;
+        }
+        r.mode = Ji;
+      case Ji:
+        if (0 === h) break e;
+        if (d = u - h, r.offset > d) {
+          if ((d = r.offset - d) > r.whave && r.sane) {
+            e.msg = "invalid distance too far back", r.mode = no;
+            break;
+          }
+          d > r.wnext ? (d -= r.wnext, p = r.wsize - d) : p = r.wnext - d, d > r.length && (d = r.length), _ = r.window;
+        } else _ = i, p = a - r.offset, d = r.length;
+        d > h && (d = h), h -= d, r.length -= d;
+        do {
+          i[a++] = _[p++];
+        } while (--d);
+        0 === r.length && (r.mode = qi);
+        break;
+      case Qi:
+        if (0 === h) break e;
+        i[a++] = r.length, h--, r.mode = qi;
+        break;
+      case eo:
+        if (r.wrap) {
+          for (; f < 32;) {
+            if (0 === s) break e;
+            s--, l |= n[o++] << f, f += 8;
+          }
+          if (u -= h, e.total_out += u, r.total += u, u && (e.adler = r.check = r.flags ? $r(r.check, i, u, a - u) : Vr(r.check, i, u, a - u)), u = h, (r.flags ? l : ho(l)) !== r.check) {
+            e.msg = "incorrect data check", r.mode = no;
+            break;
+          }
+          l = 0, f = 0;
+        }
+        r.mode = to;
+      case to:
+        if (r.wrap && r.flags) {
+          for (; f < 32;) {
+            if (0 === s) break e;
+            s--, l += n[o++] << f, f += 8;
+          }
+          if (l !== (4294967295 & r.total)) {
+            e.msg = "incorrect length check", r.mode = no;
+            break;
+          }
+          l = 0, f = 0;
+        }
+        r.mode = ro;
+      case ro:
+        E = mi;
+        break e;
+      case no:
+        E = Si;
+        break e;
+      case io:
+        return xi;
+      case oo:
+      default:
+        return Ei;
+    }
+  }
+  return e.next_out = a, e.avail_out = h, e.next_in = o, e.avail_in = s, r.hold = l, r.bits = f, (r.wsize || u !== e.avail_out && r.mode < no && (r.mode < eo || t !== vi)) && function (e, t, r, n) {
+    var i,
+      o = e.state;
+    null === o.window && (o.wsize = 1 << o.wbits, o.wnext = 0, o.whave = 0, o.window = new Wt(o.wsize)), n >= o.wsize ? (jt(o.window, t, r - o.wsize, o.wsize, 0), o.wnext = 0, o.whave = o.wsize) : ((i = o.wsize - o.wnext) > n && (i = n), jt(o.window, t, r - n, i, o.wnext), (n -= i) ? (jt(o.window, t, r - n, n, 0), o.wnext = n, o.whave = o.wsize) : (o.wnext += i, o.wnext === o.wsize && (o.wnext = 0), o.whave < o.wsize && (o.whave += i)));
+  }(e, e.output, e.next_out, u - e.avail_out), c -= e.avail_in, u -= e.avail_out, e.total_in += c, e.total_out += u, r.total += u, r.wrap && u && (e.adler = r.check = r.flags ? $r(r.check, i, u, e.next_out - u) : Vr(r.check, i, u, e.next_out - u)), e.data_type = r.bits + (r.last ? 64 : 0) + (r.mode === Hi ? 128 : 0) + (r.mode === Xi || r.mode === Zi ? 256 : 0), (0 === c && 0 === u || t === vi) && E === yi && (E = Ri), E;
+}
+var wo,
+  bo = 1,
+  yo = 7;
+function mo(e) {
+  if (e < bo || e > yo) throw new TypeError("Bad argument");
+  this.mode = e, this.init_done = !1, this.write_in_progress = !1, this.pending_close = !1, this.windowBits = 0, this.level = 0, this.memLevel = 0, this.strategy = 0, this.dictionary = null;
+}
+function ko(e, t) {
+  for (var r = 0; r < e.length; r++) {
+    this[t + r] = e[r];
+  }
+}
+mo.prototype.init = function (e, t, r, n, i) {
+  var o;
+  switch (this.windowBits = e, this.level = t, this.memLevel = r, this.strategy = n, 3 !== this.mode && 4 !== this.mode || (this.windowBits += 16), this.mode === yo && (this.windowBits += 32), 5 !== this.mode && 6 !== this.mode || (this.windowBits = -this.windowBits), this.strm = new Zt(), this.mode) {
+    case bo:
+    case 3:
+    case 5:
+      o = function (e, t, r, n, i, o) {
+        if (!e) return sn;
+        var a = 1;
+        if (t === fn && (t = 6), n < 0 ? (a = 0, n = -n) : n > 15 && (a = 2, n -= 16), i < 1 || i > vn || r !== gn || n < 8 || n > 15 || t < 0 || t > 9 || o < 0 || o > pn) return Hn(e, sn);
+        8 === n && (n = 9);
+        var s = new $n();
+        return e.state = s, s.strm = e, s.wrap = a, s.gzhead = null, s.w_bits = n, s.w_size = 1 << s.w_bits, s.w_mask = s.w_size - 1, s.hash_bits = i + 7, s.hash_size = 1 << s.hash_bits, s.hash_mask = s.hash_size - 1, s.hash_shift = ~~((s.hash_bits + En - 1) / En), s.window = new Wt(2 * s.w_size), s.head = new Yt(s.hash_size), s.prev = new Yt(s.w_size), s.lit_bufsize = 1 << i + 6, s.pending_buf_size = 4 * s.lit_bufsize, s.pending_buf = new Wt(s.pending_buf_size), s.d_buf = 1 * s.lit_bufsize, s.l_buf = 3 * s.lit_bufsize, s.level = t, s.strategy = o, s.method = r, Jn(e);
+      }(this.strm, this.level, 8, this.windowBits, this.memLevel, this.strategy);
+      break;
+    case 2:
+    case 4:
+    case 6:
+    case yo:
+      o = co(this.strm, this.windowBits);
+      break;
+    default:
+      throw new Error("Unknown mode " + this.mode);
+  }
+  0 === o ? (this.write_in_progress = !1, this.init_done = !0) : this._error(o);
+}, mo.prototype.params = function () {
+  throw new Error("deflateParams Not supported");
+}, mo.prototype._writeCheck = function () {
+  if (!this.init_done) throw new Error("write before init");
+  if (0 === this.mode) throw new Error("already finalized");
+  if (this.write_in_progress) throw new Error("write already in progress");
+  if (this.pending_close) throw new Error("close is pending");
+}, mo.prototype.write = function (e, t, r, n, i, o, a) {
+  this._writeCheck(), this.write_in_progress = !0;
+  var s = this;
+  return de(function () {
+    s.write_in_progress = !1;
+    var h = s._write(e, t, r, n, i, o, a);
+    s.callback(h[0], h[1]), s.pending_close && s.close();
+  }), this;
+}, mo.prototype.writeSync = function (e, t, r, n, i, o, a) {
+  return this._writeCheck(), this._write(e, t, r, n, i, o, a);
+}, mo.prototype._write = function (e, t, r, n, i, o, a) {
+  if (this.write_in_progress = !0, 0 !== e && 1 !== e && 2 !== e && 3 !== e && 4 !== e && 5 !== e) throw new Error("Invalid flush value");
+  null == t && (t = new p(0), n = 0, r = 0), i._set ? i.set = i._set : i.set = ko;
+  var s,
+    h = this.strm;
+  switch (h.avail_in = n, h.input = t, h.next_in = r, h.avail_out = a, h.output = i, h.next_out = o, this.mode) {
+    case bo:
+    case 3:
+    case 5:
+      s = Qn(h, e);
+      break;
+    case yo:
+    case 2:
+    case 4:
+    case 6:
+      s = vo(h, e);
+      break;
+    default:
+      throw new Error("Unknown mode " + this.mode);
+  }
+  return 1 !== s && 0 !== s && this._error(s), this.write_in_progress = !1, [h.avail_in, h.avail_out];
+}, mo.prototype.close = function () {
+  this.write_in_progress ? this.pending_close = !0 : (this.pending_close = !1, this.mode === bo || 3 === this.mode || 5 === this.mode ? function (e) {
+    var t;
+    e && e.state && ((t = e.state.status) !== An && t !== Bn && t !== zn && t !== Ln && t !== Tn && t !== Mn && t !== Cn ? Hn(e, sn) : (e.state = null, t === Mn && Hn(e, hn)));
+  }(this.strm) : function (e) {
+    if (!e || !e.state) return Ei;
+    var t = e.state;
+    t.window && (t.window = null), e.state = null;
+  }(this.strm), this.mode = 0);
+}, mo.prototype.reset = function () {
+  switch (this.mode) {
+    case bo:
+    case 5:
+      wo = Jn(this.strm);
+      break;
+    case 2:
+    case 6:
+      wo = fo(this.strm);
+  }
+  0 !== wo && this._error(wo);
+}, mo.prototype._error = function (e) {
+  this.onerror(Nt[e] + ": " + this.strm.msg, e), this.write_in_progress = !1, this.pending_close && this.close();
+};
+var Eo = Object.freeze({
+  NONE: 0,
+  DEFLATE: bo,
+  INFLATE: 2,
+  GZIP: 3,
+  GUNZIP: 4,
+  DEFLATERAW: 5,
+  INFLATERAW: 6,
+  UNZIP: yo,
+  Z_NO_FLUSH: 0,
+  Z_PARTIAL_FLUSH: 1,
+  Z_SYNC_FLUSH: 2,
+  Z_FULL_FLUSH: 3,
+  Z_FINISH: 4,
+  Z_BLOCK: 5,
+  Z_TREES: 6,
+  Z_OK: 0,
+  Z_STREAM_END: 1,
+  Z_NEED_DICT: 2,
+  Z_ERRNO: -1,
+  Z_STREAM_ERROR: -2,
+  Z_DATA_ERROR: -3,
+  Z_BUF_ERROR: -5,
+  Z_NO_COMPRESSION: 0,
+  Z_BEST_SPEED: 1,
+  Z_BEST_COMPRESSION: 9,
+  Z_DEFAULT_COMPRESSION: -1,
+  Z_FILTERED: 1,
+  Z_HUFFMAN_ONLY: 2,
+  Z_RLE: 3,
+  Z_FIXED: 4,
+  Z_DEFAULT_STRATEGY: 0,
+  Z_BINARY: 0,
+  Z_TEXT: 1,
+  Z_UNKNOWN: 2,
+  Z_DEFLATED: 8,
+  Zlib: mo
+});
+var So = {};
+Object.keys(Eo).forEach(function (e) {
+  So[e] = Eo[e];
+}), So.Z_MIN_WINDOWBITS = 8, So.Z_MAX_WINDOWBITS = 15, So.Z_DEFAULT_WINDOWBITS = 15, So.Z_MIN_CHUNK = 64, So.Z_MAX_CHUNK = 1 / 0, So.Z_DEFAULT_CHUNK = 16384, So.Z_MIN_MEMLEVEL = 1, So.Z_MAX_MEMLEVEL = 9, So.Z_DEFAULT_MEMLEVEL = 8, So.Z_MIN_LEVEL = -1, So.Z_MAX_LEVEL = 9, So.Z_DEFAULT_LEVEL = So.Z_DEFAULT_COMPRESSION;
+var xo = {
+  Z_OK: So.Z_OK,
+  Z_STREAM_END: So.Z_STREAM_END,
+  Z_NEED_DICT: So.Z_NEED_DICT,
+  Z_ERRNO: So.Z_ERRNO,
+  Z_STREAM_ERROR: So.Z_STREAM_ERROR,
+  Z_DATA_ERROR: So.Z_DATA_ERROR,
+  Z_MEM_ERROR: So.Z_MEM_ERROR,
+  Z_BUF_ERROR: So.Z_BUF_ERROR,
+  Z_VERSION_ERROR: So.Z_VERSION_ERROR
+};
+function Ro(e, t, r) {
+  var n = [],
+    i = 0;
+  function o() {
+    for (var t; null !== (t = e.read());) {
+      n.push(t), i += t.length;
+    }
+    e.once("readable", o);
+  }
+  function a() {
+    var t = p.concat(n, i);
+    n = [], r(null, t), e.close();
+  }
+  e.on("error", function (t) {
+    e.removeListener("end", a), e.removeListener("readable", o), r(t);
+  }), e.on("end", a), e.end(t), o();
+}
+function Ao(e, t) {
+  if ("string" == typeof t && (t = new p(t)), !$(t)) throw new TypeError("Not a string or buffer");
+  var r = So.Z_FINISH;
+  return e._processChunk(t, r);
+}
+function Bo(e) {
+  if (!(this instanceof Bo)) return new Bo(e);
+  Io.call(this, e, So.DEFLATE);
+}
+function zo(e) {
+  if (!(this instanceof zo)) return new zo(e);
+  Io.call(this, e, So.INFLATE);
+}
+function Lo(e) {
+  if (!(this instanceof Lo)) return new Lo(e);
+  Io.call(this, e, So.GZIP);
+}
+function To(e) {
+  if (!(this instanceof To)) return new To(e);
+  Io.call(this, e, So.GUNZIP);
+}
+function Mo(e) {
+  if (!(this instanceof Mo)) return new Mo(e);
+  Io.call(this, e, So.DEFLATERAW);
+}
+function Co(e) {
+  if (!(this instanceof Co)) return new Co(e);
+  Io.call(this, e, So.INFLATERAW);
+}
+function Do(e) {
+  if (!(this instanceof Do)) return new Do(e);
+  Io.call(this, e, So.UNZIP);
+}
+function Io(e, t) {
+  if (this._opts = e = e || {}, this._chunkSize = e.chunkSize || So.Z_DEFAULT_CHUNK, Ot.call(this, e), e.flush && e.flush !== So.Z_NO_FLUSH && e.flush !== So.Z_PARTIAL_FLUSH && e.flush !== So.Z_SYNC_FLUSH && e.flush !== So.Z_FULL_FLUSH && e.flush !== So.Z_FINISH && e.flush !== So.Z_BLOCK) throw new Error("Invalid flush flag: " + e.flush);
+  if (this._flushFlag = e.flush || So.Z_NO_FLUSH, e.chunkSize && (e.chunkSize < So.Z_MIN_CHUNK || e.chunkSize > So.Z_MAX_CHUNK)) throw new Error("Invalid chunk size: " + e.chunkSize);
+  if (e.windowBits && (e.windowBits < So.Z_MIN_WINDOWBITS || e.windowBits > So.Z_MAX_WINDOWBITS)) throw new Error("Invalid windowBits: " + e.windowBits);
+  if (e.level && (e.level < So.Z_MIN_LEVEL || e.level > So.Z_MAX_LEVEL)) throw new Error("Invalid compression level: " + e.level);
+  if (e.memLevel && (e.memLevel < So.Z_MIN_MEMLEVEL || e.memLevel > So.Z_MAX_MEMLEVEL)) throw new Error("Invalid memLevel: " + e.memLevel);
+  if (e.strategy && e.strategy != So.Z_FILTERED && e.strategy != So.Z_HUFFMAN_ONLY && e.strategy != So.Z_RLE && e.strategy != So.Z_FIXED && e.strategy != So.Z_DEFAULT_STRATEGY) throw new Error("Invalid strategy: " + e.strategy);
+  if (e.dictionary && !$(e.dictionary)) throw new Error("Invalid dictionary: it should be a Buffer instance");
+  this._binding = new So.Zlib(t);
+  var r = this;
+  this._hadError = !1, this._binding.onerror = function (e, t) {
+    r._binding = null, r._hadError = !0;
+    var n = new Error(e);
+    n.errno = t, n.code = So.codes[t], r.emit("error", n);
+  };
+  var n = So.Z_DEFAULT_COMPRESSION;
+  "number" == typeof e.level && (n = e.level);
+  var i = So.Z_DEFAULT_STRATEGY;
+  "number" == typeof e.strategy && (i = e.strategy), this._binding.init(e.windowBits || So.Z_DEFAULT_WINDOWBITS, n, e.memLevel || So.Z_DEFAULT_MEMLEVEL, i, e.dictionary), this._buffer = new p(this._chunkSize), this._offset = 0, this._closed = !1, this._level = n, this._strategy = i, this.once("end", this.close);
+}
+Object.keys(xo).forEach(function (e) {
+  xo[xo[e]] = e;
+}), Be(Io, Ot), Io.prototype.params = function (e, t, r) {
+  if (e < So.Z_MIN_LEVEL || e > So.Z_MAX_LEVEL) throw new RangeError("Invalid compression level: " + e);
+  if (t != So.Z_FILTERED && t != So.Z_HUFFMAN_ONLY && t != So.Z_RLE && t != So.Z_FIXED && t != So.Z_DEFAULT_STRATEGY) throw new TypeError("Invalid strategy: " + t);
+  if (this._level !== e || this._strategy !== t) {
+    var n = this;
+    this.flush(So.Z_SYNC_FLUSH, function () {
+      n._binding.params(e, t), n._hadError || (n._level = e, n._strategy = t, r && r());
+    });
+  } else de(r);
+}, Io.prototype.reset = function () {
+  return this._binding.reset();
+}, Io.prototype._flush = function (e) {
+  this._transform(new p(0), "", e);
+}, Io.prototype.flush = function (e, t) {
+  var r = this._writableState;
+  if (("function" == typeof e || void 0 === e && !t) && (t = e, e = So.Z_FULL_FLUSH), r.ended) t && de(t);else if (r.ending) t && this.once("end", t);else if (r.needDrain) {
+    var n = this;
+    this.once("drain", function () {
+      n.flush(t);
+    });
+  } else this._flushFlag = e, this.write(new p(0), "", t);
+}, Io.prototype.close = function (e) {
+  if (e && de(e), !this._closed) {
+    this._closed = !0, this._binding.close();
+    var t = this;
+    de(function () {
+      t.emit("close");
+    });
+  }
+}, Io.prototype._transform = function (e, t, r) {
+  var n,
+    i = this._writableState,
+    o = (i.ending || i.ended) && (!e || i.length === e.length);
+  if (null === !e && !$(e)) return r(new Error("invalid input"));
+  o ? n = So.Z_FINISH : (n = this._flushFlag, e.length >= i.length && (this._flushFlag = this._opts.flush || So.Z_NO_FLUSH)), this._processChunk(e, n, r);
+}, Io.prototype._processChunk = function (e, t, r) {
+  var n = e && e.length,
+    i = this._chunkSize - this._offset,
+    o = 0,
+    a = this,
+    s = "function" == typeof r;
+  if (!s) {
+    var h,
+      l = [],
+      f = 0;
+    this.on("error", function (e) {
+      h = e;
+    });
+    do {
+      var c = this._binding.writeSync(t, e, o, n, this._buffer, this._offset, i);
+    } while (!this._hadError && _(c[0], c[1]));
+    if (this._hadError) throw h;
+    var u = p.concat(l, f);
+    return this.close(), u;
+  }
+  var d = this._binding.write(t, e, o, n, this._buffer, this._offset, i);
+  function _(h, c) {
+    if (!a._hadError) {
+      var u = i - c;
+      if (function (e, t) {
+        if (!e) throw new Error(t);
+      }(u >= 0, "have should not go down"), u > 0) {
+        var d = a._buffer.slice(a._offset, a._offset + u);
+        a._offset += u, s ? a.push(d) : (l.push(d), f += d.length);
+      }
+      if ((0 === c || a._offset >= a._chunkSize) && (i = a._chunkSize, a._offset = 0, a._buffer = new p(a._chunkSize)), 0 === c) {
+        if (o += n - h, n = h, !s) return !0;
+        var g = a._binding.write(t, e, o, n, a._buffer, a._offset, a._chunkSize);
+        return g.callback = _, void (g.buffer = e);
+      }
+      if (!s) return !1;
+      r();
+    }
+  }
+  d.buffer = e, d.callback = _;
+}, Be(Bo, Io), Be(zo, Io), Be(Lo, Io), Be(To, Io), Be(Mo, Io), Be(Co, Io), Be(Do, Io);
+var Po = {
+  codes: xo,
+  createDeflate: function createDeflate(e) {
+    return new Bo(e);
+  },
+  createInflate: function createInflate(e) {
+    return new zo(e);
+  },
+  createDeflateRaw: function createDeflateRaw(e) {
+    return new Mo(e);
+  },
+  createInflateRaw: function createInflateRaw(e) {
+    return new Co(e);
+  },
+  createGzip: function createGzip(e) {
+    return new Lo(e);
+  },
+  createGunzip: function createGunzip(e) {
+    return new To(e);
+  },
+  createUnzip: function createUnzip(e) {
+    return new Do(e);
+  },
+  deflate: function deflate(e, t, r) {
+    return "function" == typeof t && (r = t, t = {}), Ro(new Bo(t), e, r);
+  },
+  deflateSync: function deflateSync(e, t) {
+    return Ao(new Bo(t), e);
+  },
+  gzip: function gzip(e, t, r) {
+    return "function" == typeof t && (r = t, t = {}), Ro(new Lo(t), e, r);
+  },
+  gzipSync: function gzipSync(e, t) {
+    return Ao(new Lo(t), e);
+  },
+  deflateRaw: function deflateRaw(e, t, r) {
+    return "function" == typeof t && (r = t, t = {}), Ro(new Mo(t), e, r);
+  },
+  deflateRawSync: function deflateRawSync(e, t) {
+    return Ao(new Mo(t), e);
+  },
+  unzip: function unzip(e, t, r) {
+    return "function" == typeof t && (r = t, t = {}), Ro(new Do(t), e, r);
+  },
+  unzipSync: function unzipSync(e, t) {
+    return Ao(new Do(t), e);
+  },
+  inflate: function inflate(e, t, r) {
+    return "function" == typeof t && (r = t, t = {}), Ro(new zo(t), e, r);
+  },
+  inflateSync: function inflateSync(e, t) {
+    return Ao(new zo(t), e);
+  },
+  gunzip: function gunzip(e, t, r) {
+    return "function" == typeof t && (r = t, t = {}), Ro(new To(t), e, r);
+  },
+  gunzipSync: function gunzipSync(e, t) {
+    return Ao(new To(t), e);
+  },
+  inflateRaw: function inflateRaw(e, t, r) {
+    return "function" == typeof t && (r = t, t = {}), Ro(new Co(t), e, r);
+  },
+  inflateRawSync: function inflateRawSync(e, t) {
+    return Ao(new Co(t), e);
+  },
+  Deflate: Bo,
+  Inflate: zo,
+  Gzip: Lo,
+  Gunzip: To,
+  DeflateRaw: Mo,
+  InflateRaw: Co,
+  Unzip: Do,
+  Zlib: Io
+};
+var _default = /*#__PURE__*/function () {
+  function _default(e, t, r) {
+    (0, _classCallCheck2.default)(this, _default);
+    this.SDKAPPID = e, this.EXPIRETIME = r, this.PRIVATEKEY = t;
+  }
+  (0, _createClass2.default)(_default, [{
+    key: "genTestUserSig",
+    value: function genTestUserSig(e) {
+      return this._isNumber(this.SDKAPPID) ? this._isString(this.PRIVATEKEY) ? this._isString(e) ? this._isNumber(this.EXPIRETIME) ? (console.log("sdkAppID=" + this.SDKAPPID + " key=" + this.PRIVATEKEY + " userID=" + e + " expire=" + this.EXPIRETIME), this.genSigWithUserbuf(e, this.EXPIRETIME, null)) : (console.error("expireTime must be a number"), "") : (console.error("userID must be a string"), "") : (console.error("privateKey must be a string"), "") : (console.error("sdkAppID must be a number"), "");
+    }
+  }, {
+    key: "newBuffer",
+    value: function newBuffer(e, t) {
+      return p.from ? p.from(e, t) : new p(e, t);
+    }
+  }, {
+    key: "unescape",
+    value: function unescape(e) {
+      return e.replace(/_/g, "=").replace(/\-/g, "/").replace(/\*/g, "+");
+    }
+  }, {
+    key: "escape",
+    value: function escape(e) {
+      return e.replace(/\+/g, "*").replace(/\//g, "-").replace(/=/g, "_");
+    }
+  }, {
+    key: "encode",
+    value: function encode(e) {
+      return this.escape(this.newBuffer(e).toString("base64"));
+    }
+  }, {
+    key: "decode",
+    value: function decode(e) {
+      return this.newBuffer(this.unescape(e), "base64");
+    }
+  }, {
+    key: "base64encode",
+    value: function base64encode(e) {
+      return this.newBuffer(e).toString("base64");
+    }
+  }, {
+    key: "base64decode",
+    value: function base64decode(e) {
+      return this.newBuffer(e, "base64").toString();
+    }
+  }, {
+    key: "_hmacsha256",
+    value: function _hmacsha256(e, t, r, n) {
+      var i = "TLS.identifier:" + e + "\n";
+      i += "TLS.sdkappid:" + this.SDKAPPID + "\n", i += "TLS.time:" + t + "\n", i += "TLS.expire:" + r + "\n", null != n && (i += "TLS.userbuf:" + n + "\n");
+      var o = te.HmacSHA256(i, this.PRIVATEKEY);
+      return te.enc.Base64.stringify(o);
+    }
+  }, {
+    key: "_utc",
+    value: function _utc() {
+      return Math.round(Date.now() / 1e3);
+    }
+  }, {
+    key: "_isNumber",
+    value: function _isNumber(e) {
+      return null !== e && ("number" == typeof e && !isNaN(e - 0) || "object" == (0, _typeof2.default)(e) && e.constructor === Number);
+    }
+  }, {
+    key: "_isString",
+    value: function _isString(e) {
+      return "string" == typeof e;
+    }
+  }, {
+    key: "genSigWithUserbuf",
+    value: function genSigWithUserbuf(e, t, r) {
+      var n = this._utc(),
+        i = {
+          "TLS.ver": "2.0",
+          "TLS.identifier": e,
+          "TLS.sdkappid": this.SDKAPPID,
+          "TLS.time": n,
+          "TLS.expire": t
+        },
+        o = "";
+      if (null != r) {
+        var _a = this.base64encode(r);
+        i["TLS.userbuf"] = _a, o = this._hmacsha256(e, n, t, _a);
+      } else o = this._hmacsha256(e, n, t, null);
+      i["TLS.sig"] = o;
+      var a = JSON.stringify(i),
+        s = Po.deflateSync(this.newBuffer(a)).toString("base64"),
+        h = this.escape(s);
+      return console.log("ret=" + h), h;
+    }
+  }, {
+    key: "validate",
+    value: function validate(e) {
+      var t = this.decode(e),
+        r = Po.inflateSync(t);
+      console.log("validate ret=" + r);
+    }
+  }]);
+  return _default;
+}();
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../HBuilderX/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 3)))
+
+/***/ }),
+/* 46 */,
+/* 47 */,
+/* 48 */
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
   \**********************************************************************************************************/
@@ -9990,7 +17446,7 @@ function normalizeComponent (
 
 
 /***/ }),
-/* 38 */
+/* 49 */
 /*!*********************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni.promisify.adaptor.js ***!
   \*********************************************************************/
@@ -10013,7 +17469,7 @@ uni.addInterceptor({
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 39 */
+/* 50 */
 /*!**************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/index.js ***!
   \**************************************************************************/
@@ -10029,20 +17485,20 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _mixin = _interopRequireDefault(__webpack_require__(/*! ./libs/mixin/mixin.js */ 40));
-var _mpMixin = _interopRequireDefault(__webpack_require__(/*! ./libs/mixin/mpMixin.js */ 41));
-var _luchRequest = _interopRequireDefault(__webpack_require__(/*! ./libs/luch-request */ 42));
-var _route = _interopRequireDefault(__webpack_require__(/*! ./libs/util/route.js */ 60));
-var _colorGradient = _interopRequireDefault(__webpack_require__(/*! ./libs/function/colorGradient.js */ 64));
-var _test = _interopRequireDefault(__webpack_require__(/*! ./libs/function/test.js */ 65));
-var _debounce = _interopRequireDefault(__webpack_require__(/*! ./libs/function/debounce.js */ 66));
-var _throttle = _interopRequireDefault(__webpack_require__(/*! ./libs/function/throttle.js */ 67));
-var _index = _interopRequireDefault(__webpack_require__(/*! ./libs/function/index.js */ 68));
-var _config = _interopRequireDefault(__webpack_require__(/*! ./libs/config/config.js */ 71));
-var _props = _interopRequireDefault(__webpack_require__(/*! ./libs/config/props.js */ 72));
-var _zIndex = _interopRequireDefault(__webpack_require__(/*! ./libs/config/zIndex.js */ 162));
-var _color = _interopRequireDefault(__webpack_require__(/*! ./libs/config/color.js */ 120));
-var _platform = _interopRequireDefault(__webpack_require__(/*! ./libs/function/platform */ 163));
+var _mixin = _interopRequireDefault(__webpack_require__(/*! ./libs/mixin/mixin.js */ 51));
+var _mpMixin = _interopRequireDefault(__webpack_require__(/*! ./libs/mixin/mpMixin.js */ 52));
+var _luchRequest = _interopRequireDefault(__webpack_require__(/*! ./libs/luch-request */ 53));
+var _route = _interopRequireDefault(__webpack_require__(/*! ./libs/util/route.js */ 71));
+var _colorGradient = _interopRequireDefault(__webpack_require__(/*! ./libs/function/colorGradient.js */ 72));
+var _test = _interopRequireDefault(__webpack_require__(/*! ./libs/function/test.js */ 73));
+var _debounce = _interopRequireDefault(__webpack_require__(/*! ./libs/function/debounce.js */ 74));
+var _throttle = _interopRequireDefault(__webpack_require__(/*! ./libs/function/throttle.js */ 75));
+var _index = _interopRequireDefault(__webpack_require__(/*! ./libs/function/index.js */ 76));
+var _config = _interopRequireDefault(__webpack_require__(/*! ./libs/config/config.js */ 79));
+var _props = _interopRequireDefault(__webpack_require__(/*! ./libs/config/props.js */ 80));
+var _zIndex = _interopRequireDefault(__webpack_require__(/*! ./libs/config/zIndex.js */ 169));
+var _color = _interopRequireDefault(__webpack_require__(/*! ./libs/config/color.js */ 127));
+var _platform = _interopRequireDefault(__webpack_require__(/*! ./libs/function/platform */ 170));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 // 看到此报错，是因为没有配置vue.config.js的【transpileDependencies】，详见：https://www.uviewui.com/components/npmSetting.html#_5-cli模式额外配置
@@ -10102,7 +17558,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 40 */
+/* 51 */
 /*!*************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/mixin/mixin.js ***!
   \*************************************************************************************/
@@ -10270,7 +17726,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 41 */
+/* 52 */
 /*!***************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/mixin/mpMixin.js ***!
   \***************************************************************************************/
@@ -10293,7 +17749,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 42 */
+/* 53 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/index.js ***!
   \********************************************************************************************/
@@ -10308,12 +17764,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _Request = _interopRequireDefault(__webpack_require__(/*! ./core/Request */ 43));
+var _Request = _interopRequireDefault(__webpack_require__(/*! ./core/Request */ 54));
 var _default = _Request.default;
 exports.default = _default;
 
 /***/ }),
-/* 43 */
+/* 54 */
 /*!***************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/core/Request.js ***!
   \***************************************************************************************************/
@@ -10331,12 +17787,12 @@ exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-var _dispatchRequest = _interopRequireDefault(__webpack_require__(/*! ./dispatchRequest */ 44));
-var _InterceptorManager = _interopRequireDefault(__webpack_require__(/*! ./InterceptorManager */ 52));
-var _mergeConfig = _interopRequireDefault(__webpack_require__(/*! ./mergeConfig */ 53));
-var _defaults = _interopRequireDefault(__webpack_require__(/*! ./defaults */ 54));
-var _utils = __webpack_require__(/*! ../utils */ 47);
-var _clone = _interopRequireDefault(__webpack_require__(/*! ../utils/clone */ 55));
+var _dispatchRequest = _interopRequireDefault(__webpack_require__(/*! ./dispatchRequest */ 55));
+var _InterceptorManager = _interopRequireDefault(__webpack_require__(/*! ./InterceptorManager */ 63));
+var _mergeConfig = _interopRequireDefault(__webpack_require__(/*! ./mergeConfig */ 64));
+var _defaults = _interopRequireDefault(__webpack_require__(/*! ./defaults */ 65));
+var _utils = __webpack_require__(/*! ../utils */ 58);
+var _clone = _interopRequireDefault(__webpack_require__(/*! ../utils/clone */ 66));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var Request = /*#__PURE__*/function () {
@@ -10519,7 +17975,7 @@ var Request = /*#__PURE__*/function () {
 exports.default = Request;
 
 /***/ }),
-/* 44 */
+/* 55 */
 /*!***********************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/core/dispatchRequest.js ***!
   \***********************************************************************************************************/
@@ -10534,14 +17990,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _index = _interopRequireDefault(__webpack_require__(/*! ../adapters/index */ 45));
+var _index = _interopRequireDefault(__webpack_require__(/*! ../adapters/index */ 56));
 var _default = function _default(config) {
   return (0, _index.default)(config);
 };
 exports.default = _default;
 
 /***/ }),
-/* 45 */
+/* 56 */
 /*!*****************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/adapters/index.js ***!
   \*****************************************************************************************************/
@@ -10557,10 +18013,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _buildURL = _interopRequireDefault(__webpack_require__(/*! ../helpers/buildURL */ 46));
-var _buildFullPath = _interopRequireDefault(__webpack_require__(/*! ../core/buildFullPath */ 48));
-var _settle = _interopRequireDefault(__webpack_require__(/*! ../core/settle */ 51));
-var _utils = __webpack_require__(/*! ../utils */ 47);
+var _buildURL = _interopRequireDefault(__webpack_require__(/*! ../helpers/buildURL */ 57));
+var _buildFullPath = _interopRequireDefault(__webpack_require__(/*! ../core/buildFullPath */ 59));
+var _settle = _interopRequireDefault(__webpack_require__(/*! ../core/settle */ 62));
+var _utils = __webpack_require__(/*! ../utils */ 58);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 /**
@@ -10622,7 +18078,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 46 */
+/* 57 */
 /*!*******************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/helpers/buildURL.js ***!
   \*******************************************************************************************************/
@@ -10637,7 +18093,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = buildURL;
-var utils = _interopRequireWildcard(__webpack_require__(/*! ../utils */ 47));
+var utils = _interopRequireWildcard(__webpack_require__(/*! ../utils */ 58));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function encode(val) {
@@ -10692,7 +18148,7 @@ function buildURL(url, params) {
 }
 
 /***/ }),
-/* 47 */
+/* 58 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/utils.js ***!
   \********************************************************************************************/
@@ -10845,7 +18301,7 @@ function isUndefined(val) {
 }
 
 /***/ }),
-/* 48 */
+/* 59 */
 /*!*********************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/core/buildFullPath.js ***!
   \*********************************************************************************************************/
@@ -10860,8 +18316,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = buildFullPath;
-var _isAbsoluteURL = _interopRequireDefault(__webpack_require__(/*! ../helpers/isAbsoluteURL */ 49));
-var _combineURLs = _interopRequireDefault(__webpack_require__(/*! ../helpers/combineURLs */ 50));
+var _isAbsoluteURL = _interopRequireDefault(__webpack_require__(/*! ../helpers/isAbsoluteURL */ 60));
+var _combineURLs = _interopRequireDefault(__webpack_require__(/*! ../helpers/combineURLs */ 61));
 /**
  * Creates a new URL by combining the baseURL with the requestedURL,
  * only when the requestedURL is not already an absolute URL.
@@ -10879,7 +18335,7 @@ function buildFullPath(baseURL, requestedURL) {
 }
 
 /***/ }),
-/* 49 */
+/* 60 */
 /*!************************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/helpers/isAbsoluteURL.js ***!
   \************************************************************************************************************/
@@ -10907,7 +18363,7 @@ function isAbsoluteURL(url) {
 }
 
 /***/ }),
-/* 50 */
+/* 61 */
 /*!**********************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/helpers/combineURLs.js ***!
   \**********************************************************************************************************/
@@ -10933,7 +18389,7 @@ function combineURLs(baseURL, relativeURL) {
 }
 
 /***/ }),
-/* 51 */
+/* 62 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/core/settle.js ***!
   \**************************************************************************************************/
@@ -10965,7 +18421,7 @@ function settle(resolve, reject, response) {
 }
 
 /***/ }),
-/* 52 */
+/* 63 */
 /*!**************************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/core/InterceptorManager.js ***!
   \**************************************************************************************************************/
@@ -11029,7 +18485,7 @@ var _default = InterceptorManager;
 exports.default = _default;
 
 /***/ }),
-/* 53 */
+/* 64 */
 /*!*******************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/core/mergeConfig.js ***!
   \*******************************************************************************************************/
@@ -11045,7 +18501,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _utils = __webpack_require__(/*! ../utils */ 47);
+var _utils = __webpack_require__(/*! ../utils */ 58);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 /**
@@ -11105,7 +18561,7 @@ var _default = function _default(globalsConfig) {
 exports.default = _default;
 
 /***/ }),
-/* 54 */
+/* 65 */
 /*!****************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/core/defaults.js ***!
   \****************************************************************************************************/
@@ -11137,7 +18593,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 55 */
+/* 66 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/luch-request/utils/clone.js ***!
   \**************************************************************************************************/
@@ -11386,10 +18842,10 @@ var clone = function () {
 }();
 var _default = clone;
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../HBuilderX/plugins/uniapp-cli/node_modules/buffer/index.js */ 56).Buffer))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../HBuilderX/plugins/uniapp-cli/node_modules/buffer/index.js */ 67).Buffer))
 
 /***/ }),
-/* 56 */
+/* 67 */
 /*!**************************************!*\
   !*** ./node_modules/buffer/index.js ***!
   \**************************************/
@@ -11407,9 +18863,9 @@ exports.default = _default;
 
 
 
-var base64 = __webpack_require__(/*! base64-js */ 57)
-var ieee754 = __webpack_require__(/*! ieee754 */ 58)
-var isArray = __webpack_require__(/*! isarray */ 59)
+var base64 = __webpack_require__(/*! base64-js */ 68)
+var ieee754 = __webpack_require__(/*! ieee754 */ 69)
+var isArray = __webpack_require__(/*! isarray */ 70)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -13190,7 +20646,7 @@ function isnan (val) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ 3)))
 
 /***/ }),
-/* 57 */
+/* 68 */
 /*!*****************************************!*\
   !*** ./node_modules/base64-js/index.js ***!
   \*****************************************/
@@ -13351,7 +20807,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 58 */
+/* 69 */
 /*!***************************************!*\
   !*** ./node_modules/ieee754/index.js ***!
   \***************************************/
@@ -13446,7 +20902,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 59 */
+/* 70 */
 /*!***************************************!*\
   !*** ./node_modules/isarray/index.js ***!
   \***************************************/
@@ -13461,7 +20917,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 60 */
+/* 71 */
 /*!************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/util/route.js ***!
   \************************************************************************************/
@@ -13476,8 +20932,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 61));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 63));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 30));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 32));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
 /**
@@ -13649,381 +21105,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 61 */
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// TODO(Babel 8): Remove this file.
-
-var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 62)();
-module.exports = runtime;
-
-/***/ }),
-/* 62 */
-/*!*******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
-function _regeneratorRuntime() {
-  "use strict";
-
-  /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
-  module.exports = _regeneratorRuntime = function _regeneratorRuntime() {
-    return exports;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
-  var exports = {},
-    Op = Object.prototype,
-    hasOwn = Op.hasOwnProperty,
-    defineProperty = Object.defineProperty || function (obj, key, desc) {
-      obj[key] = desc.value;
-    },
-    $Symbol = "function" == typeof Symbol ? Symbol : {},
-    iteratorSymbol = $Symbol.iterator || "@@iterator",
-    asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator",
-    toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-  function define(obj, key, value) {
-    return Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: !0,
-      configurable: !0,
-      writable: !0
-    }), obj[key];
-  }
-  try {
-    define({}, "");
-  } catch (err) {
-    define = function define(obj, key, value) {
-      return obj[key] = value;
-    };
-  }
-  function wrap(innerFn, outerFn, self, tryLocsList) {
-    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator,
-      generator = Object.create(protoGenerator.prototype),
-      context = new Context(tryLocsList || []);
-    return defineProperty(generator, "_invoke", {
-      value: makeInvokeMethod(innerFn, self, context)
-    }), generator;
-  }
-  function tryCatch(fn, obj, arg) {
-    try {
-      return {
-        type: "normal",
-        arg: fn.call(obj, arg)
-      };
-    } catch (err) {
-      return {
-        type: "throw",
-        arg: err
-      };
-    }
-  }
-  exports.wrap = wrap;
-  var ContinueSentinel = {};
-  function Generator() {}
-  function GeneratorFunction() {}
-  function GeneratorFunctionPrototype() {}
-  var IteratorPrototype = {};
-  define(IteratorPrototype, iteratorSymbol, function () {
-    return this;
-  });
-  var getProto = Object.getPrototypeOf,
-    NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-  NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype);
-  var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
-  function defineIteratorMethods(prototype) {
-    ["next", "throw", "return"].forEach(function (method) {
-      define(prototype, method, function (arg) {
-        return this._invoke(method, arg);
-      });
-    });
-  }
-  function AsyncIterator(generator, PromiseImpl) {
-    function invoke(method, arg, resolve, reject) {
-      var record = tryCatch(generator[method], generator, arg);
-      if ("throw" !== record.type) {
-        var result = record.arg,
-          value = result.value;
-        return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) {
-          invoke("next", value, resolve, reject);
-        }, function (err) {
-          invoke("throw", err, resolve, reject);
-        }) : PromiseImpl.resolve(value).then(function (unwrapped) {
-          result.value = unwrapped, resolve(result);
-        }, function (error) {
-          return invoke("throw", error, resolve, reject);
-        });
-      }
-      reject(record.arg);
-    }
-    var previousPromise;
-    defineProperty(this, "_invoke", {
-      value: function value(method, arg) {
-        function callInvokeWithMethodAndArg() {
-          return new PromiseImpl(function (resolve, reject) {
-            invoke(method, arg, resolve, reject);
-          });
-        }
-        return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
-      }
-    });
-  }
-  function makeInvokeMethod(innerFn, self, context) {
-    var state = "suspendedStart";
-    return function (method, arg) {
-      if ("executing" === state) throw new Error("Generator is already running");
-      if ("completed" === state) {
-        if ("throw" === method) throw arg;
-        return doneResult();
-      }
-      for (context.method = method, context.arg = arg;;) {
-        var delegate = context.delegate;
-        if (delegate) {
-          var delegateResult = maybeInvokeDelegate(delegate, context);
-          if (delegateResult) {
-            if (delegateResult === ContinueSentinel) continue;
-            return delegateResult;
-          }
-        }
-        if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) {
-          if ("suspendedStart" === state) throw state = "completed", context.arg;
-          context.dispatchException(context.arg);
-        } else "return" === context.method && context.abrupt("return", context.arg);
-        state = "executing";
-        var record = tryCatch(innerFn, self, context);
-        if ("normal" === record.type) {
-          if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue;
-          return {
-            value: record.arg,
-            done: context.done
-          };
-        }
-        "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg);
-      }
-    };
-  }
-  function maybeInvokeDelegate(delegate, context) {
-    var methodName = context.method,
-      method = delegate.iterator[methodName];
-    if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel;
-    var record = tryCatch(method, delegate.iterator, context.arg);
-    if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel;
-    var info = record.arg;
-    return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel);
-  }
-  function pushTryEntry(locs) {
-    var entry = {
-      tryLoc: locs[0]
-    };
-    1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry);
-  }
-  function resetTryEntry(entry) {
-    var record = entry.completion || {};
-    record.type = "normal", delete record.arg, entry.completion = record;
-  }
-  function Context(tryLocsList) {
-    this.tryEntries = [{
-      tryLoc: "root"
-    }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0);
-  }
-  function values(iterable) {
-    if (iterable) {
-      var iteratorMethod = iterable[iteratorSymbol];
-      if (iteratorMethod) return iteratorMethod.call(iterable);
-      if ("function" == typeof iterable.next) return iterable;
-      if (!isNaN(iterable.length)) {
-        var i = -1,
-          next = function next() {
-            for (; ++i < iterable.length;) {
-              if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
-            }
-            return next.value = undefined, next.done = !0, next;
-          };
-        return next.next = next;
-      }
-    }
-    return {
-      next: doneResult
-    };
-  }
-  function doneResult() {
-    return {
-      value: undefined,
-      done: !0
-    };
-  }
-  return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", {
-    value: GeneratorFunctionPrototype,
-    configurable: !0
-  }), defineProperty(GeneratorFunctionPrototype, "constructor", {
-    value: GeneratorFunction,
-    configurable: !0
-  }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) {
-    var ctor = "function" == typeof genFun && genFun.constructor;
-    return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name));
-  }, exports.mark = function (genFun) {
-    return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun;
-  }, exports.awrap = function (arg) {
-    return {
-      __await: arg
-    };
-  }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
-    return this;
-  }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
-    void 0 === PromiseImpl && (PromiseImpl = Promise);
-    var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
-    return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) {
-      return result.done ? result.value : iter.next();
-    });
-  }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () {
-    return this;
-  }), define(Gp, "toString", function () {
-    return "[object Generator]";
-  }), exports.keys = function (val) {
-    var object = Object(val),
-      keys = [];
-    for (var key in object) {
-      keys.push(key);
-    }
-    return keys.reverse(), function next() {
-      for (; keys.length;) {
-        var key = keys.pop();
-        if (key in object) return next.value = key, next.done = !1, next;
-      }
-      return next.done = !0, next;
-    };
-  }, exports.values = values, Context.prototype = {
-    constructor: Context,
-    reset: function reset(skipTempReset) {
-      if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) {
-        "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined);
-      }
-    },
-    stop: function stop() {
-      this.done = !0;
-      var rootRecord = this.tryEntries[0].completion;
-      if ("throw" === rootRecord.type) throw rootRecord.arg;
-      return this.rval;
-    },
-    dispatchException: function dispatchException(exception) {
-      if (this.done) throw exception;
-      var context = this;
-      function handle(loc, caught) {
-        return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught;
-      }
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i],
-          record = entry.completion;
-        if ("root" === entry.tryLoc) return handle("end");
-        if (entry.tryLoc <= this.prev) {
-          var hasCatch = hasOwn.call(entry, "catchLoc"),
-            hasFinally = hasOwn.call(entry, "finallyLoc");
-          if (hasCatch && hasFinally) {
-            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
-            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
-          } else if (hasCatch) {
-            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
-          } else {
-            if (!hasFinally) throw new Error("try statement without catch or finally");
-            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
-          }
-        }
-      }
-    },
-    abrupt: function abrupt(type, arg) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
-          var finallyEntry = entry;
-          break;
-        }
-      }
-      finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null);
-      var record = finallyEntry ? finallyEntry.completion : {};
-      return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record);
-    },
-    complete: function complete(record, afterLoc) {
-      if ("throw" === record.type) throw record.arg;
-      return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel;
-    },
-    finish: function finish(finallyLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel;
-      }
-    },
-    "catch": function _catch(tryLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc === tryLoc) {
-          var record = entry.completion;
-          if ("throw" === record.type) {
-            var thrown = record.arg;
-            resetTryEntry(entry);
-          }
-          return thrown;
-        }
-      }
-      throw new Error("illegal catch attempt");
-    },
-    delegateYield: function delegateYield(iterable, resultName, nextLoc) {
-      return this.delegate = {
-        iterator: values(iterable),
-        resultName: resultName,
-        nextLoc: nextLoc
-      }, "next" === this.method && (this.arg = undefined), ContinueSentinel;
-    }
-  }, exports;
-}
-module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 63 */
-/*!*****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-      args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-      _next(undefined);
-    });
-  };
-}
-module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 64 */
+/* 72 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/function/colorGradient.js ***!
   \************************************************************************************************/
@@ -14178,7 +21260,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 65 */
+/* 73 */
 /*!***************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/function/test.js ***!
   \***************************************************************************************/
@@ -14483,7 +21565,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 66 */
+/* 74 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/function/debounce.js ***!
   \*******************************************************************************************/
@@ -14530,7 +21612,7 @@ var _default = debounce;
 exports.default = _default;
 
 /***/ }),
-/* 67 */
+/* 75 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/function/throttle.js ***!
   \*******************************************************************************************/
@@ -14579,7 +21661,7 @@ var _default = throttle;
 exports.default = _default;
 
 /***/ }),
-/* 68 */
+/* 76 */
 /*!****************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/function/index.js ***!
   \****************************************************************************************/
@@ -14596,8 +21678,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
-var _test = _interopRequireDefault(__webpack_require__(/*! ./test.js */ 65));
-var _digit = __webpack_require__(/*! ./digit.js */ 69);
+var _test = _interopRequireDefault(__webpack_require__(/*! ./test.js */ 73));
+var _digit = __webpack_require__(/*! ./digit.js */ 77);
 /**
  * @description 如果value小于min，取min；如果value大于max，取max
  * @param {number} min
@@ -15380,7 +22462,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 69 */
+/* 77 */
 /*!****************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/function/digit.js ***!
   \****************************************************************************************/
@@ -15401,7 +22483,7 @@ exports.minus = minus;
 exports.plus = plus;
 exports.round = round;
 exports.times = times;
-var _toArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toArray */ 70));
+var _toArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toArray */ 78));
 var _boundaryCheckingState = true; // 是否进行越界检查的全局开关
 
 /**
@@ -15582,7 +22664,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 70 */
+/* 78 */
 /*!********************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/toArray.js ***!
   \********************************************************/
@@ -15599,7 +22681,7 @@ function _toArray(arr) {
 module.exports = _toArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 71 */
+/* 79 */
 /*!***************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/config.js ***!
   \***************************************************************************************/
@@ -15643,7 +22725,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 72 */
+/* 80 */
 /*!**************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props.js ***!
   \**************************************************************************************/
@@ -15659,95 +22741,95 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _config = _interopRequireDefault(__webpack_require__(/*! ./config */ 71));
-var _actionSheet = _interopRequireDefault(__webpack_require__(/*! ./props/actionSheet.js */ 73));
-var _album = _interopRequireDefault(__webpack_require__(/*! ./props/album.js */ 74));
-var _alert = _interopRequireDefault(__webpack_require__(/*! ./props/alert.js */ 75));
-var _avatar = _interopRequireDefault(__webpack_require__(/*! ./props/avatar */ 76));
-var _avatarGroup = _interopRequireDefault(__webpack_require__(/*! ./props/avatarGroup */ 77));
-var _backtop = _interopRequireDefault(__webpack_require__(/*! ./props/backtop */ 78));
-var _badge = _interopRequireDefault(__webpack_require__(/*! ./props/badge */ 79));
-var _button = _interopRequireDefault(__webpack_require__(/*! ./props/button */ 80));
-var _calendar = _interopRequireDefault(__webpack_require__(/*! ./props/calendar */ 81));
-var _carKeyboard = _interopRequireDefault(__webpack_require__(/*! ./props/carKeyboard */ 82));
-var _cell = _interopRequireDefault(__webpack_require__(/*! ./props/cell */ 83));
-var _cellGroup = _interopRequireDefault(__webpack_require__(/*! ./props/cellGroup */ 84));
-var _checkbox = _interopRequireDefault(__webpack_require__(/*! ./props/checkbox */ 85));
-var _checkboxGroup = _interopRequireDefault(__webpack_require__(/*! ./props/checkboxGroup */ 86));
-var _circleProgress = _interopRequireDefault(__webpack_require__(/*! ./props/circleProgress */ 87));
-var _code = _interopRequireDefault(__webpack_require__(/*! ./props/code */ 88));
-var _codeInput = _interopRequireDefault(__webpack_require__(/*! ./props/codeInput */ 89));
-var _col = _interopRequireDefault(__webpack_require__(/*! ./props/col */ 90));
-var _collapse = _interopRequireDefault(__webpack_require__(/*! ./props/collapse */ 91));
-var _collapseItem = _interopRequireDefault(__webpack_require__(/*! ./props/collapseItem */ 92));
-var _columnNotice = _interopRequireDefault(__webpack_require__(/*! ./props/columnNotice */ 93));
-var _countDown = _interopRequireDefault(__webpack_require__(/*! ./props/countDown */ 94));
-var _countTo = _interopRequireDefault(__webpack_require__(/*! ./props/countTo */ 95));
-var _datetimePicker = _interopRequireDefault(__webpack_require__(/*! ./props/datetimePicker */ 96));
-var _divider = _interopRequireDefault(__webpack_require__(/*! ./props/divider */ 97));
-var _empty = _interopRequireDefault(__webpack_require__(/*! ./props/empty */ 98));
-var _form = _interopRequireDefault(__webpack_require__(/*! ./props/form */ 99));
-var _formItem = _interopRequireDefault(__webpack_require__(/*! ./props/formItem */ 100));
-var _gap = _interopRequireDefault(__webpack_require__(/*! ./props/gap */ 101));
-var _grid = _interopRequireDefault(__webpack_require__(/*! ./props/grid */ 102));
-var _gridItem = _interopRequireDefault(__webpack_require__(/*! ./props/gridItem */ 103));
-var _icon = _interopRequireDefault(__webpack_require__(/*! ./props/icon */ 104));
-var _image = _interopRequireDefault(__webpack_require__(/*! ./props/image */ 105));
-var _indexAnchor = _interopRequireDefault(__webpack_require__(/*! ./props/indexAnchor */ 106));
-var _indexList = _interopRequireDefault(__webpack_require__(/*! ./props/indexList */ 107));
-var _input = _interopRequireDefault(__webpack_require__(/*! ./props/input */ 108));
-var _keyboard = _interopRequireDefault(__webpack_require__(/*! ./props/keyboard */ 109));
-var _line = _interopRequireDefault(__webpack_require__(/*! ./props/line */ 110));
-var _lineProgress = _interopRequireDefault(__webpack_require__(/*! ./props/lineProgress */ 111));
-var _link = _interopRequireDefault(__webpack_require__(/*! ./props/link */ 112));
-var _list = _interopRequireDefault(__webpack_require__(/*! ./props/list */ 113));
-var _listItem = _interopRequireDefault(__webpack_require__(/*! ./props/listItem */ 114));
-var _loadingIcon = _interopRequireDefault(__webpack_require__(/*! ./props/loadingIcon */ 115));
-var _loadingPage = _interopRequireDefault(__webpack_require__(/*! ./props/loadingPage */ 116));
-var _loadmore = _interopRequireDefault(__webpack_require__(/*! ./props/loadmore */ 117));
-var _modal = _interopRequireDefault(__webpack_require__(/*! ./props/modal */ 118));
-var _navbar = _interopRequireDefault(__webpack_require__(/*! ./props/navbar */ 119));
-var _noNetwork = _interopRequireDefault(__webpack_require__(/*! ./props/noNetwork */ 121));
-var _noticeBar = _interopRequireDefault(__webpack_require__(/*! ./props/noticeBar */ 122));
-var _notify = _interopRequireDefault(__webpack_require__(/*! ./props/notify */ 123));
-var _numberBox = _interopRequireDefault(__webpack_require__(/*! ./props/numberBox */ 124));
-var _numberKeyboard = _interopRequireDefault(__webpack_require__(/*! ./props/numberKeyboard */ 125));
-var _overlay = _interopRequireDefault(__webpack_require__(/*! ./props/overlay */ 126));
-var _parse = _interopRequireDefault(__webpack_require__(/*! ./props/parse */ 127));
-var _picker = _interopRequireDefault(__webpack_require__(/*! ./props/picker */ 128));
-var _popup = _interopRequireDefault(__webpack_require__(/*! ./props/popup */ 129));
-var _radio = _interopRequireDefault(__webpack_require__(/*! ./props/radio */ 130));
-var _radioGroup = _interopRequireDefault(__webpack_require__(/*! ./props/radioGroup */ 131));
-var _rate = _interopRequireDefault(__webpack_require__(/*! ./props/rate */ 132));
-var _readMore = _interopRequireDefault(__webpack_require__(/*! ./props/readMore */ 133));
-var _row = _interopRequireDefault(__webpack_require__(/*! ./props/row */ 134));
-var _rowNotice = _interopRequireDefault(__webpack_require__(/*! ./props/rowNotice */ 135));
-var _scrollList = _interopRequireDefault(__webpack_require__(/*! ./props/scrollList */ 136));
-var _search = _interopRequireDefault(__webpack_require__(/*! ./props/search */ 137));
-var _section = _interopRequireDefault(__webpack_require__(/*! ./props/section */ 138));
-var _skeleton = _interopRequireDefault(__webpack_require__(/*! ./props/skeleton */ 139));
-var _slider = _interopRequireDefault(__webpack_require__(/*! ./props/slider */ 140));
-var _statusBar = _interopRequireDefault(__webpack_require__(/*! ./props/statusBar */ 141));
-var _steps = _interopRequireDefault(__webpack_require__(/*! ./props/steps */ 142));
-var _stepsItem = _interopRequireDefault(__webpack_require__(/*! ./props/stepsItem */ 143));
-var _sticky = _interopRequireDefault(__webpack_require__(/*! ./props/sticky */ 144));
-var _subsection = _interopRequireDefault(__webpack_require__(/*! ./props/subsection */ 145));
-var _swipeAction = _interopRequireDefault(__webpack_require__(/*! ./props/swipeAction */ 146));
-var _swipeActionItem = _interopRequireDefault(__webpack_require__(/*! ./props/swipeActionItem */ 147));
-var _swiper = _interopRequireDefault(__webpack_require__(/*! ./props/swiper */ 148));
-var _swipterIndicator = _interopRequireDefault(__webpack_require__(/*! ./props/swipterIndicator */ 149));
-var _switch2 = _interopRequireDefault(__webpack_require__(/*! ./props/switch */ 150));
-var _tabbar = _interopRequireDefault(__webpack_require__(/*! ./props/tabbar */ 151));
-var _tabbarItem = _interopRequireDefault(__webpack_require__(/*! ./props/tabbarItem */ 152));
-var _tabs = _interopRequireDefault(__webpack_require__(/*! ./props/tabs */ 153));
-var _tag = _interopRequireDefault(__webpack_require__(/*! ./props/tag */ 154));
-var _text = _interopRequireDefault(__webpack_require__(/*! ./props/text */ 155));
-var _textarea = _interopRequireDefault(__webpack_require__(/*! ./props/textarea */ 156));
-var _toast = _interopRequireDefault(__webpack_require__(/*! ./props/toast */ 157));
-var _toolbar = _interopRequireDefault(__webpack_require__(/*! ./props/toolbar */ 158));
-var _tooltip = _interopRequireDefault(__webpack_require__(/*! ./props/tooltip */ 159));
-var _transition = _interopRequireDefault(__webpack_require__(/*! ./props/transition */ 160));
-var _upload = _interopRequireDefault(__webpack_require__(/*! ./props/upload */ 161));
+var _config = _interopRequireDefault(__webpack_require__(/*! ./config */ 79));
+var _actionSheet = _interopRequireDefault(__webpack_require__(/*! ./props/actionSheet.js */ 81));
+var _album = _interopRequireDefault(__webpack_require__(/*! ./props/album.js */ 82));
+var _alert = _interopRequireDefault(__webpack_require__(/*! ./props/alert.js */ 83));
+var _avatar = _interopRequireDefault(__webpack_require__(/*! ./props/avatar */ 84));
+var _avatarGroup = _interopRequireDefault(__webpack_require__(/*! ./props/avatarGroup */ 85));
+var _backtop = _interopRequireDefault(__webpack_require__(/*! ./props/backtop */ 86));
+var _badge = _interopRequireDefault(__webpack_require__(/*! ./props/badge */ 87));
+var _button = _interopRequireDefault(__webpack_require__(/*! ./props/button */ 88));
+var _calendar = _interopRequireDefault(__webpack_require__(/*! ./props/calendar */ 89));
+var _carKeyboard = _interopRequireDefault(__webpack_require__(/*! ./props/carKeyboard */ 90));
+var _cell = _interopRequireDefault(__webpack_require__(/*! ./props/cell */ 91));
+var _cellGroup = _interopRequireDefault(__webpack_require__(/*! ./props/cellGroup */ 92));
+var _checkbox = _interopRequireDefault(__webpack_require__(/*! ./props/checkbox */ 93));
+var _checkboxGroup = _interopRequireDefault(__webpack_require__(/*! ./props/checkboxGroup */ 94));
+var _circleProgress = _interopRequireDefault(__webpack_require__(/*! ./props/circleProgress */ 95));
+var _code = _interopRequireDefault(__webpack_require__(/*! ./props/code */ 96));
+var _codeInput = _interopRequireDefault(__webpack_require__(/*! ./props/codeInput */ 97));
+var _col = _interopRequireDefault(__webpack_require__(/*! ./props/col */ 98));
+var _collapse = _interopRequireDefault(__webpack_require__(/*! ./props/collapse */ 99));
+var _collapseItem = _interopRequireDefault(__webpack_require__(/*! ./props/collapseItem */ 100));
+var _columnNotice = _interopRequireDefault(__webpack_require__(/*! ./props/columnNotice */ 101));
+var _countDown = _interopRequireDefault(__webpack_require__(/*! ./props/countDown */ 102));
+var _countTo = _interopRequireDefault(__webpack_require__(/*! ./props/countTo */ 103));
+var _datetimePicker = _interopRequireDefault(__webpack_require__(/*! ./props/datetimePicker */ 104));
+var _divider = _interopRequireDefault(__webpack_require__(/*! ./props/divider */ 105));
+var _empty = _interopRequireDefault(__webpack_require__(/*! ./props/empty */ 106));
+var _form = _interopRequireDefault(__webpack_require__(/*! ./props/form */ 107));
+var _formItem = _interopRequireDefault(__webpack_require__(/*! ./props/formItem */ 108));
+var _gap = _interopRequireDefault(__webpack_require__(/*! ./props/gap */ 109));
+var _grid = _interopRequireDefault(__webpack_require__(/*! ./props/grid */ 110));
+var _gridItem = _interopRequireDefault(__webpack_require__(/*! ./props/gridItem */ 111));
+var _icon = _interopRequireDefault(__webpack_require__(/*! ./props/icon */ 112));
+var _image = _interopRequireDefault(__webpack_require__(/*! ./props/image */ 113));
+var _indexAnchor = _interopRequireDefault(__webpack_require__(/*! ./props/indexAnchor */ 114));
+var _indexList = _interopRequireDefault(__webpack_require__(/*! ./props/indexList */ 115));
+var _input = _interopRequireDefault(__webpack_require__(/*! ./props/input */ 116));
+var _keyboard = _interopRequireDefault(__webpack_require__(/*! ./props/keyboard */ 117));
+var _line = _interopRequireDefault(__webpack_require__(/*! ./props/line */ 118));
+var _lineProgress = _interopRequireDefault(__webpack_require__(/*! ./props/lineProgress */ 119));
+var _link = _interopRequireDefault(__webpack_require__(/*! ./props/link */ 120));
+var _list = _interopRequireDefault(__webpack_require__(/*! ./props/list */ 43));
+var _listItem = _interopRequireDefault(__webpack_require__(/*! ./props/listItem */ 121));
+var _loadingIcon = _interopRequireDefault(__webpack_require__(/*! ./props/loadingIcon */ 122));
+var _loadingPage = _interopRequireDefault(__webpack_require__(/*! ./props/loadingPage */ 123));
+var _loadmore = _interopRequireDefault(__webpack_require__(/*! ./props/loadmore */ 124));
+var _modal = _interopRequireDefault(__webpack_require__(/*! ./props/modal */ 125));
+var _navbar = _interopRequireDefault(__webpack_require__(/*! ./props/navbar */ 126));
+var _noNetwork = _interopRequireDefault(__webpack_require__(/*! ./props/noNetwork */ 128));
+var _noticeBar = _interopRequireDefault(__webpack_require__(/*! ./props/noticeBar */ 129));
+var _notify = _interopRequireDefault(__webpack_require__(/*! ./props/notify */ 130));
+var _numberBox = _interopRequireDefault(__webpack_require__(/*! ./props/numberBox */ 131));
+var _numberKeyboard = _interopRequireDefault(__webpack_require__(/*! ./props/numberKeyboard */ 132));
+var _overlay = _interopRequireDefault(__webpack_require__(/*! ./props/overlay */ 133));
+var _parse = _interopRequireDefault(__webpack_require__(/*! ./props/parse */ 134));
+var _picker = _interopRequireDefault(__webpack_require__(/*! ./props/picker */ 135));
+var _popup = _interopRequireDefault(__webpack_require__(/*! ./props/popup */ 136));
+var _radio = _interopRequireDefault(__webpack_require__(/*! ./props/radio */ 137));
+var _radioGroup = _interopRequireDefault(__webpack_require__(/*! ./props/radioGroup */ 138));
+var _rate = _interopRequireDefault(__webpack_require__(/*! ./props/rate */ 139));
+var _readMore = _interopRequireDefault(__webpack_require__(/*! ./props/readMore */ 140));
+var _row = _interopRequireDefault(__webpack_require__(/*! ./props/row */ 141));
+var _rowNotice = _interopRequireDefault(__webpack_require__(/*! ./props/rowNotice */ 142));
+var _scrollList = _interopRequireDefault(__webpack_require__(/*! ./props/scrollList */ 143));
+var _search = _interopRequireDefault(__webpack_require__(/*! ./props/search */ 144));
+var _section = _interopRequireDefault(__webpack_require__(/*! ./props/section */ 145));
+var _skeleton = _interopRequireDefault(__webpack_require__(/*! ./props/skeleton */ 146));
+var _slider = _interopRequireDefault(__webpack_require__(/*! ./props/slider */ 147));
+var _statusBar = _interopRequireDefault(__webpack_require__(/*! ./props/statusBar */ 148));
+var _steps = _interopRequireDefault(__webpack_require__(/*! ./props/steps */ 149));
+var _stepsItem = _interopRequireDefault(__webpack_require__(/*! ./props/stepsItem */ 150));
+var _sticky = _interopRequireDefault(__webpack_require__(/*! ./props/sticky */ 151));
+var _subsection = _interopRequireDefault(__webpack_require__(/*! ./props/subsection */ 152));
+var _swipeAction = _interopRequireDefault(__webpack_require__(/*! ./props/swipeAction */ 153));
+var _swipeActionItem = _interopRequireDefault(__webpack_require__(/*! ./props/swipeActionItem */ 154));
+var _swiper = _interopRequireDefault(__webpack_require__(/*! ./props/swiper */ 155));
+var _swipterIndicator = _interopRequireDefault(__webpack_require__(/*! ./props/swipterIndicator */ 156));
+var _switch2 = _interopRequireDefault(__webpack_require__(/*! ./props/switch */ 157));
+var _tabbar = _interopRequireDefault(__webpack_require__(/*! ./props/tabbar */ 158));
+var _tabbarItem = _interopRequireDefault(__webpack_require__(/*! ./props/tabbarItem */ 159));
+var _tabs = _interopRequireDefault(__webpack_require__(/*! ./props/tabs */ 160));
+var _tag = _interopRequireDefault(__webpack_require__(/*! ./props/tag */ 161));
+var _text = _interopRequireDefault(__webpack_require__(/*! ./props/text */ 162));
+var _textarea = _interopRequireDefault(__webpack_require__(/*! ./props/textarea */ 163));
+var _toast = _interopRequireDefault(__webpack_require__(/*! ./props/toast */ 164));
+var _toolbar = _interopRequireDefault(__webpack_require__(/*! ./props/toolbar */ 165));
+var _tooltip = _interopRequireDefault(__webpack_require__(/*! ./props/tooltip */ 166));
+var _transition = _interopRequireDefault(__webpack_require__(/*! ./props/transition */ 167));
+var _upload = _interopRequireDefault(__webpack_require__(/*! ./props/upload */ 168));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var color = _config.default.color;
@@ -15755,7 +22837,7 @@ var _default = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSp
 exports.default = _default;
 
 /***/ }),
-/* 73 */
+/* 81 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/actionSheet.js ***!
   \**************************************************************************************************/
@@ -15799,7 +22881,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 74 */
+/* 82 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/album.js ***!
   \********************************************************************************************/
@@ -15843,7 +22925,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 75 */
+/* 83 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/alert.js ***!
   \********************************************************************************************/
@@ -15882,7 +22964,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 76 */
+/* 84 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/avatar.js ***!
   \*********************************************************************************************/
@@ -15927,7 +23009,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 77 */
+/* 85 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/avatarGroup.js ***!
   \**************************************************************************************************/
@@ -15969,7 +23051,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 78 */
+/* 86 */
 /*!**********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/backtop.js ***!
   \**********************************************************************************************/
@@ -16015,7 +23097,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 79 */
+/* 87 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/badge.js ***!
   \********************************************************************************************/
@@ -16061,7 +23143,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 80 */
+/* 88 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/button.js ***!
   \*********************************************************************************************/
@@ -16120,7 +23202,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 81 */
+/* 89 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/calendar.js ***!
   \***********************************************************************************************/
@@ -16183,7 +23265,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 82 */
+/* 90 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/carKeyboard.js ***!
   \**************************************************************************************************/
@@ -16215,7 +23297,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 83 */
+/* 91 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/cell.js ***!
   \*******************************************************************************************/
@@ -16267,7 +23349,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 84 */
+/* 92 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/cellGroup.js ***!
   \************************************************************************************************/
@@ -16301,7 +23383,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 85 */
+/* 93 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/checkbox.js ***!
   \***********************************************************************************************/
@@ -16345,7 +23427,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 86 */
+/* 94 */
 /*!****************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/checkboxGroup.js ***!
   \****************************************************************************************************/
@@ -16393,7 +23475,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 87 */
+/* 95 */
 /*!*****************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/circleProgress.js ***!
   \*****************************************************************************************************/
@@ -16425,7 +23507,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 88 */
+/* 96 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/code.js ***!
   \*******************************************************************************************/
@@ -16462,7 +23544,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 89 */
+/* 97 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/codeInput.js ***!
   \************************************************************************************************/
@@ -16508,7 +23590,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 90 */
+/* 98 */
 /*!******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/col.js ***!
   \******************************************************************************************/
@@ -16544,7 +23626,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 91 */
+/* 99 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/collapse.js ***!
   \***********************************************************************************************/
@@ -16578,7 +23660,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 92 */
+/* 100 */
 /*!***************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/collapseItem.js ***!
   \***************************************************************************************************/
@@ -16620,7 +23702,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 93 */
+/* 101 */
 /*!***************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/columnNotice.js ***!
   \***************************************************************************************************/
@@ -16661,7 +23743,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 94 */
+/* 102 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/countDown.js ***!
   \************************************************************************************************/
@@ -16696,7 +23778,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 95 */
+/* 103 */
 /*!**********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/countTo.js ***!
   \**********************************************************************************************/
@@ -16738,7 +23820,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 96 */
+/* 104 */
 /*!*****************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/datetimePicker.js ***!
   \*****************************************************************************************************/
@@ -16793,7 +23875,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 97 */
+/* 105 */
 /*!**********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/divider.js ***!
   \**********************************************************************************************/
@@ -16832,7 +23914,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 98 */
+/* 106 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/empty.js ***!
   \********************************************************************************************/
@@ -16874,7 +23956,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 99 */
+/* 107 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/form.js ***!
   \*******************************************************************************************/
@@ -16919,7 +24001,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 100 */
+/* 108 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/formItem.js ***!
   \***********************************************************************************************/
@@ -16959,7 +24041,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 101 */
+/* 109 */
 /*!******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/gap.js ***!
   \******************************************************************************************/
@@ -16995,7 +24077,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 102 */
+/* 110 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/grid.js ***!
   \*******************************************************************************************/
@@ -17029,7 +24111,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 103 */
+/* 111 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/gridItem.js ***!
   \***********************************************************************************************/
@@ -17062,7 +24144,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 104 */
+/* 112 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/icon.js ***!
   \*******************************************************************************************/
@@ -17077,7 +24159,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 71));
+var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 79));
 /*
  * @Author       : LQ
  * @Description  :
@@ -17114,7 +24196,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 105 */
+/* 113 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/image.js ***!
   \********************************************************************************************/
@@ -17161,7 +24243,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 106 */
+/* 114 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/indexAnchor.js ***!
   \**************************************************************************************************/
@@ -17197,7 +24279,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 107 */
+/* 115 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/indexList.js ***!
   \************************************************************************************************/
@@ -17235,7 +24317,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 108 */
+/* 116 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/input.js ***!
   \********************************************************************************************/
@@ -17300,7 +24382,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 109 */
+/* 117 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/keyboard.js ***!
   \***********************************************************************************************/
@@ -17347,7 +24429,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 110 */
+/* 118 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/line.js ***!
   \*******************************************************************************************/
@@ -17384,7 +24466,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 111 */
+/* 119 */
 /*!***************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/lineProgress.js ***!
   \***************************************************************************************************/
@@ -17420,7 +24502,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 112 */
+/* 120 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/link.js ***!
   \*******************************************************************************************/
@@ -17435,7 +24517,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 71));
+var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 79));
 /*
  * @Author       : LQ
  * @Description  :
@@ -17462,52 +24544,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 113 */
-/*!*******************************************************************************************!*\
-  !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/list.js ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/*
- * @Author       : LQ
- * @Description  :
- * @version      : 1.0
- * @Date         : 2021-08-20 16:44:21
- * @LastAuthor   : LQ
- * @lastTime     : 2021-08-20 17:14:53
- * @FilePath     : /u-view2.0/uview-ui/libs/config/props/list.js
- */
-var _default = {
-  // list 组件
-  list: {
-    showScrollbar: false,
-    lowerThreshold: 50,
-    upperThreshold: 0,
-    scrollTop: 0,
-    offsetAccuracy: 10,
-    enableFlex: false,
-    pagingEnabled: false,
-    scrollable: true,
-    scrollIntoView: '',
-    scrollWithAnimation: false,
-    enableBackToTop: false,
-    height: 0,
-    width: 0,
-    preLoadScreen: 1
-  }
-};
-exports.default = _default;
-
-/***/ }),
-/* 114 */
+/* 121 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/listItem.js ***!
   \***********************************************************************************************/
@@ -17539,7 +24576,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 115 */
+/* 122 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/loadingIcon.js ***!
   \**************************************************************************************************/
@@ -17554,7 +24591,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 71));
+var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 79));
 /*
  * @Author       : LQ
  * @Description  :
@@ -17585,7 +24622,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 116 */
+/* 123 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/loadingPage.js ***!
   \**************************************************************************************************/
@@ -17625,7 +24662,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 117 */
+/* 124 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/loadmore.js ***!
   \***********************************************************************************************/
@@ -17674,7 +24711,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 118 */
+/* 125 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/modal.js ***!
   \********************************************************************************************/
@@ -17721,7 +24758,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 119 */
+/* 126 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/navbar.js ***!
   \*********************************************************************************************/
@@ -17736,7 +24773,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _color = _interopRequireDefault(__webpack_require__(/*! ../color */ 120));
+var _color = _interopRequireDefault(__webpack_require__(/*! ../color */ 127));
 /*
  * @Author       : LQ
  * @Description  :
@@ -17770,7 +24807,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 120 */
+/* 127 */
 /*!**************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/color.js ***!
   \**************************************************************************************/
@@ -17803,7 +24840,7 @@ var _default = color;
 exports.default = _default;
 
 /***/ }),
-/* 121 */
+/* 128 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/noNetwork.js ***!
   \************************************************************************************************/
@@ -17837,7 +24874,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 122 */
+/* 129 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/noticeBar.js ***!
   \************************************************************************************************/
@@ -17883,7 +24920,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 123 */
+/* 130 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/notify.js ***!
   \*********************************************************************************************/
@@ -17922,7 +24959,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 124 */
+/* 131 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/numberBox.js ***!
   \************************************************************************************************/
@@ -17974,7 +25011,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 125 */
+/* 132 */
 /*!*****************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/numberKeyboard.js ***!
   \*****************************************************************************************************/
@@ -18008,7 +25045,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 126 */
+/* 133 */
 /*!**********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/overlay.js ***!
   \**********************************************************************************************/
@@ -18043,7 +25080,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 127 */
+/* 134 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/parse.js ***!
   \********************************************************************************************/
@@ -18082,7 +25119,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 128 */
+/* 135 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/picker.js ***!
   \*********************************************************************************************/
@@ -18132,7 +25169,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 129 */
+/* 136 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/popup.js ***!
   \********************************************************************************************/
@@ -18178,7 +25215,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 130 */
+/* 137 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/radio.js ***!
   \********************************************************************************************/
@@ -18222,7 +25259,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 131 */
+/* 138 */
 /*!*************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/radioGroup.js ***!
   \*************************************************************************************************/
@@ -18269,7 +25306,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 132 */
+/* 139 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/rate.js ***!
   \*******************************************************************************************/
@@ -18312,7 +25349,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 133 */
+/* 140 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/readMore.js ***!
   \***********************************************************************************************/
@@ -18351,7 +25388,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 134 */
+/* 141 */
 /*!******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/row.js ***!
   \******************************************************************************************/
@@ -18385,7 +25422,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 135 */
+/* 142 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/rowNotice.js ***!
   \************************************************************************************************/
@@ -18423,7 +25460,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 136 */
+/* 143 */
 /*!*************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/scrollList.js ***!
   \*************************************************************************************************/
@@ -18460,7 +25497,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 137 */
+/* 144 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/search.js ***!
   \*********************************************************************************************/
@@ -18518,7 +25555,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 138 */
+/* 145 */
 /*!**********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/section.js ***!
   \**********************************************************************************************/
@@ -18559,7 +25596,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 139 */
+/* 146 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/skeleton.js ***!
   \***********************************************************************************************/
@@ -18601,7 +25638,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 140 */
+/* 147 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/slider.js ***!
   \*********************************************************************************************/
@@ -18643,7 +25680,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 141 */
+/* 148 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/statusBar.js ***!
   \************************************************************************************************/
@@ -18675,7 +25712,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 142 */
+/* 149 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/steps.js ***!
   \********************************************************************************************/
@@ -18713,7 +25750,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 143 */
+/* 150 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/stepsItem.js ***!
   \************************************************************************************************/
@@ -18748,7 +25785,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 144 */
+/* 151 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/sticky.js ***!
   \*********************************************************************************************/
@@ -18785,7 +25822,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 145 */
+/* 152 */
 /*!*************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/subsection.js ***!
   \*************************************************************************************************/
@@ -18825,7 +25862,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 146 */
+/* 153 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/swipeAction.js ***!
   \**************************************************************************************************/
@@ -18857,7 +25894,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 147 */
+/* 154 */
 /*!******************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/swipeActionItem.js ***!
   \******************************************************************************************************/
@@ -18895,7 +25932,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 148 */
+/* 155 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/swiper.js ***!
   \*********************************************************************************************/
@@ -18952,7 +25989,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 149 */
+/* 156 */
 /*!*******************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/swipterIndicator.js ***!
   \*******************************************************************************************************/
@@ -18988,7 +26025,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 150 */
+/* 157 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/switch.js ***!
   \*********************************************************************************************/
@@ -19029,7 +26066,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 151 */
+/* 158 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/tabbar.js ***!
   \*********************************************************************************************/
@@ -19068,7 +26105,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 152 */
+/* 159 */
 /*!*************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/tabbarItem.js ***!
   \*************************************************************************************************/
@@ -19105,7 +26142,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 153 */
+/* 160 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/tabs.js ***!
   \*******************************************************************************************/
@@ -19162,7 +26199,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 154 */
+/* 161 */
 /*!******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/tag.js ***!
   \******************************************************************************************/
@@ -19208,7 +26245,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 155 */
+/* 162 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/text.js ***!
   \*******************************************************************************************/
@@ -19264,7 +26301,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 156 */
+/* 163 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/textarea.js ***!
   \***********************************************************************************************/
@@ -19317,7 +26354,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 157 */
+/* 164 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/toast.js ***!
   \********************************************************************************************/
@@ -19363,7 +26400,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 158 */
+/* 165 */
 /*!**********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/toolbar.js ***!
   \**********************************************************************************************/
@@ -19400,7 +26437,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 159 */
+/* 166 */
 /*!**********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/tooltip.js ***!
   \**********************************************************************************************/
@@ -19444,7 +26481,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 160 */
+/* 167 */
 /*!*************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/transition.js ***!
   \*************************************************************************************************/
@@ -19479,7 +26516,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 161 */
+/* 168 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/props/upload.js ***!
   \*********************************************************************************************/
@@ -19538,7 +26575,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 162 */
+/* 169 */
 /*!***************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/config/zIndex.js ***!
   \***************************************************************************************/
@@ -19574,7 +26611,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 163 */
+/* 170 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/function/platform.js ***!
   \*******************************************************************************************/
@@ -19604,256 +26641,6 @@ var _default = platform;
 exports.default = _default;
 
 /***/ }),
-/* 164 */
-/*!****************************************************************!*\
-  !*** D:/webProject/mallproject/xiaofanshu/utils/sqliteUtil.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ 13);
-var sqliteUtil = {
-  dbName: 'xfsDB',
-  // 数据库名称
-  dbPath: '_doc/xfs.db',
-  // 数据库地址,推荐以下划线为开头   _doc/xxx.db
-  //id，user_id，avatar_url，user_name，last_message，last_time，unread_num，stranger
-  // 判断数据库是否打开
-  isOpen: function isOpen() {
-    // 数据库打开了就返回 true,否则返回 false
-    var open = plus.sqlite.isOpenDatabase({
-      name: this.dbName,
-      // 数据库名称
-      path: this.dbPath // 数据库地址
-    });
-
-    return open;
-  },
-  // 创建数据库 或 有该数据库就打开
-  openSqlite: function openSqlite() {
-    var _this = this;
-    return new Promise(function (resolve, reject) {
-      // 打开数据库
-      plus.sqlite.openDatabase({
-        name: _this.dbName,
-        path: _this.dbPath,
-        success: function success(e) {
-          resolve(e); // 成功回调
-        },
-        fail: function fail(e) {
-          reject(e); // 失败回调
-        }
-      });
-    });
-  },
-  // 关闭数据库
-  closeSqlite: function closeSqlite() {
-    var _this2 = this;
-    return new Promise(function (resolve, reject) {
-      plus.sqlite.closeDatabase({
-        name: _this2.dbName,
-        success: function success(e) {
-          resolve(e);
-        },
-        fail: function fail(e) {
-          reject(e);
-        }
-      });
-    });
-  },
-  // 数据库删表 sql:'DROP TABLE dbTable'
-  dropTable: function dropTable(dbTable) {
-    var _this3 = this;
-    console.log("DROP TABLE ".concat(dbTable));
-    return new Promise(function (resolve, reject) {
-      plus.sqlite.executeSql({
-        name: _this3.dbName,
-        sql: "DROP TABLE ".concat(dbTable),
-        success: function success(e) {
-          resolve(e);
-        },
-        fail: function fail(e) {
-          reject(e);
-        }
-      });
-    });
-  },
-  //-----------------------js对象方法，简化操作-------------
-  ///原生的sql操作
-  SqlExecute: function SqlExecute(sql) {
-    var _this4 = this;
-    console.log(sql);
-    return new Promise(function (resolve, reject) {
-      plus.sqlite.executeSql({
-        name: _this4.dbName,
-        sql: sql,
-        success: function success(e) {
-          // console.log(e)
-          resolve(e);
-        },
-        fail: function fail(e) {
-          console.log(e);
-          reject(e);
-        }
-      });
-    });
-  },
-  //执行原生的select语句
-  SqlSelect: function SqlSelect(sql) {
-    var _this5 = this;
-    console.log(sql);
-    return new Promise(function (resolve, reject) {
-      plus.sqlite.selectSql({
-        name: _this5.dbName,
-        sql: sql,
-        success: function success(e) {
-          console.log(e);
-          resolve(e);
-        },
-        fail: function fail(e) {
-          console.log(e);
-          reject(e);
-        }
-      });
-    });
-  },
-  //通过对象创建数据表,使用对象参数
-  JsCreateTable: function JsCreateTable(dbTable, data) {
-    data = Object.entries(data).map(function (item) {
-      return item[0] + ' ' + item[1];
-    }).join(',');
-    var sql = "CREATE TABLE IF NOT EXISTS ".concat(dbTable, "(\"id\" INTEGER PRIMARY KEY AUTOINCREMENT,").concat(data, ")");
-    return this.SqlExecute(sql);
-  },
-  //通过对象创建数据表,使用对象的数据类型
-  JsCreateTableType: function JsCreateTableType(dbTable, data) {
-    data = Object.entries(data).map(function (item) {
-      var typeName = '';
-      switch (item[1].constructor) {
-        case Number:
-          if (Math.floor(item[1]) == item[1]) {
-            typeName = 'INTEGER';
-          } else {
-            typeName = 'REAL';
-          }
-          break;
-        case String:
-          typeName = 'TEXT';
-          break;
-        case Boolean:
-          typeName = 'BOOLEAN';
-          break;
-        case Date:
-          typeName = 'TEXT';
-          break;
-      }
-      return item[0] + ' ' + typeName;
-    }).join(',');
-    var sql = "CREATE TABLE IF NOT EXISTS ".concat(dbTable, "(\"id\" INTEGER PRIMARY KEY AUTOINCREMENT,").concat(data, ")");
-    console.log(sql);
-    return this.SqlExecute(sql);
-  },
-  //通过对象插入数据
-  JsInsertTableData: function JsInsertTableData(dbTable, data) {
-    var condition = [];
-    var sqlValue = [];
-    Object.entries(data).forEach(function (item) {
-      condition.push("'".concat(item[0], "'"));
-      if (item[1] != undefined) {
-        if (item[1].constructor == String) {
-          sqlValue.push("'".concat(item[1], "'"));
-        } else if (item[1].constructor == Date) {
-          sqlValue.push("'".concat(item[1].format('yyyy-MM-dd hh:mm:ss'), "'"));
-        } else {
-          sqlValue.push(item[1]);
-        }
-      }
-    });
-    condition = condition.join(',');
-    sqlValue = sqlValue.join(',');
-    var sql = "INSERT INTO ".concat(dbTable, " (").concat(condition, ") VALUES(").concat(sqlValue, ")");
-    return this.SqlExecute(sql);
-  },
-  //通过对象选择数据
-  JsSelectTableData: function JsSelectTableData(dbTable, data) {
-    var sql = '';
-    var condition = [];
-    if (data == undefined || data == null || data == {}) {
-      sql = "SELECT * FROM ".concat(dbTable);
-    } else if (data.constructor == Number) {
-      sql = "SELECT * FROM ".concat(daTable, " where id = ").concat(data);
-    } else {
-      Object.entries(data).forEach(function (item) {
-        if (item[1] != undefined && item[0] != 'id') {
-          if (_typeof(item[1] == 'string')) {
-            condition.push(" ".concat(item[0], " = '").concat(item[1], "' "));
-          } else {
-            condition.push(" ".concat(item[0], " = ").concat(item[1], " "));
-          }
-        }
-      });
-      condition = condition.join('AND');
-      sql = "SELECT * FROM ".concat(dbTable, " WHERE ").concat(condition);
-    }
-    return this.SqlSelect(sql);
-  },
-  //通过对象获取
-  JsUpdate: function JsUpdate(dbTable, data) {
-    try {
-      var sql = '';
-      var condition = [];
-      Object.entries(data).forEach(function (item) {
-        if (item[1] != undefined && item[0] != 'id') {
-          if (_typeof(item[1] == 'string')) {
-            condition.push(" ".concat(item[0], " = '").concat(item[1], "' "));
-          } else {
-            condition.push(" ".concat(item[0], " = ").concat(item[1], " "));
-          }
-        }
-      });
-      condition = condition.join(',');
-      sql = "UPDATE ".concat(dbTable, " SET ").concat(condition, " where id = ").concat(data.id);
-      return this.SqlExecute(sql);
-    } catch (e) {
-      console.log(e);
-      //TODO handle the exception
-    }
-  },
-  JsDelete: function JsDelete(dbTable, data) {
-    var sql = '';
-    // debugger
-    var condition = [];
-    try {
-      if (data.constructor == Number) {
-        sql = "DELETE FROM ".concat(dbTable, " where id = ").concat(data);
-      } else {
-        Object.entries(data).forEach(function (item) {
-          if (item[1] != undefined && item[0] != 'id') {
-            if (_typeof(item[1] == 'string')) {
-              condition.push(" ".concat(item[0], " = '").concat(item[1], "' "));
-            } else {
-              condition.push(" ".concat(item[0], " = ").concat(item[1], " "));
-            }
-          }
-        });
-        condition = condition.join('AND');
-        sql = "Delete FROM ".concat(dbTable, " WHERE ").concat(condition);
-      }
-      return this.SqlExecute(sql);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-};
-module.exports = sqliteUtil;
-
-/***/ }),
-/* 165 */,
-/* 166 */,
-/* 167 */,
-/* 168 */,
-/* 169 */,
-/* 170 */,
 /* 171 */,
 /* 172 */,
 /* 173 */,
@@ -19890,7 +26677,13 @@ module.exports = sqliteUtil;
 /* 204 */,
 /* 205 */,
 /* 206 */,
-/* 207 */
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */
 /*!******************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/apis/third_service.js ***!
   \******************************************************************/
@@ -19904,7 +26697,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.sendResetPhoneSms = exports.sendRegisterPhoneSms = exports.sendBindPhoneSms = void 0;
-var _request = __webpack_require__(/*! ../utils/request.js */ 31);
+var _request = __webpack_require__(/*! ../utils/request.js */ 34);
 var sendBindPhoneSms = function sendBindPhoneSms() {
   var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return (0, _request.$request)({
@@ -19931,12 +26724,6 @@ var sendRegisterPhoneSms = function sendRegisterPhoneSms() {
 exports.sendRegisterPhoneSms = sendRegisterPhoneSms;
 
 /***/ }),
-/* 208 */,
-/* 209 */,
-/* 210 */,
-/* 211 */,
-/* 212 */,
-/* 213 */,
 /* 214 */,
 /* 215 */,
 /* 216 */,
@@ -19962,7 +26749,33 @@ exports.sendRegisterPhoneSms = sendRegisterPhoneSms;
 /* 236 */,
 /* 237 */,
 /* 238 */,
-/* 239 */
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */
 /*!****************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/mixin/openType.js ***!
   \****************************************************************************************/
@@ -20004,7 +26817,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 240 */
+/* 266 */
 /*!**************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/libs/mixin/button.js ***!
   \**************************************************************************************/
@@ -20034,7 +26847,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 241 */
+/* 267 */
 /*!****************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-action-sheet/props.js ***!
   \****************************************************************************************************/
@@ -20106,14 +26919,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 242 */,
-/* 243 */,
-/* 244 */,
-/* 245 */,
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */
 /*!**********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-button/props.js ***!
   \**********************************************************************************************/
@@ -20292,14 +27105,21 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 250 */,
-/* 251 */,
-/* 252 */,
-/* 253 */,
-/* 254 */,
-/* 255 */,
-/* 256 */,
-/* 257 */
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-badge/props.js ***!
   \*********************************************************************************************/
@@ -20389,14 +27209,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 258 */,
-/* 259 */,
-/* 260 */,
-/* 261 */,
-/* 262 */,
-/* 263 */,
-/* 264 */,
-/* 265 */
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-popup/props.js ***!
   \*********************************************************************************************/
@@ -20493,14 +27313,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 266 */,
-/* 267 */,
-/* 268 */,
-/* 269 */,
-/* 270 */,
-/* 271 */,
-/* 272 */,
-/* 273 */
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-textarea/props.js ***!
   \************************************************************************************************/
@@ -20637,12 +27457,12 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 274 */,
-/* 275 */,
-/* 276 */,
-/* 277 */,
-/* 278 */,
-/* 279 */
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-transition/props.js ***!
   \**************************************************************************************************/
@@ -20684,7 +27504,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 280 */
+/* 313 */
 /*!*******************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-transition/transition.js ***!
   \*******************************************************************************************************/
@@ -20699,9 +27519,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 61));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 63));
-var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 281));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 30));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 32));
+var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 314));
 // 定义一个一定时间后自动成功的promise，让调用nextTick方法处，进入下一个then方法
 var nextTick = function nextTick() {
   return new Promise(function (resolve) {
@@ -20793,7 +27613,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 281 */
+/* 314 */
 /*!*********************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-transition/nvue.ani-map.js ***!
   \*********************************************************************************************************/
@@ -20986,14 +27806,14 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */,
-/* 286 */,
-/* 287 */,
-/* 288 */,
-/* 289 */
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-icon/icons.js ***!
   \********************************************************************************************/
@@ -21224,7 +28044,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 290 */
+/* 323 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-icon/props.js ***!
   \********************************************************************************************/
@@ -21331,14 +28151,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */,
-/* 297 */,
-/* 298 */
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */
 /*!**********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-sticky/props.js ***!
   \**********************************************************************************************/
@@ -21390,14 +28210,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 299 */,
-/* 300 */,
-/* 301 */,
-/* 302 */,
-/* 303 */,
-/* 304 */,
-/* 305 */,
-/* 306 */
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-tabs/props.js ***!
   \********************************************************************************************/
@@ -21479,21 +28299,21 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */,
-/* 320 */,
-/* 321 */
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */
 /*!************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-loadmore/props.js ***!
   \************************************************************************************************/
@@ -21605,28 +28425,28 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 322 */,
-/* 323 */,
-/* 324 */,
-/* 325 */,
-/* 326 */,
-/* 327 */,
-/* 328 */,
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */,
-/* 333 */,
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */,
-/* 340 */,
-/* 341 */,
-/* 342 */,
-/* 343 */
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */
 /*!**********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-navbar/props.js ***!
   \**********************************************************************************************/
@@ -21728,14 +28548,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 344 */,
-/* 345 */,
-/* 346 */,
-/* 347 */,
-/* 348 */,
-/* 349 */,
-/* 350 */,
-/* 351 */
+/* 377 */,
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */
 /*!***************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-radio-group/props.js ***!
   \***************************************************************************************************/
@@ -21837,14 +28657,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 352 */,
-/* 353 */,
-/* 354 */,
-/* 355 */,
-/* 356 */,
-/* 357 */,
-/* 358 */,
-/* 359 */
+/* 385 */,
+/* 386 */,
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */,
+/* 392 */
 /*!*********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-radio/props.js ***!
   \*********************************************************************************************/
@@ -21926,14 +28746,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 360 */,
-/* 361 */,
-/* 362 */,
-/* 363 */,
-/* 364 */,
-/* 365 */,
-/* 366 */,
-/* 367 */
+/* 393 */,
+/* 394 */,
+/* 395 */,
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-divider/props.js ***!
   \***********************************************************************************************/
@@ -21995,14 +28815,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 368 */,
-/* 369 */,
-/* 370 */,
-/* 371 */,
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */
+/* 401 */,
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */
 /*!********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-cell/props.js ***!
   \********************************************************************************************/
@@ -22130,14 +28950,14 @@ exports.default = _default2;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 376 */,
-/* 377 */,
-/* 378 */,
-/* 379 */,
-/* 380 */,
-/* 381 */,
-/* 382 */,
-/* 383 */
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */
 /*!*************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/address-picker/province-city-county.json ***!
   \*************************************************************************************************/
@@ -22147,15 +28967,15 @@ exports.default = _default2;
 module.exports = JSON.parse("[{\"areaId\":1,\"areaType\":0,\"children\":[{\"areaId\":110000,\"areaType\":1,\"children\":[{\"areaId\":110101,\"areaType\":2,\"name\":\"东城区\",\"parentAreaId\":110000},{\"areaId\":110102,\"areaType\":2,\"name\":\"西城区\",\"parentAreaId\":110000},{\"areaId\":110105,\"areaType\":2,\"name\":\"朝阳区\",\"parentAreaId\":110000},{\"areaId\":110106,\"areaType\":2,\"name\":\"丰台区\",\"parentAreaId\":110000},{\"areaId\":110107,\"areaType\":2,\"name\":\"石景山区\",\"parentAreaId\":110000},{\"areaId\":110108,\"areaType\":2,\"name\":\"海淀区\",\"parentAreaId\":110000},{\"areaId\":110109,\"areaType\":2,\"name\":\"门头沟区\",\"parentAreaId\":110000},{\"areaId\":110111,\"areaType\":2,\"name\":\"房山区\",\"parentAreaId\":110000},{\"areaId\":110112,\"areaType\":2,\"name\":\"通州区\",\"parentAreaId\":110000},{\"areaId\":110113,\"areaType\":2,\"name\":\"顺义区\",\"parentAreaId\":110000},{\"areaId\":110114,\"areaType\":2,\"name\":\"昌平区\",\"parentAreaId\":110000},{\"areaId\":110115,\"areaType\":2,\"name\":\"大兴区\",\"parentAreaId\":110000},{\"areaId\":110116,\"areaType\":2,\"name\":\"怀柔区\",\"parentAreaId\":110000},{\"areaId\":110117,\"areaType\":2,\"name\":\"平谷区\",\"parentAreaId\":110000},{\"areaId\":110118,\"areaType\":2,\"name\":\"密云区\",\"parentAreaId\":110000},{\"areaId\":110119,\"areaType\":2,\"name\":\"延庆区\",\"parentAreaId\":110000}],\"name\":\"北京市\",\"parentAreaId\":1}],\"name\":\"北京市\",\"parentAreaId\":0},{\"areaId\":2,\"areaType\":0,\"children\":[{\"areaId\":120000,\"areaType\":1,\"children\":[{\"areaId\":120101,\"areaType\":2,\"name\":\"和平区\",\"parentAreaId\":120000},{\"areaId\":120102,\"areaType\":2,\"name\":\"河东区\",\"parentAreaId\":120000},{\"areaId\":120103,\"areaType\":2,\"name\":\"河西区\",\"parentAreaId\":120000},{\"areaId\":120104,\"areaType\":2,\"name\":\"南开区\",\"parentAreaId\":120000},{\"areaId\":120105,\"areaType\":2,\"name\":\"河北区\",\"parentAreaId\":120000},{\"areaId\":120106,\"areaType\":2,\"name\":\"红桥区\",\"parentAreaId\":120000},{\"areaId\":120110,\"areaType\":2,\"name\":\"东丽区\",\"parentAreaId\":120000},{\"areaId\":120111,\"areaType\":2,\"name\":\"西青区\",\"parentAreaId\":120000},{\"areaId\":120112,\"areaType\":2,\"name\":\"津南区\",\"parentAreaId\":120000},{\"areaId\":120113,\"areaType\":2,\"name\":\"北辰区\",\"parentAreaId\":120000},{\"areaId\":120114,\"areaType\":2,\"name\":\"武清区\",\"parentAreaId\":120000},{\"areaId\":120115,\"areaType\":2,\"name\":\"宝坻区\",\"parentAreaId\":120000},{\"areaId\":120116,\"areaType\":2,\"name\":\"滨海新区\",\"parentAreaId\":120000},{\"areaId\":120117,\"areaType\":2,\"name\":\"宁河区\",\"parentAreaId\":120000},{\"areaId\":120118,\"areaType\":2,\"name\":\"静海区\",\"parentAreaId\":120000},{\"areaId\":120119,\"areaType\":2,\"name\":\"蓟州区\",\"parentAreaId\":120000}],\"name\":\"天津市\",\"parentAreaId\":2}],\"name\":\"天津市\",\"parentAreaId\":0},{\"areaId\":3,\"areaType\":0,\"children\":[{\"areaId\":310000,\"areaType\":1,\"children\":[{\"areaId\":310101,\"areaType\":2,\"name\":\"黄浦区\",\"parentAreaId\":310000},{\"areaId\":310104,\"areaType\":2,\"name\":\"徐汇区\",\"parentAreaId\":310000},{\"areaId\":310105,\"areaType\":2,\"name\":\"长宁区\",\"parentAreaId\":310000},{\"areaId\":310106,\"areaType\":2,\"name\":\"静安区\",\"parentAreaId\":310000},{\"areaId\":310107,\"areaType\":2,\"name\":\"普陀区\",\"parentAreaId\":310000},{\"areaId\":310109,\"areaType\":2,\"name\":\"虹口区\",\"parentAreaId\":310000},{\"areaId\":310110,\"areaType\":2,\"name\":\"杨浦区\",\"parentAreaId\":310000},{\"areaId\":310112,\"areaType\":2,\"name\":\"闵行区\",\"parentAreaId\":310000},{\"areaId\":310113,\"areaType\":2,\"name\":\"宝山区\",\"parentAreaId\":310000},{\"areaId\":310114,\"areaType\":2,\"name\":\"嘉定区\",\"parentAreaId\":310000},{\"areaId\":310115,\"areaType\":2,\"name\":\"浦东新区\",\"parentAreaId\":310000},{\"areaId\":310116,\"areaType\":2,\"name\":\"金山区\",\"parentAreaId\":310000},{\"areaId\":310117,\"areaType\":2,\"name\":\"松江区\",\"parentAreaId\":310000},{\"areaId\":310118,\"areaType\":2,\"name\":\"青浦区\",\"parentAreaId\":310000},{\"areaId\":310120,\"areaType\":2,\"name\":\"奉贤区\",\"parentAreaId\":310000},{\"areaId\":310151,\"areaType\":2,\"name\":\"崇明区\",\"parentAreaId\":310000}],\"name\":\"上海市\",\"parentAreaId\":3}],\"name\":\"上海市\",\"parentAreaId\":0},{\"areaId\":4,\"areaType\":0,\"children\":[{\"areaId\":500000,\"areaType\":1,\"children\":[{\"areaId\":500101,\"areaType\":2,\"name\":\"万州区\",\"parentAreaId\":500000},{\"areaId\":500102,\"areaType\":2,\"name\":\"涪陵区\",\"parentAreaId\":500000},{\"areaId\":500103,\"areaType\":2,\"name\":\"渝中区\",\"parentAreaId\":500000},{\"areaId\":500104,\"areaType\":2,\"name\":\"大渡口区\",\"parentAreaId\":500000},{\"areaId\":500105,\"areaType\":2,\"name\":\"江北区\",\"parentAreaId\":500000},{\"areaId\":500106,\"areaType\":2,\"name\":\"沙坪坝区\",\"parentAreaId\":500000},{\"areaId\":500107,\"areaType\":2,\"name\":\"九龙坡区\",\"parentAreaId\":500000},{\"areaId\":500108,\"areaType\":2,\"name\":\"南岸区\",\"parentAreaId\":500000},{\"areaId\":500109,\"areaType\":2,\"name\":\"北碚区\",\"parentAreaId\":500000},{\"areaId\":500110,\"areaType\":2,\"name\":\"綦江区\",\"parentAreaId\":500000},{\"areaId\":500111,\"areaType\":2,\"name\":\"大足区\",\"parentAreaId\":500000},{\"areaId\":500112,\"areaType\":2,\"name\":\"渝北区\",\"parentAreaId\":500000},{\"areaId\":500113,\"areaType\":2,\"name\":\"巴南区\",\"parentAreaId\":500000},{\"areaId\":500114,\"areaType\":2,\"name\":\"黔江区\",\"parentAreaId\":500000},{\"areaId\":500115,\"areaType\":2,\"name\":\"长寿区\",\"parentAreaId\":500000},{\"areaId\":500116,\"areaType\":2,\"name\":\"江津区\",\"parentAreaId\":500000},{\"areaId\":500117,\"areaType\":2,\"name\":\"合川区\",\"parentAreaId\":500000},{\"areaId\":500118,\"areaType\":2,\"name\":\"永川区\",\"parentAreaId\":500000},{\"areaId\":500119,\"areaType\":2,\"name\":\"南川区\",\"parentAreaId\":500000},{\"areaId\":500120,\"areaType\":2,\"name\":\"璧山区\",\"parentAreaId\":500000},{\"areaId\":500151,\"areaType\":2,\"name\":\"铜梁区\",\"parentAreaId\":500000},{\"areaId\":500152,\"areaType\":2,\"name\":\"潼南区\",\"parentAreaId\":500000},{\"areaId\":500153,\"areaType\":2,\"name\":\"荣昌区\",\"parentAreaId\":500000},{\"areaId\":500154,\"areaType\":2,\"name\":\"开州区\",\"parentAreaId\":500000},{\"areaId\":500155,\"areaType\":2,\"name\":\"梁平区\",\"parentAreaId\":500000},{\"areaId\":500156,\"areaType\":2,\"name\":\"武隆区\",\"parentAreaId\":500000},{\"areaId\":500229,\"areaType\":2,\"name\":\"城口县\",\"parentAreaId\":500000},{\"areaId\":500230,\"areaType\":2,\"name\":\"丰都县\",\"parentAreaId\":500000},{\"areaId\":500231,\"areaType\":2,\"name\":\"垫江县\",\"parentAreaId\":500000},{\"areaId\":500233,\"areaType\":2,\"name\":\"忠县\",\"parentAreaId\":500000},{\"areaId\":500235,\"areaType\":2,\"name\":\"云阳县\",\"parentAreaId\":500000},{\"areaId\":500236,\"areaType\":2,\"name\":\"奉节县\",\"parentAreaId\":500000},{\"areaId\":500237,\"areaType\":2,\"name\":\"巫山县\",\"parentAreaId\":500000},{\"areaId\":500238,\"areaType\":2,\"name\":\"巫溪县\",\"parentAreaId\":500000},{\"areaId\":500240,\"areaType\":2,\"name\":\"石柱土家族自治县\",\"parentAreaId\":500000},{\"areaId\":500241,\"areaType\":2,\"name\":\"秀山土家族苗族自治县\",\"parentAreaId\":500000},{\"areaId\":500242,\"areaType\":2,\"name\":\"酉阳土家族苗族自治县\",\"parentAreaId\":500000},{\"areaId\":500243,\"areaType\":2,\"name\":\"彭水苗族土家族自治县\",\"parentAreaId\":500000}],\"name\":\"重庆市\",\"parentAreaId\":4}],\"name\":\"重庆市\",\"parentAreaId\":0},{\"areaId\":8,\"areaType\":0,\"children\":[{\"areaId\":810000,\"areaType\":1,\"children\":[{\"areaId\":810101,\"areaType\":2,\"name\":\"中西区\",\"parentAreaId\":810000},{\"areaId\":810102,\"areaType\":2,\"name\":\"东区\",\"parentAreaId\":810000},{\"areaId\":810103,\"areaType\":2,\"name\":\"九龙城区\",\"parentAreaId\":810000},{\"areaId\":810104,\"areaType\":2,\"name\":\"观塘区\",\"parentAreaId\":810000},{\"areaId\":810105,\"areaType\":2,\"name\":\"南区\",\"parentAreaId\":810000},{\"areaId\":810106,\"areaType\":2,\"name\":\"深水埗区\",\"parentAreaId\":810000},{\"areaId\":810107,\"areaType\":2,\"name\":\"湾仔区\",\"parentAreaId\":810000},{\"areaId\":810108,\"areaType\":2,\"name\":\"黄大仙区\",\"parentAreaId\":810000},{\"areaId\":810109,\"areaType\":2,\"name\":\"油尖旺区\",\"parentAreaId\":810000},{\"areaId\":810110,\"areaType\":2,\"name\":\"离岛区\",\"parentAreaId\":810000},{\"areaId\":810111,\"areaType\":2,\"name\":\"葵青区\",\"parentAreaId\":810000},{\"areaId\":810112,\"areaType\":2,\"name\":\"北区\",\"parentAreaId\":810000},{\"areaId\":810113,\"areaType\":2,\"name\":\"西贡区\",\"parentAreaId\":810000},{\"areaId\":810114,\"areaType\":2,\"name\":\"沙田区\",\"parentAreaId\":810000},{\"areaId\":810115,\"areaType\":2,\"name\":\"屯门区\",\"parentAreaId\":810000},{\"areaId\":810116,\"areaType\":2,\"name\":\"大埔区\",\"parentAreaId\":810000},{\"areaId\":810117,\"areaType\":2,\"name\":\"荃湾区\",\"parentAreaId\":810000},{\"areaId\":810118,\"areaType\":2,\"name\":\"元朗区\",\"parentAreaId\":810000}],\"name\":\"香港特别行政区\",\"parentAreaId\":8}],\"name\":\"香港特别行政区\",\"parentAreaId\":0},{\"areaId\":9,\"areaType\":0,\"children\":[{\"areaId\":820000,\"areaType\":1,\"children\":[{\"areaId\":820101,\"areaType\":2,\"name\":\"澳门半岛\",\"parentAreaId\":820000},{\"areaId\":820102,\"areaType\":2,\"name\":\"凼仔\",\"parentAreaId\":820000},{\"areaId\":820103,\"areaType\":2,\"name\":\"路凼城\",\"parentAreaId\":820000},{\"areaId\":820104,\"areaType\":2,\"name\":\"路环\",\"parentAreaId\":820000}],\"name\":\"澳门特别行政区\",\"parentAreaId\":9}],\"name\":\"澳门特别行政区\",\"parentAreaId\":0},{\"areaId\":10,\"areaType\":0,\"children\":[{\"areaId\":710000,\"areaType\":1,\"children\":[{\"areaId\":710100,\"areaType\":2,\"name\":\"台北市\",\"parentAreaId\":710000},{\"areaId\":710200,\"areaType\":2,\"name\":\"高雄市\",\"parentAreaId\":710000},{\"areaId\":710300,\"areaType\":2,\"name\":\"台南市\",\"parentAreaId\":710000},{\"areaId\":710400,\"areaType\":2,\"name\":\"台中市\",\"parentAreaId\":710000},{\"areaId\":710600,\"areaType\":2,\"name\":\"南投县\",\"parentAreaId\":710000},{\"areaId\":710700,\"areaType\":2,\"name\":\"基隆市\",\"parentAreaId\":710000},{\"areaId\":710800,\"areaType\":2,\"name\":\"新竹市\",\"parentAreaId\":710000},{\"areaId\":710900,\"areaType\":2,\"name\":\"嘉义市\",\"parentAreaId\":710000},{\"areaId\":711100,\"areaType\":2,\"name\":\"新北市\",\"parentAreaId\":710000},{\"areaId\":711200,\"areaType\":2,\"name\":\"宜兰县\",\"parentAreaId\":710000},{\"areaId\":711300,\"areaType\":2,\"name\":\"新竹县\",\"parentAreaId\":710000},{\"areaId\":711400,\"areaType\":2,\"name\":\"桃园市\",\"parentAreaId\":710000},{\"areaId\":711500,\"areaType\":2,\"name\":\"苗栗县\",\"parentAreaId\":710000},{\"areaId\":711700,\"areaType\":2,\"name\":\"彰化县\",\"parentAreaId\":710000},{\"areaId\":711900,\"areaType\":2,\"name\":\"嘉义县\",\"parentAreaId\":710000},{\"areaId\":712100,\"areaType\":2,\"name\":\"云林县\",\"parentAreaId\":710000},{\"areaId\":712400,\"areaType\":2,\"name\":\"屏东县\",\"parentAreaId\":710000},{\"areaId\":712500,\"areaType\":2,\"name\":\"台东县\",\"parentAreaId\":710000},{\"areaId\":712600,\"areaType\":2,\"name\":\"花莲县\",\"parentAreaId\":710000},{\"areaId\":712700,\"areaType\":2,\"name\":\"澎湖县\",\"parentAreaId\":710000}],\"name\":\"台湾省\",\"parentAreaId\":10}],\"name\":\"台湾省\",\"parentAreaId\":0},{\"areaId\":130000,\"areaType\":0,\"children\":[{\"areaId\":130100,\"areaType\":1,\"children\":[{\"areaId\":130102,\"areaType\":2,\"name\":\"长安区\",\"parentAreaId\":130100},{\"areaId\":130104,\"areaType\":2,\"name\":\"桥西区\",\"parentAreaId\":130100},{\"areaId\":130105,\"areaType\":2,\"name\":\"新华区\",\"parentAreaId\":130100},{\"areaId\":130107,\"areaType\":2,\"name\":\"井陉矿区\",\"parentAreaId\":130100},{\"areaId\":130108,\"areaType\":2,\"name\":\"裕华区\",\"parentAreaId\":130100},{\"areaId\":130109,\"areaType\":2,\"name\":\"藁城区\",\"parentAreaId\":130100},{\"areaId\":130110,\"areaType\":2,\"name\":\"鹿泉区\",\"parentAreaId\":130100},{\"areaId\":130111,\"areaType\":2,\"name\":\"栾城区\",\"parentAreaId\":130100},{\"areaId\":130121,\"areaType\":2,\"name\":\"井陉县\",\"parentAreaId\":130100},{\"areaId\":130123,\"areaType\":2,\"name\":\"正定县\",\"parentAreaId\":130100},{\"areaId\":130125,\"areaType\":2,\"name\":\"行唐县\",\"parentAreaId\":130100},{\"areaId\":130126,\"areaType\":2,\"name\":\"灵寿县\",\"parentAreaId\":130100},{\"areaId\":130127,\"areaType\":2,\"name\":\"高邑县\",\"parentAreaId\":130100},{\"areaId\":130128,\"areaType\":2,\"name\":\"深泽县\",\"parentAreaId\":130100},{\"areaId\":130129,\"areaType\":2,\"name\":\"赞皇县\",\"parentAreaId\":130100},{\"areaId\":130130,\"areaType\":2,\"name\":\"无极县\",\"parentAreaId\":130100},{\"areaId\":130131,\"areaType\":2,\"name\":\"平山县\",\"parentAreaId\":130100},{\"areaId\":130132,\"areaType\":2,\"name\":\"元氏县\",\"parentAreaId\":130100},{\"areaId\":130133,\"areaType\":2,\"name\":\"赵县\",\"parentAreaId\":130100},{\"areaId\":130181,\"areaType\":2,\"name\":\"辛集市\",\"parentAreaId\":130100},{\"areaId\":130183,\"areaType\":2,\"name\":\"晋州市\",\"parentAreaId\":130100},{\"areaId\":130184,\"areaType\":2,\"name\":\"新乐市\",\"parentAreaId\":130100}],\"name\":\"石家庄市\",\"parentAreaId\":130000},{\"areaId\":130200,\"areaType\":1,\"children\":[{\"areaId\":130202,\"areaType\":2,\"name\":\"路南区\",\"parentAreaId\":130200},{\"areaId\":130203,\"areaType\":2,\"name\":\"路北区\",\"parentAreaId\":130200},{\"areaId\":130204,\"areaType\":2,\"name\":\"古冶区\",\"parentAreaId\":130200},{\"areaId\":130205,\"areaType\":2,\"name\":\"开平区\",\"parentAreaId\":130200},{\"areaId\":130207,\"areaType\":2,\"name\":\"丰南区\",\"parentAreaId\":130200},{\"areaId\":130208,\"areaType\":2,\"name\":\"丰润区\",\"parentAreaId\":130200},{\"areaId\":130209,\"areaType\":2,\"name\":\"曹妃甸区\",\"parentAreaId\":130200},{\"areaId\":130223,\"areaType\":2,\"name\":\"滦县\",\"parentAreaId\":130200},{\"areaId\":130224,\"areaType\":2,\"name\":\"滦南县\",\"parentAreaId\":130200},{\"areaId\":130225,\"areaType\":2,\"name\":\"乐亭县\",\"parentAreaId\":130200},{\"areaId\":130227,\"areaType\":2,\"name\":\"迁西县\",\"parentAreaId\":130200},{\"areaId\":130229,\"areaType\":2,\"name\":\"玉田县\",\"parentAreaId\":130200},{\"areaId\":130281,\"areaType\":2,\"name\":\"遵化市\",\"parentAreaId\":130200},{\"areaId\":130283,\"areaType\":2,\"name\":\"迁安市\",\"parentAreaId\":130200}],\"name\":\"唐山市\",\"parentAreaId\":130000},{\"areaId\":130300,\"areaType\":1,\"children\":[{\"areaId\":130302,\"areaType\":2,\"name\":\"海港区\",\"parentAreaId\":130300},{\"areaId\":130303,\"areaType\":2,\"name\":\"山海关区\",\"parentAreaId\":130300},{\"areaId\":130304,\"areaType\":2,\"name\":\"北戴河区\",\"parentAreaId\":130300},{\"areaId\":130306,\"areaType\":2,\"name\":\"抚宁区\",\"parentAreaId\":130300},{\"areaId\":130321,\"areaType\":2,\"name\":\"青龙满族自治县\",\"parentAreaId\":130300},{\"areaId\":130322,\"areaType\":2,\"name\":\"昌黎县\",\"parentAreaId\":130300},{\"areaId\":130324,\"areaType\":2,\"name\":\"卢龙县\",\"parentAreaId\":130300}],\"name\":\"秦皇岛市\",\"parentAreaId\":130000},{\"areaId\":130400,\"areaType\":1,\"children\":[{\"areaId\":130402,\"areaType\":2,\"name\":\"邯山区\",\"parentAreaId\":130400},{\"areaId\":130403,\"areaType\":2,\"name\":\"丛台区\",\"parentAreaId\":130400},{\"areaId\":130404,\"areaType\":2,\"name\":\"复兴区\",\"parentAreaId\":130400},{\"areaId\":130406,\"areaType\":2,\"name\":\"峰峰矿区\",\"parentAreaId\":130400},{\"areaId\":130407,\"areaType\":2,\"name\":\"肥乡区\",\"parentAreaId\":130400},{\"areaId\":130408,\"areaType\":2,\"name\":\"永年区\",\"parentAreaId\":130400},{\"areaId\":130423,\"areaType\":2,\"name\":\"临漳县\",\"parentAreaId\":130400},{\"areaId\":130424,\"areaType\":2,\"name\":\"成安县\",\"parentAreaId\":130400},{\"areaId\":130425,\"areaType\":2,\"name\":\"大名县\",\"parentAreaId\":130400},{\"areaId\":130426,\"areaType\":2,\"name\":\"涉县\",\"parentAreaId\":130400},{\"areaId\":130427,\"areaType\":2,\"name\":\"磁县\",\"parentAreaId\":130400},{\"areaId\":130430,\"areaType\":2,\"name\":\"邱县\",\"parentAreaId\":130400},{\"areaId\":130431,\"areaType\":2,\"name\":\"鸡泽县\",\"parentAreaId\":130400},{\"areaId\":130432,\"areaType\":2,\"name\":\"广平县\",\"parentAreaId\":130400},{\"areaId\":130433,\"areaType\":2,\"name\":\"馆陶县\",\"parentAreaId\":130400},{\"areaId\":130434,\"areaType\":2,\"name\":\"魏县\",\"parentAreaId\":130400},{\"areaId\":130435,\"areaType\":2,\"name\":\"曲周县\",\"parentAreaId\":130400},{\"areaId\":130481,\"areaType\":2,\"name\":\"武安市\",\"parentAreaId\":130400}],\"name\":\"邯郸市\",\"parentAreaId\":130000},{\"areaId\":130500,\"areaType\":1,\"children\":[{\"areaId\":130502,\"areaType\":2,\"name\":\"桥东区\",\"parentAreaId\":130500},{\"areaId\":130503,\"areaType\":2,\"name\":\"桥西区\",\"parentAreaId\":130500},{\"areaId\":130521,\"areaType\":2,\"name\":\"邢台县\",\"parentAreaId\":130500},{\"areaId\":130522,\"areaType\":2,\"name\":\"临城县\",\"parentAreaId\":130500},{\"areaId\":130523,\"areaType\":2,\"name\":\"内丘县\",\"parentAreaId\":130500},{\"areaId\":130524,\"areaType\":2,\"name\":\"柏乡县\",\"parentAreaId\":130500},{\"areaId\":130525,\"areaType\":2,\"name\":\"隆尧县\",\"parentAreaId\":130500},{\"areaId\":130526,\"areaType\":2,\"name\":\"任县\",\"parentAreaId\":130500},{\"areaId\":130527,\"areaType\":2,\"name\":\"南和县\",\"parentAreaId\":130500},{\"areaId\":130528,\"areaType\":2,\"name\":\"宁晋县\",\"parentAreaId\":130500},{\"areaId\":130529,\"areaType\":2,\"name\":\"巨鹿县\",\"parentAreaId\":130500},{\"areaId\":130530,\"areaType\":2,\"name\":\"新河县\",\"parentAreaId\":130500},{\"areaId\":130531,\"areaType\":2,\"name\":\"广宗县\",\"parentAreaId\":130500},{\"areaId\":130532,\"areaType\":2,\"name\":\"平乡县\",\"parentAreaId\":130500},{\"areaId\":130533,\"areaType\":2,\"name\":\"威县\",\"parentAreaId\":130500},{\"areaId\":130534,\"areaType\":2,\"name\":\"清河县\",\"parentAreaId\":130500},{\"areaId\":130535,\"areaType\":2,\"name\":\"临西县\",\"parentAreaId\":130500},{\"areaId\":130581,\"areaType\":2,\"name\":\"南宫市\",\"parentAreaId\":130500},{\"areaId\":130582,\"areaType\":2,\"name\":\"沙河市\",\"parentAreaId\":130500}],\"name\":\"邢台市\",\"parentAreaId\":130000},{\"areaId\":130600,\"areaType\":1,\"children\":[{\"areaId\":130602,\"areaType\":2,\"name\":\"竞秀区\",\"parentAreaId\":130600},{\"areaId\":130606,\"areaType\":2,\"name\":\"莲池区\",\"parentAreaId\":130600},{\"areaId\":130607,\"areaType\":2,\"name\":\"满城区\",\"parentAreaId\":130600},{\"areaId\":130608,\"areaType\":2,\"name\":\"清苑区\",\"parentAreaId\":130600},{\"areaId\":130609,\"areaType\":2,\"name\":\"徐水区\",\"parentAreaId\":130600},{\"areaId\":130623,\"areaType\":2,\"name\":\"涞水县\",\"parentAreaId\":130600},{\"areaId\":130624,\"areaType\":2,\"name\":\"阜平县\",\"parentAreaId\":130600},{\"areaId\":130626,\"areaType\":2,\"name\":\"定兴县\",\"parentAreaId\":130600},{\"areaId\":130627,\"areaType\":2,\"name\":\"唐县\",\"parentAreaId\":130600},{\"areaId\":130628,\"areaType\":2,\"name\":\"高阳县\",\"parentAreaId\":130600},{\"areaId\":130629,\"areaType\":2,\"name\":\"容城县\",\"parentAreaId\":130600},{\"areaId\":130630,\"areaType\":2,\"name\":\"涞源县\",\"parentAreaId\":130600},{\"areaId\":130631,\"areaType\":2,\"name\":\"望都县\",\"parentAreaId\":130600},{\"areaId\":130632,\"areaType\":2,\"name\":\"安新县\",\"parentAreaId\":130600},{\"areaId\":130633,\"areaType\":2,\"name\":\"易县\",\"parentAreaId\":130600},{\"areaId\":130634,\"areaType\":2,\"name\":\"曲阳县\",\"parentAreaId\":130600},{\"areaId\":130635,\"areaType\":2,\"name\":\"蠡县\",\"parentAreaId\":130600},{\"areaId\":130636,\"areaType\":2,\"name\":\"顺平县\",\"parentAreaId\":130600},{\"areaId\":130637,\"areaType\":2,\"name\":\"博野县\",\"parentAreaId\":130600},{\"areaId\":130638,\"areaType\":2,\"name\":\"雄县\",\"parentAreaId\":130600},{\"areaId\":130681,\"areaType\":2,\"name\":\"涿州市\",\"parentAreaId\":130600},{\"areaId\":130682,\"areaType\":2,\"name\":\"定州市\",\"parentAreaId\":130600},{\"areaId\":130683,\"areaType\":2,\"name\":\"安国市\",\"parentAreaId\":130600},{\"areaId\":130684,\"areaType\":2,\"name\":\"高碑店市\",\"parentAreaId\":130600}],\"name\":\"保定市\",\"parentAreaId\":130000},{\"areaId\":130700,\"areaType\":1,\"children\":[{\"areaId\":130702,\"areaType\":2,\"name\":\"桥东区\",\"parentAreaId\":130700},{\"areaId\":130703,\"areaType\":2,\"name\":\"桥西区\",\"parentAreaId\":130700},{\"areaId\":130705,\"areaType\":2,\"name\":\"宣化区\",\"parentAreaId\":130700},{\"areaId\":130706,\"areaType\":2,\"name\":\"下花园区\",\"parentAreaId\":130700},{\"areaId\":130708,\"areaType\":2,\"name\":\"万全区\",\"parentAreaId\":130700},{\"areaId\":130709,\"areaType\":2,\"name\":\"崇礼区\",\"parentAreaId\":130700},{\"areaId\":130722,\"areaType\":2,\"name\":\"张北县\",\"parentAreaId\":130700},{\"areaId\":130723,\"areaType\":2,\"name\":\"康保县\",\"parentAreaId\":130700},{\"areaId\":130724,\"areaType\":2,\"name\":\"沽源县\",\"parentAreaId\":130700},{\"areaId\":130725,\"areaType\":2,\"name\":\"尚义县\",\"parentAreaId\":130700},{\"areaId\":130726,\"areaType\":2,\"name\":\"蔚县\",\"parentAreaId\":130700},{\"areaId\":130727,\"areaType\":2,\"name\":\"阳原县\",\"parentAreaId\":130700},{\"areaId\":130728,\"areaType\":2,\"name\":\"怀安县\",\"parentAreaId\":130700},{\"areaId\":130730,\"areaType\":2,\"name\":\"怀来县\",\"parentAreaId\":130700},{\"areaId\":130731,\"areaType\":2,\"name\":\"涿鹿县\",\"parentAreaId\":130700},{\"areaId\":130732,\"areaType\":2,\"name\":\"赤城县\",\"parentAreaId\":130700}],\"name\":\"张家口市\",\"parentAreaId\":130000},{\"areaId\":130800,\"areaType\":1,\"children\":[{\"areaId\":130802,\"areaType\":2,\"name\":\"双桥区\",\"parentAreaId\":130800},{\"areaId\":130803,\"areaType\":2,\"name\":\"双滦区\",\"parentAreaId\":130800},{\"areaId\":130804,\"areaType\":2,\"name\":\"鹰手营子矿区\",\"parentAreaId\":130800},{\"areaId\":130821,\"areaType\":2,\"name\":\"承德县\",\"parentAreaId\":130800},{\"areaId\":130822,\"areaType\":2,\"name\":\"兴隆县\",\"parentAreaId\":130800},{\"areaId\":130824,\"areaType\":2,\"name\":\"滦平县\",\"parentAreaId\":130800},{\"areaId\":130825,\"areaType\":2,\"name\":\"隆化县\",\"parentAreaId\":130800},{\"areaId\":130826,\"areaType\":2,\"name\":\"丰宁满族自治县\",\"parentAreaId\":130800},{\"areaId\":130827,\"areaType\":2,\"name\":\"宽城满族自治县\",\"parentAreaId\":130800},{\"areaId\":130828,\"areaType\":2,\"name\":\"围场满族蒙古族自治县\",\"parentAreaId\":130800},{\"areaId\":130881,\"areaType\":2,\"name\":\"平泉市\",\"parentAreaId\":130800}],\"name\":\"承德市\",\"parentAreaId\":130000},{\"areaId\":130900,\"areaType\":1,\"children\":[{\"areaId\":130902,\"areaType\":2,\"name\":\"新华区\",\"parentAreaId\":130900},{\"areaId\":130903,\"areaType\":2,\"name\":\"运河区\",\"parentAreaId\":130900},{\"areaId\":130921,\"areaType\":2,\"name\":\"沧县\",\"parentAreaId\":130900},{\"areaId\":130922,\"areaType\":2,\"name\":\"青县\",\"parentAreaId\":130900},{\"areaId\":130923,\"areaType\":2,\"name\":\"东光县\",\"parentAreaId\":130900},{\"areaId\":130924,\"areaType\":2,\"name\":\"海兴县\",\"parentAreaId\":130900},{\"areaId\":130925,\"areaType\":2,\"name\":\"盐山县\",\"parentAreaId\":130900},{\"areaId\":130926,\"areaType\":2,\"name\":\"肃宁县\",\"parentAreaId\":130900},{\"areaId\":130927,\"areaType\":2,\"name\":\"南皮县\",\"parentAreaId\":130900},{\"areaId\":130928,\"areaType\":2,\"name\":\"吴桥县\",\"parentAreaId\":130900},{\"areaId\":130929,\"areaType\":2,\"name\":\"献县\",\"parentAreaId\":130900},{\"areaId\":130930,\"areaType\":2,\"name\":\"孟村回族自治县\",\"parentAreaId\":130900},{\"areaId\":130981,\"areaType\":2,\"name\":\"泊头市\",\"parentAreaId\":130900},{\"areaId\":130982,\"areaType\":2,\"name\":\"任丘市\",\"parentAreaId\":130900},{\"areaId\":130983,\"areaType\":2,\"name\":\"黄骅市\",\"parentAreaId\":130900},{\"areaId\":130984,\"areaType\":2,\"name\":\"河间市\",\"parentAreaId\":130900}],\"name\":\"沧州市\",\"parentAreaId\":130000},{\"areaId\":131000,\"areaType\":1,\"children\":[{\"areaId\":131002,\"areaType\":2,\"name\":\"安次区\",\"parentAreaId\":131000},{\"areaId\":131003,\"areaType\":2,\"name\":\"广阳区\",\"parentAreaId\":131000},{\"areaId\":131022,\"areaType\":2,\"name\":\"固安县\",\"parentAreaId\":131000},{\"areaId\":131023,\"areaType\":2,\"name\":\"永清县\",\"parentAreaId\":131000},{\"areaId\":131024,\"areaType\":2,\"name\":\"香河县\",\"parentAreaId\":131000},{\"areaId\":131025,\"areaType\":2,\"name\":\"大城县\",\"parentAreaId\":131000},{\"areaId\":131026,\"areaType\":2,\"name\":\"文安县\",\"parentAreaId\":131000},{\"areaId\":131028,\"areaType\":2,\"name\":\"大厂回族自治县\",\"parentAreaId\":131000},{\"areaId\":131081,\"areaType\":2,\"name\":\"霸州市\",\"parentAreaId\":131000},{\"areaId\":131082,\"areaType\":2,\"name\":\"三河市\",\"parentAreaId\":131000}],\"name\":\"廊坊市\",\"parentAreaId\":130000},{\"areaId\":131100,\"areaType\":1,\"children\":[{\"areaId\":131102,\"areaType\":2,\"name\":\"桃城区\",\"parentAreaId\":131100},{\"areaId\":131103,\"areaType\":2,\"name\":\"冀州区\",\"parentAreaId\":131100},{\"areaId\":131121,\"areaType\":2,\"name\":\"枣强县\",\"parentAreaId\":131100},{\"areaId\":131122,\"areaType\":2,\"name\":\"武邑县\",\"parentAreaId\":131100},{\"areaId\":131123,\"areaType\":2,\"name\":\"武强县\",\"parentAreaId\":131100},{\"areaId\":131124,\"areaType\":2,\"name\":\"饶阳县\",\"parentAreaId\":131100},{\"areaId\":131125,\"areaType\":2,\"name\":\"安平县\",\"parentAreaId\":131100},{\"areaId\":131126,\"areaType\":2,\"name\":\"故城县\",\"parentAreaId\":131100},{\"areaId\":131127,\"areaType\":2,\"name\":\"景县\",\"parentAreaId\":131100},{\"areaId\":131128,\"areaType\":2,\"name\":\"阜城县\",\"parentAreaId\":131100},{\"areaId\":131182,\"areaType\":2,\"name\":\"深州市\",\"parentAreaId\":131100}],\"name\":\"衡水市\",\"parentAreaId\":130000}],\"name\":\"河北省\",\"parentAreaId\":0},{\"areaId\":140000,\"areaType\":0,\"children\":[{\"areaId\":140100,\"areaType\":1,\"children\":[{\"areaId\":140105,\"areaType\":2,\"name\":\"小店区\",\"parentAreaId\":140100},{\"areaId\":140106,\"areaType\":2,\"name\":\"迎泽区\",\"parentAreaId\":140100},{\"areaId\":140107,\"areaType\":2,\"name\":\"杏花岭区\",\"parentAreaId\":140100},{\"areaId\":140108,\"areaType\":2,\"name\":\"尖草坪区\",\"parentAreaId\":140100},{\"areaId\":140109,\"areaType\":2,\"name\":\"万柏林区\",\"parentAreaId\":140100},{\"areaId\":140110,\"areaType\":2,\"name\":\"晋源区\",\"parentAreaId\":140100},{\"areaId\":140121,\"areaType\":2,\"name\":\"清徐县\",\"parentAreaId\":140100},{\"areaId\":140122,\"areaType\":2,\"name\":\"阳曲县\",\"parentAreaId\":140100},{\"areaId\":140123,\"areaType\":2,\"name\":\"娄烦县\",\"parentAreaId\":140100},{\"areaId\":140181,\"areaType\":2,\"name\":\"古交市\",\"parentAreaId\":140100}],\"name\":\"太原市\",\"parentAreaId\":140000},{\"areaId\":140200,\"areaType\":1,\"children\":[{\"areaId\":140212,\"areaType\":2,\"name\":\"新荣区\",\"parentAreaId\":140200},{\"areaId\":140213,\"areaType\":2,\"name\":\"平城区\",\"parentAreaId\":140200},{\"areaId\":140214,\"areaType\":2,\"name\":\"云冈区\",\"parentAreaId\":140200},{\"areaId\":140215,\"areaType\":2,\"name\":\"云州区\",\"parentAreaId\":140200},{\"areaId\":140221,\"areaType\":2,\"name\":\"阳高县\",\"parentAreaId\":140200},{\"areaId\":140222,\"areaType\":2,\"name\":\"天镇县\",\"parentAreaId\":140200},{\"areaId\":140223,\"areaType\":2,\"name\":\"广灵县\",\"parentAreaId\":140200},{\"areaId\":140224,\"areaType\":2,\"name\":\"灵丘县\",\"parentAreaId\":140200},{\"areaId\":140225,\"areaType\":2,\"name\":\"浑源县\",\"parentAreaId\":140200},{\"areaId\":140226,\"areaType\":2,\"name\":\"左云县\",\"parentAreaId\":140200}],\"name\":\"大同市\",\"parentAreaId\":140000},{\"areaId\":140300,\"areaType\":1,\"children\":[{\"areaId\":140302,\"areaType\":2,\"name\":\"城区\",\"parentAreaId\":140300},{\"areaId\":140303,\"areaType\":2,\"name\":\"矿区\",\"parentAreaId\":140300},{\"areaId\":140311,\"areaType\":2,\"name\":\"郊区\",\"parentAreaId\":140300},{\"areaId\":140321,\"areaType\":2,\"name\":\"平定县\",\"parentAreaId\":140300},{\"areaId\":140322,\"areaType\":2,\"name\":\"盂县\",\"parentAreaId\":140300}],\"name\":\"阳泉市\",\"parentAreaId\":140000},{\"areaId\":140400,\"areaType\":1,\"children\":[{\"areaId\":140402,\"areaType\":2,\"name\":\"城区\",\"parentAreaId\":140400},{\"areaId\":140411,\"areaType\":2,\"name\":\"郊区\",\"parentAreaId\":140400},{\"areaId\":140421,\"areaType\":2,\"name\":\"长治县\",\"parentAreaId\":140400},{\"areaId\":140423,\"areaType\":2,\"name\":\"襄垣县\",\"parentAreaId\":140400},{\"areaId\":140424,\"areaType\":2,\"name\":\"屯留县\",\"parentAreaId\":140400},{\"areaId\":140425,\"areaType\":2,\"name\":\"平顺县\",\"parentAreaId\":140400},{\"areaId\":140426,\"areaType\":2,\"name\":\"黎城县\",\"parentAreaId\":140400},{\"areaId\":140427,\"areaType\":2,\"name\":\"壶关县\",\"parentAreaId\":140400},{\"areaId\":140428,\"areaType\":2,\"name\":\"长子县\",\"parentAreaId\":140400},{\"areaId\":140429,\"areaType\":2,\"name\":\"武乡县\",\"parentAreaId\":140400},{\"areaId\":140430,\"areaType\":2,\"name\":\"沁县\",\"parentAreaId\":140400},{\"areaId\":140431,\"areaType\":2,\"name\":\"沁源县\",\"parentAreaId\":140400},{\"areaId\":140481,\"areaType\":2,\"name\":\"潞城市\",\"parentAreaId\":140400}],\"name\":\"长治市\",\"parentAreaId\":140000},{\"areaId\":140500,\"areaType\":1,\"children\":[{\"areaId\":140502,\"areaType\":2,\"name\":\"城区\",\"parentAreaId\":140500},{\"areaId\":140521,\"areaType\":2,\"name\":\"沁水县\",\"parentAreaId\":140500},{\"areaId\":140522,\"areaType\":2,\"name\":\"阳城县\",\"parentAreaId\":140500},{\"areaId\":140524,\"areaType\":2,\"name\":\"陵川县\",\"parentAreaId\":140500},{\"areaId\":140525,\"areaType\":2,\"name\":\"泽州县\",\"parentAreaId\":140500},{\"areaId\":140581,\"areaType\":2,\"name\":\"高平市\",\"parentAreaId\":140500}],\"name\":\"晋城市\",\"parentAreaId\":140000},{\"areaId\":140600,\"areaType\":1,\"children\":[{\"areaId\":140602,\"areaType\":2,\"name\":\"朔城区\",\"parentAreaId\":140600},{\"areaId\":140603,\"areaType\":2,\"name\":\"平鲁区\",\"parentAreaId\":140600},{\"areaId\":140621,\"areaType\":2,\"name\":\"山阴县\",\"parentAreaId\":140600},{\"areaId\":140622,\"areaType\":2,\"name\":\"应县\",\"parentAreaId\":140600},{\"areaId\":140623,\"areaType\":2,\"name\":\"右玉县\",\"parentAreaId\":140600},{\"areaId\":140681,\"areaType\":2,\"name\":\"怀仁市\",\"parentAreaId\":140600}],\"name\":\"朔州市\",\"parentAreaId\":140000},{\"areaId\":140700,\"areaType\":1,\"children\":[{\"areaId\":140702,\"areaType\":2,\"name\":\"榆次区\",\"parentAreaId\":140700},{\"areaId\":140721,\"areaType\":2,\"name\":\"榆社县\",\"parentAreaId\":140700},{\"areaId\":140722,\"areaType\":2,\"name\":\"左权县\",\"parentAreaId\":140700},{\"areaId\":140723,\"areaType\":2,\"name\":\"和顺县\",\"parentAreaId\":140700},{\"areaId\":140724,\"areaType\":2,\"name\":\"昔阳县\",\"parentAreaId\":140700},{\"areaId\":140725,\"areaType\":2,\"name\":\"寿阳县\",\"parentAreaId\":140700},{\"areaId\":140726,\"areaType\":2,\"name\":\"太谷县\",\"parentAreaId\":140700},{\"areaId\":140727,\"areaType\":2,\"name\":\"祁县\",\"parentAreaId\":140700},{\"areaId\":140728,\"areaType\":2,\"name\":\"平遥县\",\"parentAreaId\":140700},{\"areaId\":140729,\"areaType\":2,\"name\":\"灵石县\",\"parentAreaId\":140700},{\"areaId\":140781,\"areaType\":2,\"name\":\"介休市\",\"parentAreaId\":140700}],\"name\":\"晋中市\",\"parentAreaId\":140000},{\"areaId\":140800,\"areaType\":1,\"children\":[{\"areaId\":140802,\"areaType\":2,\"name\":\"盐湖区\",\"parentAreaId\":140800},{\"areaId\":140821,\"areaType\":2,\"name\":\"临猗县\",\"parentAreaId\":140800},{\"areaId\":140822,\"areaType\":2,\"name\":\"万荣县\",\"parentAreaId\":140800},{\"areaId\":140823,\"areaType\":2,\"name\":\"闻喜县\",\"parentAreaId\":140800},{\"areaId\":140824,\"areaType\":2,\"name\":\"稷山县\",\"parentAreaId\":140800},{\"areaId\":140825,\"areaType\":2,\"name\":\"新绛县\",\"parentAreaId\":140800},{\"areaId\":140826,\"areaType\":2,\"name\":\"绛县\",\"parentAreaId\":140800},{\"areaId\":140827,\"areaType\":2,\"name\":\"垣曲县\",\"parentAreaId\":140800},{\"areaId\":140828,\"areaType\":2,\"name\":\"夏县\",\"parentAreaId\":140800},{\"areaId\":140829,\"areaType\":2,\"name\":\"平陆县\",\"parentAreaId\":140800},{\"areaId\":140830,\"areaType\":2,\"name\":\"芮城县\",\"parentAreaId\":140800},{\"areaId\":140881,\"areaType\":2,\"name\":\"永济市\",\"parentAreaId\":140800},{\"areaId\":140882,\"areaType\":2,\"name\":\"河津市\",\"parentAreaId\":140800}],\"name\":\"运城市\",\"parentAreaId\":140000},{\"areaId\":140900,\"areaType\":1,\"children\":[{\"areaId\":140902,\"areaType\":2,\"name\":\"忻府区\",\"parentAreaId\":140900},{\"areaId\":140921,\"areaType\":2,\"name\":\"定襄县\",\"parentAreaId\":140900},{\"areaId\":140922,\"areaType\":2,\"name\":\"五台县\",\"parentAreaId\":140900},{\"areaId\":140923,\"areaType\":2,\"name\":\"代县\",\"parentAreaId\":140900},{\"areaId\":140924,\"areaType\":2,\"name\":\"繁峙县\",\"parentAreaId\":140900},{\"areaId\":140925,\"areaType\":2,\"name\":\"宁武县\",\"parentAreaId\":140900},{\"areaId\":140926,\"areaType\":2,\"name\":\"静乐县\",\"parentAreaId\":140900},{\"areaId\":140927,\"areaType\":2,\"name\":\"神池县\",\"parentAreaId\":140900},{\"areaId\":140928,\"areaType\":2,\"name\":\"五寨县\",\"parentAreaId\":140900},{\"areaId\":140929,\"areaType\":2,\"name\":\"岢岚县\",\"parentAreaId\":140900},{\"areaId\":140930,\"areaType\":2,\"name\":\"河曲县\",\"parentAreaId\":140900},{\"areaId\":140931,\"areaType\":2,\"name\":\"保德县\",\"parentAreaId\":140900},{\"areaId\":140932,\"areaType\":2,\"name\":\"偏关县\",\"parentAreaId\":140900},{\"areaId\":140981,\"areaType\":2,\"name\":\"原平市\",\"parentAreaId\":140900}],\"name\":\"忻州市\",\"parentAreaId\":140000},{\"areaId\":141000,\"areaType\":1,\"children\":[{\"areaId\":141002,\"areaType\":2,\"name\":\"尧都区\",\"parentAreaId\":141000},{\"areaId\":141021,\"areaType\":2,\"name\":\"曲沃县\",\"parentAreaId\":141000},{\"areaId\":141022,\"areaType\":2,\"name\":\"翼城县\",\"parentAreaId\":141000},{\"areaId\":141023,\"areaType\":2,\"name\":\"襄汾县\",\"parentAreaId\":141000},{\"areaId\":141024,\"areaType\":2,\"name\":\"洪洞县\",\"parentAreaId\":141000},{\"areaId\":141025,\"areaType\":2,\"name\":\"古县\",\"parentAreaId\":141000},{\"areaId\":141026,\"areaType\":2,\"name\":\"安泽县\",\"parentAreaId\":141000},{\"areaId\":141027,\"areaType\":2,\"name\":\"浮山县\",\"parentAreaId\":141000},{\"areaId\":141028,\"areaType\":2,\"name\":\"吉县\",\"parentAreaId\":141000},{\"areaId\":141029,\"areaType\":2,\"name\":\"乡宁县\",\"parentAreaId\":141000},{\"areaId\":141030,\"areaType\":2,\"name\":\"大宁县\",\"parentAreaId\":141000},{\"areaId\":141031,\"areaType\":2,\"name\":\"隰县\",\"parentAreaId\":141000},{\"areaId\":141032,\"areaType\":2,\"name\":\"永和县\",\"parentAreaId\":141000},{\"areaId\":141033,\"areaType\":2,\"name\":\"蒲县\",\"parentAreaId\":141000},{\"areaId\":141034,\"areaType\":2,\"name\":\"汾西县\",\"parentAreaId\":141000},{\"areaId\":141081,\"areaType\":2,\"name\":\"侯马市\",\"parentAreaId\":141000},{\"areaId\":141082,\"areaType\":2,\"name\":\"霍州市\",\"parentAreaId\":141000}],\"name\":\"临汾市\",\"parentAreaId\":140000},{\"areaId\":141100,\"areaType\":1,\"children\":[{\"areaId\":141102,\"areaType\":2,\"name\":\"离石区\",\"parentAreaId\":141100},{\"areaId\":141121,\"areaType\":2,\"name\":\"文水县\",\"parentAreaId\":141100},{\"areaId\":141122,\"areaType\":2,\"name\":\"交城县\",\"parentAreaId\":141100},{\"areaId\":141123,\"areaType\":2,\"name\":\"兴县\",\"parentAreaId\":141100},{\"areaId\":141124,\"areaType\":2,\"name\":\"临县\",\"parentAreaId\":141100},{\"areaId\":141125,\"areaType\":2,\"name\":\"柳林县\",\"parentAreaId\":141100},{\"areaId\":141126,\"areaType\":2,\"name\":\"石楼县\",\"parentAreaId\":141100},{\"areaId\":141127,\"areaType\":2,\"name\":\"岚县\",\"parentAreaId\":141100},{\"areaId\":141128,\"areaType\":2,\"name\":\"方山县\",\"parentAreaId\":141100},{\"areaId\":141129,\"areaType\":2,\"name\":\"中阳县\",\"parentAreaId\":141100},{\"areaId\":141130,\"areaType\":2,\"name\":\"交口县\",\"parentAreaId\":141100},{\"areaId\":141181,\"areaType\":2,\"name\":\"孝义市\",\"parentAreaId\":141100},{\"areaId\":141182,\"areaType\":2,\"name\":\"汾阳市\",\"parentAreaId\":141100}],\"name\":\"吕梁市\",\"parentAreaId\":140000}],\"name\":\"山西省\",\"parentAreaId\":0},{\"areaId\":150000,\"areaType\":0,\"children\":[{\"areaId\":150100,\"areaType\":1,\"children\":[{\"areaId\":150102,\"areaType\":2,\"name\":\"新城区\",\"parentAreaId\":150100},{\"areaId\":150103,\"areaType\":2,\"name\":\"回民区\",\"parentAreaId\":150100},{\"areaId\":150104,\"areaType\":2,\"name\":\"玉泉区\",\"parentAreaId\":150100},{\"areaId\":150105,\"areaType\":2,\"name\":\"赛罕区\",\"parentAreaId\":150100},{\"areaId\":150121,\"areaType\":2,\"name\":\"土默特左旗\",\"parentAreaId\":150100},{\"areaId\":150122,\"areaType\":2,\"name\":\"托克托县\",\"parentAreaId\":150100},{\"areaId\":150123,\"areaType\":2,\"name\":\"和林格尔县\",\"parentAreaId\":150100},{\"areaId\":150124,\"areaType\":2,\"name\":\"清水河县\",\"parentAreaId\":150100},{\"areaId\":150125,\"areaType\":2,\"name\":\"武川县\",\"parentAreaId\":150100}],\"name\":\"呼和浩特市\",\"parentAreaId\":150000},{\"areaId\":150200,\"areaType\":1,\"children\":[{\"areaId\":150202,\"areaType\":2,\"name\":\"东河区\",\"parentAreaId\":150200},{\"areaId\":150203,\"areaType\":2,\"name\":\"昆都仑区\",\"parentAreaId\":150200},{\"areaId\":150204,\"areaType\":2,\"name\":\"青山区\",\"parentAreaId\":150200},{\"areaId\":150205,\"areaType\":2,\"name\":\"石拐区\",\"parentAreaId\":150200},{\"areaId\":150206,\"areaType\":2,\"name\":\"白云鄂博矿区\",\"parentAreaId\":150200},{\"areaId\":150207,\"areaType\":2,\"name\":\"九原区\",\"parentAreaId\":150200},{\"areaId\":150221,\"areaType\":2,\"name\":\"土默特右旗\",\"parentAreaId\":150200},{\"areaId\":150222,\"areaType\":2,\"name\":\"固阳县\",\"parentAreaId\":150200},{\"areaId\":150223,\"areaType\":2,\"name\":\"达尔罕茂明安联合旗\",\"parentAreaId\":150200}],\"name\":\"包头市\",\"parentAreaId\":150000},{\"areaId\":150300,\"areaType\":1,\"children\":[{\"areaId\":150302,\"areaType\":2,\"name\":\"海勃湾区\",\"parentAreaId\":150300},{\"areaId\":150303,\"areaType\":2,\"name\":\"海南区\",\"parentAreaId\":150300},{\"areaId\":150304,\"areaType\":2,\"name\":\"乌达区\",\"parentAreaId\":150300}],\"name\":\"乌海市\",\"parentAreaId\":150000},{\"areaId\":150400,\"areaType\":1,\"children\":[{\"areaId\":150402,\"areaType\":2,\"name\":\"红山区\",\"parentAreaId\":150400},{\"areaId\":150403,\"areaType\":2,\"name\":\"元宝山区\",\"parentAreaId\":150400},{\"areaId\":150404,\"areaType\":2,\"name\":\"松山区\",\"parentAreaId\":150400},{\"areaId\":150421,\"areaType\":2,\"name\":\"阿鲁科尔沁旗\",\"parentAreaId\":150400},{\"areaId\":150422,\"areaType\":2,\"name\":\"巴林左旗\",\"parentAreaId\":150400},{\"areaId\":150423,\"areaType\":2,\"name\":\"巴林右旗\",\"parentAreaId\":150400},{\"areaId\":150424,\"areaType\":2,\"name\":\"林西县\",\"parentAreaId\":150400},{\"areaId\":150425,\"areaType\":2,\"name\":\"克什克腾旗\",\"parentAreaId\":150400},{\"areaId\":150426,\"areaType\":2,\"name\":\"翁牛特旗\",\"parentAreaId\":150400},{\"areaId\":150428,\"areaType\":2,\"name\":\"喀喇沁旗\",\"parentAreaId\":150400},{\"areaId\":150429,\"areaType\":2,\"name\":\"宁城县\",\"parentAreaId\":150400},{\"areaId\":150430,\"areaType\":2,\"name\":\"敖汉旗\",\"parentAreaId\":150400}],\"name\":\"赤峰市\",\"parentAreaId\":150000},{\"areaId\":150500,\"areaType\":1,\"children\":[{\"areaId\":150502,\"areaType\":2,\"name\":\"科尔沁区\",\"parentAreaId\":150500},{\"areaId\":150521,\"areaType\":2,\"name\":\"科尔沁左翼中旗\",\"parentAreaId\":150500},{\"areaId\":150522,\"areaType\":2,\"name\":\"科尔沁左翼后旗\",\"parentAreaId\":150500},{\"areaId\":150523,\"areaType\":2,\"name\":\"开鲁县\",\"parentAreaId\":150500},{\"areaId\":150524,\"areaType\":2,\"name\":\"库伦旗\",\"parentAreaId\":150500},{\"areaId\":150525,\"areaType\":2,\"name\":\"奈曼旗\",\"parentAreaId\":150500},{\"areaId\":150526,\"areaType\":2,\"name\":\"扎鲁特旗\",\"parentAreaId\":150500},{\"areaId\":150581,\"areaType\":2,\"name\":\"霍林郭勒市\",\"parentAreaId\":150500}],\"name\":\"通辽市\",\"parentAreaId\":150000},{\"areaId\":150600,\"areaType\":1,\"children\":[{\"areaId\":150602,\"areaType\":2,\"name\":\"东胜区\",\"parentAreaId\":150600},{\"areaId\":150603,\"areaType\":2,\"name\":\"康巴什区\",\"parentAreaId\":150600},{\"areaId\":150621,\"areaType\":2,\"name\":\"达拉特旗\",\"parentAreaId\":150600},{\"areaId\":150622,\"areaType\":2,\"name\":\"准格尔旗\",\"parentAreaId\":150600},{\"areaId\":150623,\"areaType\":2,\"name\":\"鄂托克前旗\",\"parentAreaId\":150600},{\"areaId\":150624,\"areaType\":2,\"name\":\"鄂托克旗\",\"parentAreaId\":150600},{\"areaId\":150625,\"areaType\":2,\"name\":\"杭锦旗\",\"parentAreaId\":150600},{\"areaId\":150626,\"areaType\":2,\"name\":\"乌审旗\",\"parentAreaId\":150600},{\"areaId\":150627,\"areaType\":2,\"name\":\"伊金霍洛旗\",\"parentAreaId\":150600}],\"name\":\"鄂尔多斯市\",\"parentAreaId\":150000},{\"areaId\":150700,\"areaType\":1,\"children\":[{\"areaId\":150702,\"areaType\":2,\"name\":\"海拉尔区\",\"parentAreaId\":150700},{\"areaId\":150703,\"areaType\":2,\"name\":\"扎赉诺尔区\",\"parentAreaId\":150700},{\"areaId\":150721,\"areaType\":2,\"name\":\"阿荣旗\",\"parentAreaId\":150700},{\"areaId\":150722,\"areaType\":2,\"name\":\"莫力达瓦达斡尔族自治旗\",\"parentAreaId\":150700},{\"areaId\":150723,\"areaType\":2,\"name\":\"鄂伦春自治旗\",\"parentAreaId\":150700},{\"areaId\":150724,\"areaType\":2,\"name\":\"鄂温克族自治旗\",\"parentAreaId\":150700},{\"areaId\":150725,\"areaType\":2,\"name\":\"陈巴尔虎旗\",\"parentAreaId\":150700},{\"areaId\":150726,\"areaType\":2,\"name\":\"新巴尔虎左旗\",\"parentAreaId\":150700},{\"areaId\":150727,\"areaType\":2,\"name\":\"新巴尔虎右旗\",\"parentAreaId\":150700},{\"areaId\":150781,\"areaType\":2,\"name\":\"满洲里市\",\"parentAreaId\":150700},{\"areaId\":150782,\"areaType\":2,\"name\":\"牙克石市\",\"parentAreaId\":150700},{\"areaId\":150783,\"areaType\":2,\"name\":\"扎兰屯市\",\"parentAreaId\":150700},{\"areaId\":150784,\"areaType\":2,\"name\":\"额尔古纳市\",\"parentAreaId\":150700},{\"areaId\":150785,\"areaType\":2,\"name\":\"根河市\",\"parentAreaId\":150700}],\"name\":\"呼伦贝尔市\",\"parentAreaId\":150000},{\"areaId\":150800,\"areaType\":1,\"children\":[{\"areaId\":150802,\"areaType\":2,\"name\":\"临河区\",\"parentAreaId\":150800},{\"areaId\":150821,\"areaType\":2,\"name\":\"五原县\",\"parentAreaId\":150800},{\"areaId\":150822,\"areaType\":2,\"name\":\"磴口县\",\"parentAreaId\":150800},{\"areaId\":150823,\"areaType\":2,\"name\":\"乌拉特前旗\",\"parentAreaId\":150800},{\"areaId\":150824,\"areaType\":2,\"name\":\"乌拉特中旗\",\"parentAreaId\":150800},{\"areaId\":150825,\"areaType\":2,\"name\":\"乌拉特后旗\",\"parentAreaId\":150800},{\"areaId\":150826,\"areaType\":2,\"name\":\"杭锦后旗\",\"parentAreaId\":150800}],\"name\":\"巴彦淖尔市\",\"parentAreaId\":150000},{\"areaId\":150900,\"areaType\":1,\"children\":[{\"areaId\":150902,\"areaType\":2,\"name\":\"集宁区\",\"parentAreaId\":150900},{\"areaId\":150921,\"areaType\":2,\"name\":\"卓资县\",\"parentAreaId\":150900},{\"areaId\":150922,\"areaType\":2,\"name\":\"化德县\",\"parentAreaId\":150900},{\"areaId\":150923,\"areaType\":2,\"name\":\"商都县\",\"parentAreaId\":150900},{\"areaId\":150924,\"areaType\":2,\"name\":\"兴和县\",\"parentAreaId\":150900},{\"areaId\":150925,\"areaType\":2,\"name\":\"凉城县\",\"parentAreaId\":150900},{\"areaId\":150926,\"areaType\":2,\"name\":\"察哈尔右翼前旗\",\"parentAreaId\":150900},{\"areaId\":150927,\"areaType\":2,\"name\":\"察哈尔右翼中旗\",\"parentAreaId\":150900},{\"areaId\":150928,\"areaType\":2,\"name\":\"察哈尔右翼后旗\",\"parentAreaId\":150900},{\"areaId\":150929,\"areaType\":2,\"name\":\"四子王旗\",\"parentAreaId\":150900},{\"areaId\":150981,\"areaType\":2,\"name\":\"丰镇市\",\"parentAreaId\":150900}],\"name\":\"乌兰察布市\",\"parentAreaId\":150000},{\"areaId\":152200,\"areaType\":1,\"children\":[{\"areaId\":152201,\"areaType\":2,\"name\":\"乌兰浩特市\",\"parentAreaId\":152200},{\"areaId\":152202,\"areaType\":2,\"name\":\"阿尔山市\",\"parentAreaId\":152200},{\"areaId\":152221,\"areaType\":2,\"name\":\"科尔沁右翼前旗\",\"parentAreaId\":152200},{\"areaId\":152222,\"areaType\":2,\"name\":\"科尔沁右翼中旗\",\"parentAreaId\":152200},{\"areaId\":152223,\"areaType\":2,\"name\":\"扎赉特旗\",\"parentAreaId\":152200},{\"areaId\":152224,\"areaType\":2,\"name\":\"突泉县\",\"parentAreaId\":152200}],\"name\":\"兴安盟\",\"parentAreaId\":150000},{\"areaId\":152500,\"areaType\":1,\"children\":[{\"areaId\":152501,\"areaType\":2,\"name\":\"二连浩特市\",\"parentAreaId\":152500},{\"areaId\":152502,\"areaType\":2,\"name\":\"锡林浩特市\",\"parentAreaId\":152500},{\"areaId\":152522,\"areaType\":2,\"name\":\"阿巴嘎旗\",\"parentAreaId\":152500},{\"areaId\":152523,\"areaType\":2,\"name\":\"苏尼特左旗\",\"parentAreaId\":152500},{\"areaId\":152524,\"areaType\":2,\"name\":\"苏尼特右旗\",\"parentAreaId\":152500},{\"areaId\":152525,\"areaType\":2,\"name\":\"东乌珠穆沁旗\",\"parentAreaId\":152500},{\"areaId\":152526,\"areaType\":2,\"name\":\"西乌珠穆沁旗\",\"parentAreaId\":152500},{\"areaId\":152527,\"areaType\":2,\"name\":\"太仆寺旗\",\"parentAreaId\":152500},{\"areaId\":152528,\"areaType\":2,\"name\":\"镶黄旗\",\"parentAreaId\":152500},{\"areaId\":152529,\"areaType\":2,\"name\":\"正镶白旗\",\"parentAreaId\":152500},{\"areaId\":152530,\"areaType\":2,\"name\":\"正蓝旗\",\"parentAreaId\":152500},{\"areaId\":152531,\"areaType\":2,\"name\":\"多伦县\",\"parentAreaId\":152500}],\"name\":\"锡林郭勒盟\",\"parentAreaId\":150000},{\"areaId\":152900,\"areaType\":1,\"children\":[{\"areaId\":152921,\"areaType\":2,\"name\":\"阿拉善左旗\",\"parentAreaId\":152900},{\"areaId\":152922,\"areaType\":2,\"name\":\"阿拉善右旗\",\"parentAreaId\":152900},{\"areaId\":152923,\"areaType\":2,\"name\":\"额济纳旗\",\"parentAreaId\":152900}],\"name\":\"阿拉善盟\",\"parentAreaId\":150000}],\"name\":\"内蒙古自治区\",\"parentAreaId\":0},{\"areaId\":210000,\"areaType\":0,\"children\":[{\"areaId\":210100,\"areaType\":1,\"children\":[{\"areaId\":210102,\"areaType\":2,\"name\":\"和平区\",\"parentAreaId\":210100},{\"areaId\":210103,\"areaType\":2,\"name\":\"沈河区\",\"parentAreaId\":210100},{\"areaId\":210104,\"areaType\":2,\"name\":\"大东区\",\"parentAreaId\":210100},{\"areaId\":210105,\"areaType\":2,\"name\":\"皇姑区\",\"parentAreaId\":210100},{\"areaId\":210106,\"areaType\":2,\"name\":\"铁西区\",\"parentAreaId\":210100},{\"areaId\":210111,\"areaType\":2,\"name\":\"苏家屯区\",\"parentAreaId\":210100},{\"areaId\":210112,\"areaType\":2,\"name\":\"浑南区\",\"parentAreaId\":210100},{\"areaId\":210113,\"areaType\":2,\"name\":\"沈北新区\",\"parentAreaId\":210100},{\"areaId\":210114,\"areaType\":2,\"name\":\"于洪区\",\"parentAreaId\":210100},{\"areaId\":210115,\"areaType\":2,\"name\":\"辽中区\",\"parentAreaId\":210100},{\"areaId\":210123,\"areaType\":2,\"name\":\"康平县\",\"parentAreaId\":210100},{\"areaId\":210124,\"areaType\":2,\"name\":\"法库县\",\"parentAreaId\":210100},{\"areaId\":210181,\"areaType\":2,\"name\":\"新民市\",\"parentAreaId\":210100}],\"name\":\"沈阳市\",\"parentAreaId\":210000},{\"areaId\":210200,\"areaType\":1,\"children\":[{\"areaId\":210202,\"areaType\":2,\"name\":\"中山区\",\"parentAreaId\":210200},{\"areaId\":210203,\"areaType\":2,\"name\":\"西岗区\",\"parentAreaId\":210200},{\"areaId\":210204,\"areaType\":2,\"name\":\"沙河口区\",\"parentAreaId\":210200},{\"areaId\":210211,\"areaType\":2,\"name\":\"甘井子区\",\"parentAreaId\":210200},{\"areaId\":210212,\"areaType\":2,\"name\":\"旅顺口区\",\"parentAreaId\":210200},{\"areaId\":210213,\"areaType\":2,\"name\":\"金州区\",\"parentAreaId\":210200},{\"areaId\":210214,\"areaType\":2,\"name\":\"普兰店区\",\"parentAreaId\":210200},{\"areaId\":210224,\"areaType\":2,\"name\":\"长海县\",\"parentAreaId\":210200},{\"areaId\":210281,\"areaType\":2,\"name\":\"瓦房店市\",\"parentAreaId\":210200},{\"areaId\":210283,\"areaType\":2,\"name\":\"庄河市\",\"parentAreaId\":210200}],\"name\":\"大连市\",\"parentAreaId\":210000},{\"areaId\":210300,\"areaType\":1,\"children\":[{\"areaId\":210302,\"areaType\":2,\"name\":\"铁东区\",\"parentAreaId\":210300},{\"areaId\":210303,\"areaType\":2,\"name\":\"铁西区\",\"parentAreaId\":210300},{\"areaId\":210304,\"areaType\":2,\"name\":\"立山区\",\"parentAreaId\":210300},{\"areaId\":210311,\"areaType\":2,\"name\":\"千山区\",\"parentAreaId\":210300},{\"areaId\":210321,\"areaType\":2,\"name\":\"台安县\",\"parentAreaId\":210300},{\"areaId\":210323,\"areaType\":2,\"name\":\"岫岩满族自治县\",\"parentAreaId\":210300},{\"areaId\":210381,\"areaType\":2,\"name\":\"海城市\",\"parentAreaId\":210300}],\"name\":\"鞍山市\",\"parentAreaId\":210000},{\"areaId\":210400,\"areaType\":1,\"children\":[{\"areaId\":210402,\"areaType\":2,\"name\":\"新抚区\",\"parentAreaId\":210400},{\"areaId\":210403,\"areaType\":2,\"name\":\"东洲区\",\"parentAreaId\":210400},{\"areaId\":210404,\"areaType\":2,\"name\":\"望花区\",\"parentAreaId\":210400},{\"areaId\":210411,\"areaType\":2,\"name\":\"顺城区\",\"parentAreaId\":210400},{\"areaId\":210421,\"areaType\":2,\"name\":\"抚顺县\",\"parentAreaId\":210400},{\"areaId\":210422,\"areaType\":2,\"name\":\"新宾满族自治县\",\"parentAreaId\":210400},{\"areaId\":210423,\"areaType\":2,\"name\":\"清原满族自治县\",\"parentAreaId\":210400}],\"name\":\"抚顺市\",\"parentAreaId\":210000},{\"areaId\":210500,\"areaType\":1,\"children\":[{\"areaId\":210502,\"areaType\":2,\"name\":\"平山区\",\"parentAreaId\":210500},{\"areaId\":210503,\"areaType\":2,\"name\":\"溪湖区\",\"parentAreaId\":210500},{\"areaId\":210504,\"areaType\":2,\"name\":\"明山区\",\"parentAreaId\":210500},{\"areaId\":210505,\"areaType\":2,\"name\":\"南芬区\",\"parentAreaId\":210500},{\"areaId\":210521,\"areaType\":2,\"name\":\"本溪满族自治县\",\"parentAreaId\":210500},{\"areaId\":210522,\"areaType\":2,\"name\":\"桓仁满族自治县\",\"parentAreaId\":210500}],\"name\":\"本溪市\",\"parentAreaId\":210000},{\"areaId\":210600,\"areaType\":1,\"children\":[{\"areaId\":210602,\"areaType\":2,\"name\":\"元宝区\",\"parentAreaId\":210600},{\"areaId\":210603,\"areaType\":2,\"name\":\"振兴区\",\"parentAreaId\":210600},{\"areaId\":210604,\"areaType\":2,\"name\":\"振安区\",\"parentAreaId\":210600},{\"areaId\":210624,\"areaType\":2,\"name\":\"宽甸满族自治县\",\"parentAreaId\":210600},{\"areaId\":210681,\"areaType\":2,\"name\":\"东港市\",\"parentAreaId\":210600},{\"areaId\":210682,\"areaType\":2,\"name\":\"凤城市\",\"parentAreaId\":210600}],\"name\":\"丹东市\",\"parentAreaId\":210000},{\"areaId\":210700,\"areaType\":1,\"children\":[{\"areaId\":210702,\"areaType\":2,\"name\":\"古塔区\",\"parentAreaId\":210700},{\"areaId\":210703,\"areaType\":2,\"name\":\"凌河区\",\"parentAreaId\":210700},{\"areaId\":210711,\"areaType\":2,\"name\":\"太和区\",\"parentAreaId\":210700},{\"areaId\":210726,\"areaType\":2,\"name\":\"黑山县\",\"parentAreaId\":210700},{\"areaId\":210727,\"areaType\":2,\"name\":\"义县\",\"parentAreaId\":210700},{\"areaId\":210781,\"areaType\":2,\"name\":\"凌海市\",\"parentAreaId\":210700},{\"areaId\":210782,\"areaType\":2,\"name\":\"北镇市\",\"parentAreaId\":210700}],\"name\":\"锦州市\",\"parentAreaId\":210000},{\"areaId\":210800,\"areaType\":1,\"children\":[{\"areaId\":210802,\"areaType\":2,\"name\":\"站前区\",\"parentAreaId\":210800},{\"areaId\":210803,\"areaType\":2,\"name\":\"西市区\",\"parentAreaId\":210800},{\"areaId\":210804,\"areaType\":2,\"name\":\"鲅鱼圈区\",\"parentAreaId\":210800},{\"areaId\":210811,\"areaType\":2,\"name\":\"老边区\",\"parentAreaId\":210800},{\"areaId\":210881,\"areaType\":2,\"name\":\"盖州市\",\"parentAreaId\":210800},{\"areaId\":210882,\"areaType\":2,\"name\":\"大石桥市\",\"parentAreaId\":210800}],\"name\":\"营口市\",\"parentAreaId\":210000},{\"areaId\":210900,\"areaType\":1,\"children\":[{\"areaId\":210902,\"areaType\":2,\"name\":\"海州区\",\"parentAreaId\":210900},{\"areaId\":210903,\"areaType\":2,\"name\":\"新邱区\",\"parentAreaId\":210900},{\"areaId\":210904,\"areaType\":2,\"name\":\"太平区\",\"parentAreaId\":210900},{\"areaId\":210905,\"areaType\":2,\"name\":\"清河门区\",\"parentAreaId\":210900},{\"areaId\":210911,\"areaType\":2,\"name\":\"细河区\",\"parentAreaId\":210900},{\"areaId\":210921,\"areaType\":2,\"name\":\"阜新蒙古族自治县\",\"parentAreaId\":210900},{\"areaId\":210922,\"areaType\":2,\"name\":\"彰武县\",\"parentAreaId\":210900}],\"name\":\"阜新市\",\"parentAreaId\":210000},{\"areaId\":211000,\"areaType\":1,\"children\":[{\"areaId\":211002,\"areaType\":2,\"name\":\"白塔区\",\"parentAreaId\":211000},{\"areaId\":211003,\"areaType\":2,\"name\":\"文圣区\",\"parentAreaId\":211000},{\"areaId\":211004,\"areaType\":2,\"name\":\"宏伟区\",\"parentAreaId\":211000},{\"areaId\":211005,\"areaType\":2,\"name\":\"弓长岭区\",\"parentAreaId\":211000},{\"areaId\":211011,\"areaType\":2,\"name\":\"太子河区\",\"parentAreaId\":211000},{\"areaId\":211021,\"areaType\":2,\"name\":\"辽阳县\",\"parentAreaId\":211000},{\"areaId\":211081,\"areaType\":2,\"name\":\"灯塔市\",\"parentAreaId\":211000}],\"name\":\"辽阳市\",\"parentAreaId\":210000},{\"areaId\":211100,\"areaType\":1,\"children\":[{\"areaId\":211102,\"areaType\":2,\"name\":\"双台子区\",\"parentAreaId\":211100},{\"areaId\":211103,\"areaType\":2,\"name\":\"兴隆台区\",\"parentAreaId\":211100},{\"areaId\":211104,\"areaType\":2,\"name\":\"大洼区\",\"parentAreaId\":211100},{\"areaId\":211122,\"areaType\":2,\"name\":\"盘山县\",\"parentAreaId\":211100}],\"name\":\"盘锦市\",\"parentAreaId\":210000},{\"areaId\":211200,\"areaType\":1,\"children\":[{\"areaId\":211202,\"areaType\":2,\"name\":\"银州区\",\"parentAreaId\":211200},{\"areaId\":211204,\"areaType\":2,\"name\":\"清河区\",\"parentAreaId\":211200},{\"areaId\":211221,\"areaType\":2,\"name\":\"铁岭县\",\"parentAreaId\":211200},{\"areaId\":211223,\"areaType\":2,\"name\":\"西丰县\",\"parentAreaId\":211200},{\"areaId\":211224,\"areaType\":2,\"name\":\"昌图县\",\"parentAreaId\":211200},{\"areaId\":211281,\"areaType\":2,\"name\":\"调兵山市\",\"parentAreaId\":211200},{\"areaId\":211282,\"areaType\":2,\"name\":\"开原市\",\"parentAreaId\":211200}],\"name\":\"铁岭市\",\"parentAreaId\":210000},{\"areaId\":211300,\"areaType\":1,\"children\":[{\"areaId\":211302,\"areaType\":2,\"name\":\"双塔区\",\"parentAreaId\":211300},{\"areaId\":211303,\"areaType\":2,\"name\":\"龙城区\",\"parentAreaId\":211300},{\"areaId\":211321,\"areaType\":2,\"name\":\"朝阳县\",\"parentAreaId\":211300},{\"areaId\":211322,\"areaType\":2,\"name\":\"建平县\",\"parentAreaId\":211300},{\"areaId\":211324,\"areaType\":2,\"name\":\"喀喇沁左翼蒙古族自治县\",\"parentAreaId\":211300},{\"areaId\":211381,\"areaType\":2,\"name\":\"北票市\",\"parentAreaId\":211300},{\"areaId\":211382,\"areaType\":2,\"name\":\"凌源市\",\"parentAreaId\":211300}],\"name\":\"朝阳市\",\"parentAreaId\":210000},{\"areaId\":211400,\"areaType\":1,\"children\":[{\"areaId\":211402,\"areaType\":2,\"name\":\"连山区\",\"parentAreaId\":211400},{\"areaId\":211403,\"areaType\":2,\"name\":\"龙港区\",\"parentAreaId\":211400},{\"areaId\":211404,\"areaType\":2,\"name\":\"南票区\",\"parentAreaId\":211400},{\"areaId\":211421,\"areaType\":2,\"name\":\"绥中县\",\"parentAreaId\":211400},{\"areaId\":211422,\"areaType\":2,\"name\":\"建昌县\",\"parentAreaId\":211400},{\"areaId\":211481,\"areaType\":2,\"name\":\"兴城市\",\"parentAreaId\":211400}],\"name\":\"葫芦岛市\",\"parentAreaId\":210000}],\"name\":\"辽宁省\",\"parentAreaId\":0},{\"areaId\":220000,\"areaType\":0,\"children\":[{\"areaId\":220100,\"areaType\":1,\"children\":[{\"areaId\":220102,\"areaType\":2,\"name\":\"南关区\",\"parentAreaId\":220100},{\"areaId\":220103,\"areaType\":2,\"name\":\"宽城区\",\"parentAreaId\":220100},{\"areaId\":220104,\"areaType\":2,\"name\":\"朝阳区\",\"parentAreaId\":220100},{\"areaId\":220105,\"areaType\":2,\"name\":\"二道区\",\"parentAreaId\":220100},{\"areaId\":220106,\"areaType\":2,\"name\":\"绿园区\",\"parentAreaId\":220100},{\"areaId\":220112,\"areaType\":2,\"name\":\"双阳区\",\"parentAreaId\":220100},{\"areaId\":220113,\"areaType\":2,\"name\":\"九台区\",\"parentAreaId\":220100},{\"areaId\":220122,\"areaType\":2,\"name\":\"农安县\",\"parentAreaId\":220100},{\"areaId\":220182,\"areaType\":2,\"name\":\"榆树市\",\"parentAreaId\":220100},{\"areaId\":220183,\"areaType\":2,\"name\":\"德惠市\",\"parentAreaId\":220100}],\"name\":\"长春市\",\"parentAreaId\":220000},{\"areaId\":220200,\"areaType\":1,\"children\":[{\"areaId\":220202,\"areaType\":2,\"name\":\"昌邑区\",\"parentAreaId\":220200},{\"areaId\":220203,\"areaType\":2,\"name\":\"龙潭区\",\"parentAreaId\":220200},{\"areaId\":220204,\"areaType\":2,\"name\":\"船营区\",\"parentAreaId\":220200},{\"areaId\":220211,\"areaType\":2,\"name\":\"丰满区\",\"parentAreaId\":220200},{\"areaId\":220221,\"areaType\":2,\"name\":\"永吉县\",\"parentAreaId\":220200},{\"areaId\":220281,\"areaType\":2,\"name\":\"蛟河市\",\"parentAreaId\":220200},{\"areaId\":220282,\"areaType\":2,\"name\":\"桦甸市\",\"parentAreaId\":220200},{\"areaId\":220283,\"areaType\":2,\"name\":\"舒兰市\",\"parentAreaId\":220200},{\"areaId\":220284,\"areaType\":2,\"name\":\"磐石市\",\"parentAreaId\":220200}],\"name\":\"吉林市\",\"parentAreaId\":220000},{\"areaId\":220300,\"areaType\":1,\"children\":[{\"areaId\":220302,\"areaType\":2,\"name\":\"铁西区\",\"parentAreaId\":220300},{\"areaId\":220303,\"areaType\":2,\"name\":\"铁东区\",\"parentAreaId\":220300},{\"areaId\":220322,\"areaType\":2,\"name\":\"梨树县\",\"parentAreaId\":220300},{\"areaId\":220323,\"areaType\":2,\"name\":\"伊通满族自治县\",\"parentAreaId\":220300},{\"areaId\":220381,\"areaType\":2,\"name\":\"公主岭市\",\"parentAreaId\":220300},{\"areaId\":220382,\"areaType\":2,\"name\":\"双辽市\",\"parentAreaId\":220300}],\"name\":\"四平市\",\"parentAreaId\":220000},{\"areaId\":220400,\"areaType\":1,\"children\":[{\"areaId\":220402,\"areaType\":2,\"name\":\"龙山区\",\"parentAreaId\":220400},{\"areaId\":220403,\"areaType\":2,\"name\":\"西安区\",\"parentAreaId\":220400},{\"areaId\":220421,\"areaType\":2,\"name\":\"东丰县\",\"parentAreaId\":220400},{\"areaId\":220422,\"areaType\":2,\"name\":\"东辽县\",\"parentAreaId\":220400}],\"name\":\"辽源市\",\"parentAreaId\":220000},{\"areaId\":220500,\"areaType\":1,\"children\":[{\"areaId\":220502,\"areaType\":2,\"name\":\"东昌区\",\"parentAreaId\":220500},{\"areaId\":220503,\"areaType\":2,\"name\":\"二道江区\",\"parentAreaId\":220500},{\"areaId\":220521,\"areaType\":2,\"name\":\"通化县\",\"parentAreaId\":220500},{\"areaId\":220523,\"areaType\":2,\"name\":\"辉南县\",\"parentAreaId\":220500},{\"areaId\":220524,\"areaType\":2,\"name\":\"柳河县\",\"parentAreaId\":220500},{\"areaId\":220581,\"areaType\":2,\"name\":\"梅河口市\",\"parentAreaId\":220500},{\"areaId\":220582,\"areaType\":2,\"name\":\"集安市\",\"parentAreaId\":220500}],\"name\":\"通化市\",\"parentAreaId\":220000},{\"areaId\":220600,\"areaType\":1,\"children\":[{\"areaId\":220602,\"areaType\":2,\"name\":\"浑江区\",\"parentAreaId\":220600},{\"areaId\":220605,\"areaType\":2,\"name\":\"江源区\",\"parentAreaId\":220600},{\"areaId\":220621,\"areaType\":2,\"name\":\"抚松县\",\"parentAreaId\":220600},{\"areaId\":220622,\"areaType\":2,\"name\":\"靖宇县\",\"parentAreaId\":220600},{\"areaId\":220623,\"areaType\":2,\"name\":\"长白朝鲜族自治县\",\"parentAreaId\":220600},{\"areaId\":220681,\"areaType\":2,\"name\":\"临江市\",\"parentAreaId\":220600}],\"name\":\"白山市\",\"parentAreaId\":220000},{\"areaId\":220700,\"areaType\":1,\"children\":[{\"areaId\":220702,\"areaType\":2,\"name\":\"宁江区\",\"parentAreaId\":220700},{\"areaId\":220721,\"areaType\":2,\"name\":\"前郭尔罗斯蒙古族自治县\",\"parentAreaId\":220700},{\"areaId\":220722,\"areaType\":2,\"name\":\"长岭县\",\"parentAreaId\":220700},{\"areaId\":220723,\"areaType\":2,\"name\":\"乾安县\",\"parentAreaId\":220700},{\"areaId\":220781,\"areaType\":2,\"name\":\"扶余市\",\"parentAreaId\":220700}],\"name\":\"松原市\",\"parentAreaId\":220000},{\"areaId\":220800,\"areaType\":1,\"children\":[{\"areaId\":220802,\"areaType\":2,\"name\":\"洮北区\",\"parentAreaId\":220800},{\"areaId\":220821,\"areaType\":2,\"name\":\"镇赉县\",\"parentAreaId\":220800},{\"areaId\":220822,\"areaType\":2,\"name\":\"通榆县\",\"parentAreaId\":220800},{\"areaId\":220881,\"areaType\":2,\"name\":\"洮南市\",\"parentAreaId\":220800},{\"areaId\":220882,\"areaType\":2,\"name\":\"大安市\",\"parentAreaId\":220800}],\"name\":\"白城市\",\"parentAreaId\":220000},{\"areaId\":222400,\"areaType\":1,\"children\":[{\"areaId\":222401,\"areaType\":2,\"name\":\"延吉市\",\"parentAreaId\":222400},{\"areaId\":222402,\"areaType\":2,\"name\":\"图们市\",\"parentAreaId\":222400},{\"areaId\":222403,\"areaType\":2,\"name\":\"敦化市\",\"parentAreaId\":222400},{\"areaId\":222404,\"areaType\":2,\"name\":\"珲春市\",\"parentAreaId\":222400},{\"areaId\":222405,\"areaType\":2,\"name\":\"龙井市\",\"parentAreaId\":222400},{\"areaId\":222406,\"areaType\":2,\"name\":\"和龙市\",\"parentAreaId\":222400},{\"areaId\":222424,\"areaType\":2,\"name\":\"汪清县\",\"parentAreaId\":222400},{\"areaId\":222426,\"areaType\":2,\"name\":\"安图县\",\"parentAreaId\":222400}],\"name\":\"延边朝鲜族自治州\",\"parentAreaId\":220000}],\"name\":\"吉林省\",\"parentAreaId\":0},{\"areaId\":230000,\"areaType\":0,\"children\":[{\"areaId\":230100,\"areaType\":1,\"children\":[{\"areaId\":230102,\"areaType\":2,\"name\":\"道里区\",\"parentAreaId\":230100},{\"areaId\":230103,\"areaType\":2,\"name\":\"南岗区\",\"parentAreaId\":230100},{\"areaId\":230104,\"areaType\":2,\"name\":\"道外区\",\"parentAreaId\":230100},{\"areaId\":230108,\"areaType\":2,\"name\":\"平房区\",\"parentAreaId\":230100},{\"areaId\":230109,\"areaType\":2,\"name\":\"松北区\",\"parentAreaId\":230100},{\"areaId\":230110,\"areaType\":2,\"name\":\"香坊区\",\"parentAreaId\":230100},{\"areaId\":230111,\"areaType\":2,\"name\":\"呼兰区\",\"parentAreaId\":230100},{\"areaId\":230112,\"areaType\":2,\"name\":\"阿城区\",\"parentAreaId\":230100},{\"areaId\":230113,\"areaType\":2,\"name\":\"双城区\",\"parentAreaId\":230100},{\"areaId\":230123,\"areaType\":2,\"name\":\"依兰县\",\"parentAreaId\":230100},{\"areaId\":230124,\"areaType\":2,\"name\":\"方正县\",\"parentAreaId\":230100},{\"areaId\":230125,\"areaType\":2,\"name\":\"宾县\",\"parentAreaId\":230100},{\"areaId\":230126,\"areaType\":2,\"name\":\"巴彦县\",\"parentAreaId\":230100},{\"areaId\":230127,\"areaType\":2,\"name\":\"木兰县\",\"parentAreaId\":230100},{\"areaId\":230128,\"areaType\":2,\"name\":\"通河县\",\"parentAreaId\":230100},{\"areaId\":230129,\"areaType\":2,\"name\":\"延寿县\",\"parentAreaId\":230100},{\"areaId\":230183,\"areaType\":2,\"name\":\"尚志市\",\"parentAreaId\":230100},{\"areaId\":230184,\"areaType\":2,\"name\":\"五常市\",\"parentAreaId\":230100}],\"name\":\"哈尔滨市\",\"parentAreaId\":230000},{\"areaId\":230200,\"areaType\":1,\"children\":[{\"areaId\":230202,\"areaType\":2,\"name\":\"龙沙区\",\"parentAreaId\":230200},{\"areaId\":230203,\"areaType\":2,\"name\":\"建华区\",\"parentAreaId\":230200},{\"areaId\":230204,\"areaType\":2,\"name\":\"铁锋区\",\"parentAreaId\":230200},{\"areaId\":230205,\"areaType\":2,\"name\":\"昂昂溪区\",\"parentAreaId\":230200},{\"areaId\":230206,\"areaType\":2,\"name\":\"富拉尔基区\",\"parentAreaId\":230200},{\"areaId\":230207,\"areaType\":2,\"name\":\"碾子山区\",\"parentAreaId\":230200},{\"areaId\":230208,\"areaType\":2,\"name\":\"梅里斯达斡尔族区\",\"parentAreaId\":230200},{\"areaId\":230221,\"areaType\":2,\"name\":\"龙江县\",\"parentAreaId\":230200},{\"areaId\":230223,\"areaType\":2,\"name\":\"依安县\",\"parentAreaId\":230200},{\"areaId\":230224,\"areaType\":2,\"name\":\"泰来县\",\"parentAreaId\":230200},{\"areaId\":230225,\"areaType\":2,\"name\":\"甘南县\",\"parentAreaId\":230200},{\"areaId\":230227,\"areaType\":2,\"name\":\"富裕县\",\"parentAreaId\":230200},{\"areaId\":230229,\"areaType\":2,\"name\":\"克山县\",\"parentAreaId\":230200},{\"areaId\":230230,\"areaType\":2,\"name\":\"克东县\",\"parentAreaId\":230200},{\"areaId\":230231,\"areaType\":2,\"name\":\"拜泉县\",\"parentAreaId\":230200},{\"areaId\":230281,\"areaType\":2,\"name\":\"讷河市\",\"parentAreaId\":230200}],\"name\":\"齐齐哈尔市\",\"parentAreaId\":230000},{\"areaId\":230300,\"areaType\":1,\"children\":[{\"areaId\":230302,\"areaType\":2,\"name\":\"鸡冠区\",\"parentAreaId\":230300},{\"areaId\":230303,\"areaType\":2,\"name\":\"恒山区\",\"parentAreaId\":230300},{\"areaId\":230304,\"areaType\":2,\"name\":\"滴道区\",\"parentAreaId\":230300},{\"areaId\":230305,\"areaType\":2,\"name\":\"梨树区\",\"parentAreaId\":230300},{\"areaId\":230306,\"areaType\":2,\"name\":\"城子河区\",\"parentAreaId\":230300},{\"areaId\":230307,\"areaType\":2,\"name\":\"麻山区\",\"parentAreaId\":230300},{\"areaId\":230321,\"areaType\":2,\"name\":\"鸡东县\",\"parentAreaId\":230300},{\"areaId\":230381,\"areaType\":2,\"name\":\"虎林市\",\"parentAreaId\":230300},{\"areaId\":230382,\"areaType\":2,\"name\":\"密山市\",\"parentAreaId\":230300}],\"name\":\"鸡西市\",\"parentAreaId\":230000},{\"areaId\":230400,\"areaType\":1,\"children\":[{\"areaId\":230402,\"areaType\":2,\"name\":\"向阳区\",\"parentAreaId\":230400},{\"areaId\":230403,\"areaType\":2,\"name\":\"工农区\",\"parentAreaId\":230400},{\"areaId\":230404,\"areaType\":2,\"name\":\"南山区\",\"parentAreaId\":230400},{\"areaId\":230405,\"areaType\":2,\"name\":\"兴安区\",\"parentAreaId\":230400},{\"areaId\":230406,\"areaType\":2,\"name\":\"东山区\",\"parentAreaId\":230400},{\"areaId\":230407,\"areaType\":2,\"name\":\"兴山区\",\"parentAreaId\":230400},{\"areaId\":230421,\"areaType\":2,\"name\":\"萝北县\",\"parentAreaId\":230400},{\"areaId\":230422,\"areaType\":2,\"name\":\"绥滨县\",\"parentAreaId\":230400}],\"name\":\"鹤岗市\",\"parentAreaId\":230000},{\"areaId\":230500,\"areaType\":1,\"children\":[{\"areaId\":230502,\"areaType\":2,\"name\":\"尖山区\",\"parentAreaId\":230500},{\"areaId\":230503,\"areaType\":2,\"name\":\"岭东区\",\"parentAreaId\":230500},{\"areaId\":230505,\"areaType\":2,\"name\":\"四方台区\",\"parentAreaId\":230500},{\"areaId\":230506,\"areaType\":2,\"name\":\"宝山区\",\"parentAreaId\":230500},{\"areaId\":230521,\"areaType\":2,\"name\":\"集贤县\",\"parentAreaId\":230500},{\"areaId\":230522,\"areaType\":2,\"name\":\"友谊县\",\"parentAreaId\":230500},{\"areaId\":230523,\"areaType\":2,\"name\":\"宝清县\",\"parentAreaId\":230500},{\"areaId\":230524,\"areaType\":2,\"name\":\"饶河县\",\"parentAreaId\":230500}],\"name\":\"双鸭山市\",\"parentAreaId\":230000},{\"areaId\":230600,\"areaType\":1,\"children\":[{\"areaId\":230602,\"areaType\":2,\"name\":\"萨尔图区\",\"parentAreaId\":230600},{\"areaId\":230603,\"areaType\":2,\"name\":\"龙凤区\",\"parentAreaId\":230600},{\"areaId\":230604,\"areaType\":2,\"name\":\"让胡路区\",\"parentAreaId\":230600},{\"areaId\":230605,\"areaType\":2,\"name\":\"红岗区\",\"parentAreaId\":230600},{\"areaId\":230606,\"areaType\":2,\"name\":\"大同区\",\"parentAreaId\":230600},{\"areaId\":230621,\"areaType\":2,\"name\":\"肇州县\",\"parentAreaId\":230600},{\"areaId\":230622,\"areaType\":2,\"name\":\"肇源县\",\"parentAreaId\":230600},{\"areaId\":230623,\"areaType\":2,\"name\":\"林甸县\",\"parentAreaId\":230600},{\"areaId\":230624,\"areaType\":2,\"name\":\"杜尔伯特蒙古族自治县\",\"parentAreaId\":230600}],\"name\":\"大庆市\",\"parentAreaId\":230000},{\"areaId\":230700,\"areaType\":1,\"children\":[{\"areaId\":230702,\"areaType\":2,\"name\":\"伊春区\",\"parentAreaId\":230700},{\"areaId\":230703,\"areaType\":2,\"name\":\"南岔区\",\"parentAreaId\":230700},{\"areaId\":230704,\"areaType\":2,\"name\":\"友好区\",\"parentAreaId\":230700},{\"areaId\":230705,\"areaType\":2,\"name\":\"西林区\",\"parentAreaId\":230700},{\"areaId\":230706,\"areaType\":2,\"name\":\"翠峦区\",\"parentAreaId\":230700},{\"areaId\":230707,\"areaType\":2,\"name\":\"新青区\",\"parentAreaId\":230700},{\"areaId\":230708,\"areaType\":2,\"name\":\"美溪区\",\"parentAreaId\":230700},{\"areaId\":230709,\"areaType\":2,\"name\":\"金山屯区\",\"parentAreaId\":230700},{\"areaId\":230710,\"areaType\":2,\"name\":\"五营区\",\"parentAreaId\":230700},{\"areaId\":230711,\"areaType\":2,\"name\":\"乌马河区\",\"parentAreaId\":230700},{\"areaId\":230712,\"areaType\":2,\"name\":\"汤旺河区\",\"parentAreaId\":230700},{\"areaId\":230713,\"areaType\":2,\"name\":\"带岭区\",\"parentAreaId\":230700},{\"areaId\":230714,\"areaType\":2,\"name\":\"乌伊岭区\",\"parentAreaId\":230700},{\"areaId\":230715,\"areaType\":2,\"name\":\"红星区\",\"parentAreaId\":230700},{\"areaId\":230716,\"areaType\":2,\"name\":\"上甘岭区\",\"parentAreaId\":230700},{\"areaId\":230722,\"areaType\":2,\"name\":\"嘉荫县\",\"parentAreaId\":230700},{\"areaId\":230781,\"areaType\":2,\"name\":\"铁力市\",\"parentAreaId\":230700}],\"name\":\"伊春市\",\"parentAreaId\":230000},{\"areaId\":230800,\"areaType\":1,\"children\":[{\"areaId\":230803,\"areaType\":2,\"name\":\"向阳区\",\"parentAreaId\":230800},{\"areaId\":230804,\"areaType\":2,\"name\":\"前进区\",\"parentAreaId\":230800},{\"areaId\":230805,\"areaType\":2,\"name\":\"东风区\",\"parentAreaId\":230800},{\"areaId\":230811,\"areaType\":2,\"name\":\"郊区\",\"parentAreaId\":230800},{\"areaId\":230822,\"areaType\":2,\"name\":\"桦南县\",\"parentAreaId\":230800},{\"areaId\":230826,\"areaType\":2,\"name\":\"桦川县\",\"parentAreaId\":230800},{\"areaId\":230828,\"areaType\":2,\"name\":\"汤原县\",\"parentAreaId\":230800},{\"areaId\":230881,\"areaType\":2,\"name\":\"同江市\",\"parentAreaId\":230800},{\"areaId\":230882,\"areaType\":2,\"name\":\"富锦市\",\"parentAreaId\":230800},{\"areaId\":230883,\"areaType\":2,\"name\":\"抚远市\",\"parentAreaId\":230800}],\"name\":\"佳木斯市\",\"parentAreaId\":230000},{\"areaId\":230900,\"areaType\":1,\"children\":[{\"areaId\":230902,\"areaType\":2,\"name\":\"新兴区\",\"parentAreaId\":230900},{\"areaId\":230903,\"areaType\":2,\"name\":\"桃山区\",\"parentAreaId\":230900},{\"areaId\":230904,\"areaType\":2,\"name\":\"茄子河区\",\"parentAreaId\":230900},{\"areaId\":230921,\"areaType\":2,\"name\":\"勃利县\",\"parentAreaId\":230900}],\"name\":\"七台河市\",\"parentAreaId\":230000},{\"areaId\":231000,\"areaType\":1,\"children\":[{\"areaId\":231002,\"areaType\":2,\"name\":\"东安区\",\"parentAreaId\":231000},{\"areaId\":231003,\"areaType\":2,\"name\":\"阳明区\",\"parentAreaId\":231000},{\"areaId\":231004,\"areaType\":2,\"name\":\"爱民区\",\"parentAreaId\":231000},{\"areaId\":231005,\"areaType\":2,\"name\":\"西安区\",\"parentAreaId\":231000},{\"areaId\":231025,\"areaType\":2,\"name\":\"林口县\",\"parentAreaId\":231000},{\"areaId\":231081,\"areaType\":2,\"name\":\"绥芬河市\",\"parentAreaId\":231000},{\"areaId\":231083,\"areaType\":2,\"name\":\"海林市\",\"parentAreaId\":231000},{\"areaId\":231084,\"areaType\":2,\"name\":\"宁安市\",\"parentAreaId\":231000},{\"areaId\":231085,\"areaType\":2,\"name\":\"穆棱市\",\"parentAreaId\":231000},{\"areaId\":231086,\"areaType\":2,\"name\":\"东宁市\",\"parentAreaId\":231000}],\"name\":\"牡丹江市\",\"parentAreaId\":230000},{\"areaId\":231100,\"areaType\":1,\"children\":[{\"areaId\":231102,\"areaType\":2,\"name\":\"爱辉区\",\"parentAreaId\":231100},{\"areaId\":231121,\"areaType\":2,\"name\":\"嫩江县\",\"parentAreaId\":231100},{\"areaId\":231123,\"areaType\":2,\"name\":\"逊克县\",\"parentAreaId\":231100},{\"areaId\":231124,\"areaType\":2,\"name\":\"孙吴县\",\"parentAreaId\":231100},{\"areaId\":231181,\"areaType\":2,\"name\":\"北安市\",\"parentAreaId\":231100},{\"areaId\":231182,\"areaType\":2,\"name\":\"五大连池市\",\"parentAreaId\":231100}],\"name\":\"黑河市\",\"parentAreaId\":230000},{\"areaId\":231200,\"areaType\":1,\"children\":[{\"areaId\":231202,\"areaType\":2,\"name\":\"北林区\",\"parentAreaId\":231200},{\"areaId\":231221,\"areaType\":2,\"name\":\"望奎县\",\"parentAreaId\":231200},{\"areaId\":231222,\"areaType\":2,\"name\":\"兰西县\",\"parentAreaId\":231200},{\"areaId\":231223,\"areaType\":2,\"name\":\"青冈县\",\"parentAreaId\":231200},{\"areaId\":231224,\"areaType\":2,\"name\":\"庆安县\",\"parentAreaId\":231200},{\"areaId\":231225,\"areaType\":2,\"name\":\"明水县\",\"parentAreaId\":231200},{\"areaId\":231226,\"areaType\":2,\"name\":\"绥棱县\",\"parentAreaId\":231200},{\"areaId\":231281,\"areaType\":2,\"name\":\"安达市\",\"parentAreaId\":231200},{\"areaId\":231282,\"areaType\":2,\"name\":\"肇东市\",\"parentAreaId\":231200},{\"areaId\":231283,\"areaType\":2,\"name\":\"海伦市\",\"parentAreaId\":231200}],\"name\":\"绥化市\",\"parentAreaId\":230000},{\"areaId\":232700,\"areaType\":1,\"children\":[{\"areaId\":232701,\"areaType\":2,\"name\":\"漠河市\",\"parentAreaId\":232700},{\"areaId\":232721,\"areaType\":2,\"name\":\"呼玛县\",\"parentAreaId\":232700},{\"areaId\":232722,\"areaType\":2,\"name\":\"塔河县\",\"parentAreaId\":232700}],\"name\":\"大兴安岭地区\",\"parentAreaId\":230000}],\"name\":\"黑龙江省\",\"parentAreaId\":0},{\"areaId\":320000,\"areaType\":0,\"children\":[{\"areaId\":320100,\"areaType\":1,\"children\":[{\"areaId\":320102,\"areaType\":2,\"name\":\"玄武区\",\"parentAreaId\":320100},{\"areaId\":320104,\"areaType\":2,\"name\":\"秦淮区\",\"parentAreaId\":320100},{\"areaId\":320105,\"areaType\":2,\"name\":\"建邺区\",\"parentAreaId\":320100},{\"areaId\":320106,\"areaType\":2,\"name\":\"鼓楼区\",\"parentAreaId\":320100},{\"areaId\":320111,\"areaType\":2,\"name\":\"浦口区\",\"parentAreaId\":320100},{\"areaId\":320113,\"areaType\":2,\"name\":\"栖霞区\",\"parentAreaId\":320100},{\"areaId\":320114,\"areaType\":2,\"name\":\"雨花台区\",\"parentAreaId\":320100},{\"areaId\":320115,\"areaType\":2,\"name\":\"江宁区\",\"parentAreaId\":320100},{\"areaId\":320116,\"areaType\":2,\"name\":\"六合区\",\"parentAreaId\":320100},{\"areaId\":320117,\"areaType\":2,\"name\":\"溧水区\",\"parentAreaId\":320100},{\"areaId\":320118,\"areaType\":2,\"name\":\"高淳区\",\"parentAreaId\":320100}],\"name\":\"南京市\",\"parentAreaId\":320000},{\"areaId\":320200,\"areaType\":1,\"children\":[{\"areaId\":320205,\"areaType\":2,\"name\":\"锡山区\",\"parentAreaId\":320200},{\"areaId\":320206,\"areaType\":2,\"name\":\"惠山区\",\"parentAreaId\":320200},{\"areaId\":320211,\"areaType\":2,\"name\":\"滨湖区\",\"parentAreaId\":320200},{\"areaId\":320213,\"areaType\":2,\"name\":\"梁溪区\",\"parentAreaId\":320200},{\"areaId\":320214,\"areaType\":2,\"name\":\"新吴区\",\"parentAreaId\":320200},{\"areaId\":320281,\"areaType\":2,\"name\":\"江阴市\",\"parentAreaId\":320200},{\"areaId\":320282,\"areaType\":2,\"name\":\"宜兴市\",\"parentAreaId\":320200}],\"name\":\"无锡市\",\"parentAreaId\":320000},{\"areaId\":320300,\"areaType\":1,\"children\":[{\"areaId\":320302,\"areaType\":2,\"name\":\"鼓楼区\",\"parentAreaId\":320300},{\"areaId\":320303,\"areaType\":2,\"name\":\"云龙区\",\"parentAreaId\":320300},{\"areaId\":320305,\"areaType\":2,\"name\":\"贾汪区\",\"parentAreaId\":320300},{\"areaId\":320311,\"areaType\":2,\"name\":\"泉山区\",\"parentAreaId\":320300},{\"areaId\":320312,\"areaType\":2,\"name\":\"铜山区\",\"parentAreaId\":320300},{\"areaId\":320321,\"areaType\":2,\"name\":\"丰县\",\"parentAreaId\":320300},{\"areaId\":320322,\"areaType\":2,\"name\":\"沛县\",\"parentAreaId\":320300},{\"areaId\":320324,\"areaType\":2,\"name\":\"睢宁县\",\"parentAreaId\":320300},{\"areaId\":320381,\"areaType\":2,\"name\":\"新沂市\",\"parentAreaId\":320300},{\"areaId\":320382,\"areaType\":2,\"name\":\"邳州市\",\"parentAreaId\":320300}],\"name\":\"徐州市\",\"parentAreaId\":320000},{\"areaId\":320400,\"areaType\":1,\"children\":[{\"areaId\":320402,\"areaType\":2,\"name\":\"天宁区\",\"parentAreaId\":320400},{\"areaId\":320404,\"areaType\":2,\"name\":\"钟楼区\",\"parentAreaId\":320400},{\"areaId\":320411,\"areaType\":2,\"name\":\"新北区\",\"parentAreaId\":320400},{\"areaId\":320412,\"areaType\":2,\"name\":\"武进区\",\"parentAreaId\":320400},{\"areaId\":320413,\"areaType\":2,\"name\":\"金坛区\",\"parentAreaId\":320400},{\"areaId\":320481,\"areaType\":2,\"name\":\"溧阳市\",\"parentAreaId\":320400}],\"name\":\"常州市\",\"parentAreaId\":320000},{\"areaId\":320500,\"areaType\":1,\"children\":[{\"areaId\":320505,\"areaType\":2,\"name\":\"虎丘区\",\"parentAreaId\":320500},{\"areaId\":320506,\"areaType\":2,\"name\":\"吴中区\",\"parentAreaId\":320500},{\"areaId\":320507,\"areaType\":2,\"name\":\"相城区\",\"parentAreaId\":320500},{\"areaId\":320508,\"areaType\":2,\"name\":\"姑苏区\",\"parentAreaId\":320500},{\"areaId\":320509,\"areaType\":2,\"name\":\"吴江区\",\"parentAreaId\":320500},{\"areaId\":320581,\"areaType\":2,\"name\":\"常熟市\",\"parentAreaId\":320500},{\"areaId\":320582,\"areaType\":2,\"name\":\"张家港市\",\"parentAreaId\":320500},{\"areaId\":320583,\"areaType\":2,\"name\":\"昆山市\",\"parentAreaId\":320500},{\"areaId\":320585,\"areaType\":2,\"name\":\"太仓市\",\"parentAreaId\":320500}],\"name\":\"苏州市\",\"parentAreaId\":320000},{\"areaId\":320600,\"areaType\":1,\"children\":[{\"areaId\":320602,\"areaType\":2,\"name\":\"崇川区\",\"parentAreaId\":320600},{\"areaId\":320611,\"areaType\":2,\"name\":\"港闸区\",\"parentAreaId\":320600},{\"areaId\":320612,\"areaType\":2,\"name\":\"通州区\",\"parentAreaId\":320600},{\"areaId\":320623,\"areaType\":2,\"name\":\"如东县\",\"parentAreaId\":320600},{\"areaId\":320681,\"areaType\":2,\"name\":\"启东市\",\"parentAreaId\":320600},{\"areaId\":320682,\"areaType\":2,\"name\":\"如皋市\",\"parentAreaId\":320600},{\"areaId\":320684,\"areaType\":2,\"name\":\"海门市\",\"parentAreaId\":320600},{\"areaId\":320685,\"areaType\":2,\"name\":\"海安市\",\"parentAreaId\":320600}],\"name\":\"南通市\",\"parentAreaId\":320000},{\"areaId\":320700,\"areaType\":1,\"children\":[{\"areaId\":320703,\"areaType\":2,\"name\":\"连云区\",\"parentAreaId\":320700},{\"areaId\":320706,\"areaType\":2,\"name\":\"海州区\",\"parentAreaId\":320700},{\"areaId\":320707,\"areaType\":2,\"name\":\"赣榆区\",\"parentAreaId\":320700},{\"areaId\":320722,\"areaType\":2,\"name\":\"东海县\",\"parentAreaId\":320700},{\"areaId\":320723,\"areaType\":2,\"name\":\"灌云县\",\"parentAreaId\":320700},{\"areaId\":320724,\"areaType\":2,\"name\":\"灌南县\",\"parentAreaId\":320700}],\"name\":\"连云港市\",\"parentAreaId\":320000},{\"areaId\":320800,\"areaType\":1,\"children\":[{\"areaId\":320803,\"areaType\":2,\"name\":\"淮安区\",\"parentAreaId\":320800},{\"areaId\":320804,\"areaType\":2,\"name\":\"淮阴区\",\"parentAreaId\":320800},{\"areaId\":320812,\"areaType\":2,\"name\":\"清江浦区\",\"parentAreaId\":320800},{\"areaId\":320813,\"areaType\":2,\"name\":\"洪泽区\",\"parentAreaId\":320800},{\"areaId\":320826,\"areaType\":2,\"name\":\"涟水县\",\"parentAreaId\":320800},{\"areaId\":320830,\"areaType\":2,\"name\":\"盱眙县\",\"parentAreaId\":320800},{\"areaId\":320831,\"areaType\":2,\"name\":\"金湖县\",\"parentAreaId\":320800}],\"name\":\"淮安市\",\"parentAreaId\":320000},{\"areaId\":320900,\"areaType\":1,\"children\":[{\"areaId\":320902,\"areaType\":2,\"name\":\"亭湖区\",\"parentAreaId\":320900},{\"areaId\":320903,\"areaType\":2,\"name\":\"盐都区\",\"parentAreaId\":320900},{\"areaId\":320904,\"areaType\":2,\"name\":\"大丰区\",\"parentAreaId\":320900},{\"areaId\":320921,\"areaType\":2,\"name\":\"响水县\",\"parentAreaId\":320900},{\"areaId\":320922,\"areaType\":2,\"name\":\"滨海县\",\"parentAreaId\":320900},{\"areaId\":320923,\"areaType\":2,\"name\":\"阜宁县\",\"parentAreaId\":320900},{\"areaId\":320924,\"areaType\":2,\"name\":\"射阳县\",\"parentAreaId\":320900},{\"areaId\":320925,\"areaType\":2,\"name\":\"建湖县\",\"parentAreaId\":320900},{\"areaId\":320981,\"areaType\":2,\"name\":\"东台市\",\"parentAreaId\":320900}],\"name\":\"盐城市\",\"parentAreaId\":320000},{\"areaId\":321000,\"areaType\":1,\"children\":[{\"areaId\":321002,\"areaType\":2,\"name\":\"广陵区\",\"parentAreaId\":321000},{\"areaId\":321003,\"areaType\":2,\"name\":\"邗江区\",\"parentAreaId\":321000},{\"areaId\":321012,\"areaType\":2,\"name\":\"江都区\",\"parentAreaId\":321000},{\"areaId\":321023,\"areaType\":2,\"name\":\"宝应县\",\"parentAreaId\":321000},{\"areaId\":321081,\"areaType\":2,\"name\":\"仪征市\",\"parentAreaId\":321000},{\"areaId\":321084,\"areaType\":2,\"name\":\"高邮市\",\"parentAreaId\":321000}],\"name\":\"扬州市\",\"parentAreaId\":320000},{\"areaId\":321100,\"areaType\":1,\"children\":[{\"areaId\":321102,\"areaType\":2,\"name\":\"京口区\",\"parentAreaId\":321100},{\"areaId\":321111,\"areaType\":2,\"name\":\"润州区\",\"parentAreaId\":321100},{\"areaId\":321112,\"areaType\":2,\"name\":\"丹徒区\",\"parentAreaId\":321100},{\"areaId\":321181,\"areaType\":2,\"name\":\"丹阳市\",\"parentAreaId\":321100},{\"areaId\":321182,\"areaType\":2,\"name\":\"扬中市\",\"parentAreaId\":321100},{\"areaId\":321183,\"areaType\":2,\"name\":\"句容市\",\"parentAreaId\":321100}],\"name\":\"镇江市\",\"parentAreaId\":320000},{\"areaId\":321200,\"areaType\":1,\"children\":[{\"areaId\":321202,\"areaType\":2,\"name\":\"海陵区\",\"parentAreaId\":321200},{\"areaId\":321203,\"areaType\":2,\"name\":\"高港区\",\"parentAreaId\":321200},{\"areaId\":321204,\"areaType\":2,\"name\":\"姜堰区\",\"parentAreaId\":321200},{\"areaId\":321281,\"areaType\":2,\"name\":\"兴化市\",\"parentAreaId\":321200},{\"areaId\":321282,\"areaType\":2,\"name\":\"靖江市\",\"parentAreaId\":321200},{\"areaId\":321283,\"areaType\":2,\"name\":\"泰兴市\",\"parentAreaId\":321200}],\"name\":\"泰州市\",\"parentAreaId\":320000},{\"areaId\":321300,\"areaType\":1,\"children\":[{\"areaId\":321302,\"areaType\":2,\"name\":\"宿城区\",\"parentAreaId\":321300},{\"areaId\":321311,\"areaType\":2,\"name\":\"宿豫区\",\"parentAreaId\":321300},{\"areaId\":321322,\"areaType\":2,\"name\":\"沭阳县\",\"parentAreaId\":321300},{\"areaId\":321323,\"areaType\":2,\"name\":\"泗阳县\",\"parentAreaId\":321300},{\"areaId\":321324,\"areaType\":2,\"name\":\"泗洪县\",\"parentAreaId\":321300}],\"name\":\"宿迁市\",\"parentAreaId\":320000}],\"name\":\"江苏省\",\"parentAreaId\":0},{\"areaId\":330000,\"areaType\":0,\"children\":[{\"areaId\":330100,\"areaType\":1,\"children\":[{\"areaId\":330102,\"areaType\":2,\"name\":\"上城区\",\"parentAreaId\":330100},{\"areaId\":330103,\"areaType\":2,\"name\":\"下城区\",\"parentAreaId\":330100},{\"areaId\":330104,\"areaType\":2,\"name\":\"江干区\",\"parentAreaId\":330100},{\"areaId\":330105,\"areaType\":2,\"name\":\"拱墅区\",\"parentAreaId\":330100},{\"areaId\":330106,\"areaType\":2,\"name\":\"西湖区\",\"parentAreaId\":330100},{\"areaId\":330108,\"areaType\":2,\"name\":\"滨江区\",\"parentAreaId\":330100},{\"areaId\":330109,\"areaType\":2,\"name\":\"萧山区\",\"parentAreaId\":330100},{\"areaId\":330110,\"areaType\":2,\"name\":\"余杭区\",\"parentAreaId\":330100},{\"areaId\":330111,\"areaType\":2,\"name\":\"富阳区\",\"parentAreaId\":330100},{\"areaId\":330112,\"areaType\":2,\"name\":\"临安区\",\"parentAreaId\":330100},{\"areaId\":330122,\"areaType\":2,\"name\":\"桐庐县\",\"parentAreaId\":330100},{\"areaId\":330127,\"areaType\":2,\"name\":\"淳安县\",\"parentAreaId\":330100},{\"areaId\":330182,\"areaType\":2,\"name\":\"建德市\",\"parentAreaId\":330100}],\"name\":\"杭州市\",\"parentAreaId\":330000},{\"areaId\":330200,\"areaType\":1,\"children\":[{\"areaId\":330203,\"areaType\":2,\"name\":\"海曙区\",\"parentAreaId\":330200},{\"areaId\":330205,\"areaType\":2,\"name\":\"江北区\",\"parentAreaId\":330200},{\"areaId\":330206,\"areaType\":2,\"name\":\"北仑区\",\"parentAreaId\":330200},{\"areaId\":330211,\"areaType\":2,\"name\":\"镇海区\",\"parentAreaId\":330200},{\"areaId\":330212,\"areaType\":2,\"name\":\"鄞州区\",\"parentAreaId\":330200},{\"areaId\":330213,\"areaType\":2,\"name\":\"奉化区\",\"parentAreaId\":330200},{\"areaId\":330225,\"areaType\":2,\"name\":\"象山县\",\"parentAreaId\":330200},{\"areaId\":330226,\"areaType\":2,\"name\":\"宁海县\",\"parentAreaId\":330200},{\"areaId\":330281,\"areaType\":2,\"name\":\"余姚市\",\"parentAreaId\":330200},{\"areaId\":330282,\"areaType\":2,\"name\":\"慈溪市\",\"parentAreaId\":330200}],\"name\":\"宁波市\",\"parentAreaId\":330000},{\"areaId\":330300,\"areaType\":1,\"children\":[{\"areaId\":330302,\"areaType\":2,\"name\":\"鹿城区\",\"parentAreaId\":330300},{\"areaId\":330303,\"areaType\":2,\"name\":\"龙湾区\",\"parentAreaId\":330300},{\"areaId\":330304,\"areaType\":2,\"name\":\"瓯海区\",\"parentAreaId\":330300},{\"areaId\":330305,\"areaType\":2,\"name\":\"洞头区\",\"parentAreaId\":330300},{\"areaId\":330324,\"areaType\":2,\"name\":\"永嘉县\",\"parentAreaId\":330300},{\"areaId\":330326,\"areaType\":2,\"name\":\"平阳县\",\"parentAreaId\":330300},{\"areaId\":330327,\"areaType\":2,\"name\":\"苍南县\",\"parentAreaId\":330300},{\"areaId\":330328,\"areaType\":2,\"name\":\"文成县\",\"parentAreaId\":330300},{\"areaId\":330329,\"areaType\":2,\"name\":\"泰顺县\",\"parentAreaId\":330300},{\"areaId\":330381,\"areaType\":2,\"name\":\"瑞安市\",\"parentAreaId\":330300},{\"areaId\":330382,\"areaType\":2,\"name\":\"乐清市\",\"parentAreaId\":330300}],\"name\":\"温州市\",\"parentAreaId\":330000},{\"areaId\":330400,\"areaType\":1,\"children\":[{\"areaId\":330402,\"areaType\":2,\"name\":\"南湖区\",\"parentAreaId\":330400},{\"areaId\":330411,\"areaType\":2,\"name\":\"秀洲区\",\"parentAreaId\":330400},{\"areaId\":330421,\"areaType\":2,\"name\":\"嘉善县\",\"parentAreaId\":330400},{\"areaId\":330424,\"areaType\":2,\"name\":\"海盐县\",\"parentAreaId\":330400},{\"areaId\":330481,\"areaType\":2,\"name\":\"海宁市\",\"parentAreaId\":330400},{\"areaId\":330482,\"areaType\":2,\"name\":\"平湖市\",\"parentAreaId\":330400},{\"areaId\":330483,\"areaType\":2,\"name\":\"桐乡市\",\"parentAreaId\":330400}],\"name\":\"嘉兴市\",\"parentAreaId\":330000},{\"areaId\":330500,\"areaType\":1,\"children\":[{\"areaId\":330502,\"areaType\":2,\"name\":\"吴兴区\",\"parentAreaId\":330500},{\"areaId\":330503,\"areaType\":2,\"name\":\"南浔区\",\"parentAreaId\":330500},{\"areaId\":330521,\"areaType\":2,\"name\":\"德清县\",\"parentAreaId\":330500},{\"areaId\":330522,\"areaType\":2,\"name\":\"长兴县\",\"parentAreaId\":330500},{\"areaId\":330523,\"areaType\":2,\"name\":\"安吉县\",\"parentAreaId\":330500}],\"name\":\"湖州市\",\"parentAreaId\":330000},{\"areaId\":330600,\"areaType\":1,\"children\":[{\"areaId\":330602,\"areaType\":2,\"name\":\"越城区\",\"parentAreaId\":330600},{\"areaId\":330603,\"areaType\":2,\"name\":\"柯桥区\",\"parentAreaId\":330600},{\"areaId\":330604,\"areaType\":2,\"name\":\"上虞区\",\"parentAreaId\":330600},{\"areaId\":330624,\"areaType\":2,\"name\":\"新昌县\",\"parentAreaId\":330600},{\"areaId\":330681,\"areaType\":2,\"name\":\"诸暨市\",\"parentAreaId\":330600},{\"areaId\":330683,\"areaType\":2,\"name\":\"嵊州市\",\"parentAreaId\":330600}],\"name\":\"绍兴市\",\"parentAreaId\":330000},{\"areaId\":330700,\"areaType\":1,\"children\":[{\"areaId\":330702,\"areaType\":2,\"name\":\"婺城区\",\"parentAreaId\":330700},{\"areaId\":330703,\"areaType\":2,\"name\":\"金东区\",\"parentAreaId\":330700},{\"areaId\":330723,\"areaType\":2,\"name\":\"武义县\",\"parentAreaId\":330700},{\"areaId\":330726,\"areaType\":2,\"name\":\"浦江县\",\"parentAreaId\":330700},{\"areaId\":330727,\"areaType\":2,\"name\":\"磐安县\",\"parentAreaId\":330700},{\"areaId\":330781,\"areaType\":2,\"name\":\"兰溪市\",\"parentAreaId\":330700},{\"areaId\":330782,\"areaType\":2,\"name\":\"义乌市\",\"parentAreaId\":330700},{\"areaId\":330783,\"areaType\":2,\"name\":\"东阳市\",\"parentAreaId\":330700},{\"areaId\":330784,\"areaType\":2,\"name\":\"永康市\",\"parentAreaId\":330700}],\"name\":\"金华市\",\"parentAreaId\":330000},{\"areaId\":330800,\"areaType\":1,\"children\":[{\"areaId\":330802,\"areaType\":2,\"name\":\"柯城区\",\"parentAreaId\":330800},{\"areaId\":330803,\"areaType\":2,\"name\":\"衢江区\",\"parentAreaId\":330800},{\"areaId\":330822,\"areaType\":2,\"name\":\"常山县\",\"parentAreaId\":330800},{\"areaId\":330824,\"areaType\":2,\"name\":\"开化县\",\"parentAreaId\":330800},{\"areaId\":330825,\"areaType\":2,\"name\":\"龙游县\",\"parentAreaId\":330800},{\"areaId\":330881,\"areaType\":2,\"name\":\"江山市\",\"parentAreaId\":330800}],\"name\":\"衢州市\",\"parentAreaId\":330000},{\"areaId\":330900,\"areaType\":1,\"children\":[{\"areaId\":330902,\"areaType\":2,\"name\":\"定海区\",\"parentAreaId\":330900},{\"areaId\":330903,\"areaType\":2,\"name\":\"普陀区\",\"parentAreaId\":330900},{\"areaId\":330921,\"areaType\":2,\"name\":\"岱山县\",\"parentAreaId\":330900},{\"areaId\":330922,\"areaType\":2,\"name\":\"嵊泗县\",\"parentAreaId\":330900}],\"name\":\"舟山市\",\"parentAreaId\":330000},{\"areaId\":331000,\"areaType\":1,\"children\":[{\"areaId\":331002,\"areaType\":2,\"name\":\"椒江区\",\"parentAreaId\":331000},{\"areaId\":331003,\"areaType\":2,\"name\":\"黄岩区\",\"parentAreaId\":331000},{\"areaId\":331004,\"areaType\":2,\"name\":\"路桥区\",\"parentAreaId\":331000},{\"areaId\":331022,\"areaType\":2,\"name\":\"三门县\",\"parentAreaId\":331000},{\"areaId\":331023,\"areaType\":2,\"name\":\"天台县\",\"parentAreaId\":331000},{\"areaId\":331024,\"areaType\":2,\"name\":\"仙居县\",\"parentAreaId\":331000},{\"areaId\":331081,\"areaType\":2,\"name\":\"温岭市\",\"parentAreaId\":331000},{\"areaId\":331082,\"areaType\":2,\"name\":\"临海市\",\"parentAreaId\":331000},{\"areaId\":331083,\"areaType\":2,\"name\":\"玉环市\",\"parentAreaId\":331000}],\"name\":\"台州市\",\"parentAreaId\":330000},{\"areaId\":331100,\"areaType\":1,\"children\":[{\"areaId\":331102,\"areaType\":2,\"name\":\"莲都区\",\"parentAreaId\":331100},{\"areaId\":331121,\"areaType\":2,\"name\":\"青田县\",\"parentAreaId\":331100},{\"areaId\":331122,\"areaType\":2,\"name\":\"缙云县\",\"parentAreaId\":331100},{\"areaId\":331123,\"areaType\":2,\"name\":\"遂昌县\",\"parentAreaId\":331100},{\"areaId\":331124,\"areaType\":2,\"name\":\"松阳县\",\"parentAreaId\":331100},{\"areaId\":331125,\"areaType\":2,\"name\":\"云和县\",\"parentAreaId\":331100},{\"areaId\":331126,\"areaType\":2,\"name\":\"庆元县\",\"parentAreaId\":331100},{\"areaId\":331127,\"areaType\":2,\"name\":\"景宁畲族自治县\",\"parentAreaId\":331100},{\"areaId\":331181,\"areaType\":2,\"name\":\"龙泉市\",\"parentAreaId\":331100}],\"name\":\"丽水市\",\"parentAreaId\":330000}],\"name\":\"浙江省\",\"parentAreaId\":0},{\"areaId\":340000,\"areaType\":0,\"children\":[{\"areaId\":340100,\"areaType\":1,\"children\":[{\"areaId\":340102,\"areaType\":2,\"name\":\"瑶海区\",\"parentAreaId\":340100},{\"areaId\":340103,\"areaType\":2,\"name\":\"庐阳区\",\"parentAreaId\":340100},{\"areaId\":340104,\"areaType\":2,\"name\":\"蜀山区\",\"parentAreaId\":340100},{\"areaId\":340111,\"areaType\":2,\"name\":\"包河区\",\"parentAreaId\":340100},{\"areaId\":340121,\"areaType\":2,\"name\":\"长丰县\",\"parentAreaId\":340100},{\"areaId\":340122,\"areaType\":2,\"name\":\"肥东县\",\"parentAreaId\":340100},{\"areaId\":340123,\"areaType\":2,\"name\":\"肥西县\",\"parentAreaId\":340100},{\"areaId\":340124,\"areaType\":2,\"name\":\"庐江县\",\"parentAreaId\":340100},{\"areaId\":340181,\"areaType\":2,\"name\":\"巢湖市\",\"parentAreaId\":340100}],\"name\":\"合肥市\",\"parentAreaId\":340000},{\"areaId\":340200,\"areaType\":1,\"children\":[{\"areaId\":340202,\"areaType\":2,\"name\":\"镜湖区\",\"parentAreaId\":340200},{\"areaId\":340203,\"areaType\":2,\"name\":\"弋江区\",\"parentAreaId\":340200},{\"areaId\":340207,\"areaType\":2,\"name\":\"鸠江区\",\"parentAreaId\":340200},{\"areaId\":340208,\"areaType\":2,\"name\":\"三山区\",\"parentAreaId\":340200},{\"areaId\":340221,\"areaType\":2,\"name\":\"芜湖县\",\"parentAreaId\":340200},{\"areaId\":340222,\"areaType\":2,\"name\":\"繁昌县\",\"parentAreaId\":340200},{\"areaId\":340223,\"areaType\":2,\"name\":\"南陵县\",\"parentAreaId\":340200},{\"areaId\":340225,\"areaType\":2,\"name\":\"无为县\",\"parentAreaId\":340200}],\"name\":\"芜湖市\",\"parentAreaId\":340000},{\"areaId\":340300,\"areaType\":1,\"children\":[{\"areaId\":340302,\"areaType\":2,\"name\":\"龙子湖区\",\"parentAreaId\":340300},{\"areaId\":340303,\"areaType\":2,\"name\":\"蚌山区\",\"parentAreaId\":340300},{\"areaId\":340304,\"areaType\":2,\"name\":\"禹会区\",\"parentAreaId\":340300},{\"areaId\":340311,\"areaType\":2,\"name\":\"淮上区\",\"parentAreaId\":340300},{\"areaId\":340321,\"areaType\":2,\"name\":\"怀远县\",\"parentAreaId\":340300},{\"areaId\":340322,\"areaType\":2,\"name\":\"五河县\",\"parentAreaId\":340300},{\"areaId\":340323,\"areaType\":2,\"name\":\"固镇县\",\"parentAreaId\":340300}],\"name\":\"蚌埠市\",\"parentAreaId\":340000},{\"areaId\":340400,\"areaType\":1,\"children\":[{\"areaId\":340402,\"areaType\":2,\"name\":\"大通区\",\"parentAreaId\":340400},{\"areaId\":340403,\"areaType\":2,\"name\":\"田家庵区\",\"parentAreaId\":340400},{\"areaId\":340404,\"areaType\":2,\"name\":\"谢家集区\",\"parentAreaId\":340400},{\"areaId\":340405,\"areaType\":2,\"name\":\"八公山区\",\"parentAreaId\":340400},{\"areaId\":340406,\"areaType\":2,\"name\":\"潘集区\",\"parentAreaId\":340400},{\"areaId\":340421,\"areaType\":2,\"name\":\"凤台县\",\"parentAreaId\":340400},{\"areaId\":340422,\"areaType\":2,\"name\":\"寿县\",\"parentAreaId\":340400}],\"name\":\"淮南市\",\"parentAreaId\":340000},{\"areaId\":340500,\"areaType\":1,\"children\":[{\"areaId\":340503,\"areaType\":2,\"name\":\"花山区\",\"parentAreaId\":340500},{\"areaId\":340504,\"areaType\":2,\"name\":\"雨山区\",\"parentAreaId\":340500},{\"areaId\":340506,\"areaType\":2,\"name\":\"博望区\",\"parentAreaId\":340500},{\"areaId\":340521,\"areaType\":2,\"name\":\"当涂县\",\"parentAreaId\":340500},{\"areaId\":340522,\"areaType\":2,\"name\":\"含山县\",\"parentAreaId\":340500},{\"areaId\":340523,\"areaType\":2,\"name\":\"和县\",\"parentAreaId\":340500}],\"name\":\"马鞍山市\",\"parentAreaId\":340000},{\"areaId\":340600,\"areaType\":1,\"children\":[{\"areaId\":340602,\"areaType\":2,\"name\":\"杜集区\",\"parentAreaId\":340600},{\"areaId\":340603,\"areaType\":2,\"name\":\"相山区\",\"parentAreaId\":340600},{\"areaId\":340604,\"areaType\":2,\"name\":\"烈山区\",\"parentAreaId\":340600},{\"areaId\":340621,\"areaType\":2,\"name\":\"濉溪县\",\"parentAreaId\":340600}],\"name\":\"淮北市\",\"parentAreaId\":340000},{\"areaId\":340700,\"areaType\":1,\"children\":[{\"areaId\":340705,\"areaType\":2,\"name\":\"铜官区\",\"parentAreaId\":340700},{\"areaId\":340706,\"areaType\":2,\"name\":\"义安区\",\"parentAreaId\":340700},{\"areaId\":340711,\"areaType\":2,\"name\":\"郊区\",\"parentAreaId\":340700},{\"areaId\":340722,\"areaType\":2,\"name\":\"枞阳县\",\"parentAreaId\":340700}],\"name\":\"铜陵市\",\"parentAreaId\":340000},{\"areaId\":340800,\"areaType\":1,\"children\":[{\"areaId\":340802,\"areaType\":2,\"name\":\"迎江区\",\"parentAreaId\":340800},{\"areaId\":340803,\"areaType\":2,\"name\":\"大观区\",\"parentAreaId\":340800},{\"areaId\":340811,\"areaType\":2,\"name\":\"宜秀区\",\"parentAreaId\":340800},{\"areaId\":340822,\"areaType\":2,\"name\":\"怀宁县\",\"parentAreaId\":340800},{\"areaId\":340824,\"areaType\":2,\"name\":\"潜山市\",\"parentAreaId\":340800},{\"areaId\":340825,\"areaType\":2,\"name\":\"太湖县\",\"parentAreaId\":340800},{\"areaId\":340826,\"areaType\":2,\"name\":\"宿松县\",\"parentAreaId\":340800},{\"areaId\":340827,\"areaType\":2,\"name\":\"望江县\",\"parentAreaId\":340800},{\"areaId\":340828,\"areaType\":2,\"name\":\"岳西县\",\"parentAreaId\":340800},{\"areaId\":340881,\"areaType\":2,\"name\":\"桐城市\",\"parentAreaId\":340800}],\"name\":\"安庆市\",\"parentAreaId\":340000},{\"areaId\":341000,\"areaType\":1,\"children\":[{\"areaId\":341002,\"areaType\":2,\"name\":\"屯溪区\",\"parentAreaId\":341000},{\"areaId\":341003,\"areaType\":2,\"name\":\"黄山区\",\"parentAreaId\":341000},{\"areaId\":341004,\"areaType\":2,\"name\":\"徽州区\",\"parentAreaId\":341000},{\"areaId\":341021,\"areaType\":2,\"name\":\"歙县\",\"parentAreaId\":341000},{\"areaId\":341022,\"areaType\":2,\"name\":\"休宁县\",\"parentAreaId\":341000},{\"areaId\":341023,\"areaType\":2,\"name\":\"黟县\",\"parentAreaId\":341000},{\"areaId\":341024,\"areaType\":2,\"name\":\"祁门县\",\"parentAreaId\":341000}],\"name\":\"黄山市\",\"parentAreaId\":340000},{\"areaId\":341100,\"areaType\":1,\"children\":[{\"areaId\":341102,\"areaType\":2,\"name\":\"琅琊区\",\"parentAreaId\":341100},{\"areaId\":341103,\"areaType\":2,\"name\":\"南谯区\",\"parentAreaId\":341100},{\"areaId\":341122,\"areaType\":2,\"name\":\"来安县\",\"parentAreaId\":341100},{\"areaId\":341124,\"areaType\":2,\"name\":\"全椒县\",\"parentAreaId\":341100},{\"areaId\":341125,\"areaType\":2,\"name\":\"定远县\",\"parentAreaId\":341100},{\"areaId\":341126,\"areaType\":2,\"name\":\"凤阳县\",\"parentAreaId\":341100},{\"areaId\":341181,\"areaType\":2,\"name\":\"天长市\",\"parentAreaId\":341100},{\"areaId\":341182,\"areaType\":2,\"name\":\"明光市\",\"parentAreaId\":341100}],\"name\":\"滁州市\",\"parentAreaId\":340000},{\"areaId\":341200,\"areaType\":1,\"children\":[{\"areaId\":341202,\"areaType\":2,\"name\":\"颍州区\",\"parentAreaId\":341200},{\"areaId\":341203,\"areaType\":2,\"name\":\"颍东区\",\"parentAreaId\":341200},{\"areaId\":341204,\"areaType\":2,\"name\":\"颍泉区\",\"parentAreaId\":341200},{\"areaId\":341221,\"areaType\":2,\"name\":\"临泉县\",\"parentAreaId\":341200},{\"areaId\":341222,\"areaType\":2,\"name\":\"太和县\",\"parentAreaId\":341200},{\"areaId\":341225,\"areaType\":2,\"name\":\"阜南县\",\"parentAreaId\":341200},{\"areaId\":341226,\"areaType\":2,\"name\":\"颍上县\",\"parentAreaId\":341200},{\"areaId\":341282,\"areaType\":2,\"name\":\"界首市\",\"parentAreaId\":341200}],\"name\":\"阜阳市\",\"parentAreaId\":340000},{\"areaId\":341300,\"areaType\":1,\"children\":[{\"areaId\":341302,\"areaType\":2,\"name\":\"埇桥区\",\"parentAreaId\":341300},{\"areaId\":341321,\"areaType\":2,\"name\":\"砀山县\",\"parentAreaId\":341300},{\"areaId\":341322,\"areaType\":2,\"name\":\"萧县\",\"parentAreaId\":341300},{\"areaId\":341323,\"areaType\":2,\"name\":\"灵璧县\",\"parentAreaId\":341300},{\"areaId\":341324,\"areaType\":2,\"name\":\"泗县\",\"parentAreaId\":341300}],\"name\":\"宿州市\",\"parentAreaId\":340000},{\"areaId\":341500,\"areaType\":1,\"children\":[{\"areaId\":341502,\"areaType\":2,\"name\":\"金安区\",\"parentAreaId\":341500},{\"areaId\":341503,\"areaType\":2,\"name\":\"裕安区\",\"parentAreaId\":341500},{\"areaId\":341504,\"areaType\":2,\"name\":\"叶集区\",\"parentAreaId\":341500},{\"areaId\":341522,\"areaType\":2,\"name\":\"霍邱县\",\"parentAreaId\":341500},{\"areaId\":341523,\"areaType\":2,\"name\":\"舒城县\",\"parentAreaId\":341500},{\"areaId\":341524,\"areaType\":2,\"name\":\"金寨县\",\"parentAreaId\":341500},{\"areaId\":341525,\"areaType\":2,\"name\":\"霍山县\",\"parentAreaId\":341500}],\"name\":\"六安市\",\"parentAreaId\":340000},{\"areaId\":341600,\"areaType\":1,\"children\":[{\"areaId\":341602,\"areaType\":2,\"name\":\"谯城区\",\"parentAreaId\":341600},{\"areaId\":341621,\"areaType\":2,\"name\":\"涡阳县\",\"parentAreaId\":341600},{\"areaId\":341622,\"areaType\":2,\"name\":\"蒙城县\",\"parentAreaId\":341600},{\"areaId\":341623,\"areaType\":2,\"name\":\"利辛县\",\"parentAreaId\":341600}],\"name\":\"亳州市\",\"parentAreaId\":340000},{\"areaId\":341700,\"areaType\":1,\"children\":[{\"areaId\":341702,\"areaType\":2,\"name\":\"贵池区\",\"parentAreaId\":341700},{\"areaId\":341721,\"areaType\":2,\"name\":\"东至县\",\"parentAreaId\":341700},{\"areaId\":341722,\"areaType\":2,\"name\":\"石台县\",\"parentAreaId\":341700},{\"areaId\":341723,\"areaType\":2,\"name\":\"青阳县\",\"parentAreaId\":341700}],\"name\":\"池州市\",\"parentAreaId\":340000},{\"areaId\":341800,\"areaType\":1,\"children\":[{\"areaId\":341802,\"areaType\":2,\"name\":\"宣州区\",\"parentAreaId\":341800},{\"areaId\":341821,\"areaType\":2,\"name\":\"郎溪县\",\"parentAreaId\":341800},{\"areaId\":341822,\"areaType\":2,\"name\":\"广德县\",\"parentAreaId\":341800},{\"areaId\":341823,\"areaType\":2,\"name\":\"泾县\",\"parentAreaId\":341800},{\"areaId\":341824,\"areaType\":2,\"name\":\"绩溪县\",\"parentAreaId\":341800},{\"areaId\":341825,\"areaType\":2,\"name\":\"旌德县\",\"parentAreaId\":341800},{\"areaId\":341881,\"areaType\":2,\"name\":\"宁国市\",\"parentAreaId\":341800}],\"name\":\"宣城市\",\"parentAreaId\":340000}],\"name\":\"安徽省\",\"parentAreaId\":0},{\"areaId\":350000,\"areaType\":0,\"children\":[{\"areaId\":350100,\"areaType\":1,\"children\":[{\"areaId\":350102,\"areaType\":2,\"name\":\"鼓楼区\",\"parentAreaId\":350100},{\"areaId\":350103,\"areaType\":2,\"name\":\"台江区\",\"parentAreaId\":350100},{\"areaId\":350104,\"areaType\":2,\"name\":\"仓山区\",\"parentAreaId\":350100},{\"areaId\":350105,\"areaType\":2,\"name\":\"马尾区\",\"parentAreaId\":350100},{\"areaId\":350111,\"areaType\":2,\"name\":\"晋安区\",\"parentAreaId\":350100},{\"areaId\":350112,\"areaType\":2,\"name\":\"长乐区\",\"parentAreaId\":350100},{\"areaId\":350121,\"areaType\":2,\"name\":\"闽侯县\",\"parentAreaId\":350100},{\"areaId\":350122,\"areaType\":2,\"name\":\"连江县\",\"parentAreaId\":350100},{\"areaId\":350123,\"areaType\":2,\"name\":\"罗源县\",\"parentAreaId\":350100},{\"areaId\":350124,\"areaType\":2,\"name\":\"闽清县\",\"parentAreaId\":350100},{\"areaId\":350125,\"areaType\":2,\"name\":\"永泰县\",\"parentAreaId\":350100},{\"areaId\":350128,\"areaType\":2,\"name\":\"平潭县\",\"parentAreaId\":350100},{\"areaId\":350181,\"areaType\":2,\"name\":\"福清市\",\"parentAreaId\":350100}],\"name\":\"福州市\",\"parentAreaId\":350000},{\"areaId\":350200,\"areaType\":1,\"children\":[{\"areaId\":350203,\"areaType\":2,\"name\":\"思明区\",\"parentAreaId\":350200},{\"areaId\":350205,\"areaType\":2,\"name\":\"海沧区\",\"parentAreaId\":350200},{\"areaId\":350206,\"areaType\":2,\"name\":\"湖里区\",\"parentAreaId\":350200},{\"areaId\":350211,\"areaType\":2,\"name\":\"集美区\",\"parentAreaId\":350200},{\"areaId\":350212,\"areaType\":2,\"name\":\"同安区\",\"parentAreaId\":350200},{\"areaId\":350213,\"areaType\":2,\"name\":\"翔安区\",\"parentAreaId\":350200}],\"name\":\"厦门市\",\"parentAreaId\":350000},{\"areaId\":350300,\"areaType\":1,\"children\":[{\"areaId\":350302,\"areaType\":2,\"name\":\"城厢区\",\"parentAreaId\":350300},{\"areaId\":350303,\"areaType\":2,\"name\":\"涵江区\",\"parentAreaId\":350300},{\"areaId\":350304,\"areaType\":2,\"name\":\"荔城区\",\"parentAreaId\":350300},{\"areaId\":350305,\"areaType\":2,\"name\":\"秀屿区\",\"parentAreaId\":350300},{\"areaId\":350322,\"areaType\":2,\"name\":\"仙游县\",\"parentAreaId\":350300}],\"name\":\"莆田市\",\"parentAreaId\":350000},{\"areaId\":350400,\"areaType\":1,\"children\":[{\"areaId\":350402,\"areaType\":2,\"name\":\"梅列区\",\"parentAreaId\":350400},{\"areaId\":350403,\"areaType\":2,\"name\":\"三元区\",\"parentAreaId\":350400},{\"areaId\":350421,\"areaType\":2,\"name\":\"明溪县\",\"parentAreaId\":350400},{\"areaId\":350423,\"areaType\":2,\"name\":\"清流县\",\"parentAreaId\":350400},{\"areaId\":350424,\"areaType\":2,\"name\":\"宁化县\",\"parentAreaId\":350400},{\"areaId\":350425,\"areaType\":2,\"name\":\"大田县\",\"parentAreaId\":350400},{\"areaId\":350426,\"areaType\":2,\"name\":\"尤溪县\",\"parentAreaId\":350400},{\"areaId\":350427,\"areaType\":2,\"name\":\"沙县\",\"parentAreaId\":350400},{\"areaId\":350428,\"areaType\":2,\"name\":\"将乐县\",\"parentAreaId\":350400},{\"areaId\":350429,\"areaType\":2,\"name\":\"泰宁县\",\"parentAreaId\":350400},{\"areaId\":350430,\"areaType\":2,\"name\":\"建宁县\",\"parentAreaId\":350400},{\"areaId\":350481,\"areaType\":2,\"name\":\"永安市\",\"parentAreaId\":350400}],\"name\":\"三明市\",\"parentAreaId\":350000},{\"areaId\":350500,\"areaType\":1,\"children\":[{\"areaId\":350502,\"areaType\":2,\"name\":\"鲤城区\",\"parentAreaId\":350500},{\"areaId\":350503,\"areaType\":2,\"name\":\"丰泽区\",\"parentAreaId\":350500},{\"areaId\":350504,\"areaType\":2,\"name\":\"洛江区\",\"parentAreaId\":350500},{\"areaId\":350505,\"areaType\":2,\"name\":\"泉港区\",\"parentAreaId\":350500},{\"areaId\":350521,\"areaType\":2,\"name\":\"惠安县\",\"parentAreaId\":350500},{\"areaId\":350524,\"areaType\":2,\"name\":\"安溪县\",\"parentAreaId\":350500},{\"areaId\":350525,\"areaType\":2,\"name\":\"永春县\",\"parentAreaId\":350500},{\"areaId\":350526,\"areaType\":2,\"name\":\"德化县\",\"parentAreaId\":350500},{\"areaId\":350527,\"areaType\":2,\"name\":\"金门县\",\"parentAreaId\":350500},{\"areaId\":350581,\"areaType\":2,\"name\":\"石狮市\",\"parentAreaId\":350500},{\"areaId\":350582,\"areaType\":2,\"name\":\"晋江市\",\"parentAreaId\":350500},{\"areaId\":350583,\"areaType\":2,\"name\":\"南安市\",\"parentAreaId\":350500}],\"name\":\"泉州市\",\"parentAreaId\":350000},{\"areaId\":350600,\"areaType\":1,\"children\":[{\"areaId\":350602,\"areaType\":2,\"name\":\"芗城区\",\"parentAreaId\":350600},{\"areaId\":350603,\"areaType\":2,\"name\":\"龙文区\",\"parentAreaId\":350600},{\"areaId\":350622,\"areaType\":2,\"name\":\"云霄县\",\"parentAreaId\":350600},{\"areaId\":350623,\"areaType\":2,\"name\":\"漳浦县\",\"parentAreaId\":350600},{\"areaId\":350624,\"areaType\":2,\"name\":\"诏安县\",\"parentAreaId\":350600},{\"areaId\":350625,\"areaType\":2,\"name\":\"长泰县\",\"parentAreaId\":350600},{\"areaId\":350626,\"areaType\":2,\"name\":\"东山县\",\"parentAreaId\":350600},{\"areaId\":350627,\"areaType\":2,\"name\":\"南靖县\",\"parentAreaId\":350600},{\"areaId\":350628,\"areaType\":2,\"name\":\"平和县\",\"parentAreaId\":350600},{\"areaId\":350629,\"areaType\":2,\"name\":\"华安县\",\"parentAreaId\":350600},{\"areaId\":350681,\"areaType\":2,\"name\":\"龙海市\",\"parentAreaId\":350600}],\"name\":\"漳州市\",\"parentAreaId\":350000},{\"areaId\":350700,\"areaType\":1,\"children\":[{\"areaId\":350702,\"areaType\":2,\"name\":\"延平区\",\"parentAreaId\":350700},{\"areaId\":350703,\"areaType\":2,\"name\":\"建阳区\",\"parentAreaId\":350700},{\"areaId\":350721,\"areaType\":2,\"name\":\"顺昌县\",\"parentAreaId\":350700},{\"areaId\":350722,\"areaType\":2,\"name\":\"浦城县\",\"parentAreaId\":350700},{\"areaId\":350723,\"areaType\":2,\"name\":\"光泽县\",\"parentAreaId\":350700},{\"areaId\":350724,\"areaType\":2,\"name\":\"松溪县\",\"parentAreaId\":350700},{\"areaId\":350725,\"areaType\":2,\"name\":\"政和县\",\"parentAreaId\":350700},{\"areaId\":350781,\"areaType\":2,\"name\":\"邵武市\",\"parentAreaId\":350700},{\"areaId\":350782,\"areaType\":2,\"name\":\"武夷山市\",\"parentAreaId\":350700},{\"areaId\":350783,\"areaType\":2,\"name\":\"建瓯市\",\"parentAreaId\":350700}],\"name\":\"南平市\",\"parentAreaId\":350000},{\"areaId\":350800,\"areaType\":1,\"children\":[{\"areaId\":350802,\"areaType\":2,\"name\":\"新罗区\",\"parentAreaId\":350800},{\"areaId\":350803,\"areaType\":2,\"name\":\"永定区\",\"parentAreaId\":350800},{\"areaId\":350821,\"areaType\":2,\"name\":\"长汀县\",\"parentAreaId\":350800},{\"areaId\":350823,\"areaType\":2,\"name\":\"上杭县\",\"parentAreaId\":350800},{\"areaId\":350824,\"areaType\":2,\"name\":\"武平县\",\"parentAreaId\":350800},{\"areaId\":350825,\"areaType\":2,\"name\":\"连城县\",\"parentAreaId\":350800},{\"areaId\":350881,\"areaType\":2,\"name\":\"漳平市\",\"parentAreaId\":350800}],\"name\":\"龙岩市\",\"parentAreaId\":350000},{\"areaId\":350900,\"areaType\":1,\"children\":[{\"areaId\":350902,\"areaType\":2,\"name\":\"蕉城区\",\"parentAreaId\":350900},{\"areaId\":350921,\"areaType\":2,\"name\":\"霞浦县\",\"parentAreaId\":350900},{\"areaId\":350922,\"areaType\":2,\"name\":\"古田县\",\"parentAreaId\":350900},{\"areaId\":350923,\"areaType\":2,\"name\":\"屏南县\",\"parentAreaId\":350900},{\"areaId\":350924,\"areaType\":2,\"name\":\"寿宁县\",\"parentAreaId\":350900},{\"areaId\":350925,\"areaType\":2,\"name\":\"周宁县\",\"parentAreaId\":350900},{\"areaId\":350926,\"areaType\":2,\"name\":\"柘荣县\",\"parentAreaId\":350900},{\"areaId\":350981,\"areaType\":2,\"name\":\"福安市\",\"parentAreaId\":350900},{\"areaId\":350982,\"areaType\":2,\"name\":\"福鼎市\",\"parentAreaId\":350900}],\"name\":\"宁德市\",\"parentAreaId\":350000}],\"name\":\"福建省\",\"parentAreaId\":0},{\"areaId\":360000,\"areaType\":0,\"children\":[{\"areaId\":360100,\"areaType\":1,\"children\":[{\"areaId\":360102,\"areaType\":2,\"name\":\"东湖区\",\"parentAreaId\":360100},{\"areaId\":360103,\"areaType\":2,\"name\":\"西湖区\",\"parentAreaId\":360100},{\"areaId\":360104,\"areaType\":2,\"name\":\"青云谱区\",\"parentAreaId\":360100},{\"areaId\":360105,\"areaType\":2,\"name\":\"湾里区\",\"parentAreaId\":360100},{\"areaId\":360111,\"areaType\":2,\"name\":\"青山湖区\",\"parentAreaId\":360100},{\"areaId\":360112,\"areaType\":2,\"name\":\"新建区\",\"parentAreaId\":360100},{\"areaId\":360121,\"areaType\":2,\"name\":\"南昌县\",\"parentAreaId\":360100},{\"areaId\":360123,\"areaType\":2,\"name\":\"安义县\",\"parentAreaId\":360100},{\"areaId\":360124,\"areaType\":2,\"name\":\"进贤县\",\"parentAreaId\":360100}],\"name\":\"南昌市\",\"parentAreaId\":360000},{\"areaId\":360200,\"areaType\":1,\"children\":[{\"areaId\":360202,\"areaType\":2,\"name\":\"昌江区\",\"parentAreaId\":360200},{\"areaId\":360203,\"areaType\":2,\"name\":\"珠山区\",\"parentAreaId\":360200},{\"areaId\":360222,\"areaType\":2,\"name\":\"浮梁县\",\"parentAreaId\":360200},{\"areaId\":360281,\"areaType\":2,\"name\":\"乐平市\",\"parentAreaId\":360200}],\"name\":\"景德镇市\",\"parentAreaId\":360000},{\"areaId\":360300,\"areaType\":1,\"children\":[{\"areaId\":360302,\"areaType\":2,\"name\":\"安源区\",\"parentAreaId\":360300},{\"areaId\":360313,\"areaType\":2,\"name\":\"湘东区\",\"parentAreaId\":360300},{\"areaId\":360321,\"areaType\":2,\"name\":\"莲花县\",\"parentAreaId\":360300},{\"areaId\":360322,\"areaType\":2,\"name\":\"上栗县\",\"parentAreaId\":360300},{\"areaId\":360323,\"areaType\":2,\"name\":\"芦溪县\",\"parentAreaId\":360300}],\"name\":\"萍乡市\",\"parentAreaId\":360000},{\"areaId\":360400,\"areaType\":1,\"children\":[{\"areaId\":360402,\"areaType\":2,\"name\":\"濂溪区\",\"parentAreaId\":360400},{\"areaId\":360403,\"areaType\":2,\"name\":\"浔阳区\",\"parentAreaId\":360400},{\"areaId\":360404,\"areaType\":2,\"name\":\"柴桑区\",\"parentAreaId\":360400},{\"areaId\":360423,\"areaType\":2,\"name\":\"武宁县\",\"parentAreaId\":360400},{\"areaId\":360424,\"areaType\":2,\"name\":\"修水县\",\"parentAreaId\":360400},{\"areaId\":360425,\"areaType\":2,\"name\":\"永修县\",\"parentAreaId\":360400},{\"areaId\":360426,\"areaType\":2,\"name\":\"德安县\",\"parentAreaId\":360400},{\"areaId\":360428,\"areaType\":2,\"name\":\"都昌县\",\"parentAreaId\":360400},{\"areaId\":360429,\"areaType\":2,\"name\":\"湖口县\",\"parentAreaId\":360400},{\"areaId\":360430,\"areaType\":2,\"name\":\"彭泽县\",\"parentAreaId\":360400},{\"areaId\":360481,\"areaType\":2,\"name\":\"瑞昌市\",\"parentAreaId\":360400},{\"areaId\":360482,\"areaType\":2,\"name\":\"共青城市\",\"parentAreaId\":360400},{\"areaId\":360483,\"areaType\":2,\"name\":\"庐山市\",\"parentAreaId\":360400}],\"name\":\"九江市\",\"parentAreaId\":360000},{\"areaId\":360500,\"areaType\":1,\"children\":[{\"areaId\":360502,\"areaType\":2,\"name\":\"渝水区\",\"parentAreaId\":360500},{\"areaId\":360521,\"areaType\":2,\"name\":\"分宜县\",\"parentAreaId\":360500}],\"name\":\"新余市\",\"parentAreaId\":360000},{\"areaId\":360600,\"areaType\":1,\"children\":[{\"areaId\":360602,\"areaType\":2,\"name\":\"月湖区\",\"parentAreaId\":360600},{\"areaId\":360603,\"areaType\":2,\"name\":\"余江区\",\"parentAreaId\":360600},{\"areaId\":360681,\"areaType\":2,\"name\":\"贵溪市\",\"parentAreaId\":360600}],\"name\":\"鹰潭市\",\"parentAreaId\":360000},{\"areaId\":360700,\"areaType\":1,\"children\":[{\"areaId\":360702,\"areaType\":2,\"name\":\"章贡区\",\"parentAreaId\":360700},{\"areaId\":360703,\"areaType\":2,\"name\":\"南康区\",\"parentAreaId\":360700},{\"areaId\":360704,\"areaType\":2,\"name\":\"赣县区\",\"parentAreaId\":360700},{\"areaId\":360722,\"areaType\":2,\"name\":\"信丰县\",\"parentAreaId\":360700},{\"areaId\":360723,\"areaType\":2,\"name\":\"大余县\",\"parentAreaId\":360700},{\"areaId\":360724,\"areaType\":2,\"name\":\"上犹县\",\"parentAreaId\":360700},{\"areaId\":360725,\"areaType\":2,\"name\":\"崇义县\",\"parentAreaId\":360700},{\"areaId\":360726,\"areaType\":2,\"name\":\"安远县\",\"parentAreaId\":360700},{\"areaId\":360727,\"areaType\":2,\"name\":\"龙南县\",\"parentAreaId\":360700},{\"areaId\":360728,\"areaType\":2,\"name\":\"定南县\",\"parentAreaId\":360700},{\"areaId\":360729,\"areaType\":2,\"name\":\"全南县\",\"parentAreaId\":360700},{\"areaId\":360730,\"areaType\":2,\"name\":\"宁都县\",\"parentAreaId\":360700},{\"areaId\":360731,\"areaType\":2,\"name\":\"于都县\",\"parentAreaId\":360700},{\"areaId\":360732,\"areaType\":2,\"name\":\"兴国县\",\"parentAreaId\":360700},{\"areaId\":360733,\"areaType\":2,\"name\":\"会昌县\",\"parentAreaId\":360700},{\"areaId\":360734,\"areaType\":2,\"name\":\"寻乌县\",\"parentAreaId\":360700},{\"areaId\":360735,\"areaType\":2,\"name\":\"石城县\",\"parentAreaId\":360700},{\"areaId\":360781,\"areaType\":2,\"name\":\"瑞金市\",\"parentAreaId\":360700}],\"name\":\"赣州市\",\"parentAreaId\":360000},{\"areaId\":360800,\"areaType\":1,\"children\":[{\"areaId\":360802,\"areaType\":2,\"name\":\"吉州区\",\"parentAreaId\":360800},{\"areaId\":360803,\"areaType\":2,\"name\":\"青原区\",\"parentAreaId\":360800},{\"areaId\":360821,\"areaType\":2,\"name\":\"吉安县\",\"parentAreaId\":360800},{\"areaId\":360822,\"areaType\":2,\"name\":\"吉水县\",\"parentAreaId\":360800},{\"areaId\":360823,\"areaType\":2,\"name\":\"峡江县\",\"parentAreaId\":360800},{\"areaId\":360824,\"areaType\":2,\"name\":\"新干县\",\"parentAreaId\":360800},{\"areaId\":360825,\"areaType\":2,\"name\":\"永丰县\",\"parentAreaId\":360800},{\"areaId\":360826,\"areaType\":2,\"name\":\"泰和县\",\"parentAreaId\":360800},{\"areaId\":360827,\"areaType\":2,\"name\":\"遂川县\",\"parentAreaId\":360800},{\"areaId\":360828,\"areaType\":2,\"name\":\"万安县\",\"parentAreaId\":360800},{\"areaId\":360829,\"areaType\":2,\"name\":\"安福县\",\"parentAreaId\":360800},{\"areaId\":360830,\"areaType\":2,\"name\":\"永新县\",\"parentAreaId\":360800},{\"areaId\":360881,\"areaType\":2,\"name\":\"井冈山市\",\"parentAreaId\":360800}],\"name\":\"吉安市\",\"parentAreaId\":360000},{\"areaId\":360900,\"areaType\":1,\"children\":[{\"areaId\":360902,\"areaType\":2,\"name\":\"袁州区\",\"parentAreaId\":360900},{\"areaId\":360921,\"areaType\":2,\"name\":\"奉新县\",\"parentAreaId\":360900},{\"areaId\":360922,\"areaType\":2,\"name\":\"万载县\",\"parentAreaId\":360900},{\"areaId\":360923,\"areaType\":2,\"name\":\"上高县\",\"parentAreaId\":360900},{\"areaId\":360924,\"areaType\":2,\"name\":\"宜丰县\",\"parentAreaId\":360900},{\"areaId\":360925,\"areaType\":2,\"name\":\"靖安县\",\"parentAreaId\":360900},{\"areaId\":360926,\"areaType\":2,\"name\":\"铜鼓县\",\"parentAreaId\":360900},{\"areaId\":360981,\"areaType\":2,\"name\":\"丰城市\",\"parentAreaId\":360900},{\"areaId\":360982,\"areaType\":2,\"name\":\"樟树市\",\"parentAreaId\":360900},{\"areaId\":360983,\"areaType\":2,\"name\":\"高安市\",\"parentAreaId\":360900}],\"name\":\"宜春市\",\"parentAreaId\":360000},{\"areaId\":361000,\"areaType\":1,\"children\":[{\"areaId\":361002,\"areaType\":2,\"name\":\"临川区\",\"parentAreaId\":361000},{\"areaId\":361003,\"areaType\":2,\"name\":\"东乡区\",\"parentAreaId\":361000},{\"areaId\":361021,\"areaType\":2,\"name\":\"南城县\",\"parentAreaId\":361000},{\"areaId\":361022,\"areaType\":2,\"name\":\"黎川县\",\"parentAreaId\":361000},{\"areaId\":361023,\"areaType\":2,\"name\":\"南丰县\",\"parentAreaId\":361000},{\"areaId\":361024,\"areaType\":2,\"name\":\"崇仁县\",\"parentAreaId\":361000},{\"areaId\":361025,\"areaType\":2,\"name\":\"乐安县\",\"parentAreaId\":361000},{\"areaId\":361026,\"areaType\":2,\"name\":\"宜黄县\",\"parentAreaId\":361000},{\"areaId\":361027,\"areaType\":2,\"name\":\"金溪县\",\"parentAreaId\":361000},{\"areaId\":361028,\"areaType\":2,\"name\":\"资溪县\",\"parentAreaId\":361000},{\"areaId\":361030,\"areaType\":2,\"name\":\"广昌县\",\"parentAreaId\":361000}],\"name\":\"抚州市\",\"parentAreaId\":360000},{\"areaId\":361100,\"areaType\":1,\"children\":[{\"areaId\":361102,\"areaType\":2,\"name\":\"信州区\",\"parentAreaId\":361100},{\"areaId\":361103,\"areaType\":2,\"name\":\"广丰区\",\"parentAreaId\":361100},{\"areaId\":361121,\"areaType\":2,\"name\":\"上饶县\",\"parentAreaId\":361100},{\"areaId\":361123,\"areaType\":2,\"name\":\"玉山县\",\"parentAreaId\":361100},{\"areaId\":361124,\"areaType\":2,\"name\":\"铅山县\",\"parentAreaId\":361100},{\"areaId\":361125,\"areaType\":2,\"name\":\"横峰县\",\"parentAreaId\":361100},{\"areaId\":361126,\"areaType\":2,\"name\":\"弋阳县\",\"parentAreaId\":361100},{\"areaId\":361127,\"areaType\":2,\"name\":\"余干县\",\"parentAreaId\":361100},{\"areaId\":361128,\"areaType\":2,\"name\":\"鄱阳县\",\"parentAreaId\":361100},{\"areaId\":361129,\"areaType\":2,\"name\":\"万年县\",\"parentAreaId\":361100},{\"areaId\":361130,\"areaType\":2,\"name\":\"婺源县\",\"parentAreaId\":361100},{\"areaId\":361181,\"areaType\":2,\"name\":\"德兴市\",\"parentAreaId\":361100}],\"name\":\"上饶市\",\"parentAreaId\":360000}],\"name\":\"江西省\",\"parentAreaId\":0},{\"areaId\":370000,\"areaType\":0,\"children\":[{\"areaId\":370100,\"areaType\":1,\"children\":[{\"areaId\":370102,\"areaType\":2,\"name\":\"历下区\",\"parentAreaId\":370100},{\"areaId\":370103,\"areaType\":2,\"name\":\"市中区\",\"parentAreaId\":370100},{\"areaId\":370104,\"areaType\":2,\"name\":\"槐荫区\",\"parentAreaId\":370100},{\"areaId\":370105,\"areaType\":2,\"name\":\"天桥区\",\"parentAreaId\":370100},{\"areaId\":370112,\"areaType\":2,\"name\":\"历城区\",\"parentAreaId\":370100},{\"areaId\":370113,\"areaType\":2,\"name\":\"长清区\",\"parentAreaId\":370100},{\"areaId\":370114,\"areaType\":2,\"name\":\"章丘区\",\"parentAreaId\":370100},{\"areaId\":370124,\"areaType\":2,\"name\":\"平阴县\",\"parentAreaId\":370100},{\"areaId\":370125,\"areaType\":2,\"name\":\"济阳区\",\"parentAreaId\":370100},{\"areaId\":370126,\"areaType\":2,\"name\":\"商河县\",\"parentAreaId\":370100}],\"name\":\"济南市\",\"parentAreaId\":370000},{\"areaId\":370200,\"areaType\":1,\"children\":[{\"areaId\":370202,\"areaType\":2,\"name\":\"市南区\",\"parentAreaId\":370200},{\"areaId\":370203,\"areaType\":2,\"name\":\"市北区\",\"parentAreaId\":370200},{\"areaId\":370211,\"areaType\":2,\"name\":\"黄岛区\",\"parentAreaId\":370200},{\"areaId\":370212,\"areaType\":2,\"name\":\"崂山区\",\"parentAreaId\":370200},{\"areaId\":370213,\"areaType\":2,\"name\":\"李沧区\",\"parentAreaId\":370200},{\"areaId\":370214,\"areaType\":2,\"name\":\"城阳区\",\"parentAreaId\":370200},{\"areaId\":370215,\"areaType\":2,\"name\":\"即墨区\",\"parentAreaId\":370200},{\"areaId\":370281,\"areaType\":2,\"name\":\"胶州市\",\"parentAreaId\":370200},{\"areaId\":370283,\"areaType\":2,\"name\":\"平度市\",\"parentAreaId\":370200},{\"areaId\":370285,\"areaType\":2,\"name\":\"莱西市\",\"parentAreaId\":370200}],\"name\":\"青岛市\",\"parentAreaId\":370000},{\"areaId\":370300,\"areaType\":1,\"children\":[{\"areaId\":370302,\"areaType\":2,\"name\":\"淄川区\",\"parentAreaId\":370300},{\"areaId\":370303,\"areaType\":2,\"name\":\"张店区\",\"parentAreaId\":370300},{\"areaId\":370304,\"areaType\":2,\"name\":\"博山区\",\"parentAreaId\":370300},{\"areaId\":370305,\"areaType\":2,\"name\":\"临淄区\",\"parentAreaId\":370300},{\"areaId\":370306,\"areaType\":2,\"name\":\"周村区\",\"parentAreaId\":370300},{\"areaId\":370321,\"areaType\":2,\"name\":\"桓台县\",\"parentAreaId\":370300},{\"areaId\":370322,\"areaType\":2,\"name\":\"高青县\",\"parentAreaId\":370300},{\"areaId\":370323,\"areaType\":2,\"name\":\"沂源县\",\"parentAreaId\":370300}],\"name\":\"淄博市\",\"parentAreaId\":370000},{\"areaId\":370400,\"areaType\":1,\"children\":[{\"areaId\":370402,\"areaType\":2,\"name\":\"市中区\",\"parentAreaId\":370400},{\"areaId\":370403,\"areaType\":2,\"name\":\"薛城区\",\"parentAreaId\":370400},{\"areaId\":370404,\"areaType\":2,\"name\":\"峄城区\",\"parentAreaId\":370400},{\"areaId\":370405,\"areaType\":2,\"name\":\"台儿庄区\",\"parentAreaId\":370400},{\"areaId\":370406,\"areaType\":2,\"name\":\"山亭区\",\"parentAreaId\":370400},{\"areaId\":370481,\"areaType\":2,\"name\":\"滕州市\",\"parentAreaId\":370400}],\"name\":\"枣庄市\",\"parentAreaId\":370000},{\"areaId\":370500,\"areaType\":1,\"children\":[{\"areaId\":370502,\"areaType\":2,\"name\":\"东营区\",\"parentAreaId\":370500},{\"areaId\":370503,\"areaType\":2,\"name\":\"河口区\",\"parentAreaId\":370500},{\"areaId\":370505,\"areaType\":2,\"name\":\"垦利区\",\"parentAreaId\":370500},{\"areaId\":370522,\"areaType\":2,\"name\":\"利津县\",\"parentAreaId\":370500},{\"areaId\":370523,\"areaType\":2,\"name\":\"广饶县\",\"parentAreaId\":370500}],\"name\":\"东营市\",\"parentAreaId\":370000},{\"areaId\":370600,\"areaType\":1,\"children\":[{\"areaId\":370602,\"areaType\":2,\"name\":\"芝罘区\",\"parentAreaId\":370600},{\"areaId\":370611,\"areaType\":2,\"name\":\"福山区\",\"parentAreaId\":370600},{\"areaId\":370612,\"areaType\":2,\"name\":\"牟平区\",\"parentAreaId\":370600},{\"areaId\":370613,\"areaType\":2,\"name\":\"莱山区\",\"parentAreaId\":370600},{\"areaId\":370634,\"areaType\":2,\"name\":\"长岛县\",\"parentAreaId\":370600},{\"areaId\":370681,\"areaType\":2,\"name\":\"龙口市\",\"parentAreaId\":370600},{\"areaId\":370682,\"areaType\":2,\"name\":\"莱阳市\",\"parentAreaId\":370600},{\"areaId\":370683,\"areaType\":2,\"name\":\"莱州市\",\"parentAreaId\":370600},{\"areaId\":370684,\"areaType\":2,\"name\":\"蓬莱市\",\"parentAreaId\":370600},{\"areaId\":370685,\"areaType\":2,\"name\":\"招远市\",\"parentAreaId\":370600},{\"areaId\":370686,\"areaType\":2,\"name\":\"栖霞市\",\"parentAreaId\":370600},{\"areaId\":370687,\"areaType\":2,\"name\":\"海阳市\",\"parentAreaId\":370600}],\"name\":\"烟台市\",\"parentAreaId\":370000},{\"areaId\":370700,\"areaType\":1,\"children\":[{\"areaId\":370702,\"areaType\":2,\"name\":\"潍城区\",\"parentAreaId\":370700},{\"areaId\":370703,\"areaType\":2,\"name\":\"寒亭区\",\"parentAreaId\":370700},{\"areaId\":370704,\"areaType\":2,\"name\":\"坊子区\",\"parentAreaId\":370700},{\"areaId\":370705,\"areaType\":2,\"name\":\"奎文区\",\"parentAreaId\":370700},{\"areaId\":370724,\"areaType\":2,\"name\":\"临朐县\",\"parentAreaId\":370700},{\"areaId\":370725,\"areaType\":2,\"name\":\"昌乐县\",\"parentAreaId\":370700},{\"areaId\":370781,\"areaType\":2,\"name\":\"青州市\",\"parentAreaId\":370700},{\"areaId\":370782,\"areaType\":2,\"name\":\"诸城市\",\"parentAreaId\":370700},{\"areaId\":370783,\"areaType\":2,\"name\":\"寿光市\",\"parentAreaId\":370700},{\"areaId\":370784,\"areaType\":2,\"name\":\"安丘市\",\"parentAreaId\":370700},{\"areaId\":370785,\"areaType\":2,\"name\":\"高密市\",\"parentAreaId\":370700},{\"areaId\":370786,\"areaType\":2,\"name\":\"昌邑市\",\"parentAreaId\":370700}],\"name\":\"潍坊市\",\"parentAreaId\":370000},{\"areaId\":370800,\"areaType\":1,\"children\":[{\"areaId\":370811,\"areaType\":2,\"name\":\"任城区\",\"parentAreaId\":370800},{\"areaId\":370812,\"areaType\":2,\"name\":\"兖州区\",\"parentAreaId\":370800},{\"areaId\":370826,\"areaType\":2,\"name\":\"微山县\",\"parentAreaId\":370800},{\"areaId\":370827,\"areaType\":2,\"name\":\"鱼台县\",\"parentAreaId\":370800},{\"areaId\":370828,\"areaType\":2,\"name\":\"金乡县\",\"parentAreaId\":370800},{\"areaId\":370829,\"areaType\":2,\"name\":\"嘉祥县\",\"parentAreaId\":370800},{\"areaId\":370830,\"areaType\":2,\"name\":\"汶上县\",\"parentAreaId\":370800},{\"areaId\":370831,\"areaType\":2,\"name\":\"泗水县\",\"parentAreaId\":370800},{\"areaId\":370832,\"areaType\":2,\"name\":\"梁山县\",\"parentAreaId\":370800},{\"areaId\":370881,\"areaType\":2,\"name\":\"曲阜市\",\"parentAreaId\":370800},{\"areaId\":370883,\"areaType\":2,\"name\":\"邹城市\",\"parentAreaId\":370800}],\"name\":\"济宁市\",\"parentAreaId\":370000},{\"areaId\":370900,\"areaType\":1,\"children\":[{\"areaId\":370902,\"areaType\":2,\"name\":\"泰山区\",\"parentAreaId\":370900},{\"areaId\":370911,\"areaType\":2,\"name\":\"岱岳区\",\"parentAreaId\":370900},{\"areaId\":370921,\"areaType\":2,\"name\":\"宁阳县\",\"parentAreaId\":370900},{\"areaId\":370923,\"areaType\":2,\"name\":\"东平县\",\"parentAreaId\":370900},{\"areaId\":370982,\"areaType\":2,\"name\":\"新泰市\",\"parentAreaId\":370900},{\"areaId\":370983,\"areaType\":2,\"name\":\"肥城市\",\"parentAreaId\":370900}],\"name\":\"泰安市\",\"parentAreaId\":370000},{\"areaId\":371000,\"areaType\":1,\"children\":[{\"areaId\":371002,\"areaType\":2,\"name\":\"环翠区\",\"parentAreaId\":371000},{\"areaId\":371003,\"areaType\":2,\"name\":\"文登区\",\"parentAreaId\":371000},{\"areaId\":371082,\"areaType\":2,\"name\":\"荣成市\",\"parentAreaId\":371000},{\"areaId\":371083,\"areaType\":2,\"name\":\"乳山市\",\"parentAreaId\":371000}],\"name\":\"威海市\",\"parentAreaId\":370000},{\"areaId\":371100,\"areaType\":1,\"children\":[{\"areaId\":371102,\"areaType\":2,\"name\":\"东港区\",\"parentAreaId\":371100},{\"areaId\":371103,\"areaType\":2,\"name\":\"岚山区\",\"parentAreaId\":371100},{\"areaId\":371121,\"areaType\":2,\"name\":\"五莲县\",\"parentAreaId\":371100},{\"areaId\":371122,\"areaType\":2,\"name\":\"莒县\",\"parentAreaId\":371100}],\"name\":\"日照市\",\"parentAreaId\":370000},{\"areaId\":371200,\"areaType\":1,\"children\":[{\"areaId\":371202,\"areaType\":2,\"name\":\"莱城区\",\"parentAreaId\":371200},{\"areaId\":371203,\"areaType\":2,\"name\":\"钢城区\",\"parentAreaId\":371200}],\"name\":\"莱芜市\",\"parentAreaId\":370000},{\"areaId\":371300,\"areaType\":1,\"children\":[{\"areaId\":371302,\"areaType\":2,\"name\":\"兰山区\",\"parentAreaId\":371300},{\"areaId\":371311,\"areaType\":2,\"name\":\"罗庄区\",\"parentAreaId\":371300},{\"areaId\":371312,\"areaType\":2,\"name\":\"河东区\",\"parentAreaId\":371300},{\"areaId\":371321,\"areaType\":2,\"name\":\"沂南县\",\"parentAreaId\":371300},{\"areaId\":371322,\"areaType\":2,\"name\":\"郯城县\",\"parentAreaId\":371300},{\"areaId\":371323,\"areaType\":2,\"name\":\"沂水县\",\"parentAreaId\":371300},{\"areaId\":371324,\"areaType\":2,\"name\":\"兰陵县\",\"parentAreaId\":371300},{\"areaId\":371325,\"areaType\":2,\"name\":\"费县\",\"parentAreaId\":371300},{\"areaId\":371326,\"areaType\":2,\"name\":\"平邑县\",\"parentAreaId\":371300},{\"areaId\":371327,\"areaType\":2,\"name\":\"莒南县\",\"parentAreaId\":371300},{\"areaId\":371328,\"areaType\":2,\"name\":\"蒙阴县\",\"parentAreaId\":371300},{\"areaId\":371329,\"areaType\":2,\"name\":\"临沭县\",\"parentAreaId\":371300}],\"name\":\"临沂市\",\"parentAreaId\":370000},{\"areaId\":371400,\"areaType\":1,\"children\":[{\"areaId\":371402,\"areaType\":2,\"name\":\"德城区\",\"parentAreaId\":371400},{\"areaId\":371403,\"areaType\":2,\"name\":\"陵城区\",\"parentAreaId\":371400},{\"areaId\":371422,\"areaType\":2,\"name\":\"宁津县\",\"parentAreaId\":371400},{\"areaId\":371423,\"areaType\":2,\"name\":\"庆云县\",\"parentAreaId\":371400},{\"areaId\":371424,\"areaType\":2,\"name\":\"临邑县\",\"parentAreaId\":371400},{\"areaId\":371425,\"areaType\":2,\"name\":\"齐河县\",\"parentAreaId\":371400},{\"areaId\":371426,\"areaType\":2,\"name\":\"平原县\",\"parentAreaId\":371400},{\"areaId\":371427,\"areaType\":2,\"name\":\"夏津县\",\"parentAreaId\":371400},{\"areaId\":371428,\"areaType\":2,\"name\":\"武城县\",\"parentAreaId\":371400},{\"areaId\":371481,\"areaType\":2,\"name\":\"乐陵市\",\"parentAreaId\":371400},{\"areaId\":371482,\"areaType\":2,\"name\":\"禹城市\",\"parentAreaId\":371400}],\"name\":\"德州市\",\"parentAreaId\":370000},{\"areaId\":371500,\"areaType\":1,\"children\":[{\"areaId\":371502,\"areaType\":2,\"name\":\"东昌府区\",\"parentAreaId\":371500},{\"areaId\":371521,\"areaType\":2,\"name\":\"阳谷县\",\"parentAreaId\":371500},{\"areaId\":371522,\"areaType\":2,\"name\":\"莘县\",\"parentAreaId\":371500},{\"areaId\":371523,\"areaType\":2,\"name\":\"茌平县\",\"parentAreaId\":371500},{\"areaId\":371524,\"areaType\":2,\"name\":\"东阿县\",\"parentAreaId\":371500},{\"areaId\":371525,\"areaType\":2,\"name\":\"冠县\",\"parentAreaId\":371500},{\"areaId\":371526,\"areaType\":2,\"name\":\"高唐县\",\"parentAreaId\":371500},{\"areaId\":371581,\"areaType\":2,\"name\":\"临清市\",\"parentAreaId\":371500}],\"name\":\"聊城市\",\"parentAreaId\":370000},{\"areaId\":371600,\"areaType\":1,\"children\":[{\"areaId\":371602,\"areaType\":2,\"name\":\"滨城区\",\"parentAreaId\":371600},{\"areaId\":371603,\"areaType\":2,\"name\":\"沾化区\",\"parentAreaId\":371600},{\"areaId\":371621,\"areaType\":2,\"name\":\"惠民县\",\"parentAreaId\":371600},{\"areaId\":371622,\"areaType\":2,\"name\":\"阳信县\",\"parentAreaId\":371600},{\"areaId\":371623,\"areaType\":2,\"name\":\"无棣县\",\"parentAreaId\":371600},{\"areaId\":371625,\"areaType\":2,\"name\":\"博兴县\",\"parentAreaId\":371600},{\"areaId\":371626,\"areaType\":2,\"name\":\"邹平县\",\"parentAreaId\":371600}],\"name\":\"滨州市\",\"parentAreaId\":370000},{\"areaId\":371700,\"areaType\":1,\"children\":[{\"areaId\":371702,\"areaType\":2,\"name\":\"牡丹区\",\"parentAreaId\":371700},{\"areaId\":371703,\"areaType\":2,\"name\":\"定陶区\",\"parentAreaId\":371700},{\"areaId\":371721,\"areaType\":2,\"name\":\"曹县\",\"parentAreaId\":371700},{\"areaId\":371722,\"areaType\":2,\"name\":\"单县\",\"parentAreaId\":371700},{\"areaId\":371723,\"areaType\":2,\"name\":\"成武县\",\"parentAreaId\":371700},{\"areaId\":371724,\"areaType\":2,\"name\":\"巨野县\",\"parentAreaId\":371700},{\"areaId\":371725,\"areaType\":2,\"name\":\"郓城县\",\"parentAreaId\":371700},{\"areaId\":371726,\"areaType\":2,\"name\":\"鄄城县\",\"parentAreaId\":371700},{\"areaId\":371728,\"areaType\":2,\"name\":\"东明县\",\"parentAreaId\":371700}],\"name\":\"菏泽市\",\"parentAreaId\":370000}],\"name\":\"山东省\",\"parentAreaId\":0},{\"areaId\":410000,\"areaType\":0,\"children\":[{\"areaId\":410100,\"areaType\":1,\"children\":[{\"areaId\":410102,\"areaType\":2,\"name\":\"中原区\",\"parentAreaId\":410100},{\"areaId\":410103,\"areaType\":2,\"name\":\"二七区\",\"parentAreaId\":410100},{\"areaId\":410104,\"areaType\":2,\"name\":\"管城回族区\",\"parentAreaId\":410100},{\"areaId\":410105,\"areaType\":2,\"name\":\"金水区\",\"parentAreaId\":410100},{\"areaId\":410106,\"areaType\":2,\"name\":\"上街区\",\"parentAreaId\":410100},{\"areaId\":410108,\"areaType\":2,\"name\":\"惠济区\",\"parentAreaId\":410100},{\"areaId\":410122,\"areaType\":2,\"name\":\"中牟县\",\"parentAreaId\":410100},{\"areaId\":410181,\"areaType\":2,\"name\":\"巩义市\",\"parentAreaId\":410100},{\"areaId\":410182,\"areaType\":2,\"name\":\"荥阳市\",\"parentAreaId\":410100},{\"areaId\":410183,\"areaType\":2,\"name\":\"新密市\",\"parentAreaId\":410100},{\"areaId\":410184,\"areaType\":2,\"name\":\"新郑市\",\"parentAreaId\":410100},{\"areaId\":410185,\"areaType\":2,\"name\":\"登封市\",\"parentAreaId\":410100}],\"name\":\"郑州市\",\"parentAreaId\":410000},{\"areaId\":410200,\"areaType\":1,\"children\":[{\"areaId\":410202,\"areaType\":2,\"name\":\"龙亭区\",\"parentAreaId\":410200},{\"areaId\":410203,\"areaType\":2,\"name\":\"顺河回族区\",\"parentAreaId\":410200},{\"areaId\":410204,\"areaType\":2,\"name\":\"鼓楼区\",\"parentAreaId\":410200},{\"areaId\":410205,\"areaType\":2,\"name\":\"禹王台区\",\"parentAreaId\":410200},{\"areaId\":410212,\"areaType\":2,\"name\":\"祥符区\",\"parentAreaId\":410200},{\"areaId\":410221,\"areaType\":2,\"name\":\"杞县\",\"parentAreaId\":410200},{\"areaId\":410222,\"areaType\":2,\"name\":\"通许县\",\"parentAreaId\":410200},{\"areaId\":410223,\"areaType\":2,\"name\":\"尉氏县\",\"parentAreaId\":410200},{\"areaId\":410225,\"areaType\":2,\"name\":\"兰考县\",\"parentAreaId\":410200}],\"name\":\"开封市\",\"parentAreaId\":410000},{\"areaId\":410300,\"areaType\":1,\"children\":[{\"areaId\":410302,\"areaType\":2,\"name\":\"老城区\",\"parentAreaId\":410300},{\"areaId\":410303,\"areaType\":2,\"name\":\"西工区\",\"parentAreaId\":410300},{\"areaId\":410304,\"areaType\":2,\"name\":\"瀍河回族区\",\"parentAreaId\":410300},{\"areaId\":410305,\"areaType\":2,\"name\":\"涧西区\",\"parentAreaId\":410300},{\"areaId\":410306,\"areaType\":2,\"name\":\"吉利区\",\"parentAreaId\":410300},{\"areaId\":410311,\"areaType\":2,\"name\":\"洛龙区\",\"parentAreaId\":410300},{\"areaId\":410322,\"areaType\":2,\"name\":\"孟津县\",\"parentAreaId\":410300},{\"areaId\":410323,\"areaType\":2,\"name\":\"新安县\",\"parentAreaId\":410300},{\"areaId\":410324,\"areaType\":2,\"name\":\"栾川县\",\"parentAreaId\":410300},{\"areaId\":410325,\"areaType\":2,\"name\":\"嵩县\",\"parentAreaId\":410300},{\"areaId\":410326,\"areaType\":2,\"name\":\"汝阳县\",\"parentAreaId\":410300},{\"areaId\":410327,\"areaType\":2,\"name\":\"宜阳县\",\"parentAreaId\":410300},{\"areaId\":410328,\"areaType\":2,\"name\":\"洛宁县\",\"parentAreaId\":410300},{\"areaId\":410329,\"areaType\":2,\"name\":\"伊川县\",\"parentAreaId\":410300},{\"areaId\":410381,\"areaType\":2,\"name\":\"偃师市\",\"parentAreaId\":410300}],\"name\":\"洛阳市\",\"parentAreaId\":410000},{\"areaId\":410400,\"areaType\":1,\"children\":[{\"areaId\":410402,\"areaType\":2,\"name\":\"新华区\",\"parentAreaId\":410400},{\"areaId\":410403,\"areaType\":2,\"name\":\"卫东区\",\"parentAreaId\":410400},{\"areaId\":410404,\"areaType\":2,\"name\":\"石龙区\",\"parentAreaId\":410400},{\"areaId\":410411,\"areaType\":2,\"name\":\"湛河区\",\"parentAreaId\":410400},{\"areaId\":410421,\"areaType\":2,\"name\":\"宝丰县\",\"parentAreaId\":410400},{\"areaId\":410422,\"areaType\":2,\"name\":\"叶县\",\"parentAreaId\":410400},{\"areaId\":410423,\"areaType\":2,\"name\":\"鲁山县\",\"parentAreaId\":410400},{\"areaId\":410425,\"areaType\":2,\"name\":\"郏县\",\"parentAreaId\":410400},{\"areaId\":410481,\"areaType\":2,\"name\":\"舞钢市\",\"parentAreaId\":410400},{\"areaId\":410482,\"areaType\":2,\"name\":\"汝州市\",\"parentAreaId\":410400}],\"name\":\"平顶山市\",\"parentAreaId\":410000},{\"areaId\":410500,\"areaType\":1,\"children\":[{\"areaId\":410502,\"areaType\":2,\"name\":\"文峰区\",\"parentAreaId\":410500},{\"areaId\":410503,\"areaType\":2,\"name\":\"北关区\",\"parentAreaId\":410500},{\"areaId\":410505,\"areaType\":2,\"name\":\"殷都区\",\"parentAreaId\":410500},{\"areaId\":410506,\"areaType\":2,\"name\":\"龙安区\",\"parentAreaId\":410500},{\"areaId\":410522,\"areaType\":2,\"name\":\"安阳县\",\"parentAreaId\":410500},{\"areaId\":410523,\"areaType\":2,\"name\":\"汤阴县\",\"parentAreaId\":410500},{\"areaId\":410526,\"areaType\":2,\"name\":\"滑县\",\"parentAreaId\":410500},{\"areaId\":410527,\"areaType\":2,\"name\":\"内黄县\",\"parentAreaId\":410500},{\"areaId\":410581,\"areaType\":2,\"name\":\"林州市\",\"parentAreaId\":410500}],\"name\":\"安阳市\",\"parentAreaId\":410000},{\"areaId\":410600,\"areaType\":1,\"children\":[{\"areaId\":410602,\"areaType\":2,\"name\":\"鹤山区\",\"parentAreaId\":410600},{\"areaId\":410603,\"areaType\":2,\"name\":\"山城区\",\"parentAreaId\":410600},{\"areaId\":410611,\"areaType\":2,\"name\":\"淇滨区\",\"parentAreaId\":410600},{\"areaId\":410621,\"areaType\":2,\"name\":\"浚县\",\"parentAreaId\":410600},{\"areaId\":410622,\"areaType\":2,\"name\":\"淇县\",\"parentAreaId\":410600}],\"name\":\"鹤壁市\",\"parentAreaId\":410000},{\"areaId\":410700,\"areaType\":1,\"children\":[{\"areaId\":410702,\"areaType\":2,\"name\":\"红旗区\",\"parentAreaId\":410700},{\"areaId\":410703,\"areaType\":2,\"name\":\"卫滨区\",\"parentAreaId\":410700},{\"areaId\":410704,\"areaType\":2,\"name\":\"凤泉区\",\"parentAreaId\":410700},{\"areaId\":410711,\"areaType\":2,\"name\":\"牧野区\",\"parentAreaId\":410700},{\"areaId\":410721,\"areaType\":2,\"name\":\"新乡县\",\"parentAreaId\":410700},{\"areaId\":410724,\"areaType\":2,\"name\":\"获嘉县\",\"parentAreaId\":410700},{\"areaId\":410725,\"areaType\":2,\"name\":\"原阳县\",\"parentAreaId\":410700},{\"areaId\":410726,\"areaType\":2,\"name\":\"延津县\",\"parentAreaId\":410700},{\"areaId\":410727,\"areaType\":2,\"name\":\"封丘县\",\"parentAreaId\":410700},{\"areaId\":410728,\"areaType\":2,\"name\":\"长垣县\",\"parentAreaId\":410700},{\"areaId\":410781,\"areaType\":2,\"name\":\"卫辉市\",\"parentAreaId\":410700},{\"areaId\":410782,\"areaType\":2,\"name\":\"辉县市\",\"parentAreaId\":410700}],\"name\":\"新乡市\",\"parentAreaId\":410000},{\"areaId\":410800,\"areaType\":1,\"children\":[{\"areaId\":410802,\"areaType\":2,\"name\":\"解放区\",\"parentAreaId\":410800},{\"areaId\":410803,\"areaType\":2,\"name\":\"中站区\",\"parentAreaId\":410800},{\"areaId\":410804,\"areaType\":2,\"name\":\"马村区\",\"parentAreaId\":410800},{\"areaId\":410811,\"areaType\":2,\"name\":\"山阳区\",\"parentAreaId\":410800},{\"areaId\":410821,\"areaType\":2,\"name\":\"修武县\",\"parentAreaId\":410800},{\"areaId\":410822,\"areaType\":2,\"name\":\"博爱县\",\"parentAreaId\":410800},{\"areaId\":410823,\"areaType\":2,\"name\":\"武陟县\",\"parentAreaId\":410800},{\"areaId\":410825,\"areaType\":2,\"name\":\"温县\",\"parentAreaId\":410800},{\"areaId\":410882,\"areaType\":2,\"name\":\"沁阳市\",\"parentAreaId\":410800},{\"areaId\":410883,\"areaType\":2,\"name\":\"孟州市\",\"parentAreaId\":410800}],\"name\":\"焦作市\",\"parentAreaId\":410000},{\"areaId\":410900,\"areaType\":1,\"children\":[{\"areaId\":410902,\"areaType\":2,\"name\":\"华龙区\",\"parentAreaId\":410900},{\"areaId\":410922,\"areaType\":2,\"name\":\"清丰县\",\"parentAreaId\":410900},{\"areaId\":410923,\"areaType\":2,\"name\":\"南乐县\",\"parentAreaId\":410900},{\"areaId\":410926,\"areaType\":2,\"name\":\"范县\",\"parentAreaId\":410900},{\"areaId\":410927,\"areaType\":2,\"name\":\"台前县\",\"parentAreaId\":410900},{\"areaId\":410928,\"areaType\":2,\"name\":\"濮阳县\",\"parentAreaId\":410900}],\"name\":\"濮阳市\",\"parentAreaId\":410000},{\"areaId\":411000,\"areaType\":1,\"children\":[{\"areaId\":411002,\"areaType\":2,\"name\":\"魏都区\",\"parentAreaId\":411000},{\"areaId\":411003,\"areaType\":2,\"name\":\"建安区\",\"parentAreaId\":411000},{\"areaId\":411024,\"areaType\":2,\"name\":\"鄢陵县\",\"parentAreaId\":411000},{\"areaId\":411025,\"areaType\":2,\"name\":\"襄城县\",\"parentAreaId\":411000},{\"areaId\":411081,\"areaType\":2,\"name\":\"禹州市\",\"parentAreaId\":411000},{\"areaId\":411082,\"areaType\":2,\"name\":\"长葛市\",\"parentAreaId\":411000}],\"name\":\"许昌市\",\"parentAreaId\":410000},{\"areaId\":411100,\"areaType\":1,\"children\":[{\"areaId\":411102,\"areaType\":2,\"name\":\"源汇区\",\"parentAreaId\":411100},{\"areaId\":411103,\"areaType\":2,\"name\":\"郾城区\",\"parentAreaId\":411100},{\"areaId\":411104,\"areaType\":2,\"name\":\"召陵区\",\"parentAreaId\":411100},{\"areaId\":411121,\"areaType\":2,\"name\":\"舞阳县\",\"parentAreaId\":411100},{\"areaId\":411122,\"areaType\":2,\"name\":\"临颍县\",\"parentAreaId\":411100}],\"name\":\"漯河市\",\"parentAreaId\":410000},{\"areaId\":411200,\"areaType\":1,\"children\":[{\"areaId\":411202,\"areaType\":2,\"name\":\"湖滨区\",\"parentAreaId\":411200},{\"areaId\":411203,\"areaType\":2,\"name\":\"陕州区\",\"parentAreaId\":411200},{\"areaId\":411221,\"areaType\":2,\"name\":\"渑池县\",\"parentAreaId\":411200},{\"areaId\":411224,\"areaType\":2,\"name\":\"卢氏县\",\"parentAreaId\":411200},{\"areaId\":411281,\"areaType\":2,\"name\":\"义马市\",\"parentAreaId\":411200},{\"areaId\":411282,\"areaType\":2,\"name\":\"灵宝市\",\"parentAreaId\":411200}],\"name\":\"三门峡市\",\"parentAreaId\":410000},{\"areaId\":411300,\"areaType\":1,\"children\":[{\"areaId\":411302,\"areaType\":2,\"name\":\"宛城区\",\"parentAreaId\":411300},{\"areaId\":411303,\"areaType\":2,\"name\":\"卧龙区\",\"parentAreaId\":411300},{\"areaId\":411321,\"areaType\":2,\"name\":\"南召县\",\"parentAreaId\":411300},{\"areaId\":411322,\"areaType\":2,\"name\":\"方城县\",\"parentAreaId\":411300},{\"areaId\":411323,\"areaType\":2,\"name\":\"西峡县\",\"parentAreaId\":411300},{\"areaId\":411324,\"areaType\":2,\"name\":\"镇平县\",\"parentAreaId\":411300},{\"areaId\":411325,\"areaType\":2,\"name\":\"内乡县\",\"parentAreaId\":411300},{\"areaId\":411326,\"areaType\":2,\"name\":\"淅川县\",\"parentAreaId\":411300},{\"areaId\":411327,\"areaType\":2,\"name\":\"社旗县\",\"parentAreaId\":411300},{\"areaId\":411328,\"areaType\":2,\"name\":\"唐河县\",\"parentAreaId\":411300},{\"areaId\":411329,\"areaType\":2,\"name\":\"新野县\",\"parentAreaId\":411300},{\"areaId\":411330,\"areaType\":2,\"name\":\"桐柏县\",\"parentAreaId\":411300},{\"areaId\":411381,\"areaType\":2,\"name\":\"邓州市\",\"parentAreaId\":411300}],\"name\":\"南阳市\",\"parentAreaId\":410000},{\"areaId\":411400,\"areaType\":1,\"children\":[{\"areaId\":411402,\"areaType\":2,\"name\":\"梁园区\",\"parentAreaId\":411400},{\"areaId\":411403,\"areaType\":2,\"name\":\"睢阳区\",\"parentAreaId\":411400},{\"areaId\":411421,\"areaType\":2,\"name\":\"民权县\",\"parentAreaId\":411400},{\"areaId\":411422,\"areaType\":2,\"name\":\"睢县\",\"parentAreaId\":411400},{\"areaId\":411423,\"areaType\":2,\"name\":\"宁陵县\",\"parentAreaId\":411400},{\"areaId\":411424,\"areaType\":2,\"name\":\"柘城县\",\"parentAreaId\":411400},{\"areaId\":411425,\"areaType\":2,\"name\":\"虞城县\",\"parentAreaId\":411400},{\"areaId\":411426,\"areaType\":2,\"name\":\"夏邑县\",\"parentAreaId\":411400},{\"areaId\":411481,\"areaType\":2,\"name\":\"永城市\",\"parentAreaId\":411400}],\"name\":\"商丘市\",\"parentAreaId\":410000},{\"areaId\":411500,\"areaType\":1,\"children\":[{\"areaId\":411502,\"areaType\":2,\"name\":\"浉河区\",\"parentAreaId\":411500},{\"areaId\":411503,\"areaType\":2,\"name\":\"平桥区\",\"parentAreaId\":411500},{\"areaId\":411521,\"areaType\":2,\"name\":\"罗山县\",\"parentAreaId\":411500},{\"areaId\":411522,\"areaType\":2,\"name\":\"光山县\",\"parentAreaId\":411500},{\"areaId\":411523,\"areaType\":2,\"name\":\"新县\",\"parentAreaId\":411500},{\"areaId\":411524,\"areaType\":2,\"name\":\"商城县\",\"parentAreaId\":411500},{\"areaId\":411525,\"areaType\":2,\"name\":\"固始县\",\"parentAreaId\":411500},{\"areaId\":411526,\"areaType\":2,\"name\":\"潢川县\",\"parentAreaId\":411500},{\"areaId\":411527,\"areaType\":2,\"name\":\"淮滨县\",\"parentAreaId\":411500},{\"areaId\":411528,\"areaType\":2,\"name\":\"息县\",\"parentAreaId\":411500}],\"name\":\"信阳市\",\"parentAreaId\":410000},{\"areaId\":411600,\"areaType\":1,\"children\":[{\"areaId\":411602,\"areaType\":2,\"name\":\"川汇区\",\"parentAreaId\":411600},{\"areaId\":411621,\"areaType\":2,\"name\":\"扶沟县\",\"parentAreaId\":411600},{\"areaId\":411622,\"areaType\":2,\"name\":\"西华县\",\"parentAreaId\":411600},{\"areaId\":411623,\"areaType\":2,\"name\":\"商水县\",\"parentAreaId\":411600},{\"areaId\":411624,\"areaType\":2,\"name\":\"沈丘县\",\"parentAreaId\":411600},{\"areaId\":411625,\"areaType\":2,\"name\":\"郸城县\",\"parentAreaId\":411600},{\"areaId\":411626,\"areaType\":2,\"name\":\"淮阳县\",\"parentAreaId\":411600},{\"areaId\":411627,\"areaType\":2,\"name\":\"太康县\",\"parentAreaId\":411600},{\"areaId\":411628,\"areaType\":2,\"name\":\"鹿邑县\",\"parentAreaId\":411600},{\"areaId\":411681,\"areaType\":2,\"name\":\"项城市\",\"parentAreaId\":411600}],\"name\":\"周口市\",\"parentAreaId\":410000},{\"areaId\":411700,\"areaType\":1,\"children\":[{\"areaId\":411702,\"areaType\":2,\"name\":\"驿城区\",\"parentAreaId\":411700},{\"areaId\":411721,\"areaType\":2,\"name\":\"西平县\",\"parentAreaId\":411700},{\"areaId\":411722,\"areaType\":2,\"name\":\"上蔡县\",\"parentAreaId\":411700},{\"areaId\":411723,\"areaType\":2,\"name\":\"平舆县\",\"parentAreaId\":411700},{\"areaId\":411724,\"areaType\":2,\"name\":\"正阳县\",\"parentAreaId\":411700},{\"areaId\":411725,\"areaType\":2,\"name\":\"确山县\",\"parentAreaId\":411700},{\"areaId\":411726,\"areaType\":2,\"name\":\"泌阳县\",\"parentAreaId\":411700},{\"areaId\":411727,\"areaType\":2,\"name\":\"汝南县\",\"parentAreaId\":411700},{\"areaId\":411728,\"areaType\":2,\"name\":\"遂平县\",\"parentAreaId\":411700},{\"areaId\":411729,\"areaType\":2,\"name\":\"新蔡县\",\"parentAreaId\":411700}],\"name\":\"驻马店市\",\"parentAreaId\":410000},{\"areaId\":419001,\"areaType\":1,\"children\":[{\"areaId\":419001001,\"areaType\":2,\"name\":\"沁园街道\",\"parentAreaId\":419001},{\"areaId\":419001002,\"areaType\":2,\"name\":\"济水街道\",\"parentAreaId\":419001},{\"areaId\":419001003,\"areaType\":2,\"name\":\"北海街道\",\"parentAreaId\":419001},{\"areaId\":419001004,\"areaType\":2,\"name\":\"天坛街道\",\"parentAreaId\":419001},{\"areaId\":419001005,\"areaType\":2,\"name\":\"玉泉街道\",\"parentAreaId\":419001},{\"areaId\":419001100,\"areaType\":2,\"name\":\"克井镇\",\"parentAreaId\":419001},{\"areaId\":419001101,\"areaType\":2,\"name\":\"五龙口镇\",\"parentAreaId\":419001},{\"areaId\":419001102,\"areaType\":2,\"name\":\"轵城镇\",\"parentAreaId\":419001},{\"areaId\":419001103,\"areaType\":2,\"name\":\"承留镇\",\"parentAreaId\":419001},{\"areaId\":419001104,\"areaType\":2,\"name\":\"邵原镇\",\"parentAreaId\":419001},{\"areaId\":419001105,\"areaType\":2,\"name\":\"坡头镇\",\"parentAreaId\":419001},{\"areaId\":419001106,\"areaType\":2,\"name\":\"梨林镇\",\"parentAreaId\":419001},{\"areaId\":419001107,\"areaType\":2,\"name\":\"大峪镇\",\"parentAreaId\":419001},{\"areaId\":419001108,\"areaType\":2,\"name\":\"思礼镇\",\"parentAreaId\":419001},{\"areaId\":419001109,\"areaType\":2,\"name\":\"王屋镇\",\"parentAreaId\":419001},{\"areaId\":419001110,\"areaType\":2,\"name\":\"下冶镇\",\"parentAreaId\":419001}],\"name\":\"济源市\",\"parentAreaId\":410000}],\"name\":\"河南省\",\"parentAreaId\":0},{\"areaId\":420000,\"areaType\":0,\"children\":[{\"areaId\":420100,\"areaType\":1,\"children\":[{\"areaId\":420102,\"areaType\":2,\"name\":\"江岸区\",\"parentAreaId\":420100},{\"areaId\":420103,\"areaType\":2,\"name\":\"江汉区\",\"parentAreaId\":420100},{\"areaId\":420104,\"areaType\":2,\"name\":\"硚口区\",\"parentAreaId\":420100},{\"areaId\":420105,\"areaType\":2,\"name\":\"汉阳区\",\"parentAreaId\":420100},{\"areaId\":420106,\"areaType\":2,\"name\":\"武昌区\",\"parentAreaId\":420100},{\"areaId\":420107,\"areaType\":2,\"name\":\"青山区\",\"parentAreaId\":420100},{\"areaId\":420111,\"areaType\":2,\"name\":\"洪山区\",\"parentAreaId\":420100},{\"areaId\":420112,\"areaType\":2,\"name\":\"东西湖区\",\"parentAreaId\":420100},{\"areaId\":420113,\"areaType\":2,\"name\":\"汉南区\",\"parentAreaId\":420100},{\"areaId\":420114,\"areaType\":2,\"name\":\"蔡甸区\",\"parentAreaId\":420100},{\"areaId\":420115,\"areaType\":2,\"name\":\"江夏区\",\"parentAreaId\":420100},{\"areaId\":420116,\"areaType\":2,\"name\":\"黄陂区\",\"parentAreaId\":420100},{\"areaId\":420117,\"areaType\":2,\"name\":\"新洲区\",\"parentAreaId\":420100}],\"name\":\"武汉市\",\"parentAreaId\":420000},{\"areaId\":420200,\"areaType\":1,\"children\":[{\"areaId\":420202,\"areaType\":2,\"name\":\"黄石港区\",\"parentAreaId\":420200},{\"areaId\":420203,\"areaType\":2,\"name\":\"西塞山区\",\"parentAreaId\":420200},{\"areaId\":420204,\"areaType\":2,\"name\":\"下陆区\",\"parentAreaId\":420200},{\"areaId\":420205,\"areaType\":2,\"name\":\"铁山区\",\"parentAreaId\":420200},{\"areaId\":420222,\"areaType\":2,\"name\":\"阳新县\",\"parentAreaId\":420200},{\"areaId\":420281,\"areaType\":2,\"name\":\"大冶市\",\"parentAreaId\":420200}],\"name\":\"黄石市\",\"parentAreaId\":420000},{\"areaId\":420300,\"areaType\":1,\"children\":[{\"areaId\":420302,\"areaType\":2,\"name\":\"茅箭区\",\"parentAreaId\":420300},{\"areaId\":420303,\"areaType\":2,\"name\":\"张湾区\",\"parentAreaId\":420300},{\"areaId\":420304,\"areaType\":2,\"name\":\"郧阳区\",\"parentAreaId\":420300},{\"areaId\":420322,\"areaType\":2,\"name\":\"郧西县\",\"parentAreaId\":420300},{\"areaId\":420323,\"areaType\":2,\"name\":\"竹山县\",\"parentAreaId\":420300},{\"areaId\":420324,\"areaType\":2,\"name\":\"竹溪县\",\"parentAreaId\":420300},{\"areaId\":420325,\"areaType\":2,\"name\":\"房县\",\"parentAreaId\":420300},{\"areaId\":420381,\"areaType\":2,\"name\":\"丹江口市\",\"parentAreaId\":420300}],\"name\":\"十堰市\",\"parentAreaId\":420000},{\"areaId\":420500,\"areaType\":1,\"children\":[{\"areaId\":420502,\"areaType\":2,\"name\":\"西陵区\",\"parentAreaId\":420500},{\"areaId\":420503,\"areaType\":2,\"name\":\"伍家岗区\",\"parentAreaId\":420500},{\"areaId\":420504,\"areaType\":2,\"name\":\"点军区\",\"parentAreaId\":420500},{\"areaId\":420505,\"areaType\":2,\"name\":\"猇亭区\",\"parentAreaId\":420500},{\"areaId\":420506,\"areaType\":2,\"name\":\"夷陵区\",\"parentAreaId\":420500},{\"areaId\":420525,\"areaType\":2,\"name\":\"远安县\",\"parentAreaId\":420500},{\"areaId\":420526,\"areaType\":2,\"name\":\"兴山县\",\"parentAreaId\":420500},{\"areaId\":420527,\"areaType\":2,\"name\":\"秭归县\",\"parentAreaId\":420500},{\"areaId\":420528,\"areaType\":2,\"name\":\"长阳土家族自治县\",\"parentAreaId\":420500},{\"areaId\":420529,\"areaType\":2,\"name\":\"五峰土家族自治县\",\"parentAreaId\":420500},{\"areaId\":420581,\"areaType\":2,\"name\":\"宜都市\",\"parentAreaId\":420500},{\"areaId\":420582,\"areaType\":2,\"name\":\"当阳市\",\"parentAreaId\":420500},{\"areaId\":420583,\"areaType\":2,\"name\":\"枝江市\",\"parentAreaId\":420500}],\"name\":\"宜昌市\",\"parentAreaId\":420000},{\"areaId\":420600,\"areaType\":1,\"children\":[{\"areaId\":420602,\"areaType\":2,\"name\":\"襄城区\",\"parentAreaId\":420600},{\"areaId\":420606,\"areaType\":2,\"name\":\"樊城区\",\"parentAreaId\":420600},{\"areaId\":420607,\"areaType\":2,\"name\":\"襄州区\",\"parentAreaId\":420600},{\"areaId\":420624,\"areaType\":2,\"name\":\"南漳县\",\"parentAreaId\":420600},{\"areaId\":420625,\"areaType\":2,\"name\":\"谷城县\",\"parentAreaId\":420600},{\"areaId\":420626,\"areaType\":2,\"name\":\"保康县\",\"parentAreaId\":420600},{\"areaId\":420682,\"areaType\":2,\"name\":\"老河口市\",\"parentAreaId\":420600},{\"areaId\":420683,\"areaType\":2,\"name\":\"枣阳市\",\"parentAreaId\":420600},{\"areaId\":420684,\"areaType\":2,\"name\":\"宜城市\",\"parentAreaId\":420600}],\"name\":\"襄阳市\",\"parentAreaId\":420000},{\"areaId\":420700,\"areaType\":1,\"children\":[{\"areaId\":420702,\"areaType\":2,\"name\":\"梁子湖区\",\"parentAreaId\":420700},{\"areaId\":420703,\"areaType\":2,\"name\":\"华容区\",\"parentAreaId\":420700},{\"areaId\":420704,\"areaType\":2,\"name\":\"鄂城区\",\"parentAreaId\":420700}],\"name\":\"鄂州市\",\"parentAreaId\":420000},{\"areaId\":420800,\"areaType\":1,\"children\":[{\"areaId\":420802,\"areaType\":2,\"name\":\"东宝区\",\"parentAreaId\":420800},{\"areaId\":420804,\"areaType\":2,\"name\":\"掇刀区\",\"parentAreaId\":420800},{\"areaId\":420822,\"areaType\":2,\"name\":\"沙洋县\",\"parentAreaId\":420800},{\"areaId\":420881,\"areaType\":2,\"name\":\"钟祥市\",\"parentAreaId\":420800},{\"areaId\":420882,\"areaType\":2,\"name\":\"京山市\",\"parentAreaId\":420800}],\"name\":\"荆门市\",\"parentAreaId\":420000},{\"areaId\":420900,\"areaType\":1,\"children\":[{\"areaId\":420902,\"areaType\":2,\"name\":\"孝南区\",\"parentAreaId\":420900},{\"areaId\":420921,\"areaType\":2,\"name\":\"孝昌县\",\"parentAreaId\":420900},{\"areaId\":420922,\"areaType\":2,\"name\":\"大悟县\",\"parentAreaId\":420900},{\"areaId\":420923,\"areaType\":2,\"name\":\"云梦县\",\"parentAreaId\":420900},{\"areaId\":420981,\"areaType\":2,\"name\":\"应城市\",\"parentAreaId\":420900},{\"areaId\":420982,\"areaType\":2,\"name\":\"安陆市\",\"parentAreaId\":420900},{\"areaId\":420984,\"areaType\":2,\"name\":\"汉川市\",\"parentAreaId\":420900}],\"name\":\"孝感市\",\"parentAreaId\":420000},{\"areaId\":421000,\"areaType\":1,\"children\":[{\"areaId\":421002,\"areaType\":2,\"name\":\"沙市区\",\"parentAreaId\":421000},{\"areaId\":421003,\"areaType\":2,\"name\":\"荆州区\",\"parentAreaId\":421000},{\"areaId\":421022,\"areaType\":2,\"name\":\"公安县\",\"parentAreaId\":421000},{\"areaId\":421023,\"areaType\":2,\"name\":\"监利县\",\"parentAreaId\":421000},{\"areaId\":421024,\"areaType\":2,\"name\":\"江陵县\",\"parentAreaId\":421000},{\"areaId\":421081,\"areaType\":2,\"name\":\"石首市\",\"parentAreaId\":421000},{\"areaId\":421083,\"areaType\":2,\"name\":\"洪湖市\",\"parentAreaId\":421000},{\"areaId\":421087,\"areaType\":2,\"name\":\"松滋市\",\"parentAreaId\":421000}],\"name\":\"荆州市\",\"parentAreaId\":420000},{\"areaId\":421100,\"areaType\":1,\"children\":[{\"areaId\":421102,\"areaType\":2,\"name\":\"黄州区\",\"parentAreaId\":421100},{\"areaId\":421121,\"areaType\":2,\"name\":\"团风县\",\"parentAreaId\":421100},{\"areaId\":421122,\"areaType\":2,\"name\":\"红安县\",\"parentAreaId\":421100},{\"areaId\":421123,\"areaType\":2,\"name\":\"罗田县\",\"parentAreaId\":421100},{\"areaId\":421124,\"areaType\":2,\"name\":\"英山县\",\"parentAreaId\":421100},{\"areaId\":421125,\"areaType\":2,\"name\":\"浠水县\",\"parentAreaId\":421100},{\"areaId\":421126,\"areaType\":2,\"name\":\"蕲春县\",\"parentAreaId\":421100},{\"areaId\":421127,\"areaType\":2,\"name\":\"黄梅县\",\"parentAreaId\":421100},{\"areaId\":421181,\"areaType\":2,\"name\":\"麻城市\",\"parentAreaId\":421100},{\"areaId\":421182,\"areaType\":2,\"name\":\"武穴市\",\"parentAreaId\":421100}],\"name\":\"黄冈市\",\"parentAreaId\":420000},{\"areaId\":421200,\"areaType\":1,\"children\":[{\"areaId\":421202,\"areaType\":2,\"name\":\"咸安区\",\"parentAreaId\":421200},{\"areaId\":421221,\"areaType\":2,\"name\":\"嘉鱼县\",\"parentAreaId\":421200},{\"areaId\":421222,\"areaType\":2,\"name\":\"通城县\",\"parentAreaId\":421200},{\"areaId\":421223,\"areaType\":2,\"name\":\"崇阳县\",\"parentAreaId\":421200},{\"areaId\":421224,\"areaType\":2,\"name\":\"通山县\",\"parentAreaId\":421200},{\"areaId\":421281,\"areaType\":2,\"name\":\"赤壁市\",\"parentAreaId\":421200}],\"name\":\"咸宁市\",\"parentAreaId\":420000},{\"areaId\":421300,\"areaType\":1,\"children\":[{\"areaId\":421303,\"areaType\":2,\"name\":\"曾都区\",\"parentAreaId\":421300},{\"areaId\":421321,\"areaType\":2,\"name\":\"随县\",\"parentAreaId\":421300},{\"areaId\":421381,\"areaType\":2,\"name\":\"广水市\",\"parentAreaId\":421300}],\"name\":\"随州市\",\"parentAreaId\":420000},{\"areaId\":422800,\"areaType\":1,\"children\":[{\"areaId\":422801,\"areaType\":2,\"name\":\"恩施市\",\"parentAreaId\":422800},{\"areaId\":422802,\"areaType\":2,\"name\":\"利川市\",\"parentAreaId\":422800},{\"areaId\":422822,\"areaType\":2,\"name\":\"建始县\",\"parentAreaId\":422800},{\"areaId\":422823,\"areaType\":2,\"name\":\"巴东县\",\"parentAreaId\":422800},{\"areaId\":422825,\"areaType\":2,\"name\":\"宣恩县\",\"parentAreaId\":422800},{\"areaId\":422826,\"areaType\":2,\"name\":\"咸丰县\",\"parentAreaId\":422800},{\"areaId\":422827,\"areaType\":2,\"name\":\"来凤县\",\"parentAreaId\":422800},{\"areaId\":422828,\"areaType\":2,\"name\":\"鹤峰县\",\"parentAreaId\":422800}],\"name\":\"恩施土家族苗族自治州\",\"parentAreaId\":420000},{\"areaId\":429004,\"areaType\":1,\"children\":[{\"areaId\":429004001,\"areaType\":2,\"name\":\"沙嘴街道\",\"parentAreaId\":429004},{\"areaId\":429004002,\"areaType\":2,\"name\":\"干河街道\",\"parentAreaId\":429004},{\"areaId\":429004003,\"areaType\":2,\"name\":\"龙华山街道\",\"parentAreaId\":429004},{\"areaId\":429004100,\"areaType\":2,\"name\":\"郑场镇\",\"parentAreaId\":429004},{\"areaId\":429004101,\"areaType\":2,\"name\":\"毛嘴镇\",\"parentAreaId\":429004},{\"areaId\":429004102,\"areaType\":2,\"name\":\"豆河镇\",\"parentAreaId\":429004},{\"areaId\":429004103,\"areaType\":2,\"name\":\"三伏潭镇\",\"parentAreaId\":429004},{\"areaId\":429004104,\"areaType\":2,\"name\":\"胡场镇\",\"parentAreaId\":429004},{\"areaId\":429004105,\"areaType\":2,\"name\":\"长倘口镇\",\"parentAreaId\":429004},{\"areaId\":429004106,\"areaType\":2,\"name\":\"西流河镇\",\"parentAreaId\":429004},{\"areaId\":429004107,\"areaType\":2,\"name\":\"沙湖镇\",\"parentAreaId\":429004},{\"areaId\":429004108,\"areaType\":2,\"name\":\"杨林尾镇\",\"parentAreaId\":429004},{\"areaId\":429004109,\"areaType\":2,\"name\":\"彭场镇\",\"parentAreaId\":429004},{\"areaId\":429004110,\"areaType\":2,\"name\":\"张沟镇\",\"parentAreaId\":429004},{\"areaId\":429004111,\"areaType\":2,\"name\":\"郭河镇\",\"parentAreaId\":429004},{\"areaId\":429004112,\"areaType\":2,\"name\":\"沔城回族镇\",\"parentAreaId\":429004},{\"areaId\":429004113,\"areaType\":2,\"name\":\"通海口镇\",\"parentAreaId\":429004},{\"areaId\":429004114,\"areaType\":2,\"name\":\"陈场镇\",\"parentAreaId\":429004},{\"areaId\":429004400,\"areaType\":2,\"name\":\"工业园区\",\"parentAreaId\":429004},{\"areaId\":429004401,\"areaType\":2,\"name\":\"九合垸原种场\",\"parentAreaId\":429004},{\"areaId\":429004404,\"areaType\":2,\"name\":\"五湖渔场\",\"parentAreaId\":429004},{\"areaId\":429004405,\"areaType\":2,\"name\":\"赵西垸林场\",\"parentAreaId\":429004},{\"areaId\":429004407,\"areaType\":2,\"name\":\"畜禽良种场\",\"parentAreaId\":429004}],\"name\":\"仙桃市\",\"parentAreaId\":420000},{\"areaId\":429005,\"areaType\":1,\"children\":[{\"areaId\":429005001,\"areaType\":2,\"name\":\"园林街道\",\"parentAreaId\":429005},{\"areaId\":429005003,\"areaType\":2,\"name\":\"周矶街道\",\"parentAreaId\":429005},{\"areaId\":429005004,\"areaType\":2,\"name\":\"广华街道\",\"parentAreaId\":429005},{\"areaId\":429005005,\"areaType\":2,\"name\":\"泰丰街道\",\"parentAreaId\":429005},{\"areaId\":429005006,\"areaType\":2,\"name\":\"高场街道\",\"parentAreaId\":429005},{\"areaId\":429005100,\"areaType\":2,\"name\":\"竹根滩镇\",\"parentAreaId\":429005},{\"areaId\":429005101,\"areaType\":2,\"name\":\"渔洋镇\",\"parentAreaId\":429005},{\"areaId\":429005102,\"areaType\":2,\"name\":\"王场镇\",\"parentAreaId\":429005},{\"areaId\":429005103,\"areaType\":2,\"name\":\"高石碑镇\",\"parentAreaId\":429005},{\"areaId\":429005104,\"areaType\":2,\"name\":\"熊口镇\",\"parentAreaId\":429005},{\"areaId\":429005105,\"areaType\":2,\"name\":\"老新镇\",\"parentAreaId\":429005},{\"areaId\":429005106,\"areaType\":2,\"name\":\"浩口镇\",\"parentAreaId\":429005},{\"areaId\":429005107,\"areaType\":2,\"name\":\"积玉口镇\",\"parentAreaId\":429005},{\"areaId\":429005108,\"areaType\":2,\"name\":\"张金镇\",\"parentAreaId\":429005},{\"areaId\":429005109,\"areaType\":2,\"name\":\"龙湾镇\",\"parentAreaId\":429005},{\"areaId\":429005451,\"areaType\":2,\"name\":\"后湖管理区\",\"parentAreaId\":429005},{\"areaId\":429005452,\"areaType\":2,\"name\":\"熊口管理区\",\"parentAreaId\":429005},{\"areaId\":429005453,\"areaType\":2,\"name\":\"总口管理区\",\"parentAreaId\":429005},{\"areaId\":429005454,\"areaType\":2,\"name\":\"白鹭湖管理区\",\"parentAreaId\":429005},{\"areaId\":429005455,\"areaType\":2,\"name\":\"运粮湖管理区\",\"parentAreaId\":429005},{\"areaId\":429005900,\"areaType\":2,\"name\":\"杨市街道\",\"parentAreaId\":429005},{\"areaId\":429005950,\"areaType\":2,\"name\":\"广华寺农场\",\"parentAreaId\":429005}],\"name\":\"潜江市\",\"parentAreaId\":420000},{\"areaId\":429006,\"areaType\":1,\"children\":[{\"areaId\":429006001,\"areaType\":2,\"name\":\"竟陵街道\",\"parentAreaId\":429006},{\"areaId\":429006002,\"areaType\":2,\"name\":\"侨乡街道开发区\",\"parentAreaId\":429006},{\"areaId\":429006003,\"areaType\":2,\"name\":\"杨林街道\",\"parentAreaId\":429006},{\"areaId\":429006100,\"areaType\":2,\"name\":\"多宝镇\",\"parentAreaId\":429006},{\"areaId\":429006101,\"areaType\":2,\"name\":\"拖市镇\",\"parentAreaId\":429006},{\"areaId\":429006102,\"areaType\":2,\"name\":\"张港镇\",\"parentAreaId\":429006},{\"areaId\":429006103,\"areaType\":2,\"name\":\"蒋场镇\",\"parentAreaId\":429006},{\"areaId\":429006104,\"areaType\":2,\"name\":\"汪场镇\",\"parentAreaId\":429006},{\"areaId\":429006105,\"areaType\":2,\"name\":\"渔薪镇\",\"parentAreaId\":429006},{\"areaId\":429006106,\"areaType\":2,\"name\":\"黄潭镇\",\"parentAreaId\":429006},{\"areaId\":429006107,\"areaType\":2,\"name\":\"岳口镇\",\"parentAreaId\":429006},{\"areaId\":429006108,\"areaType\":2,\"name\":\"横林镇\",\"parentAreaId\":429006},{\"areaId\":429006109,\"areaType\":2,\"name\":\"彭市镇\",\"parentAreaId\":429006},{\"areaId\":429006110,\"areaType\":2,\"name\":\"麻洋镇\",\"parentAreaId\":429006},{\"areaId\":429006111,\"areaType\":2,\"name\":\"多祥镇\",\"parentAreaId\":429006},{\"areaId\":429006112,\"areaType\":2,\"name\":\"干驿镇\",\"parentAreaId\":429006},{\"areaId\":429006113,\"areaType\":2,\"name\":\"马湾镇\",\"parentAreaId\":429006},{\"areaId\":429006114,\"areaType\":2,\"name\":\"卢市镇\",\"parentAreaId\":429006},{\"areaId\":429006115,\"areaType\":2,\"name\":\"小板镇\",\"parentAreaId\":429006},{\"areaId\":429006116,\"areaType\":2,\"name\":\"九真镇\",\"parentAreaId\":429006},{\"areaId\":429006118,\"areaType\":2,\"name\":\"皂市镇\",\"parentAreaId\":429006},{\"areaId\":429006119,\"areaType\":2,\"name\":\"胡市镇\",\"parentAreaId\":429006},{\"areaId\":429006120,\"areaType\":2,\"name\":\"石河镇\",\"parentAreaId\":429006},{\"areaId\":429006121,\"areaType\":2,\"name\":\"佛子山镇\",\"parentAreaId\":429006},{\"areaId\":429006201,\"areaType\":2,\"name\":\"净潭乡\",\"parentAreaId\":429006},{\"areaId\":429006450,\"areaType\":2,\"name\":\"蒋湖农场\",\"parentAreaId\":429006},{\"areaId\":429006451,\"areaType\":2,\"name\":\"白茅湖农场\",\"parentAreaId\":429006},{\"areaId\":429006452,\"areaType\":2,\"name\":\"沉湖管委会\",\"parentAreaId\":429006}],\"name\":\"天门市\",\"parentAreaId\":420000},{\"areaId\":429021,\"areaType\":1,\"children\":[{\"areaId\":429021100,\"areaType\":2,\"name\":\"松柏镇\",\"parentAreaId\":429021},{\"areaId\":429021101,\"areaType\":2,\"name\":\"阳日镇\",\"parentAreaId\":429021},{\"areaId\":429021102,\"areaType\":2,\"name\":\"木鱼镇\",\"parentAreaId\":429021},{\"areaId\":429021103,\"areaType\":2,\"name\":\"红坪镇\",\"parentAreaId\":429021},{\"areaId\":429021104,\"areaType\":2,\"name\":\"新华镇\",\"parentAreaId\":429021},{\"areaId\":429021105,\"areaType\":2,\"name\":\"九湖镇\",\"parentAreaId\":429021},{\"areaId\":429021200,\"areaType\":2,\"name\":\"宋洛乡\",\"parentAreaId\":429021},{\"areaId\":429021202,\"areaType\":2,\"name\":\"下谷坪土家族乡\",\"parentAreaId\":429021}],\"name\":\"神农架林区\",\"parentAreaId\":420000}],\"name\":\"湖北省\",\"parentAreaId\":0},{\"areaId\":430000,\"areaType\":0,\"children\":[{\"areaId\":430100,\"areaType\":1,\"children\":[{\"areaId\":430102,\"areaType\":2,\"name\":\"芙蓉区\",\"parentAreaId\":430100},{\"areaId\":430103,\"areaType\":2,\"name\":\"天心区\",\"parentAreaId\":430100},{\"areaId\":430104,\"areaType\":2,\"name\":\"岳麓区\",\"parentAreaId\":430100},{\"areaId\":430105,\"areaType\":2,\"name\":\"开福区\",\"parentAreaId\":430100},{\"areaId\":430111,\"areaType\":2,\"name\":\"雨花区\",\"parentAreaId\":430100},{\"areaId\":430112,\"areaType\":2,\"name\":\"望城区\",\"parentAreaId\":430100},{\"areaId\":430121,\"areaType\":2,\"name\":\"长沙县\",\"parentAreaId\":430100},{\"areaId\":430181,\"areaType\":2,\"name\":\"浏阳市\",\"parentAreaId\":430100},{\"areaId\":430182,\"areaType\":2,\"name\":\"宁乡市\",\"parentAreaId\":430100}],\"name\":\"长沙市\",\"parentAreaId\":430000},{\"areaId\":430200,\"areaType\":1,\"children\":[{\"areaId\":430202,\"areaType\":2,\"name\":\"荷塘区\",\"parentAreaId\":430200},{\"areaId\":430203,\"areaType\":2,\"name\":\"芦淞区\",\"parentAreaId\":430200},{\"areaId\":430204,\"areaType\":2,\"name\":\"石峰区\",\"parentAreaId\":430200},{\"areaId\":430211,\"areaType\":2,\"name\":\"天元区\",\"parentAreaId\":430200},{\"areaId\":430221,\"areaType\":2,\"name\":\"渌口区\",\"parentAreaId\":430200},{\"areaId\":430223,\"areaType\":2,\"name\":\"攸县\",\"parentAreaId\":430200},{\"areaId\":430224,\"areaType\":2,\"name\":\"茶陵县\",\"parentAreaId\":430200},{\"areaId\":430225,\"areaType\":2,\"name\":\"炎陵县\",\"parentAreaId\":430200},{\"areaId\":430281,\"areaType\":2,\"name\":\"醴陵市\",\"parentAreaId\":430200}],\"name\":\"株洲市\",\"parentAreaId\":430000},{\"areaId\":430300,\"areaType\":1,\"children\":[{\"areaId\":430302,\"areaType\":2,\"name\":\"雨湖区\",\"parentAreaId\":430300},{\"areaId\":430304,\"areaType\":2,\"name\":\"岳塘区\",\"parentAreaId\":430300},{\"areaId\":430321,\"areaType\":2,\"name\":\"湘潭县\",\"parentAreaId\":430300},{\"areaId\":430381,\"areaType\":2,\"name\":\"湘乡市\",\"parentAreaId\":430300},{\"areaId\":430382,\"areaType\":2,\"name\":\"韶山市\",\"parentAreaId\":430300}],\"name\":\"湘潭市\",\"parentAreaId\":430000},{\"areaId\":430400,\"areaType\":1,\"children\":[{\"areaId\":430405,\"areaType\":2,\"name\":\"珠晖区\",\"parentAreaId\":430400},{\"areaId\":430406,\"areaType\":2,\"name\":\"雁峰区\",\"parentAreaId\":430400},{\"areaId\":430407,\"areaType\":2,\"name\":\"石鼓区\",\"parentAreaId\":430400},{\"areaId\":430408,\"areaType\":2,\"name\":\"蒸湘区\",\"parentAreaId\":430400},{\"areaId\":430412,\"areaType\":2,\"name\":\"南岳区\",\"parentAreaId\":430400},{\"areaId\":430421,\"areaType\":2,\"name\":\"衡阳县\",\"parentAreaId\":430400},{\"areaId\":430422,\"areaType\":2,\"name\":\"衡南县\",\"parentAreaId\":430400},{\"areaId\":430423,\"areaType\":2,\"name\":\"衡山县\",\"parentAreaId\":430400},{\"areaId\":430424,\"areaType\":2,\"name\":\"衡东县\",\"parentAreaId\":430400},{\"areaId\":430426,\"areaType\":2,\"name\":\"祁东县\",\"parentAreaId\":430400},{\"areaId\":430481,\"areaType\":2,\"name\":\"耒阳市\",\"parentAreaId\":430400},{\"areaId\":430482,\"areaType\":2,\"name\":\"常宁市\",\"parentAreaId\":430400}],\"name\":\"衡阳市\",\"parentAreaId\":430000},{\"areaId\":430500,\"areaType\":1,\"children\":[{\"areaId\":430502,\"areaType\":2,\"name\":\"双清区\",\"parentAreaId\":430500},{\"areaId\":430503,\"areaType\":2,\"name\":\"大祥区\",\"parentAreaId\":430500},{\"areaId\":430511,\"areaType\":2,\"name\":\"北塔区\",\"parentAreaId\":430500},{\"areaId\":430521,\"areaType\":2,\"name\":\"邵东县\",\"parentAreaId\":430500},{\"areaId\":430522,\"areaType\":2,\"name\":\"新邵县\",\"parentAreaId\":430500},{\"areaId\":430523,\"areaType\":2,\"name\":\"邵阳县\",\"parentAreaId\":430500},{\"areaId\":430524,\"areaType\":2,\"name\":\"隆回县\",\"parentAreaId\":430500},{\"areaId\":430525,\"areaType\":2,\"name\":\"洞口县\",\"parentAreaId\":430500},{\"areaId\":430527,\"areaType\":2,\"name\":\"绥宁县\",\"parentAreaId\":430500},{\"areaId\":430528,\"areaType\":2,\"name\":\"新宁县\",\"parentAreaId\":430500},{\"areaId\":430529,\"areaType\":2,\"name\":\"城步苗族自治县\",\"parentAreaId\":430500},{\"areaId\":430581,\"areaType\":2,\"name\":\"武冈市\",\"parentAreaId\":430500}],\"name\":\"邵阳市\",\"parentAreaId\":430000},{\"areaId\":430600,\"areaType\":1,\"children\":[{\"areaId\":430602,\"areaType\":2,\"name\":\"岳阳楼区\",\"parentAreaId\":430600},{\"areaId\":430603,\"areaType\":2,\"name\":\"云溪区\",\"parentAreaId\":430600},{\"areaId\":430611,\"areaType\":2,\"name\":\"君山区\",\"parentAreaId\":430600},{\"areaId\":430621,\"areaType\":2,\"name\":\"岳阳县\",\"parentAreaId\":430600},{\"areaId\":430623,\"areaType\":2,\"name\":\"华容县\",\"parentAreaId\":430600},{\"areaId\":430624,\"areaType\":2,\"name\":\"湘阴县\",\"parentAreaId\":430600},{\"areaId\":430626,\"areaType\":2,\"name\":\"平江县\",\"parentAreaId\":430600},{\"areaId\":430681,\"areaType\":2,\"name\":\"汨罗市\",\"parentAreaId\":430600},{\"areaId\":430682,\"areaType\":2,\"name\":\"临湘市\",\"parentAreaId\":430600}],\"name\":\"岳阳市\",\"parentAreaId\":430000},{\"areaId\":430700,\"areaType\":1,\"children\":[{\"areaId\":430702,\"areaType\":2,\"name\":\"武陵区\",\"parentAreaId\":430700},{\"areaId\":430703,\"areaType\":2,\"name\":\"鼎城区\",\"parentAreaId\":430700},{\"areaId\":430721,\"areaType\":2,\"name\":\"安乡县\",\"parentAreaId\":430700},{\"areaId\":430722,\"areaType\":2,\"name\":\"汉寿县\",\"parentAreaId\":430700},{\"areaId\":430723,\"areaType\":2,\"name\":\"澧县\",\"parentAreaId\":430700},{\"areaId\":430724,\"areaType\":2,\"name\":\"临澧县\",\"parentAreaId\":430700},{\"areaId\":430725,\"areaType\":2,\"name\":\"桃源县\",\"parentAreaId\":430700},{\"areaId\":430726,\"areaType\":2,\"name\":\"石门县\",\"parentAreaId\":430700},{\"areaId\":430781,\"areaType\":2,\"name\":\"津市市\",\"parentAreaId\":430700}],\"name\":\"常德市\",\"parentAreaId\":430000},{\"areaId\":430800,\"areaType\":1,\"children\":[{\"areaId\":430802,\"areaType\":2,\"name\":\"永定区\",\"parentAreaId\":430800},{\"areaId\":430811,\"areaType\":2,\"name\":\"武陵源区\",\"parentAreaId\":430800},{\"areaId\":430821,\"areaType\":2,\"name\":\"慈利县\",\"parentAreaId\":430800},{\"areaId\":430822,\"areaType\":2,\"name\":\"桑植县\",\"parentAreaId\":430800}],\"name\":\"张家界市\",\"parentAreaId\":430000},{\"areaId\":430900,\"areaType\":1,\"children\":[{\"areaId\":430902,\"areaType\":2,\"name\":\"资阳区\",\"parentAreaId\":430900},{\"areaId\":430903,\"areaType\":2,\"name\":\"赫山区\",\"parentAreaId\":430900},{\"areaId\":430921,\"areaType\":2,\"name\":\"南县\",\"parentAreaId\":430900},{\"areaId\":430922,\"areaType\":2,\"name\":\"桃江县\",\"parentAreaId\":430900},{\"areaId\":430923,\"areaType\":2,\"name\":\"安化县\",\"parentAreaId\":430900},{\"areaId\":430981,\"areaType\":2,\"name\":\"沅江市\",\"parentAreaId\":430900}],\"name\":\"益阳市\",\"parentAreaId\":430000},{\"areaId\":431000,\"areaType\":1,\"children\":[{\"areaId\":431002,\"areaType\":2,\"name\":\"北湖区\",\"parentAreaId\":431000},{\"areaId\":431003,\"areaType\":2,\"name\":\"苏仙区\",\"parentAreaId\":431000},{\"areaId\":431021,\"areaType\":2,\"name\":\"桂阳县\",\"parentAreaId\":431000},{\"areaId\":431022,\"areaType\":2,\"name\":\"宜章县\",\"parentAreaId\":431000},{\"areaId\":431023,\"areaType\":2,\"name\":\"永兴县\",\"parentAreaId\":431000},{\"areaId\":431024,\"areaType\":2,\"name\":\"嘉禾县\",\"parentAreaId\":431000},{\"areaId\":431025,\"areaType\":2,\"name\":\"临武县\",\"parentAreaId\":431000},{\"areaId\":431026,\"areaType\":2,\"name\":\"汝城县\",\"parentAreaId\":431000},{\"areaId\":431027,\"areaType\":2,\"name\":\"桂东县\",\"parentAreaId\":431000},{\"areaId\":431028,\"areaType\":2,\"name\":\"安仁县\",\"parentAreaId\":431000},{\"areaId\":431081,\"areaType\":2,\"name\":\"资兴市\",\"parentAreaId\":431000}],\"name\":\"郴州市\",\"parentAreaId\":430000},{\"areaId\":431100,\"areaType\":1,\"children\":[{\"areaId\":431102,\"areaType\":2,\"name\":\"零陵区\",\"parentAreaId\":431100},{\"areaId\":431103,\"areaType\":2,\"name\":\"冷水滩区\",\"parentAreaId\":431100},{\"areaId\":431121,\"areaType\":2,\"name\":\"祁阳县\",\"parentAreaId\":431100},{\"areaId\":431122,\"areaType\":2,\"name\":\"东安县\",\"parentAreaId\":431100},{\"areaId\":431123,\"areaType\":2,\"name\":\"双牌县\",\"parentAreaId\":431100},{\"areaId\":431124,\"areaType\":2,\"name\":\"道县\",\"parentAreaId\":431100},{\"areaId\":431125,\"areaType\":2,\"name\":\"江永县\",\"parentAreaId\":431100},{\"areaId\":431126,\"areaType\":2,\"name\":\"宁远县\",\"parentAreaId\":431100},{\"areaId\":431127,\"areaType\":2,\"name\":\"蓝山县\",\"parentAreaId\":431100},{\"areaId\":431128,\"areaType\":2,\"name\":\"新田县\",\"parentAreaId\":431100},{\"areaId\":431129,\"areaType\":2,\"name\":\"江华瑶族自治县\",\"parentAreaId\":431100}],\"name\":\"永州市\",\"parentAreaId\":430000},{\"areaId\":431200,\"areaType\":1,\"children\":[{\"areaId\":431202,\"areaType\":2,\"name\":\"鹤城区\",\"parentAreaId\":431200},{\"areaId\":431221,\"areaType\":2,\"name\":\"中方县\",\"parentAreaId\":431200},{\"areaId\":431222,\"areaType\":2,\"name\":\"沅陵县\",\"parentAreaId\":431200},{\"areaId\":431223,\"areaType\":2,\"name\":\"辰溪县\",\"parentAreaId\":431200},{\"areaId\":431224,\"areaType\":2,\"name\":\"溆浦县\",\"parentAreaId\":431200},{\"areaId\":431225,\"areaType\":2,\"name\":\"会同县\",\"parentAreaId\":431200},{\"areaId\":431226,\"areaType\":2,\"name\":\"麻阳苗族自治县\",\"parentAreaId\":431200},{\"areaId\":431227,\"areaType\":2,\"name\":\"新晃侗族自治县\",\"parentAreaId\":431200},{\"areaId\":431228,\"areaType\":2,\"name\":\"芷江侗族自治县\",\"parentAreaId\":431200},{\"areaId\":431229,\"areaType\":2,\"name\":\"靖州苗族侗族自治县\",\"parentAreaId\":431200},{\"areaId\":431230,\"areaType\":2,\"name\":\"通道侗族自治县\",\"parentAreaId\":431200},{\"areaId\":431281,\"areaType\":2,\"name\":\"洪江市\",\"parentAreaId\":431200}],\"name\":\"怀化市\",\"parentAreaId\":430000},{\"areaId\":431300,\"areaType\":1,\"children\":[{\"areaId\":431302,\"areaType\":2,\"name\":\"娄星区\",\"parentAreaId\":431300},{\"areaId\":431321,\"areaType\":2,\"name\":\"双峰县\",\"parentAreaId\":431300},{\"areaId\":431322,\"areaType\":2,\"name\":\"新化县\",\"parentAreaId\":431300},{\"areaId\":431381,\"areaType\":2,\"name\":\"冷水江市\",\"parentAreaId\":431300},{\"areaId\":431382,\"areaType\":2,\"name\":\"涟源市\",\"parentAreaId\":431300}],\"name\":\"娄底市\",\"parentAreaId\":430000},{\"areaId\":433100,\"areaType\":1,\"children\":[{\"areaId\":433101,\"areaType\":2,\"name\":\"吉首市\",\"parentAreaId\":433100},{\"areaId\":433122,\"areaType\":2,\"name\":\"泸溪县\",\"parentAreaId\":433100},{\"areaId\":433123,\"areaType\":2,\"name\":\"凤凰县\",\"parentAreaId\":433100},{\"areaId\":433124,\"areaType\":2,\"name\":\"花垣县\",\"parentAreaId\":433100},{\"areaId\":433125,\"areaType\":2,\"name\":\"保靖县\",\"parentAreaId\":433100},{\"areaId\":433126,\"areaType\":2,\"name\":\"古丈县\",\"parentAreaId\":433100},{\"areaId\":433127,\"areaType\":2,\"name\":\"永顺县\",\"parentAreaId\":433100},{\"areaId\":433130,\"areaType\":2,\"name\":\"龙山县\",\"parentAreaId\":433100}],\"name\":\"湘西土家族苗族自治州\",\"parentAreaId\":430000}],\"name\":\"湖南省\",\"parentAreaId\":0},{\"areaId\":440000,\"areaType\":0,\"children\":[{\"areaId\":440100,\"areaType\":1,\"children\":[{\"areaId\":440103,\"areaType\":2,\"name\":\"荔湾区\",\"parentAreaId\":440100},{\"areaId\":440104,\"areaType\":2,\"name\":\"越秀区\",\"parentAreaId\":440100},{\"areaId\":440105,\"areaType\":2,\"name\":\"海珠区\",\"parentAreaId\":440100},{\"areaId\":440106,\"areaType\":2,\"name\":\"天河区\",\"parentAreaId\":440100},{\"areaId\":440111,\"areaType\":2,\"name\":\"白云区\",\"parentAreaId\":440100},{\"areaId\":440112,\"areaType\":2,\"name\":\"黄埔区\",\"parentAreaId\":440100},{\"areaId\":440113,\"areaType\":2,\"name\":\"番禺区\",\"parentAreaId\":440100},{\"areaId\":440114,\"areaType\":2,\"name\":\"花都区\",\"parentAreaId\":440100},{\"areaId\":440115,\"areaType\":2,\"name\":\"南沙区\",\"parentAreaId\":440100},{\"areaId\":440117,\"areaType\":2,\"name\":\"从化区\",\"parentAreaId\":440100},{\"areaId\":440118,\"areaType\":2,\"name\":\"增城区\",\"parentAreaId\":440100}],\"name\":\"广州市\",\"parentAreaId\":440000},{\"areaId\":440200,\"areaType\":1,\"children\":[{\"areaId\":440203,\"areaType\":2,\"name\":\"武江区\",\"parentAreaId\":440200},{\"areaId\":440204,\"areaType\":2,\"name\":\"浈江区\",\"parentAreaId\":440200},{\"areaId\":440205,\"areaType\":2,\"name\":\"曲江区\",\"parentAreaId\":440200},{\"areaId\":440222,\"areaType\":2,\"name\":\"始兴县\",\"parentAreaId\":440200},{\"areaId\":440224,\"areaType\":2,\"name\":\"仁化县\",\"parentAreaId\":440200},{\"areaId\":440229,\"areaType\":2,\"name\":\"翁源县\",\"parentAreaId\":440200},{\"areaId\":440232,\"areaType\":2,\"name\":\"乳源瑶族自治县\",\"parentAreaId\":440200},{\"areaId\":440233,\"areaType\":2,\"name\":\"新丰县\",\"parentAreaId\":440200},{\"areaId\":440281,\"areaType\":2,\"name\":\"乐昌市\",\"parentAreaId\":440200},{\"areaId\":440282,\"areaType\":2,\"name\":\"南雄市\",\"parentAreaId\":440200}],\"name\":\"韶关市\",\"parentAreaId\":440000},{\"areaId\":440300,\"areaType\":1,\"children\":[{\"areaId\":440303,\"areaType\":2,\"name\":\"罗湖区\",\"parentAreaId\":440300},{\"areaId\":440304,\"areaType\":2,\"name\":\"福田区\",\"parentAreaId\":440300},{\"areaId\":440305,\"areaType\":2,\"name\":\"南山区\",\"parentAreaId\":440300},{\"areaId\":440306,\"areaType\":2,\"name\":\"宝安区\",\"parentAreaId\":440300},{\"areaId\":440307,\"areaType\":2,\"name\":\"龙岗区\",\"parentAreaId\":440300},{\"areaId\":440308,\"areaType\":2,\"name\":\"盐田区\",\"parentAreaId\":440300},{\"areaId\":440309,\"areaType\":2,\"name\":\"龙华区\",\"parentAreaId\":440300},{\"areaId\":440310,\"areaType\":2,\"name\":\"坪山区\",\"parentAreaId\":440300},{\"areaId\":440311,\"areaType\":2,\"name\":\"光明区\",\"parentAreaId\":440300}],\"name\":\"深圳市\",\"parentAreaId\":440000},{\"areaId\":440400,\"areaType\":1,\"children\":[{\"areaId\":440402,\"areaType\":2,\"name\":\"香洲区\",\"parentAreaId\":440400},{\"areaId\":440403,\"areaType\":2,\"name\":\"斗门区\",\"parentAreaId\":440400},{\"areaId\":440404,\"areaType\":2,\"name\":\"金湾区\",\"parentAreaId\":440400},{\"areaId\":440499,\"areaType\":2,\"name\":\"香洲区(由澳门特别行政区实施管辖)\",\"parentAreaId\":440400}],\"name\":\"珠海市\",\"parentAreaId\":440000},{\"areaId\":440500,\"areaType\":1,\"children\":[{\"areaId\":440507,\"areaType\":2,\"name\":\"龙湖区\",\"parentAreaId\":440500},{\"areaId\":440511,\"areaType\":2,\"name\":\"金平区\",\"parentAreaId\":440500},{\"areaId\":440512,\"areaType\":2,\"name\":\"濠江区\",\"parentAreaId\":440500},{\"areaId\":440513,\"areaType\":2,\"name\":\"潮阳区\",\"parentAreaId\":440500},{\"areaId\":440514,\"areaType\":2,\"name\":\"潮南区\",\"parentAreaId\":440500},{\"areaId\":440515,\"areaType\":2,\"name\":\"澄海区\",\"parentAreaId\":440500},{\"areaId\":440523,\"areaType\":2,\"name\":\"南澳县\",\"parentAreaId\":440500}],\"name\":\"汕头市\",\"parentAreaId\":440000},{\"areaId\":440600,\"areaType\":1,\"children\":[{\"areaId\":440604,\"areaType\":2,\"name\":\"禅城区\",\"parentAreaId\":440600},{\"areaId\":440605,\"areaType\":2,\"name\":\"南海区\",\"parentAreaId\":440600},{\"areaId\":440606,\"areaType\":2,\"name\":\"顺德区\",\"parentAreaId\":440600},{\"areaId\":440607,\"areaType\":2,\"name\":\"三水区\",\"parentAreaId\":440600},{\"areaId\":440608,\"areaType\":2,\"name\":\"高明区\",\"parentAreaId\":440600}],\"name\":\"佛山市\",\"parentAreaId\":440000},{\"areaId\":440700,\"areaType\":1,\"children\":[{\"areaId\":440703,\"areaType\":2,\"name\":\"蓬江区\",\"parentAreaId\":440700},{\"areaId\":440704,\"areaType\":2,\"name\":\"江海区\",\"parentAreaId\":440700},{\"areaId\":440705,\"areaType\":2,\"name\":\"新会区\",\"parentAreaId\":440700},{\"areaId\":440781,\"areaType\":2,\"name\":\"台山市\",\"parentAreaId\":440700},{\"areaId\":440783,\"areaType\":2,\"name\":\"开平市\",\"parentAreaId\":440700},{\"areaId\":440784,\"areaType\":2,\"name\":\"鹤山市\",\"parentAreaId\":440700},{\"areaId\":440785,\"areaType\":2,\"name\":\"恩平市\",\"parentAreaId\":440700}],\"name\":\"江门市\",\"parentAreaId\":440000},{\"areaId\":440800,\"areaType\":1,\"children\":[{\"areaId\":440802,\"areaType\":2,\"name\":\"赤坎区\",\"parentAreaId\":440800},{\"areaId\":440803,\"areaType\":2,\"name\":\"霞山区\",\"parentAreaId\":440800},{\"areaId\":440804,\"areaType\":2,\"name\":\"坡头区\",\"parentAreaId\":440800},{\"areaId\":440811,\"areaType\":2,\"name\":\"麻章区\",\"parentAreaId\":440800},{\"areaId\":440823,\"areaType\":2,\"name\":\"遂溪县\",\"parentAreaId\":440800},{\"areaId\":440825,\"areaType\":2,\"name\":\"徐闻县\",\"parentAreaId\":440800},{\"areaId\":440881,\"areaType\":2,\"name\":\"廉江市\",\"parentAreaId\":440800},{\"areaId\":440882,\"areaType\":2,\"name\":\"雷州市\",\"parentAreaId\":440800},{\"areaId\":440883,\"areaType\":2,\"name\":\"吴川市\",\"parentAreaId\":440800}],\"name\":\"湛江市\",\"parentAreaId\":440000},{\"areaId\":440900,\"areaType\":1,\"children\":[{\"areaId\":440902,\"areaType\":2,\"name\":\"茂南区\",\"parentAreaId\":440900},{\"areaId\":440904,\"areaType\":2,\"name\":\"电白区\",\"parentAreaId\":440900},{\"areaId\":440981,\"areaType\":2,\"name\":\"高州市\",\"parentAreaId\":440900},{\"areaId\":440982,\"areaType\":2,\"name\":\"化州市\",\"parentAreaId\":440900},{\"areaId\":440983,\"areaType\":2,\"name\":\"信宜市\",\"parentAreaId\":440900}],\"name\":\"茂名市\",\"parentAreaId\":440000},{\"areaId\":441200,\"areaType\":1,\"children\":[{\"areaId\":441202,\"areaType\":2,\"name\":\"端州区\",\"parentAreaId\":441200},{\"areaId\":441203,\"areaType\":2,\"name\":\"鼎湖区\",\"parentAreaId\":441200},{\"areaId\":441204,\"areaType\":2,\"name\":\"高要区\",\"parentAreaId\":441200},{\"areaId\":441223,\"areaType\":2,\"name\":\"广宁县\",\"parentAreaId\":441200},{\"areaId\":441224,\"areaType\":2,\"name\":\"怀集县\",\"parentAreaId\":441200},{\"areaId\":441225,\"areaType\":2,\"name\":\"封开县\",\"parentAreaId\":441200},{\"areaId\":441226,\"areaType\":2,\"name\":\"德庆县\",\"parentAreaId\":441200},{\"areaId\":441284,\"areaType\":2,\"name\":\"四会市\",\"parentAreaId\":441200}],\"name\":\"肇庆市\",\"parentAreaId\":440000},{\"areaId\":441300,\"areaType\":1,\"children\":[{\"areaId\":441302,\"areaType\":2,\"name\":\"惠城区\",\"parentAreaId\":441300},{\"areaId\":441303,\"areaType\":2,\"name\":\"惠阳区\",\"parentAreaId\":441300},{\"areaId\":441322,\"areaType\":2,\"name\":\"博罗县\",\"parentAreaId\":441300},{\"areaId\":441323,\"areaType\":2,\"name\":\"惠东县\",\"parentAreaId\":441300},{\"areaId\":441324,\"areaType\":2,\"name\":\"龙门县\",\"parentAreaId\":441300}],\"name\":\"惠州市\",\"parentAreaId\":440000},{\"areaId\":441400,\"areaType\":1,\"children\":[{\"areaId\":441402,\"areaType\":2,\"name\":\"梅江区\",\"parentAreaId\":441400},{\"areaId\":441403,\"areaType\":2,\"name\":\"梅县区\",\"parentAreaId\":441400},{\"areaId\":441422,\"areaType\":2,\"name\":\"大埔县\",\"parentAreaId\":441400},{\"areaId\":441423,\"areaType\":2,\"name\":\"丰顺县\",\"parentAreaId\":441400},{\"areaId\":441424,\"areaType\":2,\"name\":\"五华县\",\"parentAreaId\":441400},{\"areaId\":441426,\"areaType\":2,\"name\":\"平远县\",\"parentAreaId\":441400},{\"areaId\":441427,\"areaType\":2,\"name\":\"蕉岭县\",\"parentAreaId\":441400},{\"areaId\":441481,\"areaType\":2,\"name\":\"兴宁市\",\"parentAreaId\":441400}],\"name\":\"梅州市\",\"parentAreaId\":440000},{\"areaId\":441500,\"areaType\":1,\"children\":[{\"areaId\":441502,\"areaType\":2,\"name\":\"城区\",\"parentAreaId\":441500},{\"areaId\":441521,\"areaType\":2,\"name\":\"海丰县\",\"parentAreaId\":441500},{\"areaId\":441523,\"areaType\":2,\"name\":\"陆河县\",\"parentAreaId\":441500},{\"areaId\":441581,\"areaType\":2,\"name\":\"陆丰市\",\"parentAreaId\":441500}],\"name\":\"汕尾市\",\"parentAreaId\":440000},{\"areaId\":441600,\"areaType\":1,\"children\":[{\"areaId\":441602,\"areaType\":2,\"name\":\"源城区\",\"parentAreaId\":441600},{\"areaId\":441621,\"areaType\":2,\"name\":\"紫金县\",\"parentAreaId\":441600},{\"areaId\":441622,\"areaType\":2,\"name\":\"龙川县\",\"parentAreaId\":441600},{\"areaId\":441623,\"areaType\":2,\"name\":\"连平县\",\"parentAreaId\":441600},{\"areaId\":441624,\"areaType\":2,\"name\":\"和平县\",\"parentAreaId\":441600},{\"areaId\":441625,\"areaType\":2,\"name\":\"东源县\",\"parentAreaId\":441600}],\"name\":\"河源市\",\"parentAreaId\":440000},{\"areaId\":441700,\"areaType\":1,\"children\":[{\"areaId\":441702,\"areaType\":2,\"name\":\"江城区\",\"parentAreaId\":441700},{\"areaId\":441704,\"areaType\":2,\"name\":\"阳东区\",\"parentAreaId\":441700},{\"areaId\":441721,\"areaType\":2,\"name\":\"阳西县\",\"parentAreaId\":441700},{\"areaId\":441781,\"areaType\":2,\"name\":\"阳春市\",\"parentAreaId\":441700}],\"name\":\"阳江市\",\"parentAreaId\":440000},{\"areaId\":441800,\"areaType\":1,\"children\":[{\"areaId\":441802,\"areaType\":2,\"name\":\"清城区\",\"parentAreaId\":441800},{\"areaId\":441803,\"areaType\":2,\"name\":\"清新区\",\"parentAreaId\":441800},{\"areaId\":441821,\"areaType\":2,\"name\":\"佛冈县\",\"parentAreaId\":441800},{\"areaId\":441823,\"areaType\":2,\"name\":\"阳山县\",\"parentAreaId\":441800},{\"areaId\":441825,\"areaType\":2,\"name\":\"连山壮族瑶族自治县\",\"parentAreaId\":441800},{\"areaId\":441826,\"areaType\":2,\"name\":\"连南瑶族自治县\",\"parentAreaId\":441800},{\"areaId\":441881,\"areaType\":2,\"name\":\"英德市\",\"parentAreaId\":441800},{\"areaId\":441882,\"areaType\":2,\"name\":\"连州市\",\"parentAreaId\":441800}],\"name\":\"清远市\",\"parentAreaId\":440000},{\"areaId\":441900,\"areaType\":1,\"children\":[{\"areaId\":441999,\"areaType\":2,\"name\":\"东莞市\",\"parentAreaId\":441900}],\"name\":\"东莞市\",\"parentAreaId\":440000},{\"areaId\":442000,\"areaType\":1,\"children\":[{\"areaId\":442099,\"areaType\":2,\"name\":\"中山市\",\"parentAreaId\":442000}],\"name\":\"中山市\",\"parentAreaId\":440000},{\"areaId\":445100,\"areaType\":1,\"children\":[{\"areaId\":445102,\"areaType\":2,\"name\":\"湘桥区\",\"parentAreaId\":445100},{\"areaId\":445103,\"areaType\":2,\"name\":\"潮安区\",\"parentAreaId\":445100},{\"areaId\":445122,\"areaType\":2,\"name\":\"饶平县\",\"parentAreaId\":445100}],\"name\":\"潮州市\",\"parentAreaId\":440000},{\"areaId\":445200,\"areaType\":1,\"children\":[{\"areaId\":445202,\"areaType\":2,\"name\":\"榕城区\",\"parentAreaId\":445200},{\"areaId\":445203,\"areaType\":2,\"name\":\"揭东区\",\"parentAreaId\":445200},{\"areaId\":445222,\"areaType\":2,\"name\":\"揭西县\",\"parentAreaId\":445200},{\"areaId\":445224,\"areaType\":2,\"name\":\"惠来县\",\"parentAreaId\":445200},{\"areaId\":445281,\"areaType\":2,\"name\":\"普宁市\",\"parentAreaId\":445200}],\"name\":\"揭阳市\",\"parentAreaId\":440000},{\"areaId\":445300,\"areaType\":1,\"children\":[{\"areaId\":445302,\"areaType\":2,\"name\":\"云城区\",\"parentAreaId\":445300},{\"areaId\":445303,\"areaType\":2,\"name\":\"云安区\",\"parentAreaId\":445300},{\"areaId\":445321,\"areaType\":2,\"name\":\"新兴县\",\"parentAreaId\":445300},{\"areaId\":445322,\"areaType\":2,\"name\":\"郁南县\",\"parentAreaId\":445300},{\"areaId\":445381,\"areaType\":2,\"name\":\"罗定市\",\"parentAreaId\":445300}],\"name\":\"云浮市\",\"parentAreaId\":440000}],\"name\":\"广东省\",\"parentAreaId\":0},{\"areaId\":450000,\"areaType\":0,\"children\":[{\"areaId\":450100,\"areaType\":1,\"children\":[{\"areaId\":450102,\"areaType\":2,\"name\":\"兴宁区\",\"parentAreaId\":450100},{\"areaId\":450103,\"areaType\":2,\"name\":\"青秀区\",\"parentAreaId\":450100},{\"areaId\":450105,\"areaType\":2,\"name\":\"江南区\",\"parentAreaId\":450100},{\"areaId\":450107,\"areaType\":2,\"name\":\"西乡塘区\",\"parentAreaId\":450100},{\"areaId\":450108,\"areaType\":2,\"name\":\"良庆区\",\"parentAreaId\":450100},{\"areaId\":450109,\"areaType\":2,\"name\":\"邕宁区\",\"parentAreaId\":450100},{\"areaId\":450110,\"areaType\":2,\"name\":\"武鸣区\",\"parentAreaId\":450100},{\"areaId\":450123,\"areaType\":2,\"name\":\"隆安县\",\"parentAreaId\":450100},{\"areaId\":450124,\"areaType\":2,\"name\":\"马山县\",\"parentAreaId\":450100},{\"areaId\":450125,\"areaType\":2,\"name\":\"上林县\",\"parentAreaId\":450100},{\"areaId\":450126,\"areaType\":2,\"name\":\"宾阳县\",\"parentAreaId\":450100},{\"areaId\":450127,\"areaType\":2,\"name\":\"横县\",\"parentAreaId\":450100}],\"name\":\"南宁市\",\"parentAreaId\":450000},{\"areaId\":450200,\"areaType\":1,\"children\":[{\"areaId\":450202,\"areaType\":2,\"name\":\"城中区\",\"parentAreaId\":450200},{\"areaId\":450203,\"areaType\":2,\"name\":\"鱼峰区\",\"parentAreaId\":450200},{\"areaId\":450204,\"areaType\":2,\"name\":\"柳南区\",\"parentAreaId\":450200},{\"areaId\":450205,\"areaType\":2,\"name\":\"柳北区\",\"parentAreaId\":450200},{\"areaId\":450206,\"areaType\":2,\"name\":\"柳江区\",\"parentAreaId\":450200},{\"areaId\":450222,\"areaType\":2,\"name\":\"柳城县\",\"parentAreaId\":450200},{\"areaId\":450223,\"areaType\":2,\"name\":\"鹿寨县\",\"parentAreaId\":450200},{\"areaId\":450224,\"areaType\":2,\"name\":\"融安县\",\"parentAreaId\":450200},{\"areaId\":450225,\"areaType\":2,\"name\":\"融水苗族自治县\",\"parentAreaId\":450200},{\"areaId\":450226,\"areaType\":2,\"name\":\"三江侗族自治县\",\"parentAreaId\":450200}],\"name\":\"柳州市\",\"parentAreaId\":450000},{\"areaId\":450300,\"areaType\":1,\"children\":[{\"areaId\":450302,\"areaType\":2,\"name\":\"秀峰区\",\"parentAreaId\":450300},{\"areaId\":450303,\"areaType\":2,\"name\":\"叠彩区\",\"parentAreaId\":450300},{\"areaId\":450304,\"areaType\":2,\"name\":\"象山区\",\"parentAreaId\":450300},{\"areaId\":450305,\"areaType\":2,\"name\":\"七星区\",\"parentAreaId\":450300},{\"areaId\":450311,\"areaType\":2,\"name\":\"雁山区\",\"parentAreaId\":450300},{\"areaId\":450312,\"areaType\":2,\"name\":\"临桂区\",\"parentAreaId\":450300},{\"areaId\":450321,\"areaType\":2,\"name\":\"阳朔县\",\"parentAreaId\":450300},{\"areaId\":450323,\"areaType\":2,\"name\":\"灵川县\",\"parentAreaId\":450300},{\"areaId\":450324,\"areaType\":2,\"name\":\"全州县\",\"parentAreaId\":450300},{\"areaId\":450325,\"areaType\":2,\"name\":\"兴安县\",\"parentAreaId\":450300},{\"areaId\":450326,\"areaType\":2,\"name\":\"永福县\",\"parentAreaId\":450300},{\"areaId\":450327,\"areaType\":2,\"name\":\"灌阳县\",\"parentAreaId\":450300},{\"areaId\":450328,\"areaType\":2,\"name\":\"龙胜各族自治县\",\"parentAreaId\":450300},{\"areaId\":450329,\"areaType\":2,\"name\":\"资源县\",\"parentAreaId\":450300},{\"areaId\":450330,\"areaType\":2,\"name\":\"平乐县\",\"parentAreaId\":450300},{\"areaId\":450331,\"areaType\":2,\"name\":\"荔浦县\",\"parentAreaId\":450300},{\"areaId\":450332,\"areaType\":2,\"name\":\"恭城瑶族自治县\",\"parentAreaId\":450300}],\"name\":\"桂林市\",\"parentAreaId\":450000},{\"areaId\":450400,\"areaType\":1,\"children\":[{\"areaId\":450403,\"areaType\":2,\"name\":\"万秀区\",\"parentAreaId\":450400},{\"areaId\":450405,\"areaType\":2,\"name\":\"长洲区\",\"parentAreaId\":450400},{\"areaId\":450406,\"areaType\":2,\"name\":\"龙圩区\",\"parentAreaId\":450400},{\"areaId\":450421,\"areaType\":2,\"name\":\"苍梧县\",\"parentAreaId\":450400},{\"areaId\":450422,\"areaType\":2,\"name\":\"藤县\",\"parentAreaId\":450400},{\"areaId\":450423,\"areaType\":2,\"name\":\"蒙山县\",\"parentAreaId\":450400},{\"areaId\":450481,\"areaType\":2,\"name\":\"岑溪市\",\"parentAreaId\":450400}],\"name\":\"梧州市\",\"parentAreaId\":450000},{\"areaId\":450500,\"areaType\":1,\"children\":[{\"areaId\":450502,\"areaType\":2,\"name\":\"海城区\",\"parentAreaId\":450500},{\"areaId\":450503,\"areaType\":2,\"name\":\"银海区\",\"parentAreaId\":450500},{\"areaId\":450512,\"areaType\":2,\"name\":\"铁山港区\",\"parentAreaId\":450500},{\"areaId\":450521,\"areaType\":2,\"name\":\"合浦县\",\"parentAreaId\":450500}],\"name\":\"北海市\",\"parentAreaId\":450000},{\"areaId\":450600,\"areaType\":1,\"children\":[{\"areaId\":450602,\"areaType\":2,\"name\":\"港口区\",\"parentAreaId\":450600},{\"areaId\":450603,\"areaType\":2,\"name\":\"防城区\",\"parentAreaId\":450600},{\"areaId\":450621,\"areaType\":2,\"name\":\"上思县\",\"parentAreaId\":450600},{\"areaId\":450681,\"areaType\":2,\"name\":\"东兴市\",\"parentAreaId\":450600}],\"name\":\"防城港市\",\"parentAreaId\":450000},{\"areaId\":450700,\"areaType\":1,\"children\":[{\"areaId\":450702,\"areaType\":2,\"name\":\"钦南区\",\"parentAreaId\":450700},{\"areaId\":450703,\"areaType\":2,\"name\":\"钦北区\",\"parentAreaId\":450700},{\"areaId\":450721,\"areaType\":2,\"name\":\"灵山县\",\"parentAreaId\":450700},{\"areaId\":450722,\"areaType\":2,\"name\":\"浦北县\",\"parentAreaId\":450700}],\"name\":\"钦州市\",\"parentAreaId\":450000},{\"areaId\":450800,\"areaType\":1,\"children\":[{\"areaId\":450802,\"areaType\":2,\"name\":\"港北区\",\"parentAreaId\":450800},{\"areaId\":450803,\"areaType\":2,\"name\":\"港南区\",\"parentAreaId\":450800},{\"areaId\":450804,\"areaType\":2,\"name\":\"覃塘区\",\"parentAreaId\":450800},{\"areaId\":450821,\"areaType\":2,\"name\":\"平南县\",\"parentAreaId\":450800},{\"areaId\":450881,\"areaType\":2,\"name\":\"桂平市\",\"parentAreaId\":450800}],\"name\":\"贵港市\",\"parentAreaId\":450000},{\"areaId\":450900,\"areaType\":1,\"children\":[{\"areaId\":450902,\"areaType\":2,\"name\":\"玉州区\",\"parentAreaId\":450900},{\"areaId\":450903,\"areaType\":2,\"name\":\"福绵区\",\"parentAreaId\":450900},{\"areaId\":450921,\"areaType\":2,\"name\":\"容县\",\"parentAreaId\":450900},{\"areaId\":450922,\"areaType\":2,\"name\":\"陆川县\",\"parentAreaId\":450900},{\"areaId\":450923,\"areaType\":2,\"name\":\"博白县\",\"parentAreaId\":450900},{\"areaId\":450924,\"areaType\":2,\"name\":\"兴业县\",\"parentAreaId\":450900},{\"areaId\":450981,\"areaType\":2,\"name\":\"北流市\",\"parentAreaId\":450900}],\"name\":\"玉林市\",\"parentAreaId\":450000},{\"areaId\":451000,\"areaType\":1,\"children\":[{\"areaId\":451002,\"areaType\":2,\"name\":\"右江区\",\"parentAreaId\":451000},{\"areaId\":451021,\"areaType\":2,\"name\":\"田阳县\",\"parentAreaId\":451000},{\"areaId\":451022,\"areaType\":2,\"name\":\"田东县\",\"parentAreaId\":451000},{\"areaId\":451023,\"areaType\":2,\"name\":\"平果县\",\"parentAreaId\":451000},{\"areaId\":451024,\"areaType\":2,\"name\":\"德保县\",\"parentAreaId\":451000},{\"areaId\":451026,\"areaType\":2,\"name\":\"那坡县\",\"parentAreaId\":451000},{\"areaId\":451027,\"areaType\":2,\"name\":\"凌云县\",\"parentAreaId\":451000},{\"areaId\":451028,\"areaType\":2,\"name\":\"乐业县\",\"parentAreaId\":451000},{\"areaId\":451029,\"areaType\":2,\"name\":\"田林县\",\"parentAreaId\":451000},{\"areaId\":451030,\"areaType\":2,\"name\":\"西林县\",\"parentAreaId\":451000},{\"areaId\":451031,\"areaType\":2,\"name\":\"隆林各族自治县\",\"parentAreaId\":451000},{\"areaId\":451081,\"areaType\":2,\"name\":\"靖西市\",\"parentAreaId\":451000}],\"name\":\"百色市\",\"parentAreaId\":450000},{\"areaId\":451100,\"areaType\":1,\"children\":[{\"areaId\":451102,\"areaType\":2,\"name\":\"八步区\",\"parentAreaId\":451100},{\"areaId\":451103,\"areaType\":2,\"name\":\"平桂区\",\"parentAreaId\":451100},{\"areaId\":451121,\"areaType\":2,\"name\":\"昭平县\",\"parentAreaId\":451100},{\"areaId\":451122,\"areaType\":2,\"name\":\"钟山县\",\"parentAreaId\":451100},{\"areaId\":451123,\"areaType\":2,\"name\":\"富川瑶族自治县\",\"parentAreaId\":451100}],\"name\":\"贺州市\",\"parentAreaId\":450000},{\"areaId\":451200,\"areaType\":1,\"children\":[{\"areaId\":451202,\"areaType\":2,\"name\":\"金城江区\",\"parentAreaId\":451200},{\"areaId\":451203,\"areaType\":2,\"name\":\"宜州区\",\"parentAreaId\":451200},{\"areaId\":451221,\"areaType\":2,\"name\":\"南丹县\",\"parentAreaId\":451200},{\"areaId\":451222,\"areaType\":2,\"name\":\"天峨县\",\"parentAreaId\":451200},{\"areaId\":451223,\"areaType\":2,\"name\":\"凤山县\",\"parentAreaId\":451200},{\"areaId\":451224,\"areaType\":2,\"name\":\"东兰县\",\"parentAreaId\":451200},{\"areaId\":451225,\"areaType\":2,\"name\":\"罗城仫佬族自治县\",\"parentAreaId\":451200},{\"areaId\":451226,\"areaType\":2,\"name\":\"环江毛南族自治县\",\"parentAreaId\":451200},{\"areaId\":451227,\"areaType\":2,\"name\":\"巴马瑶族自治县\",\"parentAreaId\":451200},{\"areaId\":451228,\"areaType\":2,\"name\":\"都安瑶族自治县\",\"parentAreaId\":451200},{\"areaId\":451229,\"areaType\":2,\"name\":\"大化瑶族自治县\",\"parentAreaId\":451200}],\"name\":\"河池市\",\"parentAreaId\":450000},{\"areaId\":451300,\"areaType\":1,\"children\":[{\"areaId\":451302,\"areaType\":2,\"name\":\"兴宾区\",\"parentAreaId\":451300},{\"areaId\":451321,\"areaType\":2,\"name\":\"忻城县\",\"parentAreaId\":451300},{\"areaId\":451322,\"areaType\":2,\"name\":\"象州县\",\"parentAreaId\":451300},{\"areaId\":451323,\"areaType\":2,\"name\":\"武宣县\",\"parentAreaId\":451300},{\"areaId\":451324,\"areaType\":2,\"name\":\"金秀瑶族自治县\",\"parentAreaId\":451300},{\"areaId\":451381,\"areaType\":2,\"name\":\"合山市\",\"parentAreaId\":451300}],\"name\":\"来宾市\",\"parentAreaId\":450000},{\"areaId\":451400,\"areaType\":1,\"children\":[{\"areaId\":451402,\"areaType\":2,\"name\":\"江州区\",\"parentAreaId\":451400},{\"areaId\":451421,\"areaType\":2,\"name\":\"扶绥县\",\"parentAreaId\":451400},{\"areaId\":451422,\"areaType\":2,\"name\":\"宁明县\",\"parentAreaId\":451400},{\"areaId\":451423,\"areaType\":2,\"name\":\"龙州县\",\"parentAreaId\":451400},{\"areaId\":451424,\"areaType\":2,\"name\":\"大新县\",\"parentAreaId\":451400},{\"areaId\":451425,\"areaType\":2,\"name\":\"天等县\",\"parentAreaId\":451400},{\"areaId\":451481,\"areaType\":2,\"name\":\"凭祥市\",\"parentAreaId\":451400}],\"name\":\"崇左市\",\"parentAreaId\":450000}],\"name\":\"广西壮族自治区\",\"parentAreaId\":0},{\"areaId\":460000,\"areaType\":0,\"children\":[{\"areaId\":460100,\"areaType\":1,\"children\":[{\"areaId\":460105,\"areaType\":2,\"name\":\"秀英区\",\"parentAreaId\":460100},{\"areaId\":460106,\"areaType\":2,\"name\":\"龙华区\",\"parentAreaId\":460100},{\"areaId\":460107,\"areaType\":2,\"name\":\"琼山区\",\"parentAreaId\":460100},{\"areaId\":460108,\"areaType\":2,\"name\":\"美兰区\",\"parentAreaId\":460100}],\"name\":\"海口市\",\"parentAreaId\":460000},{\"areaId\":460200,\"areaType\":1,\"children\":[{\"areaId\":460202,\"areaType\":2,\"name\":\"海棠区\",\"parentAreaId\":460200},{\"areaId\":460203,\"areaType\":2,\"name\":\"吉阳区\",\"parentAreaId\":460200},{\"areaId\":460204,\"areaType\":2,\"name\":\"天涯区\",\"parentAreaId\":460200},{\"areaId\":460205,\"areaType\":2,\"name\":\"崖州区\",\"parentAreaId\":460200}],\"name\":\"三亚市\",\"parentAreaId\":460000},{\"areaId\":460300,\"areaType\":1,\"children\":[{\"areaId\":460321,\"areaType\":2,\"name\":\"西沙群岛\",\"parentAreaId\":460300},{\"areaId\":460322,\"areaType\":2,\"name\":\"南沙群岛\",\"parentAreaId\":460300},{\"areaId\":460323,\"areaType\":2,\"name\":\"中沙群岛的岛礁及其海域\",\"parentAreaId\":460300}],\"name\":\"三沙市\",\"parentAreaId\":460000},{\"areaId\":460400,\"areaType\":1,\"children\":[{\"areaId\":460499,\"areaType\":2,\"name\":\"儋州市\",\"parentAreaId\":460400}],\"name\":\"儋州市\",\"parentAreaId\":460000},{\"areaId\":469001,\"areaType\":1,\"children\":[{\"areaId\":469001100,\"areaType\":2,\"name\":\"通什镇\",\"parentAreaId\":469001},{\"areaId\":469001101,\"areaType\":2,\"name\":\"南圣镇\",\"parentAreaId\":469001},{\"areaId\":469001102,\"areaType\":2,\"name\":\"毛阳镇\",\"parentAreaId\":469001},{\"areaId\":469001103,\"areaType\":2,\"name\":\"番阳镇\",\"parentAreaId\":469001},{\"areaId\":469001200,\"areaType\":2,\"name\":\"畅好乡\",\"parentAreaId\":469001},{\"areaId\":469001201,\"areaType\":2,\"name\":\"毛道乡\",\"parentAreaId\":469001},{\"areaId\":469001202,\"areaType\":2,\"name\":\"水满乡\",\"parentAreaId\":469001},{\"areaId\":469001400,\"areaType\":2,\"name\":\"国营畅好农场\",\"parentAreaId\":469001}],\"name\":\"五指山市\",\"parentAreaId\":460000},{\"areaId\":469002,\"areaType\":1,\"children\":[{\"areaId\":469002100,\"areaType\":2,\"name\":\"嘉积镇\",\"parentAreaId\":469002},{\"areaId\":469002101,\"areaType\":2,\"name\":\"万泉镇\",\"parentAreaId\":469002},{\"areaId\":469002102,\"areaType\":2,\"name\":\"石壁镇\",\"parentAreaId\":469002},{\"areaId\":469002103,\"areaType\":2,\"name\":\"中原镇\",\"parentAreaId\":469002},{\"areaId\":469002104,\"areaType\":2,\"name\":\"博鳌镇\",\"parentAreaId\":469002},{\"areaId\":469002105,\"areaType\":2,\"name\":\"阳江镇\",\"parentAreaId\":469002},{\"areaId\":469002106,\"areaType\":2,\"name\":\"龙江镇\",\"parentAreaId\":469002},{\"areaId\":469002107,\"areaType\":2,\"name\":\"潭门镇\",\"parentAreaId\":469002},{\"areaId\":469002108,\"areaType\":2,\"name\":\"塔洋镇\",\"parentAreaId\":469002},{\"areaId\":469002109,\"areaType\":2,\"name\":\"长坡镇\",\"parentAreaId\":469002},{\"areaId\":469002110,\"areaType\":2,\"name\":\"大路镇\",\"parentAreaId\":469002},{\"areaId\":469002111,\"areaType\":2,\"name\":\"会山镇\",\"parentAreaId\":469002},{\"areaId\":469002400,\"areaType\":2,\"name\":\"东太农场\",\"parentAreaId\":469002},{\"areaId\":469002401,\"areaType\":2,\"name\":\"南俸农场\",\"parentAreaId\":469002},{\"areaId\":469002402,\"areaType\":2,\"name\":\"东红农场\",\"parentAreaId\":469002},{\"areaId\":469002500,\"areaType\":2,\"name\":\"彬村山华侨农场\",\"parentAreaId\":469002},{\"areaId\":469002953,\"areaType\":2,\"name\":\"东平农场\",\"parentAreaId\":469002}],\"name\":\"琼海市\",\"parentAreaId\":460000},{\"areaId\":469005,\"areaType\":1,\"children\":[{\"areaId\":469005100,\"areaType\":2,\"name\":\"文城镇\",\"parentAreaId\":469005},{\"areaId\":469005101,\"areaType\":2,\"name\":\"重兴镇\",\"parentAreaId\":469005},{\"areaId\":469005102,\"areaType\":2,\"name\":\"蓬莱镇\",\"parentAreaId\":469005},{\"areaId\":469005103,\"areaType\":2,\"name\":\"会文镇\",\"parentAreaId\":469005},{\"areaId\":469005104,\"areaType\":2,\"name\":\"东路镇\",\"parentAreaId\":469005},{\"areaId\":469005105,\"areaType\":2,\"name\":\"潭牛镇\",\"parentAreaId\":469005},{\"areaId\":469005106,\"areaType\":2,\"name\":\"东阁镇\",\"parentAreaId\":469005},{\"areaId\":469005107,\"areaType\":2,\"name\":\"文教镇\",\"parentAreaId\":469005},{\"areaId\":469005108,\"areaType\":2,\"name\":\"东郊镇\",\"parentAreaId\":469005},{\"areaId\":469005109,\"areaType\":2,\"name\":\"龙楼镇\",\"parentAreaId\":469005},{\"areaId\":469005110,\"areaType\":2,\"name\":\"昌洒镇\",\"parentAreaId\":469005},{\"areaId\":469005111,\"areaType\":2,\"name\":\"翁田镇\",\"parentAreaId\":469005},{\"areaId\":469005112,\"areaType\":2,\"name\":\"抱罗镇\",\"parentAreaId\":469005},{\"areaId\":469005113,\"areaType\":2,\"name\":\"冯坡镇\",\"parentAreaId\":469005},{\"areaId\":469005114,\"areaType\":2,\"name\":\"锦山镇\",\"parentAreaId\":469005},{\"areaId\":469005115,\"areaType\":2,\"name\":\"铺前镇\",\"parentAreaId\":469005},{\"areaId\":469005116,\"areaType\":2,\"name\":\"公坡镇\",\"parentAreaId\":469005},{\"areaId\":469005401,\"areaType\":2,\"name\":\"国营南阳农场\",\"parentAreaId\":469005},{\"areaId\":469005402,\"areaType\":2,\"name\":\"国营罗豆农场\",\"parentAreaId\":469005}],\"name\":\"文昌市\",\"parentAreaId\":460000},{\"areaId\":469006,\"areaType\":1,\"children\":[{\"areaId\":469006100,\"areaType\":2,\"name\":\"万城镇\",\"parentAreaId\":469006},{\"areaId\":469006101,\"areaType\":2,\"name\":\"龙滚镇\",\"parentAreaId\":469006},{\"areaId\":469006102,\"areaType\":2,\"name\":\"和乐镇\",\"parentAreaId\":469006},{\"areaId\":469006103,\"areaType\":2,\"name\":\"后安镇\",\"parentAreaId\":469006},{\"areaId\":469006104,\"areaType\":2,\"name\":\"大茂镇\",\"parentAreaId\":469006},{\"areaId\":469006105,\"areaType\":2,\"name\":\"东澳镇\",\"parentAreaId\":469006},{\"areaId\":469006106,\"areaType\":2,\"name\":\"礼纪镇\",\"parentAreaId\":469006},{\"areaId\":469006107,\"areaType\":2,\"name\":\"长丰镇\",\"parentAreaId\":469006},{\"areaId\":469006108,\"areaType\":2,\"name\":\"山根镇\",\"parentAreaId\":469006},{\"areaId\":469006109,\"areaType\":2,\"name\":\"北大镇\",\"parentAreaId\":469006},{\"areaId\":469006110,\"areaType\":2,\"name\":\"南桥镇\",\"parentAreaId\":469006},{\"areaId\":469006111,\"areaType\":2,\"name\":\"三更罗镇\",\"parentAreaId\":469006},{\"areaId\":469006400,\"areaType\":2,\"name\":\"国营东兴农场\",\"parentAreaId\":469006},{\"areaId\":469006500,\"areaType\":2,\"name\":\"兴隆华侨农场\",\"parentAreaId\":469006},{\"areaId\":469006501,\"areaType\":2,\"name\":\"地方国营六连林场\",\"parentAreaId\":469006},{\"areaId\":469006951,\"areaType\":2,\"name\":\"东岭农场\",\"parentAreaId\":469006}],\"name\":\"万宁市\",\"parentAreaId\":460000},{\"areaId\":469007,\"areaType\":1,\"children\":[{\"areaId\":469007100,\"areaType\":2,\"name\":\"八所镇\",\"parentAreaId\":469007},{\"areaId\":469007101,\"areaType\":2,\"name\":\"东河镇\",\"parentAreaId\":469007},{\"areaId\":469007102,\"areaType\":2,\"name\":\"大田镇\",\"parentAreaId\":469007},{\"areaId\":469007103,\"areaType\":2,\"name\":\"感城镇\",\"parentAreaId\":469007},{\"areaId\":469007104,\"areaType\":2,\"name\":\"板桥镇\",\"parentAreaId\":469007},{\"areaId\":469007105,\"areaType\":2,\"name\":\"三家镇\",\"parentAreaId\":469007},{\"areaId\":469007106,\"areaType\":2,\"name\":\"四更镇\",\"parentAreaId\":469007},{\"areaId\":469007107,\"areaType\":2,\"name\":\"新龙镇\",\"parentAreaId\":469007},{\"areaId\":469007200,\"areaType\":2,\"name\":\"天安乡\",\"parentAreaId\":469007},{\"areaId\":469007201,\"areaType\":2,\"name\":\"江边乡\",\"parentAreaId\":469007},{\"areaId\":469007400,\"areaType\":2,\"name\":\"国营广坝农场\",\"parentAreaId\":469007},{\"areaId\":469007500,\"areaType\":2,\"name\":\"东方华侨农场\",\"parentAreaId\":469007},{\"areaId\":469007950,\"areaType\":2,\"name\":\"东方农场\",\"parentAreaId\":469007}],\"name\":\"东方市\",\"parentAreaId\":460000},{\"areaId\":469021,\"areaType\":1,\"children\":[{\"areaId\":469021100,\"areaType\":2,\"name\":\"定城镇\",\"parentAreaId\":469021},{\"areaId\":469021101,\"areaType\":2,\"name\":\"新竹镇\",\"parentAreaId\":469021},{\"areaId\":469021102,\"areaType\":2,\"name\":\"龙湖镇\",\"parentAreaId\":469021},{\"areaId\":469021103,\"areaType\":2,\"name\":\"黄竹镇\",\"parentAreaId\":469021},{\"areaId\":469021104,\"areaType\":2,\"name\":\"雷鸣镇\",\"parentAreaId\":469021},{\"areaId\":469021105,\"areaType\":2,\"name\":\"龙门镇\",\"parentAreaId\":469021},{\"areaId\":469021106,\"areaType\":2,\"name\":\"龙河镇\",\"parentAreaId\":469021},{\"areaId\":469021107,\"areaType\":2,\"name\":\"岭口镇\",\"parentAreaId\":469021},{\"areaId\":469021108,\"areaType\":2,\"name\":\"翰林镇\",\"parentAreaId\":469021},{\"areaId\":469021109,\"areaType\":2,\"name\":\"富文镇\",\"parentAreaId\":469021},{\"areaId\":469021400,\"areaType\":2,\"name\":\"国营中瑞农场\",\"parentAreaId\":469021},{\"areaId\":469021401,\"areaType\":2,\"name\":\"国营南海农场\",\"parentAreaId\":469021},{\"areaId\":469021402,\"areaType\":2,\"name\":\"国营金鸡岭农场\",\"parentAreaId\":469021},{\"areaId\":469021403,\"areaType\":2,\"name\":\"国营东升农场\",\"parentAreaId\":469021}],\"name\":\"定安县\",\"parentAreaId\":460000},{\"areaId\":469022,\"areaType\":1,\"children\":[{\"areaId\":469022100,\"areaType\":2,\"name\":\"屯城镇\",\"parentAreaId\":469022},{\"areaId\":469022101,\"areaType\":2,\"name\":\"新兴镇\",\"parentAreaId\":469022},{\"areaId\":469022102,\"areaType\":2,\"name\":\"枫木镇\",\"parentAreaId\":469022},{\"areaId\":469022103,\"areaType\":2,\"name\":\"乌坡镇\",\"parentAreaId\":469022},{\"areaId\":469022104,\"areaType\":2,\"name\":\"南吕镇\",\"parentAreaId\":469022},{\"areaId\":469022105,\"areaType\":2,\"name\":\"南坤镇\",\"parentAreaId\":469022},{\"areaId\":469022106,\"areaType\":2,\"name\":\"坡心镇\",\"parentAreaId\":469022},{\"areaId\":469022107,\"areaType\":2,\"name\":\"西昌镇\",\"parentAreaId\":469022},{\"areaId\":469022400,\"areaType\":2,\"name\":\"国营中瑞农场\",\"parentAreaId\":469022},{\"areaId\":469022401,\"areaType\":2,\"name\":\"国营中坤农场\",\"parentAreaId\":469022},{\"areaId\":469022950,\"areaType\":2,\"name\":\"国营中建农场\",\"parentAreaId\":469022},{\"areaId\":469022951,\"areaType\":2,\"name\":\"晨星农场\",\"parentAreaId\":469022},{\"areaId\":469022952,\"areaType\":2,\"name\":\"黄岭农场\",\"parentAreaId\":469022},{\"areaId\":469022954,\"areaType\":2,\"name\":\"广青农场\",\"parentAreaId\":469022}],\"name\":\"屯昌县\",\"parentAreaId\":460000},{\"areaId\":469023,\"areaType\":1,\"children\":[{\"areaId\":469023100,\"areaType\":2,\"name\":\"金江镇\",\"parentAreaId\":469023},{\"areaId\":469023101,\"areaType\":2,\"name\":\"老城镇\",\"parentAreaId\":469023},{\"areaId\":469023102,\"areaType\":2,\"name\":\"瑞溪镇\",\"parentAreaId\":469023},{\"areaId\":469023103,\"areaType\":2,\"name\":\"永发镇\",\"parentAreaId\":469023},{\"areaId\":469023104,\"areaType\":2,\"name\":\"加乐镇\",\"parentAreaId\":469023},{\"areaId\":469023105,\"areaType\":2,\"name\":\"文儒镇\",\"parentAreaId\":469023},{\"areaId\":469023106,\"areaType\":2,\"name\":\"中兴镇\",\"parentAreaId\":469023},{\"areaId\":469023107,\"areaType\":2,\"name\":\"仁兴镇\",\"parentAreaId\":469023},{\"areaId\":469023108,\"areaType\":2,\"name\":\"福山镇\",\"parentAreaId\":469023},{\"areaId\":469023109,\"areaType\":2,\"name\":\"桥头镇\",\"parentAreaId\":469023},{\"areaId\":469023110,\"areaType\":2,\"name\":\"大丰镇\",\"parentAreaId\":469023},{\"areaId\":469023400,\"areaType\":2,\"name\":\"国营红光农场\",\"parentAreaId\":469023},{\"areaId\":469023401,\"areaType\":2,\"name\":\"红岗农场\",\"parentAreaId\":469023},{\"areaId\":469023402,\"areaType\":2,\"name\":\"国营西达农场\",\"parentAreaId\":469023},{\"areaId\":469023405,\"areaType\":2,\"name\":\"国营金安农场\",\"parentAreaId\":469023}],\"name\":\"澄迈县\",\"parentAreaId\":460000},{\"areaId\":469024,\"areaType\":1,\"children\":[{\"areaId\":469024100,\"areaType\":2,\"name\":\"临城镇\",\"parentAreaId\":469024},{\"areaId\":469024101,\"areaType\":2,\"name\":\"波莲镇\",\"parentAreaId\":469024},{\"areaId\":469024102,\"areaType\":2,\"name\":\"东英镇\",\"parentAreaId\":469024},{\"areaId\":469024103,\"areaType\":2,\"name\":\"博厚镇\",\"parentAreaId\":469024},{\"areaId\":469024104,\"areaType\":2,\"name\":\"皇桐镇\",\"parentAreaId\":469024},{\"areaId\":469024105,\"areaType\":2,\"name\":\"多文镇\",\"parentAreaId\":469024},{\"areaId\":469024106,\"areaType\":2,\"name\":\"和舍镇\",\"parentAreaId\":469024},{\"areaId\":469024107,\"areaType\":2,\"name\":\"南宝镇\",\"parentAreaId\":469024},{\"areaId\":469024108,\"areaType\":2,\"name\":\"新盈镇\",\"parentAreaId\":469024},{\"areaId\":469024109,\"areaType\":2,\"name\":\"调楼镇\",\"parentAreaId\":469024},{\"areaId\":469024400,\"areaType\":2,\"name\":\"国营红华农场\",\"parentAreaId\":469024},{\"areaId\":469024401,\"areaType\":2,\"name\":\"国营加来农场\",\"parentAreaId\":469024}],\"name\":\"临高县\",\"parentAreaId\":460000},{\"areaId\":469025,\"areaType\":1,\"children\":[{\"areaId\":469025100,\"areaType\":2,\"name\":\"牙叉镇\",\"parentAreaId\":469025},{\"areaId\":469025101,\"areaType\":2,\"name\":\"七坊镇\",\"parentAreaId\":469025},{\"areaId\":469025102,\"areaType\":2,\"name\":\"邦溪镇\",\"parentAreaId\":469025},{\"areaId\":469025103,\"areaType\":2,\"name\":\"打安镇\",\"parentAreaId\":469025},{\"areaId\":469025200,\"areaType\":2,\"name\":\"细水乡\",\"parentAreaId\":469025},{\"areaId\":469025201,\"areaType\":2,\"name\":\"元门乡\",\"parentAreaId\":469025},{\"areaId\":469025202,\"areaType\":2,\"name\":\"南开乡\",\"parentAreaId\":469025},{\"areaId\":469025203,\"areaType\":2,\"name\":\"阜龙乡\",\"parentAreaId\":469025},{\"areaId\":469025204,\"areaType\":2,\"name\":\"青松乡\",\"parentAreaId\":469025},{\"areaId\":469025205,\"areaType\":2,\"name\":\"金波乡\",\"parentAreaId\":469025},{\"areaId\":469025206,\"areaType\":2,\"name\":\"荣邦乡\",\"parentAreaId\":469025},{\"areaId\":469025401,\"areaType\":2,\"name\":\"国营白沙农场\",\"parentAreaId\":469025},{\"areaId\":469025404,\"areaType\":2,\"name\":\"国营龙江农场\",\"parentAreaId\":469025},{\"areaId\":469025950,\"areaType\":2,\"name\":\"卫星农场\",\"parentAreaId\":469025}],\"name\":\"白沙黎族自治县\",\"parentAreaId\":460000},{\"areaId\":469026,\"areaType\":1,\"children\":[{\"areaId\":469026100,\"areaType\":2,\"name\":\"石碌镇\",\"parentAreaId\":469026},{\"areaId\":469026101,\"areaType\":2,\"name\":\"叉河镇\",\"parentAreaId\":469026},{\"areaId\":469026102,\"areaType\":2,\"name\":\"十月田镇\",\"parentAreaId\":469026},{\"areaId\":469026103,\"areaType\":2,\"name\":\"乌烈镇\",\"parentAreaId\":469026},{\"areaId\":469026104,\"areaType\":2,\"name\":\"昌化镇\",\"parentAreaId\":469026},{\"areaId\":469026105,\"areaType\":2,\"name\":\"海尾镇\",\"parentAreaId\":469026},{\"areaId\":469026106,\"areaType\":2,\"name\":\"七叉镇\",\"parentAreaId\":469026},{\"areaId\":469026200,\"areaType\":2,\"name\":\"王下乡\",\"parentAreaId\":469026},{\"areaId\":469026401,\"areaType\":2,\"name\":\"国营红林农场\",\"parentAreaId\":469026},{\"areaId\":469026500,\"areaType\":2,\"name\":\"国营霸王岭林场\",\"parentAreaId\":469026}],\"name\":\"昌江黎族自治县\",\"parentAreaId\":460000},{\"areaId\":469027,\"areaType\":1,\"children\":[{\"areaId\":469027100,\"areaType\":2,\"name\":\"抱由镇\",\"parentAreaId\":469027},{\"areaId\":469027101,\"areaType\":2,\"name\":\"万冲镇\",\"parentAreaId\":469027},{\"areaId\":469027102,\"areaType\":2,\"name\":\"大安镇\",\"parentAreaId\":469027},{\"areaId\":469027103,\"areaType\":2,\"name\":\"志仲镇\",\"parentAreaId\":469027},{\"areaId\":469027104,\"areaType\":2,\"name\":\"千家镇\",\"parentAreaId\":469027},{\"areaId\":469027105,\"areaType\":2,\"name\":\"九所镇\",\"parentAreaId\":469027},{\"areaId\":469027106,\"areaType\":2,\"name\":\"利国镇\",\"parentAreaId\":469027},{\"areaId\":469027107,\"areaType\":2,\"name\":\"黄流镇\",\"parentAreaId\":469027},{\"areaId\":469027108,\"areaType\":2,\"name\":\"佛罗镇\",\"parentAreaId\":469027},{\"areaId\":469027109,\"areaType\":2,\"name\":\"尖峰镇\",\"parentAreaId\":469027},{\"areaId\":469027110,\"areaType\":2,\"name\":\"莺歌海镇\",\"parentAreaId\":469027},{\"areaId\":469027401,\"areaType\":2,\"name\":\"国营山荣农场\",\"parentAreaId\":469027},{\"areaId\":469027402,\"areaType\":2,\"name\":\"国营乐光农场\",\"parentAreaId\":469027},{\"areaId\":469027405,\"areaType\":2,\"name\":\"国营保国农场\",\"parentAreaId\":469027},{\"areaId\":469027951,\"areaType\":2,\"name\":\"福报农场\",\"parentAreaId\":469027}],\"name\":\"乐东黎族自治县\",\"parentAreaId\":460000},{\"areaId\":469028,\"areaType\":1,\"children\":[{\"areaId\":469028100,\"areaType\":2,\"name\":\"椰林镇\",\"parentAreaId\":469028},{\"areaId\":469028101,\"areaType\":2,\"name\":\"光坡镇\",\"parentAreaId\":469028},{\"areaId\":469028102,\"areaType\":2,\"name\":\"三才镇\",\"parentAreaId\":469028},{\"areaId\":469028103,\"areaType\":2,\"name\":\"英州镇\",\"parentAreaId\":469028},{\"areaId\":469028104,\"areaType\":2,\"name\":\"隆广镇\",\"parentAreaId\":469028},{\"areaId\":469028105,\"areaType\":2,\"name\":\"文罗镇\",\"parentAreaId\":469028},{\"areaId\":469028106,\"areaType\":2,\"name\":\"本号镇\",\"parentAreaId\":469028},{\"areaId\":469028107,\"areaType\":2,\"name\":\"新村镇\",\"parentAreaId\":469028},{\"areaId\":469028108,\"areaType\":2,\"name\":\"黎安镇\",\"parentAreaId\":469028},{\"areaId\":469028200,\"areaType\":2,\"name\":\"提蒙乡\",\"parentAreaId\":469028},{\"areaId\":469028201,\"areaType\":2,\"name\":\"群英乡\",\"parentAreaId\":469028},{\"areaId\":469028400,\"areaType\":2,\"name\":\"岭门农场\",\"parentAreaId\":469028},{\"areaId\":469028401,\"areaType\":2,\"name\":\"国营南平农场\",\"parentAreaId\":469028}],\"name\":\"陵水黎族自治县\",\"parentAreaId\":460000},{\"areaId\":469029,\"areaType\":1,\"children\":[{\"areaId\":469029100,\"areaType\":2,\"name\":\"保城镇\",\"parentAreaId\":469029},{\"areaId\":469029101,\"areaType\":2,\"name\":\"什玲镇\",\"parentAreaId\":469029},{\"areaId\":469029102,\"areaType\":2,\"name\":\"加茂镇\",\"parentAreaId\":469029},{\"areaId\":469029103,\"areaType\":2,\"name\":\"响水镇\",\"parentAreaId\":469029},{\"areaId\":469029104,\"areaType\":2,\"name\":\"新政镇\",\"parentAreaId\":469029},{\"areaId\":469029105,\"areaType\":2,\"name\":\"三道镇\",\"parentAreaId\":469029},{\"areaId\":469029200,\"areaType\":2,\"name\":\"六弓乡\",\"parentAreaId\":469029},{\"areaId\":469029201,\"areaType\":2,\"name\":\"南林乡\",\"parentAreaId\":469029},{\"areaId\":469029202,\"areaType\":2,\"name\":\"毛感乡\",\"parentAreaId\":469029},{\"areaId\":469029401,\"areaType\":2,\"name\":\"新星农场\",\"parentAreaId\":469029},{\"areaId\":469029402,\"areaType\":2,\"name\":\"海南保亭热带作物研究所\",\"parentAreaId\":469029},{\"areaId\":469029403,\"areaType\":2,\"name\":\"国营金江农场\",\"parentAreaId\":469029},{\"areaId\":469029950,\"areaType\":2,\"name\":\"南茂农场\",\"parentAreaId\":469029},{\"areaId\":469029952,\"areaType\":2,\"name\":\"通什茶场\",\"parentAreaId\":469029}],\"name\":\"保亭黎族苗族自治县\",\"parentAreaId\":460000},{\"areaId\":469030,\"areaType\":1,\"children\":[{\"areaId\":469030100,\"areaType\":2,\"name\":\"营根镇\",\"parentAreaId\":469030},{\"areaId\":469030101,\"areaType\":2,\"name\":\"湾岭镇\",\"parentAreaId\":469030},{\"areaId\":469030102,\"areaType\":2,\"name\":\"黎母山镇\",\"parentAreaId\":469030},{\"areaId\":469030103,\"areaType\":2,\"name\":\"和平镇\",\"parentAreaId\":469030},{\"areaId\":469030104,\"areaType\":2,\"name\":\"长征镇\",\"parentAreaId\":469030},{\"areaId\":469030105,\"areaType\":2,\"name\":\"红毛镇\",\"parentAreaId\":469030},{\"areaId\":469030106,\"areaType\":2,\"name\":\"中平镇\",\"parentAreaId\":469030},{\"areaId\":469030200,\"areaType\":2,\"name\":\"吊罗山乡\",\"parentAreaId\":469030},{\"areaId\":469030201,\"areaType\":2,\"name\":\"上安乡\",\"parentAreaId\":469030},{\"areaId\":469030202,\"areaType\":2,\"name\":\"什运乡\",\"parentAreaId\":469030},{\"areaId\":469030402,\"areaType\":2,\"name\":\"阳江农场\",\"parentAreaId\":469030},{\"areaId\":469030403,\"areaType\":2,\"name\":\"乌石农场\",\"parentAreaId\":469030},{\"areaId\":469030950,\"areaType\":2,\"name\":\"岭头茶场\",\"parentAreaId\":469030},{\"areaId\":469030951,\"areaType\":2,\"name\":\"南方农场\",\"parentAreaId\":469030}],\"name\":\"琼中黎族苗族自治县\",\"parentAreaId\":460000}],\"name\":\"海南省\",\"parentAreaId\":0},{\"areaId\":510000,\"areaType\":0,\"children\":[{\"areaId\":510100,\"areaType\":1,\"children\":[{\"areaId\":510104,\"areaType\":2,\"name\":\"锦江区\",\"parentAreaId\":510100},{\"areaId\":510105,\"areaType\":2,\"name\":\"青羊区\",\"parentAreaId\":510100},{\"areaId\":510106,\"areaType\":2,\"name\":\"金牛区\",\"parentAreaId\":510100},{\"areaId\":510107,\"areaType\":2,\"name\":\"武侯区\",\"parentAreaId\":510100},{\"areaId\":510108,\"areaType\":2,\"name\":\"成华区\",\"parentAreaId\":510100},{\"areaId\":510112,\"areaType\":2,\"name\":\"龙泉驿区\",\"parentAreaId\":510100},{\"areaId\":510113,\"areaType\":2,\"name\":\"青白江区\",\"parentAreaId\":510100},{\"areaId\":510114,\"areaType\":2,\"name\":\"新都区\",\"parentAreaId\":510100},{\"areaId\":510115,\"areaType\":2,\"name\":\"温江区\",\"parentAreaId\":510100},{\"areaId\":510116,\"areaType\":2,\"name\":\"双流区\",\"parentAreaId\":510100},{\"areaId\":510117,\"areaType\":2,\"name\":\"郫都区\",\"parentAreaId\":510100},{\"areaId\":510121,\"areaType\":2,\"name\":\"金堂县\",\"parentAreaId\":510100},{\"areaId\":510129,\"areaType\":2,\"name\":\"大邑县\",\"parentAreaId\":510100},{\"areaId\":510131,\"areaType\":2,\"name\":\"蒲江县\",\"parentAreaId\":510100},{\"areaId\":510132,\"areaType\":2,\"name\":\"新津县\",\"parentAreaId\":510100},{\"areaId\":510181,\"areaType\":2,\"name\":\"都江堰市\",\"parentAreaId\":510100},{\"areaId\":510182,\"areaType\":2,\"name\":\"彭州市\",\"parentAreaId\":510100},{\"areaId\":510183,\"areaType\":2,\"name\":\"邛崃市\",\"parentAreaId\":510100},{\"areaId\":510184,\"areaType\":2,\"name\":\"崇州市\",\"parentAreaId\":510100},{\"areaId\":510185,\"areaType\":2,\"name\":\"简阳市\",\"parentAreaId\":510100}],\"name\":\"成都市\",\"parentAreaId\":510000},{\"areaId\":510300,\"areaType\":1,\"children\":[{\"areaId\":510302,\"areaType\":2,\"name\":\"自流井区\",\"parentAreaId\":510300},{\"areaId\":510303,\"areaType\":2,\"name\":\"贡井区\",\"parentAreaId\":510300},{\"areaId\":510304,\"areaType\":2,\"name\":\"大安区\",\"parentAreaId\":510300},{\"areaId\":510311,\"areaType\":2,\"name\":\"沿滩区\",\"parentAreaId\":510300},{\"areaId\":510321,\"areaType\":2,\"name\":\"荣县\",\"parentAreaId\":510300},{\"areaId\":510322,\"areaType\":2,\"name\":\"富顺县\",\"parentAreaId\":510300}],\"name\":\"自贡市\",\"parentAreaId\":510000},{\"areaId\":510400,\"areaType\":1,\"children\":[{\"areaId\":510402,\"areaType\":2,\"name\":\"东区\",\"parentAreaId\":510400},{\"areaId\":510403,\"areaType\":2,\"name\":\"西区\",\"parentAreaId\":510400},{\"areaId\":510411,\"areaType\":2,\"name\":\"仁和区\",\"parentAreaId\":510400},{\"areaId\":510421,\"areaType\":2,\"name\":\"米易县\",\"parentAreaId\":510400},{\"areaId\":510422,\"areaType\":2,\"name\":\"盐边县\",\"parentAreaId\":510400}],\"name\":\"攀枝花市\",\"parentAreaId\":510000},{\"areaId\":510500,\"areaType\":1,\"children\":[{\"areaId\":510502,\"areaType\":2,\"name\":\"江阳区\",\"parentAreaId\":510500},{\"areaId\":510503,\"areaType\":2,\"name\":\"纳溪区\",\"parentAreaId\":510500},{\"areaId\":510504,\"areaType\":2,\"name\":\"龙马潭区\",\"parentAreaId\":510500},{\"areaId\":510521,\"areaType\":2,\"name\":\"泸县\",\"parentAreaId\":510500},{\"areaId\":510522,\"areaType\":2,\"name\":\"合江县\",\"parentAreaId\":510500},{\"areaId\":510524,\"areaType\":2,\"name\":\"叙永县\",\"parentAreaId\":510500},{\"areaId\":510525,\"areaType\":2,\"name\":\"古蔺县\",\"parentAreaId\":510500}],\"name\":\"泸州市\",\"parentAreaId\":510000},{\"areaId\":510600,\"areaType\":1,\"children\":[{\"areaId\":510603,\"areaType\":2,\"name\":\"旌阳区\",\"parentAreaId\":510600},{\"areaId\":510604,\"areaType\":2,\"name\":\"罗江区\",\"parentAreaId\":510600},{\"areaId\":510623,\"areaType\":2,\"name\":\"中江县\",\"parentAreaId\":510600},{\"areaId\":510681,\"areaType\":2,\"name\":\"广汉市\",\"parentAreaId\":510600},{\"areaId\":510682,\"areaType\":2,\"name\":\"什邡市\",\"parentAreaId\":510600},{\"areaId\":510683,\"areaType\":2,\"name\":\"绵竹市\",\"parentAreaId\":510600}],\"name\":\"德阳市\",\"parentAreaId\":510000},{\"areaId\":510700,\"areaType\":1,\"children\":[{\"areaId\":510703,\"areaType\":2,\"name\":\"涪城区\",\"parentAreaId\":510700},{\"areaId\":510704,\"areaType\":2,\"name\":\"游仙区\",\"parentAreaId\":510700},{\"areaId\":510705,\"areaType\":2,\"name\":\"安州区\",\"parentAreaId\":510700},{\"areaId\":510722,\"areaType\":2,\"name\":\"三台县\",\"parentAreaId\":510700},{\"areaId\":510723,\"areaType\":2,\"name\":\"盐亭县\",\"parentAreaId\":510700},{\"areaId\":510725,\"areaType\":2,\"name\":\"梓潼县\",\"parentAreaId\":510700},{\"areaId\":510726,\"areaType\":2,\"name\":\"北川羌族自治县\",\"parentAreaId\":510700},{\"areaId\":510727,\"areaType\":2,\"name\":\"平武县\",\"parentAreaId\":510700},{\"areaId\":510781,\"areaType\":2,\"name\":\"江油市\",\"parentAreaId\":510700}],\"name\":\"绵阳市\",\"parentAreaId\":510000},{\"areaId\":510800,\"areaType\":1,\"children\":[{\"areaId\":510802,\"areaType\":2,\"name\":\"利州区\",\"parentAreaId\":510800},{\"areaId\":510811,\"areaType\":2,\"name\":\"昭化区\",\"parentAreaId\":510800},{\"areaId\":510812,\"areaType\":2,\"name\":\"朝天区\",\"parentAreaId\":510800},{\"areaId\":510821,\"areaType\":2,\"name\":\"旺苍县\",\"parentAreaId\":510800},{\"areaId\":510822,\"areaType\":2,\"name\":\"青川县\",\"parentAreaId\":510800},{\"areaId\":510823,\"areaType\":2,\"name\":\"剑阁县\",\"parentAreaId\":510800},{\"areaId\":510824,\"areaType\":2,\"name\":\"苍溪县\",\"parentAreaId\":510800}],\"name\":\"广元市\",\"parentAreaId\":510000},{\"areaId\":510900,\"areaType\":1,\"children\":[{\"areaId\":510903,\"areaType\":2,\"name\":\"船山区\",\"parentAreaId\":510900},{\"areaId\":510904,\"areaType\":2,\"name\":\"安居区\",\"parentAreaId\":510900},{\"areaId\":510921,\"areaType\":2,\"name\":\"蓬溪县\",\"parentAreaId\":510900},{\"areaId\":510922,\"areaType\":2,\"name\":\"射洪县\",\"parentAreaId\":510900},{\"areaId\":510923,\"areaType\":2,\"name\":\"大英县\",\"parentAreaId\":510900}],\"name\":\"遂宁市\",\"parentAreaId\":510000},{\"areaId\":511000,\"areaType\":1,\"children\":[{\"areaId\":511002,\"areaType\":2,\"name\":\"市中区\",\"parentAreaId\":511000},{\"areaId\":511011,\"areaType\":2,\"name\":\"东兴区\",\"parentAreaId\":511000},{\"areaId\":511024,\"areaType\":2,\"name\":\"威远县\",\"parentAreaId\":511000},{\"areaId\":511025,\"areaType\":2,\"name\":\"资中县\",\"parentAreaId\":511000},{\"areaId\":511083,\"areaType\":2,\"name\":\"隆昌市\",\"parentAreaId\":511000}],\"name\":\"内江市\",\"parentAreaId\":510000},{\"areaId\":511100,\"areaType\":1,\"children\":[{\"areaId\":511102,\"areaType\":2,\"name\":\"市中区\",\"parentAreaId\":511100},{\"areaId\":511111,\"areaType\":2,\"name\":\"沙湾区\",\"parentAreaId\":511100},{\"areaId\":511112,\"areaType\":2,\"name\":\"五通桥区\",\"parentAreaId\":511100},{\"areaId\":511113,\"areaType\":2,\"name\":\"金口河区\",\"parentAreaId\":511100},{\"areaId\":511123,\"areaType\":2,\"name\":\"犍为县\",\"parentAreaId\":511100},{\"areaId\":511124,\"areaType\":2,\"name\":\"井研县\",\"parentAreaId\":511100},{\"areaId\":511126,\"areaType\":2,\"name\":\"夹江县\",\"parentAreaId\":511100},{\"areaId\":511129,\"areaType\":2,\"name\":\"沐川县\",\"parentAreaId\":511100},{\"areaId\":511132,\"areaType\":2,\"name\":\"峨边彝族自治县\",\"parentAreaId\":511100},{\"areaId\":511133,\"areaType\":2,\"name\":\"马边彝族自治县\",\"parentAreaId\":511100},{\"areaId\":511181,\"areaType\":2,\"name\":\"峨眉山市\",\"parentAreaId\":511100}],\"name\":\"乐山市\",\"parentAreaId\":510000},{\"areaId\":511300,\"areaType\":1,\"children\":[{\"areaId\":511302,\"areaType\":2,\"name\":\"顺庆区\",\"parentAreaId\":511300},{\"areaId\":511303,\"areaType\":2,\"name\":\"高坪区\",\"parentAreaId\":511300},{\"areaId\":511304,\"areaType\":2,\"name\":\"嘉陵区\",\"parentAreaId\":511300},{\"areaId\":511321,\"areaType\":2,\"name\":\"南部县\",\"parentAreaId\":511300},{\"areaId\":511322,\"areaType\":2,\"name\":\"营山县\",\"parentAreaId\":511300},{\"areaId\":511323,\"areaType\":2,\"name\":\"蓬安县\",\"parentAreaId\":511300},{\"areaId\":511324,\"areaType\":2,\"name\":\"仪陇县\",\"parentAreaId\":511300},{\"areaId\":511325,\"areaType\":2,\"name\":\"西充县\",\"parentAreaId\":511300},{\"areaId\":511381,\"areaType\":2,\"name\":\"阆中市\",\"parentAreaId\":511300}],\"name\":\"南充市\",\"parentAreaId\":510000},{\"areaId\":511400,\"areaType\":1,\"children\":[{\"areaId\":511402,\"areaType\":2,\"name\":\"东坡区\",\"parentAreaId\":511400},{\"areaId\":511403,\"areaType\":2,\"name\":\"彭山区\",\"parentAreaId\":511400},{\"areaId\":511421,\"areaType\":2,\"name\":\"仁寿县\",\"parentAreaId\":511400},{\"areaId\":511423,\"areaType\":2,\"name\":\"洪雅县\",\"parentAreaId\":511400},{\"areaId\":511424,\"areaType\":2,\"name\":\"丹棱县\",\"parentAreaId\":511400},{\"areaId\":511425,\"areaType\":2,\"name\":\"青神县\",\"parentAreaId\":511400}],\"name\":\"眉山市\",\"parentAreaId\":510000},{\"areaId\":511500,\"areaType\":1,\"children\":[{\"areaId\":511502,\"areaType\":2,\"name\":\"翠屏区\",\"parentAreaId\":511500},{\"areaId\":511503,\"areaType\":2,\"name\":\"南溪区\",\"parentAreaId\":511500},{\"areaId\":511521,\"areaType\":2,\"name\":\"叙州区\",\"parentAreaId\":511500},{\"areaId\":511523,\"areaType\":2,\"name\":\"江安县\",\"parentAreaId\":511500},{\"areaId\":511524,\"areaType\":2,\"name\":\"长宁县\",\"parentAreaId\":511500},{\"areaId\":511525,\"areaType\":2,\"name\":\"高县\",\"parentAreaId\":511500},{\"areaId\":511526,\"areaType\":2,\"name\":\"珙县\",\"parentAreaId\":511500},{\"areaId\":511527,\"areaType\":2,\"name\":\"筠连县\",\"parentAreaId\":511500},{\"areaId\":511528,\"areaType\":2,\"name\":\"兴文县\",\"parentAreaId\":511500},{\"areaId\":511529,\"areaType\":2,\"name\":\"屏山县\",\"parentAreaId\":511500}],\"name\":\"宜宾市\",\"parentAreaId\":510000},{\"areaId\":511600,\"areaType\":1,\"children\":[{\"areaId\":511602,\"areaType\":2,\"name\":\"广安区\",\"parentAreaId\":511600},{\"areaId\":511603,\"areaType\":2,\"name\":\"前锋区\",\"parentAreaId\":511600},{\"areaId\":511621,\"areaType\":2,\"name\":\"岳池县\",\"parentAreaId\":511600},{\"areaId\":511622,\"areaType\":2,\"name\":\"武胜县\",\"parentAreaId\":511600},{\"areaId\":511623,\"areaType\":2,\"name\":\"邻水县\",\"parentAreaId\":511600},{\"areaId\":511681,\"areaType\":2,\"name\":\"华蓥市\",\"parentAreaId\":511600}],\"name\":\"广安市\",\"parentAreaId\":510000},{\"areaId\":511700,\"areaType\":1,\"children\":[{\"areaId\":511702,\"areaType\":2,\"name\":\"通川区\",\"parentAreaId\":511700},{\"areaId\":511703,\"areaType\":2,\"name\":\"达川区\",\"parentAreaId\":511700},{\"areaId\":511722,\"areaType\":2,\"name\":\"宣汉县\",\"parentAreaId\":511700},{\"areaId\":511723,\"areaType\":2,\"name\":\"开江县\",\"parentAreaId\":511700},{\"areaId\":511724,\"areaType\":2,\"name\":\"大竹县\",\"parentAreaId\":511700},{\"areaId\":511725,\"areaType\":2,\"name\":\"渠县\",\"parentAreaId\":511700},{\"areaId\":511781,\"areaType\":2,\"name\":\"万源市\",\"parentAreaId\":511700}],\"name\":\"达州市\",\"parentAreaId\":510000},{\"areaId\":511800,\"areaType\":1,\"children\":[{\"areaId\":511802,\"areaType\":2,\"name\":\"雨城区\",\"parentAreaId\":511800},{\"areaId\":511803,\"areaType\":2,\"name\":\"名山区\",\"parentAreaId\":511800},{\"areaId\":511822,\"areaType\":2,\"name\":\"荥经县\",\"parentAreaId\":511800},{\"areaId\":511823,\"areaType\":2,\"name\":\"汉源县\",\"parentAreaId\":511800},{\"areaId\":511824,\"areaType\":2,\"name\":\"石棉县\",\"parentAreaId\":511800},{\"areaId\":511825,\"areaType\":2,\"name\":\"天全县\",\"parentAreaId\":511800},{\"areaId\":511826,\"areaType\":2,\"name\":\"芦山县\",\"parentAreaId\":511800},{\"areaId\":511827,\"areaType\":2,\"name\":\"宝兴县\",\"parentAreaId\":511800}],\"name\":\"雅安市\",\"parentAreaId\":510000},{\"areaId\":511900,\"areaType\":1,\"children\":[{\"areaId\":511902,\"areaType\":2,\"name\":\"巴州区\",\"parentAreaId\":511900},{\"areaId\":511903,\"areaType\":2,\"name\":\"恩阳区\",\"parentAreaId\":511900},{\"areaId\":511921,\"areaType\":2,\"name\":\"通江县\",\"parentAreaId\":511900},{\"areaId\":511922,\"areaType\":2,\"name\":\"南江县\",\"parentAreaId\":511900},{\"areaId\":511923,\"areaType\":2,\"name\":\"平昌县\",\"parentAreaId\":511900}],\"name\":\"巴中市\",\"parentAreaId\":510000},{\"areaId\":512000,\"areaType\":1,\"children\":[{\"areaId\":512002,\"areaType\":2,\"name\":\"雁江区\",\"parentAreaId\":512000},{\"areaId\":512021,\"areaType\":2,\"name\":\"安岳县\",\"parentAreaId\":512000},{\"areaId\":512022,\"areaType\":2,\"name\":\"乐至县\",\"parentAreaId\":512000}],\"name\":\"资阳市\",\"parentAreaId\":510000},{\"areaId\":513200,\"areaType\":1,\"children\":[{\"areaId\":513201,\"areaType\":2,\"name\":\"马尔康市\",\"parentAreaId\":513200},{\"areaId\":513221,\"areaType\":2,\"name\":\"汶川县\",\"parentAreaId\":513200},{\"areaId\":513222,\"areaType\":2,\"name\":\"理县\",\"parentAreaId\":513200},{\"areaId\":513223,\"areaType\":2,\"name\":\"茂县\",\"parentAreaId\":513200},{\"areaId\":513224,\"areaType\":2,\"name\":\"松潘县\",\"parentAreaId\":513200},{\"areaId\":513225,\"areaType\":2,\"name\":\"九寨沟县\",\"parentAreaId\":513200},{\"areaId\":513226,\"areaType\":2,\"name\":\"金川县\",\"parentAreaId\":513200},{\"areaId\":513227,\"areaType\":2,\"name\":\"小金县\",\"parentAreaId\":513200},{\"areaId\":513228,\"areaType\":2,\"name\":\"黑水县\",\"parentAreaId\":513200},{\"areaId\":513230,\"areaType\":2,\"name\":\"壤塘县\",\"parentAreaId\":513200},{\"areaId\":513231,\"areaType\":2,\"name\":\"阿坝县\",\"parentAreaId\":513200},{\"areaId\":513232,\"areaType\":2,\"name\":\"若尔盖县\",\"parentAreaId\":513200},{\"areaId\":513233,\"areaType\":2,\"name\":\"红原县\",\"parentAreaId\":513200}],\"name\":\"阿坝藏族羌族自治州\",\"parentAreaId\":510000},{\"areaId\":513300,\"areaType\":1,\"children\":[{\"areaId\":513301,\"areaType\":2,\"name\":\"康定市\",\"parentAreaId\":513300},{\"areaId\":513322,\"areaType\":2,\"name\":\"泸定县\",\"parentAreaId\":513300},{\"areaId\":513323,\"areaType\":2,\"name\":\"丹巴县\",\"parentAreaId\":513300},{\"areaId\":513324,\"areaType\":2,\"name\":\"九龙县\",\"parentAreaId\":513300},{\"areaId\":513325,\"areaType\":2,\"name\":\"雅江县\",\"parentAreaId\":513300},{\"areaId\":513326,\"areaType\":2,\"name\":\"道孚县\",\"parentAreaId\":513300},{\"areaId\":513327,\"areaType\":2,\"name\":\"炉霍县\",\"parentAreaId\":513300},{\"areaId\":513328,\"areaType\":2,\"name\":\"甘孜县\",\"parentAreaId\":513300},{\"areaId\":513329,\"areaType\":2,\"name\":\"新龙县\",\"parentAreaId\":513300},{\"areaId\":513330,\"areaType\":2,\"name\":\"德格县\",\"parentAreaId\":513300},{\"areaId\":513331,\"areaType\":2,\"name\":\"白玉县\",\"parentAreaId\":513300},{\"areaId\":513332,\"areaType\":2,\"name\":\"石渠县\",\"parentAreaId\":513300},{\"areaId\":513333,\"areaType\":2,\"name\":\"色达县\",\"parentAreaId\":513300},{\"areaId\":513334,\"areaType\":2,\"name\":\"理塘县\",\"parentAreaId\":513300},{\"areaId\":513335,\"areaType\":2,\"name\":\"巴塘县\",\"parentAreaId\":513300},{\"areaId\":513336,\"areaType\":2,\"name\":\"乡城县\",\"parentAreaId\":513300},{\"areaId\":513337,\"areaType\":2,\"name\":\"稻城县\",\"parentAreaId\":513300},{\"areaId\":513338,\"areaType\":2,\"name\":\"得荣县\",\"parentAreaId\":513300}],\"name\":\"甘孜藏族自治州\",\"parentAreaId\":510000},{\"areaId\":513400,\"areaType\":1,\"children\":[{\"areaId\":513401,\"areaType\":2,\"name\":\"西昌市\",\"parentAreaId\":513400},{\"areaId\":513422,\"areaType\":2,\"name\":\"木里藏族自治县\",\"parentAreaId\":513400},{\"areaId\":513423,\"areaType\":2,\"name\":\"盐源县\",\"parentAreaId\":513400},{\"areaId\":513424,\"areaType\":2,\"name\":\"德昌县\",\"parentAreaId\":513400},{\"areaId\":513425,\"areaType\":2,\"name\":\"会理县\",\"parentAreaId\":513400},{\"areaId\":513426,\"areaType\":2,\"name\":\"会东县\",\"parentAreaId\":513400},{\"areaId\":513427,\"areaType\":2,\"name\":\"宁南县\",\"parentAreaId\":513400},{\"areaId\":513428,\"areaType\":2,\"name\":\"普格县\",\"parentAreaId\":513400},{\"areaId\":513429,\"areaType\":2,\"name\":\"布拖县\",\"parentAreaId\":513400},{\"areaId\":513430,\"areaType\":2,\"name\":\"金阳县\",\"parentAreaId\":513400},{\"areaId\":513431,\"areaType\":2,\"name\":\"昭觉县\",\"parentAreaId\":513400},{\"areaId\":513432,\"areaType\":2,\"name\":\"喜德县\",\"parentAreaId\":513400},{\"areaId\":513433,\"areaType\":2,\"name\":\"冕宁县\",\"parentAreaId\":513400},{\"areaId\":513434,\"areaType\":2,\"name\":\"越西县\",\"parentAreaId\":513400},{\"areaId\":513435,\"areaType\":2,\"name\":\"甘洛县\",\"parentAreaId\":513400},{\"areaId\":513436,\"areaType\":2,\"name\":\"美姑县\",\"parentAreaId\":513400},{\"areaId\":513437,\"areaType\":2,\"name\":\"雷波县\",\"parentAreaId\":513400}],\"name\":\"凉山彝族自治州\",\"parentAreaId\":510000}],\"name\":\"四川省\",\"parentAreaId\":0},{\"areaId\":520000,\"areaType\":0,\"children\":[{\"areaId\":520100,\"areaType\":1,\"children\":[{\"areaId\":520102,\"areaType\":2,\"name\":\"南明区\",\"parentAreaId\":520100},{\"areaId\":520103,\"areaType\":2,\"name\":\"云岩区\",\"parentAreaId\":520100},{\"areaId\":520111,\"areaType\":2,\"name\":\"花溪区\",\"parentAreaId\":520100},{\"areaId\":520112,\"areaType\":2,\"name\":\"乌当区\",\"parentAreaId\":520100},{\"areaId\":520113,\"areaType\":2,\"name\":\"白云区\",\"parentAreaId\":520100},{\"areaId\":520115,\"areaType\":2,\"name\":\"观山湖区\",\"parentAreaId\":520100},{\"areaId\":520121,\"areaType\":2,\"name\":\"开阳县\",\"parentAreaId\":520100},{\"areaId\":520122,\"areaType\":2,\"name\":\"息烽县\",\"parentAreaId\":520100},{\"areaId\":520123,\"areaType\":2,\"name\":\"修文县\",\"parentAreaId\":520100},{\"areaId\":520181,\"areaType\":2,\"name\":\"清镇市\",\"parentAreaId\":520100}],\"name\":\"贵阳市\",\"parentAreaId\":520000},{\"areaId\":520200,\"areaType\":1,\"children\":[{\"areaId\":520201,\"areaType\":2,\"name\":\"钟山区\",\"parentAreaId\":520200},{\"areaId\":520203,\"areaType\":2,\"name\":\"六枝特区\",\"parentAreaId\":520200},{\"areaId\":520221,\"areaType\":2,\"name\":\"水城县\",\"parentAreaId\":520200},{\"areaId\":520281,\"areaType\":2,\"name\":\"盘州市\",\"parentAreaId\":520200}],\"name\":\"六盘水市\",\"parentAreaId\":520000},{\"areaId\":520300,\"areaType\":1,\"children\":[{\"areaId\":520302,\"areaType\":2,\"name\":\"红花岗区\",\"parentAreaId\":520300},{\"areaId\":520303,\"areaType\":2,\"name\":\"汇川区\",\"parentAreaId\":520300},{\"areaId\":520304,\"areaType\":2,\"name\":\"播州区\",\"parentAreaId\":520300},{\"areaId\":520322,\"areaType\":2,\"name\":\"桐梓县\",\"parentAreaId\":520300},{\"areaId\":520323,\"areaType\":2,\"name\":\"绥阳县\",\"parentAreaId\":520300},{\"areaId\":520324,\"areaType\":2,\"name\":\"正安县\",\"parentAreaId\":520300},{\"areaId\":520325,\"areaType\":2,\"name\":\"道真仡佬族苗族自治县\",\"parentAreaId\":520300},{\"areaId\":520326,\"areaType\":2,\"name\":\"务川仡佬族苗族自治县\",\"parentAreaId\":520300},{\"areaId\":520327,\"areaType\":2,\"name\":\"凤冈县\",\"parentAreaId\":520300},{\"areaId\":520328,\"areaType\":2,\"name\":\"湄潭县\",\"parentAreaId\":520300},{\"areaId\":520329,\"areaType\":2,\"name\":\"余庆县\",\"parentAreaId\":520300},{\"areaId\":520330,\"areaType\":2,\"name\":\"习水县\",\"parentAreaId\":520300},{\"areaId\":520381,\"areaType\":2,\"name\":\"赤水市\",\"parentAreaId\":520300},{\"areaId\":520382,\"areaType\":2,\"name\":\"仁怀市\",\"parentAreaId\":520300}],\"name\":\"遵义市\",\"parentAreaId\":520000},{\"areaId\":520400,\"areaType\":1,\"children\":[{\"areaId\":520402,\"areaType\":2,\"name\":\"西秀区\",\"parentAreaId\":520400},{\"areaId\":520403,\"areaType\":2,\"name\":\"平坝区\",\"parentAreaId\":520400},{\"areaId\":520422,\"areaType\":2,\"name\":\"普定县\",\"parentAreaId\":520400},{\"areaId\":520423,\"areaType\":2,\"name\":\"镇宁布依族苗族自治县\",\"parentAreaId\":520400},{\"areaId\":520424,\"areaType\":2,\"name\":\"关岭布依族苗族自治县\",\"parentAreaId\":520400},{\"areaId\":520425,\"areaType\":2,\"name\":\"紫云苗族布依族自治县\",\"parentAreaId\":520400}],\"name\":\"安顺市\",\"parentAreaId\":520000},{\"areaId\":520500,\"areaType\":1,\"children\":[{\"areaId\":520502,\"areaType\":2,\"name\":\"七星关区\",\"parentAreaId\":520500},{\"areaId\":520521,\"areaType\":2,\"name\":\"大方县\",\"parentAreaId\":520500},{\"areaId\":520522,\"areaType\":2,\"name\":\"黔西县\",\"parentAreaId\":520500},{\"areaId\":520523,\"areaType\":2,\"name\":\"金沙县\",\"parentAreaId\":520500},{\"areaId\":520524,\"areaType\":2,\"name\":\"织金县\",\"parentAreaId\":520500},{\"areaId\":520525,\"areaType\":2,\"name\":\"纳雍县\",\"parentAreaId\":520500},{\"areaId\":520526,\"areaType\":2,\"name\":\"威宁彝族回族苗族自治县\",\"parentAreaId\":520500},{\"areaId\":520527,\"areaType\":2,\"name\":\"赫章县\",\"parentAreaId\":520500}],\"name\":\"毕节市\",\"parentAreaId\":520000},{\"areaId\":520600,\"areaType\":1,\"children\":[{\"areaId\":520602,\"areaType\":2,\"name\":\"碧江区\",\"parentAreaId\":520600},{\"areaId\":520603,\"areaType\":2,\"name\":\"万山区\",\"parentAreaId\":520600},{\"areaId\":520621,\"areaType\":2,\"name\":\"江口县\",\"parentAreaId\":520600},{\"areaId\":520622,\"areaType\":2,\"name\":\"玉屏侗族自治县\",\"parentAreaId\":520600},{\"areaId\":520623,\"areaType\":2,\"name\":\"石阡县\",\"parentAreaId\":520600},{\"areaId\":520624,\"areaType\":2,\"name\":\"思南县\",\"parentAreaId\":520600},{\"areaId\":520625,\"areaType\":2,\"name\":\"印江土家族苗族自治县\",\"parentAreaId\":520600},{\"areaId\":520626,\"areaType\":2,\"name\":\"德江县\",\"parentAreaId\":520600},{\"areaId\":520627,\"areaType\":2,\"name\":\"沿河土家族自治县\",\"parentAreaId\":520600},{\"areaId\":520628,\"areaType\":2,\"name\":\"松桃苗族自治县\",\"parentAreaId\":520600}],\"name\":\"铜仁市\",\"parentAreaId\":520000},{\"areaId\":522300,\"areaType\":1,\"children\":[{\"areaId\":522301,\"areaType\":2,\"name\":\"兴义市\",\"parentAreaId\":522300},{\"areaId\":522322,\"areaType\":2,\"name\":\"兴仁市\",\"parentAreaId\":522300},{\"areaId\":522323,\"areaType\":2,\"name\":\"普安县\",\"parentAreaId\":522300},{\"areaId\":522324,\"areaType\":2,\"name\":\"晴隆县\",\"parentAreaId\":522300},{\"areaId\":522325,\"areaType\":2,\"name\":\"贞丰县\",\"parentAreaId\":522300},{\"areaId\":522326,\"areaType\":2,\"name\":\"望谟县\",\"parentAreaId\":522300},{\"areaId\":522327,\"areaType\":2,\"name\":\"册亨县\",\"parentAreaId\":522300},{\"areaId\":522328,\"areaType\":2,\"name\":\"安龙县\",\"parentAreaId\":522300}],\"name\":\"黔西南布依族苗族自治州\",\"parentAreaId\":520000},{\"areaId\":522600,\"areaType\":1,\"children\":[{\"areaId\":522601,\"areaType\":2,\"name\":\"凯里市\",\"parentAreaId\":522600},{\"areaId\":522622,\"areaType\":2,\"name\":\"黄平县\",\"parentAreaId\":522600},{\"areaId\":522623,\"areaType\":2,\"name\":\"施秉县\",\"parentAreaId\":522600},{\"areaId\":522624,\"areaType\":2,\"name\":\"三穗县\",\"parentAreaId\":522600},{\"areaId\":522625,\"areaType\":2,\"name\":\"镇远县\",\"parentAreaId\":522600},{\"areaId\":522626,\"areaType\":2,\"name\":\"岑巩县\",\"parentAreaId\":522600},{\"areaId\":522627,\"areaType\":2,\"name\":\"天柱县\",\"parentAreaId\":522600},{\"areaId\":522628,\"areaType\":2,\"name\":\"锦屏县\",\"parentAreaId\":522600},{\"areaId\":522629,\"areaType\":2,\"name\":\"剑河县\",\"parentAreaId\":522600},{\"areaId\":522630,\"areaType\":2,\"name\":\"台江县\",\"parentAreaId\":522600},{\"areaId\":522631,\"areaType\":2,\"name\":\"黎平县\",\"parentAreaId\":522600},{\"areaId\":522632,\"areaType\":2,\"name\":\"榕江县\",\"parentAreaId\":522600},{\"areaId\":522633,\"areaType\":2,\"name\":\"从江县\",\"parentAreaId\":522600},{\"areaId\":522634,\"areaType\":2,\"name\":\"雷山县\",\"parentAreaId\":522600},{\"areaId\":522635,\"areaType\":2,\"name\":\"麻江县\",\"parentAreaId\":522600},{\"areaId\":522636,\"areaType\":2,\"name\":\"丹寨县\",\"parentAreaId\":522600}],\"name\":\"黔东南苗族侗族自治州\",\"parentAreaId\":520000},{\"areaId\":522700,\"areaType\":1,\"children\":[{\"areaId\":522701,\"areaType\":2,\"name\":\"都匀市\",\"parentAreaId\":522700},{\"areaId\":522702,\"areaType\":2,\"name\":\"福泉市\",\"parentAreaId\":522700},{\"areaId\":522722,\"areaType\":2,\"name\":\"荔波县\",\"parentAreaId\":522700},{\"areaId\":522723,\"areaType\":2,\"name\":\"贵定县\",\"parentAreaId\":522700},{\"areaId\":522725,\"areaType\":2,\"name\":\"瓮安县\",\"parentAreaId\":522700},{\"areaId\":522726,\"areaType\":2,\"name\":\"独山县\",\"parentAreaId\":522700},{\"areaId\":522727,\"areaType\":2,\"name\":\"平塘县\",\"parentAreaId\":522700},{\"areaId\":522728,\"areaType\":2,\"name\":\"罗甸县\",\"parentAreaId\":522700},{\"areaId\":522729,\"areaType\":2,\"name\":\"长顺县\",\"parentAreaId\":522700},{\"areaId\":522730,\"areaType\":2,\"name\":\"龙里县\",\"parentAreaId\":522700},{\"areaId\":522731,\"areaType\":2,\"name\":\"惠水县\",\"parentAreaId\":522700},{\"areaId\":522732,\"areaType\":2,\"name\":\"三都水族自治县\",\"parentAreaId\":522700}],\"name\":\"黔南布依族苗族自治州\",\"parentAreaId\":520000}],\"name\":\"贵州省\",\"parentAreaId\":0},{\"areaId\":530000,\"areaType\":0,\"children\":[{\"areaId\":530100,\"areaType\":1,\"children\":[{\"areaId\":530102,\"areaType\":2,\"name\":\"五华区\",\"parentAreaId\":530100},{\"areaId\":530103,\"areaType\":2,\"name\":\"盘龙区\",\"parentAreaId\":530100},{\"areaId\":530111,\"areaType\":2,\"name\":\"官渡区\",\"parentAreaId\":530100},{\"areaId\":530112,\"areaType\":2,\"name\":\"西山区\",\"parentAreaId\":530100},{\"areaId\":530113,\"areaType\":2,\"name\":\"东川区\",\"parentAreaId\":530100},{\"areaId\":530114,\"areaType\":2,\"name\":\"呈贡区\",\"parentAreaId\":530100},{\"areaId\":530115,\"areaType\":2,\"name\":\"晋宁区\",\"parentAreaId\":530100},{\"areaId\":530124,\"areaType\":2,\"name\":\"富民县\",\"parentAreaId\":530100},{\"areaId\":530125,\"areaType\":2,\"name\":\"宜良县\",\"parentAreaId\":530100},{\"areaId\":530126,\"areaType\":2,\"name\":\"石林彝族自治县\",\"parentAreaId\":530100},{\"areaId\":530127,\"areaType\":2,\"name\":\"嵩明县\",\"parentAreaId\":530100},{\"areaId\":530128,\"areaType\":2,\"name\":\"禄劝彝族苗族自治县\",\"parentAreaId\":530100},{\"areaId\":530129,\"areaType\":2,\"name\":\"寻甸回族彝族自治县\",\"parentAreaId\":530100},{\"areaId\":530181,\"areaType\":2,\"name\":\"安宁市\",\"parentAreaId\":530100}],\"name\":\"昆明市\",\"parentAreaId\":530000},{\"areaId\":530300,\"areaType\":1,\"children\":[{\"areaId\":530302,\"areaType\":2,\"name\":\"麒麟区\",\"parentAreaId\":530300},{\"areaId\":530303,\"areaType\":2,\"name\":\"沾益区\",\"parentAreaId\":530300},{\"areaId\":530304,\"areaType\":2,\"name\":\"马龙区\",\"parentAreaId\":530300},{\"areaId\":530322,\"areaType\":2,\"name\":\"陆良县\",\"parentAreaId\":530300},{\"areaId\":530323,\"areaType\":2,\"name\":\"师宗县\",\"parentAreaId\":530300},{\"areaId\":530324,\"areaType\":2,\"name\":\"罗平县\",\"parentAreaId\":530300},{\"areaId\":530325,\"areaType\":2,\"name\":\"富源县\",\"parentAreaId\":530300},{\"areaId\":530326,\"areaType\":2,\"name\":\"会泽县\",\"parentAreaId\":530300},{\"areaId\":530381,\"areaType\":2,\"name\":\"宣威市\",\"parentAreaId\":530300}],\"name\":\"曲靖市\",\"parentAreaId\":530000},{\"areaId\":530400,\"areaType\":1,\"children\":[{\"areaId\":530402,\"areaType\":2,\"name\":\"红塔区\",\"parentAreaId\":530400},{\"areaId\":530403,\"areaType\":2,\"name\":\"江川区\",\"parentAreaId\":530400},{\"areaId\":530422,\"areaType\":2,\"name\":\"澄江县\",\"parentAreaId\":530400},{\"areaId\":530423,\"areaType\":2,\"name\":\"通海县\",\"parentAreaId\":530400},{\"areaId\":530424,\"areaType\":2,\"name\":\"华宁县\",\"parentAreaId\":530400},{\"areaId\":530425,\"areaType\":2,\"name\":\"易门县\",\"parentAreaId\":530400},{\"areaId\":530426,\"areaType\":2,\"name\":\"峨山彝族自治县\",\"parentAreaId\":530400},{\"areaId\":530427,\"areaType\":2,\"name\":\"新平彝族傣族自治县\",\"parentAreaId\":530400},{\"areaId\":530428,\"areaType\":2,\"name\":\"元江县\",\"parentAreaId\":530400}],\"name\":\"玉溪市\",\"parentAreaId\":530000},{\"areaId\":530500,\"areaType\":1,\"children\":[{\"areaId\":530502,\"areaType\":2,\"name\":\"隆阳区\",\"parentAreaId\":530500},{\"areaId\":530521,\"areaType\":2,\"name\":\"施甸县\",\"parentAreaId\":530500},{\"areaId\":530523,\"areaType\":2,\"name\":\"龙陵县\",\"parentAreaId\":530500},{\"areaId\":530524,\"areaType\":2,\"name\":\"昌宁县\",\"parentAreaId\":530500},{\"areaId\":530581,\"areaType\":2,\"name\":\"腾冲市\",\"parentAreaId\":530500}],\"name\":\"保山市\",\"parentAreaId\":530000},{\"areaId\":530600,\"areaType\":1,\"children\":[{\"areaId\":530602,\"areaType\":2,\"name\":\"昭阳区\",\"parentAreaId\":530600},{\"areaId\":530621,\"areaType\":2,\"name\":\"鲁甸县\",\"parentAreaId\":530600},{\"areaId\":530622,\"areaType\":2,\"name\":\"巧家县\",\"parentAreaId\":530600},{\"areaId\":530623,\"areaType\":2,\"name\":\"盐津县\",\"parentAreaId\":530600},{\"areaId\":530624,\"areaType\":2,\"name\":\"大关县\",\"parentAreaId\":530600},{\"areaId\":530625,\"areaType\":2,\"name\":\"永善县\",\"parentAreaId\":530600},{\"areaId\":530626,\"areaType\":2,\"name\":\"绥江县\",\"parentAreaId\":530600},{\"areaId\":530627,\"areaType\":2,\"name\":\"镇雄县\",\"parentAreaId\":530600},{\"areaId\":530628,\"areaType\":2,\"name\":\"彝良县\",\"parentAreaId\":530600},{\"areaId\":530629,\"areaType\":2,\"name\":\"威信县\",\"parentAreaId\":530600},{\"areaId\":530630,\"areaType\":2,\"name\":\"水富县\",\"parentAreaId\":530600}],\"name\":\"昭通市\",\"parentAreaId\":530000},{\"areaId\":530700,\"areaType\":1,\"children\":[{\"areaId\":530702,\"areaType\":2,\"name\":\"古城区\",\"parentAreaId\":530700},{\"areaId\":530721,\"areaType\":2,\"name\":\"玉龙纳西族自治县\",\"parentAreaId\":530700},{\"areaId\":530722,\"areaType\":2,\"name\":\"永胜县\",\"parentAreaId\":530700},{\"areaId\":530723,\"areaType\":2,\"name\":\"华坪县\",\"parentAreaId\":530700},{\"areaId\":530724,\"areaType\":2,\"name\":\"宁蒗彝族自治县\",\"parentAreaId\":530700}],\"name\":\"丽江市\",\"parentAreaId\":530000},{\"areaId\":530800,\"areaType\":1,\"children\":[{\"areaId\":530802,\"areaType\":2,\"name\":\"思茅区\",\"parentAreaId\":530800},{\"areaId\":530821,\"areaType\":2,\"name\":\"宁洱哈尼族彝族自治县\",\"parentAreaId\":530800},{\"areaId\":530822,\"areaType\":2,\"name\":\"墨江哈尼族自治县\",\"parentAreaId\":530800},{\"areaId\":530823,\"areaType\":2,\"name\":\"景东彝族自治县\",\"parentAreaId\":530800},{\"areaId\":530824,\"areaType\":2,\"name\":\"景谷傣族彝族自治县\",\"parentAreaId\":530800},{\"areaId\":530825,\"areaType\":2,\"name\":\"镇沅县\",\"parentAreaId\":530800},{\"areaId\":530826,\"areaType\":2,\"name\":\"江城哈尼族彝族自治县\",\"parentAreaId\":530800},{\"areaId\":530827,\"areaType\":2,\"name\":\"孟连县\",\"parentAreaId\":530800},{\"areaId\":530828,\"areaType\":2,\"name\":\"澜沧拉祜族自治县\",\"parentAreaId\":530800},{\"areaId\":530829,\"areaType\":2,\"name\":\"西盟佤族自治县\",\"parentAreaId\":530800}],\"name\":\"普洱市\",\"parentAreaId\":530000},{\"areaId\":530900,\"areaType\":1,\"children\":[{\"areaId\":530902,\"areaType\":2,\"name\":\"临翔区\",\"parentAreaId\":530900},{\"areaId\":530921,\"areaType\":2,\"name\":\"凤庆县\",\"parentAreaId\":530900},{\"areaId\":530922,\"areaType\":2,\"name\":\"云县\",\"parentAreaId\":530900},{\"areaId\":530923,\"areaType\":2,\"name\":\"永德县\",\"parentAreaId\":530900},{\"areaId\":530924,\"areaType\":2,\"name\":\"镇康县\",\"parentAreaId\":530900},{\"areaId\":530925,\"areaType\":2,\"name\":\"双江县\",\"parentAreaId\":530900},{\"areaId\":530926,\"areaType\":2,\"name\":\"耿马傣族佤族自治县\",\"parentAreaId\":530900},{\"areaId\":530927,\"areaType\":2,\"name\":\"沧源佤族自治县\",\"parentAreaId\":530900}],\"name\":\"临沧市\",\"parentAreaId\":530000},{\"areaId\":532300,\"areaType\":1,\"children\":[{\"areaId\":532301,\"areaType\":2,\"name\":\"楚雄市\",\"parentAreaId\":532300},{\"areaId\":532322,\"areaType\":2,\"name\":\"双柏县\",\"parentAreaId\":532300},{\"areaId\":532323,\"areaType\":2,\"name\":\"牟定县\",\"parentAreaId\":532300},{\"areaId\":532324,\"areaType\":2,\"name\":\"南华县\",\"parentAreaId\":532300},{\"areaId\":532325,\"areaType\":2,\"name\":\"姚安县\",\"parentAreaId\":532300},{\"areaId\":532326,\"areaType\":2,\"name\":\"大姚县\",\"parentAreaId\":532300},{\"areaId\":532327,\"areaType\":2,\"name\":\"永仁县\",\"parentAreaId\":532300},{\"areaId\":532328,\"areaType\":2,\"name\":\"元谋县\",\"parentAreaId\":532300},{\"areaId\":532329,\"areaType\":2,\"name\":\"武定县\",\"parentAreaId\":532300},{\"areaId\":532331,\"areaType\":2,\"name\":\"禄丰县\",\"parentAreaId\":532300}],\"name\":\"楚雄彝族自治州\",\"parentAreaId\":530000},{\"areaId\":532500,\"areaType\":1,\"children\":[{\"areaId\":532501,\"areaType\":2,\"name\":\"个旧市\",\"parentAreaId\":532500},{\"areaId\":532502,\"areaType\":2,\"name\":\"开远市\",\"parentAreaId\":532500},{\"areaId\":532503,\"areaType\":2,\"name\":\"蒙自市\",\"parentAreaId\":532500},{\"areaId\":532504,\"areaType\":2,\"name\":\"弥勒市\",\"parentAreaId\":532500},{\"areaId\":532523,\"areaType\":2,\"name\":\"屏边苗族自治县\",\"parentAreaId\":532500},{\"areaId\":532524,\"areaType\":2,\"name\":\"建水县\",\"parentAreaId\":532500},{\"areaId\":532525,\"areaType\":2,\"name\":\"石屏县\",\"parentAreaId\":532500},{\"areaId\":532527,\"areaType\":2,\"name\":\"泸西县\",\"parentAreaId\":532500},{\"areaId\":532528,\"areaType\":2,\"name\":\"元阳县\",\"parentAreaId\":532500},{\"areaId\":532529,\"areaType\":2,\"name\":\"红河县\",\"parentAreaId\":532500},{\"areaId\":532530,\"areaType\":2,\"name\":\"金平苗族瑶族傣族自治县\",\"parentAreaId\":532500},{\"areaId\":532531,\"areaType\":2,\"name\":\"绿春县\",\"parentAreaId\":532500},{\"areaId\":532532,\"areaType\":2,\"name\":\"河口瑶族自治县\",\"parentAreaId\":532500}],\"name\":\"红河哈尼族彝族自治州\",\"parentAreaId\":530000},{\"areaId\":532600,\"areaType\":1,\"children\":[{\"areaId\":532601,\"areaType\":2,\"name\":\"文山市\",\"parentAreaId\":532600},{\"areaId\":532622,\"areaType\":2,\"name\":\"砚山县\",\"parentAreaId\":532600},{\"areaId\":532623,\"areaType\":2,\"name\":\"西畴县\",\"parentAreaId\":532600},{\"areaId\":532624,\"areaType\":2,\"name\":\"麻栗坡县\",\"parentAreaId\":532600},{\"areaId\":532625,\"areaType\":2,\"name\":\"马关县\",\"parentAreaId\":532600},{\"areaId\":532626,\"areaType\":2,\"name\":\"丘北县\",\"parentAreaId\":532600},{\"areaId\":532627,\"areaType\":2,\"name\":\"广南县\",\"parentAreaId\":532600},{\"areaId\":532628,\"areaType\":2,\"name\":\"富宁县\",\"parentAreaId\":532600}],\"name\":\"文山壮族苗族自治州\",\"parentAreaId\":530000},{\"areaId\":532800,\"areaType\":1,\"children\":[{\"areaId\":532801,\"areaType\":2,\"name\":\"景洪市\",\"parentAreaId\":532800},{\"areaId\":532822,\"areaType\":2,\"name\":\"勐海县\",\"parentAreaId\":532800},{\"areaId\":532823,\"areaType\":2,\"name\":\"勐腊县\",\"parentAreaId\":532800}],\"name\":\"西双版纳傣族自治州\",\"parentAreaId\":530000},{\"areaId\":532900,\"areaType\":1,\"children\":[{\"areaId\":532901,\"areaType\":2,\"name\":\"大理市\",\"parentAreaId\":532900},{\"areaId\":532922,\"areaType\":2,\"name\":\"漾濞彝族自治县\",\"parentAreaId\":532900},{\"areaId\":532923,\"areaType\":2,\"name\":\"祥云县\",\"parentAreaId\":532900},{\"areaId\":532924,\"areaType\":2,\"name\":\"宾川县\",\"parentAreaId\":532900},{\"areaId\":532925,\"areaType\":2,\"name\":\"弥渡县\",\"parentAreaId\":532900},{\"areaId\":532926,\"areaType\":2,\"name\":\"南涧彝族自治县\",\"parentAreaId\":532900},{\"areaId\":532927,\"areaType\":2,\"name\":\"巍山彝族回族自治县\",\"parentAreaId\":532900},{\"areaId\":532928,\"areaType\":2,\"name\":\"永平县\",\"parentAreaId\":532900},{\"areaId\":532929,\"areaType\":2,\"name\":\"云龙县\",\"parentAreaId\":532900},{\"areaId\":532930,\"areaType\":2,\"name\":\"洱源县\",\"parentAreaId\":532900},{\"areaId\":532931,\"areaType\":2,\"name\":\"剑川县\",\"parentAreaId\":532900},{\"areaId\":532932,\"areaType\":2,\"name\":\"鹤庆县\",\"parentAreaId\":532900}],\"name\":\"大理白族自治州\",\"parentAreaId\":530000},{\"areaId\":533100,\"areaType\":1,\"children\":[{\"areaId\":533102,\"areaType\":2,\"name\":\"瑞丽市\",\"parentAreaId\":533100},{\"areaId\":533103,\"areaType\":2,\"name\":\"芒市\",\"parentAreaId\":533100},{\"areaId\":533122,\"areaType\":2,\"name\":\"梁河县\",\"parentAreaId\":533100},{\"areaId\":533123,\"areaType\":2,\"name\":\"盈江县\",\"parentAreaId\":533100},{\"areaId\":533124,\"areaType\":2,\"name\":\"陇川县\",\"parentAreaId\":533100}],\"name\":\"德宏傣族景颇族自治州\",\"parentAreaId\":530000},{\"areaId\":533300,\"areaType\":1,\"children\":[{\"areaId\":533301,\"areaType\":2,\"name\":\"泸水市\",\"parentAreaId\":533300},{\"areaId\":533323,\"areaType\":2,\"name\":\"福贡县\",\"parentAreaId\":533300},{\"areaId\":533324,\"areaType\":2,\"name\":\"贡山独龙族怒族自治县\",\"parentAreaId\":533300},{\"areaId\":533325,\"areaType\":2,\"name\":\"兰坪白族普米族自治县\",\"parentAreaId\":533300}],\"name\":\"怒江傈僳族自治州\",\"parentAreaId\":530000},{\"areaId\":533400,\"areaType\":1,\"children\":[{\"areaId\":533401,\"areaType\":2,\"name\":\"香格里拉市\",\"parentAreaId\":533400},{\"areaId\":533422,\"areaType\":2,\"name\":\"德钦县\",\"parentAreaId\":533400},{\"areaId\":533423,\"areaType\":2,\"name\":\"维西傈僳族自治县\",\"parentAreaId\":533400}],\"name\":\"迪庆藏族自治州\",\"parentAreaId\":530000}],\"name\":\"云南省\",\"parentAreaId\":0},{\"areaId\":540000,\"areaType\":0,\"children\":[{\"areaId\":540100,\"areaType\":1,\"children\":[{\"areaId\":540102,\"areaType\":2,\"name\":\"城关区\",\"parentAreaId\":540100},{\"areaId\":540103,\"areaType\":2,\"name\":\"堆龙德庆区\",\"parentAreaId\":540100},{\"areaId\":540104,\"areaType\":2,\"name\":\"达孜区\",\"parentAreaId\":540100},{\"areaId\":540121,\"areaType\":2,\"name\":\"林周县\",\"parentAreaId\":540100},{\"areaId\":540122,\"areaType\":2,\"name\":\"当雄县\",\"parentAreaId\":540100},{\"areaId\":540123,\"areaType\":2,\"name\":\"尼木县\",\"parentAreaId\":540100},{\"areaId\":540124,\"areaType\":2,\"name\":\"曲水县\",\"parentAreaId\":540100},{\"areaId\":540127,\"areaType\":2,\"name\":\"墨竹工卡县\",\"parentAreaId\":540100}],\"name\":\"拉萨市\",\"parentAreaId\":540000},{\"areaId\":540200,\"areaType\":1,\"children\":[{\"areaId\":540202,\"areaType\":2,\"name\":\"桑珠孜区\",\"parentAreaId\":540200},{\"areaId\":540221,\"areaType\":2,\"name\":\"南木林县\",\"parentAreaId\":540200},{\"areaId\":540222,\"areaType\":2,\"name\":\"江孜县\",\"parentAreaId\":540200},{\"areaId\":540223,\"areaType\":2,\"name\":\"定日县\",\"parentAreaId\":540200},{\"areaId\":540224,\"areaType\":2,\"name\":\"萨迦县\",\"parentAreaId\":540200},{\"areaId\":540225,\"areaType\":2,\"name\":\"拉孜县\",\"parentAreaId\":540200},{\"areaId\":540226,\"areaType\":2,\"name\":\"昂仁县\",\"parentAreaId\":540200},{\"areaId\":540227,\"areaType\":2,\"name\":\"谢通门县\",\"parentAreaId\":540200},{\"areaId\":540228,\"areaType\":2,\"name\":\"白朗县\",\"parentAreaId\":540200},{\"areaId\":540229,\"areaType\":2,\"name\":\"仁布县\",\"parentAreaId\":540200},{\"areaId\":540230,\"areaType\":2,\"name\":\"康马县\",\"parentAreaId\":540200},{\"areaId\":540231,\"areaType\":2,\"name\":\"定结县\",\"parentAreaId\":540200},{\"areaId\":540232,\"areaType\":2,\"name\":\"仲巴县\",\"parentAreaId\":540200},{\"areaId\":540233,\"areaType\":2,\"name\":\"亚东县\",\"parentAreaId\":540200},{\"areaId\":540234,\"areaType\":2,\"name\":\"吉隆县\",\"parentAreaId\":540200},{\"areaId\":540235,\"areaType\":2,\"name\":\"聂拉木县\",\"parentAreaId\":540200},{\"areaId\":540236,\"areaType\":2,\"name\":\"萨嘎县\",\"parentAreaId\":540200},{\"areaId\":540237,\"areaType\":2,\"name\":\"岗巴县\",\"parentAreaId\":540200}],\"name\":\"日喀则市\",\"parentAreaId\":540000},{\"areaId\":540300,\"areaType\":1,\"children\":[{\"areaId\":540302,\"areaType\":2,\"name\":\"卡若区\",\"parentAreaId\":540300},{\"areaId\":540321,\"areaType\":2,\"name\":\"江达县\",\"parentAreaId\":540300},{\"areaId\":540322,\"areaType\":2,\"name\":\"贡觉县\",\"parentAreaId\":540300},{\"areaId\":540323,\"areaType\":2,\"name\":\"类乌齐县\",\"parentAreaId\":540300},{\"areaId\":540324,\"areaType\":2,\"name\":\"丁青县\",\"parentAreaId\":540300},{\"areaId\":540325,\"areaType\":2,\"name\":\"察雅县\",\"parentAreaId\":540300},{\"areaId\":540326,\"areaType\":2,\"name\":\"八宿县\",\"parentAreaId\":540300},{\"areaId\":540327,\"areaType\":2,\"name\":\"左贡县\",\"parentAreaId\":540300},{\"areaId\":540328,\"areaType\":2,\"name\":\"芒康县\",\"parentAreaId\":540300},{\"areaId\":540329,\"areaType\":2,\"name\":\"洛隆县\",\"parentAreaId\":540300},{\"areaId\":540330,\"areaType\":2,\"name\":\"边坝县\",\"parentAreaId\":540300}],\"name\":\"昌都市\",\"parentAreaId\":540000},{\"areaId\":540400,\"areaType\":1,\"children\":[{\"areaId\":540402,\"areaType\":2,\"name\":\"巴宜区\",\"parentAreaId\":540400},{\"areaId\":540421,\"areaType\":2,\"name\":\"工布江达县\",\"parentAreaId\":540400},{\"areaId\":540422,\"areaType\":2,\"name\":\"米林县\",\"parentAreaId\":540400},{\"areaId\":540423,\"areaType\":2,\"name\":\"墨脱县\",\"parentAreaId\":540400},{\"areaId\":540424,\"areaType\":2,\"name\":\"波密县\",\"parentAreaId\":540400},{\"areaId\":540425,\"areaType\":2,\"name\":\"察隅县\",\"parentAreaId\":540400},{\"areaId\":540426,\"areaType\":2,\"name\":\"朗县\",\"parentAreaId\":540400}],\"name\":\"林芝市\",\"parentAreaId\":540000},{\"areaId\":540500,\"areaType\":1,\"children\":[{\"areaId\":540502,\"areaType\":2,\"name\":\"乃东区\",\"parentAreaId\":540500},{\"areaId\":540521,\"areaType\":2,\"name\":\"扎囊县\",\"parentAreaId\":540500},{\"areaId\":540522,\"areaType\":2,\"name\":\"贡嘎县\",\"parentAreaId\":540500},{\"areaId\":540523,\"areaType\":2,\"name\":\"桑日县\",\"parentAreaId\":540500},{\"areaId\":540524,\"areaType\":2,\"name\":\"琼结县\",\"parentAreaId\":540500},{\"areaId\":540525,\"areaType\":2,\"name\":\"曲松县\",\"parentAreaId\":540500},{\"areaId\":540526,\"areaType\":2,\"name\":\"措美县\",\"parentAreaId\":540500},{\"areaId\":540527,\"areaType\":2,\"name\":\"洛扎县\",\"parentAreaId\":540500},{\"areaId\":540528,\"areaType\":2,\"name\":\"加查县\",\"parentAreaId\":540500},{\"areaId\":540529,\"areaType\":2,\"name\":\"隆子县\",\"parentAreaId\":540500},{\"areaId\":540530,\"areaType\":2,\"name\":\"错那县\",\"parentAreaId\":540500},{\"areaId\":540531,\"areaType\":2,\"name\":\"浪卡子县\",\"parentAreaId\":540500}],\"name\":\"山南市\",\"parentAreaId\":540000},{\"areaId\":540600,\"areaType\":1,\"children\":[{\"areaId\":540602,\"areaType\":2,\"name\":\"色尼区\",\"parentAreaId\":540600},{\"areaId\":540621,\"areaType\":2,\"name\":\"嘉黎县\",\"parentAreaId\":540600},{\"areaId\":540622,\"areaType\":2,\"name\":\"比如县\",\"parentAreaId\":540600},{\"areaId\":540623,\"areaType\":2,\"name\":\"聂荣县\",\"parentAreaId\":540600},{\"areaId\":540624,\"areaType\":2,\"name\":\"安多县\",\"parentAreaId\":540600},{\"areaId\":540625,\"areaType\":2,\"name\":\"申扎县\",\"parentAreaId\":540600},{\"areaId\":540626,\"areaType\":2,\"name\":\"索县\",\"parentAreaId\":540600},{\"areaId\":540627,\"areaType\":2,\"name\":\"班戈县\",\"parentAreaId\":540600},{\"areaId\":540628,\"areaType\":2,\"name\":\"巴青县\",\"parentAreaId\":540600},{\"areaId\":540629,\"areaType\":2,\"name\":\"尼玛县\",\"parentAreaId\":540600},{\"areaId\":540630,\"areaType\":2,\"name\":\"双湖县\",\"parentAreaId\":540600}],\"name\":\"那曲市\",\"parentAreaId\":540000},{\"areaId\":542500,\"areaType\":1,\"children\":[{\"areaId\":542521,\"areaType\":2,\"name\":\"普兰县\",\"parentAreaId\":542500},{\"areaId\":542522,\"areaType\":2,\"name\":\"札达县\",\"parentAreaId\":542500},{\"areaId\":542523,\"areaType\":2,\"name\":\"噶尔县\",\"parentAreaId\":542500},{\"areaId\":542524,\"areaType\":2,\"name\":\"日土县\",\"parentAreaId\":542500},{\"areaId\":542525,\"areaType\":2,\"name\":\"革吉县\",\"parentAreaId\":542500},{\"areaId\":542526,\"areaType\":2,\"name\":\"改则县\",\"parentAreaId\":542500},{\"areaId\":542527,\"areaType\":2,\"name\":\"措勤县\",\"parentAreaId\":542500}],\"name\":\"阿里地区\",\"parentAreaId\":540000}],\"name\":\"西藏自治区\",\"parentAreaId\":0},{\"areaId\":610000,\"areaType\":0,\"children\":[{\"areaId\":610100,\"areaType\":1,\"children\":[{\"areaId\":610102,\"areaType\":2,\"name\":\"新城区\",\"parentAreaId\":610100},{\"areaId\":610103,\"areaType\":2,\"name\":\"碑林区\",\"parentAreaId\":610100},{\"areaId\":610104,\"areaType\":2,\"name\":\"莲湖区\",\"parentAreaId\":610100},{\"areaId\":610111,\"areaType\":2,\"name\":\"灞桥区\",\"parentAreaId\":610100},{\"areaId\":610112,\"areaType\":2,\"name\":\"未央区\",\"parentAreaId\":610100},{\"areaId\":610113,\"areaType\":2,\"name\":\"雁塔区\",\"parentAreaId\":610100},{\"areaId\":610114,\"areaType\":2,\"name\":\"阎良区\",\"parentAreaId\":610100},{\"areaId\":610115,\"areaType\":2,\"name\":\"临潼区\",\"parentAreaId\":610100},{\"areaId\":610116,\"areaType\":2,\"name\":\"长安区\",\"parentAreaId\":610100},{\"areaId\":610117,\"areaType\":2,\"name\":\"高陵区\",\"parentAreaId\":610100},{\"areaId\":610118,\"areaType\":2,\"name\":\"鄠邑区\",\"parentAreaId\":610100},{\"areaId\":610122,\"areaType\":2,\"name\":\"蓝田县\",\"parentAreaId\":610100},{\"areaId\":610124,\"areaType\":2,\"name\":\"周至县\",\"parentAreaId\":610100}],\"name\":\"西安市\",\"parentAreaId\":610000},{\"areaId\":610200,\"areaType\":1,\"children\":[{\"areaId\":610202,\"areaType\":2,\"name\":\"王益区\",\"parentAreaId\":610200},{\"areaId\":610203,\"areaType\":2,\"name\":\"印台区\",\"parentAreaId\":610200},{\"areaId\":610204,\"areaType\":2,\"name\":\"耀州区\",\"parentAreaId\":610200},{\"areaId\":610222,\"areaType\":2,\"name\":\"宜君县\",\"parentAreaId\":610200}],\"name\":\"铜川市\",\"parentAreaId\":610000},{\"areaId\":610300,\"areaType\":1,\"children\":[{\"areaId\":610302,\"areaType\":2,\"name\":\"渭滨区\",\"parentAreaId\":610300},{\"areaId\":610303,\"areaType\":2,\"name\":\"金台区\",\"parentAreaId\":610300},{\"areaId\":610304,\"areaType\":2,\"name\":\"陈仓区\",\"parentAreaId\":610300},{\"areaId\":610322,\"areaType\":2,\"name\":\"凤翔县\",\"parentAreaId\":610300},{\"areaId\":610323,\"areaType\":2,\"name\":\"岐山县\",\"parentAreaId\":610300},{\"areaId\":610324,\"areaType\":2,\"name\":\"扶风县\",\"parentAreaId\":610300},{\"areaId\":610326,\"areaType\":2,\"name\":\"眉县\",\"parentAreaId\":610300},{\"areaId\":610327,\"areaType\":2,\"name\":\"陇县\",\"parentAreaId\":610300},{\"areaId\":610328,\"areaType\":2,\"name\":\"千阳县\",\"parentAreaId\":610300},{\"areaId\":610329,\"areaType\":2,\"name\":\"麟游县\",\"parentAreaId\":610300},{\"areaId\":610330,\"areaType\":2,\"name\":\"凤县\",\"parentAreaId\":610300},{\"areaId\":610331,\"areaType\":2,\"name\":\"太白县\",\"parentAreaId\":610300}],\"name\":\"宝鸡市\",\"parentAreaId\":610000},{\"areaId\":610400,\"areaType\":1,\"children\":[{\"areaId\":610402,\"areaType\":2,\"name\":\"秦都区\",\"parentAreaId\":610400},{\"areaId\":610403,\"areaType\":2,\"name\":\"杨陵区\",\"parentAreaId\":610400},{\"areaId\":610404,\"areaType\":2,\"name\":\"渭城区\",\"parentAreaId\":610400},{\"areaId\":610422,\"areaType\":2,\"name\":\"三原县\",\"parentAreaId\":610400},{\"areaId\":610423,\"areaType\":2,\"name\":\"泾阳县\",\"parentAreaId\":610400},{\"areaId\":610424,\"areaType\":2,\"name\":\"乾县\",\"parentAreaId\":610400},{\"areaId\":610425,\"areaType\":2,\"name\":\"礼泉县\",\"parentAreaId\":610400},{\"areaId\":610426,\"areaType\":2,\"name\":\"永寿县\",\"parentAreaId\":610400},{\"areaId\":610428,\"areaType\":2,\"name\":\"长武县\",\"parentAreaId\":610400},{\"areaId\":610429,\"areaType\":2,\"name\":\"旬邑县\",\"parentAreaId\":610400},{\"areaId\":610430,\"areaType\":2,\"name\":\"淳化县\",\"parentAreaId\":610400},{\"areaId\":610431,\"areaType\":2,\"name\":\"武功县\",\"parentAreaId\":610400},{\"areaId\":610481,\"areaType\":2,\"name\":\"兴平市\",\"parentAreaId\":610400},{\"areaId\":610482,\"areaType\":2,\"name\":\"彬州市\",\"parentAreaId\":610400}],\"name\":\"咸阳市\",\"parentAreaId\":610000},{\"areaId\":610500,\"areaType\":1,\"children\":[{\"areaId\":610502,\"areaType\":2,\"name\":\"临渭区\",\"parentAreaId\":610500},{\"areaId\":610503,\"areaType\":2,\"name\":\"华州区\",\"parentAreaId\":610500},{\"areaId\":610522,\"areaType\":2,\"name\":\"潼关县\",\"parentAreaId\":610500},{\"areaId\":610523,\"areaType\":2,\"name\":\"大荔县\",\"parentAreaId\":610500},{\"areaId\":610524,\"areaType\":2,\"name\":\"合阳县\",\"parentAreaId\":610500},{\"areaId\":610525,\"areaType\":2,\"name\":\"澄城县\",\"parentAreaId\":610500},{\"areaId\":610526,\"areaType\":2,\"name\":\"蒲城县\",\"parentAreaId\":610500},{\"areaId\":610527,\"areaType\":2,\"name\":\"白水县\",\"parentAreaId\":610500},{\"areaId\":610528,\"areaType\":2,\"name\":\"富平县\",\"parentAreaId\":610500},{\"areaId\":610581,\"areaType\":2,\"name\":\"韩城市\",\"parentAreaId\":610500},{\"areaId\":610582,\"areaType\":2,\"name\":\"华阴市\",\"parentAreaId\":610500}],\"name\":\"渭南市\",\"parentAreaId\":610000},{\"areaId\":610600,\"areaType\":1,\"children\":[{\"areaId\":610602,\"areaType\":2,\"name\":\"宝塔区\",\"parentAreaId\":610600},{\"areaId\":610603,\"areaType\":2,\"name\":\"安塞区\",\"parentAreaId\":610600},{\"areaId\":610621,\"areaType\":2,\"name\":\"延长县\",\"parentAreaId\":610600},{\"areaId\":610622,\"areaType\":2,\"name\":\"延川县\",\"parentAreaId\":610600},{\"areaId\":610623,\"areaType\":2,\"name\":\"子长县\",\"parentAreaId\":610600},{\"areaId\":610625,\"areaType\":2,\"name\":\"志丹县\",\"parentAreaId\":610600},{\"areaId\":610626,\"areaType\":2,\"name\":\"吴起县\",\"parentAreaId\":610600},{\"areaId\":610627,\"areaType\":2,\"name\":\"甘泉县\",\"parentAreaId\":610600},{\"areaId\":610628,\"areaType\":2,\"name\":\"富县\",\"parentAreaId\":610600},{\"areaId\":610629,\"areaType\":2,\"name\":\"洛川县\",\"parentAreaId\":610600},{\"areaId\":610630,\"areaType\":2,\"name\":\"宜川县\",\"parentAreaId\":610600},{\"areaId\":610631,\"areaType\":2,\"name\":\"黄龙县\",\"parentAreaId\":610600},{\"areaId\":610632,\"areaType\":2,\"name\":\"黄陵县\",\"parentAreaId\":610600}],\"name\":\"延安市\",\"parentAreaId\":610000},{\"areaId\":610700,\"areaType\":1,\"children\":[{\"areaId\":610702,\"areaType\":2,\"name\":\"汉台区\",\"parentAreaId\":610700},{\"areaId\":610703,\"areaType\":2,\"name\":\"南郑区\",\"parentAreaId\":610700},{\"areaId\":610722,\"areaType\":2,\"name\":\"城固县\",\"parentAreaId\":610700},{\"areaId\":610723,\"areaType\":2,\"name\":\"洋县\",\"parentAreaId\":610700},{\"areaId\":610724,\"areaType\":2,\"name\":\"西乡县\",\"parentAreaId\":610700},{\"areaId\":610725,\"areaType\":2,\"name\":\"勉县\",\"parentAreaId\":610700},{\"areaId\":610726,\"areaType\":2,\"name\":\"宁强县\",\"parentAreaId\":610700},{\"areaId\":610727,\"areaType\":2,\"name\":\"略阳县\",\"parentAreaId\":610700},{\"areaId\":610728,\"areaType\":2,\"name\":\"镇巴县\",\"parentAreaId\":610700},{\"areaId\":610729,\"areaType\":2,\"name\":\"留坝县\",\"parentAreaId\":610700},{\"areaId\":610730,\"areaType\":2,\"name\":\"佛坪县\",\"parentAreaId\":610700}],\"name\":\"汉中市\",\"parentAreaId\":610000},{\"areaId\":610800,\"areaType\":1,\"children\":[{\"areaId\":610802,\"areaType\":2,\"name\":\"榆阳区\",\"parentAreaId\":610800},{\"areaId\":610803,\"areaType\":2,\"name\":\"横山区\",\"parentAreaId\":610800},{\"areaId\":610822,\"areaType\":2,\"name\":\"府谷县\",\"parentAreaId\":610800},{\"areaId\":610824,\"areaType\":2,\"name\":\"靖边县\",\"parentAreaId\":610800},{\"areaId\":610825,\"areaType\":2,\"name\":\"定边县\",\"parentAreaId\":610800},{\"areaId\":610826,\"areaType\":2,\"name\":\"绥德县\",\"parentAreaId\":610800},{\"areaId\":610827,\"areaType\":2,\"name\":\"米脂县\",\"parentAreaId\":610800},{\"areaId\":610828,\"areaType\":2,\"name\":\"佳县\",\"parentAreaId\":610800},{\"areaId\":610829,\"areaType\":2,\"name\":\"吴堡县\",\"parentAreaId\":610800},{\"areaId\":610830,\"areaType\":2,\"name\":\"清涧县\",\"parentAreaId\":610800},{\"areaId\":610831,\"areaType\":2,\"name\":\"子洲县\",\"parentAreaId\":610800},{\"areaId\":610881,\"areaType\":2,\"name\":\"神木市\",\"parentAreaId\":610800}],\"name\":\"榆林市\",\"parentAreaId\":610000},{\"areaId\":610900,\"areaType\":1,\"children\":[{\"areaId\":610902,\"areaType\":2,\"name\":\"汉滨区\",\"parentAreaId\":610900},{\"areaId\":610921,\"areaType\":2,\"name\":\"汉阴县\",\"parentAreaId\":610900},{\"areaId\":610922,\"areaType\":2,\"name\":\"石泉县\",\"parentAreaId\":610900},{\"areaId\":610923,\"areaType\":2,\"name\":\"宁陕县\",\"parentAreaId\":610900},{\"areaId\":610924,\"areaType\":2,\"name\":\"紫阳县\",\"parentAreaId\":610900},{\"areaId\":610925,\"areaType\":2,\"name\":\"岚皋县\",\"parentAreaId\":610900},{\"areaId\":610926,\"areaType\":2,\"name\":\"平利县\",\"parentAreaId\":610900},{\"areaId\":610927,\"areaType\":2,\"name\":\"镇坪县\",\"parentAreaId\":610900},{\"areaId\":610928,\"areaType\":2,\"name\":\"旬阳县\",\"parentAreaId\":610900},{\"areaId\":610929,\"areaType\":2,\"name\":\"白河县\",\"parentAreaId\":610900}],\"name\":\"安康市\",\"parentAreaId\":610000},{\"areaId\":611000,\"areaType\":1,\"children\":[{\"areaId\":611002,\"areaType\":2,\"name\":\"商州区\",\"parentAreaId\":611000},{\"areaId\":611021,\"areaType\":2,\"name\":\"洛南县\",\"parentAreaId\":611000},{\"areaId\":611022,\"areaType\":2,\"name\":\"丹凤县\",\"parentAreaId\":611000},{\"areaId\":611023,\"areaType\":2,\"name\":\"商南县\",\"parentAreaId\":611000},{\"areaId\":611024,\"areaType\":2,\"name\":\"山阳县\",\"parentAreaId\":611000},{\"areaId\":611025,\"areaType\":2,\"name\":\"镇安县\",\"parentAreaId\":611000},{\"areaId\":611026,\"areaType\":2,\"name\":\"柞水县\",\"parentAreaId\":611000}],\"name\":\"商洛市\",\"parentAreaId\":610000}],\"name\":\"陕西省\",\"parentAreaId\":0},{\"areaId\":620000,\"areaType\":0,\"children\":[{\"areaId\":620100,\"areaType\":1,\"children\":[{\"areaId\":620102,\"areaType\":2,\"name\":\"城关区\",\"parentAreaId\":620100},{\"areaId\":620103,\"areaType\":2,\"name\":\"七里河区\",\"parentAreaId\":620100},{\"areaId\":620104,\"areaType\":2,\"name\":\"西固区\",\"parentAreaId\":620100},{\"areaId\":620105,\"areaType\":2,\"name\":\"安宁区\",\"parentAreaId\":620100},{\"areaId\":620111,\"areaType\":2,\"name\":\"红古区\",\"parentAreaId\":620100},{\"areaId\":620121,\"areaType\":2,\"name\":\"永登县\",\"parentAreaId\":620100},{\"areaId\":620122,\"areaType\":2,\"name\":\"皋兰县\",\"parentAreaId\":620100},{\"areaId\":620123,\"areaType\":2,\"name\":\"榆中县\",\"parentAreaId\":620100}],\"name\":\"兰州市\",\"parentAreaId\":620000},{\"areaId\":620200,\"areaType\":1,\"children\":[{\"areaId\":620201,\"areaType\":2,\"name\":\"嘉峪关市\",\"parentAreaId\":620200},{\"areaId\":620299,\"areaType\":2,\"name\":\"嘉峪关市\",\"parentAreaId\":620200}],\"name\":\"嘉峪关市\",\"parentAreaId\":620000},{\"areaId\":620300,\"areaType\":1,\"children\":[{\"areaId\":620302,\"areaType\":2,\"name\":\"金川区\",\"parentAreaId\":620300},{\"areaId\":620321,\"areaType\":2,\"name\":\"永昌县\",\"parentAreaId\":620300}],\"name\":\"金昌市\",\"parentAreaId\":620000},{\"areaId\":620400,\"areaType\":1,\"children\":[{\"areaId\":620402,\"areaType\":2,\"name\":\"白银区\",\"parentAreaId\":620400},{\"areaId\":620403,\"areaType\":2,\"name\":\"平川区\",\"parentAreaId\":620400},{\"areaId\":620421,\"areaType\":2,\"name\":\"靖远县\",\"parentAreaId\":620400},{\"areaId\":620422,\"areaType\":2,\"name\":\"会宁县\",\"parentAreaId\":620400},{\"areaId\":620423,\"areaType\":2,\"name\":\"景泰县\",\"parentAreaId\":620400}],\"name\":\"白银市\",\"parentAreaId\":620000},{\"areaId\":620500,\"areaType\":1,\"children\":[{\"areaId\":620502,\"areaType\":2,\"name\":\"秦州区\",\"parentAreaId\":620500},{\"areaId\":620503,\"areaType\":2,\"name\":\"麦积区\",\"parentAreaId\":620500},{\"areaId\":620521,\"areaType\":2,\"name\":\"清水县\",\"parentAreaId\":620500},{\"areaId\":620522,\"areaType\":2,\"name\":\"秦安县\",\"parentAreaId\":620500},{\"areaId\":620523,\"areaType\":2,\"name\":\"甘谷县\",\"parentAreaId\":620500},{\"areaId\":620524,\"areaType\":2,\"name\":\"武山县\",\"parentAreaId\":620500},{\"areaId\":620525,\"areaType\":2,\"name\":\"张家川回族自治县\",\"parentAreaId\":620500}],\"name\":\"天水市\",\"parentAreaId\":620000},{\"areaId\":620600,\"areaType\":1,\"children\":[{\"areaId\":620602,\"areaType\":2,\"name\":\"凉州区\",\"parentAreaId\":620600},{\"areaId\":620621,\"areaType\":2,\"name\":\"民勤县\",\"parentAreaId\":620600},{\"areaId\":620622,\"areaType\":2,\"name\":\"古浪县\",\"parentAreaId\":620600},{\"areaId\":620623,\"areaType\":2,\"name\":\"天祝藏族自治县\",\"parentAreaId\":620600}],\"name\":\"武威市\",\"parentAreaId\":620000},{\"areaId\":620700,\"areaType\":1,\"children\":[{\"areaId\":620702,\"areaType\":2,\"name\":\"甘州区\",\"parentAreaId\":620700},{\"areaId\":620721,\"areaType\":2,\"name\":\"肃南裕固族自治县\",\"parentAreaId\":620700},{\"areaId\":620722,\"areaType\":2,\"name\":\"民乐县\",\"parentAreaId\":620700},{\"areaId\":620723,\"areaType\":2,\"name\":\"临泽县\",\"parentAreaId\":620700},{\"areaId\":620724,\"areaType\":2,\"name\":\"高台县\",\"parentAreaId\":620700},{\"areaId\":620725,\"areaType\":2,\"name\":\"山丹县\",\"parentAreaId\":620700}],\"name\":\"张掖市\",\"parentAreaId\":620000},{\"areaId\":620800,\"areaType\":1,\"children\":[{\"areaId\":620802,\"areaType\":2,\"name\":\"崆峒区\",\"parentAreaId\":620800},{\"areaId\":620821,\"areaType\":2,\"name\":\"泾川县\",\"parentAreaId\":620800},{\"areaId\":620822,\"areaType\":2,\"name\":\"灵台县\",\"parentAreaId\":620800},{\"areaId\":620823,\"areaType\":2,\"name\":\"崇信县\",\"parentAreaId\":620800},{\"areaId\":620824,\"areaType\":2,\"name\":\"华亭县\",\"parentAreaId\":620800},{\"areaId\":620825,\"areaType\":2,\"name\":\"庄浪县\",\"parentAreaId\":620800},{\"areaId\":620826,\"areaType\":2,\"name\":\"静宁县\",\"parentAreaId\":620800}],\"name\":\"平凉市\",\"parentAreaId\":620000},{\"areaId\":620900,\"areaType\":1,\"children\":[{\"areaId\":620902,\"areaType\":2,\"name\":\"肃州区\",\"parentAreaId\":620900},{\"areaId\":620921,\"areaType\":2,\"name\":\"金塔县\",\"parentAreaId\":620900},{\"areaId\":620922,\"areaType\":2,\"name\":\"瓜州县\",\"parentAreaId\":620900},{\"areaId\":620923,\"areaType\":2,\"name\":\"肃北蒙古族自治县\",\"parentAreaId\":620900},{\"areaId\":620924,\"areaType\":2,\"name\":\"阿克塞哈萨克族自治县\",\"parentAreaId\":620900},{\"areaId\":620981,\"areaType\":2,\"name\":\"玉门市\",\"parentAreaId\":620900},{\"areaId\":620982,\"areaType\":2,\"name\":\"敦煌市\",\"parentAreaId\":620900}],\"name\":\"酒泉市\",\"parentAreaId\":620000},{\"areaId\":621000,\"areaType\":1,\"children\":[{\"areaId\":621002,\"areaType\":2,\"name\":\"西峰区\",\"parentAreaId\":621000},{\"areaId\":621021,\"areaType\":2,\"name\":\"庆城县\",\"parentAreaId\":621000},{\"areaId\":621022,\"areaType\":2,\"name\":\"环县\",\"parentAreaId\":621000},{\"areaId\":621023,\"areaType\":2,\"name\":\"华池县\",\"parentAreaId\":621000},{\"areaId\":621024,\"areaType\":2,\"name\":\"合水县\",\"parentAreaId\":621000},{\"areaId\":621025,\"areaType\":2,\"name\":\"正宁县\",\"parentAreaId\":621000},{\"areaId\":621026,\"areaType\":2,\"name\":\"宁县\",\"parentAreaId\":621000},{\"areaId\":621027,\"areaType\":2,\"name\":\"镇原县\",\"parentAreaId\":621000}],\"name\":\"庆阳市\",\"parentAreaId\":620000},{\"areaId\":621100,\"areaType\":1,\"children\":[{\"areaId\":621102,\"areaType\":2,\"name\":\"安定区\",\"parentAreaId\":621100},{\"areaId\":621121,\"areaType\":2,\"name\":\"通渭县\",\"parentAreaId\":621100},{\"areaId\":621122,\"areaType\":2,\"name\":\"陇西县\",\"parentAreaId\":621100},{\"areaId\":621123,\"areaType\":2,\"name\":\"渭源县\",\"parentAreaId\":621100},{\"areaId\":621124,\"areaType\":2,\"name\":\"临洮县\",\"parentAreaId\":621100},{\"areaId\":621125,\"areaType\":2,\"name\":\"漳县\",\"parentAreaId\":621100},{\"areaId\":621126,\"areaType\":2,\"name\":\"岷县\",\"parentAreaId\":621100}],\"name\":\"定西市\",\"parentAreaId\":620000},{\"areaId\":621200,\"areaType\":1,\"children\":[{\"areaId\":621202,\"areaType\":2,\"name\":\"武都区\",\"parentAreaId\":621200},{\"areaId\":621221,\"areaType\":2,\"name\":\"成县\",\"parentAreaId\":621200},{\"areaId\":621222,\"areaType\":2,\"name\":\"文县\",\"parentAreaId\":621200},{\"areaId\":621223,\"areaType\":2,\"name\":\"宕昌县\",\"parentAreaId\":621200},{\"areaId\":621224,\"areaType\":2,\"name\":\"康县\",\"parentAreaId\":621200},{\"areaId\":621225,\"areaType\":2,\"name\":\"西和县\",\"parentAreaId\":621200},{\"areaId\":621226,\"areaType\":2,\"name\":\"礼县\",\"parentAreaId\":621200},{\"areaId\":621227,\"areaType\":2,\"name\":\"徽县\",\"parentAreaId\":621200},{\"areaId\":621228,\"areaType\":2,\"name\":\"两当县\",\"parentAreaId\":621200}],\"name\":\"陇南市\",\"parentAreaId\":620000},{\"areaId\":622900,\"areaType\":1,\"children\":[{\"areaId\":622901,\"areaType\":2,\"name\":\"临夏市\",\"parentAreaId\":622900},{\"areaId\":622921,\"areaType\":2,\"name\":\"临夏县\",\"parentAreaId\":622900},{\"areaId\":622922,\"areaType\":2,\"name\":\"康乐县\",\"parentAreaId\":622900},{\"areaId\":622923,\"areaType\":2,\"name\":\"永靖县\",\"parentAreaId\":622900},{\"areaId\":622924,\"areaType\":2,\"name\":\"广河县\",\"parentAreaId\":622900},{\"areaId\":622925,\"areaType\":2,\"name\":\"和政县\",\"parentAreaId\":622900},{\"areaId\":622926,\"areaType\":2,\"name\":\"东乡族自治县\",\"parentAreaId\":622900},{\"areaId\":622927,\"areaType\":2,\"name\":\"积石山县\",\"parentAreaId\":622900}],\"name\":\"临夏回族自治州\",\"parentAreaId\":620000},{\"areaId\":623000,\"areaType\":1,\"children\":[{\"areaId\":623001,\"areaType\":2,\"name\":\"合作市\",\"parentAreaId\":623000},{\"areaId\":623021,\"areaType\":2,\"name\":\"临潭县\",\"parentAreaId\":623000},{\"areaId\":623022,\"areaType\":2,\"name\":\"卓尼县\",\"parentAreaId\":623000},{\"areaId\":623023,\"areaType\":2,\"name\":\"舟曲县\",\"parentAreaId\":623000},{\"areaId\":623024,\"areaType\":2,\"name\":\"迭部县\",\"parentAreaId\":623000},{\"areaId\":623025,\"areaType\":2,\"name\":\"玛曲县\",\"parentAreaId\":623000},{\"areaId\":623026,\"areaType\":2,\"name\":\"碌曲县\",\"parentAreaId\":623000},{\"areaId\":623027,\"areaType\":2,\"name\":\"夏河县\",\"parentAreaId\":623000}],\"name\":\"甘南藏族自治州\",\"parentAreaId\":620000}],\"name\":\"甘肃省\",\"parentAreaId\":0},{\"areaId\":630000,\"areaType\":0,\"children\":[{\"areaId\":630100,\"areaType\":1,\"children\":[{\"areaId\":630102,\"areaType\":2,\"name\":\"城东区\",\"parentAreaId\":630100},{\"areaId\":630103,\"areaType\":2,\"name\":\"城中区\",\"parentAreaId\":630100},{\"areaId\":630104,\"areaType\":2,\"name\":\"城西区\",\"parentAreaId\":630100},{\"areaId\":630105,\"areaType\":2,\"name\":\"城北区\",\"parentAreaId\":630100},{\"areaId\":630121,\"areaType\":2,\"name\":\"大通回族土族自治县\",\"parentAreaId\":630100},{\"areaId\":630122,\"areaType\":2,\"name\":\"湟中县\",\"parentAreaId\":630100},{\"areaId\":630123,\"areaType\":2,\"name\":\"湟源县\",\"parentAreaId\":630100}],\"name\":\"西宁市\",\"parentAreaId\":630000},{\"areaId\":630200,\"areaType\":1,\"children\":[{\"areaId\":630202,\"areaType\":2,\"name\":\"乐都区\",\"parentAreaId\":630200},{\"areaId\":630203,\"areaType\":2,\"name\":\"平安区\",\"parentAreaId\":630200},{\"areaId\":630222,\"areaType\":2,\"name\":\"民和回族土族自治县\",\"parentAreaId\":630200},{\"areaId\":630223,\"areaType\":2,\"name\":\"互助土族自治县\",\"parentAreaId\":630200},{\"areaId\":630224,\"areaType\":2,\"name\":\"化隆回族自治县\",\"parentAreaId\":630200},{\"areaId\":630225,\"areaType\":2,\"name\":\"循化撒拉族自治县\",\"parentAreaId\":630200}],\"name\":\"海东市\",\"parentAreaId\":630000},{\"areaId\":632200,\"areaType\":1,\"children\":[{\"areaId\":632221,\"areaType\":2,\"name\":\"门源回族自治县\",\"parentAreaId\":632200},{\"areaId\":632222,\"areaType\":2,\"name\":\"祁连县\",\"parentAreaId\":632200},{\"areaId\":632223,\"areaType\":2,\"name\":\"海晏县\",\"parentAreaId\":632200},{\"areaId\":632224,\"areaType\":2,\"name\":\"刚察县\",\"parentAreaId\":632200}],\"name\":\"海北藏族自治州\",\"parentAreaId\":630000},{\"areaId\":632300,\"areaType\":1,\"children\":[{\"areaId\":632321,\"areaType\":2,\"name\":\"同仁县\",\"parentAreaId\":632300},{\"areaId\":632322,\"areaType\":2,\"name\":\"尖扎县\",\"parentAreaId\":632300},{\"areaId\":632323,\"areaType\":2,\"name\":\"泽库县\",\"parentAreaId\":632300},{\"areaId\":632324,\"areaType\":2,\"name\":\"河南蒙古族自治县\",\"parentAreaId\":632300}],\"name\":\"黄南藏族自治州\",\"parentAreaId\":630000},{\"areaId\":632500,\"areaType\":1,\"children\":[{\"areaId\":632521,\"areaType\":2,\"name\":\"共和县\",\"parentAreaId\":632500},{\"areaId\":632522,\"areaType\":2,\"name\":\"同德县\",\"parentAreaId\":632500},{\"areaId\":632523,\"areaType\":2,\"name\":\"贵德县\",\"parentAreaId\":632500},{\"areaId\":632524,\"areaType\":2,\"name\":\"兴海县\",\"parentAreaId\":632500},{\"areaId\":632525,\"areaType\":2,\"name\":\"贵南县\",\"parentAreaId\":632500}],\"name\":\"海南藏族自治州\",\"parentAreaId\":630000},{\"areaId\":632600,\"areaType\":1,\"children\":[{\"areaId\":632621,\"areaType\":2,\"name\":\"玛沁县\",\"parentAreaId\":632600},{\"areaId\":632622,\"areaType\":2,\"name\":\"班玛县\",\"parentAreaId\":632600},{\"areaId\":632623,\"areaType\":2,\"name\":\"甘德县\",\"parentAreaId\":632600},{\"areaId\":632624,\"areaType\":2,\"name\":\"达日县\",\"parentAreaId\":632600},{\"areaId\":632625,\"areaType\":2,\"name\":\"久治县\",\"parentAreaId\":632600},{\"areaId\":632626,\"areaType\":2,\"name\":\"玛多县\",\"parentAreaId\":632600}],\"name\":\"果洛藏族自治州\",\"parentAreaId\":630000},{\"areaId\":632700,\"areaType\":1,\"children\":[{\"areaId\":632701,\"areaType\":2,\"name\":\"玉树市\",\"parentAreaId\":632700},{\"areaId\":632722,\"areaType\":2,\"name\":\"杂多县\",\"parentAreaId\":632700},{\"areaId\":632723,\"areaType\":2,\"name\":\"称多县\",\"parentAreaId\":632700},{\"areaId\":632724,\"areaType\":2,\"name\":\"治多县\",\"parentAreaId\":632700},{\"areaId\":632725,\"areaType\":2,\"name\":\"囊谦县\",\"parentAreaId\":632700},{\"areaId\":632726,\"areaType\":2,\"name\":\"曲麻莱县\",\"parentAreaId\":632700}],\"name\":\"玉树藏族自治州\",\"parentAreaId\":630000},{\"areaId\":632800,\"areaType\":1,\"children\":[{\"areaId\":632801,\"areaType\":2,\"name\":\"格尔木市\",\"parentAreaId\":632800},{\"areaId\":632802,\"areaType\":2,\"name\":\"德令哈市\",\"parentAreaId\":632800},{\"areaId\":632821,\"areaType\":2,\"name\":\"乌兰县\",\"parentAreaId\":632800},{\"areaId\":632822,\"areaType\":2,\"name\":\"都兰县\",\"parentAreaId\":632800},{\"areaId\":632823,\"areaType\":2,\"name\":\"天峻县\",\"parentAreaId\":632800},{\"areaId\":632824,\"areaType\":2,\"name\":\"冷湖行政委员会\",\"parentAreaId\":632800},{\"areaId\":632825,\"areaType\":2,\"name\":\"大柴旦行政委员会\",\"parentAreaId\":632800},{\"areaId\":632826,\"areaType\":2,\"name\":\"茫崖行政委员会\",\"parentAreaId\":632800}],\"name\":\"海西蒙古族藏族自治州\",\"parentAreaId\":630000}],\"name\":\"青海省\",\"parentAreaId\":0},{\"areaId\":640000,\"areaType\":0,\"children\":[{\"areaId\":640100,\"areaType\":1,\"children\":[{\"areaId\":640104,\"areaType\":2,\"name\":\"兴庆区\",\"parentAreaId\":640100},{\"areaId\":640105,\"areaType\":2,\"name\":\"西夏区\",\"parentAreaId\":640100},{\"areaId\":640106,\"areaType\":2,\"name\":\"金凤区\",\"parentAreaId\":640100},{\"areaId\":640121,\"areaType\":2,\"name\":\"永宁县\",\"parentAreaId\":640100},{\"areaId\":640122,\"areaType\":2,\"name\":\"贺兰县\",\"parentAreaId\":640100},{\"areaId\":640181,\"areaType\":2,\"name\":\"灵武市\",\"parentAreaId\":640100}],\"name\":\"银川市\",\"parentAreaId\":640000},{\"areaId\":640200,\"areaType\":1,\"children\":[{\"areaId\":640202,\"areaType\":2,\"name\":\"大武口区\",\"parentAreaId\":640200},{\"areaId\":640205,\"areaType\":2,\"name\":\"惠农区\",\"parentAreaId\":640200},{\"areaId\":640221,\"areaType\":2,\"name\":\"平罗县\",\"parentAreaId\":640200}],\"name\":\"石嘴山市\",\"parentAreaId\":640000},{\"areaId\":640300,\"areaType\":1,\"children\":[{\"areaId\":640302,\"areaType\":2,\"name\":\"利通区\",\"parentAreaId\":640300},{\"areaId\":640303,\"areaType\":2,\"name\":\"红寺堡区\",\"parentAreaId\":640300},{\"areaId\":640323,\"areaType\":2,\"name\":\"盐池县\",\"parentAreaId\":640300},{\"areaId\":640324,\"areaType\":2,\"name\":\"同心县\",\"parentAreaId\":640300},{\"areaId\":640381,\"areaType\":2,\"name\":\"青铜峡市\",\"parentAreaId\":640300}],\"name\":\"吴忠市\",\"parentAreaId\":640000},{\"areaId\":640400,\"areaType\":1,\"children\":[{\"areaId\":640402,\"areaType\":2,\"name\":\"原州区\",\"parentAreaId\":640400},{\"areaId\":640422,\"areaType\":2,\"name\":\"西吉县\",\"parentAreaId\":640400},{\"areaId\":640423,\"areaType\":2,\"name\":\"隆德县\",\"parentAreaId\":640400},{\"areaId\":640424,\"areaType\":2,\"name\":\"泾源县\",\"parentAreaId\":640400},{\"areaId\":640425,\"areaType\":2,\"name\":\"彭阳县\",\"parentAreaId\":640400}],\"name\":\"固原市\",\"parentAreaId\":640000},{\"areaId\":640500,\"areaType\":1,\"children\":[{\"areaId\":640502,\"areaType\":2,\"name\":\"沙坡头区\",\"parentAreaId\":640500},{\"areaId\":640521,\"areaType\":2,\"name\":\"中宁县\",\"parentAreaId\":640500},{\"areaId\":640522,\"areaType\":2,\"name\":\"海原县\",\"parentAreaId\":640500}],\"name\":\"中卫市\",\"parentAreaId\":640000}],\"name\":\"宁夏回族自治区\",\"parentAreaId\":0},{\"areaId\":650000,\"areaType\":0,\"children\":[{\"areaId\":650100,\"areaType\":1,\"children\":[{\"areaId\":650102,\"areaType\":2,\"name\":\"天山区\",\"parentAreaId\":650100},{\"areaId\":650103,\"areaType\":2,\"name\":\"沙依巴克区\",\"parentAreaId\":650100},{\"areaId\":650104,\"areaType\":2,\"name\":\"新市区\",\"parentAreaId\":650100},{\"areaId\":650105,\"areaType\":2,\"name\":\"水磨沟区\",\"parentAreaId\":650100},{\"areaId\":650106,\"areaType\":2,\"name\":\"头屯河区\",\"parentAreaId\":650100},{\"areaId\":650107,\"areaType\":2,\"name\":\"达坂城区\",\"parentAreaId\":650100},{\"areaId\":650109,\"areaType\":2,\"name\":\"米东区\",\"parentAreaId\":650100},{\"areaId\":650121,\"areaType\":2,\"name\":\"乌鲁木齐县\",\"parentAreaId\":650100}],\"name\":\"乌鲁木齐市\",\"parentAreaId\":650000},{\"areaId\":650200,\"areaType\":1,\"children\":[{\"areaId\":650202,\"areaType\":2,\"name\":\"独山子区\",\"parentAreaId\":650200},{\"areaId\":650203,\"areaType\":2,\"name\":\"克拉玛依区\",\"parentAreaId\":650200},{\"areaId\":650204,\"areaType\":2,\"name\":\"白碱滩区\",\"parentAreaId\":650200},{\"areaId\":650205,\"areaType\":2,\"name\":\"乌尔禾区\",\"parentAreaId\":650200}],\"name\":\"克拉玛依市\",\"parentAreaId\":650000},{\"areaId\":650400,\"areaType\":1,\"children\":[{\"areaId\":650402,\"areaType\":2,\"name\":\"高昌区\",\"parentAreaId\":650400},{\"areaId\":650421,\"areaType\":2,\"name\":\"鄯善县\",\"parentAreaId\":650400},{\"areaId\":650422,\"areaType\":2,\"name\":\"托克逊县\",\"parentAreaId\":650400}],\"name\":\"吐鲁番市\",\"parentAreaId\":650000},{\"areaId\":650500,\"areaType\":1,\"children\":[{\"areaId\":650502,\"areaType\":2,\"name\":\"伊州区\",\"parentAreaId\":650500},{\"areaId\":650521,\"areaType\":2,\"name\":\"巴里坤哈萨克自治县\",\"parentAreaId\":650500},{\"areaId\":650522,\"areaType\":2,\"name\":\"伊吾县\",\"parentAreaId\":650500}],\"name\":\"哈密市\",\"parentAreaId\":650000},{\"areaId\":652300,\"areaType\":1,\"children\":[{\"areaId\":652301,\"areaType\":2,\"name\":\"昌吉市\",\"parentAreaId\":652300},{\"areaId\":652302,\"areaType\":2,\"name\":\"阜康市\",\"parentAreaId\":652300},{\"areaId\":652323,\"areaType\":2,\"name\":\"呼图壁县\",\"parentAreaId\":652300},{\"areaId\":652324,\"areaType\":2,\"name\":\"玛纳斯县\",\"parentAreaId\":652300},{\"areaId\":652325,\"areaType\":2,\"name\":\"奇台县\",\"parentAreaId\":652300},{\"areaId\":652327,\"areaType\":2,\"name\":\"吉木萨尔县\",\"parentAreaId\":652300},{\"areaId\":652328,\"areaType\":2,\"name\":\"木垒哈萨克自治县\",\"parentAreaId\":652300}],\"name\":\"昌吉回族自治州\",\"parentAreaId\":650000},{\"areaId\":652700,\"areaType\":1,\"children\":[{\"areaId\":652701,\"areaType\":2,\"name\":\"博乐市\",\"parentAreaId\":652700},{\"areaId\":652702,\"areaType\":2,\"name\":\"阿拉山口市\",\"parentAreaId\":652700},{\"areaId\":652722,\"areaType\":2,\"name\":\"精河县\",\"parentAreaId\":652700},{\"areaId\":652723,\"areaType\":2,\"name\":\"温泉县\",\"parentAreaId\":652700}],\"name\":\"博尔塔拉蒙古自治州\",\"parentAreaId\":650000},{\"areaId\":652800,\"areaType\":1,\"children\":[{\"areaId\":652801,\"areaType\":2,\"name\":\"库尔勒市\",\"parentAreaId\":652800},{\"areaId\":652822,\"areaType\":2,\"name\":\"轮台县\",\"parentAreaId\":652800},{\"areaId\":652823,\"areaType\":2,\"name\":\"尉犁县\",\"parentAreaId\":652800},{\"areaId\":652824,\"areaType\":2,\"name\":\"若羌县\",\"parentAreaId\":652800},{\"areaId\":652825,\"areaType\":2,\"name\":\"且末县\",\"parentAreaId\":652800},{\"areaId\":652826,\"areaType\":2,\"name\":\"焉耆回族自治县\",\"parentAreaId\":652800},{\"areaId\":652827,\"areaType\":2,\"name\":\"和静县\",\"parentAreaId\":652800},{\"areaId\":652828,\"areaType\":2,\"name\":\"和硕县\",\"parentAreaId\":652800},{\"areaId\":652829,\"areaType\":2,\"name\":\"博湖县\",\"parentAreaId\":652800}],\"name\":\"巴音郭楞蒙古自治州\",\"parentAreaId\":650000},{\"areaId\":652900,\"areaType\":1,\"children\":[{\"areaId\":652901,\"areaType\":2,\"name\":\"阿克苏市\",\"parentAreaId\":652900},{\"areaId\":652922,\"areaType\":2,\"name\":\"温宿县\",\"parentAreaId\":652900},{\"areaId\":652923,\"areaType\":2,\"name\":\"库车县\",\"parentAreaId\":652900},{\"areaId\":652924,\"areaType\":2,\"name\":\"沙雅县\",\"parentAreaId\":652900},{\"areaId\":652925,\"areaType\":2,\"name\":\"新和县\",\"parentAreaId\":652900},{\"areaId\":652926,\"areaType\":2,\"name\":\"拜城县\",\"parentAreaId\":652900},{\"areaId\":652927,\"areaType\":2,\"name\":\"乌什县\",\"parentAreaId\":652900},{\"areaId\":652928,\"areaType\":2,\"name\":\"阿瓦提县\",\"parentAreaId\":652900},{\"areaId\":652929,\"areaType\":2,\"name\":\"柯坪县\",\"parentAreaId\":652900}],\"name\":\"阿克苏地区\",\"parentAreaId\":650000},{\"areaId\":653000,\"areaType\":1,\"children\":[{\"areaId\":653001,\"areaType\":2,\"name\":\"阿图什市\",\"parentAreaId\":653000},{\"areaId\":653022,\"areaType\":2,\"name\":\"阿克陶县\",\"parentAreaId\":653000},{\"areaId\":653023,\"areaType\":2,\"name\":\"阿合奇县\",\"parentAreaId\":653000},{\"areaId\":653024,\"areaType\":2,\"name\":\"乌恰县\",\"parentAreaId\":653000}],\"name\":\"克孜勒苏柯尔克孜自治州\",\"parentAreaId\":650000},{\"areaId\":653100,\"areaType\":1,\"children\":[{\"areaId\":653101,\"areaType\":2,\"name\":\"喀什市\",\"parentAreaId\":653100},{\"areaId\":653121,\"areaType\":2,\"name\":\"疏附县\",\"parentAreaId\":653100},{\"areaId\":653122,\"areaType\":2,\"name\":\"疏勒县\",\"parentAreaId\":653100},{\"areaId\":653123,\"areaType\":2,\"name\":\"英吉沙县\",\"parentAreaId\":653100},{\"areaId\":653124,\"areaType\":2,\"name\":\"泽普县\",\"parentAreaId\":653100},{\"areaId\":653125,\"areaType\":2,\"name\":\"莎车县\",\"parentAreaId\":653100},{\"areaId\":653126,\"areaType\":2,\"name\":\"叶城县\",\"parentAreaId\":653100},{\"areaId\":653127,\"areaType\":2,\"name\":\"麦盖提县\",\"parentAreaId\":653100},{\"areaId\":653128,\"areaType\":2,\"name\":\"岳普湖县\",\"parentAreaId\":653100},{\"areaId\":653129,\"areaType\":2,\"name\":\"伽师县\",\"parentAreaId\":653100},{\"areaId\":653130,\"areaType\":2,\"name\":\"巴楚县\",\"parentAreaId\":653100},{\"areaId\":653131,\"areaType\":2,\"name\":\"塔什库尔干塔吉克自治县\",\"parentAreaId\":653100}],\"name\":\"喀什地区\",\"parentAreaId\":650000},{\"areaId\":653200,\"areaType\":1,\"children\":[{\"areaId\":653201,\"areaType\":2,\"name\":\"和田市\",\"parentAreaId\":653200},{\"areaId\":653221,\"areaType\":2,\"name\":\"和田县\",\"parentAreaId\":653200},{\"areaId\":653222,\"areaType\":2,\"name\":\"墨玉县\",\"parentAreaId\":653200},{\"areaId\":653223,\"areaType\":2,\"name\":\"皮山县\",\"parentAreaId\":653200},{\"areaId\":653224,\"areaType\":2,\"name\":\"洛浦县\",\"parentAreaId\":653200},{\"areaId\":653225,\"areaType\":2,\"name\":\"策勒县\",\"parentAreaId\":653200},{\"areaId\":653226,\"areaType\":2,\"name\":\"于田县\",\"parentAreaId\":653200},{\"areaId\":653227,\"areaType\":2,\"name\":\"民丰县\",\"parentAreaId\":653200}],\"name\":\"和田地区\",\"parentAreaId\":650000},{\"areaId\":654000,\"areaType\":1,\"children\":[{\"areaId\":654002,\"areaType\":2,\"name\":\"伊宁市\",\"parentAreaId\":654000},{\"areaId\":654003,\"areaType\":2,\"name\":\"奎屯市\",\"parentAreaId\":654000},{\"areaId\":654004,\"areaType\":2,\"name\":\"霍尔果斯市\",\"parentAreaId\":654000},{\"areaId\":654021,\"areaType\":2,\"name\":\"伊宁县\",\"parentAreaId\":654000},{\"areaId\":654022,\"areaType\":2,\"name\":\"察布查尔锡伯自治县\",\"parentAreaId\":654000},{\"areaId\":654023,\"areaType\":2,\"name\":\"霍城县\",\"parentAreaId\":654000},{\"areaId\":654024,\"areaType\":2,\"name\":\"巩留县\",\"parentAreaId\":654000},{\"areaId\":654025,\"areaType\":2,\"name\":\"新源县\",\"parentAreaId\":654000},{\"areaId\":654026,\"areaType\":2,\"name\":\"昭苏县\",\"parentAreaId\":654000},{\"areaId\":654027,\"areaType\":2,\"name\":\"特克斯县\",\"parentAreaId\":654000},{\"areaId\":654028,\"areaType\":2,\"name\":\"尼勒克县\",\"parentAreaId\":654000}],\"name\":\"伊犁哈萨克自治州\",\"parentAreaId\":650000},{\"areaId\":654200,\"areaType\":1,\"children\":[{\"areaId\":654201,\"areaType\":2,\"name\":\"塔城市\",\"parentAreaId\":654200},{\"areaId\":654202,\"areaType\":2,\"name\":\"乌苏市\",\"parentAreaId\":654200},{\"areaId\":654221,\"areaType\":2,\"name\":\"额敏县\",\"parentAreaId\":654200},{\"areaId\":654223,\"areaType\":2,\"name\":\"沙湾县\",\"parentAreaId\":654200},{\"areaId\":654224,\"areaType\":2,\"name\":\"托里县\",\"parentAreaId\":654200},{\"areaId\":654225,\"areaType\":2,\"name\":\"裕民县\",\"parentAreaId\":654200},{\"areaId\":654226,\"areaType\":2,\"name\":\"和布克赛尔蒙古自治县\",\"parentAreaId\":654200}],\"name\":\"塔城地区\",\"parentAreaId\":650000},{\"areaId\":654300,\"areaType\":1,\"children\":[{\"areaId\":654301,\"areaType\":2,\"name\":\"阿勒泰市\",\"parentAreaId\":654300},{\"areaId\":654321,\"areaType\":2,\"name\":\"布尔津县\",\"parentAreaId\":654300},{\"areaId\":654322,\"areaType\":2,\"name\":\"富蕴县\",\"parentAreaId\":654300},{\"areaId\":654323,\"areaType\":2,\"name\":\"福海县\",\"parentAreaId\":654300},{\"areaId\":654324,\"areaType\":2,\"name\":\"哈巴河县\",\"parentAreaId\":654300},{\"areaId\":654325,\"areaType\":2,\"name\":\"青河县\",\"parentAreaId\":654300},{\"areaId\":654326,\"areaType\":2,\"name\":\"吉木乃县\",\"parentAreaId\":654300}],\"name\":\"阿勒泰地区\",\"parentAreaId\":650000},{\"areaId\":659001,\"areaType\":1,\"children\":[{\"areaId\":659001001,\"areaType\":2,\"name\":\"新城街道\",\"parentAreaId\":659001},{\"areaId\":659001002,\"areaType\":2,\"name\":\"向阳街道\",\"parentAreaId\":659001},{\"areaId\":659001003,\"areaType\":2,\"name\":\"红山街道\",\"parentAreaId\":659001},{\"areaId\":659001004,\"areaType\":2,\"name\":\"老街街道\",\"parentAreaId\":659001},{\"areaId\":659001005,\"areaType\":2,\"name\":\"东城街道\",\"parentAreaId\":659001},{\"areaId\":659001100,\"areaType\":2,\"name\":\"北泉镇\",\"parentAreaId\":659001},{\"areaId\":659001200,\"areaType\":2,\"name\":\"石河子镇\",\"parentAreaId\":659001},{\"areaId\":659001500,\"areaType\":2,\"name\":\"兵团一五二团\",\"parentAreaId\":659001}],\"name\":\"石河子市\",\"parentAreaId\":650000},{\"areaId\":659002,\"areaType\":1,\"children\":[{\"areaId\":659002001,\"areaType\":2,\"name\":\"金银川路街道\",\"parentAreaId\":659002},{\"areaId\":659002002,\"areaType\":2,\"name\":\"幸福路街道\",\"parentAreaId\":659002},{\"areaId\":659002003,\"areaType\":2,\"name\":\"青松路街道\",\"parentAreaId\":659002},{\"areaId\":659002004,\"areaType\":2,\"name\":\"南口街道\",\"parentAreaId\":659002},{\"areaId\":659002200,\"areaType\":2,\"name\":\"托喀依乡\",\"parentAreaId\":659002},{\"areaId\":659002500,\"areaType\":2,\"name\":\"兵团七团\",\"parentAreaId\":659002},{\"areaId\":659002501,\"areaType\":2,\"name\":\"兵团八团\",\"parentAreaId\":659002},{\"areaId\":659002503,\"areaType\":2,\"name\":\"兵团十团\",\"parentAreaId\":659002},{\"areaId\":659002505,\"areaType\":2,\"name\":\"兵团十二团\",\"parentAreaId\":659002},{\"areaId\":659002507,\"areaType\":2,\"name\":\"兵团十四团\",\"parentAreaId\":659002},{\"areaId\":659002509,\"areaType\":2,\"name\":\"兵团十六团\",\"parentAreaId\":659002},{\"areaId\":659002511,\"areaType\":2,\"name\":\"兵团第一师水利水电工程处\",\"parentAreaId\":659002},{\"areaId\":659002513,\"areaType\":2,\"name\":\"阿拉尔农场\",\"parentAreaId\":659002},{\"areaId\":659002514,\"areaType\":2,\"name\":\"兵团第一师幸福农场\",\"parentAreaId\":659002},{\"areaId\":659002901,\"areaType\":2,\"name\":\"兵团二团\",\"parentAreaId\":659002},{\"areaId\":659002902,\"areaType\":2,\"name\":\"兵团农一师沙井子水利管理处\",\"parentAreaId\":659002},{\"areaId\":659002964,\"areaType\":2,\"name\":\"兵团九团\",\"parentAreaId\":659002},{\"areaId\":659002966,\"areaType\":2,\"name\":\"兵团十一团\",\"parentAreaId\":659002},{\"areaId\":659002967,\"areaType\":2,\"name\":\"兵团十三团\",\"parentAreaId\":659002},{\"areaId\":659002968,\"areaType\":2,\"name\":\"兵团十五团\",\"parentAreaId\":659002}],\"name\":\"阿拉尔市\",\"parentAreaId\":650000},{\"areaId\":659003,\"areaType\":1,\"children\":[{\"areaId\":659003001,\"areaType\":2,\"name\":\"齐干却勒街道\",\"parentAreaId\":659003},{\"areaId\":659003002,\"areaType\":2,\"name\":\"前海街道\",\"parentAreaId\":659003},{\"areaId\":659003003,\"areaType\":2,\"name\":\"永安坝街道\",\"parentAreaId\":659003},{\"areaId\":659003504,\"areaType\":2,\"name\":\"兵团四十四团\",\"parentAreaId\":659003},{\"areaId\":659003509,\"areaType\":2,\"name\":\"兵团四十九团\",\"parentAreaId\":659003},{\"areaId\":659003513,\"areaType\":2,\"name\":\"兵团五十三团\",\"parentAreaId\":659003},{\"areaId\":659003960,\"areaType\":2,\"name\":\"喀拉拜勒镇\",\"parentAreaId\":659003},{\"areaId\":659003964,\"areaType\":2,\"name\":\"兵团五十一团\",\"parentAreaId\":659003},{\"areaId\":659003965,\"areaType\":2,\"name\":\"兵团五十二团\",\"parentAreaId\":659003},{\"areaId\":659003966,\"areaType\":2,\"name\":\"兵团五十团\",\"parentAreaId\":659003}],\"name\":\"图木舒克市\",\"parentAreaId\":650000},{\"areaId\":659004,\"areaType\":1,\"children\":[{\"areaId\":659004001,\"areaType\":2,\"name\":\"军垦路街道\",\"parentAreaId\":659004},{\"areaId\":659004002,\"areaType\":2,\"name\":\"青湖路街道\",\"parentAreaId\":659004},{\"areaId\":659004003,\"areaType\":2,\"name\":\"人民路街道\",\"parentAreaId\":659004},{\"areaId\":659004500,\"areaType\":2,\"name\":\"兵团一零一团\",\"parentAreaId\":659004},{\"areaId\":659004960,\"areaType\":2,\"name\":\"蔡家湖镇\",\"parentAreaId\":659004},{\"areaId\":659004961,\"areaType\":2,\"name\":\"梧桐镇\",\"parentAreaId\":659004}],\"name\":\"五家渠市\",\"parentAreaId\":650000},{\"areaId\":659005,\"areaType\":1,\"children\":[{\"areaId\":659005502,\"areaType\":2,\"name\":\"兵团一八七团\",\"parentAreaId\":659005},{\"areaId\":659005503,\"areaType\":2,\"name\":\"兵团一八八团\",\"parentAreaId\":659005}],\"name\":\"北屯市\",\"parentAreaId\":650000},{\"areaId\":659006,\"areaType\":1,\"children\":[{\"areaId\":659006501,\"areaType\":2,\"name\":\"兵团二十九团\",\"parentAreaId\":659006},{\"areaId\":659006502,\"areaType\":2,\"name\":\"农二师三十团\",\"parentAreaId\":659006}],\"name\":\"铁门关市\",\"parentAreaId\":650000},{\"areaId\":659007,\"areaType\":1,\"children\":[{\"areaId\":659007501,\"areaType\":2,\"name\":\"兵团八十一团\",\"parentAreaId\":659007},{\"areaId\":659007502,\"areaType\":2,\"name\":\"兵团八十四团\",\"parentAreaId\":659007},{\"areaId\":659007504,\"areaType\":2,\"name\":\"兵团八十六团\",\"parentAreaId\":659007},{\"areaId\":659007505,\"areaType\":2,\"name\":\"兵团八十九团\",\"parentAreaId\":659007},{\"areaId\":659007506,\"areaType\":2,\"name\":\"兵团九十团\",\"parentAreaId\":659007}],\"name\":\"双河市\",\"parentAreaId\":650000},{\"areaId\":659008,\"areaType\":1,\"children\":[{\"areaId\":659008502,\"areaType\":2,\"name\":\"兵团六十七团\",\"parentAreaId\":659008},{\"areaId\":659008503,\"areaType\":2,\"name\":\"兵团六十八团\",\"parentAreaId\":659008},{\"areaId\":659008507,\"areaType\":2,\"name\":\"兵团六十三团\",\"parentAreaId\":659008},{\"areaId\":659008508,\"areaType\":2,\"name\":\"兵团六十四团\",\"parentAreaId\":659008},{\"areaId\":659008509,\"areaType\":2,\"name\":\"兵团六十六团\",\"parentAreaId\":659008}],\"name\":\"可克达拉市\",\"parentAreaId\":650000},{\"areaId\":659009,\"areaType\":1,\"children\":[{\"areaId\":659009400,\"areaType\":2,\"name\":\"兵团一牧场\",\"parentAreaId\":659009},{\"areaId\":659009401,\"areaType\":2,\"name\":\"兵团皮山农场\",\"parentAreaId\":659009},{\"areaId\":659009501,\"areaType\":2,\"name\":\"兵团二二四团\",\"parentAreaId\":659009}],\"name\":\"昆玉市\",\"parentAreaId\":650000}],\"name\":\"新疆维吾尔自治区\",\"parentAreaId\":0}]");
 
 /***/ }),
-/* 384 */,
-/* 385 */,
-/* 386 */,
-/* 387 */,
-/* 388 */,
-/* 389 */
-/*!********************************************************************************************!*\
-  !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-line/props.js ***!
-  \********************************************************************************************/
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */,
+/* 422 */
+/*!**********************************************************************************************!*\
+  !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-notify/props.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22168,34 +28988,50 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _default = {
   props: {
+    // 到顶部的距离
+    top: {
+      type: [String, Number],
+      default: uni.$u.props.notify.top
+    },
+    // 是否展示组件
+    // show: {
+    // 	type: Boolean,
+    // 	default: uni.$u.props.notify.show
+    // },
+    // type主题，primary，success，warning，error
+    type: {
+      type: String,
+      default: uni.$u.props.notify.type
+    },
+    // 字体颜色
     color: {
       type: String,
-      default: uni.$u.props.line.color
+      default: uni.$u.props.notify.color
     },
-    // 长度，竖向时表现为高度，横向时表现为长度，可以为百分比，带px单位的值等
-    length: {
-      type: [String, Number],
-      default: uni.$u.props.line.length
-    },
-    // 线条方向，col-竖向，row-横向
-    direction: {
+    // 背景颜色
+    bgColor: {
       type: String,
-      default: uni.$u.props.line.direction
+      default: uni.$u.props.notify.bgColor
     },
-    // 是否显示细边框
-    hairline: {
-      type: Boolean,
-      default: uni.$u.props.line.hairline
+    // 展示的文字内容
+    message: {
+      type: String,
+      default: uni.$u.props.notify.message
     },
-    // 线条与上下左右元素的间距，字符串形式，如"30px"、"20px 30px"
-    margin: {
+    // 展示时长，为0时不消失，单位ms
+    duration: {
       type: [String, Number],
-      default: uni.$u.props.line.margin
+      default: uni.$u.props.notify.duration
     },
-    // 是否虚线，true-虚线，false-实线
-    dashed: {
+    // 字体大小
+    fontSize: {
+      type: [String, Number],
+      default: uni.$u.props.notify.fontSize
+    },
+    // 是否留出顶部安全距离（状态栏高度）
+    safeAreaInsetTop: {
       type: Boolean,
-      default: uni.$u.props.line.dashed
+      default: uni.$u.props.notify.safeAreaInsetTop
     }
   }
 };
@@ -22203,14 +29039,21 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 390 */,
-/* 391 */,
-/* 392 */,
-/* 393 */,
-/* 394 */,
-/* 395 */,
-/* 396 */,
-/* 397 */
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */,
+/* 429 */,
+/* 430 */,
+/* 431 */,
+/* 432 */,
+/* 433 */,
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */
 /*!****************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-loading-icon/props.js ***!
   \****************************************************************************************************/
@@ -22287,14 +29130,79 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 398 */,
-/* 399 */,
-/* 400 */,
-/* 401 */,
-/* 402 */,
-/* 403 */,
-/* 404 */,
-/* 405 */
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */
+/*!********************************************************************************************!*\
+  !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-line/props.js ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  props: {
+    color: {
+      type: String,
+      default: uni.$u.props.line.color
+    },
+    // 长度，竖向时表现为高度，横向时表现为长度，可以为百分比，带px单位的值等
+    length: {
+      type: [String, Number],
+      default: uni.$u.props.line.length
+    },
+    // 线条方向，col-竖向，row-横向
+    direction: {
+      type: String,
+      default: uni.$u.props.line.direction
+    },
+    // 是否显示细边框
+    hairline: {
+      type: Boolean,
+      default: uni.$u.props.line.hairline
+    },
+    // 线条与上下左右元素的间距，字符串形式，如"30px"、"20px 30px"
+    margin: {
+      type: [String, Number],
+      default: uni.$u.props.line.margin
+    },
+    // 是否虚线，true-虚线，false-实线
+    dashed: {
+      type: Boolean,
+      default: uni.$u.props.line.dashed
+    }
+  }
+};
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */
 /*!*******************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-gap/props.js ***!
   \*******************************************************************************************/
@@ -22336,14 +29244,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 406 */,
-/* 407 */,
-/* 408 */,
-/* 409 */,
-/* 410 */,
-/* 411 */,
-/* 412 */,
-/* 413 */
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-overlay/props.js ***!
   \***********************************************************************************************/
@@ -22385,14 +29293,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 414 */,
-/* 415 */,
-/* 416 */,
-/* 417 */,
-/* 418 */,
-/* 419 */,
-/* 420 */,
-/* 421 */
+/* 469 */,
+/* 470 */,
+/* 471 */,
+/* 472 */,
+/* 473 */,
+/* 474 */,
+/* 475 */,
+/* 476 */
 /*!**************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-status-bar/props.js ***!
   \**************************************************************************************************/
@@ -22418,14 +29326,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 422 */,
-/* 423 */,
-/* 424 */,
-/* 425 */,
-/* 426 */,
-/* 427 */,
-/* 428 */,
-/* 429 */
+/* 477 */,
+/* 478 */,
+/* 479 */,
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */
 /*!***************************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-safe-bottom/props.js ***!
   \***************************************************************************************************/
@@ -22445,21 +29353,21 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 430 */,
-/* 431 */,
-/* 432 */,
-/* 433 */,
-/* 434 */,
-/* 435 */,
-/* 436 */,
-/* 437 */,
-/* 438 */,
-/* 439 */,
-/* 440 */,
-/* 441 */,
-/* 442 */,
-/* 443 */,
-/* 444 */
+/* 485 */,
+/* 486 */,
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */,
+/* 494 */,
+/* 495 */,
+/* 496 */,
+/* 497 */,
+/* 498 */,
+/* 499 */
 /*!**********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-picker/props.js ***!
   \**********************************************************************************************/
@@ -22556,14 +29464,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 445 */,
-/* 446 */,
-/* 447 */,
-/* 448 */,
-/* 449 */,
-/* 450 */,
-/* 451 */,
-/* 452 */
+/* 500 */,
+/* 501 */,
+/* 502 */,
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */,
+/* 507 */
 /*!***********************************************************************************************!*\
   !*** D:/webProject/mallproject/xiaofanshu/uni_modules/uview-ui/components/u-toolbar/props.js ***!
   \***********************************************************************************************/
@@ -22613,106 +29521,6 @@ var _default = {
 };
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 453 */,
-/* 454 */,
-/* 455 */,
-/* 456 */,
-/* 457 */,
-/* 458 */,
-/* 459 */,
-/* 460 */,
-/* 461 */,
-/* 462 */,
-/* 463 */,
-/* 464 */,
-/* 465 */,
-/* 466 */,
-/* 467 */,
-/* 468 */,
-/* 469 */,
-/* 470 */,
-/* 471 */,
-/* 472 */,
-/* 473 */,
-/* 474 */,
-/* 475 */,
-/* 476 */,
-/* 477 */,
-/* 478 */,
-/* 479 */,
-/* 480 */,
-/* 481 */,
-/* 482 */,
-/* 483 */,
-/* 484 */,
-/* 485 */,
-/* 486 */,
-/* 487 */,
-/* 488 */,
-/* 489 */
-/*!**********************************************************!*\
-  !*** D:/webProject/mallproject/xiaofanshu/utils/util.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.timestampFormat = exports.stringDateFormat = void 0;
-var timestampFormat = function timestampFormat(timespan) {
-  var dateTime = new Date(timespan); // 将传进来的字符串或者毫秒转为标准时间
-  return dateTimeFormat(dateTime);
-};
-exports.timestampFormat = timestampFormat;
-var stringDateFormat = function stringDateFormat(params) {
-  var fullDate = params.split(" ")[0].split("-");
-  var fullTime = params.split(" ")[1].split(":");
-  var dateTime = new Date(fullDate[0], fullDate[1] - 1, fullDate[2], fullTime[0] != null ? fullTime[0] : 0, fullTime[1] != null ? fullTime[1] : 0, fullTime[2] != null ? fullTime[2] : 0);
-  console.log(dateTime);
-  return dateTimeFormat(dateTime);
-};
-exports.stringDateFormat = stringDateFormat;
-function dateTimeFormat(dateTime) {
-  var year = dateTime.getFullYear();
-  var month = padZero(dateTime.getMonth() + 1); // 补零
-  var day = padZero(dateTime.getDate()); // 补零
-  var hour = padZero(dateTime.getHours()); // 补零
-  var minute = padZero(dateTime.getMinutes()); // 补零
-  var millisecond = dateTime.getTime(); // 将当前编辑的时间转换为毫秒
-  var now = new Date(); // 获取本机当前的时间
-  var nowNew = now.getTime(); // 将本机的时间转换为毫秒
-  var milliseconds = 0;
-  var timeSpanStr;
-  milliseconds = nowNew - millisecond;
-  if (milliseconds <= 1000 * 60 * 1) {
-    // 小于一分钟展示为刚刚
-    timeSpanStr = '刚刚';
-  } else if (1000 * 60 * 1 < milliseconds && milliseconds <= 1000 * 60 * 60) {
-    // 大于一分钟小于一小时展示为分钟
-    timeSpanStr = Math.round(milliseconds / (1000 * 60)) + '分钟前';
-  } else if (1000 * 60 * 60 * 1 < milliseconds && milliseconds <= 1000 * 60 * 60 * 24) {
-    // 大于一小时小于一天展示为小时
-    timeSpanStr = Math.round(milliseconds / (1000 * 60 * 60)) + '小时前';
-  } else if (1000 * 60 * 60 * 24 < milliseconds && milliseconds <= 1000 * 60 * 60 * 24 * 15) {
-    // 大于一天小于十五天展示位天
-    timeSpanStr = Math.round(milliseconds / (1000 * 60 * 60 * 24)) + '天前';
-  } else if (milliseconds > 1000 * 60 * 60 * 24 * 15 && year === now.getFullYear()) {
-    timeSpanStr = month + '-' + day + ' ' + hour + ':' + minute;
-  } else {
-    timeSpanStr = year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
-  }
-  return timeSpanStr;
-  // 补零函数
-  function padZero(number) {
-    return number < 10 ? '0' + number : number;
-  }
-}
 
 /***/ })
 ]]);

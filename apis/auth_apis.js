@@ -35,3 +35,10 @@ export const register=(params={})=>{
 		data:params.registerVo
 	})
 }
+
+export const getTrtcUserSig = (params = {}) => {
+	return $request({
+		url: '/auth/getTrtcUserSig?userId=' + params.userId,
+		method: 'POST'
+	})
+}

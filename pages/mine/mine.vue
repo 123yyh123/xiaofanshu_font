@@ -5,55 +5,55 @@
 			<scroll-view scroll-y="true" :style="{height: screenHeight*2+'px'}" style="font-size: 28rpx;">
 				<view style="height: 150rpx;"></view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/添加好友.png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%B7%BB%E5%8A%A0%E5%A5%BD%E5%8F%8B.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">发现好友</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/创作中心 (1).png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/creationCenter.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">创作中心</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/活动中心 (1).png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%B4%BB%E5%8A%A8%E4%B8%AD%E5%BF%83%20%281%29.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">活动中心</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/我的草稿.png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%88%91%E7%9A%84%E8%8D%89%E7%A8%BF.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">我的草稿</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/浏览记录.png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%B5%8F%E8%A7%88%E8%AE%B0%E5%BD%95.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">浏览记录</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/钱包.png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E9%92%B1%E5%8C%85.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">钱包</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/免流量畅听_52.png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%85%8D%E6%B5%81%E9%87%8F%E7%95%85%E5%90%AC_52.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">免流量</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/礼物 活动.png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E7%A4%BC%E7%89%A9%20%E6%B4%BB%E5%8A%A8.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">好物体验</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/订单 (1).png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%AE%A2%E5%8D%95%20%281%29.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">订单</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/购物车.png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%B4%AD%E7%89%A9%E8%BD%A6.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">购物车</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/卡券.png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8D%A1%E5%88%B8.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">卡券</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/心愿单.png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%BF%83%E6%84%BF%E5%8D%95.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">心愿单</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="../../static/image/小草.png"></image>
+					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%B0%8F%E8%8D%89.png"></image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">社区公约</view>
 				</view>
 				<view style="height: 200rpx;"></view>
@@ -63,21 +63,21 @@
 				<view style="text-align: -webkit-center">
 					<view
 						style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;">
-						<image style="height: 40rpx;" mode="heightFix" src="../../static/image/设置 (1).png"></image>
+						<image style="height: 40rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%AE%BE%E7%BD%AE%20%281%29.png"></image>
 					</view>
 					<view style="text-align: center;margin-top: 5rpx;">设置</view>
 				</view>
 				<view style="text-align: -webkit-center">
 					<view
 						style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;text-align: -webkit-center;">
-						<image style="height: 40rpx;" mode="heightFix" src="../../static/image/客服.png"></image>
+						<image style="height: 40rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%AE%A2%E6%9C%8D.png"></image>
 					</view>
 					<view style="text-align: center;margin-top: 5rpx;">帮助与反馈</view>
 				</view>
 				<view style="text-align: -webkit-center">
 					<view
 						style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;text-align: -webkit-center;">
-						<image style="height: 40rpx;" mode="heightFix" src="../../static/image/扫一扫.png"></image>
+						<image style="height: 40rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%89%AB%E4%B8%80%E6%89%AB.png"></image>
 					</view>
 					<view style="text-align: center;margin-top: 5rpx;">扫一扫</view>
 				</view>
@@ -109,10 +109,10 @@
 				:style="{height: navigationBarHeight,top:statusBarHeight+'px',backgroundColor: 'rgba(128,128,128,'+ opacity+')'}">
 				<view :style="{height: iconHeight}" style="position: absolute;left: 40rpx;opacity: 1;"
 					@click="openMore">
-					<image :style="{height: iconHeight}" src="../../static/image/更多.png" mode="heightFix"></image>
+					<image :style="{height: iconHeight}" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%9B%B4%E5%A4%9A.png" mode="heightFix"></image>
 				</view>
 				<view :style="{height: iconHeight}" style="position: absolute;right: 40rpx;opacity: 1;">
-					<image :style="{height: iconHeight}" src="../../static/image/分享.png" mode="heightFix"></image>
+					<image :style="{height: iconHeight}" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%88%86%E4%BA%AB.png" mode="heightFix"></image>
 				</view>
 				<view :style="{height: iconHeight}" style="opacity: 1;">
 					<u-transition :show="show" mode="fade-up">
@@ -172,7 +172,7 @@
 					<view style="width: 50%;display: flex;align-items: flex-end;justify-content: space-around;">
 						<view class="tag1" @click="editData">编辑资料</view>
 						<view class="tag1" style="width: 40px;display: flex;">
-							<image src="../../static/image/设置.png" mode="heightFix"></image>
+							<image src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%AE%BE%E7%BD%AE.png" mode="heightFix"></image>
 						</view>
 					</view>
 				</view>

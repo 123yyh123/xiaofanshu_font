@@ -20,7 +20,7 @@
   "compileType": "miniprogram",
   "libVersion": "3.2.4",
   "appid": "touristappid",
-  "projectname": "xiaofanshu",
+  "projectname": "com.xiaofanshu",
   "condition": {},
   "editorSetting": {
     "tabIndent": "auto",
