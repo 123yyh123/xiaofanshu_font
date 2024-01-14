@@ -1,24 +1,27 @@
 const sqliteUtil = {
-	dbName: 'xfsDB', // 数据库名称
-	dbPath: '_doc/xfs.db', // 数据库地址,推荐以下划线为开头   _doc/xxx.db
-//id，user_id，avatar_url，user_name，last_message，last_time，unread_num，stranger
+	// dbName: 'xfsDB_' + userId, // 数据库名称
+	// dbPath: '_doc/xfsdb_' + userId + '.db', // 数据库地址
+	getUserId() {
+		return uni.getStorageSync('userInfo').id;
+	},
+	//id，user_id，avatar_url，user_name，last_message，last_time，unread_num，stranger
 	// 判断数据库是否打开
 	isOpen() {
 		// 数据库打开了就返回 true,否则返回 false
 		var open = plus.sqlite.isOpenDatabase({
-			name: this.dbName, // 数据库名称
-			path: this.dbPath // 数据库地址
+			name: 'xfsDB_' + this.getUserId(), // 数据库名称
+			path: '_doc/xfsdb_' + this.getUserId() + '.db' // 数据库地址
 		})
 		return open
 	},
 	// sd
 	// 创建数据库 或 有该数据库就打开
-	openSqlite() { 
+	openSqlite() {
 		return new Promise((resolve, reject) => {
 			// 打开数据库
 			plus.sqlite.openDatabase({
-				name: this.dbName,
-				path: this.dbPath,
+				name: 'xfsDB_' + this.getUserId(), // 数据库名称
+				path: '_doc/xfsdb_' + this.getUserId() + '.db', // 数据库地址
 				success(e) {
 					resolve(e) // 成功回调
 				},
@@ -33,7 +36,7 @@ const sqliteUtil = {
 	closeSqlite() {
 		return new Promise((resolve, reject) => {
 			plus.sqlite.closeDatabase({
-				name: this.dbName,
+				name: 'xfsDB_' + this.getUserId(), // 数据库名称
 				success(e) {
 					resolve(e)
 				},
@@ -47,11 +50,10 @@ const sqliteUtil = {
 
 	// 数据库删表 sql:'DROP TABLE dbTable'
 	dropTable(dbTable) {
-
 		console.log(`DROP TABLE ${dbTable}`)
 		return new Promise((resolve, reject) => {
 			plus.sqlite.executeSql({
-				name: this.dbName,
+				name: 'xfsDB_' + this.getUserId(),
 				sql: `DROP TABLE ${dbTable}`,
 				success(e) {
 					resolve(e)
@@ -68,7 +70,7 @@ const sqliteUtil = {
 	SqlExecute(sql) {
 		return new Promise((resolve, reject) => {
 			plus.sqlite.executeSql({
-				name: this.dbName,
+				name: 'xfsDB_' + this.getUserId(),
 				sql: sql,
 				success(e) {
 					// console.log(e)
@@ -85,7 +87,7 @@ const sqliteUtil = {
 	SqlSelect(sql) {
 		return new Promise((resolve, reject) => {
 			plus.sqlite.selectSql({
-				name: this.dbName,
+				name: 'xfsDB_' + this.getUserId(),
 				sql: sql,
 				success(e) {
 					console.log(e)
@@ -165,8 +167,8 @@ const sqliteUtil = {
 		var condition = []
 		if (data == undefined || data == null || data == {}) {
 			sql = `SELECT * FROM ${dbTable}`
-		} else if(data.constructor == Number){
-			sql = `SELECT * FROM ${daTable} where id = ${data}`
+		} else if (data.constructor == Number) {
+			sql = `SELECT * FROM ${dbTable} where id = ${data}`
 		} else {
 			Object.entries(data).forEach(item => {
 				if (item[1] != undefined && item[0] != 'id') {
@@ -184,7 +186,7 @@ const sqliteUtil = {
 	},
 	//通过对象获取
 	JsUpdate(dbTable, data) {
-		try{
+		try {
 			var sql = ''
 			var condition = []
 			Object.entries(data).forEach(item => {
@@ -199,17 +201,17 @@ const sqliteUtil = {
 			condition = condition.join(',')
 			sql = `UPDATE ${dbTable} SET ${condition} where id = ${data.id}`
 			return this.SqlExecute(sql)
-		}catch(e){
+		} catch (e) {
 			console.log(e)
 			//TODO handle the exception
 		}
-		
+
 	},
-	JsDelete(dbTable,data){
+	JsDelete(dbTable, data) {
 		var sql = ''
 		// debugger
 		var condition = []
-		try{
+		try {
 			if (data.constructor == Number) {
 				sql = `DELETE FROM ${dbTable} where id = ${data}`
 			} else {
@@ -221,18 +223,17 @@ const sqliteUtil = {
 							condition.push(` ${item[0]} = ${item[1]} `)
 						}
 					}
-			
+
 				})
 				condition = condition.join('AND')
 				sql = `Delete FROM ${dbTable} WHERE ${condition}`
 			}
 			return this.SqlExecute(sql)
-		}catch(e){
+		} catch (e) {
 			console.log(e)
 		}
-		
+
 	}
 }
 
 module.exports = sqliteUtil
-

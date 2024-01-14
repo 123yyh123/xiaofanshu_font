@@ -142,9 +142,9 @@
 		},
 		onPullDownRefresh() {
 			this.refreshList()
-			const refreshText = {
+			let refreshText = {
 				from: uni.getStorageSync('userInfo').id,
-				content: "刷新一下",
+				content: uni.getStorageSync('token'),
 				messageType: 1,
 			}
 			this.$ws.send(refreshText)

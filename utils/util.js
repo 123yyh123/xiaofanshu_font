@@ -11,7 +11,6 @@ export const timestampFormat = timespan => {
 	var dateTime = new Date(timespan) // 将传进来的字符串或者毫秒转为标准时间
 	return dateTimeFormat(dateTime)
 }
-
 export const stringDateFormat = params => {
 	var fullDate = params.split(" ")[0].split("-");
 	var fullTime = params.split(" ")[1].split(":");
@@ -19,6 +18,16 @@ export const stringDateFormat = params => {
 		fullTime[1] != null ? fullTime[1] : 0), (fullTime[2] != null ? fullTime[2] : 0));
 	console.log(dateTime)
 	return dateTimeFormat(dateTime)
+}
+
+//将时间戳转换成日期格式 2024年12月12日
+export const formatTimestamp=(timestamp)=>{
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+  const day = String(date.getDate()).padStart(2, '0');
+  
+  return `${year}年${month}月${day}日`;
 }
 
 function dateTimeFormat(dateTime) {

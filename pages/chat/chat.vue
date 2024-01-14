@@ -27,36 +27,7 @@
 						style="text-align: center;margin: 15rpx;font-size: 25rpx;color: #95949a;">
 						{{item.time}}
 					</view>
-					<view v-if="item.fromId===targetUser.userId"
-						style="display: flex;padding: 20rpx;justify-content: flex-start;">
-						<view style="margin-left: 15rpx;">
-							<image mode="aspectFill" style="height: 80rpx;width: 80rpx;border-radius: 50%;"
-								:src="targetUser.avatarUrl">
-							</image>
-						</view>
-						<!-- 文本消息 -->
-						<view v-if="item.chatType===1"
-							style="padding:15rpx;display: flex;margin-left: 15rpx;margin-right:110rpx;background-color: #ffffff;border-radius: 30rpx;">
-							<rich-text
-								style="margin-right: auto;max-width: 460rpx;color: #2b2b2b;word-wrap: break-word;word-break: break-all;"
-								:nodes="item.content"></rich-text>
-						</view>
-						<!-- 图片消息 -->
-						<view v-else-if="item.chatType===2" style="padding: 15rpx;margin-left: 15rpx;">
-							<rich-text @click="preImage" :nodes="item.content" :data-node="item.content"></rich-text>
-						</view>
-						<!-- 语音消息 -->
-						<view v-else-if="item.chatType===4" :style="{width: handleVoiceWidth(item.audioTime)}"
-							@tap="playAudio(item)"
-							style="padding:15rpx;display: flex;margin-left: 15rpx;margin-right:110rpx;background-color: #ffffff;border-radius: 30rpx;">
-							<view style="display: flex;align-items: center;">
-								<a-trumpet :isPlay="currentPlay===item.id" direction="right" color="#2b2b2b"
-									:size="30"></a-trumpet>
-								<view>{{item.audioTime}}"</view>
-							</view>
-						</view>
-					</view>
-					<view v-else
+					<view v-if="item.fromId===userInfo.userId"
 						style="display: flex;padding: 20rpx;justify-content: flex-end;align-items: flex-start;">
 						<view style="margin-right: 20rpx;">
 							<u-icon v-if="item.isSend===2" name="error-circle-fill" color="#E43D30" size="20"></u-icon>
@@ -84,6 +55,35 @@
 							<image mode="aspectFill" style="height: 80rpx;width: 80rpx;border-radius: 50%;"
 								:src="userInfo.avatarUrl">
 							</image>
+						</view>
+					</view>
+					<view v-else
+						style="display: flex;padding: 20rpx;justify-content: flex-start;">
+						<view style="margin-left: 15rpx;">
+							<image mode="aspectFill" style="height: 80rpx;width: 80rpx;border-radius: 50%;"
+								:src="targetUser.avatarUrl">
+							</image>
+						</view>
+						<!-- 文本消息 -->
+						<view v-if="item.chatType===1"
+							style="padding:15rpx;display: flex;margin-left: 15rpx;margin-right:110rpx;background-color: #ffffff;border-radius: 30rpx;">
+							<rich-text
+								style="margin-right: auto;max-width: 460rpx;color: #2b2b2b;word-wrap: break-word;word-break: break-all;"
+								:nodes="item.content"></rich-text>
+						</view>
+						<!-- 图片消息 -->
+						<view v-else-if="item.chatType===2" style="padding: 15rpx;margin-left: 15rpx;">
+							<rich-text @click="preImage" :nodes="item.content" :data-node="item.content"></rich-text>
+						</view>
+						<!-- 语音消息 -->
+						<view v-else-if="item.chatType===4" :style="{width: handleVoiceWidth(item.audioTime)}"
+							@tap="playAudio(item)"
+							style="padding:15rpx;display: flex;margin-left: 15rpx;margin-right:110rpx;background-color: #ffffff;border-radius: 30rpx;">
+							<view style="display: flex;align-items: center;">
+								<a-trumpet :isPlay="currentPlay===item.id" direction="right" color="#2b2b2b"
+									:size="30"></a-trumpet>
+								<view>{{item.audioTime}}"</view>
+							</view>
 						</view>
 					</view>
 				</view>
@@ -152,10 +152,7 @@
 			</scroll-view>
 		</view>
 		<u-action-sheet :actions="phoneTypeList" :closeOnClickOverlay="true" :closeOnClickAction="true"
-			:show="showChoosePhoneType" @select="telPhone" @close="showChoosePhoneType = false"></u-action-sheet>
-		<view style="padding: 20rpx;">
-			<view style="text-align: center;">选择通话类型</view>
-		</view>
+			:show="showChoosePhoneType" @select="telPhone" @close="showChoosePhoneType = false" title="选择通话类型" round="15"></u-action-sheet>
 		<view v-if="showMore" :style="{height: keyboardHeight+'px'}" style="background-color: #f5f5f5;color: #2b2b2b;">
 			<view
 				style="display: grid;text-align: center;;grid-template-columns: repeat(4,1fr);padding: 20rpx;gap: 20rpx;row-gap: 50rpx;">
@@ -869,6 +866,10 @@
 			})
 		},
 		onBackPress() {
+			if(this.showChoosePhoneType){
+				this.showChoosePhoneType = false
+				return true
+			}
 			if (this.showRecordPop) {
 				this.closeRecordPop()
 				return true

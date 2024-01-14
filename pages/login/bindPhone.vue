@@ -41,6 +41,19 @@
 			console.log(this.type)
 		},
 		methods: {
+			// 插入表情
+			async insertEmoji(item) {
+				let sql1 = `SELECT * FROM emoji_list WHERE name='${item.name}'`
+				this.$sqliteUtil.SqlSelect(sql1).then(res => {
+					if (res.length == 0) {
+						saveFile(item.url).then(res => {
+							let sql2 =
+								`INSERT INTO emoji_list (url,name) VALUES ("${res}","${item.name}")`
+							this.$sqliteUtil.SqlExecute(sql2)
+						})
+					}
+				})
+			},
 			getVerCode() {
 				//判断是否输入手机号，手机号是否规范
 				const reg = /^1[3456789]\d{9}$/;
@@ -128,12 +141,39 @@
 							duration: 1000,
 							title: '绑定成功'
 						});
-						uni.setStorageSync('token', res.msg)
+						uni.setStorageSync('token', res.data.token)
 						uni.setStorageSync('userInfo', res.data)
+						this.$sqliteUtil.openSqlite().then(res => {
+							this.$sqliteUtil.SqlExecute(`CREATE TABLE IF NOT EXISTS message_list (
+								"id"
+								INTEGER PRIMARY KEY AUTOINCREMENT,
+								user_id TEXT UNIQUE,
+								avatar_url TEXT,
+								user_name TEXT,
+								last_message TEXT,
+								last_time INTEGER,
+								unread_num INTEGER,
+								stranger BOOLEAN
+							);`)
+							console.log(res)
+							// this.$sqliteUtil.SqlExecute(`ALTER TABLE chat_1735294666611408897 ADD COLUMN audio_time INTEGER;`)
+							// 创建一个存储表情的表
+							this.$sqliteUtil.SqlExecute(`CREATE TABLE IF NOT EXISTS emoji_list (
+								"id"k
+								INTEGER PRIMARY KEY AUTOINCREMENT,
+								url TEXT UNIQUE,
+								name TEXT UNIQUE
+							);`).then(res => {
+								// 判断表情是否存在，不存在则插入，异步方法
+								emojiList.forEach((res, index) => {
+									this.insertEmoji(res)
+								})
+							})
+						})
 						getTrtcUserSig({
 							userId: res.data.userId
 						}).then(res => {
-							let s={
+							let s = {
 								userID: res.data.userId,
 								userSig: res.data.userSig,
 								SDKAppID: Number(res.data.sdkAppId),
@@ -141,6 +181,7 @@
 							uni.$TUICallKit.login(s, (res) => {
 								if (res.code === 0) {
 									console.log('login success');
+									uni.$TUICallKit.enableFloatWindow(true);
 									uni.$TUICallKit.setSelfInfo({
 										avatar: uni.getStorageSync('userInfo').avatarUrl,
 										nickName: uni.getStorageSync('userInfo').nickname

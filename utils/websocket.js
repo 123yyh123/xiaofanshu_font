@@ -8,19 +8,18 @@ import sqliteUtil from '../utils/sqliteUtil.js'
 import {
 	imageUrlToBase64,
 	replaceImageMessage,
-	replaceImageTags
+	replaceImageTags,
+	formatTimestamp
 } from '../utils/util.js';
+import {
+	createAlarm
+} from "@/utils/nativeMsg.js";
 //是否已经连接上ws
 let isOpenSocket = false
 //心跳间隔，单位毫秒
-let heartBeatDelay = 3000
+let heartBeatDelay = 8000
 let heartBeatInterval = null
-//心跳时发送的消息文本
-let heartBeatText = {
-	from: uni.getStorageSync('userInfo').id,
-	content: "ping",
-	messageType: 1,
-}
+
 //最大重连次数
 let reconnectTimes = 10
 let reconnectInterval = null
@@ -81,7 +80,7 @@ function init() {
 					console.log(res)
 					imageUrlToBase64(message.fromAvatar).then(img => {
 						let con = replaceImageTags(message.content)
-						if(message.chatType===4){
+						if (message.chatType === 4) {
 							con = '[语音]'
 						}
 						if (res.length > 0) {
@@ -124,6 +123,20 @@ function init() {
 						})
 					})
 				})
+				let alarmId = Date.now()
+				let msg = {
+					alarmId: alarmId,
+					warningTypeStr: message.fromName,
+					projectName: formatTimestamp(message.time),
+					description: message.content,
+				};
+				createAlarm(msg, res => {
+					if (res.type === 'click') {
+						uni.navigateTo({
+							url: `/pages/chat/chat?friendId=${message.from}&friendName=${message.fromName}&friendAvatar=${message.fromAvatar}`
+						})
+					}
+				})
 			}
 		}
 		// 服务器应答
@@ -148,6 +161,24 @@ function init() {
 				})
 			}
 		}
+		// 鉴权失败
+		if (message.messageType === 6) {
+			console.log('鉴权失败')
+			uni.showToast({
+				title: message.content == null ? '登录状态失效，请重新登录' : message.content,
+				icon: 'none',
+				duration: 1000,
+				mask: true
+			})
+			uni.removeStorageSync('userInfo')
+			uni.removeStorageSync('token')
+			completeClose()
+			setTimeout(() => {
+				uni.reLaunch({
+					url: '/pages/login/login'
+				})
+			}, 1000)
+		}
 	})
 	socketTask.onClose(() => {
 		isOpenSocket = false;
@@ -162,6 +193,11 @@ function init() {
 
 function heartBeat() {
 	heartBeatInterval = setInterval(() => {
+		let heartBeatText = {
+			from: uni.getStorageSync('userInfo').id,
+			content: uni.getStorageSync('token'),
+			messageType: 1,
+		}
 		send(heartBeatText);
 	}, heartBeatDelay)
 }
@@ -203,7 +239,7 @@ function send(value) {
 		// 观察10次，如果10次都没有连接成功，则不再发送消息
 		let count = 0;
 		// 每1秒观察一次是否连接成功，连接成功后发送消息
-		let interval = setInterval(() => {	
+		let interval = setInterval(() => {
 			if (count >= 10) {
 				clearInterval(interval)
 				return false;

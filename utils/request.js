@@ -20,13 +20,29 @@ export const $request = (params = {}) => {
 			method: params.method,
 			header: header,
 			data: params.data,
-			success:(res) =>{
+			success:(res) =>{     
 				if(res.data.code===40310||res.data.code===40320||res.data.code===40330){
 					uni.hideLoading();
 					ws.completeClose()
 					uni.showToast({
 						icon: "none",
 						title: "用户未认证或登录过期,请重新登录",
+						duration:500
+					});
+					uni.removeStorageSync("userInfo")
+					uni.removeStorageSync('token')
+					setTimeout(function() {
+						uni.reLaunch({
+							url: "/pages/login/login"
+						});
+					}, 500);
+				}
+				if(res.data.code===10061){
+					uni.hideLoading();
+					ws.completeClose()
+					uni.showToast({
+						icon: "none",
+						title: "用户已在其他地方登录,请重新登录",
 						duration:500
 					});
 					uni.removeStorageSync("userInfo")

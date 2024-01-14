@@ -5,7 +5,9 @@
 			<scroll-view scroll-y="true" :style="{height: screenHeight*2+'px'}" style="font-size: 28rpx;">
 				<view style="height: 150rpx;"></view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%B7%BB%E5%8A%A0%E5%A5%BD%E5%8F%8B.png"></image>
+					<image style="height: 60rpx;" mode="heightFix"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%B7%BB%E5%8A%A0%E5%A5%BD%E5%8F%8B.png">
+					</image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">发现好友</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
@@ -13,47 +15,69 @@
 					<view style="margin-left: 20rpx;line-height: 60rpx;">创作中心</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%B4%BB%E5%8A%A8%E4%B8%AD%E5%BF%83%20%281%29.png"></image>
+					<image style="height: 60rpx;" mode="heightFix"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%B4%BB%E5%8A%A8%E4%B8%AD%E5%BF%83%20%281%29.png">
+					</image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">活动中心</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%88%91%E7%9A%84%E8%8D%89%E7%A8%BF.png"></image>
+					<image style="height: 60rpx;" mode="heightFix"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%88%91%E7%9A%84%E8%8D%89%E7%A8%BF.png">
+					</image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">我的草稿</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%B5%8F%E8%A7%88%E8%AE%B0%E5%BD%95.png"></image>
+					<image style="height: 60rpx;" mode="heightFix"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%B5%8F%E8%A7%88%E8%AE%B0%E5%BD%95.png">
+					</image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">浏览记录</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E9%92%B1%E5%8C%85.png"></image>
+					<image style="height: 60rpx;" mode="heightFix"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E9%92%B1%E5%8C%85.png">
+					</image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">钱包</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%85%8D%E6%B5%81%E9%87%8F%E7%95%85%E5%90%AC_52.png"></image>
+					<image style="height: 60rpx;" mode="heightFix"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%85%8D%E6%B5%81%E9%87%8F%E7%95%85%E5%90%AC_52.png">
+					</image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">免流量</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E7%A4%BC%E7%89%A9%20%E6%B4%BB%E5%8A%A8.png"></image>
+					<image style="height: 60rpx;" mode="heightFix"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E7%A4%BC%E7%89%A9%20%E6%B4%BB%E5%8A%A8.png">
+					</image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">好物体验</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%AE%A2%E5%8D%95%20%281%29.png"></image>
+					<image style="height: 60rpx;" mode="heightFix"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%AE%A2%E5%8D%95%20%281%29.png">
+					</image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">订单</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%B4%AD%E7%89%A9%E8%BD%A6.png"></image>
+					<image style="height: 60rpx;" mode="heightFix"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%B4%AD%E7%89%A9%E8%BD%A6.png">
+					</image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">购物车</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8D%A1%E5%88%B8.png"></image>
+					<image style="height: 60rpx;" mode="heightFix"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8D%A1%E5%88%B8.png">
+					</image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">卡券</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%BF%83%E6%84%BF%E5%8D%95.png"></image>
+					<image style="height: 60rpx;" mode="heightFix"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%BF%83%E6%84%BF%E5%8D%95.png">
+					</image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">心愿单</view>
 				</view>
 				<view style="display: flex;padding: 0 60rpx 60rpx 60rpx;">
-					<image style="height: 60rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%B0%8F%E8%8D%89.png"></image>
+					<image style="height: 60rpx;" mode="heightFix"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%B0%8F%E8%8D%89.png">
+					</image>
 					<view style="margin-left: 20rpx;line-height: 60rpx;">社区公约</view>
 				</view>
 				<view style="height: 200rpx;"></view>
@@ -63,21 +87,27 @@
 				<view style="text-align: -webkit-center">
 					<view
 						style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;">
-						<image style="height: 40rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%AE%BE%E7%BD%AE%20%281%29.png"></image>
+						<image style="height: 40rpx;" mode="heightFix"
+							src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%AE%BE%E7%BD%AE%20%281%29.png">
+						</image>
 					</view>
 					<view style="text-align: center;margin-top: 5rpx;">设置</view>
 				</view>
 				<view style="text-align: -webkit-center">
 					<view
 						style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;text-align: -webkit-center;">
-						<image style="height: 40rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%AE%A2%E6%9C%8D.png"></image>
+						<image style="height: 40rpx;" mode="heightFix"
+							src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%AE%A2%E6%9C%8D.png">
+						</image>
 					</view>
 					<view style="text-align: center;margin-top: 5rpx;">帮助与反馈</view>
 				</view>
 				<view style="text-align: -webkit-center">
 					<view
 						style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;text-align: -webkit-center;">
-						<image style="height: 40rpx;" mode="heightFix" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%89%AB%E4%B8%80%E6%89%AB.png"></image>
+						<image style="height: 40rpx;" mode="heightFix"
+							src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%89%AB%E4%B8%80%E6%89%AB.png">
+						</image>
 					</view>
 					<view style="text-align: center;margin-top: 5rpx;">扫一扫</view>
 				</view>
@@ -109,10 +139,14 @@
 				:style="{height: navigationBarHeight,top:statusBarHeight+'px',backgroundColor: 'rgba(128,128,128,'+ opacity+')'}">
 				<view :style="{height: iconHeight}" style="position: absolute;left: 40rpx;opacity: 1;"
 					@click="openMore">
-					<image :style="{height: iconHeight}" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%9B%B4%E5%A4%9A.png" mode="heightFix"></image>
+					<image :style="{height: iconHeight}"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%9B%B4%E5%A4%9A.png"
+						mode="heightFix"></image>
 				</view>
 				<view :style="{height: iconHeight}" style="position: absolute;right: 40rpx;opacity: 1;">
-					<image :style="{height: iconHeight}" src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%88%86%E4%BA%AB.png" mode="heightFix"></image>
+					<image :style="{height: iconHeight}"
+						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%88%86%E4%BA%AB.png"
+						mode="heightFix"></image>
 				</view>
 				<view :style="{height: iconHeight}" style="opacity: 1;">
 					<u-transition :show="show" mode="fade-up">
@@ -128,7 +162,7 @@
 					<view class="userinfo-main-right">
 						<text :decode="true">{{userInfo.nickname}}</text>
 						<text :decode="true">小番薯号：{{userInfo.uid}}</text>
-						<text :decode="true">IP属地：日本</text>
+						<text :decode="true">IP属地：{{userInfo.ipAddr}}</text>
 					</view>
 				</view>
 				<view class="introduction" @click="changeIntroduction">
@@ -172,7 +206,9 @@
 					<view style="width: 50%;display: flex;align-items: flex-end;justify-content: space-around;">
 						<view class="tag1" @click="editData">编辑资料</view>
 						<view class="tag1" style="width: 40px;display: flex;">
-							<image src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%AE%BE%E7%BD%AE.png" mode="heightFix"></image>
+							<image
+								src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%AE%BE%E7%BD%AE.png"
+								mode="heightFix"></image>
 						</view>
 					</view>
 				</view>
@@ -298,42 +334,42 @@
 				loadmoreText: '轻轻上拉',
 				nomoreText: '实在没有了',
 				notesList: [{
-						img: '/static/image/胡桃 原神 可爱小鬼 高清 电脑 壁纸_彼岸壁纸.png',
+						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
 						title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
 						nickname: '你好',
 						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
 						like: 8,
 						views: 10,
 					}, {
-						img: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
+						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%20%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B%20%E9%9B%A8%E5%A4%A9.png',
 						title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
 						nickname: 'dscnj',
 						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
 						like: 8,
 						views: 110,
 					}, {
-						img: '/static/image/原神 雷电将军 雨天.png',
+						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E3%80%8A%E5%8E%9F%E7%A5%9E%E3%80%8B%E6%98%8E%E9%9C%84%E7%81%AF%E6%B5%B7%20%E7%94%98%E9%9B%A8%20%E5%88%BB%E6%99%B4%20%E6%B8%B8%E6%88%8F%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
 						title: 'dncjsn生产基地那就计算机吃',
 						nickname: 'd打输出多少打输',
 						avatarUrl: '/static/image/00001.png',
 						like: 8,
 						views: 1033,
 					}, {
-						img: '/static/image/《原神》明霄灯海 甘雨 刻晴 游戏壁纸_彼岸壁纸.jpg',
+						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%20%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B%20%E9%9B%A8%E5%A4%A9.png',
 						title: '时代潮流的基底节打输出',
 						nickname: '你成绩',
 						avatarUrl: '/static/image/00001.png',
 						like: 8,
 						views: 103,
 					}, {
-						img: '/static/image/胡桃 原神 可爱小鬼 高清 电脑 壁纸_彼岸壁纸.png',
+						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E%E5%92%8C%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E5%8A%A8%E6%BC%AB%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
 						title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
 						nickname: '你好',
 						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
 						like: 8,
 						views: 10,
 					}, {
-						img: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
+						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E%E5%92%8C%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E5%8A%A8%E6%BC%AB%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
 						title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
 						nickname: 'dscnj',
 						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
@@ -341,35 +377,34 @@
 						views: 110,
 					},
 					{
-						img: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
+						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
 						title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
 						nickname: 'dscnj',
 						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
 						like: 8,
 						views: 110,
 					}, {
-						img: '/static/image/《原神》明霄灯海 甘雨 刻晴 游戏壁纸_彼岸壁纸.jpg',
+						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%83%A1%E6%A1%83%20%E5%8E%9F%E7%A5%9E%20%E5%8F%AF%E7%88%B1%E5%B0%8F%E9%AC%BC%20%E9%AB%98%E6%B8%85%20%E7%94%B5%E8%84%91%20%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
 						title: '时代潮流的基底节打输出',
 						nickname: '你成绩',
 						avatarUrl: '/static/image/00001.png',
 						like: 8,
 						views: 103,
 					}, {
-						img: '/static/image/原神 雷电将军 雨天.png',
+						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
 						title: 'dncjsn生产基地那就计算机吃',
 						nickname: 'd打输出多少打输',
 						avatarUrl: '/static/image/00001.png',
 						like: 8,
 						views: 1033,
 					}, {
-						img: '/static/image/胡桃 原神 可爱小鬼 高清 电脑 壁纸_彼岸壁纸.png',
+						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E3%80%8A%E5%8E%9F%E7%A5%9E%E3%80%8B%E6%98%8E%E9%9C%84%E7%81%AF%E6%B5%B7%20%E7%94%98%E9%9B%A8%20%E5%88%BB%E6%99%B4%20%E6%B8%B8%E6%88%8F%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
 						title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
 						nickname: '你好',
 						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
 						like: 8,
 						views: 10,
-					},
-
+					}
 				],
 				selfIntroduction: '',
 			};
@@ -569,12 +604,14 @@
 				userId: uni.getStorageSync('userInfo').id
 			}).then(res => {
 				if (res.code === 20010) {
+					console.log(res.data)
 					uni.setStorageSync('userInfo', res.data)
+					this.userInfo = res.data
 				} else {
 					uni.showToast({
-						icon: 'error',
+						icon: 'none',
 						duration: 1000,
-						title: '加载失败'
+						title: res.msg == null ? '加载失败' : res.msg
 					})
 				}
 			}).catch(err => {

@@ -52,7 +52,7 @@
 				phoneData: '', //用户/电话
 				passData: '', //密码
 				isRotate: false, //是否加载旋转
-				isFocus: true ,// 是否聚焦
+				isFocus: true, // 是否聚焦
 				userInfo: {}, //用户信息
 			};
 		},
@@ -60,9 +60,21 @@
 			wInput,
 			wButton,
 		},
-		onLoad() {
-		},
-		methods: {
+		onLoad() {},
+		methods: {		
+			// 插入表情
+			async insertEmoji(item) {
+				let sql1 = `SELECT * FROM emoji_list WHERE name='${item.name}'`
+				this.$sqliteUtil.SqlSelect(sql1).then(res => {
+					if (res.length == 0) {
+						saveFile(item.url).then(res => {
+							let sql2 =
+								`INSERT INTO emoji_list (url,name) VALUES ("${res}","${item.name}")`
+							this.$sqliteUtil.SqlExecute(sql2)
+						})
+					}
+				})
+			},
 			startLogin(e) {
 				//登录
 				if (this.isRotate) {
@@ -101,8 +113,56 @@
 					this.isRotate = true;
 					if (res.code == 20020) {
 						console.log("登录成功")
-						uni.setStorageSync('token', res.msg);
+						uni.setStorageSync('token', res.data.token);
 						uni.setStorageSync('userInfo', res.data);
+						this.$sqliteUtil.openSqlite().then(res => {
+							console.log(res)
+							this.$sqliteUtil.SqlExecute(`CREATE TABLE IF NOT EXISTS message_list (
+								"id"
+								INTEGER PRIMARY KEY AUTOINCREMENT,
+								user_id TEXT UNIQUE,
+								avatar_url TEXT,
+								user_name TEXT,
+								last_message TEXT,
+								last_time INTEGER,
+								unread_num INTEGER,
+								stranger BOOLEAN
+							);`)
+							// this.$sqliteUtil.SqlExecute(`ALTER TABLE chat_1735294666611408897 ADD COLUMN audio_time INTEGER;`)
+							// 创建一个存储表情的表
+							this.$sqliteUtil.SqlExecute(`CREATE TABLE IF NOT EXISTS emoji_list (
+								"id"
+								INTEGER PRIMARY KEY AUTOINCREMENT,
+								url TEXT UNIQUE,
+								name TEXT UNIQUE
+							);`).then(res => {
+								// 判断表情是否存在，不存在则插入，异步方法
+								emojiList.forEach((res, index) => {
+									this.insertEmoji(res)
+								})
+							})
+						})
+						getTrtcUserSig({
+							userId: res.data.id
+						}).then(res => {
+							let s = {
+								userID: res.data.userId,
+								userSig: res.data.userSig,
+								SDKAppID: Number(res.data.sdkAppId),
+							}
+							uni.$TUICallKit.login(s, (res) => {
+								if (res.code === 0) {
+									console.log('login success');
+									uni.$TUICallKit.enableFloatWindow(true);
+									uni.$TUICallKit.setSelfInfo({
+										avatar: uni.getStorageSync('userInfo').avatarUrl,
+										nickName: uni.getStorageSync('userInfo').nickname
+									});
+								} else {
+									console.log(`login failed, error message = ${res.msg}`);
+								}
+							});
+						})
 						this.$ws.init();
 						setTimeout(function() {
 							this.isRotate = false;
@@ -134,24 +194,50 @@
 				}
 				uni.login({
 					provider: typeName,
-					success:(res)=>{
+					success: (res) => {
 						otherLogin({
 							type: e,
 							code: res.authResult.openid
-						}).then(res=>{
+						}).then(res => {
 							console.log(res);
 							uni.showLoading({
 								mask: true,
 								title: '登录中...'
 							})
-							if(res.code == 20020){
-								uni.setStorageSync('token', res.msg);
+							if (res.code == 20020) {
+								uni.setStorageSync('token', res.data.token);
 								uni.setStorageSync('userInfo', res.data);
+								this.$sqliteUtil.openSqlite().then(res => {
+									console.log(res)
+									this.$sqliteUtil.SqlExecute(`CREATE TABLE IF NOT EXISTS message_list (
+										"id"
+										INTEGER PRIMARY KEY AUTOINCREMENT,
+										user_id TEXT UNIQUE,
+										avatar_url TEXT,
+										user_name TEXT,
+										last_message TEXT,
+										last_time INTEGER,
+										unread_num INTEGER,
+										stranger BOOLEAN
+									);`)
+									// 创建一个存储表情的表
+									this.$sqliteUtil.SqlExecute(`CREATE TABLE IF NOT EXISTS emoji_list (
+										"id"
+										INTEGER PRIMARY KEY AUTOINCREMENT,
+										url TEXT UNIQUE,
+										name TEXT UNIQUE
+									);`).then(res => {
+										// 判断表情是否存在，不存在则插入，异步方法
+										emojiList.forEach((res, index) => {
+											this.insertEmoji(res)
+										})
+									})
+								})
 								this.$ws.init();
 								getTrtcUserSig({
 									userId: res.data.id
-								}).then(res=>{
-									let s={
+								}).then(res => {
+									let s = {
 										userID: res.data.userId,
 										userSig: res.data.userSig,
 										SDKAppID: Number(res.data.sdkAppId),
@@ -159,12 +245,17 @@
 									uni.$TUICallKit.login(s, (res) => {
 										if (res.code === 0) {
 											console.log('login success');
+											uni.$TUICallKit.enableFloatWindow(true);
 											uni.$TUICallKit.setSelfInfo({
-												avatar: uni.getStorageSync('userInfo').avatarUrl,
-												nickName: uni.getStorageSync('userInfo').nickname
+												avatar: uni.getStorageSync(
+													'userInfo').avatarUrl,
+												nickName: uni.getStorageSync(
+													'userInfo').nickname
 											});
 										} else {
-											console.log(`login failed, error message = ${res.msg}`);
+											console.log(
+												`login failed, error message = ${res.msg}`
+												);
 										}
 									});
 									setTimeout(function() {
@@ -173,32 +264,34 @@
 									uni.reLaunch({
 										url: '/pages/index/index'
 									});
-								}).catch(err=>{
+								}).catch(err => {
 									console.log(err);
 								})
-							}else{
-							uni.getUserInfo({
-								provider: typeName,
-								success:(infoRes)=>{
-									console.log(infoRes);
-									uni.hideLoading();
-									this.userInfo = infoRes.userInfo;
-									uni.navigateTo({
-										url: '/pages/login/bindPhone?data=' + JSON.stringify(this.userInfo) + '&type=' + e
-									})
-								},
-								fail:(err)=>{
-									uni.hideLoading();
-									uni.showToast({
-										title: '授权失败',
-										icon: 'error',
-										mask: true,
-										duration: 1000
-									});
-								}
-							});
+							} else {
+								uni.getUserInfo({
+									provider: typeName,
+									success: (infoRes) => {
+										console.log(infoRes);
+										uni.hideLoading();
+										this.userInfo = infoRes.userInfo;
+										uni.navigateTo({
+											url: '/pages/login/bindPhone?data=' +
+												JSON.stringify(this.userInfo) +
+												'&type=' + e
+										})
+									},
+									fail: (err) => {
+										uni.hideLoading();
+										uni.showToast({
+											title: '授权失败',
+											icon: 'error',
+											mask: true,
+											duration: 1000
+										});
+									}
+								});
 							}
-						}).catch(err=>{
+						}).catch(err => {
 							console.log(err);
 							uni.hideLoading();
 							uni.showToast({
@@ -209,7 +302,7 @@
 							});
 						})
 					},
-					fail:(err)=>{
+					fail: (err) => {
 						uni.showToast({
 							title: '登录失败',
 							icon: 'error',

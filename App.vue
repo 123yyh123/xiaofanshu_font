@@ -23,12 +23,10 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
-			TUICallKit.enableFloatWindow(true);
 			uni.$TUICallKit = TUICallKit;
 			uni.$TUICallingEvent = TUICallingEvent;
 			uni.$TUICallEngine = TUICallEngine;
 			this.$sqliteUtil.openSqlite().then(res => {
-				console.log(res)
 				this.$sqliteUtil.SqlExecute(`CREATE TABLE IF NOT EXISTS message_list (
 					"id"
 					INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -40,6 +38,7 @@
 					unread_num INTEGER,
 					stranger BOOLEAN
 				);`)
+				console.log(res)
 				// this.$sqliteUtil.SqlExecute(`ALTER TABLE chat_1735294666611408897 ADD COLUMN audio_time INTEGER;`)
 				// 创建一个存储表情的表
 				this.$sqliteUtil.SqlExecute(`CREATE TABLE IF NOT EXISTS emoji_list (
@@ -73,8 +72,7 @@
 							getTrtcUserSig({
 								userId: res.data.id
 							}).then(res => {
-								console.log(res.data)
-								let s={
+								let s = {
 									userID: res.data.userId,
 									userSig: res.data.userSig,
 									SDKAppID: Number(res.data.sdkAppId),
@@ -84,8 +82,9 @@
 									console.log(res)
 									if (res.code === 0) {
 										console.log('login success');
+										uni.$TUICallKit.enableFloatWindow(true);
 										uni.$TUICallKit.setSelfInfo({
-											avatar: uni.getStorageSync( 
+											avatar: uni.getStorageSync(
 												'userInfo').avatarUrl,
 											nickName: uni.getStorageSync(
 												'userInfo').nickname

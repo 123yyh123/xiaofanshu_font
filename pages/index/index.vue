@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<u-action-sheet :actions="list" :title="title" :show="show"></u-action-sheet>
+		<view style="height: 300px;"></view>
 		<u-button @click="toComment(1)">打开ActionSheet</u-button>
 		<image src="https://gitee.com/yyh12345678/image/raw/master/image/不高兴.gif" style="width: 120px;height: 120px;"
 			mode="aspectFill"></image>
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+	import { createAlarm } from "@/utils/nativeMsg.js";
 	export default {
 		data() {
 			return {
@@ -32,10 +34,15 @@
 		},
 		methods: {
 			toComment(index) {
-				uni.vibrateLong({
-					success: function () {
-						console.log('success');
-					}
+				let alarmId = Date.now()
+				let msg = {
+					alarmId: alarmId,
+					warningTypeStr: "告警消息",
+					projectName: "2023年5月17日",
+					description: "十万火急，赶紧处理！！！"
+				};
+				createAlarm(msg,res=>{
+					console.log(res)
 				})
 			}
 		}
