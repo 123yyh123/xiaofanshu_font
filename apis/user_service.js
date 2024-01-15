@@ -69,3 +69,30 @@ export const updateArea=(params={})=>{
 		data:params.userVO
 	})
 }
+
+export const getAttentionList=(params={})=>{
+	return $request({
+		url:'/user/relation/attentionList?userId='+params.userId+'&pageNum='+params.pageNum+'&pageSize='+params.pageSize,
+		method:'GET'
+	})
+}
+export const getFansList=(params={})=>{
+	return $request({
+		url:'/user/relation/fansList?userId='+params.userId+'&pageNum='+params.pageNum+'&pageSize='+params.pageSize,
+		method:'GET'
+	})
+}
+
+export const updateAttention=(params={})=>{
+	return $request({
+		url:'/user/relation/attention?userId='+params.userId+'&targetUserId='+params.targetUserId,
+		method:'POST'
+	})
+}
+
+export const updateRemarkName=(params={})=>{
+	return $request({
+		url:'/user/relation/updateRemarkName?userId='+params.userId+'&targetUserId='+params.targetUserId+'&remarkName='+params.remarkName,
+		method:'POST'
+	})
+}

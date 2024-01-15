@@ -76,6 +76,21 @@
 			{
 				"navigationBarTitleText" : "swiper-sticky"
 			}
+		},
+		{
+			"path": "pages/attentionAndFans/attentionAndFans",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/attentionAndFans/attentionAndFans",
+			"style" : 
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"tabBar": {

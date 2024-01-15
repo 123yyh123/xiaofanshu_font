@@ -20,7 +20,11 @@
         "modules" : {
             "OAuth" : {},
             "SQLite" : {},
-            "Camera" : {}
+            "Camera" : {},
+            "Barcode" : {},
+            "Contacts" : {},
+            "Record" : {},
+            "VideoPlayer" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -68,7 +72,9 @@
                 "payment" : {},
                 "share" : {},
                 "maps" : {},
-                "ad" : {}
+                "ad" : {},
+                "geolocation" : {},
+                "speech" : {}
             },
             "splashscreen" : {
                 "useOriginalMsgbox" : true,

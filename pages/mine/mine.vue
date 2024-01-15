@@ -190,12 +190,12 @@
 				</view>
 				<view style="display: flex;width: 100%;">
 					<view style="width: 50%;display: flex;justify-content: space-around;">
-						<view class="guanzhu">
-							<view>8</view>
+						<view class="guanzhu" @click="goToAttentionAndFans(0)">
+							<view>{{userInfo.attentionNum}}</view>
 							<view style="color: #e5e4e6;">关注</view>
 						</view>
-						<view class="guanzhu">
-							<view>8</view>
+						<view class="guanzhu" @click="goToAttentionAndFans(1)">
+							<view>{{userInfo.fansNum}}</view>
 							<view style="color: #e5e4e6;">粉丝</view>
 						</view>
 						<view class="guanzhu">
@@ -410,6 +410,12 @@
 			};
 		},
 		methods: {
+			goToAttentionAndFans(e) {
+				console.log(e)
+				uni.navigateTo({
+					url: '/pages/attentionAndFans/attentionAndFans?userId=' + this.userInfo.id + '&type=' + e+'&attentionNum='+this.userInfo.attentionNum+'&fansNum='+this.userInfo.fansNum
+				})
+			},
 			editData() {
 				uni.navigateTo({
 					url: '/pages/editData/editData'
