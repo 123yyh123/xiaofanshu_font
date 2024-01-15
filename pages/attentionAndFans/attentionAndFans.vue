@@ -71,11 +71,11 @@
 						<view v-if="tabsList[0].list.length>0">
 							<view v-for="(item,index) in tabsList[0].list" :key="index" style="padding: 10rpx;">
 								<view style="padding: 10rpx;display: flex;align-items: center;">
-									<view class="list_item_left">
+									<view class="list_item_left" @click="goToMine(item.userId)">
 										<image :src="item.avatarUrl" mode="aspectFill"
 											style="width: 110rpx;height: 110rpx;border-radius: 50%;"></image>
 									</view>
-									<view class="list_item_right"
+									<view class="list_item_right" @click="goToMine(item.userId)"
 										style=" margin-left: 20rpx;margin-right: 20rpx;;display: flex;flex-direction: column;justify-content: center;">
 										<view class="selfIntroduction" style="font-size: 35rpx;color: #2b2b2b;">
 											{{item.nickname}}
@@ -105,7 +105,7 @@
 						<view v-else class="no_data">
 							<u-divider text="暂无数据" :dashed="true"></u-divider>
 						</view>
-					</scroll-view>
+					</scroll-view>		
 				</swiper-item>
 				<swiper-item>
 					<scroll-view scroll-y :style="{height:windowHeight+'px'}" @scrolltolower="getList">
@@ -114,11 +114,11 @@
 						<view v-if="tabsList[1].list.length>0">
 							<view v-for="(item,index) in tabsList[1].list" :key="index" style="padding: 10rpx;">
 								<view style="padding: 10rpx;display: flex;align-items: center;">
-									<view class="list_item_left">
+									<view class="list_item_left" @click="goToMine(item.userId)">
 										<image :src="item.avatarUrl" mode="aspectFill"
 											style="width: 110rpx;height: 110rpx;border-radius: 50%;"></image>
 									</view>
-									<view class="list_item_right"
+									<view class="list_item_right" @click="goToMine(item.userId)"
 										style=" margin-left: 20rpx;margin-right: 20rpx;;display: flex;flex-direction: column;justify-content: center;">
 										<view class="selfIntroduction" style="font-size: 35rpx;color: #2b2b2b;">
 											{{item.nickname}}
@@ -190,6 +190,11 @@
 			};
 		},
 		methods: {
+			goToMine(userId) {
+				uni.navigateTo({
+					url: '/pages/mine/otherMine?userId=' + userId
+				})
+			},
 			setRemarkName(item) {
 				if (!item.isAttention) {
 					uni.showToast({

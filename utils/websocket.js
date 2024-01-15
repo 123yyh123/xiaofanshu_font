@@ -128,12 +128,12 @@ function init() {
 					alarmId: alarmId,
 					warningTypeStr: message.fromName,
 					projectName: formatTimestamp(message.time),
-					description: message.content,
+					description: message.chatType===4?'[语音]':replaceImageTags(message.content),
 				};
 				createAlarm(msg, res => {
 					if (res.type === 'click') {
 						uni.navigateTo({
-							url: `/pages/chat/chat?friendId=${message.from}&friendName=${message.fromName}&friendAvatar=${message.fromAvatar}`
+							url: `/pages/chat/chat?userId=${message.from}&userName=${message.fromName}&avatarUrl=${message.fromAvatar}`
 						})
 					}
 				})

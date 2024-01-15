@@ -57,8 +57,7 @@
 							</image>
 						</view>
 					</view>
-					<view v-else
-						style="display: flex;padding: 20rpx;justify-content: flex-start;">
+					<view v-else style="display: flex;padding: 20rpx;justify-content: flex-start;">
 						<view style="margin-left: 15rpx;">
 							<image mode="aspectFill" style="height: 80rpx;width: 80rpx;border-radius: 50%;"
 								:src="targetUser.avatarUrl">
@@ -152,7 +151,8 @@
 			</scroll-view>
 		</view>
 		<u-action-sheet :actions="phoneTypeList" :closeOnClickOverlay="true" :closeOnClickAction="true"
-			:show="showChoosePhoneType" @select="telPhone" @close="showChoosePhoneType = false" title="选择通话类型" round="15"></u-action-sheet>
+			:show="showChoosePhoneType" @select="telPhone" @close="showChoosePhoneType = false" title="选择通话类型"
+			round="15"></u-action-sheet>
 		<view v-if="showMore" :style="{height: keyboardHeight+'px'}" style="background-color: #f5f5f5;color: #2b2b2b;">
 			<view
 				style="display: grid;text-align: center;;grid-template-columns: repeat(4,1fr);padding: 20rpx;gap: 20rpx;row-gap: 50rpx;">
@@ -222,11 +222,11 @@
 		data() {
 			return {
 				phoneTypeList: [{
-					id:1,
+					id: 1,
 					name: '语音通话',
 					color: '#2b2b2b'
 				}, {
-					id:2,
+					id: 2,
 					name: '视频通话',
 					color: '#2b2b2b'
 				}],
@@ -864,9 +864,13 @@
 					}
 				}
 			})
+			// const sql2 = `UPDATE message_list SET unread_num=0 WHERE user_id='${this.targetUser.userId}'`
+			// setInterval(()=>{
+			// 	this.$sqliteUtil.SqlExecute(sql2)
+			// },800)
 		},
 		onBackPress() {
-			if(this.showChoosePhoneType){
+			if (this.showChoosePhoneType) {
 				this.showChoosePhoneType = false
 				return true
 			}
@@ -878,7 +882,17 @@
 				this.closeME()
 				return true
 			}
+			let sql2 = `UPDATE message_list SET unread_num=0 WHERE user_id='${this.targetUser.userId}'`
+			this.$sqliteUtil.SqlExecute(sql2).then(res => {
+				this.$ws.setCornerMark()
+			})
 			return false
+		},
+		onHide() {
+			let sql2 = `UPDATE message_list SET unread_num=0 WHERE user_id='${this.targetUser.userId}'`
+			this.$sqliteUtil.SqlExecute(sql2).then(res => {
+				this.$ws.setCornerMark()
+			})
 		}
 	}
 </script>

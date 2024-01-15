@@ -91,6 +91,14 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/mine/otherMine",
+			"style" : 
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"tabBar": {

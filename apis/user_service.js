@@ -96,3 +96,10 @@ export const updateRemarkName=(params={})=>{
 		method:'POST'
 	})
 }
+
+export const getViewUserInfo=(params={})=>{
+	return $request({
+		url:'/user/viewUserInfo?userId='+params.userId,
+		method:'GET'
+	})
+}

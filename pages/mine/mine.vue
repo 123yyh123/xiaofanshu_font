@@ -148,7 +148,7 @@
 						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%88%86%E4%BA%AB.png"
 						mode="heightFix"></image>
 				</view>
-				<view :style="{height: iconHeight}" style="opacity: 1;">
+				<view :style="{height: iconHeight}" style="opacity: 1;display: flex;flex-direction: column;justify-content: center;">
 					<u-transition :show="show" mode="fade-up">
 						<image :style="{height: statusBarHeight*0.8+'px',width:statusBarHeight*0.8+'px'}"
 							:src="userInfo.avatarUrl" style="border-radius: 50%;" mode="aspectFill"></image>
@@ -251,7 +251,7 @@
 				        }" itemStyle="padding-left: 15px; padding-right: 15px; height: 40px;">
 				</u-tabs>
 				<view style="position: absolute;right: 0;">
-					<u-icon name="search" color="#16160e" size="40"></u-icon>
+					<u-icon name="search" color="#16160e" size="30"></u-icon>
 				</view>
 			</view>
 		</u-sticky>
@@ -627,19 +627,6 @@
 			this.$refs.water2.refresh()
 			this.$refs.water3.refresh()
 			uni.stopPullDownRefresh()
-			// getUserInfo({
-			// 	userId:this.userInfo.id
-			// }).then((res)=>{
-			// 	if(res.code==20010){
-			// 		this.userInfo=res.data
-			// 	}else{
-			// 		uni.showToast({
-			// 			icon:'error',
-			// 			duration:1000,
-			// 			:'加载失败'
-			// 		})
-			// 	}
-			// })
 		},
 		onLoad() {
 			uni.getSystemInfo({
