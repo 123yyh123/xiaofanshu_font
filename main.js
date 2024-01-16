@@ -6,6 +6,10 @@ import './uni.promisify.adaptor'
 import uView from '@/uni_modules/uview-ui'
 import ws from './utils/websocket.js'
 import sqliteUtil from './utils/sqliteUtil.js'
+import callUtils from './utils/callEventMonitor.js'
+import dLoading from '@/uni_modules/d-loading/components/d-loading/d-loading.vue'
+Vue.component('dLoading',dLoading)
+Vue.prototype.$callUtils = callUtils
 Vue.prototype.$ws = ws
 Vue.prototype.$sqliteUtil = sqliteUtil
 Vue.use(uView)

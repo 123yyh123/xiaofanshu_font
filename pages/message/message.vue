@@ -8,9 +8,10 @@
 				</view>
 				<text>赞和收藏</text>
 			</view>
-			<view style="text-align: center;">
+			<view style="text-align: center;position: relative;" @click="goToAttentionMessageList">
 				<view>
 					<image style="width: 85rpx;" mode="widthFix" src="../../static/image/peopleInfo.png"></image>
+					<u-badge absolute :offset="[0,0]" max="99" :value="attentionUnreadNum"></u-badge>
 				</view>
 				<text>新增关注</text>
 			</view>
@@ -74,10 +75,20 @@
 					fontSize: '28rpx'
 				}],
 				list: [],
-				show: false
+				show: false,
+				attentionUnreadNum: 0,
 			}
 		},
 		methods: {
+			goToAttentionMessageList() {
+				this.$sqliteUtil.SqlExecute(`UPDATE system_message SET unread_num=0 WHERE id=2`).then(res => {
+					this.refreshAttentionList()
+					this.$ws.setCornerMark()
+					uni.navigateTo({
+						url: `/pages/attentionMessageList/attentionMessageList`
+					})
+				})
+			},
 			clickItem(e) {
 				if (e.id === 1) {
 					let sql = `UPDATE message_list SET unread_num=0 WHERE user_id='${e.index}'`
@@ -116,6 +127,11 @@
 					this.list = res
 				})
 			},
+			refreshAttentionList() {
+				this.$sqliteUtil.SqlSelect(`SELECT unread_num FROM system_message WHERE id=2`).then(res => {
+					this.attentionUnreadNum = res[0].unread_num
+				})
+			},
 			goToChat(item) {
 				console.log(item)
 				// 清除未读消息
@@ -136,9 +152,13 @@
 			uni.$on('updateMessageList', () => {
 				this.refreshList()
 			})
+			uni.$on('updateAttentionList', () => {
+				this.refreshAttentionList()
+			})
 		},
 		onShow() {
 			this.refreshList()
+			this.refreshAttentionList()
 		},
 		onPullDownRefresh() {
 			this.refreshList()

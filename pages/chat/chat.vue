@@ -270,16 +270,7 @@
 			telPhone(index) {
 				this.showChoosePhoneType = false
 				console.log(index.id)
-				uni.$TUICallKit.call({
-					userID: this.targetUser.userId,
-					callMediaType: index.id, // 语音通话(1)、视频通话(2)
-				}, (res) => {
-					if (res.code === 0) {
-						console.log('call success');
-					} else {
-						console.log(res.msg);
-					}
-				});
+				this.$callUtils.call(this.targetUser.userId, index.id)
 			},
 			playAudio(item) {
 				if (this.currentPlay === item.id) {

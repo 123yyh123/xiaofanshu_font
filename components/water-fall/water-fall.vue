@@ -3,9 +3,14 @@
 		<view class="water-left">
 			<block v-for="(item,index) in leftList" :key="index">
 				<view style="position: relative;">
-					<image style="width: 100%;height: auto;border-radius: 15rpx;" :src="item.img"
-						mode="widthFix">
-					</image>
+					<u--image :src="item.img" width="100%" height="auto" mode="widthFix" :radius="10">
+						<template v-slot:loading>
+							<view style="height: 200rpx;text-align: center;padding: 20rpx;">
+								<u-loading-icon color="#e83929"></u-loading-icon>
+								<view style="font-size: 30rpx;">loading......</view>
+							</view>
+						</template>
+					</u--image>
 					<view class="look-views" v-if="item.views!=null">
 						<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
 						<view style="margin-left: 5rpx;">{{item.views}}</view>
@@ -13,14 +18,15 @@
 				</view>
 				<view class="title">{{item.title}}</view>
 				<view style="display: flex;position: relative;padding: 20rpx;">
-					<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
-						:src="item.avatarUrl"></image>
+					<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill" :src="item.avatarUrl">
+					</image>
 					<view class="note-username">
 						{{item.nickname}}
 					</view>
 					<view style="display: flex;position: absolute;right: 10rpx;">
 						<u-icon name="heart" color="#000000" size="18"></u-icon>
-						<text style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.like}}</text>
+						<text
+							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.like}}</text>
 					</view>
 				</view>
 			</block>
@@ -28,24 +34,30 @@
 		<view class="water-right">
 			<block v-for="(item,index) in rightList" :key="index">
 				<view style="position: relative;">
-					<image style="width: 100%;height: auto;border-radius: 15rpx;" :src="item.img"
-						mode="widthFix">
-					</image>
-					<view class="look-views"  v-if="item.views!=null">
+					<u--image :src="item.img" width="100%" height="auto" mode="widthFix" :radius="10">
+						<template v-slot:loading>
+							<view style="height: 200rpx;text-align: center;padding: 20rpx;margin-bottom: 30rpx;">
+								<u-loading-icon color="#e83929"></u-loading-icon>
+								<view style="font-size: 30rpx;">loading......</view>
+							</view>
+						</template>
+					</u--image>
+					<view class="look-views" v-if="item.views!=null">
 						<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
 						<view style="margin-left: 5rpx;">{{item.views}}</view>
 					</view>
 				</view>
 				<view class="title">{{item.title}}</view>
 				<view style="display: flex;position: relative;padding: 20rpx;">
-					<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
-						:src="item.avatarUrl"></image>
+					<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill" :src="item.avatarUrl">
+					</image>
 					<view class="note-username">
 						{{item.nickname}}
 					</view>
 					<view style="display: flex;position: absolute;right: 10rpx;">
 						<u-icon name="heart" color="#000000" size="18"></u-icon>
-						<text style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.like}}</text>
+						<text
+							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.like}}</text>
 					</view>
 				</view>
 			</block>
@@ -55,7 +67,7 @@
 
 <script>
 	export default {
-		name:"water-fall",
+		name: "water-fall",
 		data() {
 			return {
 				leftList: [],
@@ -111,7 +123,7 @@
 					})
 				})
 			},
-			refresh(){
+			refresh() {
 				this.leftList = []
 				this.rightList = []
 				this.leftHeight = 0
@@ -128,7 +140,7 @@
 		width: 48%;
 		margin: 20rpx auto;
 	}
-	
+
 	.title {
 		font-size: 30rpx;
 		padding: 10rpx;
@@ -142,7 +154,7 @@
 		line-height: 1.4em;
 		max-height: 2.4em;
 	}
-	
+
 	.note-username {
 		margin-left: 10rpx;
 		color: #16160e;
@@ -153,7 +165,7 @@
 		text-overflow: ellipsis;
 		max-width: calc(100% - 70px);
 	}
-	
+
 	.look-views {
 		display: flex;
 		position: absolute;

@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<dLoading :status="true"></dLoading>
 		<u-popup :show="moreShow" mode="left" customStyle="width:525rpx" @close="closeMore" :safeAreaInsetTop="true"
 			:safeAreaInsetBottom="false" :overlayStyle="{'touch-action':'none'}">
 			<scroll-view scroll-y="true" :style="{height: screenHeight*2+'px'}" style="font-size: 28rpx;">

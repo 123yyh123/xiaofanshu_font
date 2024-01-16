@@ -1,6 +1,73 @@
+import {
+	emojiList
+} from '@/utils/emojiUtil.js'
+
 const sqliteUtil = {
-	// dbName: 'xfsDB_' + userId, // 数据库名称
-	// dbPath: '_doc/xfsdb_' + userId + '.db', // 数据库地址
+	// 创建一些必要的数据表
+	init() {
+		console.log('init')
+		this.openSqlite().then(res => {
+			this.SqlExecute(`CREATE TABLE IF NOT EXISTS message_list (
+				"id"
+				INTEGER PRIMARY KEY AUTOINCREMENT,
+				user_id TEXT UNIQUE,
+				avatar_url TEXT,
+				user_name TEXT,
+				last_message TEXT,
+				last_time INTEGER,
+				unread_num INTEGER,
+				stranger BOOLEAN
+			);`)
+			// 系统消息的表，主要为了显示未读数，1为赞和收藏，2为新增关注，3为评论和@，unread_num为未读数
+			this.SqlExecute(`CREATE TABLE IF NOT EXISTS system_message (
+			    "id" 
+				INTEGER PRIMARY KEY,
+			    "type" INTEGER,
+			    "unread_num" INTEGER
+			);`).then(res => {
+				// 在 system_message 表中插入初始数据（如果不存在）
+				this.SqlExecute(`
+			        INSERT OR IGNORE INTO system_message (id, type, unread_num) VALUES 
+			        (1, 1, 0), 
+			        (2, 2, 0), 
+			        (3, 3, 0);
+			    `);
+			})
+			this.SqlExecute(`CREATE TABLE IF NOT EXISTS attention_message (
+				"id"
+				INTEGER PRIMARY KEY AUTOINCREMENT,
+				user_id TEXT,
+				avatar_url TEXT,
+				user_name TEXT,
+				content TEXT
+			);`)
+			// console.log(res)
+			this.SqlExecute(`CREATE TABLE IF NOT EXISTS emoji_list (
+				"id"
+				INTEGER PRIMARY KEY AUTOINCREMENT,
+				url TEXT UNIQUE,
+				name TEXT UNIQUE
+			);`).then(res => {
+				// 判断表情是否存在，不存在则插入，异步方法
+				console.log(res)
+				emojiList.forEach((res, index) => {
+					this.insertEmoji(res)
+				})
+			})
+		})
+	},
+	async insertEmoji(item) {
+		let sql1 = `SELECT * FROM emoji_list WHERE name='${item.name}'`
+		this.SqlSelect(sql1).then(res => {
+			if (res.length == 0) {
+				saveFile(item.url).then(res => {
+					let sql2 =
+						`INSERT INTO emoji_list (url,name) VALUES ("${res}","${item.name}")`
+					this.SqlExecute(sql2)
+				})
+			}
+		})
+	},
 	getUserId() {
 		return uni.getStorageSync('userInfo').id;
 	},

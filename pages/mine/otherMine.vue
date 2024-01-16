@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<dLoading :status="true"></dLoading>
 		<view class="info" :style="{ height: screenHeight+'px'}">
 			<view class="filter" :style="{backgroundImage: 'url(' + userInfo.homePageBackground + ')'}"></view>
 			<view class="status-bar"

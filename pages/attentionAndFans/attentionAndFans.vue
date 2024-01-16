@@ -157,6 +157,7 @@
 		updateAttention,
 		updateRemarkName
 	} from '../../apis/user_service'
+	import {formatTimestamp2} from '@/utils/util.js'
 	export default {
 		data() {
 			return {
@@ -274,6 +275,17 @@
 							}
 						})
 						this.showMore = false;
+						this.$ws.send({
+						  from: this.userId,
+						  to: userId,
+						  fromName: uni.getStorageSync('userInfo').nickname,
+						  fromAvatar: uni.getStorageSync('userInfo').avatarUrl,
+						  messageType: 4,
+						  content: '开始关注你了 ' + formatTimestamp2(new Date().getTime()),
+						  chatType: 0,
+						  friendType: 0,
+						  audioTime: 0,
+						});
 					}
 				})
 			},

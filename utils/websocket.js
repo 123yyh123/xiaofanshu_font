@@ -128,7 +128,7 @@ function init() {
 					alarmId: alarmId,
 					warningTypeStr: message.fromName,
 					projectName: formatTimestamp(message.time),
-					description: message.chatType===4?'[语音]':replaceImageTags(message.content),
+					description: message.chatType === 4 ? '[语音]' : replaceImageTags(message.content),
 				};
 				createAlarm(msg, res => {
 					if (res.type === 'click') {
@@ -138,6 +138,19 @@ function init() {
 					}
 				})
 			}
+		}
+		// 新增关注
+		if (message.messageType == 4) {
+			let sql =
+				`INSERT INTO attention_message (user_id, avatar_url, user_name, content) VALUES ('${message.from}', '${message.fromAvatar}', '${message.fromName}', '${message.content}')`
+			sqliteUtil.SqlExecute(sql).then(res => {
+				console.log('新增关注成功')
+				let sql2 = `UPDATE system_message SET unread_num=unread_num+1 WHERE id=2`
+				sqliteUtil.SqlExecute(sql2).then(res => {
+					uni.$emit('updateAttentionList')
+					setCornerMark()
+				})
+			})
 		}
 		// 服务器应答
 		if (message.messageType === 5) {
@@ -300,17 +313,22 @@ function setCornerMark() {
 	// 获取消息列表的总未读数
 	let s = `select sum(unread_num) as total from message_list`
 	sqliteUtil.SqlSelect(s).then(res => {
-		if (res[0].total > 0) {
-			uni.setTabBarBadge({
-				index: 2,
-				text: res[0].total > 99 ? '99+' : res[0].total.toString()
-			})
-			console.log(res[0].total)
-		} else {
-			uni.removeTabBarBadge({
-				index: 2
-			})
-		}
+		let total = res[0].total
+		let sql = `SELECT unread_num FROM system_message WHERE id=2`
+		sqliteUtil.SqlSelect(sql).then(res => {
+			total += res[0].unread_num
+			if (total > 0) {
+				uni.setTabBarBadge({
+					index: 2,
+					text: total > 99 ? '99+' : total.toString()
+				})
+				console.log(total)
+			} else {
+				uni.removeTabBarBadge({
+					index: 2
+				})
+			}
+		})
 	})
 }
 

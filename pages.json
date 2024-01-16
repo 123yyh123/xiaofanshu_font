@@ -99,6 +99,14 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/attentionMessageList/attentionMessageList",
+			"style" : 
+			{
+				"navigationBarTitleText" : "新增关注",
+				"enablePullDownRefresh" : true
+			}
 		}
 	],
 	"tabBar": {
