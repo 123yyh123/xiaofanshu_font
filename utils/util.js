@@ -256,7 +256,7 @@ export const transData = (souceData) => {
 
 export const replaceImageTags = (message) => {
 	// 正则表达式匹配<image>标签
-	const imageTagRegex = /<img src='(.*?)' style='width: (\d+)px;height: (\d+)px;'><\/img>/g;
+	const imageTagRegex = /<img src='(.*?)' style='width: (\d+)px;height: (\d+)px;border-radius: 10px;'><\/img>/g;
 	// 使用replace函数进行替换
 	return message.replace(imageTagRegex, function(match, src, width, height) {
 		// 这里可以根据需要进行调整，例如将width和height应用到表情显示的样式中
@@ -292,7 +292,7 @@ export const replaceImageMessage = (message) => {
 		const promise = saveFile(src)
 			.then(localFilePath => {
 				console.log(localFilePath);
-				return `<img src='${localFilePath}' style='width: ${width}px;height: ${height}px;'></img>`;
+				return `<img src='${localFilePath}' style='width: ${width}px;height: ${height}px;border-radius: 10px;'></img>`;
 			})
 			.catch(error => {
 				console.error(error);

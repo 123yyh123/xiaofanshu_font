@@ -2,6 +2,8 @@ import {
 	emojiList
 } from '@/utils/emojiUtil.js'
 
+import {saveFile} from  '@/utils/fileUtil.js'
+
 const sqliteUtil = {
 	// 创建一些必要的数据表
 	init() {
@@ -49,7 +51,6 @@ const sqliteUtil = {
 				name TEXT UNIQUE
 			);`).then(res => {
 				// 判断表情是否存在，不存在则插入，异步方法
-				console.log(res)
 				emojiList.forEach((res, index) => {
 					this.insertEmoji(res)
 				})
@@ -60,6 +61,7 @@ const sqliteUtil = {
 		let sql1 = `SELECT * FROM emoji_list WHERE name='${item.name}'`
 		this.SqlSelect(sql1).then(res => {
 			if (res.length == 0) {
+				
 				saveFile(item.url).then(res => {
 					let sql2 =
 						`INSERT INTO emoji_list (url,name) VALUES ("${res}","${item.name}")`

@@ -24,6 +24,63 @@
 			uni.$TUICallingEvent = TUICallingEvent;
 			uni.$TUICallEngine = TUICallEngine;
 			this.$sqliteUtil.init()
+			// 监听中间按钮点击事件
+			uni.onTabBarMidButtonTap(() => {
+				console.log("点击了中间按钮")
+				uni.showActionSheet({
+					itemList: ['发布图文', '发布视频'],
+					success: function(res) {
+						console.log(res.tapIndex)
+						if (res.tapIndex == 0) {
+							uni.chooseImage({
+								count: 9,
+								sizeType: ['original', 'compressed'],
+								sourceType: ['album', 'camera'],
+								success: function(res) {
+									// tempFilePath可以作为img标签的src属性显示图片
+									let tempFilePaths = res.tempFilePaths
+									let filePaths = []
+									tempFilePaths.forEach(item => {
+										uni.saveFile({
+											tempFilePath: item,
+											success: function(res) {
+												filePaths.push(res.savedFilePath)
+												if (filePaths.length == tempFilePaths.length) {
+													uni.navigateTo({
+														url: '/pages/publishNotes/publishNotes?type=0&tempFilePaths=' +
+															JSON.stringify(filePaths)
+													})
+												}
+											}
+										});
+									})
+								}
+							})
+						} else if (res.tapIndex == 1) {
+							uni.chooseVideo({
+								sourceType: ['album', 'camera'],
+								maxDuration: 60,
+								camera: 'back',
+								success: function(res) {
+									let tempFilePath = res.tempFilePath
+									uni.saveFile({
+										tempFilePath: tempFilePath,
+										success: function(res) {
+											uni.navigateTo({
+												url: '/pages/publishNotes/publishNotes?type=1&tempFilePaths=' +
+													JSON.stringify([res.savedFilePath])
+											})
+										}
+									});
+								}
+							});
+						}
+					},
+					fail: function(res) {
+						console.log(res.errMsg)
+					}
+				})
+			})
 			if (uni.getStorageSync('token') == null || uni.getStorageSync('token') == '') {
 				this.$ws.completeClose()
 				uni.reLaunch({

@@ -1,0 +1,28 @@
+{
+    "id": "lsj-edit",
+    "displayName": "lsj-edit富文本编辑-基于editor创作",
+	"version": "1.0.5",
+	"description": "基于editor创作API型插件，提供丰富方法，可根据需要自由创作",
+	"keywords": [
+        "editor",
+        "富文本",
+        "输入框",
+        "@谁来看",
+        "话题"
+    ],
+    "repository": "",
+    "engines": {
+        "HBuilderX": "^3.4.12"
+    },
+    "dcloudext": {
+        "contact": {
+            "qq": ""
+        },
+        "declaration": {
+            "ads": "无",
+            "data": "无",
+            "permissions": "无"
+        },
+        "npmurl": ""
+    }
+}

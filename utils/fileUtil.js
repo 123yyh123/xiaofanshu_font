@@ -36,38 +36,39 @@ export const saveFile = (url) => {
 	})
 }
 
-export const zoomOutImage=(src)=>{
-return new Promise((resolve, reject) => {
-    // 获取屏幕宽高
-    const screenWidth = uni.getSystemInfoSync().screenWidth;
-    const screenHeight = uni.getSystemInfoSync().screenHeight;
+export const zoomOutImage = (src) => {
+	return new Promise((resolve, reject) => {
+		// 获取屏幕宽高
+		const screenWidth = uni.getSystemInfoSync().screenWidth;
+		const screenHeight = uni.getSystemInfoSync().screenHeight;
 
-    // 获取本地图片信息
-    uni.getImageInfo({
-      src: src,
-      success: (imageInfo) => {
-        // 图片原始宽高
-        const imgWidth = imageInfo.width;
-        const imgHeight = imageInfo.height;
+		// 获取本地图片信息
+		uni.getImageInfo({
+			src: src,
+			success: (imageInfo) => {
+				// 图片原始宽高
+				const imgWidth = imageInfo.width;
+				const imgHeight = imageInfo.height;
 
-        // 计算缩放比例
-        const scale = Math.min(screenWidth / (2 * imgWidth), screenHeight / (2 * imgHeight));
+				// 计算缩放比例
+				const scale = Math.min(screenWidth / (2 * imgWidth), screenHeight / (2 *
+					imgHeight));
 
-        // 计算缩小后的宽高
-        const actualWidth = Math.floor(imgWidth * scale);
-        const actualHeight = Math.floor(imgHeight * scale);
+				// 计算缩小后的宽高
+				const actualWidth = Math.floor(imgWidth * scale);
+				const actualHeight = Math.floor(imgHeight * scale);
 
-        // 执行成功，将结果传递给 Promise 的 resolve
-        resolve({
-          width: actualWidth,
-          height: actualHeight,
-          src: src
-        });
-      },
-      fail: (error) => {
-        // 执行失败，将错误信息传递给 Promise 的 reject
-        reject(error);
-      },
-    });
-  });
+				// 执行成功，将结果传递给 Promise 的 resolve
+				resolve({
+					width: actualWidth,
+					height: actualHeight,
+					src: src
+				});
+			},
+			fail: (error) => {
+				// 执行失败，将错误信息传递给 Promise 的 reject
+				reject(error);
+			},
+		});
+	});
 }

@@ -9,7 +9,9 @@
 </template>
 
 <script>
-	import { createAlarm } from "@/utils/nativeMsg.js";
+	import {
+		createAlarm
+	} from "@/utils/nativeMsg.js";
 	export default {
 		data() {
 			return {
@@ -41,10 +43,12 @@
 					projectName: "2023年5月17日",
 					description: "十万火急，赶紧处理！！！"
 				};
-				createAlarm(msg,res=>{
+				createAlarm(msg, res => {
 					console.log(res)
 				})
 			}
+		},
+		onLoad() {
 		}
 	};
 </script>

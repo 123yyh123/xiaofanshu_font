@@ -1,0 +1,18 @@
+{
+    "id": "mcc-getvideoimg",
+    "name": "获取视频封面图  纯JS",
+    "displayName": "获取视频封面图  纯JS",
+    "version": "1",
+    "description": "获取视屏谋一时间的封面图 ",
+    "keywords": [
+        "视频",
+        "封面图",
+        "获取封面图"
+    ],
+    "dcloudext": {
+        "category": [
+            "JS SDK",
+            "通用 SDK"
+        ]
+    }
+}

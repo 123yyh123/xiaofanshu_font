@@ -528,7 +528,7 @@
 					zoomOutImage(url).then(result => {
 						console.log(result)
 						let content =
-							`<img src='${result.src}' style='width: ${result.width}px;height: ${result.height}px;'></img>`
+							`<img src='${result.src}' style='width: ${result.width}px;height: ${result.height}px;border-radius: 10px;'></img>`
 						let sql2 =
 							`insert into chat_${this.targetUser.userId} (from_id,to_id,content,time,chat_type,is_read,is_send,audio_time) values ('${this.userInfo.userId}','${this.targetUser.userId}',"${content}",${new Date().getTime()},2,1,0,0)`
 						this.$sqliteUtil.SqlExecute(sql2).then(res => {
@@ -648,7 +648,7 @@
 								emojiUrl = item.url;
 							}
 						});
-						return `<img src='${emojiUrl}' style='width: 120px;height: 120px;'></img>`;
+						return `<img src='${emojiUrl}' style='width: 120px;height: 120px;border-radius: 10px;'></img>`;
 					});
 				} else {
 					content = content.replace(/\[[\u4e00-\u9fa5]{1,7}XFS\]/g, function(match) {

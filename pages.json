@@ -107,6 +107,14 @@
 				"navigationBarTitleText" : "新增关注",
 				"enablePullDownRefresh" : true
 			}
+		},
+		{
+			"path" : "pages/publishNotes/publishNotes",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"tabBar": {
