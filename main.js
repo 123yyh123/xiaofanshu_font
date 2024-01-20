@@ -8,7 +8,9 @@ import ws from './utils/websocket.js'
 import sqliteUtil from './utils/sqliteUtil.js'
 import callUtils from './utils/callEventMonitor.js'
 import dLoading from '@/uni_modules/d-loading/components/d-loading/d-loading.vue'
+import {showModal} from './utils/util.js'
 Vue.component('dLoading',dLoading)
+Vue.prototype.$showModal = showModal
 Vue.prototype.$callUtils = callUtils
 Vue.prototype.$ws = ws
 Vue.prototype.$sqliteUtil = sqliteUtil

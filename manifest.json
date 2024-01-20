@@ -24,7 +24,9 @@
             "Barcode" : {},
             "Contacts" : {},
             "Record" : {},
-            "VideoPlayer" : {}
+            "VideoPlayer" : {},
+            "Geolocation" : {},
+            "Maps" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -75,9 +77,25 @@
                 },
                 "payment" : {},
                 "share" : {},
-                "maps" : {},
+                "maps" : {
+                    "amap" : {
+                        "name" : "amapFC1Airsj",
+                        "appkey_ios" : "1",
+                        "appkey_android" : "06060f275fd7204db5cdb00796700050"
+                    }
+                },
                 "ad" : {},
-                "geolocation" : {},
+                "geolocation" : {
+                    "system" : {
+                        "__platform__" : [ "ios", "android" ]
+                    },
+                    "amap" : {
+                        "name" : "amapFC1Airsj",
+                        "__platform__" : [ "ios", "android" ],
+                        "appkey_ios" : "1",
+                        "appkey_android" : "06060f275fd7204db5cdb00796700050"
+                    }
+                },
                 "speech" : {}
             },
             "splashscreen" : {

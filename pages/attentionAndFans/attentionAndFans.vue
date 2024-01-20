@@ -30,9 +30,9 @@
 				</view>
 				<view
 					style="margin: 25rpx;margin-top: 0;padding: 15rpx;background-color: #ffffff;border-radius: 30rpx;">
-					<u-cell v-if="clickItem.isAttention" titleStyle="color: #e83929;" :border="false" title="取消关注"
+					<u-cell v-if="clickItem.isAttention" titleStyle="color: #FF2442;" :border="false" title="取消关注"
 						@click="cancelAttention(clickItem.userId)"></u-cell>
-					<u-cell v-else titleStyle="color: #e83929;" :border="false" title="关注"
+					<u-cell v-else titleStyle="color: #FF2442;" :border="false" title="关注"
 						@click="attention(clickItem.userId)"></u-cell>
 				</view>
 			</view>
@@ -56,7 +56,7 @@
 						<text style="font-size: 35rpx;color: #949495;" @click="showUpdateRemark=false">取消</text>
 					</view>
 					<view style="flex: 1;text-align: center;">
-						<text style="font-size: 35rpx;color: #e83929;" @click="updateRemark">修改</text>
+						<text style="font-size: 35rpx;color: #FF2442;" @click="updateRemark">修改</text>
 					</view>
 				</view>
 			</view>

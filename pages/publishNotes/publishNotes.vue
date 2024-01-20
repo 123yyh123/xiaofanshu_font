@@ -83,7 +83,7 @@
 								<text style="font-size: 35rpx;color: #949495;" @click="cancelAddTopic">取消</text>
 							</view>
 							<view style="flex: 1;text-align: center;">
-								<text style="font-size: 35rpx;color: #e83929;" @click="addTopic">添加</text>
+								<text style="font-size: 35rpx;color: #FF2442;" @click="addTopic">添加</text>
 							</view>
 						</view>
 					</view>
@@ -101,7 +101,7 @@
 									</view>
 									<view style="margin-left: auto;">
 										<view
-											style="width: 150rpx;height: 60rpx;line-height: 60rpx;text-align: center;border-radius: 30rpx;background-color: #e2041b;color: #f3f3f2;font-size: 25rpx;"
+											style="width: 150rpx;height: 60rpx;line-height: 60rpx;text-align: center;border-radius: 30rpx;background-color: #FF2442;color: #ffffff;font-size: 25rpx;"
 											@click="addUser(item)">@Ta</view>
 									</view>
 								</view>
@@ -116,40 +116,85 @@
 						</view>
 					</scroll-view>
 				</u-popup>
+				<u-popup :show="showEmoji" :round="10" mode="bottom" @close="showEmoji=false">
+					<scroll-view :style="{height: keyboardHeight+'px'}" scroll-y>
+						<view
+							style="display: grid;padding: 20rpx;;grid-template-columns: repeat(5,1fr);gap: 20rpx;text-align: center;">
+							<block v-for="(item,index) in emojiList" v-bind:key="index">
+								<view @click="addEmoji(item.name)">
+									<image :src="item.url" style="width: 100rpx;height: 100rpx;" mode="widthFix"
+										lazy-load>
+									</image>
+								</view>
+							</block>
+						</view>
+					</scroll-view>
+				</u-popup>
 				<view>
 					<view style="margin-top: 20rpx;padding: 10rpx;">
-						<u--input v-model="title" :fontSize="18" caret-color: #F56C6C; placeholder="请输入标题"
-							style="font-size: 30rpx;" :maxlength="20" showWordLimit clearable border="none"></u--input>
+						<u--input v-model="title" :fontSize="18" caret-color: #FF2442; placeholder="请输入标题"
+							style="font-size: 30rpx;letter-spacing: 1px;" :maxlength="20" showWordLimit clearable
+							border="none"></u--input>
 						<u-divider></u-divider>
-						<lsj-edit ref="lsjEdit" placeholder="请输入正文" :maxCount="200" @onReady="editReady">
-						</lsj-edit>
-						<view style="display: flex;margin-top: 10rpx;">
-							<view style="padding: 15rpx;background-color: #dcdddd;border-radius: 40rpx;display: flex;"
-								@click="showAddTopic=true">
-								<u-icon
-									name="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%AF%9D%E9%A2%98%20%282%29.png"
-									:size="14"></u-icon>
-								<view style="font-size: 25rpx;color: #2b2b2b;margin-left: 5rpx;">添加话题</view>
-							</view>
-							<view
-								style="padding: 15rpx;background-color: #dcdddd;border-radius: 40rpx;display: flex;margin-left: 20rpx;"
-								@click="openAttenUser">
-								<u-icon
-									name="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%89%BE%E7%89%B9.png"
-									:size="14"></u-icon>
-								<view style="font-size: 25rpx;color: #2b2b2b;margin-left: 5rpx;">用户</view>
-							</view>
-							<view
-								style="padding: 15rpx;background-color: #dcdddd;border-radius: 40rpx;display: flex;margin-left: 20rpx;"
-								@click="save">
-								<u-icon
-									name="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%96%87%E4%BB%B6.png"
-									:size="14"></u-icon>
-								<view style="font-size: 25rpx;color: #2b2b2b;margin-left: 5rpx;">完成</view>
-							</view>
+					</view>
+					<lsj-edit ref="lsjEdit" placeholder="请输入正文" :maxCount="1000" @onReady="editReady">
+					</lsj-edit>
+					<view style="display: flex;margin-top: 10rpx;">
+						<view style="padding: 15rpx;background-color: #dcdddd;border-radius: 40rpx;display: flex;"
+							@click="showAddTopic=true">
+							<u-icon
+								name="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%AF%9D%E9%A2%98%20%282%29.png"
+								:size="14"></u-icon>
+							<view style="font-size: 25rpx;color: #2b2b2b;margin-left: 5rpx;">添加话题</view>
+						</view>
+						<view
+							style="padding: 15rpx;background-color: #dcdddd;border-radius: 40rpx;display: flex;margin-left: 20rpx;"
+							@click="openAttenUser">
+							<u-icon
+								name="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%89%BE%E7%89%B9.png"
+								:size="14"></u-icon>
+							<view style="font-size: 25rpx;color: #2b2b2b;margin-left: 5rpx;">用户</view>
+						</view>
+						<view
+							style="padding: 15rpx;background-color: #dcdddd;border-radius: 40rpx;display: flex;margin-left: 20rpx;"
+							@click="showEmoji=true">
+							<u-icon name="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/expression.png"
+								:size="15"></u-icon>
+							<view style="font-size: 25rpx;color: #2b2b2b;margin-left: 5rpx;">表情</view>
+						</view>
+						<view
+							style="padding: 15rpx;background-color: #dcdddd;border-radius: 40rpx;display: flex;margin-left: 20rpx;"
+							@click="save">
+							<u-icon
+								name="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%96%87%E4%BB%B6.png"
+								:size="14"></u-icon>
+							<view style="font-size: 25rpx;color: #2b2b2b;margin-left: 5rpx;">完成</view>
 						</view>
 					</view>
 				</view>
+			</view>
+		</view>
+		<u-cell v-if="address==''" icon="map" title="添加地点" @click="chooseAddress" :isLink="true" arrow-direction="right"
+			:border="false" size="large"></u-cell>
+		<u-cell v-else icon="map" iconStyle="color: #2ca9e1" titleStyle="color: #2ca9e1" :title="address"
+			@click="chooseAddress" :isLink="true" arrow-direction="right" :border="false" size="large"></u-cell>
+		<u-cell v-if="authority===0" icon="lock-open" title="公开可见" :isLink="true" arrow-direction="right"
+			:border="false" size="large" @click="chooseAuth"></u-cell>
+		<u-cell v-if="authority===1" icon="lock" title="仅自己可见" iconStyle="color: #FF2442" titleStyle="color: #FF2442"
+			:isLink="true" arrow-direction="right" :border="false" size="large" @click="chooseAuth"></u-cell>
+		<view style="height: 180rpx;"></view>
+		<view v-if="showBottom"
+			style="display: flex;position: fixed;bottom: 0;width: 750rpx;height: 160rpx;align-items: center;z-index: 99;background-color: #ffffff;">
+			<view style="display: flex;flex-direction: column;align-items: center;margin-left: 30rpx;flex: 1;"
+				@click="saveDraft">
+				<u-icon
+					name="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%AD%98%E8%8D%89%E7%A8%BF.png"
+					size="40"></u-icon>
+				<view style="font-size: 25rpx;color: #2b2b2b;">存草稿</view>
+			</view>
+			<view
+				style="margin-left: 30rpx;margin-right: 30rpx;border-radius: 50px;flex: 5;background-color:#FF2442;height: 100rpx;display: flex;align-items: center;justify-content: center;">
+				<view style="color: #ffffff;font-size: 37rpx;letter-spacing: 1px;">发布笔记</view>
 			</view>
 		</view>
 	</view>
@@ -160,9 +205,11 @@
 		getAttentionList
 	} from '../../apis/user_service'
 	import editBtns from '@/uni_modules/lsj-edit/components/lsj-edit/edit-btns/edit-btns.vue'
+	import {
+		emojiList
+	} from '@/utils/emojiUtil.js'
 	export default {
 		components: {
-			// 富文本基本操作按键，可自行选择是否使用示例的按键
 			editBtns
 		},
 		data() {
@@ -184,10 +231,57 @@
 					status: 'loading',
 					isLoading: false,
 					isNoMore: false
-				}
+				},
+				keyboardHeight: 302,
+				showEmoji: false,
+				emojiList: [],
+				address: '',
+				latitude: '',
+				longitude: '',
+				authority: 0,
+				showBottom: true
 			};
 		},
 		methods: {
+			saveDraft() {
+				this.$showModal({
+					title: "提示",
+					content: "确认保存笔记至草稿箱吗？",
+					align: "left", // 对齐方式 left/center/right
+					cancelText: "取消", // 取消按钮的文字
+					cancelColor: "#FF2442", // 取消按钮颜色
+					confirmText: "确定", // 确认按钮文字
+					confirmColor: "#FF2442", // 确认按钮颜色 
+					showCancel: true, // 是否显示取消按钮，默认为 true
+				}).then(res => {
+					console.log('点击了确定按钮')
+					console.log(res)
+				}).catch(err => {
+				})
+			},
+			chooseAuth() {
+				uni.showActionSheet({
+					itemList: ['公开可见', '仅自己可见'],
+					success: (res) => {
+						if (res.tapIndex == 0) {
+							this.authority = 0
+						} else {
+							this.authority = 1
+						}
+					}
+				});
+			},
+			chooseAddress() {
+				uni.chooseLocation({
+					success: (res) => {
+						if (res.name === '地图位置') {
+							this.address = res.address
+						} else {
+							this.address = res.name
+						}
+					}
+				});
+			},
 			cancelAddTopic() {
 				this.topicname = ''
 				this.showAddTopic = false
@@ -234,15 +328,15 @@
 				let con = await this.edit.getContents()
 				console.log(con)
 			},
-			// 插入话题示例
+			// 插入话题
 			addTopic() {
+				// this.edit.insertCustomHtml(`<span style="color: #e2041b;">#${this.topicname}#</span>`)
 				this.edit.addLink({
 					prefix: '#',
 					suffix: '#',
 					name: this.topicname,
 					data: {
-						name: '话题',
-						topicId: 10,
+						topicname: this.topicname,
 					}
 				})
 				this.topicname = ''
@@ -258,6 +352,16 @@
 						userId: item.userId,
 					}
 				})
+			},
+			addEmoji(name) {
+				let emojiUrl = '';
+				emojiList.forEach(item => {
+					if (item.name == name) {
+						emojiUrl = item.url;
+					}
+				})
+				this.edit.insertEmoji(emojiUrl, name)
+				this.showEmoji = false
 			},
 			editReady(edit) {
 				// 将富文本对象存放到当前页面，便于后续直接操作
@@ -337,16 +441,69 @@
 		onLoad(options) {
 			this.type = Number(options.type)
 			this.tempFilePaths = JSON.parse(options.tempFilePaths)
+			// 获取表情列表
+			let sql = `select * from emoji_list`
+			this.$sqliteUtil.SqlSelect(sql).then(res => {
+				if (res.length == 0) {
+					this.emojiList = emojiList
+				} else {
+					this.emojiList = res
+				}
+			})
+			uni.getLocation({
+				type: 'gcj02',
+				success: (res) => {
+					this.latitude = res.latitude
+					this.longitude = res.longitude
+				}
+			});
+			uni.onKeyboardHeightChange((res) => {
+				if (res.height != 0) {
+					this.keyboardHeight = res.height
+				}
+				if (res.height == 0) {
+					this.showBottom = true
+				} else {
+					this.showBottom = false
+				}
+			});
 		},
+		onBackPress() {
+			if (this.showAddTopic) {
+				this.showAddTopic = false
+				return true
+			}
+			if (this.showAttenUser) {
+				this.showAttenUser = false
+				return true
+			}
+			if (this.showEmoji) {
+				this.showEmoji = false
+				return true
+			}
+			uni.showActionSheet({
+				alertText: '是否保存草稿',
+				itemList: ['保存草稿', '不保存'],
+				success: (res) => {
+					if (res.tapIndex == 0) {
+						this.saveDraft()
+					}
+					uni.switchTab({
+						url: '/pages/index/index'
+					})
+				}
+			})
+			return true
+		}
 	}
 </script>
 
 <style lang="scss">
 	editor {
-		caret-color: #F56C6C;
+		caret-color: #FF2442;
 	}
 
 	input {
-		caret-color: #F56C6C;
+		caret-color: #FF2442;
 	}
 </style>

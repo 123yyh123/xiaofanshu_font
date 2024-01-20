@@ -4,9 +4,13 @@ import {
 
 export class Edit extends Observer {
 	#_DEFTEXT;
-	constructor({context,maxCount}) {
+	constructor({
+		context,
+		maxCount
+	}) {
 		super();
-		this.#_DEFTEXT = '######################################################NBLSJ######################################################';
+		this.#_DEFTEXT =
+			'######################################################NBLSJ######################################################';
 		this.ctx = context;
 		this.maxCount = maxCount;
 		this.textCount = 0;
@@ -33,21 +37,34 @@ export class Edit extends Observer {
 			html
 		})
 	}
-	
+
 	// 设置字体相关 https://uniapp.dcloud.io/api/media/editor-context?id=editorcontextformat
 	format(name, value) {
 		this.ctx.format(name, value);
 		return this;
+	}
+	/**
+	 * 插入自定义的 HTML 片段
+	 */
+	insertEmoji(url,name) {
+		this.ctx.insertImage({
+			src: url,
+			alt: '['+ name +'XFS]',
+			width: '25px',
+			height: '25px'
+		})
 	}
 
 	/**
 	 * 写入表情
 	 */
 	emoji(text) {
-		this.tool('insertText', {text});
-		return this; 
+		this.tool('insertText', {
+			text
+		});
+		return this;
 	}
-	
+
 	/**
 	 * 写入链接
 	 * {
@@ -64,70 +81,78 @@ export class Edit extends Observer {
 		name
 	}) {
 		name = prefix + name + suffix;
-		data['identification'] = name;
+		// data['identification'] = name;
 		// #ifdef APP-PLUS
-		this.format('color','#ffffff')
+		this.format('color', '#ffffff')
 		// #endif
 		this.tool('insertText', {
-			text: this.#_DEFTEXT
-		})
-		.tool('blur')
-		.getContents()
-		.then((e) => {
-			let ops = e.delta.ops,arr = [];
-			for (let i = 0; i < ops.length; i++) {
-				let item = ops[i];
-				if (!item.insert || typeof item.insert === 'object') {
-					arr.push(item);
-					continue;
-				}
-				let isNext = item.insert.indexOf(this.#_DEFTEXT);
-				if (isNext > -1) {
-					let newObj = {
-						attributes: {
-							"link": `https://app${this.queryParams(data)}`,
-							"textDecoration": "none",
-							"color": "#4569d7"
-						},
-						insert: name
-					};
-					
-					if (item.attributes && item.attributes.link) {
-						delete item.attributes;
-					}
-					let [textPrefix,textSuffix] = item.insert.split(this.#_DEFTEXT);
-					arr.push({...item,insert: textPrefix});
-					arr.push(newObj);
-					arr.push({insert: ' '});
-					if (textSuffix) {
-						arr.push({...item,insert: textSuffix});
-					}
-					let remainingArr = ops.slice(i+1);
-					arr = [...arr,...remainingArr];
-					break;
-				}
-				else {
-					arr.push(item);
-				}
-			}
-			// let insertLen = name.length - this.#_DEFTEXT.length + n;
-			this.ctx.setContents({
-				delta: {
-					ops:arr
-				},
-				// insertLen,
-				complete:()=>{
-					this.format('fontFamily', 'inherit')
-					.input();
-				}
+				text: this.#_DEFTEXT
 			})
-		})
-		.catch(err => uni.showToast({
-			title: '操作失败',
-			icon: 'error'
-		}));
-		
-		
+			.tool('blur')
+			.getContents()
+			.then((e) => {
+				let ops = e.delta.ops,
+					arr = [];
+				for (let i = 0; i < ops.length; i++) {
+					let item = ops[i];
+					if (!item.insert || typeof item.insert === 'object') {
+						arr.push(item);
+						continue;
+					}
+					let isNext = item.insert.indexOf(this.#_DEFTEXT);
+					if (isNext > -1) {
+						let newObj = {
+							attributes: {
+								"link": '#' + JSON.stringify(data),
+								"textDecoration": "none",
+								"color": "#4569d7"
+							},
+							insert: name
+						};
+
+						if (item.attributes && item.attributes.link) {
+							delete item.attributes;
+						}
+						let [textPrefix, textSuffix] = item.insert.split(this.#_DEFTEXT);
+						arr.push({
+							...item,
+							insert: textPrefix
+						});
+						arr.push(newObj);
+						arr.push({
+							insert: ' '
+						});
+						if (textSuffix) {
+							arr.push({
+								...item,
+								insert: textSuffix
+							});
+						}
+						let remainingArr = ops.slice(i + 1);
+						arr = [...arr, ...remainingArr];
+						break;
+					} else {
+						arr.push(item);
+					}
+				}
+				// let insertLen = name.length - this.#_DEFTEXT.length + n;
+				this.ctx.setContents({
+					delta: {
+						ops: arr
+					},
+					// insertLen,
+					complete: () => {
+						this.format('fontFamily', 'inherit')
+							.input();
+					}
+				})
+			})
+			.catch(err => uni.showToast({
+				title: '操作失败',
+				icon: 'error'
+			}));
+
+
 	}
 
 	/**
@@ -147,13 +172,13 @@ export class Edit extends Observer {
 		});
 		return arr;
 	}
-	
+
 	/**
 	 * 添加图片
 	 * 如传入tempFilePaths则不再通过相册/相机选择
 	 */
 	addImage(tempFilePaths) {
-		const handle = (filePaths)=> {
+		const handle = (filePaths) => {
 			filePaths.forEach(src => {
 				this.tool('insertImage', {
 						src: src,
@@ -166,7 +191,7 @@ export class Edit extends Observer {
 			this.tool('scrollIntoView')
 			return this;
 		}
-		
+
 		if (tempFilePaths) {
 			return handle(tempFilePaths);
 		}
@@ -179,7 +204,7 @@ export class Edit extends Observer {
 			}
 		});
 	}
-	
+
 	/**
 	 * 获取所有图片
 	 */
@@ -238,37 +263,39 @@ export class Edit extends Observer {
 			})
 		})
 	}
-	
+
 	// 光标进入并唤起键盘
 	upKeyboard() {
 		this.tool('blur').format('fontFamily', 'inherit')
 		return this;
 	}
-	
+
 	/**
 	 * 监听输入框变化是否改变链接
 	 */
 	eventLink(detail) {
-		if (!detail) {return;}
+		if (!detail) {
+			return;
+		}
 		let ops = detail.delta.ops || [];
 		let jops = JSON.stringify(ops);
 		if (jops.indexOf(this.#_DEFTEXT) > -1) {
 			return;
 		}
-	
+
 		let isSetContents = false;
 		for (let i = 0, len = ops.length; i < len; i++) {
 			let item = ops[i];
 			let isLink = item.attributes && item.attributes.link;
 			if (isLink) {
 				let nextText = ops[i + 1].insert;
-				if (nextText && (nextText.indexOf('\\n') ===0 || nextText.indexOf(' ') ===0)) {
+				if (nextText && (nextText.indexOf('\\n') === 0 || nextText.indexOf(' ') === 0)) {
 					continue;
 				}
-				
+
 				ops.splice(i, 1, {
 					insert: ''
-				}); 
+				});
 				isSetContents = true;
 				break;
 			}
@@ -276,23 +303,24 @@ export class Edit extends Observer {
 		if (isSetContents) {
 			this.tool('blur')
 			this.ctx.setContents({
-				delta: {ops},
-				complete:()=>{
+				delta: {
+					ops
+				},
+				complete: () => {
 					this.input();
 					// #ifdef APP-PLUS
-					setTimeout(()=>{
+					setTimeout(() => {
 						this.upKeyboard();
-					},200)
+					}, 200)
 					// #endif
 				}
 			})
-		}
-		else {
+		} else {
 			this.input(detail);
 		}
-	
+
 	}
-	
+
 	// 检查字数是否超出
 	eventTextLenght(detail) {
 		this.textCount = detail.text.length - 1;
@@ -301,10 +329,12 @@ export class Edit extends Observer {
 		}
 		return false
 	}
-	
+
 	// 监听输入框变化
 	async input(detail) {
-		if (!detail) {detail = await this.getContents();}
+		if (!detail) {
+			detail = await this.getContents();
+		}
 		if (detail.text.indexOf(this.#_DEFTEXT) < 0) {
 			this.overstep = this.eventTextLenght(detail)
 			detail['overstep'] = this.overstep;
@@ -312,36 +342,38 @@ export class Edit extends Observer {
 		}
 	}
 	// 监听样式变化
-	statuschange({detail}) {
+	statuschange({
+		detail
+	}) {
 		if (detail.link) {
 			this.ctx.blur();
 			return;
 		}
-		this.debounce(()=> {
+		this.debounce(() => {
 			this.$fire('edit:statuschange', detail);
-		}, 100,false);
+		}, 100, false);
 	}
 
 	// 监听焦点进入
 	focus({
 		detail
 	}) {
-		this.debounce(()=> {
+		this.debounce(() => {
 			this.input(detail);
-		}, 100,false);
+		}, 100, false);
 	}
 	// 监听焦点离开
 	blur({
 		detail
 	}) {
-		this.debounce(()=> {
+		this.debounce(() => {
 			this.$fire('edit:blur', detail);
-		}, 100,false);
+		}, 100, false);
 	}
-	
+
 	debounce(fn, time = 500, isImmediate = true, timeoutName = "default") {
 		// 清除定时器
-		if(!this.timeoutArr[timeoutName]) this.timeoutArr[timeoutName] = null;
+		if (!this.timeoutArr[timeoutName]) this.timeoutArr[timeoutName] = null;
 		if (this.timeoutArr[timeoutName] !== null) clearTimeout(this.timeoutArr[timeoutName]);
 		// 立即执行一次
 		if (isImmediate) {
@@ -349,17 +381,17 @@ export class Edit extends Observer {
 			this.timeoutArr[timeoutName] = setTimeout(function() {
 				this.timeoutArr[timeoutName] = null;
 			}, time);
-			if (callNow){
-				if(typeof fn === 'function') fn();
+			if (callNow) {
+				if (typeof fn === 'function') fn();
 			}
 		} else {
 			// 设置定时器，当最后一次操作后，timeout不会再被清除，所以在延时time毫秒后执行fn回调方法
 			this.timeoutArr[timeoutName] = setTimeout(function() {
-				if(typeof fn === 'function') fn();
+				if (typeof fn === 'function') fn();
 			}, time);
 		}
 	}
-	
+
 	queryParamsReverse(locationhref) {
 		let href = locationhref || "";
 		let theRequest = new Object();
@@ -372,12 +404,13 @@ export class Edit extends Observer {
 		}
 		return theRequest;
 	}
-	
+
 	queryParams(data = {}, isPrefix = true, arrayFormat = 'brackets') {
 		let newData = JSON.parse(JSON.stringify(data));
 		let prefix = isPrefix ? '?' : ''
 		let _result = []
-		if (['indices', 'brackets', 'repeat', 'comma'].indexOf(arrayFormat) == -1) arrayFormat = 'brackets';
+		if (['indices', 'brackets', 'repeat', 'comma'].indexOf(arrayFormat) == -1) arrayFormat =
+			'brackets';
 		for (let key in newData) {
 			let value = newData[key]
 			// 去掉为空的参数
@@ -425,6 +458,6 @@ export class Edit extends Observer {
 		}
 		return _result.length ? prefix + _result.join('&') : ''
 	}
-	
-	
+
+
 }

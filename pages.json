@@ -71,10 +71,9 @@
 			}
 		},
 		{
-			"path" : "pages/category/test/test",
-			"style" : 
-			{
-				"navigationBarTitleText" : "swiper-sticky"
+			"path": "pages/category/test/test",
+			"style": {
+				"navigationBarTitleText": "swiper-sticky"
 			}
 		},
 		{
@@ -85,35 +84,43 @@
 			}
 		},
 		{
-			"path" : "pages/attentionAndFans/attentionAndFans",
-			"style" : 
-			{
+			"path": "pages/attentionAndFans/attentionAndFans",
+			"style": {
 				"navigationStyle": "custom",
-				"enablePullDownRefresh" : false
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/mine/otherMine",
-			"style" : 
-			{
+			"path": "pages/mine/otherMine",
+			"style": {
 				"navigationStyle": "custom",
-				"enablePullDownRefresh" : false
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/attentionMessageList/attentionMessageList",
-			"style" : 
-			{
-				"navigationBarTitleText" : "新增关注",
-				"enablePullDownRefresh" : true
+			"path": "pages/attentionMessageList/attentionMessageList",
+			"style": {
+				"navigationBarTitleText": "新增关注",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
-			"path" : "pages/publishNotes/publishNotes",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "pages/publishNotes/publishNotes",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/modal/modal",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"animationType": "fade-in",
+					"background": "transparent",
+					"backgroundColor": "rgba(0,0,0,0)",
+					"popGesture": "none"
+				}
 			}
 		}
 	],

@@ -6,6 +6,7 @@
 			</view> -->
 			<view class="editot-pd">
 				<editor id="editor" ref="editot" class="lsj-edit-edit-container" 
+				style="word-break: break-all;height: 250px;"
 				:placeholder="placeholderText" 
 				:readOnly="onreadOnly" 
 				:showImgSize="showImgSize" 
