@@ -2,8 +2,8 @@
 	<view style="width: 100%;display: flex;flex-wrap: wrap;">
 		<view class="water-left">
 			<block v-for="(item,index) in leftList" :key="index">
-				<view style="position: relative;">
-					<u--image :src="item.img" width="100%" height="auto" mode="widthFix" :radius="10">
+				<view style="position: relative;" @click="goToDetail(item.id)">
+					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix" style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 						<template v-slot:loading>
 							<view style="height: 200rpx;text-align: center;padding: 20rpx;">
 								<u-loading-icon color="#e83929"></u-loading-icon>
@@ -16,8 +16,8 @@
 						<view style="margin-left: 5rpx;">{{item.views}}</view>
 					</view>
 				</view>
-				<view class="title">{{item.title}}</view>
-				<view style="display: flex;position: relative;padding: 20rpx;">
+				<view class="title" @click="goToDetail(item.id)">{{item.title}}</view>
+				<view style="display: flex;position: relative;padding: 20rpx;" v-if="slot_bottom">
 					<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill" :src="item.avatarUrl">
 					</image>
 					<view class="note-username">
@@ -29,12 +29,16 @@
 							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.like}}</text>
 					</view>
 				</view>
+				<view v-else style="display: flex;position: relative;padding: 20rpx;">
+					<view style="margin-right: auto;color: #c8c9cc;font-size: 23rpx;">{{item.updateTime}}</view>
+					<u-icon name="trash" @click="deleteDraft(item.id,0)" color="#c8c9cc" size="18"></u-icon>
+				</view>
 			</block>
 		</view>
 		<view class="water-right">
 			<block v-for="(item,index) in rightList" :key="index">
-				<view style="position: relative;">
-					<u--image :src="item.img" width="100%" height="auto" mode="widthFix" :radius="10">
+				<view style="position: relative;" @click="goToDetail(item.id)">
+					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix" style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 						<template v-slot:loading>
 							<view style="height: 200rpx;text-align: center;padding: 20rpx;margin-bottom: 30rpx;">
 								<u-loading-icon color="#e83929"></u-loading-icon>
@@ -47,8 +51,8 @@
 						<view style="margin-left: 5rpx;">{{item.views}}</view>
 					</view>
 				</view>
-				<view class="title">{{item.title}}</view>
-				<view style="display: flex;position: relative;padding: 20rpx;">
+				<view class="title" @click="goToDetail(item.id)">{{item.title}}</view>
+				<view style="display: flex;position: relative;padding: 20rpx;" v-if="slot_bottom">
 					<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill" :src="item.avatarUrl">
 					</image>
 					<view class="note-username">
@@ -59,6 +63,10 @@
 						<text
 							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.like}}</text>
 					</view>
+				</view>
+				<view v-else style="display: flex;position: relative;padding: 20rpx;">
+					<view style="margin-right: auto;color: #c8c9cc;font-size: 23rpx;">{{item.updateTime}}</view>
+					<u-icon name="trash" @click="deleteDraft(item.id,1)" color="#c8c9cc" size="18"></u-icon>
 				</view>
 			</block>
 		</view>
@@ -81,6 +89,10 @@
 				type: Array,
 				default: () => []
 			},
+			slot_bottom: {
+				type: Boolean,
+				default: true
+			}
 		},
 		mounted() {
 			this.init();
@@ -88,7 +100,7 @@
 		methods: {
 			init() {
 				this.list.forEach((item) => {
-					this.getImageHeight(item.img).then(res => {
+					this.getImageHeight(item.coverPicture).then(res => {
 						if (this.leftHeight <= this.rightHeight) {
 							this.leftList.push(item)
 							this.leftHeight += res
@@ -112,7 +124,7 @@
 			addList(e) {
 				console.log(e)
 				e.forEach((item) => {
-					this.getImageHeight(item.img).then(res => {
+					this.getImageHeight(item.coverPicture).then(res => {
 						if (this.leftHeight <= this.rightHeight) {
 							this.leftList.push(item)
 							this.leftHeight += res
@@ -129,6 +141,36 @@
 				this.leftHeight = 0
 				this.rightHeight = 0
 				this.init()
+			},
+			deleteDraft(id,num){
+				this.$showModal({
+					title: "提示",
+					content: "确认删除该草稿吗？",
+					align: "left", // 对齐方式 left/center/right
+					cancelText: "取消", // 取消按钮的文字
+					cancelColor: "#FF2442", // 取消按钮颜色
+					confirmText: "确定", // 确认按钮文字
+					confirmColor: "#FF2442", // 确认按钮颜色 
+					showCancel: true, // 是否显示取消按钮，默认为 true
+				}).then(res => {
+					console.log(id)
+					let sql = `delete from draft_notes where id = ${id}`
+					this.$sqliteUtil.SqlExecute(sql).then(res=>{
+						if(num==0){
+							this.leftList = this.leftList.filter(item=>item.id!=id)
+						}else{
+							this.rightList = this.rightList.filter(item=>item.id!=id)
+						}
+					})
+				})
+			},
+			goToDetail(id){
+				if(!this.slot_bottom){
+					// 草稿
+					uni.navigateTo({
+						url: '/pages/publishNotes/publishNotes?update=1&tableId='+id
+					})
+				}
 			}
 		},
 	}

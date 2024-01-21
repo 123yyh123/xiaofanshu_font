@@ -4576,6 +4576,9 @@ try {
       .default,
     uTabs: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-tabs/u-tabs.vue */ 153)
       .default,
+    uDivider:
+      __webpack_require__(/*! @/uni_modules/uview-ui/components/u-divider/u-divider.vue */ 270)
+        .default,
     waterFall: __webpack_require__(/*! @/components/water-fall/water-fall.vue */ 161).default,
     uLoadmore:
       __webpack_require__(/*! @/uni_modules/uview-ui/components/u-loadmore/u-loadmore.vue */ 182)
@@ -5926,11 +5929,96 @@ var render = function () {
                         "uni-view",
                         { staticClass: _vm._$g(143, "sc"), attrs: { _i: 143 } },
                         [
-                          _c("water-fall", {
-                            ref: "water1",
+                          _c("u-divider", {
+                            staticStyle: { margin: "10rpx" },
                             attrs: { _i: 144 },
                           }),
-                          _c("u-loadmore", { attrs: { _i: 145 } }),
+                          _c(
+                            "uni-view",
+                            {
+                              staticStyle: {
+                                display: "flex",
+                                padding: "20rpx",
+                                "background-color": "#ffffff",
+                                "font-size": "30rpx",
+                                "justify-content": "space-around",
+                                "align-items": "center",
+                              },
+                              attrs: { _i: 145 },
+                            },
+                            [
+                              _c(
+                                "uni-view",
+                                {
+                                  staticStyle: { display: "flex" },
+                                  style: _vm._$g(146, "s"),
+                                  attrs: { _i: 146 },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.$handleViewEvent($event)
+                                    },
+                                  },
+                                },
+                                [
+                                  _c("u-icon", { attrs: { _i: 147 } }),
+                                  _c("uni-view", { attrs: { _i: 148 } }, [
+                                    _vm._v("公开 · 5"),
+                                  ]),
+                                ],
+                                1
+                              ),
+                              _c(
+                                "uni-view",
+                                {
+                                  staticStyle: { display: "flex" },
+                                  style: _vm._$g(149, "s"),
+                                  attrs: { _i: 149 },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.$handleViewEvent($event)
+                                    },
+                                  },
+                                },
+                                [
+                                  _c("u-icon", { attrs: { _i: 150 } }),
+                                  _c("uni-view", { attrs: { _i: 151 } }, [
+                                    _vm._v("私密 · 4"),
+                                  ]),
+                                ],
+                                1
+                              ),
+                              _c(
+                                "uni-view",
+                                {
+                                  staticStyle: { display: "flex" },
+                                  style: _vm._$g(152, "s"),
+                                  attrs: { _i: 152 },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.$handleViewEvent($event)
+                                    },
+                                  },
+                                },
+                                [
+                                  _c("u-icon", { attrs: { _i: 153 } }),
+                                  _c("uni-view", { attrs: { _i: 154 } }, [
+                                    _vm._v("草稿 · 1"),
+                                  ]),
+                                ],
+                                1
+                              ),
+                            ],
+                            1
+                          ),
+                          _c("u-divider", {
+                            staticStyle: { margin: "10rpx" },
+                            attrs: { _i: 155 },
+                          }),
+                          _c("water-fall", {
+                            ref: "water1",
+                            attrs: { _i: 156 },
+                          }),
+                          _c("u-loadmore", { attrs: { _i: 157 } }),
                         ],
                         1
                       ),
@@ -5942,16 +6030,16 @@ var render = function () {
               ),
               _c(
                 "v-uni-swiper-item",
-                { attrs: { _i: 146 } },
+                { attrs: { _i: 158 } },
                 [
                   _c(
                     "v-uni-scroll-view",
                     {
-                      style: _vm._$g(147, "s"),
+                      style: _vm._$g(159, "s"),
                       attrs: {
-                        "scroll-y": _vm._$g(147, "a-scroll-y"),
+                        "scroll-y": _vm._$g(159, "a-scroll-y"),
                         "lower-threshold": "20",
-                        _i: 147,
+                        _i: 159,
                       },
                       on: {
                         scrolltolower: function ($event) {
@@ -5962,13 +6050,13 @@ var render = function () {
                     [
                       _c(
                         "uni-view",
-                        { staticClass: _vm._$g(148, "sc"), attrs: { _i: 148 } },
+                        { staticClass: _vm._$g(160, "sc"), attrs: { _i: 160 } },
                         [
                           _c("water-fall", {
                             ref: "water2",
-                            attrs: { _i: 149 },
+                            attrs: { _i: 161 },
                           }),
-                          _c("u-loadmore", { attrs: { _i: 150 } }),
+                          _c("u-loadmore", { attrs: { _i: 162 } }),
                         ],
                         1
                       ),
@@ -5980,16 +6068,16 @@ var render = function () {
               ),
               _c(
                 "v-uni-swiper-item",
-                { attrs: { _i: 151 } },
+                { attrs: { _i: 163 } },
                 [
                   _c(
                     "v-uni-scroll-view",
                     {
-                      style: _vm._$g(152, "s"),
+                      style: _vm._$g(164, "s"),
                       attrs: {
-                        "scroll-y": _vm._$g(152, "a-scroll-y"),
+                        "scroll-y": _vm._$g(164, "a-scroll-y"),
                         "lower-threshold": "20",
-                        _i: 152,
+                        _i: 164,
                       },
                       on: {
                         scrolltolower: function ($event) {
@@ -6000,13 +6088,13 @@ var render = function () {
                     [
                       _c(
                         "uni-view",
-                        { staticClass: _vm._$g(153, "sc"), attrs: { _i: 153 } },
+                        { staticClass: _vm._$g(165, "sc"), attrs: { _i: 165 } },
                         [
                           _c("water-fall", {
                             ref: "water3",
-                            attrs: { _i: 154 },
+                            attrs: { _i: 166 },
                           }),
-                          _c("u-loadmore", { attrs: { _i: 155 } }),
+                          _c("u-loadmore", { attrs: { _i: 167 } }),
                         ],
                         1
                       ),
@@ -7072,9 +7160,19 @@ var render = function () {
                   key: item["k0"],
                   staticStyle: { position: "relative" },
                   attrs: { _i: "3-" + $30 },
+                  on: {
+                    click: function ($event) {
+                      return _vm.$handleViewEvent($event)
+                    },
+                  },
                 },
                 [
                   _c("u--image", {
+                    staticStyle: {
+                      "max-height": "500rpx",
+                      overflow: "hidden",
+                      "border-radius": "20rpx",
+                    },
                     attrs: { _i: "4-" + $30 },
                     scopedSlots: _vm._u(
                       [
@@ -7145,72 +7243,113 @@ var render = function () {
                   key: item["k1"],
                   staticClass: _vm._$g("12-" + $30, "sc"),
                   attrs: { _i: "12-" + $30 },
+                  on: {
+                    click: function ($event) {
+                      return _vm.$handleViewEvent($event)
+                    },
+                  },
                 },
                 [_vm._v(_vm._$g("12-" + $30, "t0-0"))]
               ),
-              _c(
-                "uni-view",
-                {
-                  key: item["k2"],
-                  staticStyle: {
-                    display: "flex",
-                    position: "relative",
-                    padding: "20rpx",
-                  },
-                  attrs: { _i: "13-" + $30 },
-                },
-                [
-                  _c("v-uni-image", {
-                    staticStyle: {
-                      height: "20px",
-                      width: "20px",
-                      "border-radius": "50%",
-                    },
-                    attrs: {
-                      mode: "aspectFill",
-                      src: _vm._$g("14-" + $30, "a-src"),
-                      _i: "14-" + $30,
-                    },
-                  }),
-                  _c(
+              _vm._$g("13-" + $30, "i")
+                ? _c(
                     "uni-view",
                     {
-                      staticClass: _vm._$g("15-" + $30, "sc"),
-                      attrs: { _i: "15-" + $30 },
-                    },
-                    [_vm._v(_vm._$g("15-" + $30, "t0-0"))]
-                  ),
-                  _c(
-                    "uni-view",
-                    {
+                      key: item["k2"],
                       staticStyle: {
                         display: "flex",
-                        position: "absolute",
-                        right: "10rpx",
+                        position: "relative",
+                        padding: "20rpx",
                       },
-                      attrs: { _i: "16-" + $30 },
+                      attrs: { _i: "13-" + $30 },
                     },
                     [
-                      _c("u-icon", { attrs: { _i: "17-" + $30 } }),
+                      _c("v-uni-image", {
+                        staticStyle: {
+                          height: "20px",
+                          width: "20px",
+                          "border-radius": "50%",
+                        },
+                        attrs: {
+                          mode: "aspectFill",
+                          src: _vm._$g("14-" + $30, "a-src"),
+                          _i: "14-" + $30,
+                        },
+                      }),
                       _c(
-                        "v-uni-text",
+                        "uni-view",
+                        {
+                          staticClass: _vm._$g("15-" + $30, "sc"),
+                          attrs: { _i: "15-" + $30 },
+                        },
+                        [_vm._v(_vm._$g("15-" + $30, "t0-0"))]
+                      ),
+                      _c(
+                        "uni-view",
                         {
                           staticStyle: {
-                            color: "gray",
-                            "font-size": "15px",
-                            "line-height": "18px",
-                            "margin-left": "3rpx",
+                            display: "flex",
+                            position: "absolute",
+                            right: "10rpx",
                           },
-                          attrs: { _i: "18-" + $30 },
+                          attrs: { _i: "16-" + $30 },
                         },
-                        [_vm._v(_vm._$g("18-" + $30, "t0-0"))]
+                        [
+                          _c("u-icon", { attrs: { _i: "17-" + $30 } }),
+                          _c(
+                            "v-uni-text",
+                            {
+                              staticStyle: {
+                                color: "gray",
+                                "font-size": "15px",
+                                "line-height": "18px",
+                                "margin-left": "3rpx",
+                              },
+                              attrs: { _i: "18-" + $30 },
+                            },
+                            [_vm._v(_vm._$g("18-" + $30, "t0-0"))]
+                          ),
+                        ],
+                        1
                       ),
                     ],
                     1
+                  )
+                : _c(
+                    "uni-view",
+                    {
+                      key: item["k-1"],
+                      staticStyle: {
+                        display: "flex",
+                        position: "relative",
+                        padding: "20rpx",
+                      },
+                      attrs: { _i: "19-" + $30 },
+                    },
+                    [
+                      _c(
+                        "uni-view",
+                        {
+                          staticStyle: {
+                            "margin-right": "auto",
+                            color: "#c8c9cc",
+                            "font-size": "23rpx",
+                          },
+                          attrs: { _i: "20-" + $30 },
+                        },
+                        [_vm._v(_vm._$g("20-" + $30, "t0-0"))]
+                      ),
+                      _c("u-icon", {
+                        attrs: { _i: "21-" + $30 },
+                        on: {
+                          click: function ($event) {
+                            return _vm.$handleViewEvent($event)
+                          },
+                        },
+                      }),
+                    ],
+                    1
                   ),
-                ],
-                1
-              ),
             ]
           }),
         ],
@@ -7218,20 +7357,30 @@ var render = function () {
       ),
       _c(
         "uni-view",
-        { staticClass: _vm._$g(19, "sc"), attrs: { _i: 19 } },
+        { staticClass: _vm._$g(22, "sc"), attrs: { _i: 22 } },
         [
-          _vm._l(_vm._$g(20, "f"), function (item, index, $21, $31) {
+          _vm._l(_vm._$g(23, "f"), function (item, index, $21, $31) {
             return [
               _c(
                 "uni-view",
                 {
                   key: item["k0"],
                   staticStyle: { position: "relative" },
-                  attrs: { _i: "21-" + $31 },
+                  attrs: { _i: "24-" + $31 },
+                  on: {
+                    click: function ($event) {
+                      return _vm.$handleViewEvent($event)
+                    },
+                  },
                 },
                 [
                   _c("u--image", {
-                    attrs: { _i: "22-" + $31 },
+                    staticStyle: {
+                      "max-height": "500rpx",
+                      overflow: "hidden",
+                      "border-radius": "20rpx",
+                    },
+                    attrs: { _i: "25-" + $31 },
                     scopedSlots: _vm._u(
                       [
                         {
@@ -7247,17 +7396,17 @@ var render = function () {
                                     padding: "20rpx",
                                     "margin-bottom": "30rpx",
                                   },
-                                  attrs: { _i: "24-" + $31 + "-" + _si },
+                                  attrs: { _i: "27-" + $31 + "-" + _si },
                                 },
                                 [
                                   _c("u-loading-icon", {
-                                    attrs: { _i: "25-" + $31 + "-" + _si },
+                                    attrs: { _i: "28-" + $31 + "-" + _si },
                                   }),
                                   _c(
                                     "uni-view",
                                     {
                                       staticStyle: { "font-size": "30rpx" },
-                                      attrs: { _i: "26-" + $31 + "-" + _si },
+                                      attrs: { _i: "29-" + $31 + "-" + _si },
                                     },
                                     [_vm._v("loading......")]
                                   ),
@@ -7272,22 +7421,22 @@ var render = function () {
                       true
                     ),
                   }),
-                  _vm._$g("27-" + $31, "i")
+                  _vm._$g("30-" + $31, "i")
                     ? _c(
                         "uni-view",
                         {
-                          staticClass: _vm._$g("27-" + $31, "sc"),
-                          attrs: { _i: "27-" + $31 },
+                          staticClass: _vm._$g("30-" + $31, "sc"),
+                          attrs: { _i: "30-" + $31 },
                         },
                         [
-                          _c("u-icon", { attrs: { _i: "28-" + $31 } }),
+                          _c("u-icon", { attrs: { _i: "31-" + $31 } }),
                           _c(
                             "uni-view",
                             {
                               staticStyle: { "margin-left": "5rpx" },
-                              attrs: { _i: "29-" + $31 },
+                              attrs: { _i: "32-" + $31 },
                             },
-                            [_vm._v(_vm._$g("29-" + $31, "t0-0"))]
+                            [_vm._v(_vm._$g("32-" + $31, "t0-0"))]
                           ),
                         ],
                         1
@@ -7300,74 +7449,115 @@ var render = function () {
                 "uni-view",
                 {
                   key: item["k1"],
-                  staticClass: _vm._$g("30-" + $31, "sc"),
-                  attrs: { _i: "30-" + $31 },
-                },
-                [_vm._v(_vm._$g("30-" + $31, "t0-0"))]
-              ),
-              _c(
-                "uni-view",
-                {
-                  key: item["k2"],
-                  staticStyle: {
-                    display: "flex",
-                    position: "relative",
-                    padding: "20rpx",
+                  staticClass: _vm._$g("33-" + $31, "sc"),
+                  attrs: { _i: "33-" + $31 },
+                  on: {
+                    click: function ($event) {
+                      return _vm.$handleViewEvent($event)
+                    },
                   },
-                  attrs: { _i: "31-" + $31 },
                 },
-                [
-                  _c("v-uni-image", {
-                    staticStyle: {
-                      height: "20px",
-                      width: "20px",
-                      "border-radius": "50%",
-                    },
-                    attrs: {
-                      mode: "aspectFill",
-                      src: _vm._$g("32-" + $31, "a-src"),
-                      _i: "32-" + $31,
-                    },
-                  }),
-                  _c(
+                [_vm._v(_vm._$g("33-" + $31, "t0-0"))]
+              ),
+              _vm._$g("34-" + $31, "i")
+                ? _c(
                     "uni-view",
                     {
-                      staticClass: _vm._$g("33-" + $31, "sc"),
-                      attrs: { _i: "33-" + $31 },
-                    },
-                    [_vm._v(_vm._$g("33-" + $31, "t0-0"))]
-                  ),
-                  _c(
-                    "uni-view",
-                    {
+                      key: item["k2"],
                       staticStyle: {
                         display: "flex",
-                        position: "absolute",
-                        right: "10rpx",
+                        position: "relative",
+                        padding: "20rpx",
                       },
                       attrs: { _i: "34-" + $31 },
                     },
                     [
-                      _c("u-icon", { attrs: { _i: "35-" + $31 } }),
+                      _c("v-uni-image", {
+                        staticStyle: {
+                          height: "20px",
+                          width: "20px",
+                          "border-radius": "50%",
+                        },
+                        attrs: {
+                          mode: "aspectFill",
+                          src: _vm._$g("35-" + $31, "a-src"),
+                          _i: "35-" + $31,
+                        },
+                      }),
                       _c(
-                        "v-uni-text",
+                        "uni-view",
                         {
-                          staticStyle: {
-                            color: "gray",
-                            "font-size": "15px",
-                            "line-height": "18px",
-                            "margin-left": "3rpx",
-                          },
+                          staticClass: _vm._$g("36-" + $31, "sc"),
                           attrs: { _i: "36-" + $31 },
                         },
                         [_vm._v(_vm._$g("36-" + $31, "t0-0"))]
                       ),
+                      _c(
+                        "uni-view",
+                        {
+                          staticStyle: {
+                            display: "flex",
+                            position: "absolute",
+                            right: "10rpx",
+                          },
+                          attrs: { _i: "37-" + $31 },
+                        },
+                        [
+                          _c("u-icon", { attrs: { _i: "38-" + $31 } }),
+                          _c(
+                            "v-uni-text",
+                            {
+                              staticStyle: {
+                                color: "gray",
+                                "font-size": "15px",
+                                "line-height": "18px",
+                                "margin-left": "3rpx",
+                              },
+                              attrs: { _i: "39-" + $31 },
+                            },
+                            [_vm._v(_vm._$g("39-" + $31, "t0-0"))]
+                          ),
+                        ],
+                        1
+                      ),
+                    ],
+                    1
+                  )
+                : _c(
+                    "uni-view",
+                    {
+                      key: item["k-1"],
+                      staticStyle: {
+                        display: "flex",
+                        position: "relative",
+                        padding: "20rpx",
+                      },
+                      attrs: { _i: "40-" + $31 },
+                    },
+                    [
+                      _c(
+                        "uni-view",
+                        {
+                          staticStyle: {
+                            "margin-right": "auto",
+                            color: "#c8c9cc",
+                            "font-size": "23rpx",
+                          },
+                          attrs: { _i: "41-" + $31 },
+                        },
+                        [_vm._v(_vm._$g("41-" + $31, "t0-0"))]
+                      ),
+                      _c("u-icon", {
+                        attrs: { _i: "42-" + $31 },
+                        on: {
+                          click: function ($event) {
+                            return _vm.$handleViewEvent($event)
+                          },
+                        },
+                      }),
                     ],
                     1
                   ),
-                ],
-                1
-              ),
             ]
           }),
         ],
@@ -7862,7 +8052,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _default = {
   name: "water-fall",
-  props: ["list"],
+  props: ["list", "slot_bottom"],
   data: function data() {
     return {
       wxsProps: {}
@@ -18374,6 +18564,11 @@ var render = function () {
                     "justify-content": "center",
                   },
                   attrs: { _i: 93 },
+                  on: {
+                    click: function ($event) {
+                      return _vm.$handleViewEvent($event)
+                    },
+                  },
                 },
                 [
                   _c(

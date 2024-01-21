@@ -149,7 +149,8 @@
 						src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%88%86%E4%BA%AB.png"
 						mode="heightFix"></image>
 				</view>
-				<view :style="{height: iconHeight}" style="opacity: 1;display: flex;flex-direction: column;justify-content: center;">
+				<view :style="{height: iconHeight}"
+					style="opacity: 1;display: flex;flex-direction: column;justify-content: center;">
 					<u-transition :show="show" mode="fade-up">
 						<image :style="{height: statusBarHeight*0.8+'px',width:statusBarHeight*0.8+'px'}"
 							:src="userInfo.avatarUrl" style="border-radius: 50%;" mode="aspectFill"></image>
@@ -252,7 +253,7 @@
 				        }" itemStyle="padding-left: 15px; padding-right: 15px; height: 40px;">
 				</u-tabs>
 				<view style="position: absolute;right: 0;">
-					<u-icon name="search" color="#16160e" size="30"></u-icon>
+					<u-icon name="search" color="#16160e" size="25"></u-icon>
 				</view>
 			</view>
 		</u-sticky>
@@ -263,7 +264,29 @@
 					<scroll-view :scroll-y="isScroll" :style="{height:notesHeight}" @scrolltolower="onReach"
 						lower-threshold="20">
 						<view class="component">
-							<water-fall :list="notesList" ref="water1"></water-fall>
+							<u-divider style="margin: 10rpx;"></u-divider>
+							<view
+								style="display: flex;padding: 20rpx;background-color: #ffffff;font-size: 30rpx;justify-content: space-around;align-items: center;">
+								<view style="display: flex;" :style="{color: noteType==0?'#16160e':'#afafb0'}"
+									@click="changeNoteType(0)">
+									<u-icon name="lock-open" size="20"
+										:color="noteType==0?'#16160e':'#afafb0'"></u-icon>
+									<view>公开 · 5</view>
+								</view>
+								<view style="display: flex;" :style="{color: noteType==1?'#16160e':'#afafb0'}"
+									@click="changeNoteType(1)">
+									<u-icon name="lock" size="20" :color="noteType==1?'#16160e':'#afafb0'"></u-icon>
+									<view>私密 · 4</view>
+								</view>
+								<view style="display: flex;" :style="{color: noteType==2?'#16160e':'#afafb0'}"
+									@click="changeNoteType(2)">
+									<u-icon name="edit-pen" size="20" :color="noteType==2?'#16160e':'#afafb0'"></u-icon>
+									<view>草稿 · 1</view>
+								</view>
+							</view>
+							<u-divider style="margin: 10rpx;"></u-divider>
+							<water-fall :list="allNotesList.notes.notesList" ref="water1" :slot_bottom="noteType!=2">
+							</water-fall>
 							<u-loadmore margin-top="20" line :status="status1" :loading-text="loadingText"
 								:loadmore-text="loadmoreText" :nomore-text="nomoreText" />
 						</view>
@@ -302,6 +325,9 @@
 	import {
 		baseUrl
 	} from '../../config/index.js';
+	import {
+		weChatTimeFormat
+	} from '../../utils/util.js';
 	export default {
 		data() {
 			return {
@@ -328,6 +354,29 @@
 				show: false,
 				moreShow: false,
 				introductionShow: false,
+				allNotesList: {
+					notes: {
+						notesList: [],
+						status: 'nomore',
+						page: 1,
+						pageSize: 10,
+						total: 0
+					},
+					collection: {
+						notesList: [],
+						status: 'nomore',
+						page: 1,
+						pageSize: 10,
+						total: 0
+					},
+					like: {
+						notesList: [],
+						status: 'nomore',
+						page: 1,
+						pageSize: 10,
+						total: 0
+					}
+				},
 				status1: 'nomore',
 				status2: 'nomore',
 				status3: 'nomore',
@@ -335,42 +384,42 @@
 				loadmoreText: '轻轻上拉',
 				nomoreText: '实在没有了',
 				notesList: [{
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
+						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
 						title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
 						nickname: '你好',
 						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
 						like: 8,
 						views: 10,
 					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%20%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B%20%E9%9B%A8%E5%A4%A9.png',
+						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%20%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B%20%E9%9B%A8%E5%A4%A9.png',
 						title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
 						nickname: 'dscnj',
 						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
 						like: 8,
 						views: 110,
 					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E3%80%8A%E5%8E%9F%E7%A5%9E%E3%80%8B%E6%98%8E%E9%9C%84%E7%81%AF%E6%B5%B7%20%E7%94%98%E9%9B%A8%20%E5%88%BB%E6%99%B4%20%E6%B8%B8%E6%88%8F%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
+						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E3%80%8A%E5%8E%9F%E7%A5%9E%E3%80%8B%E6%98%8E%E9%9C%84%E7%81%AF%E6%B5%B7%20%E7%94%98%E9%9B%A8%20%E5%88%BB%E6%99%B4%20%E6%B8%B8%E6%88%8F%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
 						title: 'dncjsn生产基地那就计算机吃',
 						nickname: 'd打输出多少打输',
 						avatarUrl: '/static/image/00001.png',
 						like: 8,
 						views: 1033,
 					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%20%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B%20%E9%9B%A8%E5%A4%A9.png',
+						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%20%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B%20%E9%9B%A8%E5%A4%A9.png',
 						title: '时代潮流的基底节打输出',
 						nickname: '你成绩',
 						avatarUrl: '/static/image/00001.png',
 						like: 8,
 						views: 103,
 					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E%E5%92%8C%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E5%8A%A8%E6%BC%AB%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
+						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E%E5%92%8C%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E5%8A%A8%E6%BC%AB%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
 						title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
 						nickname: '你好',
 						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
 						like: 8,
 						views: 10,
 					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E%E5%92%8C%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E5%8A%A8%E6%BC%AB%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
+						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E%E5%92%8C%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E5%8A%A8%E6%BC%AB%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
 						title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
 						nickname: 'dscnj',
 						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
@@ -378,28 +427,28 @@
 						views: 110,
 					},
 					{
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
+						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
 						title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
 						nickname: 'dscnj',
 						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
 						like: 8,
 						views: 110,
 					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%83%A1%E6%A1%83%20%E5%8E%9F%E7%A5%9E%20%E5%8F%AF%E7%88%B1%E5%B0%8F%E9%AC%BC%20%E9%AB%98%E6%B8%85%20%E7%94%B5%E8%84%91%20%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
+						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%83%A1%E6%A1%83%20%E5%8E%9F%E7%A5%9E%20%E5%8F%AF%E7%88%B1%E5%B0%8F%E9%AC%BC%20%E9%AB%98%E6%B8%85%20%E7%94%B5%E8%84%91%20%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
 						title: '时代潮流的基底节打输出',
 						nickname: '你成绩',
 						avatarUrl: '/static/image/00001.png',
 						like: 8,
 						views: 103,
 					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
+						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
 						title: 'dncjsn生产基地那就计算机吃',
 						nickname: 'd打输出多少打输',
 						avatarUrl: '/static/image/00001.png',
 						like: 8,
 						views: 1033,
 					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E3%80%8A%E5%8E%9F%E7%A5%9E%E3%80%8B%E6%98%8E%E9%9C%84%E7%81%AF%E6%B5%B7%20%E7%94%98%E9%9B%A8%20%E5%88%BB%E6%99%B4%20%E6%B8%B8%E6%88%8F%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
+						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E3%80%8A%E5%8E%9F%E7%A5%9E%E3%80%8B%E6%98%8E%E9%9C%84%E7%81%AF%E6%B5%B7%20%E7%94%98%E9%9B%A8%20%E5%88%BB%E6%99%B4%20%E6%B8%B8%E6%88%8F%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
 						title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
 						nickname: '你好',
 						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
@@ -407,14 +456,46 @@
 						views: 10,
 					}
 				],
+				noteType: 0,
 				selfIntroduction: '',
 			};
 		},
 		methods: {
+			changeNoteType(e) {
+				this.noteType = e
+				this.allNotesList.notes = {
+					notesList: [],
+					status: 'nomore',
+					page: 1,
+					pageSize: 10,
+					total: 0
+				}
+				if (e === 2) {
+					//草稿
+					let offset = (this.allNotesList.notes.page - 1) * this.allNotesList.notes.pageSize
+					let sql1 =
+						`select * from draft_notes draft_notes order by id desc limit ${this.allNotesList.notes.pageSize} offset ${offset}`
+					this.$sqliteUtil.SqlSelect(sql1).then(res => {
+						res.forEach(item => {
+							item.updateTime = weChatTimeFormat(item.updateTime)
+							if(item.coverPicture==''){
+								item.coverPicture='https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-21%20212119.png'
+							}
+						})
+						this.allNotesList.notes.notesList = res
+						this.allNotesList.notes.page++
+						console.log(this.allNotesList.notes.notesList)
+						setTimeout(() => {
+							this.$refs.water1.refresh()
+						}, 500)
+					})
+				}
+			},
 			goToAttentionAndFans(e) {
 				console.log(e)
 				uni.navigateTo({
-					url: '/pages/attentionAndFans/attentionAndFans?userId=' + this.userInfo.id + '&type=' + e+'&attentionNum='+this.userInfo.attentionNum+'&fansNum='+this.userInfo.fansNum
+					url: '/pages/attentionAndFans/attentionAndFans?userId=' + this.userInfo.id + '&type=' + e +
+						'&attentionNum=' + this.userInfo.attentionNum + '&fansNum=' + this.userInfo.fansNum
 				})
 			},
 			editData() {

@@ -36,14 +36,7 @@
 		},
 		methods: {
 			toComment(index) {
-				let alarmId = Date.now()
-				let msg = {
-					alarmId: alarmId,
-					warningTypeStr: "告警消息",
-					projectName: "2023年5月17日",
-					description: "十万火急，赶紧处理！！！"
-				};
-				createAlarm(msg, res => {
+				this.$sqliteUtil.SqlExecute(`drop table draft_notes`).then(res => {
 					console.log(res)
 				})
 			}

@@ -186,13 +186,13 @@
 		<view v-if="showBottom"
 			style="display: flex;position: fixed;bottom: 0;width: 750rpx;height: 160rpx;align-items: center;z-index: 99;background-color: #ffffff;">
 			<view style="display: flex;flex-direction: column;align-items: center;margin-left: 30rpx;flex: 1;"
-				@click="saveDraft">
+				@click="saveDraftTip">
 				<u-icon
 					name="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%AD%98%E8%8D%89%E7%A8%BF.png"
 					size="40"></u-icon>
 				<view style="font-size: 25rpx;color: #2b2b2b;">存草稿</view>
 			</view>
-			<view
+			<view @click="publishNotes"
 				style="margin-left: 30rpx;margin-right: 30rpx;border-radius: 50px;flex: 5;background-color:#FF2442;height: 100rpx;display: flex;align-items: center;justify-content: center;">
 				<view style="color: #ffffff;font-size: 37rpx;letter-spacing: 1px;">发布笔记</view>
 			</view>
@@ -208,12 +208,23 @@
 	import {
 		emojiList
 	} from '@/utils/emojiUtil.js'
+	import {
+		addNote
+	} from '../../apis/notes_service'
+	import {
+		baseUrl
+	} from '../../config/index.js'
+	import {
+		uploadFile
+	} from "@/utils/fileUtil.js"
 	export default {
 		components: {
 			editBtns
 		},
 		data() {
 			return {
+				isUpdate: false,
+				tableId: '',
 				edit: null,
 				type: '',
 				tempFilePaths: [],
@@ -243,7 +254,118 @@
 			};
 		},
 		methods: {
-			saveDraft() {
+			publishNotes() {
+				// 检查字段
+				if (this.title == '') {
+					uni.showToast({
+						title: '请输入标题',
+						icon: 'none'
+					});
+					return
+				}
+				this.$showModal({
+					title: "提示",
+					content: "确认发布笔记吗？",
+					align: "left", // 对齐方式 left/center/right
+					cancelText: "取消", // 取消按钮的文字
+					cancelColor: "#FF2442", // 取消按钮颜色
+					confirmText: "确定", // 确认按钮文字
+					confirmColor: "#FF2442", // 确认按钮颜色 
+					showCancel: true, // 是否显示取消按钮，默认为 true
+				}).then(res => {
+					uni.showLoading({
+						title: '发布中...',
+						mask: true,
+					})
+					// 将tempFilePaths中本地路径的文件全部上传
+					let promises = [];
+					let notesResources = [];
+					if (this.type === 0) {
+						// 多个文件上传
+						console.log(this.tempFilePaths)
+						this.tempFilePaths.forEach(item => {
+							promises.push(uploadFile(baseUrl + '/third/uploadImg', item, 'file'));
+						})
+					} else {
+						// 单个文件上传
+						promises.push(uploadFile(baseUrl + '/third/uploadAudio', this.tempFilePaths[0], 'file'));
+					}
+					Promise.all(promises).then(res => {
+						notesResources = res
+						console.log(notesResources)
+						this.edit.getContents().then(res => {
+							console.log(res)
+							let noteVO = {
+								title: this.title,
+								content: res.html,
+								notesType: this.type,
+								belongUserId: uni.getStorageSync('userInfo').id,
+								coverPicture: this.coverPicture,
+								address: this.address,
+								latitude: this.latitude,
+								longitude: this.longitude,
+								authority: this.authority,
+								notesResources: JSON.stringify(notesResources)
+							}
+							console.log(noteVO)
+							addNote({
+								notesVO: noteVO
+							}).then(res => {
+								if (res.code == 20020) {
+									if (this.isUpdate) {
+										this.$sqliteUtil.SqlExecute(
+											`delete from draft_notes where id = ${this.tableId}`
+										)
+									}
+									setTimeout(() => {
+										uni.showToast({
+											title: '发布成功',
+											icon: 'none'
+										});
+										uni.switchTab({
+											url: '/pages/index/index'
+										})
+									}, 500)
+								} else {
+									uni.showToast({
+										title: res.msg==''?'发布失败':res.msg,
+										icon: 'none'
+									});
+								}
+							}).catch(err => {
+								console.log(err)
+								uni.showToast({
+									title: '发布失败',
+									icon: 'none'
+								});
+							}).finally(() => {
+								uni.hideLoading()
+							})
+						}).catch(err => {
+							console.log(err)
+							uni.showToast({
+								title: '发布失败',
+								icon: 'none'
+							});
+						}).finally(() => {
+							uni.hideLoading()
+						})
+					}).catch(err => {
+						console.log(err)
+						uni.showToast({
+							title: '发布失败',
+							icon: 'none'
+						});
+					}).finally(() => {
+						uni.hideLoading()
+					})
+				})
+			},
+			saveDraftTip() {
+				// 查询所有草稿
+				this.$sqliteUtil.SqlSelect(`select * from draft_notes`).then(res => {
+					console.log(res)
+				})
 				this.$showModal({
 					title: "提示",
 					content: "确认保存笔记至草稿箱吗？",
@@ -254,9 +376,42 @@
 					confirmColor: "#FF2442", // 确认按钮颜色 
 					showCancel: true, // 是否显示取消按钮，默认为 true
 				}).then(res => {
-					console.log('点击了确定按钮')
+					// 将页面数据存入数据库
+					this.saveDraft()
+				})
+			},
+			saveDraft() {
+				// 保存草稿
+				this.edit.getContents().then(res => {
 					console.log(res)
-				}).catch(err => {
+					this.content = res.html
+					if (this.coverPicture == '' && this.type == 0) {
+						this.coverPicture = this.tempFilePaths[0]
+					}
+					if (this.isUpdate) {
+						let sql1 = `delete from draft_notes where id = ${this.tableId}`
+						this.$sqliteUtil.SqlExecute(sql1).then(res => {
+							console.log(res)
+						})
+					}
+					setTimeout(() => {
+						let sql2 =
+							`insert into draft_notes (title,content,type,coverPicture,address,latitude,longitude,authority,tempFilePaths,updateTime) values ('${this.title}','${this.content}','${this.type}','${this.coverPicture}','${this.address}','${this.latitude}','${this.longitude}','${this.authority}','${JSON.stringify(this.tempFilePaths)}',datetime('now','localtime'))`
+						this.$sqliteUtil.SqlExecute(sql2).then(res => {
+							uni.showToast({
+								title: '保存成功',
+								icon: 'none'
+							});
+							uni.switchTab({
+								url: '/pages/index/index'
+							})
+						}).catch(err => {
+							uni.showToast({
+								title: '保存失败',
+								icon: 'none'
+							});
+						})
+					}, 500)
 				})
 			},
 			chooseAuth() {
@@ -366,6 +521,7 @@
 			editReady(edit) {
 				// 将富文本对象存放到当前页面，便于后续直接操作
 				this.edit = edit;
+				this.edit.ready(this.content)
 			},
 			previewVideo() {
 				this.videoB = uni.createVideoContext('video', this)
@@ -439,8 +595,31 @@
 			}
 		},
 		onLoad(options) {
-			this.type = Number(options.type)
-			this.tempFilePaths = JSON.parse(options.tempFilePaths)
+			if (options.update == 0) {
+				// 从发布笔记进入
+				this.type = Number(options.type)
+				this.tempFilePaths = JSON.parse(options.tempFilePaths)
+			} else if (options.update == 1) {
+				// 从草稿箱进入
+				this.isUpdate = true
+				this.tableId = options.tableId
+				let id = options.tableId
+				let sql = `select * from draft_notes where id=${id}`
+				this.$sqliteUtil.SqlSelect(sql).then(res => {
+					console.log(res)
+					this.title = res[0].title
+					this.content = res[0].content
+					this.type = Number(res[0].type)
+					this.coverPicture = res[0].coverPicture
+					this.videoB = res[0].videoB
+					this.topicname = res[0].topicname
+					this.address = res[0].address
+					this.latitude = res[0].latitude
+					this.longitude = res[0].longitude
+					this.authority = Number(res[0].authority)
+					this.tempFilePaths = JSON.parse(res[0].tempFilePaths)
+				})
+			}
 			// 获取表情列表
 			let sql = `select * from emoji_list`
 			this.$sqliteUtil.SqlSelect(sql).then(res => {
@@ -487,10 +666,11 @@
 				success: (res) => {
 					if (res.tapIndex == 0) {
 						this.saveDraft()
+					} else {
+						uni.switchTab({
+							url: '/pages/index/index'
+						})
 					}
-					uni.switchTab({
-						url: '/pages/index/index'
-					})
 				}
 			})
 			return true

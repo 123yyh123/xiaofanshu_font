@@ -507,7 +507,6 @@
 										this.sendImage(data.data)
 									}
 								}
-
 							})
 						})
 					}

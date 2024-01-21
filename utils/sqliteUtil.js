@@ -35,6 +35,21 @@ const sqliteUtil = {
 			        (3, 3, 0);
 			    `);
 			})
+			this.SqlExecute(`CREATE TABLE IF NOT EXISTS draft_notes (
+				id INTEGER PRIMARY KEY AUTOINCREMENT,
+				title TEXT,
+				content TEXT,
+				type TEXT,
+				coverPicture TEXT,
+				videoB TEXT,
+				topicname TEXT,
+				address TEXT,
+				latitude TEXT,
+				longitude TEXT,
+				authority INTEGER,
+				tempFilePaths TEXT,
+				updateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+			);`)
 			this.SqlExecute(`CREATE TABLE IF NOT EXISTS attention_message (
 				"id"
 				INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -142,7 +157,7 @@ const sqliteUtil = {
 				name: 'xfsDB_' + this.getUserId(),
 				sql: sql,
 				success(e) {
-					// console.log(e)
+					console.log(e)
 					resolve(e)
 				},
 				fail(e) {

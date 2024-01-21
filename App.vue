@@ -47,8 +47,9 @@
 												filePaths.push(res.savedFilePath)
 												if (filePaths.length == tempFilePaths.length) {
 													uni.navigateTo({
-														url: '/pages/publishNotes/publishNotes?type=0&tempFilePaths=' +
+														url: '/pages/publishNotes/publishNotes?update=0&type=0&tempFilePaths=' +
 															JSON.stringify(filePaths)
+														// url: '/pages/publishNotes/publishNotes?update=1&tableId=3'
 													})
 												}
 											}
@@ -67,7 +68,7 @@
 										tempFilePath: tempFilePath,
 										success: function(res) {
 											uni.navigateTo({
-												url: '/pages/publishNotes/publishNotes?type=1&tempFilePaths=' +
+												url: '/pages/publishNotes/publishNotes?update=0&type=1&tempFilePaths=' +
 													JSON.stringify([res.savedFilePath])
 											})
 										}

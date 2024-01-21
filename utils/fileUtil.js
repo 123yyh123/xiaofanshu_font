@@ -72,3 +72,28 @@ export const zoomOutImage = (src) => {
 		});
 	});
 }
+
+export const uploadFile=(url, filePath, name)=>{
+  return new Promise((resolve, reject) => {
+    uni.uploadFile({
+      url,
+      filePath,
+      name,
+      header: {
+        'token': uni.getStorageSync('token')
+      },
+      success: (res) => {
+        let data = JSON.parse(res.data);
+        if (data.code === 20020) {
+          console.log(data);
+          resolve(data.data);
+        } else {
+          reject(new Error('File upload failed.'));
+        }
+      },
+      fail: (error) => {
+        reject(error);
+      }
+    });
+  });
+}
