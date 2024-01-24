@@ -7,7 +7,8 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -122,6 +123,13 @@
 					"popGesture": "none"
 				}
 			}
+		},
+		{
+			"path" : "pages/category/test2/test2",
+			"style" : 
+			{
+				"navigationBarTitleText" : "nvue-swiper"
+			}
 		}
 	],
 	"tabBar": {
@@ -139,7 +147,7 @@
 				"selectedIconPath": "static/image/index_select.png"
 			},
 			{
-				"pagePath": "pages/category/test/test",
+				"pagePath": "pages/category/category",
 				"iconPath": "/static/image/category.png",
 				"selectedIconPath": "static/image/category_select.png"
 			},

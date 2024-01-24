@@ -1,0 +1,106 @@
+<template>
+	<list class="list" :offset-accuracy="5" :bounce="false" isSwiperList="true">
+		<refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown"
+			:display="refreshing ? 'show' : 'hide'">
+			<div class="refresh-view">
+				<text class="loading-text">{{refreshText}}</text>
+			</div>
+		</refresh>
+		<cell v-for="(item, index) in dataList" :key="item.id" @click="onclick">
+			<view class="list-item">
+				<text>{{item.name}}</text>
+			</view>
+		</cell>
+	</list>
+</template>
+
+<script>
+	export default {
+		props: {
+			pid: {
+				type: [Number, String],
+				default: ''
+			},
+			parentId: {
+				type: String,
+				default: ''
+			}
+		},
+		data() {
+			return {
+				scrollable: true,
+				dataList: [],
+				refreshing: false,
+				refreshText: "",
+				refreshFlag: false
+			}
+		},
+		created() {
+			for (var i = 1; i < 32; i++) {
+				this.dataList.push({
+					id: i,
+					name: i
+				});
+			}
+		},
+		methods: {
+			onclick(e) {
+				console.log("onclick");
+			},
+			loadData() {
+				// 首次激活时被调用
+			},
+			clear() {
+				// 释放数据时被调用，参考 swiper-list 缓存配置
+				this.dataList.length = 0;
+			},
+			onrefresh(e) {
+				this.refreshing = true;
+				this.refreshText = "刷新中...";
+				setTimeout(() => {
+					this.refreshing = false;
+					this.refreshFlag = false;
+					this.refreshText = "已刷新";
+				}, 2000)
+			},
+			onpullingdown(e) {
+				if (this.refreshing) {
+					return;
+				}
+
+				this.pulling = false;
+				if (Math.abs(e.pullingDistance) > Math.abs(e.viewHeight)) {
+					this.refreshFlag = true;
+					this.refreshText = "释放立即刷新";
+				} else {
+					this.refreshFlag = false;
+					this.refreshText = "下拉可以刷新";
+				}
+			}
+		}
+	}
+</script>
+
+<style scoped>
+	.refresh-view {
+		width: 750rpx;
+		height: 80px;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.list {
+		flex: 1;
+		background-color: #ebebeb;
+	}
+
+	.list-item {
+		margin-left: 12px;
+		margin-right: 12px;
+		margin-top: 12px;
+		padding: 20px;
+		background-color: #fff;
+		border-radius: 5px;
+	}
+</style>

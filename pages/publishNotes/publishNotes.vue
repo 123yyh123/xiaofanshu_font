@@ -288,7 +288,7 @@
 						})
 					} else {
 						// 单个文件上传
-						promises.push(uploadFile(baseUrl + '/third/uploadAudio', this.tempFilePaths[0], 'file'));
+						promises.push(uploadFile(baseUrl + '/third/uploadVideo', this.tempFilePaths[0], 'file'));
 					}
 					Promise.all(promises).then(res => {
 						notesResources = res
@@ -297,6 +297,7 @@
 							console.log(res)
 							let noteVO = {
 								title: this.title,
+								realContent: res.text,
 								content: res.html,
 								notesType: this.type,
 								belongUserId: uni.getStorageSync('userInfo').id,
@@ -324,7 +325,7 @@
 										});
 										uni.switchTab({
 											url: '/pages/index/index'
-										})
+										}) 
 									}, 500)
 								} else {
 									uni.showToast({
