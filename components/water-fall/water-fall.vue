@@ -15,6 +15,9 @@
 						<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
 						<view style="margin-left: 5rpx;">{{item.views}}</view>
 					</view>
+					<view v-if="item.notesType==1" class="video-play">
+						<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
+					</view>
 				</view>
 				<view class="title" @click="goToDetail(item.id)">{{item.title}}</view>
 				<view style="display: flex;position: relative;padding: 20rpx;" v-if="slot_bottom">
@@ -26,7 +29,7 @@
 					<view style="display: flex;position: absolute;right: 10rpx;">
 						<u-icon name="heart" color="#000000" size="18"></u-icon>
 						<text
-							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.like}}</text>
+							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.notesLikeNum}}</text>
 					</view>
 				</view>
 				<view v-else style="display: flex;position: relative;padding: 20rpx;">
@@ -61,7 +64,7 @@
 					<view style="display: flex;position: absolute;right: 10rpx;">
 						<u-icon name="heart" color="#000000" size="18"></u-icon>
 						<text
-							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.like}}</text>
+							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.notesLikeNum}}</text>
 					</view>
 				</view>
 				<view v-else style="display: flex;position: relative;padding: 20rpx;">
@@ -142,6 +145,12 @@
 				this.rightHeight = 0
 				this.init()
 			},
+			clear() {
+				this.leftList = []
+				this.rightList = []
+				this.leftHeight = 0
+				this.rightHeight = 0
+			},
 			deleteDraft(id,num){
 				this.$showModal({
 					title: "提示",
@@ -219,5 +228,14 @@
 		padding: 5rpx 10rpx;
 		border-radius: 50rpx;
 		font-size: 25rpx;
+	}
+	.video-play{
+		position: absolute;
+		top: 10rpx;
+		right: 10rpx;
+		background-color: rgba(123, 124, 125, 0.6);
+		// filter: brightness(65%);
+		padding: 10rpx;
+		border-radius: 50%;
 	}
 </style>

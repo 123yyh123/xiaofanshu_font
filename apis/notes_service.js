@@ -7,3 +7,10 @@ export const addNote=(params={})=>{
 		data:params.notesVO
 	})
 }
+
+export const getLastNotesByPage=(params={})=>{
+	return $request({
+		url:'/notes/getLastNotesByPage?page='+params.page+'&pageSize='+params.pageSize,
+		method:'GET'
+	})
+}
