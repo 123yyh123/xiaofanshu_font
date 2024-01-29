@@ -19,9 +19,11 @@
 			</view>
 		</view>
 		<view :style="{height: statusBarHeight+40+ 'px'}" style="width: 100%;background-color:antiquewhite;"></view>
-		<swiper @change="swipeIndex" :current="actTab" :duration="300" previous-margin="0" :style="{height: notesHeight + 'px'}">
+		<swiper @change="swipeIndex" :current="actTab" :duration="300" previous-margin="0"
+			:style="{height: notesHeight + 'px'}">
 			<swiper-item>
-				<scroll-view scroll-y :style="{height: notesHeight + 'px'}" @scrolltolower="onReach" refresher-enabled @refresherrefresh="onRefresh" :refresher-triggered="refreshing" :refresher-threshold="60">
+				<scroll-view scroll-y :style="{height: notesHeight + 'px'}" @scrolltolower="onReach" refresher-enabled
+					@refresherrefresh="onRefresh" :refresher-triggered="refreshing" :refresher-threshold="100">
 					<view class="component">
 						<water-fall :list="notesList[0].notesList" ref="water1"></water-fall>
 						<u-loadmore margin-top="20" line :status="notesList[0].status" :loading-text="loadingText"
@@ -30,7 +32,7 @@
 				</scroll-view>
 			</swiper-item>
 			<swiper-item>
-				<view style="width: 100%;height: 40px;background-color: #fff;z-index: 9999;">
+				<view style="width: 100%;height: 40px;background-color: #fffz;z-index: 9999;">
 					<u-tabs @click='changeType' :current="typeTabIndex" :list="findList" lineWidth="0"
 						lineColor="#f56c6c" :activeStyle="{
 				            color: '#16160e',
@@ -47,7 +49,9 @@
 						</view>
 					</u-tabs>
 				</view>
-				<scroll-view scroll-y :style="{height: notesHeight-40 + 'px'}" @scrolltolower="onReach" refresher-enabled @refresherrefresh="onRefresh" :refresher-triggered="refreshing" :refresher-threshold="60">
+				<scroll-view scroll-y :style="{height: notesHeight-40 + 'px'}" @scrolltolower="onReach"
+					refresher-enabled @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
+					:refresher-threshold="100">
 					<view class="component">
 						<water-fall :list="notesList[1].notesList" ref="water2"></water-fall>
 						<u-loadmore margin-top="20" line :status="notesList[1].status" :loading-text="loadingText"
@@ -56,7 +60,8 @@
 				</scroll-view>
 			</swiper-item>
 			<swiper-item>
-				<scroll-view scroll-y :style="{height: notesHeight + 'px'}" @scrolltolower="onReach" refresher-enabled @refresherrefresh="onRefresh" :refresher-triggered="refreshing" :refresher-threshold="60">
+				<scroll-view scroll-y :style="{height: notesHeight + 'px'}" @scrolltolower="onReach" refresher-enabled
+					@refresherrefresh="onRefresh" :refresher-triggered="refreshing" :refresher-threshold="100">
 					<view class="component">
 						<water-fall :list="notesList[2].notesList" ref="water3"></water-fall>
 						<u-loadmore margin-top="20" line :status="notesList[2].status" :loading-text="loadingText"
@@ -72,6 +77,9 @@
 	import {
 		getLastNotesByPage
 	} from '@/apis/notes_service.js'
+	import {
+		searchNotesNearby
+	} from '@/apis/search_service.js'
 	export default {
 		data() {
 			return {
@@ -126,6 +134,8 @@
 				loadmoreText: '加载更多',
 				nomoreText: '没有更多了',
 				refreshing: false,
+				latitude: 0,
+				longitude: 0,
 			}
 		},
 		methods: {
@@ -134,48 +144,130 @@
 					return;
 				}
 				this.notesList[index].status = 'loading';
-				getLastNotesByPage({
-					page: this.notesList[index].page,
-					pageSize: this.notesList[index].pageSize,
-				}).then(res => {
-					console.log(res);
-					if (res.code == 20010) {
-						this.notesList[index].total = res.data.total;
-						this.notesList[index].page += 1;
-						this.notesList[index].notesList = res.data.list;
-						setTimeout(() => {
-							if (index == 0) {
-								this.$refs.water1.addList(this.notesList[0].notesList);
-							} else if (index == 1) {
-								this.$refs.water2.addList(this.notesList[1].notesList);
-							} else if (index == 2) {
-								this.$refs.water3.addList(this.notesList[2].notesList);
-							}
-							if (this.notesList[index].notesList.length < this.notesList[index].pageSize) {
-								this.notesList[index].status = 'nomore';
-							} else {
-								this.notesList[index].status = 'loadmore';
-							}
-						}, 1000);
-					} else {
-						this.notesList[index].status = 'nomore';
-					}
-				})
+				if (index == 1 || index == 0) {
+					getLastNotesByPage({
+						page: this.notesList[index].page,
+						pageSize: this.notesList[index].pageSize,
+					}).then(res => {
+						console.log(res);
+						if (res.code == 20010) {
+							this.notesList[index].total = res.data.total;
+							this.notesList[index].page += 1;
+							this.notesList[index].notesList = res.data.list;
+							setTimeout(() => {
+								if (index == 0) {
+									this.$refs.water1.addList(this.notesList[0].notesList);
+								} else if (index == 1) {
+									this.$refs.water2.addList(this.notesList[1].notesList);
+								} else if (index == 2) {
+									this.$refs.water3.addList(this.notesList[2].notesList);
+								}
+								if (this.notesList[index].notesList.length < this.notesList[index]
+									.pageSize) {
+									this.notesList[index].status = 'nomore';
+								} else {
+									this.notesList[index].status = 'loadmore';
+								}
+							}, 1000);
+						} else {
+							this.notesList[index].status = 'nomore';
+						}
+					})
+				} else if (index == 2) {
+					let pageParam = {
+						page: this.notesList[index].page,
+						pageSize: this.notesList[index].pageSize,
+						latitude: this.latitude,
+						longitude: this.longitude
+					};
+					searchNotesNearby({
+						pageParam
+					}).then(res => {
+						console.log(res);
+						if (res.code == 20010) {
+							this.notesList[index].total = res.data.total;
+							this.notesList[index].page += 1;
+							this.notesList[index].notesList = res.data.list;
+							setTimeout(() => {
+								if (index == 0) {
+									this.$refs.water1.addList(this.notesList[0].notesList);
+								} else if (index == 1) {
+									this.$refs.water2.addList(this.notesList[1].notesList);
+								} else if (index == 2) {
+									this.$refs.water3.addList(this.notesList[2].notesList);
+								}
+								if (this.notesList[index].notesList.length < this.notesList[index]
+									.pageSize) {
+									this.notesList[index].status = 'nomore';
+								} else {
+									this.notesList[index].status = 'loadmore';
+								}
+							}, 1000);
+						} else {
+							this.notesList[index].status = 'nomore';
+							unin.showToast({
+								title: res.msg,
+								icon: 'none',
+								duration: 1000
+							})
+						}
+					})
+				}
 			},
 			changetabs(e) {
 				let index = e.index;
-				this.actTab = index;
-				this.notesList[index].status = 'loadmore';
-				this.notesList[index].page = 1;
-				this.notesList[index].notesList = [];
-				if (index == 0) {
-					this.$refs.water1.clear();
-				} else if (index == 1) {
-					this.$refs.water2.clear();
-				} else if (index == 2) {
-					this.$refs.water3.clear();
+				if (this.actTab != index) {
+					this.actTab = index;
+					return;
 				}
-				this.getMoreNotes(index);
+				this.actTab = index;
+				if (this.latitude == 0 || this.longitude == 0) {
+					uni.getLocation({
+						type: 'gcj02',
+						success: (res) => {
+							this.latitude = res.latitude;
+							this.longitude = res.longitude;
+							if (this.notesList[index].notesList.length == 0 && this.notesList[index].page ==1) {
+								this.getMoreNotes(index);
+								return;
+							}
+							this.notesList[index].status = 'loadmore';
+							this.notesList[index].page = 1;
+							this.notesList[index].notesList = [];
+							if (index == 0) {
+								this.$refs.water1.clear();
+							} else if (index == 1) {
+								this.$refs.water2.clear();
+							} else if (index == 2) {
+								this.$refs.water3.clear();
+							}
+							this.getMoreNotes(index);
+						},
+						fail: (err) => {
+							console.log(err);
+							uni.showToast({
+								title: '获取位置失败',
+								icon: 'none'
+							})
+						}
+					})
+				} else {
+					if (this.notesList[index].notesList.length == 0 && this.notesList[index].page ==1) {
+						this.getMoreNotes(index);
+						return;
+					}
+					this.notesList[index].status = 'loadmore';
+					this.notesList[index].page = 1;
+					this.notesList[index].notesList = [];
+					if (index == 0) {
+						this.$refs.water1.clear();
+					} else if (index == 1) {
+						this.$refs.water2.clear();
+					} else if (index == 2) {
+						this.$refs.water3.clear();
+					}
+					this.getMoreNotes(index);
+				}
 			},
 			onRefresh() {
 				console.log('onRefresh');
@@ -194,18 +286,53 @@
 				} else if (index == 2) {
 					this.$refs.water3.clear();
 				}
-				this.getMoreNotes(index);
-				setTimeout(() => {
-					this.refreshing = false;
-				}, 700);
+				uni.getLocation({
+					type: 'gcj02',
+					success: (res) => {
+						this.latitude = res.latitude;
+						this.longitude = res.longitude;
+						this.getMoreNotes(index);
+						setTimeout(() => {
+							this.refreshing = false;
+						}, 700);
+					},
+					fail: (err) => {
+						console.log(err);
+						uni.showToast({
+							title: '获取位置失败',
+							icon: 'none'
+						})
+					}
+				})
 			},
 			swipeIndex(e) {
 				let index = e.detail.current;
 				this.actTab = index;
-				if(this.notesList[index].notesList.length == 0&&this.notesList[index].page == 1) {
-					this.getMoreNotes(index);
+				if (this.latitude == 0 || this.longitude == 0) {
+					uni.getLocation({
+						type: 'gcj02',
+						success: (res) => {
+							this.latitude = res.latitude;
+							this.longitude = res.longitude;
+							if (this.notesList[index].notesList.length == 0 && this.notesList[index].page ==
+								1) {
+								this.getMoreNotes(index);
+							}
+						},
+						fail: (err) => {
+							console.log(err);
+							uni.showToast({
+								title: '获取位置失败',
+								icon: 'none'
+							})
+						}
+					})
+				}else{
+					if (this.notesList[index].notesList.length == 0 && this.notesList[index].page ==
+						1) {
+						this.getMoreNotes(index);
+					}
 				}
-				
 			},
 			typeTabChange(e) {
 				this.typeTabIndex = e.detail.current;
@@ -231,18 +358,6 @@
 		},
 		onPullDownRefresh() {
 			console.log('onPullDownRefresh');
-			let index = this.actTab;
-			this.notesList[index].status = 'loadmore';
-			this.notesList[index].page = 1;
-			this.notesList[index].notesList = [];
-			if (index == 0) {
-				this.$refs.water1.clear();
-			} else if (index == 1) {
-				this.$refs.water2.clear();
-			} else if (index == 2) {
-				this.$refs.water3.clear();
-			}
-			this.getMoreNotes(index);
 			setTimeout(() => {
 				uni.stopPullDownRefresh();
 			}, 700);

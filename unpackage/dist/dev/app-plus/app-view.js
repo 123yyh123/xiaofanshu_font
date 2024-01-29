@@ -394,7 +394,7 @@ var render = function () {
                     "scroll-y": true,
                     "refresher-enabled": true,
                     "refresher-triggered": _vm._$g(9, "a-refresher-triggered"),
-                    "refresher-threshold": 60,
+                    "refresher-threshold": 100,
                     _i: 9,
                   },
                   on: {
@@ -432,7 +432,7 @@ var render = function () {
                   staticStyle: {
                     width: "100%",
                     height: "40px",
-                    "background-color": "#fff",
+                    "background-color": "#fffz",
                     "z-index": "9999",
                   },
                   attrs: { _i: 14 },
@@ -482,7 +482,7 @@ var render = function () {
                     "scroll-y": true,
                     "refresher-enabled": true,
                     "refresher-triggered": _vm._$g(18, "a-refresher-triggered"),
-                    "refresher-threshold": 60,
+                    "refresher-threshold": 100,
                     _i: 18,
                   },
                   on: {
@@ -522,7 +522,7 @@ var render = function () {
                     "scroll-y": true,
                     "refresher-enabled": true,
                     "refresher-triggered": _vm._$g(23, "a-refresher-triggered"),
-                    "refresher-threshold": 60,
+                    "refresher-threshold": 100,
                     _i: 23,
                   },
                   on: {
