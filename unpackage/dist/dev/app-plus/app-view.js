@@ -379,6 +379,12 @@ var render = function () {
             change: function ($event) {
               return _vm.$handleViewEvent($event)
             },
+            transition: function ($event) {
+              return _vm.$handleViewEvent($event)
+            },
+            animationfinish: function ($event) {
+              return _vm.$handleViewEvent($event)
+            },
           },
         },
         [
@@ -392,7 +398,7 @@ var render = function () {
                   style: _vm._$g(9, "s"),
                   attrs: {
                     "scroll-y": true,
-                    "refresher-enabled": true,
+                    "refresher-enabled": _vm._$g(9, "a-refresher-enabled"),
                     "refresher-triggered": _vm._$g(9, "a-refresher-triggered"),
                     "refresher-threshold": 100,
                     _i: 9,
@@ -480,7 +486,7 @@ var render = function () {
                   style: _vm._$g(18, "s"),
                   attrs: {
                     "scroll-y": true,
-                    "refresher-enabled": true,
+                    "refresher-enabled": _vm._$g(18, "a-refresher-enabled"),
                     "refresher-triggered": _vm._$g(18, "a-refresher-triggered"),
                     "refresher-threshold": 100,
                     _i: 18,
@@ -520,7 +526,7 @@ var render = function () {
                   style: _vm._$g(23, "s"),
                   attrs: {
                     "scroll-y": true,
-                    "refresher-enabled": true,
+                    "refresher-enabled": _vm._$g(23, "a-refresher-enabled"),
                     "refresher-triggered": _vm._$g(23, "a-refresher-triggered"),
                     "refresher-threshold": 100,
                     _i: 23,

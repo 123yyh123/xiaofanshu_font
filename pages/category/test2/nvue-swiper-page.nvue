@@ -1,49 +1,84 @@
 <template>
-	<list class="list" :offset-accuracy="5" :bounce="false" isSwiperList="true">
-		<refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown"
-			:display="refreshing ? 'show' : 'hide'">
-			<div class="refresh-view">
-				<text class="loading-text">{{refreshText}}</text>
-			</div>
-		</refresh>
-		<cell v-for="(item, index) in dataList" :key="item.id" @click="onclick">
-			<view class="list-item">
-				<text>{{item.name}}</text>
-			</view>
-		</cell>
-	</list>
+	<view class="uni-swiper-page">
+		<waterfall column-count="2" column-width="auto" ref="list" class="list" :offset-accuracy="5" :bounce="true"
+			isSwiperList="true">
+			<refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown"
+				:display="refreshing ? 'show' : 'hide'">
+				<div class="refresh-view">
+					<text class="loading-text">{{refreshText}}</text>
+				</div>
+			</refresh>
+			<cell v-for="(item, index) in dataList" :key="item.id" :ref="'item'+index" @click="onclick">
+				<view style="position: relative;" @click="goToDetail(item.id)">
+					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+						style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+						<template v-slot:loading>
+							<view style="height: 200rpx;text-align: center;padding: 20rpx;">
+								<u-loading-icon color="#e83929"></u-loading-icon>
+								<view style="font-size: 30rpx;">loading......</view>
+							</view>
+						</template>
+					</u--image>
+					<view class="look-views" v-if="item.views!=null">
+						<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
+						<view style="margin-left: 5rpx;">{{item.views}}</view>
+					</view>
+					<view v-if="item.notesType==1" class="video-play">
+						<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
+					</view>
+				</view>
+				<view class="title" @click="goToDetail(item.id)">{{item.title}}</view>
+				<view style="display: flex;position: relative;padding: 20rpx;" v-if="slot_bottom">
+					<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill" :src="item.avatarUrl">
+					</image>
+					<view class="note-username">
+						{{item.nickname}}
+					</view>
+					<view style="display: flex;position: absolute;right: 10rpx;">
+						<u-icon name="heart" color="#000000" size="18"></u-icon>
+						<text
+							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.notesLikeNum}}</text>
+					</view>
+				</view>
+				<view v-else style="display: flex;position: relative;padding: 20rpx;">
+					<view style="margin-right: auto;color: #c8c9cc;font-size: 23rpx;">{{item.updateTime}}</view>
+					<u-icon name="trash" @click="deleteDraft(item.id,0)" color="#c8c9cc" size="18"></u-icon>
+				</view>
+			</cell>
+			<cell class="loading"></cell>
+		</waterfall>
+	</view>
 </template>
 
 <script>
 	export default {
 		props: {
-			pid: {
-				type: [Number, String],
-				default: ''
+			dataList: {
+				type: Array,
+				default: () => []
 			},
-			parentId: {
-				type: String,
-				default: ''
+			slot_bottom: {
+				type: Boolean,
+				default: true
 			}
 		},
 		data() {
 			return {
 				scrollable: true,
-				dataList: [],
 				refreshing: false,
 				refreshText: "",
 				refreshFlag: false
 			}
 		},
 		created() {
-			for (var i = 1; i < 32; i++) {
-				this.dataList.push({
-					id: i,
-					name: i
-				});
-			}
+			this.init();
 		},
 		methods: {
+			init() {},
+			addList(e) {
+				// console.log(e);
+				this.dataList.push(...e);
+			},
 			onclick(e) {
 				console.log("onclick");
 			},
@@ -51,8 +86,7 @@
 				// 首次激活时被调用
 			},
 			clear() {
-				// 释放数据时被调用，参考 swiper-list 缓存配置
-				this.dataList.length = 0;
+				this.dataList = [];
 			},
 			onrefresh(e) {
 				this.refreshing = true;
@@ -75,6 +109,36 @@
 				} else {
 					this.refreshFlag = false;
 					this.refreshText = "下拉可以刷新";
+				}
+			},
+			deleteDraft(id, num) {
+				this.$showModal({
+					title: "提示",
+					content: "确认删除该草稿吗？",
+					align: "left", // 对齐方式 left/center/right
+					cancelText: "取消", // 取消按钮的文字
+					cancelColor: "#FF2442", // 取消按钮颜色
+					confirmText: "确定", // 确认按钮文字
+					confirmColor: "#FF2442", // 确认按钮颜色 
+					showCancel: true, // 是否显示取消按钮，默认为 true
+				}).then(res => {
+					console.log(id)
+					let sql = `delete from draft_notes where id = ${id}`
+					this.$sqliteUtil.SqlExecute(sql).then(res => {
+						if (num == 0) {
+							this.leftList = this.leftList.filter(item => item.id != id)
+						} else {
+							this.rightList = this.rightList.filter(item => item.id != id)
+						}
+					})
+				})
+			},
+			goToDetail(id) {
+				if (!this.slot_bottom) {
+					// 草稿
+					uni.navigateTo({
+						url: '/pages/publishNotes/publishNotes?update=1&tableId=' + id
+					})
 				}
 			}
 		}
@@ -102,5 +166,53 @@
 		padding: 20px;
 		background-color: #fff;
 		border-radius: 5px;
+	}
+
+	.title {
+		font-size: 30rpx;
+		padding: 10rpx;
+		color: #000000;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		word-break: break-all;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		line-height: 1.4em;
+		max-height: 2.4em;
+	}
+
+	.note-username {
+		margin-left: 10rpx;
+		color: #16160e;
+		font-size: 23rpx;
+		line-height: 20px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: calc(100% - 70px);
+	}
+
+	.look-views {
+		display: flex;
+		position: absolute;
+		bottom: 20rpx;
+		left: 8rpx;
+		color: #ffffff;
+		background-color: rgba(123, 124, 125, 0.6);
+		// filter: brightness(65%);
+		padding: 5rpx 10rpx;
+		border-radius: 50rpx;
+		font-size: 25rpx;
+	}
+
+	.video-play {
+		position: absolute;
+		top: 10rpx;
+		right: 10rpx;
+		background-color: rgba(123, 124, 125, 0.6);
+		// filter: brightness(65%);
+		padding: 10rpx;
+		border-radius: 50%;
 	}
 </style>

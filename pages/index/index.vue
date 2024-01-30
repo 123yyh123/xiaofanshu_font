@@ -20,10 +20,11 @@
 		</view>
 		<view :style="{height: statusBarHeight+40+ 'px'}" style="width: 100%;background-color:antiquewhite;"></view>
 		<swiper @change="swipeIndex" :current="actTab" :duration="300" previous-margin="0"
-			:style="{height: notesHeight + 'px'}">
+			:style="{height: notesHeight + 'px'}" @transition="transition" @animationfinish="animationFinish">
 			<swiper-item>
-				<scroll-view scroll-y :style="{height: notesHeight + 'px'}" @scrolltolower="onReach" refresher-enabled
-					@refresherrefresh="onRefresh" :refresher-triggered="refreshing" :refresher-threshold="100">
+				<scroll-view scroll-y :style="{height: notesHeight + 'px'}" @scrolltolower="onReach"
+					:refresher-enabled="enablerefresh" @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
+					:refresher-threshold="100">
 					<view class="component">
 						<water-fall :list="notesList[0].notesList" ref="water1"></water-fall>
 						<u-loadmore margin-top="20" line :status="notesList[0].status" :loading-text="loadingText"
@@ -50,7 +51,7 @@
 					</u-tabs>
 				</view>
 				<scroll-view scroll-y :style="{height: notesHeight-40 + 'px'}" @scrolltolower="onReach"
-					refresher-enabled @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
+					:refresher-enabled="enablerefresh" @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
 					:refresher-threshold="100">
 					<view class="component">
 						<water-fall :list="notesList[1].notesList" ref="water2"></water-fall>
@@ -60,8 +61,9 @@
 				</scroll-view>
 			</swiper-item>
 			<swiper-item>
-				<scroll-view scroll-y :style="{height: notesHeight + 'px'}" @scrolltolower="onReach" refresher-enabled
-					@refresherrefresh="onRefresh" :refresher-triggered="refreshing" :refresher-threshold="100">
+				<scroll-view scroll-y :style="{height: notesHeight + 'px'}" @scrolltolower="onReach"
+					:refresher-enabled="enablerefresh" @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
+					:refresher-threshold="100">
 					<view class="component">
 						<water-fall :list="notesList[2].notesList" ref="water3"></water-fall>
 						<u-loadmore margin-top="20" line :status="notesList[2].status" :loading-text="loadingText"
@@ -136,9 +138,20 @@
 				refreshing: false,
 				latitude: 0,
 				longitude: 0,
+				enablerefresh: true,
 			}
 		},
 		methods: {
+			animationFinish(e) {
+				this.enablerefresh = true;
+			},
+			transition(e) {
+				if (e.target.dx == 0) {
+					this.enablerefresh = true;
+				} else {
+					this.enablerefresh = false;
+				}
+			},
 			getMoreNotes(index) {
 				if (this.notesList[index].status == 'nomore' || this.notesList[index].status == 'loading') {
 					return;
@@ -183,7 +196,7 @@
 					searchNotesNearby({
 						pageParam
 					}).then(res => {
-						console.log(res);
+						console.log(res)
 						if (res.code == 20010) {
 							this.notesList[index].total = res.data.total;
 							this.notesList[index].page += 1;
@@ -227,7 +240,8 @@
 						success: (res) => {
 							this.latitude = res.latitude;
 							this.longitude = res.longitude;
-							if (this.notesList[index].notesList.length == 0 && this.notesList[index].page ==1) {
+							if (this.notesList[index].notesList.length == 0 && this.notesList[index].page ==
+								1) {
 								this.getMoreNotes(index);
 								return;
 							}
@@ -252,7 +266,7 @@
 						}
 					})
 				} else {
-					if (this.notesList[index].notesList.length == 0 && this.notesList[index].page ==1) {
+					if (this.notesList[index].notesList.length == 0 && this.notesList[index].page == 1) {
 						this.getMoreNotes(index);
 						return;
 					}
@@ -270,7 +284,7 @@
 				}
 			},
 			onRefresh() {
-				console.log('onRefresh');
+				console.log('onRefresh')
 				if (this.refreshing) {
 					return;
 				}
@@ -327,7 +341,7 @@
 							})
 						}
 					})
-				}else{
+				} else {
 					if (this.notesList[index].notesList.length == 0 && this.notesList[index].page ==
 						1) {
 						this.getMoreNotes(index);

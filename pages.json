@@ -147,7 +147,7 @@
 				"selectedIconPath": "static/image/index_select.png"
 			},
 			{
-				"pagePath": "pages/category/category",
+				"pagePath": "pages/category/test/test",
 				"iconPath": "/static/image/category.png",
 				"selectedIconPath": "static/image/category_select.png"
 			},

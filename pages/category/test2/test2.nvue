@@ -1,5 +1,4 @@
 <template>
-	
 	<view class="tabs">
 		<scroll-view ref="tabbar1" id="tab-bar" class="tab-bar" :scroll="false" :scroll-x="true" :show-scrollbar="false"
 			:scroll-into-view="scrollInto">
@@ -22,13 +21,19 @@
 			@change="onswiperchange" @transition="onswiperscroll" @animationfinish="animationfinish"
 			@onAnimationEnd="animationfinish">
 			<swiper-item class="swiper-item" v-for="(page, index) in tabList" :key="index">
-				<swiper-page class="swiper-page" :pid="page.pageid" ref="page"></swiper-page>
+				<swiper-page class="swiper-page" :ref="'water'+index" :dataList="notesList[1].notesList"></swiper-page>
 			</swiper-item>
 		</swiper>
 	</view>
 </template>
 
 <script>
+	import {
+		getLastNotesByPage
+	} from '@/apis/notes_service.js'
+	import {
+		searchNotesNearby
+	} from '@/apis/search_service.js'
 	// #ifdef APP-PLUS
 	const dom = weex.requireModule('dom');
 	// #endif
@@ -59,7 +64,26 @@
 				pageId: "page",
 				refreshing: false,
 				refreshText: "",
-				refreshFlag: false
+				refreshFlag: false,
+				notesList: [{
+					notesList: [],
+					status: 'loadmore',
+					page: 1,
+					pageSize: 10,
+					total: 0,
+				}, {
+					notesList: [],
+					status: 'loadmore',
+					page: 1,
+					pageSize: 10,
+					total: 0,
+				}, {
+					notesList: [],
+					status: 'loadmore',
+					page: 1,
+					pageSize: 10,
+					total: 0,
+				}],
 			}
 		},
 		onLoad() {
@@ -82,6 +106,82 @@
 			this.selectorQuery();
 		},
 		methods: {
+			getMoreNotes(index) {
+				console.log(index)
+				if (this.notesList[index].status == 'nomore' || this.notesList[index].status == 'loading') {
+					return;
+				}
+				this.notesList[index].status = 'loading';
+				if (index == 1 || index == 0) {
+					getLastNotesByPage({
+						page: this.notesList[index].page,
+						pageSize: this.notesList[index].pageSize,
+					}).then(res => {
+						console.log(res);
+						if (res.code == 20010) {
+							this.notesList[index].total = res.data.total;
+							this.notesList[index].page += 1;
+							this.notesList[index].notesList = res.data.list;
+							setTimeout(() => {
+								if (index == 0) {
+									this.$refs.water1.addList(this.notesList[0].notesList);
+								} else if (index == 1) {
+									this.$refs.water2.addList(this.notesList[1].notesList);
+								} else if (index == 2) {
+									this.$refs.water3.addList(this.notesList[2].notesList);
+								}
+								if (this.notesList[index].notesList.length < this.notesList[index]
+									.pageSize) {
+									this.notesList[index].status = 'nomore';
+								} else {
+									this.notesList[index].status = 'loadmore';
+								}
+							}, 1000);
+						} else {
+							this.notesList[index].status = 'nomore';
+						}
+					})
+				} else if (index == 2) {
+					let pageParam = {
+						page: this.notesList[index].page,
+						pageSize: this.notesList[index].pageSize,
+						latitude: this.latitude,
+						longitude: this.longitude
+					};
+					searchNotesNearby({
+						pageParam
+					}).then(res => {
+						console.log(res)
+						if (res.code == 20010) {
+							this.notesList[index].total = res.data.total;
+							this.notesList[index].page += 1;
+							this.notesList[index].notesList = res.data.list;
+							setTimeout(() => {
+								if (index == 0) {
+									this.$refs.water1.addList(this.notesList[0].notesList);
+								} else if (index == 1) {
+									this.$refs.water2.addList(this.notesList[1].notesList);
+								} else if (index == 2) {
+									this.$refs.water3.addList(this.notesList[2].notesList);
+								}
+								if (this.notesList[index].notesList.length < this.notesList[index]
+									.pageSize) {
+									this.notesList[index].status = 'nomore';
+								} else {
+									this.notesList[index].status = 'loadmore';
+								}
+							}, 1000);
+						} else {
+							this.notesList[index].status = 'nomore';
+							unin.showToast({
+								title: res.msg,
+								icon: 'none',
+								duration: 1000
+							})
+						}
+					})
+				}
+			},
 			ontabtap(e) {
 				let index = e.target.dataset.current || e.currentTarget.dataset.current;
 				//let offsetIndex = this._touchTabIndex = Math.abs(index - this._lastTabIndex) > 1;
@@ -102,6 +202,7 @@
 				let index = e.target.current || e.detail.current;
 				this.switchTab(index);
 				// #endif
+				this.getMoreNotes(index);
 			},
 			onswiperscroll(e) {
 				if (this.isTap) {
