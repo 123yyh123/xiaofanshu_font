@@ -14,3 +14,10 @@ export const getLastNotesByPage=(params={})=>{
 		method:'GET'
 	})
 }
+
+export const getNotesByUserId=(params={})=>{
+	return $request({
+		url:'/notes/getNotesByUserId?page='+params.page+'&pageSize='+params.pageSize+'&authority='+params.authority+'&type='+params.type,
+		method:'GET'
+	})
+}

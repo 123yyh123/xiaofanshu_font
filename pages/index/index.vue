@@ -98,19 +98,19 @@
 				findList: [{
 					name: '推荐',
 				}, {
-					name: '电影'
+					name: '视频'
+				}, {
+					name: '动漫'
 				}, {
 					name: '科技'
-				}, {
-					name: '音乐'
 				}, {
 					name: '美食'
 				}, {
 					name: '文化'
 				}, {
-					name: '财经'
+					name: '游戏'
 				}, {
-					name: '手工'
+					name: '情感'
 				}],
 				typeTabIndex: 0,
 				notesList: [{

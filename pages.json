@@ -123,13 +123,6 @@
 					"popGesture": "none"
 				}
 			}
-		},
-		{
-			"path" : "pages/category/test2/test2",
-			"style" : 
-			{
-				"navigationBarTitleText" : "nvue-swiper"
-			}
 		}
 	],
 	"tabBar": {

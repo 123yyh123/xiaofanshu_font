@@ -4752,7 +4752,7 @@ var render = function () {
     "uni-view",
     { attrs: { _i: 0 } },
     [
-      _c("dLoading", { attrs: { _i: 1 } }),
+      _c("dLoading", { ref: "loadingMine", attrs: { _i: 1 } }),
       _c(
         "u-popup",
         {
@@ -6105,7 +6105,7 @@ var render = function () {
                                 [
                                   _c("u-icon", { attrs: { _i: 147 } }),
                                   _c("uni-view", { attrs: { _i: 148 } }, [
-                                    _vm._v("公开 · 5"),
+                                    _vm._v("公开" + _vm._$g(148, "t0-0")),
                                   ]),
                                 ],
                                 1
@@ -6125,7 +6125,7 @@ var render = function () {
                                 [
                                   _c("u-icon", { attrs: { _i: 150 } }),
                                   _c("uni-view", { attrs: { _i: 151 } }, [
-                                    _vm._v("私密 · 4"),
+                                    _vm._v("私密" + _vm._$g(151, "t0-0")),
                                   ]),
                                 ],
                                 1
@@ -6145,7 +6145,7 @@ var render = function () {
                                 [
                                   _c("u-icon", { attrs: { _i: 153 } }),
                                   _c("uni-view", { attrs: { _i: 154 } }, [
-                                    _vm._v("草稿 · 1"),
+                                    _vm._v("草稿" + _vm._$g(154, "t0-0")),
                                   ]),
                                 ],
                                 1

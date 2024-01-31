@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<dLoading :status="true"></dLoading>
+		<dLoading :status="true" ref="loadingMine"></dLoading>
 		<u-popup :show="moreShow" mode="left" customStyle="width:525rpx" @close="closeMore" :safeAreaInsetTop="true"
 			:safeAreaInsetBottom="false" :overlayStyle="{'touch-action':'none'}">
 			<scroll-view scroll-y="true" :style="{height: screenHeight*2+'px'}" style="font-size: 28rpx;">
@@ -271,21 +271,21 @@
 									@click="changeNoteType(0)">
 									<u-icon name="lock-open" size="20"
 										:color="noteType==0?'#16160e':'#afafb0'"></u-icon>
-									<view>公开 · 5</view>
+									<view>公开{{noteType==0?' · '+notesList[0].total:''}}</view>
 								</view>
 								<view style="display: flex;" :style="{color: noteType==1?'#16160e':'#afafb0'}"
 									@click="changeNoteType(1)">
 									<u-icon name="lock" size="20" :color="noteType==1?'#16160e':'#afafb0'"></u-icon>
-									<view>私密 · 4</view>
+									<view>私密{{noteType==1?' · '+notesList[0].total:''}}</view>
 								</view>
 								<view style="display: flex;" :style="{color: noteType==2?'#16160e':'#afafb0'}"
 									@click="changeNoteType(2)">
 									<u-icon name="edit-pen" size="20" :color="noteType==2?'#16160e':'#afafb0'"></u-icon>
-									<view>草稿 · 1</view>
+									<view>草稿{{noteType==2?' · '+notesList[0].total:''}}</view>
 								</view>
 							</view>
 							<u-divider style="margin: 10rpx;"></u-divider>
-							<water-fall :list="allNotesList.notes.notesList" ref="water1" :slot_bottom="noteType!=2">
+							<water-fall :list="notesList[0].notesList" ref="water1" :slot_bottom="noteType!=2">
 							</water-fall>
 							<u-loadmore margin-top="20" line :status="status1" :loading-text="loadingText"
 								:loadmore-text="loadmoreText" :nomore-text="nomoreText" />
@@ -328,6 +328,9 @@
 	import {
 		weChatTimeFormat
 	} from '../../utils/util.js';
+	import {
+		getNotesByUserId
+	} from '../../apis/notes_service.js';
 	export default {
 		data() {
 			return {
@@ -354,141 +357,121 @@
 				show: false,
 				moreShow: false,
 				introductionShow: false,
-				allNotesList: {
-					notes: {
-						notesList: [],
-						status: 'nomore',
-						page: 1,
-						pageSize: 10,
-						total: 0
-					},
-					collection: {
-						notesList: [],
-						status: 'nomore',
-						page: 1,
-						pageSize: 10,
-						total: 0
-					},
-					like: {
-						notesList: [],
-						status: 'nomore',
-						page: 1,
-						pageSize: 10,
-						total: 0
-					}
-				},
+				notesList: [{
+					notesList: [],
+					status: 'loadmore',
+					page: 1,
+					pageSize: 10,
+					total: 0,
+				}, {
+					notesList: [],
+					status: 'loadmore',
+					page: 1,
+					pageSize: 10,
+					total: 0,
+				}, {
+					notesList: [],
+					status: 'loadmore',
+					page: 1,
+					pageSize: 10,
+					total: 0,
+				}],
 				status1: 'nomore',
 				status2: 'nomore',
 				status3: 'nomore',
 				loadingText: '努力加载中',
 				loadmoreText: '轻轻上拉',
 				nomoreText: '实在没有了',
-				notesList: [{
-						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
-						title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
-						nickname: '你好',
-						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
-						like: 8,
-						views: 10,
-					}, {
-						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%20%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B%20%E9%9B%A8%E5%A4%A9.png',
-						title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
-						nickname: 'dscnj',
-						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
-						like: 8,
-						views: 110,
-					}, {
-						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E3%80%8A%E5%8E%9F%E7%A5%9E%E3%80%8B%E6%98%8E%E9%9C%84%E7%81%AF%E6%B5%B7%20%E7%94%98%E9%9B%A8%20%E5%88%BB%E6%99%B4%20%E6%B8%B8%E6%88%8F%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
-						title: 'dncjsn生产基地那就计算机吃',
-						nickname: 'd打输出多少打输',
-						avatarUrl: '/static/image/00001.png',
-						like: 8,
-						views: 1033,
-					}, {
-						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%20%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B%20%E9%9B%A8%E5%A4%A9.png',
-						title: '时代潮流的基底节打输出',
-						nickname: '你成绩',
-						avatarUrl: '/static/image/00001.png',
-						like: 8,
-						views: 103,
-					}, {
-						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E%E5%92%8C%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E5%8A%A8%E6%BC%AB%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
-						title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
-						nickname: '你好',
-						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
-						like: 8,
-						views: 10,
-					}, {
-						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E%E5%92%8C%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E5%8A%A8%E6%BC%AB%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
-						title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
-						nickname: 'dscnj',
-						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
-						like: 8,
-						views: 110,
-					},
-					{
-						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
-						title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
-						nickname: 'dscnj',
-						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
-						like: 8,
-						views: 110,
-					}, {
-						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%83%A1%E6%A1%83%20%E5%8E%9F%E7%A5%9E%20%E5%8F%AF%E7%88%B1%E5%B0%8F%E9%AC%BC%20%E9%AB%98%E6%B8%85%20%E7%94%B5%E8%84%91%20%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
-						title: '时代潮流的基底节打输出',
-						nickname: '你成绩',
-						avatarUrl: '/static/image/00001.png',
-						like: 8,
-						views: 103,
-					}, {
-						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
-						title: 'dncjsn生产基地那就计算机吃',
-						nickname: 'd打输出多少打输',
-						avatarUrl: '/static/image/00001.png',
-						like: 8,
-						views: 1033,
-					}, {
-						coverPicture: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E3%80%8A%E5%8E%9F%E7%A5%9E%E3%80%8B%E6%98%8E%E9%9C%84%E7%81%AF%E6%B5%B7%20%E7%94%98%E9%9B%A8%20%E5%88%BB%E6%99%B4%20%E6%B8%B8%E6%88%8F%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
-						title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
-						nickname: '你好',
-						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
-						like: 8,
-						views: 10,
-					}
-				],
 				noteType: 0,
 				selfIntroduction: '',
 			};
 		},
 		methods: {
+			getMoreNotes(index, authority) {
+				if (this.notesList[index].status == 'nomore' || this.notesList[index].status == 'loading') {
+					return
+				}
+				this.notesList[index].status = 'loading'
+				getNotesByUserId({
+					page: this.notesList[index].page,
+					pageSize: this.notesList[index].pageSize,
+					authority: authority,
+					type: index
+				}).then(res => {
+					if (res.code === 20010) {
+						console.log(res)
+						this.notesList[index].notesList = res.data.list
+						this.notesList[index].page++
+						this.notesList[index].total = res.data.total
+						setTimeout(() => {
+							if (index == 0) {
+								this.$refs.water1.addList(this.notesList[0].notesList);
+							} else if (index == 1) {
+								this.$refs.water2.addList(this.notesList[1].notesList);
+							} else if (index == 2) {
+								this.$refs.water3.addList(this.notesList[2].notesList);
+							}
+							if (this.notesList[index].notesList.length < this.notesList[index]
+								.pageSize) {
+								this.notesList[index].status = 'nomore';
+							} else {
+								this.notesList[index].status = 'loadmore';
+							}
+						}, 700);
+					} else {
+						this.notesList[index].status = 'nomore';
+					}
+				}).catch(err => {
+					console.log(err)
+				})
+			},
+			getMoreDraftNotes() {
+				if (this.notesList[0].status == 'nomore' || this.notesList[0].status == 'loading') {
+					return
+				}
+				this.notesList[0].status = 'loading'
+				let offset = (this.notesList[0].page - 1) * this.notesList[0].pageSize
+				let sql1 =
+					`select * from draft_notes draft_notes order by id desc limit ${this.notesList[0].pageSize} offset ${offset}`
+				this.$sqliteUtil.SqlSelect(sql1).then(res => {
+					res.forEach(item => {
+						item.updateTime = weChatTimeFormat(item.updateTime)
+						if (item.coverPicture == '') {
+							item.coverPicture =
+								'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-21%20212119.png'
+						}
+					})
+					this.notesList[0].notesList = res
+					this.notesList[0].page++
+					setTimeout(() => {
+						this.$refs.water1.addList(this.notesList[0].notesList);
+						if (this.notesList[0].notesList.length < this.notesList[0]
+							.pageSize) {
+							this.notesList[0].status = 'nomore';
+						} else {
+							this.notesList[0].status = 'loadmore';
+						}
+					}, 700);
+				}).catch(err => {
+					console.log(err)
+				})
+			},
 			changeNoteType(e) {
+				this.$refs.loadingMine.reset()
 				this.noteType = e
-				this.allNotesList.notes = {
+				this.notesList[0] = {
 					notesList: [],
-					status: 'nomore',
+					status: 'loadmore',
 					page: 1,
 					pageSize: 10,
 					total: 0
 				}
+				this.$refs.water1.clear()
 				if (e === 2) {
 					//草稿
-					let offset = (this.allNotesList.notes.page - 1) * this.allNotesList.notes.pageSize
-					let sql1 =
-						`select * from draft_notes draft_notes order by id desc limit ${this.allNotesList.notes.pageSize} offset ${offset}`
-					this.$sqliteUtil.SqlSelect(sql1).then(res => {
-						res.forEach(item => {
-							item.updateTime = weChatTimeFormat(item.updateTime)
-							if(item.coverPicture==''){
-								item.coverPicture='https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-21%20212119.png'
-							}
-						})
-						this.allNotesList.notes.notesList = res
-						this.allNotesList.notes.page++
-						console.log(this.allNotesList.notes.notesList)
-						setTimeout(() => {
-							this.$refs.water1.refresh()
-						}, 500)
-					})
+					this.getMoreDraftNotes()
+				} else {
+					this.getMoreNotes(0, e)
 				}
 			},
 			goToAttentionAndFans(e) {
@@ -647,11 +630,59 @@
 				return (screenWidth * Number.parseInt(rpx)) / 750
 			},
 			changetabs(e) {
-				this.actTab = e.index
+				this.$refs.loadingMine.reset()
+				let index = e.index
+				if (this.actTab == index) {
+					this.notesList[index].status = 'loadmore';
+					this.notesList[index].page = 1;
+					this.notesList[index].notesList = [];
+					if (index == 0) {
+						this.$refs.water1.clear()
+						if (this.noteType == 2) {
+							this.getMoreDraftNotes()
+						} else {
+							this.getMoreNotes(0, this.noteType)
+						}
+					} else if (index == 1) {
+						this.$refs.water2.clear()
+						this.getMoreNotes(1, 0)
+					} else if (index == 2) {
+						this.$refs.water3.clear()
+						this.getMoreNotes(2, 0)
+					}
+					return
+				}
+				this.actTab = index
+				if (this.notesList[index].page == 1) {
+					if (index == 0) {
+						if (this.noteType == 2) {
+							this.getMoreDraftNotes()
+						} else {
+							this.getMoreNotes(0, this.noteType)
+						}
+					} else if (index == 1) {
+						this.getMoreNotes(1, 0)
+					} else if (index == 2) {
+						this.getMoreNotes(2, 0)
+					}
+				}
 			},
 			swipeIndex(e) {
 				this.actTab = e.detail.current
-				// this.setSwiperHeight()
+				let index = e.detail.current
+				if (this.notesList[index].page == 1) {
+					if (index == 0) {
+						if (this.noteType == 2) {
+							this.getMoreDraftNotes()
+						} else {
+							this.getMoreNotes(0, this.noteType)
+						}
+					} else if (index == 1) {
+						this.getMoreNotes(1, 0)
+					} else if (index == 2) {
+						this.getMoreNotes(2, 0)
+					}
+				}
 			},
 			setSwiperHeight() {
 				setTimeout(() => {
@@ -673,21 +704,21 @@
 			// 	})
 			// },
 			onReach() {
-				if (this.actTab === 0) {
-					this.status1 = 'loading'
-					this.$refs.water1.addList(this.notesList)
-				}
-				if (this.actTab === 1) {
-					this.status2 = 'loading'
-					this.$refs.water2.addList(this.notesList)
-				}
-				if (this.actTab === 2) {
-					this.status3 = 'loading'
-					this.$refs.water3.addList(this.notesList)
+				if (this.actTab == 0) {
+					if (this.noteType == 2) {
+						this.getMoreDraftNotes()
+					} else {
+						this.getMoreNotes(0, this.noteType)
+					}
+				} else if (this.actTab == 1) {
+					this.getMoreNotes(1, 0)
+				} else if (this.actTab == 2) {
+					this.getMoreNotes(2, 0)
 				}
 			},
 		},
 		onPullDownRefresh() {
+			this.$refs.loadingMine.reset()
 			getUserInfo({
 				userId: uni.getStorageSync('userInfo').id
 			}).then(res => {
@@ -705,10 +736,31 @@
 			}).catch(err => {
 				console.log(err)
 			})
-			this.$refs.water1.refresh()
-			this.$refs.water2.refresh()
-			this.$refs.water3.refresh()
-			uni.stopPullDownRefresh()
+			let index = this.actTab
+			this.notesList[index].status = 'loadmore';
+			this.notesList[index].page = 1;
+			this.notesList[index].notesList = [];
+			if (index == 0) {
+				this.$refs.water1.clear();
+			} else if (index == 1) {
+				this.$refs.water2.clear();
+			} else if (index == 2) {
+				this.$refs.water3.clear();
+			}
+			if (index == 0) {
+				if (this.noteType == 2) {
+					this.getMoreDraftNotes()
+				} else {
+					this.getMoreNotes(0, this.noteType)
+				}
+			} else if (index == 1) {
+				this.getMoreNotes(1, 0)
+			} else if (index == 2) {
+				this.getMoreNotes(2, 0)
+			}
+			setTimeout(() => {
+				uni.stopPullDownRefresh();
+			}, 700)
 		},
 		onLoad() {
 			uni.getSystemInfo({
@@ -724,6 +776,7 @@
 					// this.mainInfoHeight=this.screenHeight-this.stickyHeight;
 				}
 			})
+			this.getMoreNotes(0, 0)
 		},
 		onReady() {
 			let query = uni.createSelectorQuery().in(this);

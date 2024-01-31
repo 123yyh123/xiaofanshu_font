@@ -20,7 +20,7 @@
 				var that = this
 				setTimeout(function() {
 					that.statusLoading = false
-				}, 3000)
+				}, 1500)
 			}
 		},
 		data() {
@@ -36,7 +36,14 @@
 		},
 		methods: {
 			moveHandle() {},
-			onCheckHiddenApi() {}
+			onCheckHiddenApi() {},
+			reset() {
+				this.statusLoading = true
+				var that = this
+				setTimeout(function() {
+					that.statusLoading = false
+				}, 1500)
+			}
 		}
 	}
 </script>
