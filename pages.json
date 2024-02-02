@@ -123,6 +123,22 @@
 					"popGesture": "none"
 				}
 			}
+		},
+		{
+			"path" : "pages/notesDetail/notesDetail",
+			"style" : 
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/topicIndex/topicIndex",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"tabBar": {

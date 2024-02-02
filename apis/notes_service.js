@@ -21,3 +21,10 @@ export const getNotesByUserId=(params={})=>{
 		method:'GET'
 	})
 }
+
+export const getNotesByNotesId=(params={})=>{
+	return $request({
+		url:'/notes/getNotesByNotesId?notesId='+params.notesId,
+		method:'GET'
+	})
+}

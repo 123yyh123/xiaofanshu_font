@@ -179,6 +179,11 @@
 					uni.navigateTo({
 						url: '/pages/publishNotes/publishNotes?update=1&tableId='+id
 					})
+				}else{
+					// 笔记
+					uni.navigateTo({
+						url: '/pages/notesDetail/notesDetail?notesId='+id
+					})
 				}
 			}
 		},
