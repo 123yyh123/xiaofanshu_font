@@ -586,6 +586,8 @@
 				}
 			},
 			addEmoji(name) {
+				let sql = `update emoji_list set updateTime=datetime('now','localtime') where name='${name}'`
+				this.$sqliteUtil.SqlExecute(sql)
 				name = '[' + name + 'XFS]'
 				this.messageValue = this.messageValue.slice(0, this.cursor) + name + this.messageValue.slice(
 					this

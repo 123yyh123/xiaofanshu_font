@@ -63,7 +63,8 @@ const sqliteUtil = {
 				"id"
 				INTEGER PRIMARY KEY AUTOINCREMENT,
 				url TEXT UNIQUE,
-				name TEXT UNIQUE
+				name TEXT UNIQUE,
+				updateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 			);`).then(res => {
 				// 判断表情是否存在，不存在则插入，异步方法
 				emojiList.forEach((res, index) => {

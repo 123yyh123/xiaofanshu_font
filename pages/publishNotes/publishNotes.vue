@@ -510,6 +510,8 @@
 				})
 			},
 			addEmoji(name) {
+				let sql = `update emoji_list set updateTime=datetime('now','localtime') where name='${name}'`
+				this.$sqliteUtil.SqlExecute(sql)
 				let emojiUrl = '';
 				emojiList.forEach(item => {
 					if (item.name == name) {

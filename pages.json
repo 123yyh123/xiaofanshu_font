@@ -125,19 +125,17 @@
 			}
 		},
 		{
-			"path" : "pages/notesDetail/notesDetail",
-			"style" : 
-			{
+			"path": "pages/notesDetail/notesDetail",
+			"style": {
 				"navigationStyle": "custom",
-				"enablePullDownRefresh" : false
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/topicIndex/topicIndex",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "pages/topicIndex/topicIndex",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
 			}
 		}
 	],

@@ -143,7 +143,13 @@
 			editBlur(e) {
 				this.isFocus = false
 				this.edit.blur(e);
-			}
+				// uni.$emit('editorBlur', e);
+			},
+			// 弹出键盘
+			keyboardShow() {
+				console.log('keyboardShow')
+				this.edit.upKeyboard()
+			},
 		}
 	}
 </script>
@@ -201,5 +207,8 @@
 		font-family: PingFangSC-Regular, PingFang SC;
 		font-weight: 400;
 		color: #A5A7B9;
+	}
+	editor {
+		caret-color: #FF2442;
 	}
 </style>
