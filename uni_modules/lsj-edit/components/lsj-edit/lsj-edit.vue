@@ -83,7 +83,7 @@
 		},
 		computed: {
 			placeholderText() {
-				return this.isFocus ? '' : this.placeholder
+				return this.placeholder;
 			}
 		},
 		mounted() {

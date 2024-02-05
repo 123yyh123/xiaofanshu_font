@@ -70,6 +70,9 @@
 				</view>
 			</view>
 		</view>
+		<view style="padding: 30rpx;">
+
+		</view>
 		<u-popup :show="inputField" mode="bottom" @close="closeEditor">
 			<view style="width: 100%;box-sizing: border-box;position: fixed;bottom: 0;background-color: #fff;">
 				<view @click="onEditClick">
@@ -90,7 +93,8 @@
 							<u-icon name="/static/photo.png" size="25"></u-icon>
 						</view>
 					</view>
-					<view style="display: flex;margin-left: auto;margin-right: 20rpx;align-items: center;">
+					<view style="display: flex;margin-left: auto;margin-right: 20rpx;align-items: center;"
+						@touchend.prevent="sendComment">
 						<u-button style="height: 70rpx;" size="mini" type="error" shape="circle">发送</u-button>
 					</view>
 				</view>
@@ -159,6 +163,30 @@
 				</view>
 			</view>
 		</u-popup>
+		<view v-if="!inputField"
+			style="position: fixed;bottom: 0;display: flex;padding: 20rpx;box-sizing: border-box;height: 60px;width: 100%;background-color: #fff;">
+			<view class="bottom-edit" @click="openEditor">
+				<u-icon name="/static/icons_edit.png" size="21"></u-icon>
+				<view style="font-size: 32rpx;color: #afafb0;margin-left: 10rpx;">说点什么...</view>
+			</view>
+			<view class="bottom-icon">
+				<view style="display: flex;align-items: center;margin: 0 10rpx;">
+					<u-icon v-if="!notesDetail.isLike" name="/static/praise.png" size="28"></u-icon>
+					<u-icon v-else name="/static/praise_select.png" size="28"></u-icon>
+					<view v-if="notesDetail.notesLikeNum>0">{{notesDetail.notesLikeNum}}</view>
+				</view>
+				<view style="display: flex;align-items: center;margin: 0 10rpx;">
+					<u-icon v-if="!notesDetail.isCollect" name="/static/collect.png" size="28"></u-icon>
+					<u-icon v-else name="/static/collect_select.png" size="28"></u-icon>
+					<view v-if="notesDetail.notesCollectNum>0">{{notesDetail.notesCollectNum}}</view>
+				</view>
+				<view style="display: flex;align-items: center;margin: 0 10rpx;">
+					<u-icon name="/static/comment.png" size="28"></u-icon>
+					<view>2434</view>
+				</view>
+			</view>
+		</view>
+		<view style="height: 60px;"></view>
 	</view>
 </template>
 
@@ -175,6 +203,12 @@
 	import {
 		getAttentionList
 	} from '@/apis/user_service'
+	import {
+		addComment
+	} from '@/apis/comment_service'
+	import {
+		baseUrl
+	} from '@/config/index.js'
 	export default {
 		data() {
 			return {
@@ -204,6 +238,111 @@
 			}
 		},
 		methods: {
+			sendComment() {
+				this.edit.getContents().then(res => {
+					console.log(res)
+					// 如果res.text里面只有换行符或者空格，不发送
+					const regex = /^[\n\s]+$/;
+					if (regex.test(res.text)) {
+						uni.showToast({
+							title: '请输入内容',
+							icon: 'none'
+						})
+						return;
+					}
+					if (this.commentImagesurl == '') {
+						let commentVO = {
+							content: res.html,
+							parentId: 0,
+							notesId: this.notesDetail.id,
+							commentUserId: this.userInfo.id,
+						}
+						console.log(commentVO)
+						addComment({
+							commentVO
+						}).then(res => {
+							console.log(res)
+							if (res.code == 20020) {
+								uni.showToast({
+									title: '评论已发布',
+									icon: 'success'
+								})
+								this.content = ''
+								this.inputField = false
+							} else {
+								uni.showToast({
+									title: res.msg == null ? '评论失败' : res.msg,
+									icon: 'none'
+								})
+							}
+						}).catch(err => {
+							uni.showToast({
+								title: '评论失败',
+								icon: 'none'
+							})
+						})
+						return
+					}
+					uni.uploadFile({
+						url: baseUrl + '/third/uploadImg',
+						filePath: this.commentImagesurl,
+						name: 'file',
+						header: {
+							'token': uni.getStorageSync('token')
+						},
+						success: (res) => {
+							let data = JSON.parse(res.data)
+							if (data.code === 20020) {
+								console.log(data.data)
+								this.commentImagesurl = data.data
+								let commentVO = {
+									content: res.html,
+									parentId: 0,
+									notesId: this.notesDetail.id,
+									commentUserId: this.userInfo.id,
+									pictureUrl: this.commentImagesurl
+								}
+								console.log(commentVO)
+								addComment({
+									commentVO
+								}).then(res => {
+									console.log(res)
+									if (res.code == 20020) {
+										uni.showToast({
+											title: '评论已发布',
+											icon: 'success'
+										})
+										this.content = ''
+										this.commentImagesurl = ''
+										this.inputField = false
+									} else {
+										uni.showToast({
+											title: res.msg == null ? '评论失败' : res.msg,
+											icon: 'none'
+										})
+									}
+								}).catch(err => {
+									uni.showToast({
+										title: '评论失败',
+										icon: 'none'
+									})
+								})
+							} else {
+								uni.showToast({
+									title: '图片上传失败',
+									icon: 'none'
+								})
+							}
+						},
+						fail: (err) => {
+							uni.showToast({
+								title: '图片上传失败',
+								icon: 'none'
+							})
+						}
+					})
+				})
+			},
 			openEditor() {
 				this.inputField = true
 				this.showEmoji = false
@@ -311,7 +450,7 @@
 			},
 			editReady(edit) {
 				this.edit = edit
-				if(this.content!=''){
+				if (this.content != '') {
 					this.edit.ready(this.content)
 				}
 			},
@@ -449,6 +588,29 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+	}
+
+	.bottom-icon {
+		display: flex;
+		justify-content: space-around;
+		font-size: 35rpx;
+		color: #2b2b2b;
+		justify-content: space-around;
+		padding-right: 10rpx;
+	}
+
+	.bottom-edit {
+		padding: 0 15rpx;
+		background-color: #f3f3f2;
+		border-radius: 50px;
+		margin: 10rpx 18rpx;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		flex: 1;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	/deep/ .uni-swiper-dots {
