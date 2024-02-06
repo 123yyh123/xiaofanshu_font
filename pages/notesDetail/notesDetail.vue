@@ -55,11 +55,12 @@
 		</view>
 		<u-divider style="padding: 0 30rpx;" :hairline="true"></u-divider>
 		<view style="padding: 30rpx;">
-			<view style="font-size: 25rpx;color: #474a4d;">共15条评论</view>
+			<view v-if="commentCount>0" style="font-size: 25rpx;color: #474a4d;">共{{commentCount}}条评论</view>
+			<view v-else style="font-size: 25rpx;color: #474a4d;">暂无评论</view>
 			<view style="display: flex;margin-top: 20rpx;height: 90rpx;align-items: center;">
 				<image style="height: 70rpx;width: 70rpx;border-radius: 50%;" mode="aspectFill"
 					:src="userInfo.avatarUrl"></image>
-				<view @click="openEditor"
+				<view @click="replyNotes"
 					style="margin-left: 20rpx;flex: 1;background-color: #f3f3f2;padding: 20rpx;border-radius: 70rpx;height: 100%;box-sizing: border-box;display: flex;align-items: center;">
 					<view style="font-size: 30rpx;color: #afafb0;margin-left: 10rpx;">爱评论的人运气都不差</view>
 					<view style="display: flex;justify-content: space-around;flex: 1;padding: 0 10rpx 0 50rpx;">
@@ -71,12 +72,110 @@
 			</view>
 		</view>
 		<view style="padding: 30rpx;">
-
+			<block v-for="(item,index) in commentList" v-bind:key="item.id">
+				<view style="display: flex;align-items: flex-start;">
+					<image :src="item.commentUserAvatar" style="height: 70rpx;width: 70rpx;border-radius: 50%;"
+						mode="aspectFill" @click="goToOtherMine(item.commentUserId)"></image>
+					<view style="flex: 1;padding: 0 10px;word-break: break-all;text-overflow: ellipsis;">
+						<view style="display: flex;font-size: 26rpx;color: #afafb0;">
+							<view
+								style="word-break: break-all;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 300rpx;"
+								@click="goToOtherMine(item.commentUserId)">
+								{{item.commentUserName}}
+							</view>
+							<view v-if="item.commentUserId!=item.belongUserId"
+								style="margin-left: 10rpx;padding: 4rpx 10rpx;background-color: #f3f3f2;color: #7d7d7d;border-radius: 50rpx;white-space: nowrap;width: 50rpx;">
+								作者</view>
+						</view>
+						<rich-text style="font-size: 14px;letter-spacing: 0.05rem;color: #383c3c;" :nodes="item.content"
+							@click="replyFirstComment(item)" @itemclick="clickUser"></rich-text>
+						<view v-if="item.pictureUrl!=null&&item.pictureUrl!=''" style="margin-top: 10rpx;"
+							@click="previewImage(item.picture.url)">
+							<image :src="item.picture.url"
+								:style="{height: item.picture.height + 'rpx',width: item.picture.width + 'rpx'}"
+								style="border-radius: 20rpx;" mode="aspectFill"></image>
+						</view>
+						<view style="display: flex;align-items: center;margin-top: 10rpx;"
+							@click="replyFirstComment(item)">
+							<view style="font-size: 24rpx;color: #afafb0;">{{item.createTime}}</view>
+							<view style="margin-left: 20rpx;font-size: 24rpx;color: #afafb0;">{{item.province}}</view>
+							<view style="margin-left: 20rpx;font-size: 24rpx;color: #7d7d7d;">回复</view>
+						</view>
+						<view v-if="item.isTop"
+							style="background-color: #fdeff2;padding: 5rpx 10rpx;border-radius: 50rpx;font-size: 22rpx;color: #FF2442;display: inline-block">
+							置顶评论
+						</view>
+						<view v-if="item.commentReplyNum>0" style="margin-top: 10rpx;">
+							<block v-for="(item2,index2) in item.children.list" v-bind:key="item2.id">
+								<view
+									style="display: flex;align-items: flex-start;margin-top: 10rpx;position: relative;">
+									<image :src="item2.commentUserAvatar"
+										style="height: 50rpx;width: 50rpx;border-radius: 50%;" mode="aspectFill"
+										@click="goToOtherMine(item2.commentUserId)"></image>
+									<view
+										style="flex: 1;padding: 0 20rpx;word-break: break-all;overflow: hidden;text-overflow: ellipsis;">
+										<view style="display: flex;font-size: 26rpx;color: #afafb0;width: 350rpx;">
+											<view
+												style="word-break: break-all;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 300rpx;"
+												@click="goToOtherMine(item2.commentUserId)">
+												{{item2.commentUserName}}
+											</view>
+											<view v-if="item2.commentUserId!=item2.belongUserId"
+												style="margin-left: 10rpx;padding: 4rpx 10rpx;background-color: #f3f3f2;color: #7d7d7d;border-radius: 50rpx;white-space: nowrap;width: 50rpx;">
+												作者</view>
+										</view>
+										<rich-text style="font-size: 14px;letter-spacing: 0.05rem;color: #383c3c;"
+											:nodes="item2.content" @click="replySecondComment(item,item2)"
+											@itemclick="clickUser"></rich-text>
+										<view v-if="item2.pictureUrl!=null&&item2.pictureUrl!=''"
+											style="margin-top: 10rpx;" @click="previewImage(item2.picture.url)">
+											<image :src="item2.picture.url"
+												:style="{height: item2.picture.height + 'rpx',width: item2.picture.width + 'rpx'}"
+												style="border-radius: 20rpx;" mode="aspectFill"></image>
+										</view>
+										<view style="display: flex;align-items: center;margin-top: 10rpx;"
+											@click="replySecondComment(item,item2)">
+											<view style="font-size: 24rpx;color: #afafb0;">
+												{{item2.createTime}}
+											</view>
+											<view style="margin-left: 20rpx;font-size: 24rpx;color: #afafb0;">
+												{{item2.province}}
+											</view>
+											<view style="margin-left: 20rpx;font-size: 24rpx;color: #7d7d7d;">回复</view>
+										</view>
+									</view>
+									<view
+										style="width: 30px;display: flex;flex-direction: column;justify-content: center;text-align: center;padding: 5rpx;box-sizing: border-box;position: absolute;right: -40px;top: 0;">
+										<u-icon v-if="!item2.isLike" name="/static/praise.png" size="24"></u-icon>
+										<u-icon v-else name="/static/praise_select.png" size="24"></u-icon>
+										<view v-if="item2.commentLikeNum>0" style="font-size: 12px;color: #7d7d7d;">
+											{{item2.commentLikeNum}}
+										</view>
+									</view>
+								</view>
+							</block>
+						</view>
+						<u-loadmore v-if="item.commentReplyNum>0" :fontSize="13" color="#5b7e91"
+							style="width: 350rpx;letter-spacing: 0.05rem;" :status="item.children.status"
+							:loading-text="loadingText" :loadmore-text="item.children.loadmoreText" nomore-text=" "
+							@loadmore="getReplyList(item.id)" />
+					</view>
+					<view
+						style="width: 30px;display: flex;flex-direction: column;justify-content: center;text-align: center;padding: 5rpx;box-sizing: border-box;">
+						<u-icon v-if="!item.isLike" name="/static/praise.png" size="24"></u-icon>
+						<u-icon v-else name="/static/praise_select.png" size="24"></u-icon>
+						<view v-if="item.commentLikeNum>0" style="font-size: 12px;color: #7d7d7d;">
+							{{item.commentLikeNum}}
+						</view>
+					</view>
+				</view>
+				<u-divider style="padding-left: 100rpx;" :hairline="true"></u-divider>
+			</block>
 		</view>
 		<u-popup :show="inputField" mode="bottom" @close="closeEditor">
 			<view style="width: 100%;box-sizing: border-box;position: fixed;bottom: 0;background-color: #fff;">
 				<view @click="onEditClick">
-					<lsj-edit class="lsjComment" style="height: auto" ref="lsjComment" placeholder="爱评论的人运气都不差"
+					<lsj-edit class="lsjComment" style="height: auto" ref="lsjComment" :placeholder="editPlaceholder"
 						:maxCount="1000" @onReady="editReady">
 					</lsj-edit>
 				</view>
@@ -165,7 +264,7 @@
 		</u-popup>
 		<view v-if="!inputField"
 			style="position: fixed;bottom: 0;display: flex;padding: 20rpx;box-sizing: border-box;height: 60px;width: 100%;background-color: #fff;">
-			<view class="bottom-edit" @click="openEditor">
+			<view class="bottom-edit" @click="replyNotes">
 				<u-icon name="/static/icons_edit.png" size="21"></u-icon>
 				<view style="font-size: 32rpx;color: #afafb0;margin-left: 10rpx;">说点什么...</view>
 			</view>
@@ -174,15 +273,18 @@
 					<u-icon v-if="!notesDetail.isLike" name="/static/praise.png" size="28"></u-icon>
 					<u-icon v-else name="/static/praise_select.png" size="28"></u-icon>
 					<view v-if="notesDetail.notesLikeNum>0">{{notesDetail.notesLikeNum}}</view>
+					<view style="font-size: 30rpx;" v-else>点赞</view>
 				</view>
 				<view style="display: flex;align-items: center;margin: 0 10rpx;">
 					<u-icon v-if="!notesDetail.isCollect" name="/static/collect.png" size="28"></u-icon>
 					<u-icon v-else name="/static/collect_select.png" size="28"></u-icon>
 					<view v-if="notesDetail.notesCollectNum>0">{{notesDetail.notesCollectNum}}</view>
+					<view style="font-size: 30rpx;" v-else>收藏</view>
 				</view>
 				<view style="display: flex;align-items: center;margin: 0 10rpx;">
 					<u-icon name="/static/comment.png" size="28"></u-icon>
-					<view>2434</view>
+					<view v-if="commentCount>0">{{commentCount}}</view>
+					<view style="font-size: 30rpx;" v-else>评论</view>
 				</view>
 			</view>
 		</view>
@@ -204,7 +306,10 @@
 		getAttentionList
 	} from '@/apis/user_service'
 	import {
-		addComment
+		addComment,
+		getCommentCountByNotesId,
+		getCommentFirstListByNotesId,
+		getCommentSecondListByNotesId
 	} from '@/apis/comment_service'
 	import {
 		baseUrl
@@ -212,8 +317,11 @@
 	export default {
 		data() {
 			return {
+				editPlaceholder: '爱评论的人运气都不差',
 				statusBarHeight: 0,
 				notesDetail: {},
+				commentCount: 0,
+				commentList: [],
 				swipperHeight: 0,
 				swiperCurrent: 0,
 				swipperCount: 0,
@@ -235,27 +343,125 @@
 				bottomEmoji: [],
 				commentImagesurl: '',
 				content: '',
+				revealcontent: '',
+				replyCommentUserId: 0,
+				replyCommentUserName: '',
+				parentId: 0,
+				loadingText: '加载中...',
 			}
 		},
 		methods: {
+			clickUser(e) {
+				console.log(e)
+				if (e.detail.node.name != 'a') {
+					return
+				}
+				let userId = this.findUserId(e.detail.node.attrs.href)
+				this.goToOtherMine(userId)
+			},
+			getReplyList(id) {
+				console.log(id)
+				this.commentList.forEach(item => {
+					if (item.id == id) {
+						if (item.children.status == 'loading' || item.children.status == 'nomore') {
+							return;
+						}
+						item.children.status = 'loading';
+						getCommentSecondListByNotesId({
+							notesId: this.notesDetail.id,
+							parentId: id,
+							page: item.children.page,
+							pageSize: item.children.pageSize
+						}).then(res => {
+							console.log(res)
+							if (res.code == 20010) {
+								item.page++;
+								item.children.loadmoreText = '展开更多回复'
+								res.data.forEach(item => {
+									item.createTime = weChatTimeFormat(Number(item.createTime))
+									if (item.pictureUrl != null && item.pictureUrl != '') {
+										uni.getImageInfo({
+											src: item.pictureUrl,
+											success: (image) => {
+												item.picture = {
+													url: item.pictureUrl,
+												}
+												// 图片长度最长为350rpx,高度最高为350rpx
+												if (image.width >= image.height) {
+													if (image.width > 350) {
+														item.picture.width = 350
+														item.picture.height = 350 *
+															image.height / image.width
+													} else {
+														item.picture.width = image
+															.width
+														item.picture.height = image
+															.height
+													}
+												} else {
+													if (image.height > 350) {
+														item.picture.height = 350
+														item.picture.width = 350 *
+															image.width / image.height
+													} else {
+														item.picture.width = image
+															.width
+														item.picture.height = image
+															.height
+													}
+												}
+												console.log(item.picture)
+											},
+											fail: (err) => {
+												console.log(err)
+											}
+										})
+									} else {
+										item.picture = null
+									}
+								})
+								setTimeout(() => {
+									if (res.data.length < item.children.pageSize) {
+										item.children.status = 'nomore';
+									} else {
+										item.children.status = 'loadmore';
+									}
+									item.children.list.push(...res.data)
+								}, 1000)
+							} else {
+								item.children.status = 'nomore';
+							}
+						}).catch(err => {
+							item.children.status = 'nomore';
+						}).finally(() => {
+							console.log(this.commentList)
+							return;
+						})
+					}
+				})
+			},
 			sendComment() {
 				this.edit.getContents().then(res => {
 					console.log(res)
-					// 如果res.text里面只有换行符或者空格，不发送
+					// 如果res.text里面只有换行符或者空格，res.html也没有<img>标签，就不允许发布	
 					const regex = /^[\n\s]+$/;
-					if (regex.test(res.text)) {
+					const regex2 = /<img/g;
+					if (regex.test(res.text) && this.commentImagesurl == '' && !regex2.test(res.html)) {
 						uni.showToast({
 							title: '请输入内容',
 							icon: 'none'
 						})
 						return;
 					}
+					this.content = res.html
 					if (this.commentImagesurl == '') {
 						let commentVO = {
-							content: res.html,
-							parentId: 0,
+							content: this.content,
+							replyUserId: this.replyCommentUserId,
+							replyUserName: this.replyCommentUserName,
 							notesId: this.notesDetail.id,
 							commentUserId: this.userInfo.id,
+							parentId: this.parentId
 						}
 						console.log(commentVO)
 						addComment({
@@ -267,6 +473,27 @@
 									title: '评论已发布',
 									icon: 'success'
 								})
+								this.commentCount++
+								res.data.createTime = weChatTimeFormat(Number(res.data.createTime))
+								console.log(res.data)
+								if (this.parentId == 0) {
+									res.data.children = {
+										list: [],
+										page: 1,
+										pageSize: 10,
+										status: 'loadmore',
+										loadmoreText: '—— 展开更多回复 ——'
+									}
+									console.log(res.data)
+									this.commentList.unshift(res.data)
+								} else {
+									this.commentList.forEach(item => {
+										if (item.id == this.parentId) {
+											console.log(item)
+											item.commentReplyNum++
+										}
+									})
+								}
 								this.content = ''
 								this.inputField = false
 							} else {
@@ -296,10 +523,12 @@
 								console.log(data.data)
 								this.commentImagesurl = data.data
 								let commentVO = {
-									content: res.html,
-									parentId: 0,
+									content: this.content,
+									replyUserId: this.replyCommentUserId,
+									replyUserName: this.replyCommentUserName,
 									notesId: this.notesDetail.id,
 									commentUserId: this.userInfo.id,
+									parentId: this.parentId,
 									pictureUrl: this.commentImagesurl
 								}
 								console.log(commentVO)
@@ -312,7 +541,27 @@
 											title: '评论已发布',
 											icon: 'success'
 										})
+										this.commentCount++
+										res.data.createTime = weChatTimeFormat(Number(res.data
+											.createTime))
+										if (this.parentId == 0) {
+											res.data.children = {
+												list: [],
+												page: 1,
+												pageSize: 10,
+												status: 'loadmore',
+												loadmoreText: '—— 展开更多回复 ——'
+											}
+											this.commentList.unshift(res.data)
+										} else {
+											this.commentList.forEach(item => {
+												if (item.id == this.parentId) {
+													item.commentReplyNum++
+												}
+											})
+										}
 										this.content = ''
+										this.revealcontent = ''
 										this.commentImagesurl = ''
 										this.inputField = false
 									} else {
@@ -343,6 +592,37 @@
 					})
 				})
 			},
+			replyFirstComment(item) {
+				this.editPlaceholder = '回复 @' + item.commentUserName
+				if (this.replyCommentUserId != item.commentUserId) {
+					this.content = ''
+					this.revealcontent = ''
+				}
+				this.replyCommentUserId = 0
+				this.replyCommentUserName = ''
+				this.parentId = item.id
+				this.openEditor()
+			},
+			replySecondComment(fitem, item) {
+				this.editPlaceholder = '回复 @' + item.commentUserName
+				this.content = ''
+				this.revealcontent = ''
+				this.replyCommentUserId = item.commentUserId
+				this.replyCommentUserName = item.commentUserName
+				this.parentId = fitem.id
+				this.openEditor()
+			},
+			replyNotes() {
+				this.editPlaceholder = '爱评论的人运气都不差'
+				if (this.replyCommentUserId != 0) {
+					this.content = ''
+					this.revealcontent = ''
+				}
+				this.replyCommentUserId = 0
+				this.replyCommentUserName = ''
+				this.parentId = 0
+				this.openEditor()
+			},
 			openEditor() {
 				this.inputField = true
 				this.showEmoji = false
@@ -362,8 +642,19 @@
 				this.edit.getContents().then(res => {
 					console.log(res)
 					this.content = res.html
+					this.revealcontent = res.text
 				})
 				uni.hideKeyboard()
+			},
+			previewImage(url) {
+				uni.previewImage({
+					urls: [url]
+				})
+			},
+			goToOtherMine(userId) {
+				uni.navigateTo({
+					url: '/pages/mine/otherMine?userId=' + userId
+				})
 			},
 			addUser(item) {
 				this.showAite = false
@@ -385,7 +676,8 @@
 						emojiUrl = item.url;
 					}
 				})
-				this.edit.insertEmoji(emojiUrl, name)
+				// this.edit.insertEmoji(emojiUrl, name)
+				this.edit.insertCustomEmoji(emojiUrl, name, '15px', '15px')
 				this.showEmoji = false
 				this.$refs.lsjComment.keyboardShow()
 			},
@@ -450,7 +742,8 @@
 			},
 			editReady(edit) {
 				this.edit = edit
-				if (this.content != '') {
+				const reg = /<img/g;
+				if (!(this.revealcontent == '\n' || this.revealcontent == '') || reg.test(this.content)) {
 					this.edit.ready(this.content)
 				}
 			},
@@ -501,9 +794,7 @@
 			console.log(options)
 			uni.getSystemInfo({
 				success: (res) => {
-					console.log(res);
 					this.statusBarHeight = res.statusBarHeight;
-					console.log(this.statusBarHeight);
 				}
 			})
 			let sql = `select * from emoji_list`
@@ -573,6 +864,65 @@
 					this.notesDetail = res.data
 					this.swipperCount = res.data.notesResources.length
 				}, 500)
+			})
+			getCommentCountByNotesId({
+				notesId: options.notesId
+			}).then(res => {
+				this.commentCount = res.data
+			})
+			getCommentFirstListByNotesId({
+				notesId: options.notesId,
+				page: 1,
+				pageSize: 10
+			}).then(res => {
+				console.log(res)
+				res.data.forEach(item => {
+					item.createTime = weChatTimeFormat(Number(item.createTime))
+					item.children = {
+						list: [],
+						page: 1,
+						pageSize: 10,
+						status: 'loadmore',
+						loadmoreText: '—— 展开' + item.commentReplyNum + '条回复 ——'
+					}
+					if (item.pictureUrl != null && item.pictureUrl != '') {
+						uni.getImageInfo({
+							src: item.pictureUrl,
+							success: (image) => {
+								item.picture = {
+									url: item.pictureUrl,
+								}
+								// 图片长度最长为350rpx,高度最高为350rpx
+								if (image.width >= image.height) {
+									if (image.width > 350) {
+										item.picture.width = 350
+										item.picture.height = 350 * image.height / image.width
+									} else {
+										item.picture.width = image.width
+										item.picture.height = image.height
+									}
+								} else {
+									if (image.height > 350) {
+										item.picture.height = 350
+										item.picture.width = 350 * image.width / image.height
+									} else {
+										item.picture.width = image.width
+										item.picture.height = image.height
+									}
+								}
+								console.log(item.picture)
+							},
+							fail: (err) => {
+								console.log(err)
+							}
+						})
+					} else {
+						item.picture = null
+					}
+				})
+				setTimeout(() => {
+					this.commentList = res.data
+				}, 700)
 			})
 		}
 	}

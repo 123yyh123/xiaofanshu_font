@@ -54,6 +54,15 @@ export class Edit extends Observer {
 			height: '25px'
 		})
 	}
+	
+	insertCustomEmoji(url,name,width,height) {
+		this.ctx.insertImage({
+			src: url,
+			alt: '['+ name +'XFS]',
+			width: width,
+			height: height,
+		})
+	}
 
 	/**
 	 * 写入表情

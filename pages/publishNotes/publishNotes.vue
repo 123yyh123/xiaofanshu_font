@@ -518,7 +518,8 @@
 						emojiUrl = item.url;
 					}
 				})
-				this.edit.insertEmoji(emojiUrl, name)
+				// this.edit.insertEmoji(emojiUrl, name)
+				this.edit.insertCustomEmoji(emojiUrl, name,'15px','15px')
 				this.showEmoji = false
 			},
 			editReady(edit) {
