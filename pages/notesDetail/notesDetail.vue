@@ -146,8 +146,14 @@
 									</view>
 									<view
 										style="width: 30px;display: flex;flex-direction: column;justify-content: center;text-align: center;padding: 5rpx;box-sizing: border-box;position: absolute;right: -40px;top: 0;">
-										<u-icon v-if="!item2.isLike" name="/static/praise.png" size="24"></u-icon>
-										<u-icon v-else name="/static/praise_select.png" size="24"></u-icon>
+										<u-transition :show="!item2.isLike" mode="fade" duration="2000">
+											<u-icon v-if="!item2.isLike" name="/static/praise.png" size="24"
+												@click="praiseComment(item2.id,item2.commentUserId,2,[index,index2])"></u-icon>
+										</u-transition>
+										<u-transition :show="item2.isLike" mode="fade" duration="2000">
+											<u-icon v-if="item2.isLike" name="/static/praise_select.png" size="24"
+												@click="praiseComment(item2.id, item2.commentUserId, 2, [index,index2])"></u-icon>
+										</u-transition>
 										<view v-if="item2.commentLikeNum>0" style="font-size: 12px;color: #7d7d7d;">
 											{{item2.commentLikeNum}}
 										</view>
@@ -161,16 +167,23 @@
 							@loadmore="getReplyList(item.id)" />
 					</view>
 					<view
-						style="width: 30px;display: flex;flex-direction: column;justify-content: center;text-align: center;padding: 5rpx;box-sizing: border-box;">
-						<u-icon v-if="!item.isLike" name="/static/praise.png" size="24"></u-icon>
-						<u-icon v-else name="/static/praise_select.png" size="24"></u-icon>
-						<view v-if="item.commentLikeNum>0" style="font-size: 12px;color: #7d7d7d;">
-							{{item.commentLikeNum}}
+						style="width: 30px; display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 5rpx; box-sizing: border-box;">
+						<u-transition :show="!item.isLike" mode="fade" duration="2000">
+							<u-icon v-if="!item.isLike" name="/static/praise.png" size="24"
+								@click="praiseComment(item.id,item.commentUserId,1,[index])"></u-icon>
+						</u-transition>
+						<u-transition :show="item.isLike" mode="fade" duration="2000">
+							<u-icon v-if="item.isLike" name="/static/praise_select.png" size="24"
+								@click="praiseComment(item.id, item.commentUserId, 1, [index])"></u-icon>
+						</u-transition>
+						<view v-if="item.commentLikeNum > 0" style="font-size: 12px; color: #7d7d7d;">
+							{{ item.commentLikeNum }}
 						</view>
 					</view>
 				</view>
 				<u-divider style="padding-left: 100rpx;" :hairline="true"></u-divider>
 			</block>
+			<u-loadmore line :status="status" :loading-text="loadingText" loadingIcon="semicircle"></u-loadmore>
 		</view>
 		<u-popup :show="inputField" mode="bottom" @close="closeEditor">
 			<view style="width: 100%;box-sizing: border-box;position: fixed;bottom: 0;background-color: #fff;">
@@ -270,14 +283,26 @@
 			</view>
 			<view class="bottom-icon">
 				<view style="display: flex;align-items: center;margin: 0 10rpx;">
-					<u-icon v-if="!notesDetail.isLike" name="/static/praise.png" size="28"></u-icon>
-					<u-icon v-else name="/static/praise_select.png" size="28"></u-icon>
+					<u-transition :show="!notesDetail.isLike" mode="fade" duration="2000">
+						<u-icon v-if="!notesDetail.isLike" name="/static/praise.png" size="28"
+							@click="praiseNotes(notesDetail.id)"></u-icon>
+					</u-transition>
+					<u-transition :show="notesDetail.isLike" mode="fade" duration="2000">
+						<u-icon v-if="notesDetail.isLike" name="/static/praise_select.png" size="28"
+							@click="praiseNotes(notesDetail.id)"></u-icon>
+					</u-transition>
 					<view v-if="notesDetail.notesLikeNum>0">{{notesDetail.notesLikeNum}}</view>
 					<view style="font-size: 30rpx;" v-else>点赞</view>
 				</view>
 				<view style="display: flex;align-items: center;margin: 0 10rpx;">
-					<u-icon v-if="!notesDetail.isCollect" name="/static/collect.png" size="28"></u-icon>
-					<u-icon v-else name="/static/collect_select.png" size="28"></u-icon>
+					<u-transition :show="!notesDetail.isCollect" mode="fade" duration="2000">
+						<u-icon v-if="!notesDetail.isCollect" name="/static/collect.png" size="28"
+							@click="collectNotes(notesDetail.id)"></u-icon>
+					</u-transition>
+					<u-transition :show="notesDetail.isCollect" mode="fade" duration="2000">
+						<u-icon v-if="notesDetail.isCollect" name="/static/collect_select.png" size="28"
+							@click="collectNotes(notesDetail.id)"></u-icon>
+					</u-transition>
 					<view v-if="notesDetail.notesCollectNum>0">{{notesDetail.notesCollectNum}}</view>
 					<view style="font-size: 30rpx;" v-else>收藏</view>
 				</view>
@@ -297,7 +322,9 @@
 		emojiList
 	} from '@/utils/emojiUtil.js'
 	import {
-		getNotesByNotesId
+		getNotesByNotesId,
+		praiseOrCancelNotes,
+		collectOrCancelNotes
 	} from '@/apis/notes_service.js'
 	import {
 		weChatTimeFormat
@@ -309,7 +336,8 @@
 		addComment,
 		getCommentCountByNotesId,
 		getCommentFirstListByNotesId,
-		getCommentSecondListByNotesId
+		getCommentSecondListByNotesId,
+		praiseOrCancelComment
 	} from '@/apis/comment_service'
 	import {
 		baseUrl
@@ -322,6 +350,9 @@
 				notesDetail: {},
 				commentCount: 0,
 				commentList: [],
+				page: 1,
+				pageSize: 10,
+				status: 'loadmore',
 				swipperHeight: 0,
 				swiperCurrent: 0,
 				swipperCount: 0,
@@ -348,9 +379,92 @@
 				replyCommentUserName: '',
 				parentId: 0,
 				loadingText: '加载中...',
+				showBubble: false
 			}
 		},
 		methods: {
+			/**
+			 * 点赞或取消点赞笔记
+			 * @param {Object} id
+			 */
+			praiseNotes(id) {
+				praiseOrCancelNotes({
+					notesId: id,
+					userId: this.userInfo.id,
+					targetUserId: this.notesDetail.belongUserId
+				}).then(res => {
+					console.log(res)
+					if (res.code == 20020) {
+						if (this.notesDetail.isLike) {
+							this.notesDetail.notesLikeNum = this.notesDetail.notesLikeNum - 1
+							this.notesDetail.isLike = false
+						} else {
+							this.notesDetail.notesLikeNum = this.notesDetail.notesLikeNum + 1
+							this.notesDetail.isLike = true
+						}
+					}
+				})
+			},
+			/**
+			 * 收藏或取消收藏笔记
+			 * @param {Object} id
+			 */
+			collectNotes(id) {
+				collectOrCancelNotes({
+					notesId: id,
+					userId: this.userInfo.id,
+					targetUserId: this.notesDetail.belongUserId
+				}).then(res => {
+					console.log(res)
+					if (res.code == 20020) {
+						if (this.notesDetail.isCollect) {
+							this.notesDetail.notesCollectNum = this.notesDetail.notesCollectNum - 1
+							this.notesDetail.isCollect = false
+						} else {
+							this.notesDetail.notesCollectNum = this.notesDetail.notesCollectNum + 1
+							this.notesDetail.isCollect = true
+						}
+					}
+				})
+			},
+			/** 点赞或取消点赞评论
+			 * @param {Object} id 评论id
+			 * @param {Object} userId 评论人id
+			 * @param {Object} type 评论类型 1:一级评论 2:二级评论
+			 * @param {Object} index 评论下标，数组，[一级评论下标，二级评论下标]
+			 */
+			praiseComment(id, userId, type, index) {
+				console.log(id, userId, type, index)
+				praiseOrCancelComment({
+					commentId: id,
+					userId: this.userInfo.id,
+					targetUserId: userId
+				}).then(res => {
+					console.log(res)
+					if (res.code == 20020) {
+						if (type == 1) {
+							if (this.commentList[index].isLike) {
+								this.commentList[index].isLike = false
+								this.commentList[index].commentLikeNum--
+							} else {
+								this.commentList[index].isLike = true
+								this.commentList[index].commentLikeNum++
+							}
+						} else {
+							if (this.commentList[index[0]].children.list[index[1]].isLike) {
+								this.commentList[index[0]].children.list[index[1]].isLike = false
+								this.commentList[index[0]].children.list[index[1]].commentLikeNum--
+							} else {
+								this.commentList[index[0]].children.list[index[1]].isLike = true
+								this.commentList[index[0]].children.list[index[1]].commentLikeNum++
+							}
+						}
+					}
+				})
+			},
+			/** 点击用户头像跳转到用户主页
+			 * @param {Object} e
+			 */
 			clickUser(e) {
 				console.log(e)
 				if (e.detail.node.name != 'a') {
@@ -359,6 +473,9 @@
 				let userId = this.findUserId(e.detail.node.attrs.href)
 				this.goToOtherMine(userId)
 			},
+			/** 获取一级评论的子评论
+			 * @param {Object} e
+			 */
 			getReplyList(id) {
 				console.log(id)
 				this.commentList.forEach(item => {
@@ -440,6 +557,9 @@
 					}
 				})
 			},
+			/**
+			 * 发送评论
+			 */
 			sendComment() {
 				this.edit.getContents().then(res => {
 					console.log(res)
@@ -592,6 +712,10 @@
 					})
 				})
 			},
+			/**
+			 * 回复一级评论
+			 * @param {Object} item 一级评论
+			 */
 			replyFirstComment(item) {
 				this.editPlaceholder = '回复 @' + item.commentUserName
 				if (this.replyCommentUserId != item.commentUserId) {
@@ -603,6 +727,11 @@
 				this.parentId = item.id
 				this.openEditor()
 			},
+			/**
+			 * 回复二级评论
+			 * @param {Object} fitem 一级评论
+			 * @param {Object} item 二级评论
+			 */
 			replySecondComment(fitem, item) {
 				this.editPlaceholder = '回复 @' + item.commentUserName
 				this.content = ''
@@ -612,6 +741,9 @@
 				this.parentId = fitem.id
 				this.openEditor()
 			},
+			/**
+			 * 回复笔记，即发布一级评论
+			 */
 			replyNotes() {
 				this.editPlaceholder = '爱评论的人运气都不差'
 				if (this.replyCommentUserId != 0) {
@@ -623,6 +755,9 @@
 				this.parentId = 0
 				this.openEditor()
 			},
+			/**
+			 * 弹出输入框
+			 */
 			openEditor() {
 				this.inputField = true
 				this.showEmoji = false
@@ -631,10 +766,17 @@
 					this.$refs.lsjComment.keyboardShow()
 				}, 700)
 			},
+
+			/**
+			 * 点击输入框
+			 */
 			onEditClick() {
 				this.showEmoji = false
 				this.showAite = false
 			},
+			/**
+			 * 关闭输入框
+			 */
 			closeEditor() {
 				this.inputField = false
 				this.showEmoji = false
@@ -646,16 +788,101 @@
 				})
 				uni.hideKeyboard()
 			},
+			/**
+			 * 预览图片
+			 */
 			previewImage(url) {
 				uni.previewImage({
 					urls: [url]
 				})
 			},
+			/**
+			 * 前往对方用户主页
+			 * @param {Object} userId
+			 */
 			goToOtherMine(userId) {
 				uni.navigateTo({
 					url: '/pages/mine/otherMine?userId=' + userId
 				})
 			},
+			/**
+			 * 获取一级评论列表
+			 * @param {Object} notesId 笔记id
+			 */
+			getFirstComment(notesId) {
+				if (this.status == 'loading' || this.status == 'nomore') {
+					return;
+				}
+				this.status = 'loading';
+				getCommentFirstListByNotesId({
+					notesId: notesId,
+					page: this.page,
+					pageSize: this.pageSize
+				}).then(res => {
+					console.log(res)
+					res.data.forEach(item => {
+						item.createTime = weChatTimeFormat(Number(item.createTime))
+						item.children = {
+							list: [],
+							page: 1,
+							pageSize: 10,
+							status: 'loadmore',
+							loadmoreText: '—— 展开' + item.commentReplyNum + '条回复 ——'
+						}
+						if (item.pictureUrl != null && item.pictureUrl != '') {
+							uni.getImageInfo({
+								src: item.pictureUrl,
+								success: (image) => {
+									item.picture = {
+										url: item.pictureUrl,
+									}
+									// 图片长度最长为350rpx,高度最高为350rpx
+									if (image.width >= image.height) {
+										if (image.width > 350) {
+											item.picture.width = 350
+											item.picture.height = 350 * image.height / image
+												.width
+										} else {
+											item.picture.width = image.width
+											item.picture.height = image.height
+										}
+									} else {
+										if (image.height > 350) {
+											item.picture.height = 350
+											item.picture.width = 350 * image.width / image
+												.height
+										} else {
+											item.picture.width = image.width
+											item.picture.height = image.height
+										}
+									}
+									console.log(item.picture)
+								},
+								fail: (err) => {
+									console.log(err)
+								}
+							})
+						} else {
+							item.picture = null
+						}
+					})
+					setTimeout(() => {
+						this.page++;
+						if (res.data.length < this.pageSize) {
+							this.status = 'nomore';
+						} else {
+							this.status = 'loadmore';
+						}
+						this.commentList = this.commentList.concat(res.data)
+					}, 700)
+				}).catch(err => {
+					console.log(err)
+				})
+			},
+			/**
+			 * 评论输入框添加@用户
+			 * @param {Object} item 
+			 */
 			addUser(item) {
 				this.showAite = false
 				this.$refs.lsjComment.keyboardShow()
@@ -667,6 +894,10 @@
 					}
 				})
 			},
+			/**
+			 * 评论输入框添加emoji
+			 * @param {Object} name 
+			 */
 			addEmoji(name) {
 				let sql = `update emoji_list set updateTime=datetime('now','localtime') where name='${name}'`
 				this.$sqliteUtil.SqlExecute(sql)
@@ -681,12 +912,18 @@
 				this.showEmoji = false
 				this.$refs.lsjComment.keyboardShow()
 			},
+			/**
+			 * 选择 @用户 的弹窗
+			 */
 			chooseAite() {
 				uni.hideKeyboard()
 				this.showAite = true
 				this.showEmoji = false
 				this.getAttentionUser()
 			},
+			/**
+			 * 获取关注用户列表
+			 */
 			getAttentionUser() {
 				if (this.attentionUser.isNoMore) {
 					return;
@@ -712,6 +949,9 @@
 					})
 				}, 500)
 			},
+			/**
+			 * 打开emoji弹出层
+			 */
 			openEmoji() {
 				if (this.showEmoji) {
 					this.showEmoji = false
@@ -722,6 +962,9 @@
 					uni.hideKeyboard()
 				}
 			},
+			/**
+			 * 选择发布评论的图片
+			 */
 			chooseImage() {
 				uni.chooseImage({
 					count: 1,
@@ -736,10 +979,17 @@
 					}
 				})
 			},
+			/**
+			 * 删除发布评论的图片
+			 */
 			deleteImage() {
 				this.commentImagesurl = ''
 				this.$refs.lsjComment.keyboardShow()
 			},
+			/**
+			 * 编辑器初始化
+			 * @param {Object} edit 
+			 */
 			editReady(edit) {
 				this.edit = edit
 				const reg = /<img/g;
@@ -747,9 +997,17 @@
 					this.edit.ready(this.content)
 				}
 			},
+			/**
+			 * swiper切换
+			 * @param {Object} e 
+			 */
 			swiperChange(e) {
 				this.swiperCurrent = e.detail.current
 			},
+			/**
+			 * 提取话题名
+			 * @param {Object} str 
+			 */
 			findTopicName(str) {
 				// #{&quot;topicname&quot;:&quot;蛋仔派对&quot;}
 				let reg = /#{&quot;topicname&quot;:&quot;(.+?)&quot;}/g
@@ -760,6 +1018,10 @@
 					return ''
 				}
 			},
+			/**
+			 * 提取用户id
+			 * @param {Object} str 
+			 */
 			findUserId(str) {
 				// #{&quot;userId&quot;:&quot;1675532564583455936&quot;}
 				let reg = /#{&quot;userId&quot;:&quot;(.+?)&quot;}/g
@@ -770,6 +1032,10 @@
 					return ''
 				}
 			},
+			/**
+			 * 点击话题或者用户
+			 * @param {Object} e 
+			 */
 			clickTopic(e) {
 				if (e.detail.node.name != 'a') {
 					return
@@ -870,60 +1136,10 @@
 			}).then(res => {
 				this.commentCount = res.data
 			})
-			getCommentFirstListByNotesId({
-				notesId: options.notesId,
-				page: 1,
-				pageSize: 10
-			}).then(res => {
-				console.log(res)
-				res.data.forEach(item => {
-					item.createTime = weChatTimeFormat(Number(item.createTime))
-					item.children = {
-						list: [],
-						page: 1,
-						pageSize: 10,
-						status: 'loadmore',
-						loadmoreText: '—— 展开' + item.commentReplyNum + '条回复 ——'
-					}
-					if (item.pictureUrl != null && item.pictureUrl != '') {
-						uni.getImageInfo({
-							src: item.pictureUrl,
-							success: (image) => {
-								item.picture = {
-									url: item.pictureUrl,
-								}
-								// 图片长度最长为350rpx,高度最高为350rpx
-								if (image.width >= image.height) {
-									if (image.width > 350) {
-										item.picture.width = 350
-										item.picture.height = 350 * image.height / image.width
-									} else {
-										item.picture.width = image.width
-										item.picture.height = image.height
-									}
-								} else {
-									if (image.height > 350) {
-										item.picture.height = 350
-										item.picture.width = 350 * image.width / image.height
-									} else {
-										item.picture.width = image.width
-										item.picture.height = image.height
-									}
-								}
-								console.log(item.picture)
-							},
-							fail: (err) => {
-								console.log(err)
-							}
-						})
-					} else {
-						item.picture = null
-					}
-				})
-				setTimeout(() => {
-					this.commentList = res.data
-				}, 700)
-			})
+			this.getFirstComment(options.notesId)
+		},
+		onReachBottom() {
+			this.getFirstComment(this.notesDetail.id)
 		}
 	}
 </script>
@@ -983,5 +1199,25 @@
 
 	/deep/ .editot-pd {
 		padding: 15rpx 20rpx !important;
+	}
+
+	/* 根据实际需要调整样式 */
+	.animate-praise {
+		animation: scaleAnimation 0.8s ease;
+		/* 使用动画 */
+	}
+
+	@keyframes scaleAnimation {
+		0% {
+			transform: scale(1, 1);
+		}
+
+		50% {
+			transform: scale(1.2, 1.2);
+		}
+
+		100% {
+			transform: scale(1, 1);
+		}
 	}
 </style>

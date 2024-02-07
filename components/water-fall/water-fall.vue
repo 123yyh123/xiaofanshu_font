@@ -3,7 +3,8 @@
 		<view class="water-left">
 			<block v-for="(item,index) in leftList" :key="index">
 				<view style="position: relative;" @click="goToDetail(item.id)">
-					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix" style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+						style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 						<template v-slot:loading>
 							<view style="height: 200rpx;text-align: center;padding: 20rpx;">
 								<u-loading-icon color="#e83929"></u-loading-icon>
@@ -27,9 +28,17 @@
 						{{item.nickname}}
 					</view>
 					<view style="display: flex;position: absolute;right: 10rpx;">
-						<u-icon name="heart" color="#000000" size="18"></u-icon>
-						<text
-							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.notesLikeNum}}</text>
+						<u-transition :show="!item.isLike" mode="fade" duration="2000">
+							<u-icon v-if="!item.isLike" name="/static/praise.png" size="18"
+								@click="praiseNotes(item.id,item.belongUserId,1,index)"></u-icon>
+						</u-transition>
+						<u-transition :show="item.isLike" mode="fade" duration="2000">
+							<u-icon v-if="item.isLike" name="/static/praise_select.png" size="18"
+								@click="praiseNotes(item.id,item.belongUserId,1,index)"></u-icon>
+						</u-transition>
+						<view v-if="item.notesLikeNum>0"
+							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">
+							{{item.notesLikeNum}}</view>
 					</view>
 				</view>
 				<view v-else style="display: flex;position: relative;padding: 20rpx;">
@@ -41,7 +50,8 @@
 		<view class="water-right">
 			<block v-for="(item,index) in rightList" :key="index">
 				<view style="position: relative;" @click="goToDetail(item.id)">
-					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix" style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+						style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 						<template v-slot:loading>
 							<view style="height: 200rpx;text-align: center;padding: 20rpx;margin-bottom: 30rpx;">
 								<u-loading-icon color="#e83929"></u-loading-icon>
@@ -62,9 +72,17 @@
 						{{item.nickname}}
 					</view>
 					<view style="display: flex;position: absolute;right: 10rpx;">
-						<u-icon name="heart" color="#000000" size="18"></u-icon>
-						<text
-							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">{{item.notesLikeNum}}</text>
+						<u-transition :show="!item.isLike" mode="fade" duration="2000">
+							<u-icon v-if="!item.isLike" name="/static/praise.png" size="18"
+								@click="praiseNotes(item.id,item.belongUserId,2,index)"></u-icon>
+						</u-transition>
+						<u-transition :show="item.isLike" mode="fade" duration="2000">
+							<u-icon v-if="item.isLike" name="/static/praise_select.png" size="18"
+								@click="praiseNotes(item.id,item.belongUserId,2,index)"></u-icon>
+						</u-transition>
+						<view v-if="item.notesLikeNum>0"
+							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">
+							{{item.notesLikeNum}}</view>
 					</view>
 				</view>
 				<view v-else style="display: flex;position: relative;padding: 20rpx;">
@@ -77,6 +95,9 @@
 </template>
 
 <script>
+	import {
+		praiseOrCancelNotes
+	} from '@/apis/notes_service.js'
 	export default {
 		name: "water-fall",
 		data() {
@@ -124,6 +145,34 @@
 					})
 				})
 			},
+			praiseNotes(id, targetUserId, type, index) {
+				praiseOrCancelNotes({
+					notesId: id,
+					userId: uni.getStorageSync('userInfo').id,
+					targetUserId: targetUserId
+				}).then(res => {
+					console.log(res)
+					if (res.code == 20020) {
+						if (type === 1) {
+							if (this.leftList[index].isLike) {
+								this.leftList[index].notesLikeNum = this.leftList[index].notesLikeNum - 1
+								this.leftList[index].isLike = false
+							} else {
+								this.leftList[index].notesLikeNum = this.leftList[index].notesLikeNum + 1
+								this.leftList[index].isLike = true
+							}
+						} else {
+							if (this.rightList[index].isLike) {
+								this.rightList[index].notesLikeNum = this.rightList[index].notesLikeNum - 1
+								this.rightList[index].isLike = false
+							} else {
+								this.rightList[index].notesLikeNum = this.rightList[index].notesLikeNum + 1
+								this.rightList[index].isLike = true
+							}
+						}
+					}
+				})
+			},
 			addList(e) {
 				console.log(e)
 				e.forEach((item) => {
@@ -151,7 +200,7 @@
 				this.leftHeight = 0
 				this.rightHeight = 0
 			},
-			deleteDraft(id,num){
+			deleteDraft(id, num) {
 				this.$showModal({
 					title: "提示",
 					content: "确认删除该草稿吗？",
@@ -164,25 +213,25 @@
 				}).then(res => {
 					console.log(id)
 					let sql = `delete from draft_notes where id = ${id}`
-					this.$sqliteUtil.SqlExecute(sql).then(res=>{
-						if(num==0){
-							this.leftList = this.leftList.filter(item=>item.id!=id)
-						}else{
-							this.rightList = this.rightList.filter(item=>item.id!=id)
+					this.$sqliteUtil.SqlExecute(sql).then(res => {
+						if (num == 0) {
+							this.leftList = this.leftList.filter(item => item.id != id)
+						} else {
+							this.rightList = this.rightList.filter(item => item.id != id)
 						}
 					})
 				})
 			},
-			goToDetail(id){
-				if(!this.slot_bottom){
+			goToDetail(id) {
+				if (!this.slot_bottom) {
 					// 草稿
 					uni.navigateTo({
-						url: '/pages/publishNotes/publishNotes?update=1&tableId='+id
+						url: '/pages/publishNotes/publishNotes?update=1&tableId=' + id
 					})
-				}else{
+				} else {
 					// 笔记
 					uni.navigateTo({
-						url: '/pages/notesDetail/notesDetail?notesId='+id
+						url: '/pages/notesDetail/notesDetail?notesId=' + id
 					})
 				}
 			}
@@ -234,7 +283,8 @@
 		border-radius: 50rpx;
 		font-size: 25rpx;
 	}
-	.video-play{
+
+	.video-play {
 		position: absolute;
 		top: 10rpx;
 		right: 10rpx;

@@ -28,3 +28,17 @@ export const getNotesByNotesId=(params={})=>{
 		method:'GET'
 	})
 }
+
+export const praiseOrCancelNotes = (params={})=>{
+	return $request({
+		url:'/notes/praiseNotes?notesId='+params.notesId+'&userId='+params.userId+'&targetUserId='+params.targetUserId,
+		method:'POST'
+	})
+}
+
+export const collectOrCancelNotes = (params={})=>{
+	return $request({
+		url:'/notes/collectNotes?notesId='+params.notesId+'&userId='+params.userId+'&targetUserId='+params.targetUserId,
+		method:'POST'
+	})
+}

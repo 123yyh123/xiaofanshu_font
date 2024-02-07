@@ -28,3 +28,10 @@ export const getCommentSecondListByNotesId=(params={})=>{
 		method:'GET'
 	})
 }
+
+export const praiseOrCancelComment = (params={})=>{
+	return $request({
+		url:'/comment/praiseComment?commentId='+params.commentId+'&userId='+params.userId+'&targetUserId='+params.targetUserId,
+		method:'POST'
+	})
+}
