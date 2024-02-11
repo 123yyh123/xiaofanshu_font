@@ -21,23 +21,23 @@ export const stringDateFormat = params => {
 }
 
 //将时间戳转换成日期格式 2024年12月12日
-export const formatTimestamp=(timestamp)=>{
-  const date = new Date(timestamp);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-  const day = String(date.getDate()).padStart(2, '0');
-  
-  return `${year}年${month}月${day}日`;
+export const formatTimestamp = (timestamp) => {
+	const date = new Date(timestamp);
+	const year = date.getFullYear();
+	const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+	const day = String(date.getDate()).padStart(2, '0');
+
+	return `${year}年${month}月${day}日`;
 }
 
 //将时间戳转换成日期格式 2024-12-12
-export const formatTimestamp2=(timestamp)=>{
-  const date = new Date(timestamp);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-  const day = String(date.getDate()).padStart(2, '0');
-  
-  return `${year}-${month}-${day}`;
+export const formatTimestamp2 = (timestamp) => {
+	const date = new Date(timestamp);
+	const year = date.getFullYear();
+	const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+	const day = String(date.getDate()).padStart(2, '0');
+
+	return `${year}-${month}-${day}`;
 }
 
 
@@ -309,37 +309,50 @@ export const replaceImageMessage = (message) => {
 	});
 }
 
+// 将html标签转换成普通文本
+export const replaceHTMLTags = (html) => {
+	// 匹配html标签的正则表达式
+	return html.replace(/<(style|script|iframe)[^>]*?>[\s\S]+?<\/\1\s*>/gi,
+			'') // 移除样式、脚本、iframe标签及其内容
+		.replace(/<img[^>]+alt=["']([^"']+)["'][^>]*>/gi, (_, alt) =>
+			` ${alt} `) // 提取图片标签中的alt属性内容
+		.replace(/<[^>]+?>/g, '') // 移除其他HTML标签
+		.replace(/\s+/g, ' ') // 将多个连续的空白字符替换为单个空格
+		.replace(/ /g, ' ') // 移除多余的空格
+		.replace(/>/g, ' '); // 移除大于号
+}
+
 // 展示模态框
 export const showModal = (options) => {
-    let params = {
-        title: "提示",
-        content: "自定义内容", 
-        align: "center", // 对齐方式 left/center/right
-        cancelText: "取消", // 取消按钮的文字
-        cancelColor: "#8F8F8F", // 取消按钮颜色
-        confirmText: "确定", // 确认按钮文字
-        confirmColor: "#FFAD15", // 确认按钮颜色 
-        showCancel: true, // 是否显示取消按钮，默认为 true
-    }
+	let params = {
+		title: "提示",
+		content: "自定义内容",
+		align: "center", // 对齐方式 left/center/right
+		cancelText: "取消", // 取消按钮的文字
+		cancelColor: "#8F8F8F", // 取消按钮颜色
+		confirmText: "确定", // 确认按钮文字
+		confirmColor: "#FFAD15", // 确认按钮颜色 
+		showCancel: true, // 是否显示取消按钮，默认为 true
+	}
 
-    Object.assign(params, options)
+	Object.assign(params, options)
 
-    let list = []
-    Object.keys(params).forEach(ele => {
-        list.push(ele + "=" + params[ele])
-    })
-    let paramsStr = list.join('&')
+	let list = []
+	Object.keys(params).forEach(ele => {
+		list.push(ele + "=" + params[ele])
+	})
+	let paramsStr = list.join('&')
 
-    uni.navigateTo({
-        url: "/pages/modal/modal?" + paramsStr
-    })
+	uni.navigateTo({
+		url: "/pages/modal/modal?" + paramsStr
+	})
 
-    return new Promise((resolve, reject) => {
-        uni.$once("AppModalCancel", () => {
-            reject()
-        })
-        uni.$once("AppModalConfirm", () => {
-            resolve()
-        })
-    });
+	return new Promise((resolve, reject) => {
+		uni.$once("AppModalCancel", () => {
+			reject()
+		})
+		uni.$once("AppModalConfirm", () => {
+			resolve()
+		})
+	});
 }

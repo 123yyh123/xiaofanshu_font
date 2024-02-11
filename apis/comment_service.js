@@ -35,3 +35,17 @@ export const praiseOrCancelComment = (params={})=>{
 		method:'POST'
 	})
 }
+
+export const setNotesTopComment = (params={})=>{
+	return $request({
+		url:'/comment/setTopComment?commentId='+params.commentId,
+		method:'POST'
+	})
+}
+
+export const deleteNotesComment = (params={})=>{
+	return $request({
+		url:'/comment/deleteComment?commentId='+params.commentId,
+		method:'DELETE'
+	})
+}

@@ -21129,7 +21129,14 @@ var render = function () {
           attrs: { _i: 2 },
         },
         [
-          _c("u-icon", { attrs: { _i: 3 } }),
+          _c("u-icon", {
+            attrs: { _i: 3 },
+            on: {
+              click: function ($event) {
+                return _vm.$handleViewEvent($event)
+              },
+            },
+          }),
           _c(
             "uni-view",
             { staticStyle: { "margin-left": "20rpx" }, attrs: { _i: 4 } },
@@ -21141,6 +21148,11 @@ var render = function () {
                   "border-radius": "50%",
                 },
                 attrs: { src: _vm._$g(5, "a-src"), mode: "aspectFill", _i: 5 },
+                on: {
+                  click: function ($event) {
+                    return _vm.$handleViewEvent($event)
+                  },
+                },
               }),
             ],
             1
@@ -21546,6 +21558,12 @@ var render = function () {
                           _i: "48-" + $31,
                         },
                         on: {
+                          longpress: function ($event) {
+                            return _vm.$handleViewEvent($event)
+                          },
+                          touchend: function ($event) {
+                            return _vm.$handleViewEvent($event)
+                          },
                           click: function ($event) {
                             return _vm.$handleViewEvent($event)
                           },
@@ -21590,6 +21608,12 @@ var render = function () {
                           },
                           attrs: { _i: "51-" + $31 },
                           on: {
+                            longpress: function ($event) {
+                              return _vm.$handleViewEvent($event)
+                            },
+                            touchend: function ($event) {
+                              return _vm.$handleViewEvent($event)
+                            },
                             click: function ($event) {
                               return _vm.$handleViewEvent($event)
                             },
@@ -21807,6 +21831,16 @@ var render = function () {
                                                 _i: "64-" + $31 + "-" + $32,
                                               },
                                               on: {
+                                                longpress: function ($event) {
+                                                  return _vm.$handleViewEvent(
+                                                    $event
+                                                  )
+                                                },
+                                                touchend: function ($event) {
+                                                  return _vm.$handleViewEvent(
+                                                    $event
+                                                  )
+                                                },
                                                 click: function ($event) {
                                                   return _vm.$handleViewEvent(
                                                     $event
@@ -21883,6 +21917,16 @@ var render = function () {
                                                   _i: "67-" + $31 + "-" + $32,
                                                 },
                                                 on: {
+                                                  longpress: function ($event) {
+                                                    return _vm.$handleViewEvent(
+                                                      $event
+                                                    )
+                                                  },
+                                                  touchend: function ($event) {
+                                                    return _vm.$handleViewEvent(
+                                                      $event
+                                                    )
+                                                  },
                                                   click: function ($event) {
                                                     return _vm.$handleViewEvent(
                                                       $event

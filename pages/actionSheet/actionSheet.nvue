@@ -1,0 +1,160 @@
+<template>
+	<view class="mask" @click="close">
+
+		<view class="space"></view>
+
+		<view @click.stop="onClick" class="box" ref="box">
+			<block v-for="(text, index) in itemList" :key="index">
+				<view :class="index == 0 ? 'button-view-0' : 'button-view'" @click="buttonClick(index)"
+					:style="buttonLastStyle(index)" :hover-class="index == 0 ? 'button-hover-0' : 'button-hover'"
+					:hover-start-time="0" hover-stay-time="30">
+					<text class="button-text" :style="text === '删除' ? 'color: #f56c6c;' : ''">{{text}}</text>
+				</view>
+			</block>
+
+			<view class="line"></view>
+
+			<view @click="close()" class="button-view" hover-class="button-hover" :hover-start-time="0"
+				hover-stay-time="30">
+				<text class="button-text">取消</text>
+			</view>
+
+		</view>
+
+	</view>
+</template>
+
+<script>
+	const animation = weex.requireModule('animation');
+	const dom = weex.requireModule('dom');
+
+	export default {
+		data() {
+			return {
+				itemList: []
+			}
+		},
+
+		onLoad() {
+			let actionSheetParam = uni.getStorageSync('_systemShowActionSheetParam');
+			uni.removeStorageSync('_systemShowActionSheetParam');
+
+			this.itemList = actionSheetParam.itemList;
+		},
+
+		onReady() {
+			// box动画
+			var box = this.$refs.box;
+			animation.transition(box, {
+				styles: {
+					transform: 'translateY(0)'
+				},
+				duration: 100
+			});
+		},
+
+		onBackPress(options) {
+			if (options.from === 'backbutton') {
+				// 安卓返回按键
+				this.close();
+				return true;
+			}
+		},
+
+		methods: {
+			onClick(e) {
+				e.stopPropagation();
+			},
+
+			close() {
+				// 关闭actionSheet
+				uni.navigateBack();
+				// 动画
+				var box = this.$refs.box;
+				animation.transition(box, {
+					styles: {
+						transform: 'translateY(100%)'
+					},
+					duration: 100
+				});
+			},
+
+			buttonLastStyle(index) {
+				// 最后一个按钮底部线的颜色，因不支持nth选择器
+				if (this.itemList.length - 1 == index) {
+					return {
+						'border-bottom-color': '#e9e9e9'
+					};
+				}
+				return {};
+			},
+
+			buttonClick(index) {
+				this.close();
+
+				let result = {
+					tapIndex: index
+				};
+
+				uni.$emit('_systemShowActionSheetMessage', result);
+			}
+		},
+
+	}
+</script>
+
+<style scoped>
+	.mask {
+		position: fixed;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		/* #endif */
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
+	.space {
+		flex: 1;
+	}
+
+	.box {
+		background-color: #ffffff;
+		border-top-left-radius: 20rpx;
+		border-top-right-radius: 20rpx;
+		/* 解决底部有道黑线需要留-1 */
+		bottom: -1px;
+		transform: translateY(100%);
+	}
+
+	.button-view,
+	.button-view-0 {
+		padding: 35rpx 0;
+		margin: 0 30rpx;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: #f3f3f2;
+	}
+
+	.button-hover,
+	.button-hover-0 {
+		background-color: #ffffff;
+	}
+
+	.button-view-0 {
+		border-top-left-radius: 20rpx;
+		border-top-right-radius: 20rpx;
+	}
+
+	.button-text {
+		text-align: center;
+		font-size: 33rpx;
+	}
+
+	.line {
+		background-color: #f3f3f2;
+		height: 20rpx;
+	}
+</style>

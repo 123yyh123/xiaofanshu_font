@@ -137,6 +137,16 @@
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path": "pages/actionSheet/actionSheet",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"background": "transparent",
+					"popGesture": "none"
+				}
+			}
 		}
 	],
 	"tabBar": {

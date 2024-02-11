@@ -4,10 +4,10 @@
 			style="position: fixed;top: 0;width: 100%;z-index: 9999;background-color: #fff;"></view>
 		<view :style="{top: statusBarHeight + 'px'}"
 			style="position: fixed;width: 100%;height: 44px;background-color: #fff;z-index: 9999;display: flex;align-items: center;padding: 0 10rpx;box-sizing: border-box;">
-			<u-icon name="arrow-left" color="#2b2b2b" size="25"></u-icon>
+			<u-icon name="arrow-left" color="#2b2b2b" size="25" @click="goBack"></u-icon>
 			<view style="margin-left: 20rpx;">
 				<image :src="notesDetail.avatarUrl" style="height: 35px;width: 35px;border-radius: 50%;"
-					mode="aspectFill"></image>
+					mode="aspectFill" @click="goToOtherMine(notesDetail.belongUserId)"></image>
 			</view>
 			<view class="authorName">{{notesDetail.nickname}}</view>
 			<view v-if="notesDetail.belongUserId!=userInfo.id"
@@ -88,6 +88,7 @@
 								作者</view>
 						</view>
 						<rich-text style="font-size: 14px;letter-spacing: 0.05rem;color: #383c3c;" :nodes="item.content"
+							@longpress="openCommentSetting(item,0)" @touchend="touchend"
 							@click="replyFirstComment(item)" @itemclick="clickUser"></rich-text>
 						<view v-if="item.pictureUrl!=null&&item.pictureUrl!=''" style="margin-top: 10rpx;"
 							@click="previewImage(item.picture.url)">
@@ -96,6 +97,7 @@
 								style="border-radius: 20rpx;" mode="aspectFill"></image>
 						</view>
 						<view style="display: flex;align-items: center;margin-top: 10rpx;"
+							@longpress="openCommentSetting(item,0)" @touchend="touchend"
 							@click="replyFirstComment(item)">
 							<view style="font-size: 24rpx;color: #afafb0;">{{item.createTime}}</view>
 							<view style="margin-left: 20rpx;font-size: 24rpx;color: #afafb0;">{{item.province}}</view>
@@ -125,6 +127,7 @@
 												作者</view>
 										</view>
 										<rich-text style="font-size: 14px;letter-spacing: 0.05rem;color: #383c3c;"
+											@longpress="openCommentSetting(item2,item)" @touchend="touchend"
 											:nodes="item2.content" @click="replySecondComment(item,item2)"
 											@itemclick="clickUser"></rich-text>
 										<view v-if="item2.pictureUrl!=null&&item2.pictureUrl!=''"
@@ -134,6 +137,7 @@
 												style="border-radius: 20rpx;" mode="aspectFill"></image>
 										</view>
 										<view style="display: flex;align-items: center;margin-top: 10rpx;"
+											@longpress="openCommentSetting(item2,item)" @touchend="touchend"
 											@click="replySecondComment(item,item2)">
 											<view style="font-size: 24rpx;color: #afafb0;">
 												{{item2.createTime}}
@@ -327,7 +331,8 @@
 		collectOrCancelNotes
 	} from '@/apis/notes_service.js'
 	import {
-		weChatTimeFormat
+		weChatTimeFormat,
+		replaceHTMLTags
 	} from '@/utils/util.js'
 	import {
 		getAttentionList
@@ -337,7 +342,9 @@
 		getCommentCountByNotesId,
 		getCommentFirstListByNotesId,
 		getCommentSecondListByNotesId,
-		praiseOrCancelComment
+		praiseOrCancelComment,
+		setNotesTopComment,
+		deleteNotesComment
 	} from '@/apis/comment_service'
 	import {
 		baseUrl
@@ -379,10 +386,139 @@
 				replyCommentUserName: '',
 				parentId: 0,
 				loadingText: '加载中...',
-				showBubble: false
+				showBubble: false,
+				isLongPress: false,
 			}
 		},
 		methods: {
+			openCommentSetting(e, e1) {
+				this.isLongPress = true
+				let itemList = ['置顶', '回复', '复制', '删除']
+				if ((this.notesDetail.belongUserId != this.userInfo.id) || e.parentId != 0) {
+					itemList.shift()
+				} else {
+					if (e.isTop) {
+						itemList[0] = '取消置顶'
+					}
+				}
+				if (this.notesDetail.belongUserId != this.userInfo.id && e.commentUserId != this.userInfo.id) {
+					itemList.pop()
+				}
+				this.$showActionSheet({
+					itemList: itemList,
+					success: (data) => {
+						let text = itemList[data.tapIndex]
+						console.log(text)
+						if (text === '置顶') {
+							this.topComment(e.id, 0)
+						}
+						if (text === '取消置顶') {
+							this.topComment(e.id, 1)
+						}
+						if (text === '回复') {
+							if (e1 == 0) {
+								this.replyFirstComment(e)
+							} else {
+								this.replySecondComment(e1, e)
+							}
+						}
+						if (text === '复制') {
+							let a = replaceHTMLTags(e.content)
+							uni.setClipboardData({
+								data: a,
+								success: function() {
+									uni.showToast({
+										title: '复制成功',
+										icon: 'none'
+									})
+								}
+							})
+						}
+						if (text === '删除') {
+							this.deleteComment(e)
+						}
+					}
+				})
+			},
+			/** 置顶评论
+			 * @param {Object} id
+			 */
+			topComment(id, type) {
+				setNotesTopComment({
+					commentId: id,
+				}).then(res => {
+					console.log(res)
+					if (res.code == 20020) {
+						uni.showToast({
+							title: type == 0 ? '置顶成功' : '取消置顶成功',
+							icon: 'none'
+						})
+						// 将置顶的评论放到第一位
+						this.commentList.forEach((item, index) => {
+							if (item.id == id) {
+								if (type == 0) {
+									item.isTop = true
+									this.commentList.splice(index, 1)
+									this.commentList.unshift(item)
+								} else {
+									item.isTop = false
+								}
+							} else {
+								item.isTop = false
+							}
+						})
+					} else {
+						uni.showToast({
+							title: res.msg == null ? type == 0 ? '置顶失败' : '取消置顶失败' : res.msg,
+							icon: 'none'
+						})
+					}
+				})
+			},
+			/** 删除评论
+			 * @param {Object} e
+			 */
+			deleteComment(e) {
+				deleteNotesComment({
+					commentId: e.id,
+				}).then(res => {
+					console.log(res)
+					if (res.code == 20020) {
+						uni.showToast({
+							title: '删除成功',
+							icon: 'none'
+						})
+						// 删除评论
+						if (e.parentId == '0') {
+							this.commentList.forEach((item, index) => {
+								if (item.id == e.id) {
+									this.commentList.splice(index, 1)
+								}
+							})
+						} else {
+							this.commentList.forEach((item, index) => {
+								if (item.id == e.parentId) {
+									item.children.list.forEach((item2, index2) => {
+										if (item2.id == e.id) {
+											item.children.list.splice(index2, 1)
+										}
+									})
+								}
+							})
+						}
+					} else {
+						uni.showToast({
+							title: res.msg == null ? '删除失败' : res.msg,
+							icon: 'none'
+						})
+					}
+				})
+			},
+			touchend() {
+				setTimeout(() => {
+					this.isLongPress = false
+				}, 200)
+			},
 			/**
 			 * 点赞或取消点赞笔记
 			 * @param {Object} id
@@ -492,7 +628,7 @@
 						}).then(res => {
 							console.log(res)
 							if (res.code == 20010) {
-								item.page++;
+								item.children.page++
 								item.children.loadmoreText = '展开更多回复'
 								res.data.forEach(item => {
 									item.createTime = weChatTimeFormat(Number(item.createTime))
@@ -610,7 +746,13 @@
 									this.commentList.forEach(item => {
 										if (item.id == this.parentId) {
 											console.log(item)
-											item.commentReplyNum++
+											if (item.children.page == 1) {
+												item.commentReplyNum++
+												item.children.loadmoreText = '—— 展开' + item
+													.commentReplyNum + '条回复 ——'
+											} else {
+												item.children.list.unshift(res.data)
+											}
 										}
 									})
 								}
@@ -676,7 +818,16 @@
 										} else {
 											this.commentList.forEach(item => {
 												if (item.id == this.parentId) {
-													item.commentReplyNum++
+													console.log(item)
+													if (item.children.page == 1) {
+														item.commentReplyNum++
+														item.children.loadmoreText =
+															'—— 展开' + item
+															.commentReplyNum + '条回复 ——'
+													} else {
+														item.children.list.unshift(res
+															.data)
+													}
 												}
 											})
 										}
@@ -717,6 +868,9 @@
 			 * @param {Object} item 一级评论
 			 */
 			replyFirstComment(item) {
+				if (this.isLongPress) {
+					return
+				}
 				this.editPlaceholder = '回复 @' + item.commentUserName
 				if (this.replyCommentUserId != item.commentUserId) {
 					this.content = ''
@@ -733,6 +887,9 @@
 			 * @param {Object} item 二级评论
 			 */
 			replySecondComment(fitem, item) {
+				if (this.isLongPress) {
+					return
+				}
 				this.editPlaceholder = '回复 @' + item.commentUserName
 				this.content = ''
 				this.revealcontent = ''
@@ -1054,6 +1211,12 @@
 				} else {
 					console.log('不是话题也不是用户')
 				}
+			},
+			/**
+			 * 返回上一页
+			 */
+			goBack() {
+				uni.navigateBack()
 			}
 		},
 		onLoad(options) {
@@ -1140,6 +1303,21 @@
 		},
 		onReachBottom() {
 			this.getFirstComment(this.notesDetail.id)
+		},
+		onBackPress() {
+			if (this.inputField) {
+				this.inputField = false
+				return true
+			}
+			if (this.showEmoji) {
+				this.showEmoji = false
+				return true
+			}
+			if (this.showAite) {
+				this.showAite = false
+				return true
+			}
+			return false
 		}
 	}
 </script>
