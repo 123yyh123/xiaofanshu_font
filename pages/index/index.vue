@@ -26,7 +26,96 @@
 					:refresher-enabled="enablerefresh" @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
 					:refresher-threshold="100">
 					<view class="component">
-						<water-fall :list="notesList[0].notesList" ref="water1"></water-fall>
+						<view style="width: 100%;display: flex;flex-wrap: wrap;">
+							<view class="water-left">
+								<block v-for="(item,index) in notesList[0].leftList" :key="index">
+									<view style="position: relative;" @click="goToDetail(item.id)">
+										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+											<template v-slot:loading>
+												<view style="height: 200rpx;text-align: center;padding: 20rpx;">
+													<u-loading-icon color="#e83929"></u-loading-icon>
+													<view style="font-size: 30rpx;">loading......</view>
+												</view>
+											</template>
+										</u--image>
+										<view class="look-views" v-if="item.views!=null">
+											<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
+											<view style="margin-left: 5rpx;">{{item.views}}</view>
+										</view>
+										<view v-if="item.notesType==1" class="video-play">
+											<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
+										</view>
+									</view>
+									<view class="title" @click="goToDetail(item.id)">{{item.title}}</view>
+									<view style="display: flex;position: relative;padding: 20rpx;">
+										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
+											:src="item.avatarUrl">
+										</image>
+										<view class="note-username">
+											{{item.nickname}}
+										</view>
+										<view style="display: flex;position: absolute;right: 10rpx;">
+											<u-transition :show="!item.isLike" mode="fade" duration="2000">
+												<u-icon v-if="!item.isLike" name="/static/praise.png" size="18"
+													@click="praiseNotes(item.id,item.belongUserId,1,index)"></u-icon>
+											</u-transition>
+											<u-transition :show="item.isLike" mode="fade" duration="2000">
+												<u-icon v-if="item.isLike" name="/static/praise_select.png" size="18"
+													@click="praiseNotes(item.id,item.belongUserId,1,index)"></u-icon>
+											</u-transition>
+											<view v-if="item.notesLikeNum>0"
+												style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">
+												{{item.notesLikeNum}}
+											</view>
+										</view>
+									</view>
+								</block>
+							</view>
+							<view class="water-right">
+								<block v-for="(item,index) in notesList[0].rightList" :key="index">
+									<view style="position: relative;" @click="goToDetail(item.id)">
+										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+											<template v-slot:loading>
+												<view
+													style="height: 200rpx;text-align: center;padding: 20rpx;margin-bottom: 30rpx;">
+													<u-loading-icon color="#e83929"></u-loading-icon>
+													<view style="font-size: 30rpx;">loading......</view>
+												</view>
+											</template>
+										</u--image>
+										<view class="look-views" v-if="item.views!=null">
+											<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
+											<view style="margin-left: 5rpx;">{{item.views}}</view>
+										</view>
+									</view>
+									<view class="title" @click="goToDetail(item.id)">{{item.title}}</view>
+									<view style="display: flex;position: relative;padding: 20rpx;">
+										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
+											:src="item.avatarUrl">
+										</image>
+										<view class="note-username">
+											{{item.nickname}}
+										</view>
+										<view style="display: flex;position: absolute;right: 10rpx;">
+											<u-transition :show="!item.isLike" mode="fade" duration="2000">
+												<u-icon v-if="!item.isLike" name="/static/praise.png" size="18"
+													@click="praiseNotes(item.id,item.belongUserId,2,index)"></u-icon>
+											</u-transition>
+											<u-transition :show="item.isLike" mode="fade" duration="2000">
+												<u-icon v-if="item.isLike" name="/static/praise_select.png" size="18"
+													@click="praiseNotes(item.id,item.belongUserId,2,index)"></u-icon>
+											</u-transition>
+											<view v-if="item.notesLikeNum>0"
+												style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">
+												{{item.notesLikeNum}}
+											</view>
+										</view>
+									</view>
+								</block>
+							</view>
+						</view>
 						<u-loadmore margin-top="20" line :status="notesList[0].status" :loading-text="loadingText"
 							:loadmore-text="loadmoreText" :nomore-text="nomoreText" />
 					</view>
@@ -54,7 +143,96 @@
 					:refresher-enabled="enablerefresh" @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
 					:refresher-threshold="100">
 					<view class="component">
-						<water-fall :list="notesList[1].notesList" ref="water2"></water-fall>
+						<view style="width: 100%;display: flex;flex-wrap: wrap;">
+							<view class="water-left">
+								<block v-for="(item,index) in notesList[1].leftList" :key="index">
+									<view style="position: relative;" @click="goToDetail(item.id)">
+										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+											<template v-slot:loading>
+												<view style="height: 200rpx;text-align: center;padding: 20rpx;">
+													<u-loading-icon color="#e83929"></u-loading-icon>
+													<view style="font-size: 30rpx;">loading......</view>
+												</view>
+											</template>
+										</u--image>
+										<view class="look-views" v-if="item.views!=null">
+											<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
+											<view style="margin-left: 5rpx;">{{item.views}}</view>
+										</view>
+										<view v-if="item.notesType==1" class="video-play">
+											<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
+										</view>
+									</view>
+									<view class="title" @click="goToDetail(item.id)">{{item.title}}</view>
+									<view style="display: flex;position: relative;padding: 20rpx;">
+										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
+											:src="item.avatarUrl">
+										</image>
+										<view class="note-username">
+											{{item.nickname}}
+										</view>
+										<view style="display: flex;position: absolute;right: 10rpx;">
+											<u-transition :show="!item.isLike" mode="fade" duration="2000">
+												<u-icon v-if="!item.isLike" name="/static/praise.png" size="18"
+													@click="praiseNotes(item.id,item.belongUserId,1,index)"></u-icon>
+											</u-transition>
+											<u-transition :show="item.isLike" mode="fade" duration="2000">
+												<u-icon v-if="item.isLike" name="/static/praise_select.png" size="18"
+													@click="praiseNotes(item.id,item.belongUserId,1,index)"></u-icon>
+											</u-transition>
+											<view v-if="item.notesLikeNum>0"
+												style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">
+												{{item.notesLikeNum}}
+											</view>
+										</view>
+									</view>
+								</block>
+							</view>
+							<view class="water-right">
+								<block v-for="(item,index) in notesList[1].rightList" :key="index">
+									<view style="position: relative;" @click="goToDetail(item.id)">
+										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+											<template v-slot:loading>
+												<view
+													style="height: 200rpx;text-align: center;padding: 20rpx;margin-bottom: 30rpx;">
+													<u-loading-icon color="#e83929"></u-loading-icon>
+													<view style="font-size: 30rpx;">loading......</view>
+												</view>
+											</template>
+										</u--image>
+										<view class="look-views" v-if="item.views!=null">
+											<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
+											<view style="margin-left: 5rpx;">{{item.views}}</view>
+										</view>
+									</view>
+									<view class="title" @click="goToDetail(item.id)">{{item.title}}</view>
+									<view style="display: flex;position: relative;padding: 20rpx;">
+										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
+											:src="item.avatarUrl">
+										</image>
+										<view class="note-username">
+											{{item.nickname}}
+										</view>
+										<view style="display: flex;position: absolute;right: 10rpx;">
+											<u-transition :show="!item.isLike" mode="fade" duration="2000">
+												<u-icon v-if="!item.isLike" name="/static/praise.png" size="18"
+													@click="praiseNotes(item.id,item.belongUserId,2,index)"></u-icon>
+											</u-transition>
+											<u-transition :show="item.isLike" mode="fade" duration="2000">
+												<u-icon v-if="item.isLike" name="/static/praise_select.png" size="18"
+													@click="praiseNotes(item.id,item.belongUserId,2,index)"></u-icon>
+											</u-transition>
+											<view v-if="item.notesLikeNum>0"
+												style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">
+												{{item.notesLikeNum}}
+											</view>
+										</view>
+									</view>
+								</block>
+							</view>
+						</view>
 						<u-loadmore margin-top="20" line :status="notesList[1].status" :loading-text="loadingText"
 							:loadmore-text="loadmoreText" :nomore-text="nomoreText" />
 					</view>
@@ -65,7 +243,96 @@
 					:refresher-enabled="enablerefresh" @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
 					:refresher-threshold="100">
 					<view class="component">
-						<water-fall :list="notesList[2].notesList" ref="water3"></water-fall>
+						<view style="width: 100%;display: flex;flex-wrap: wrap;">
+							<view class="water-left">
+								<block v-for="(item,index) in notesList[2].leftList" :key="index">
+									<view style="position: relative;" @click="goToDetail(item.id)">
+										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+											<template v-slot:loading>
+												<view style="height: 200rpx;text-align: center;padding: 20rpx;">
+													<u-loading-icon color="#e83929"></u-loading-icon>
+													<view style="font-size: 30rpx;">loading......</view>
+												</view>
+											</template>
+										</u--image>
+										<view class="look-views" v-if="item.views!=null">
+											<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
+											<view style="margin-left: 5rpx;">{{item.views}}</view>
+										</view>
+										<view v-if="item.notesType==1" class="video-play">
+											<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
+										</view>
+									</view>
+									<view class="title" @click="goToDetail(item.id)">{{item.title}}</view>
+									<view style="display: flex;position: relative;padding: 20rpx;">
+										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
+											:src="item.avatarUrl">
+										</image>
+										<view class="note-username">
+											{{item.nickname}}
+										</view>
+										<view style="display: flex;position: absolute;right: 10rpx;">
+											<u-transition :show="!item.isLike" mode="fade" duration="2000">
+												<u-icon v-if="!item.isLike" name="/static/praise.png" size="18"
+													@click="praiseNotes(item.id,item.belongUserId,1,index)"></u-icon>
+											</u-transition>
+											<u-transition :show="item.isLike" mode="fade" duration="2000">
+												<u-icon v-if="item.isLike" name="/static/praise_select.png" size="18"
+													@click="praiseNotes(item.id,item.belongUserId,1,index)"></u-icon>
+											</u-transition>
+											<view v-if="item.notesLikeNum>0"
+												style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">
+												{{item.notesLikeNum}}
+											</view>
+										</view>
+									</view>
+								</block>
+							</view>
+							<view class="water-right">
+								<block v-for="(item,index) in notesList[2].rightList" :key="index">
+									<view style="position: relative;" @click="goToDetail(item.id)">
+										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+											<template v-slot:loading>
+												<view
+													style="height: 200rpx;text-align: center;padding: 20rpx;margin-bottom: 30rpx;">
+													<u-loading-icon color="#e83929"></u-loading-icon>
+													<view style="font-size: 30rpx;">loading......</view>
+												</view>
+											</template>
+										</u--image>
+										<view class="look-views" v-if="item.views!=null">
+											<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
+											<view style="margin-left: 5rpx;">{{item.views}}</view>
+										</view>
+									</view>
+									<view class="title" @click="goToDetail(item.id)">{{item.title}}</view>
+									<view style="display: flex;position: relative;padding: 20rpx;">
+										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
+											:src="item.avatarUrl">
+										</image>
+										<view class="note-username">
+											{{item.nickname}}
+										</view>
+										<view style="display: flex;position: absolute;right: 10rpx;">
+											<u-transition :show="!item.isLike" mode="fade" duration="2000">
+												<u-icon v-if="!item.isLike" name="/static/praise.png" size="18"
+													@click="praiseNotes(item.id,item.belongUserId,2,index)"></u-icon>
+											</u-transition>
+											<u-transition :show="item.isLike" mode="fade" duration="2000">
+												<u-icon v-if="item.isLike" name="/static/praise_select.png" size="18"
+													@click="praiseNotes(item.id,item.belongUserId,2,index)"></u-icon>
+											</u-transition>
+											<view v-if="item.notesLikeNum>0"
+												style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">
+												{{item.notesLikeNum}}
+											</view>
+										</view>
+									</view>
+								</block>
+							</view>
+						</view>
 						<u-loadmore margin-top="20" line :status="notesList[2].status" :loading-text="loadingText"
 							:loadmore-text="loadmoreText" :nomore-text="nomoreText" />
 					</view>
@@ -77,11 +344,13 @@
 
 <script>
 	import {
-		getLastNotesByPage
+		getLastNotesByPage,
+		praiseOrCancelNotes
 	} from '@/apis/notes_service.js'
 	import {
 		searchNotesNearby
 	} from '@/apis/search_service.js'
+	import {pxToRpx} from '@/utils/util.js'
 	export default {
 		data() {
 			return {
@@ -114,23 +383,29 @@
 				}],
 				typeTabIndex: 0,
 				notesList: [{
-					notesList: [],
+					leftList: [],
+					rightList: [],
+					leftHeight: 0,
+					rightHeight: 0,
 					status: 'loadmore',
 					page: 1,
 					pageSize: 10,
-					total: 0,
 				}, {
-					notesList: [],
+					leftList: [],
+					rightList: [],
+					leftHeight: 0,
+					rightHeight: 0,
 					status: 'loadmore',
 					page: 1,
 					pageSize: 10,
-					total: 0,
 				}, {
-					notesList: [],
+					leftList: [],
+					rightList: [],
+					leftHeight: 0,
+					rightHeight: 0,
 					status: 'loadmore',
 					page: 1,
 					pageSize: 10,
-					total: 0,
 				}],
 				loadingText: '加载中...',
 				loadmoreText: '加载更多',
@@ -142,6 +417,61 @@
 			}
 		},
 		methods: {
+			getImageHeight(s) {
+				return new Promise((resolve, reject) => {
+					uni.getImageInfo({
+						src: s,
+						success: (res) => {
+							let imageHeight = pxToRpx(res.height);
+							let imageWidth = pxToRpx(res.width);
+							const width = 360;
+							const maxHeight = 500;
+							let height = width * imageHeight / imageWidth;
+							if (height > maxHeight) {
+								height = maxHeight;
+							}
+							resolve(height)
+						},
+					})
+				})
+			},
+			praiseNotes(id, targetUserId, type, index) {
+				console.log(type)
+				let i=this.actTab;
+				praiseOrCancelNotes({
+					notesId: id,
+					userId: uni.getStorageSync('userInfo').id,
+					targetUserId: targetUserId
+				}).then(res => {
+					console.log(res)
+					if (res.code == 20020) {
+						if (type === 1) {
+							console.log(this.notesList[i].leftList[index])
+							if (this.notesList[i].leftList[index].isLike) {
+								this.notesList[i].leftList[index].notesLikeNum = this.notesList[i].leftList[index].notesLikeNum - 1
+								this.notesList[i].leftList[index].isLike = false
+							} else {
+								this.notesList[i].leftList[index].notesLikeNum = this.notesList[i].leftList[index].notesLikeNum + 1
+								this.notesList[i].leftList[index].isLike = true
+							}
+						} else {
+							if (this.notesList[i].rightList[index].isLike) {
+								this.notesList[i].rightList[index].notesLikeNum = this.notesList[i].rightList[index].notesLikeNum - 1
+								this.notesList[i].rightList[index].isLike = false
+							} else {
+								this.notesList[i].rightList[index].notesLikeNum = this.notesList[i].rightList[index].notesLikeNum + 1
+								this.notesList[i].rightList[index].isLike = true
+							}
+						}
+					}
+				})
+			},
+			goToDetail(id) {
+				// 笔记
+				uni.navigateTo({
+					url: '/pages/notesDetail/notesDetail?notesId=' + id
+				})
+			},
 			animationFinish(e) {
 				this.enablerefresh = true;
 			},
@@ -162,26 +492,26 @@
 						page: this.notesList[index].page,
 						pageSize: this.notesList[index].pageSize,
 					}).then(res => {
-						console.log(res);
 						if (res.code == 20010) {
-							this.notesList[index].total = res.data.total;
 							this.notesList[index].page += 1;
-							this.notesList[index].notesList = res.data.list;
-							setTimeout(() => {
-								if (index == 0) {
-									this.$refs.water1.addList(this.notesList[0].notesList);
-								} else if (index == 1) {
-									this.$refs.water2.addList(this.notesList[1].notesList);
-								} else if (index == 2) {
-									this.$refs.water3.addList(this.notesList[2].notesList);
-								}
-								if (this.notesList[index].notesList.length < this.notesList[index]
-									.pageSize) {
-									this.notesList[index].status = 'nomore';
-								} else {
-									this.notesList[index].status = 'loadmore';
-								}
-							}, 1000);
+							res.data.list.forEach(item => {
+								this.getImageHeight(item.coverPicture).then(res => {
+									if (this.notesList[index].leftHeight <= this.notesList[index]
+										.rightHeight) {
+										this.notesList[index].leftList.push(item)
+										this.notesList[index].leftHeight += res
+									} else {
+										this.notesList[index].rightList.push(item)
+										this.notesList[index].rightHeight += res
+									}
+								})
+							})
+							if (res.data.list.length < this.notesList[index]
+								.pageSize) {
+								this.notesList[index].status = 'nomore';
+							} else {
+								this.notesList[index].status = 'loadmore';
+							}
 						} else {
 							this.notesList[index].status = 'nomore';
 						}
@@ -198,24 +528,108 @@
 					}).then(res => {
 						console.log(res)
 						if (res.code == 20010) {
-							this.notesList[index].total = res.data.total;
 							this.notesList[index].page += 1;
-							this.notesList[index].notesList = res.data.list;
-							setTimeout(() => {
-								if (index == 0) {
-									this.$refs.water1.addList(this.notesList[0].notesList);
-								} else if (index == 1) {
-									this.$refs.water2.addList(this.notesList[1].notesList);
-								} else if (index == 2) {
-									this.$refs.water3.addList(this.notesList[2].notesList);
-								}
-								if (this.notesList[index].notesList.length < this.notesList[index]
-									.pageSize) {
-									this.notesList[index].status = 'nomore';
-								} else {
-									this.notesList[index].status = 'loadmore';
-								}
-							}, 1000);
+							if (res.data.list.length < this.notesList[index]
+								.pageSize) {
+								this.notesList[index].status = 'nomore';
+							} else {
+								this.notesList[index].status = 'loadmore';
+							}
+							res.data.list.forEach(item => {
+								this.getImageHeight(item.coverPicture).then(res => {
+									if (this.notesList[index].leftHeight <= this.notesList[index]
+										.rightHeight) {
+										this.notesList[index].leftList.push(item)
+										this.notesList[index].leftHeight += res
+									} else {
+										this.notesList[index].rightList.push(item)
+										this.notesList[index].rightHeight += res
+									}
+								})
+							})
+						} else {
+							this.notesList[index].status = 'nomore';
+							unin.showToast({
+								title: res.msg,
+								icon: 'none',
+								duration: 1000
+							})
+						}
+					})
+				}
+			},
+			refreshList(index) {
+				if (this.notesList[index].status == 'nomore' || this.notesList[index].status == 'loading') {
+					return;
+				}
+				this.notesList[index].status = 'loading';
+				if (index == 1 || index == 0) {
+					getLastNotesByPage({
+						page: 1,
+						pageSize: this.notesList[index].pageSize,
+					}).then(res => {
+						if (res.code == 20010) {
+							this.notesList[index].leftHeight = 0;
+							this.notesList[index].rightHeight = 0;
+							this.notesList[index].leftList = [];
+							this.notesList[index].rightList = [];
+							this.notesList[index].page = 2;
+							res.data.list.forEach(item => {
+								this.getImageHeight(item.coverPicture).then(res => {
+									if (this.notesList[index].leftHeight <= this.notesList[index]
+										.rightHeight) {
+										this.notesList[index].leftList.push(item)
+										this.notesList[index].leftHeight += res
+									} else {
+										this.notesList[index].rightList.push(item)
+										this.notesList[index].rightHeight += res
+									}
+								})
+							})
+							if (res.data.list.length < this.notesList[index]
+								.pageSize) {
+								this.notesList[index].status = 'nomore';
+							} else {
+								this.notesList[index].status = 'loadmore';
+							}
+						} else {
+							this.notesList[index].status = 'nomore';
+						}
+					})
+				} else if (index == 2) {
+					let pageParam = {
+						page: 1,
+						pageSize: this.notesList[index].pageSize,
+						latitude: this.latitude,
+						longitude: this.longitude
+					};
+					searchNotesNearby({
+						pageParam
+					}).then(res => {
+						if (res.code == 20010) {
+							this.notesList[index].leftHeight = 0;
+							this.notesList[index].rightHeight = 0;
+							this.notesList[index].leftList = [];
+							this.notesList[index].rightList = [];
+							this.notesList[index].page = 2;
+							res.data.list.forEach(item => {
+								this.getImageHeight(item.coverPicture).then(res => {
+									if (this.notesList[index].leftHeight <= this.notesList[index]
+										.rightHeight) {
+										this.notesList[index].leftList.push(item)
+										this.notesList[index].leftHeight += res
+									} else {
+										this.notesList[index].rightList.push(item)
+										this.notesList[index].rightHeight += res
+									}
+								})
+							})
+							if (res.data.list.length < this.notesList[index]
+								.pageSize) {
+								this.notesList[index].status = 'nomore';
+							} else {
+								this.notesList[index].status = 'loadmore';
+							}
 						} else {
 							this.notesList[index].status = 'nomore';
 							unin.showToast({
@@ -240,22 +654,9 @@
 						success: (res) => {
 							this.latitude = res.latitude;
 							this.longitude = res.longitude;
-							if (this.notesList[index].notesList.length == 0 && this.notesList[index].page ==
-								1) {
-								this.getMoreNotes(index);
-								return;
-							}
 							this.notesList[index].status = 'loadmore';
 							this.notesList[index].page = 1;
-							this.notesList[index].notesList = [];
-							if (index == 0) {
-								this.$refs.water1.clear();
-							} else if (index == 1) {
-								this.$refs.water2.clear();
-							} else if (index == 2) {
-								this.$refs.water3.clear();
-							}
-							this.getMoreNotes(index);
+							this.refreshList(index);
 						},
 						fail: (err) => {
 							console.log(err);
@@ -266,21 +667,9 @@
 						}
 					})
 				} else {
-					if (this.notesList[index].notesList.length == 0 && this.notesList[index].page == 1) {
-						this.getMoreNotes(index);
-						return;
-					}
 					this.notesList[index].status = 'loadmore';
 					this.notesList[index].page = 1;
-					this.notesList[index].notesList = [];
-					if (index == 0) {
-						this.$refs.water1.clear();
-					} else if (index == 1) {
-						this.$refs.water2.clear();
-					} else if (index == 2) {
-						this.$refs.water3.clear();
-					}
-					this.getMoreNotes(index);
+					this.refreshList(index);
 				}
 			},
 			onRefresh() {
@@ -292,20 +681,12 @@
 				let index = this.actTab;
 				this.notesList[index].status = 'loadmore';
 				this.notesList[index].page = 1;
-				this.notesList[index].notesList = [];
-				if (index == 0) {
-					this.$refs.water1.clear();
-				} else if (index == 1) {
-					this.$refs.water2.clear();
-				} else if (index == 2) {
-					this.$refs.water3.clear();
-				}
 				uni.getLocation({
 					type: 'gcj02',
 					success: (res) => {
 						this.latitude = res.latitude;
 						this.longitude = res.longitude;
-						this.getMoreNotes(index);
+						this.refreshList(index);
 						setTimeout(() => {
 							this.refreshing = false;
 						}, 700);
@@ -328,9 +709,8 @@
 						success: (res) => {
 							this.latitude = res.latitude;
 							this.longitude = res.longitude;
-							if (this.notesList[index].notesList.length == 0 && this.notesList[index].page ==
-								1) {
-								this.getMoreNotes(index);
+							if (this.notesList[index].leftList.length == 0) {
+								this.refreshList(index);
 							}
 						},
 						fail: (err) => {
@@ -342,9 +722,8 @@
 						}
 					})
 				} else {
-					if (this.notesList[index].notesList.length == 0 && this.notesList[index].page ==
-						1) {
-						this.getMoreNotes(index);
+					if (this.notesList[index].leftList.length == 0) {
+						this.refreshList(index);
 					}
 				}
 			},
@@ -378,5 +757,58 @@
 		}
 	};
 </script>
-<style>
+<style lang="scss">
+	.water-left,
+	.water-right {
+		width: 48%;
+		margin: 20rpx auto;
+	}
+
+	.title {
+		font-size: 30rpx;
+		padding: 10rpx;
+		color: #000000;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		word-break: break-all;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		line-height: 1.4em;
+		max-height: 2.4em;
+	}
+
+	.note-username {
+		margin-left: 10rpx;
+		color: #16160e;
+		font-size: 23rpx;
+		line-height: 20px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: calc(100% - 70px);
+	}
+
+	.look-views {
+		display: flex;
+		position: absolute;
+		bottom: 20rpx;
+		left: 8rpx;
+		color: #ffffff;
+		background-color: rgba(123, 124, 125, 0.6);
+		// filter: brightness(65%);
+		padding: 5rpx 10rpx;
+		border-radius: 50rpx;
+		font-size: 25rpx;
+	}
+
+	.video-play {
+		position: absolute;
+		top: 10rpx;
+		right: 10rpx;
+		background-color: rgba(123, 124, 125, 0.6);
+		// filter: brightness(65%);
+		padding: 10rpx;
+		border-radius: 50%;
+	}
 </style>

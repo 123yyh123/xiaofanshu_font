@@ -14,7 +14,8 @@
 		{
 			"path": "pages/category/category",
 			"style": {
-				"navigationBarTitleText": "分类"
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -147,6 +148,14 @@
 					"popGesture": "none"
 				}
 			}
+		},
+		{
+			"path" : "pages/category/test1/test1",
+			"style" : 
+			{
+				"navigationBarTitleText" : "分类",
+				"enablePullDownRefresh" : true
+			}
 		}
 	],
 	"tabBar": {
@@ -164,7 +173,7 @@
 				"selectedIconPath": "static/image/index_select.png"
 			},
 			{
-				"pagePath": "pages/category/test/test",
+				"pagePath": "pages/category/category",
 				"iconPath": "/static/image/category.png",
 				"selectedIconPath": "static/image/category_select.png"
 			},

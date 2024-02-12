@@ -287,7 +287,7 @@
 							<u-divider style="margin: 10rpx;"></u-divider>
 							<water-fall :list="notesList[0].notesList" ref="water1" :slot_bottom="noteType!=2">
 							</water-fall>
-							<u-loadmore margin-top="20" line :status="status1" :loading-text="loadingText"
+							<u-loadmore margin-top="20" line :status="notesList[0].status" :loading-text="loadingText"
 								:loadmore-text="loadmoreText" :nomore-text="nomoreText" />
 						</view>
 					</scroll-view>
@@ -296,8 +296,8 @@
 					<scroll-view :scroll-y="isScroll" :style="{height:notesHeight}" @scrolltolower="onReach"
 						lower-threshold="20">
 						<view class="component">
-							<water-fall :list="notesList" ref="water2"></water-fall>
-							<u-loadmore margin-top="20" line :status="status2" :loading-text="loadingText"
+							<water-fall :list="notesList[1].notesList" ref="water2"></water-fall>
+							<u-loadmore margin-top="20" line :status="notesList[1].status" :loading-text="loadingText"
 								:loadmore-text="loadmoreText" :nomore-text="nomoreText" />
 						</view>
 					</scroll-view>
@@ -306,8 +306,8 @@
 					<scroll-view :scroll-y="isScroll" :style="{height:notesHeight}" @scrolltolower="onReach"
 						lower-threshold="20">
 						<view class="component">
-							<water-fall :list="notesList" ref="water3"></water-fall>
-							<u-loadmore margin-top="20" line :status="status3" :loading-text="loadingText"
+							<water-fall :list="notesList[2].notesList" ref="water3"></water-fall>
+							<u-loadmore margin-top="20" line :status="notesList[2].status" :loading-text="loadingText"
 								:loadmore-text="loadmoreText" :nomore-text="nomoreText" />
 						</view>
 					</scroll-view>
@@ -376,9 +376,9 @@
 					pageSize: 10,
 					total: 0,
 				}],
-				status1: 'nomore',
-				status2: 'nomore',
-				status3: 'nomore',
+				status1: 'loadmore',
+				status2: 'loadmore',
+				status3: 'loadmore',
 				loadingText: '努力加载中',
 				loadmoreText: '轻轻上拉',
 				nomoreText: '实在没有了',

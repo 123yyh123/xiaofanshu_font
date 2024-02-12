@@ -98,6 +98,9 @@
 	import {
 		praiseOrCancelNotes
 	} from '@/apis/notes_service.js'
+	import {
+		pxToRpx
+	} from '@/utils/util.js'
 	export default {
 		name: "water-fall",
 		data() {
@@ -140,7 +143,15 @@
 					uni.getImageInfo({
 						src: s,
 						success: (res) => {
-							resolve(res.height)
+							let imageHeight = pxToRpx(res.height);
+							let imageWidth = pxToRpx(res.width);
+							const width = 360;
+							const maxHeight = 500;
+							let height = width * imageHeight / imageWidth;
+							if (height > maxHeight) {
+								height = maxHeight;
+							}
+							resolve(height)
 						},
 					})
 				})

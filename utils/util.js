@@ -356,3 +356,8 @@ export const showModal = (options) => {
 		})
 	});
 }
+
+export const pxToRpx = (px) => {
+	const screenWidth = uni.getSystemInfoSync().screenWidth
+	return (750 * Number.parseInt(px)) / screenWidth
+}
