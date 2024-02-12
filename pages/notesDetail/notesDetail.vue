@@ -12,9 +12,10 @@
 			<view class="authorName">{{notesDetail.nickname}}</view>
 			<view v-if="notesDetail.belongUserId!=userInfo.id"
 				style="display: flex;justify-content: space-around;flex: 1;padding: 0 20rpx;">
-				<u-tag v-if="notesDetail.isFolllow" text="已关注" plain shape="circle" color="#9ea1a3"
-					borderColor="#9ea1a3"></u-tag>
-				<u-tag v-else text="关注" plain shape="circle" color="#f56c6c" borderColor="#f56c6c"></u-tag>
+				<u-tag v-if="notesDetail.isFollow" text="已关注" plain shape="circle" color="#9ea1a3" borderColor="#9ea1a3"
+					@click="attention"></u-tag>
+				<u-tag v-else text="关注" plain shape="circle" color="#f56c6c" borderColor="#f56c6c"
+					@click="attention"></u-tag>
 				<u-icon name="share-square" color="#2b2b2b" size="30"></u-icon>
 			</view>
 			<view v-else style="display: flex;margin-left: auto;margin-right: 15rpx;">
@@ -83,9 +84,13 @@
 								@click="goToOtherMine(item.commentUserId)">
 								{{item.commentUserName}}
 							</view>
-							<view v-if="item.commentUserId!=item.belongUserId"
-								style="margin-left: 10rpx;padding: 4rpx 10rpx;background-color: #f3f3f2;color: #7d7d7d;border-radius: 50rpx;white-space: nowrap;width: 50rpx;">
+							<view v-if="item.commentUserId==notesDetail.belongUserId"
+								style="margin-left: 10rpx;padding: 4rpx 10rpx;background-color: #f3f3f2;color: #7d7d7d;border-radius: 50rpx;white-space: nowrap;width: 50rpx;text-align: center;">
 								作者</view>
+							<view v-else-if="item.commentUserId==userInfo.id"
+								style="margin-left: 10rpx;padding: 4rpx 10rpx;background-color: #f3f3f2;color: #7d7d7d;border-radius: 50rpx;white-space: nowrap;width: 30rpx;text-align: center;">
+								我
+							</view>
 						</view>
 						<rich-text style="font-size: 14px;letter-spacing: 0.05rem;color: #383c3c;" :nodes="item.content"
 							@longpress="openCommentSetting(item,0)" @touchend="touchend"
@@ -122,9 +127,13 @@
 												@click="goToOtherMine(item2.commentUserId)">
 												{{item2.commentUserName}}
 											</view>
-											<view v-if="item2.commentUserId!=item2.belongUserId"
-												style="margin-left: 10rpx;padding: 4rpx 10rpx;background-color: #f3f3f2;color: #7d7d7d;border-radius: 50rpx;white-space: nowrap;width: 50rpx;">
+											<view v-if="item2.commentUserId==notesDetail.belongUserId"
+												style="margin-left: 10rpx;padding: 4rpx 10rpx;background-color: #f3f3f2;color: #7d7d7d;border-radius: 50rpx;white-space: nowrap;width: 50rpx;text-align: center;">
 												作者</view>
+											<view v-else-if="item2.commentUserId==userInfo.id"
+												style="margin-left: 10rpx;padding: 4rpx 10rpx;background-color: #f3f3f2;color: #7d7d7d;border-radius: 50rpx;white-space: nowrap;width: 30rpx;text-align: center;">
+												我
+											</view>
 										</view>
 										<rich-text style="font-size: 14px;letter-spacing: 0.05rem;color: #383c3c;"
 											@longpress="openCommentSetting(item2,item)" @touchend="touchend"
@@ -335,7 +344,8 @@
 		replaceHTMLTags
 	} from '@/utils/util.js'
 	import {
-		getAttentionList
+		getAttentionList,
+		updateAttention
 	} from '@/apis/user_service'
 	import {
 		addComment,
@@ -391,6 +401,34 @@
 			}
 		},
 		methods: {
+			/**
+			 * 关注用户
+			 */
+			attention() {
+				this.$showModal({
+					title: '提示',
+					content: this.notesDetail.isFollow ? '是否取消关注?' : '是否关注?',
+					cancelText: "取消", // 取消按钮的文字
+					cancelColor: "#949495", // 取消按钮的文字颜色
+					confirmText: "确定", // 确认按钮文字
+					confirmColor: "#FF2442", // 确认按钮颜色 
+					showCancel: true, // 是否显示取消按钮，默认为 true
+				}).then(res => {
+					updateAttention({
+						userId: this.userInfo.id,
+						targetUserId: this.notesDetail.belongUserId
+					}).then(res => {
+						console.log(res)
+						if (res.code == 20020) {
+							this.notesDetail.isFollow = !this.notesDetail.isFollow
+							uni.showToast({
+								title: this.notesDetail.isFollow ? '关注成功' : '取消关注成功',
+								icon: 'none'
+							})
+						}
+					})
+				})
+			},
 			openCommentSetting(e, e1) {
 				this.isLongPress = true
 				let itemList = ['置顶', '回复', '复制', '删除']
@@ -444,74 +482,94 @@
 			 * @param {Object} id
 			 */
 			topComment(id, type) {
-				setNotesTopComment({
-					commentId: id,
+				this.$showModal({
+					title: '提示',
+					content: type == 0 ? '是否置顶评论?' : '是否取消置顶评论?',
+					cancelText: "取消", // 取消按钮的文字
+					cancelColor: "#949495", // 取消按钮的文字颜色
+					confirmText: "确定", // 确认按钮文字
+					confirmColor: "#FF2442", // 确认按钮颜色 
+					showCancel: true, // 是否显示取消按钮，默认为 true
 				}).then(res => {
-					console.log(res)
-					if (res.code == 20020) {
-						uni.showToast({
-							title: type == 0 ? '置顶成功' : '取消置顶成功',
-							icon: 'none'
-						})
-						// 将置顶的评论放到第一位
-						this.commentList.forEach((item, index) => {
-							if (item.id == id) {
-								if (type == 0) {
-									item.isTop = true
-									this.commentList.splice(index, 1)
-									this.commentList.unshift(item)
+					setNotesTopComment({
+						commentId: id,
+					}).then(res => {
+						console.log(res)
+						if (res.code == 20020) {
+							uni.showToast({
+								title: type == 0 ? '置顶成功' : '取消置顶成功',
+								icon: 'none'
+							})
+							// 将置顶的评论放到第一位
+							this.commentList.forEach((item, index) => {
+								if (item.id == id) {
+									if (type == 0) {
+										item.isTop = true
+										this.commentList.splice(index, 1)
+										this.commentList.unshift(item)
+									} else {
+										item.isTop = false
+									}
 								} else {
 									item.isTop = false
 								}
-							} else {
-								item.isTop = false
-							}
-						})
-					} else {
-						uni.showToast({
-							title: res.msg == null ? type == 0 ? '置顶失败' : '取消置顶失败' : res.msg,
-							icon: 'none'
-						})
-					}
+							})
+						} else {
+							uni.showToast({
+								title: res.msg == null ? type == 0 ? '置顶失败' : '取消置顶失败' : res.msg,
+								icon: 'none'
+							})
+						}
+					})
 				})
 			},
 			/** 删除评论
 			 * @param {Object} e
 			 */
 			deleteComment(e) {
-				deleteNotesComment({
-					commentId: e.id,
+				this.$showModal({
+					title: '提示',
+					content: '是否删除评论?',
+					cancelText: "取消", // 取消按钮的文字
+					cancelColor: "#949495", // 取消按钮的文字颜色
+					confirmText: "确定", // 确认按钮文字
+					confirmColor: "#FF2442", // 确认按钮颜色 
+					showCancel: true, // 是否显示取消按钮，默认为 true
 				}).then(res => {
-					console.log(res)
-					if (res.code == 20020) {
-						uni.showToast({
-							title: '删除成功',
-							icon: 'none'
-						})
-						// 删除评论
-						if (e.parentId == '0') {
-							this.commentList.forEach((item, index) => {
-								if (item.id == e.id) {
-									this.commentList.splice(index, 1)
-								}
+					deleteNotesComment({
+						commentId: e.id,
+					}).then(res => {
+						console.log(res)
+						if (res.code == 20020) {
+							uni.showToast({
+								title: '删除成功',
+								icon: 'none'
 							})
+							// 删除评论
+							if (e.parentId == '0') {
+								this.commentList.forEach((item, index) => {
+									if (item.id == e.id) {
+										this.commentList.splice(index, 1)
+									}
+								})
+							} else {
+								this.commentList.forEach((item, index) => {
+									if (item.id == e.parentId) {
+										item.children.list.forEach((item2, index2) => {
+											if (item2.id == e.id) {
+												item.children.list.splice(index2, 1)
+											}
+										})
+									}
+								})
+							}
 						} else {
-							this.commentList.forEach((item, index) => {
-								if (item.id == e.parentId) {
-									item.children.list.forEach((item2, index2) => {
-										if (item2.id == e.id) {
-											item.children.list.splice(index2, 1)
-										}
-									})
-								}
+							uni.showToast({
+								title: res.msg == null ? '删除失败' : res.msg,
+								icon: 'none'
 							})
 						}
-					} else {
-						uni.showToast({
-							title: res.msg == null ? '删除失败' : res.msg,
-							icon: 'none'
-						})
-					}
+					})
 				})
 			},
 			touchend() {

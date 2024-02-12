@@ -162,13 +162,18 @@
 		},
 		onPullDownRefresh() {
 			this.refreshList()
-			let refreshText = {
-				from: uni.getStorageSync('userInfo').id,
-				content: uni.getStorageSync('token'),
-				messageType: 1,
+			try{
+				let refreshText = {
+					from: uni.getStorageSync('userInfo').id,
+					content: uni.getStorageSync('token'),
+					messageType: 1,
+				}
+				this.$ws.send(refreshText)
+			}catch(e){
+				console.log(e)
+			}finally{
+				uni.stopPullDownRefresh()
 			}
-			this.$ws.send(refreshText)
-			uni.stopPullDownRefresh()
 		}
 	}
 </script>
