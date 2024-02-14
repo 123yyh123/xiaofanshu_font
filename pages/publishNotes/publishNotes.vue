@@ -319,6 +319,7 @@
 										)
 									}
 									setTimeout(() => {
+										uni.hideLoading()
 										uni.showToast({
 											title: '发布成功',
 											icon: 'none'
@@ -328,37 +329,32 @@
 										}) 
 									}, 500)
 								} else {
+									uni.hideLoading()
 									uni.showToast({
 										title: res.msg==''?'发布失败':res.msg,
 										icon: 'none'
 									});
 								}
 							}).catch(err => {
-								console.log(err)
+								uni.hideLoading()
 								uni.showToast({
 									title: '发布失败',
 									icon: 'none'
 								});
-							}).finally(() => {
-								uni.hideLoading()
 							})
 						}).catch(err => {
-							console.log(err)
+							uni.hideLoading()
 							uni.showToast({
 								title: '发布失败',
 								icon: 'none'
 							});
-						}).finally(() => {
-							uni.hideLoading()
 						})
 					}).catch(err => {
-						console.log(err)
+						uni.hideLoading()
 						uni.showToast({
 							title: '发布失败',
 							icon: 'none'
 						});
-					}).finally(() => {
-						uni.hideLoading()
 					})
 				})
 			},

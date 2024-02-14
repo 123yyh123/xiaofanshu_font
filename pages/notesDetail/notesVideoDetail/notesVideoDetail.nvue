@@ -1,0 +1,101 @@
+<template>
+	<view>
+		<view :style="{height: statusBarHeight + 'px'}" style="position: fixed;top: 0;width: 100%;z-index: 9999;">
+		</view>
+		<view :style="{height: statusBarHeight + 'px'}"></view>
+		<view style="position: relative;justify-content: center;background-color: black;"
+			:style="{height: screenHeight-statusBarHeight-50 + 'px',width: screenWidth + 'px'}">
+			<view
+				style="position: absolute;top: 0;width: 750rpx;height: 44px;align-items: center;padding: 20rpx;flex-direction: row;justify-content: space-between;">
+				<u-icon name="arrow-left" color="#f5f5f5" size="25"></u-icon>
+				<u-icon name="share-square" color="#f5f5f5" size="27"></u-icon>
+			</view>
+			<video
+				src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/23/5099b8fc6c04476d9b69a8dc591daf1b17059596003450.mp4"
+				auto-play controls object-fit="contain"
+				poster="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/23/5099b8fc6c04476d9b69a8dc591daf1b17059596003450.mp4?x-oss-process=video/snapshot,t_0,f_jpg,w_0,h_0,m_fast">
+			</video>
+			<view style="position: absolute;bottom: 0;width: 750rpx;padding: 20rpx;">
+				<view style="flex-direction: row;align-items: center;">
+					<u--image src="https://cdn.uviewui.com/uview/album/1.jpg" shape="circle" height="70rpx"
+						width="70rpx"></u--image>
+					<text style="color: #f5f5f5;font-size: 33rpx;margin-left: 20rpx;">小番薯</text>
+					<view
+						style="background-color: #e60033;border-radius: 50rpx;padding: 10rpx 25rpx;margin-left: 20rpx;">
+						<text style="color: #f5f5f5;font-size: 28rpx;">关注</text>
+					</view>
+				</view>
+				<view style="margin-top: 20rpx;">
+					<rich-text :nodes="content" style="font-size: 15px;color: #f5f5f5;"></rich-text>
+				</view>
+			</view>
+		</view>
+		<view style="flex-direction: row;padding: 20rpx;width: 750rpx;box-sizing: border-box;height: 50px;">
+			<view style="padding: 15rpx 40rpx;background-color: #241a08;border-radius: 50rpx;">
+				<text style="color: #949495;font-size: 30rpx;">发条弹幕吧</text>
+			</view>
+			<view
+				style="flex-direction: row;flex: 1;justify-content: space-around;text-align: center;align-items: center;">
+				<view style="flex-direction: row;align-items: center;">
+					<u-icon name="/static/praise_white.png" size="28"></u-icon>
+					<text style="color: #f5f5f5;font-size: 30rpx;margin-left: 15rpx;">2424</text>
+				</view>
+				<view style="flex-direction: row;align-items: center;">
+					<u-icon name="/static/collect_white.png" size="28"></u-icon>
+					<text style="color: #f5f5f5;font-size: 30rpx;margin-left: 15rpx;">收藏</text>
+				</view>
+				<view style="flex-direction: row;align-items: center;" @click="openComment">
+					<u-icon name="/static/comment_white.png" size="28"></u-icon>
+					<text style="color: #f5f5f5;font-size: 30rpx;margin-left: 15rpx;">评论</text>
+				</view>
+			</view>
+		</view>
+		<u-popup :show="commentShow" position="bottom" @close="commentShow = false">
+			<view style="background-color: #ffffff;" :style="{height: (screenHeight-statusBarHeight)*(2/3) + 'px'}">
+				<view style="flex-direction: row;justify-content: center;margin: 30rpx 0;position: relative;">
+					<text style="font-size: 34rpx;" decode>共&nbsp;24&nbsp;条&nbsp;评&nbsp;论</text>
+					<u-icon style="position: absolute;right: 20rpx;" name="close" size="21" @click="commentShow = false"></u-icon>
+				</view>
+			</view>
+		</u-popup>
+	</view>
+</template>
+
+<script>
+	import parseHtml from '@/utils/html-parse.js'
+	export default {
+		data() {
+			return {
+				screenHeight: 0,
+				screenWidth: 0,
+				statusBarHeight: 0,
+				commentShow: false,
+				content: '<p>今天找了好几个有趣的地图，都特别好看，给姐妹们推荐一下<a rel="noopener noreferrer" target="_blank" style="color: rgb(69, 105, 215); text-decoration: none;">#蛋仔派对#</a> <a rel="noopener noreferrer" target="_blank" style="color: rgb(69, 105, 215); text-decoration: none;">@测试用户1</a> <img src="https://gitee.com/yyh12345678/image/raw/master/image/墨镜笑脸.gif" alt="[墨镜笑脸XFS]" height="25px" width="25px"></p>'
+			}
+		},
+		methods: {
+			onclick(e) {
+				console.log(e);
+			},
+			openComment() {
+				this.commentShow = true;
+			}
+		},
+		onLoad() {
+			uni.getSystemInfo({
+				success: (res) => {
+					console.log(res);
+					this.screenHeight = res.screenHeight;
+					this.screenWidth = res.screenWidth;
+					this.statusBarHeight = res.statusBarHeight;
+				}
+			});
+			this.content = parseHtml(this.content);
+			console.log(this.content);
+		}
+	}
+</script>
+
+<style>
+
+</style>
