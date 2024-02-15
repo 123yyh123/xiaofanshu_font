@@ -1,40 +1,42 @@
 <template>
 	<view>
-		<view :style="{height: statusBarHeight + 'px'}"
+		<cover-view :style="{height: statusBarHeight + 'px'}"
 			style="position: fixed;top: 0;width: 100%;z-index: 9999;background-color: #000000;">
-		</view>
+		</cover-view>
 		<view :style="{height: statusBarHeight + 'px'}"></view>
 		<view v-if="!commentShow"
 			style="position: relative;justify-content: center;background-color: black;display: flex;align-items: center;background-color: #000000;"
 			:style="{height: screenHeight-statusBarHeight-50 + 'px',width: screenWidth + 'px'}">
 			<view
 				style="display: flex;position: absolute;top: 0;width: 750rpx;height: 44px;align-items: center;padding: 20rpx;justify-content: space-between;box-sizing: border-box;">
-				<u-icon name="arrow-left" color="#f5f5f5" size="25"></u-icon>
+				<u-icon @click="goBack" name="arrow-left" color="#f5f5f5" size="25"></u-icon>
 				<u-icon name="share-square" color="#f5f5f5" size="27"></u-icon>
 			</view>
-			<video :src="notesDetail.videoUrl" auto-play controls object-fit="contain" style="width: 750rpx;"
+			<video :src="notesDetail.videoUrl" autoplay controls object-fit="contain" style="width: 750rpx;" loop
 				:poster="notesDetail.coverPicture"></video>
 			<view style="position: absolute;bottom: 0;width: 750rpx;padding: 20rpx;box-sizing: border-box;">
 				<view style="display: flex;align-items: center;">
 					<u--image :src="notesDetail.avatarUrl" shape="circle" height="70rpx" width="70rpx"></u--image>
 					<text style="color: #f5f5f5;font-size: 33rpx;margin-left: 20rpx;">{{notesDetail.nickname}}</text>
-					<view v-if="!notesDetail.isFollow"
+					<view v-if="notesDetail.belongUserId!=userInfo.id&&!notesDetail.isFollow" @click="attention"
 						style="background-color: #e60033;border-radius: 50rpx;padding: 10rpx 25rpx;margin-left: 20rpx;text-align: center;color: #f5f5f5;font-size: 28rpx;">
 						关注
 					</view>
-					<view v-else
+					<view v-else-if="notesDetail.belongUserId!=userInfo.id&&notesDetail.isFollow" @click="attention"
 						style="background-color: rgba(0, 0, 0, 0);border-radius: 50rpx;padding: 10rpx 25rpx;margin-left: 20rpx;border-style: solid;border-color: #f5f5f5;border-width: 1rpx;text-align: center;color: #f5f5f5;font-size: 28rpx;">
 						已关注
 					</view>
 				</view>
 				<view style="margin-top: 20rpx;padding: 10rpx;box-sizing: border-box;">
-					<rich-text :nodes="notesDetail.content" style="font-size: 15px;color: #f5f5f5;"></rich-text>
+					<rich-text :nodes="notesDetail.content" style="font-size: 15px;color: #f5f5f5;"
+						@itemclick="clickTopic"></rich-text>
 				</view>
 			</view>
 		</view>
-		<view v-if="commentShow" :style="{height: (screenHeight-statusBarHeight)*(1/3)+'px'}"
-			style="display: flex;align-items: center;justify-content: center;background-color: #000000;">
-			<video :src="notesDetail.notesResources[0].url" auto-play controls object-fit="contain"
+		<view v-if="commentShow" :style="{height: (screenHeight-statusBarHeight)*(1/3)-20+'px'}"
+			style="display: flex;align-items: center;justify-content: center;background-color: #000000;z-index: 99999;width: 750rpx;">
+			<video :src="notesDetail.notesResources[0].url" autoplay controls object-fit="contain" loop
+				:style="{height: (screenHeight-statusBarHeight)*(1/3)-20+'px',width: 100+'%'}"
 				:poster="notesDetail.coverPicture">
 			</video>
 		</view>
@@ -79,8 +81,103 @@
 				</view>
 			</view>
 		</view>
-		<u-popup :show="commentShow" position="bottom" @close="commentShow = false">
-			<view style="background-color: #ffffff;" :style="{height: (screenHeight-statusBarHeight)*(2/3) + 'px'}">
+		<u-popup :show="commentShow" mode="bottom" @close="commentShow = false">
+			<u-popup :show="inputField" mode="bottom" @close="closeEditor" zIndex="11000">
+				<view style="width: 100%;box-sizing: border-box;position: fixed;bottom: 0;background-color: #fff;">
+					<view @click="onEditClick">
+						<lsj-edit class="lsjComment" style="height: auto" ref="lsjComment"
+							:placeholder="editPlaceholder" :maxCount="1000" @onReady="editReady">
+						</lsj-edit>
+					</view>
+					<view style="display: flex;width: 100%;padding: 0 10rpx;box-sizing: border-box;height: 34px;">
+						<view style="display: flex;justify-content: space-around;width: 50%;align-items: center;">
+							<view @touchend.prevent="chooseAite">
+								<u-icon name="/static/aite.png" size="25"></u-icon>
+							</view>
+							<view @touchend.prevent="openEmoji">
+								<u-icon v-if="!showEmoji" name="/static/emoji.png" size="25"></u-icon>
+								<u-icon v-else name="/static/keyBoard.png" size="25"></u-icon>
+							</view>
+							<view @touchend.prevent="chooseImage">
+								<u-icon name="/static/photo.png" size="25"></u-icon>
+							</view>
+						</view>
+						<view style="display: flex;margin-left: auto;margin-right: 20rpx;align-items: center;"
+							@touchend.prevent="sendComment">
+							<u-button style="height: 28px;" size="mini" type="error" shape="circle">发送</u-button>
+						</view>
+					</view>
+					<view v-if="commentImagesurl!=''" style="padding: 30rpx;display: flex;">
+						<view style="position: relative;">
+							<image :src="commentImagesurl" style="height: 100rpx;width: 100rpx;" mode="aspectFill">
+							</image>
+							<view
+								style="position: absolute;top: 0;right: 0;background-color: #7d7d7d;padding: 5rpx;border-bottom-left-radius: 50%;border-top-right-radius: 5rpx;">
+								<u-icon name="close" size="9" color="#f3f3f2" @click="deleteImage"></u-icon>
+							</view>
+						</view>
+					</view>
+					<scroll-view :scroll-x="true"
+						style="background-color: #fff;display: flex;align-items: center;white-space: nowrap;"
+						v-if="bottomEmoji.length>0 && !showEmoji">
+						<view style="display: inline-flex;align-items: center;padding: 0 15rpx;">
+							<block v-for="(item,index) in bottomEmoji" v-bind:key="index">
+								<view @click="addEmoji(item.name)" style="padding: 15rpx;">
+									<image :src="item.url" style="width: 70rpx;height: 70rpx;" mode="widthFix"
+										lazy-load>
+									</image>
+								</view>
+							</block>
+						</view>
+					</scroll-view>
+					<view v-if="showEmoji">
+						<scroll-view :style="{height: keyboardHeight+'px'}" scroll-y
+							style="background-color: aliceblue;">
+							<view
+								style="display: grid;padding: 20rpx;;grid-template-columns: repeat(5,1fr);gap: 20rpx;text-align: center;">
+								<block v-for="(item,index) in emojiList" v-bind:key="index">
+									<view @click="addEmoji(item.name)">
+										<image :src="item.url" style="width: 100rpx;height: 100rpx;" mode="widthFix"
+											lazy-load>
+										</image>
+									</view>
+								</block>
+							</view>
+						</scroll-view>
+					</view>
+					<view v-if="showAite" style="background-color: #f3f3f2;">
+						<scroll-view style="height: 500rpx;" @scrolltolower="getAttentionUser">
+							<view v-if="attentionUser.list.length>0" style="padding: 30rpx;">
+								<block v-for="(item,index) in attentionUser.list" v-bind:key="item.id">
+									<view style="display: flex;padding: 10rpx 0;align-items: center;">
+										<image :src="item.avatarUrl"
+											style="height: 90rpx;width: 90rpx;border-radius: 50%;">
+										</image>
+										<view
+											style="display: flex;flex-direction: column;justify-content: space-between;margin-left: 20rpx;flex: 1;">
+											<view style="font-size: 30rpx;color: #2b2b2b;">{{item.nickname}}</view>
+										</view>
+										<view style="margin-left: auto;">
+											<view
+												style="width: 150rpx;height: 60rpx;line-height: 60rpx;text-align: center;border-radius: 30rpx;background-color: #FF2442;color: #ffffff;font-size: 25rpx;"
+												@click="addUser(item)">@Ta</view>
+										</view>
+									</view>
+									<u-divider></u-divider>
+								</block>
+								<view style="margin-top: 70rpx;">
+									<u-loadmore :status="attentionUser.status" loadingIcon="spinner" line></u-loadmore>
+								</view>
+							</view>
+							<view v-else
+								style="display: flex;justify-content: center;align-items: center;height: 500rpx;">
+								<view style="font-size: 25rpx;color: #afafb0;">暂无数据</view>
+							</view>
+						</scroll-view>
+					</view>
+				</view>
+			</u-popup>
+			<view style="background-color: #ffffff;" :style="{height: (screenHeight-statusBarHeight)*(2/3)+20 + 'px'}">
 				<view v-if="commentShow"
 					style="display: flex;align-items: center;position: fixed;bottom: 0;background-color: #ffffff;padding: 20rpx;box-sizing: border-box;width: 750rpx;z-index: 9999;">
 					<view @click="replyNotes"
@@ -95,7 +192,7 @@
 				</view>
 				<view
 					style="display: flex;justify-content: center;position: relative;height: 35px;padding: 15rpx;text-align: center;align-items: center;">
-					<text style="font-size: 34rpx;" decode>共&nbsp;24&nbsp;条&nbsp;评&nbsp;论</text>
+					<view style="font-size: 34rpx;letter-spacing: 2rpx;">共{{commentCount}}条评论</view>
 					<u-icon style="position: absolute;right: 20rpx;" name="close" size="21"
 						@click="commentShow = false"></u-icon>
 				</view>
@@ -251,14 +348,16 @@
 	import {
 		emojiList
 	} from '@/utils/emojiUtil.js'
+	import parseHtml from '@/utils/html-parse.js'
 	import {
 		getNotesByNotesId,
 		praiseOrCancelNotes,
-		collectOrCancelNotes
+		collectOrCancelNotes,
+		updateNotesViewCount
 	} from '@/apis/notes_service.js'
 	import {
 		weChatTimeFormat,
-		replaceHTMLTags
+		replaceHTMLTags,
 	} from '@/utils/util.js'
 	import {
 		getAttentionList,
@@ -1208,6 +1307,9 @@
 					this.statusBarHeight = res.statusBarHeight;
 				}
 			})
+			updateNotesViewCount({
+				notesId: options.notesId
+			})
 			let sql = `select * from emoji_list`
 			this.$sqliteUtil.SqlSelect(sql).then(res => {
 				if (res.length == 0) {
@@ -1234,6 +1336,7 @@
 			getNotesByNotesId({
 				notesId: options.notesId
 			}).then(res => {
+				console.log(res)
 				res.data.createTime = weChatTimeFormat(res.data.createTime)
 				res.data.updateTime = weChatTimeFormat(res.data.updateTime)
 				res.data.videoUrl = res.data.notesResources[0].url
@@ -1246,9 +1349,21 @@
 			}).then(res => {
 				this.commentCount = res.data
 			})
-			this.getFirstComment('1750993978482753537')
+			this.getFirstComment(options.notesId)
 		},
 		onBackPress() {
+			if (this.showEmoji) {
+				this.showEmoji = false
+				return true
+			}
+			if (this.showAite) {
+				this.showAite = false
+				return true
+			}
+			if (this.inputField) {
+				this.inputField = false
+				return true
+			}
 			if (this.commentShow) {
 				this.commentShow = false
 				return true
@@ -1259,5 +1374,68 @@
 </script>
 
 <style lang="scss">
+	.bottom-icon {
+		display: flex;
+		justify-content: space-around;
+		font-size: 35rpx;
+		color: #2b2b2b;
+		justify-content: space-around;
+		padding-right: 10rpx;
+	}
 
+	.bottom-edit {
+		padding: 0 15rpx;
+		background-color: #f3f3f2;
+		border-radius: 50px;
+		margin: 10rpx 18rpx;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		flex: 1;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	/deep/ .uni-swiper-dots {
+		bottom: 30rpx;
+	}
+
+	/deep/ .lsjComment .lsj-edit-edit-container {
+		background-color: #f3f3f2 !important;
+		min-height: 40px !important;
+		max-height: 100px !important;
+		height: auto !important;
+		font-size: 30rpx;
+		padding: 30rpx;
+		border-radius: 35rpx;
+	}
+
+	/deep/ .ql-editor.ql-blank:before {
+		font-size: 30rpx;
+	}
+
+	/deep/ .editot-pd {
+		padding: 15rpx 20rpx !important;
+	}
+
+	/* 根据实际需要调整样式 */
+	.animate-praise {
+		animation: scaleAnimation 0.8s ease;
+		/* 使用动画 */
+	}
+
+	@keyframes scaleAnimation {
+		0% {
+			transform: scale(1, 1);
+		}
+
+		50% {
+			transform: scale(1.2, 1.2);
+		}
+
+		100% {
+			transform: scale(1, 1);
+		}
+	}
 </style>

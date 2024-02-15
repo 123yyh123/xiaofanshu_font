@@ -337,7 +337,8 @@
 	import {
 		getNotesByNotesId,
 		praiseOrCancelNotes,
-		collectOrCancelNotes
+		collectOrCancelNotes,
+		updateNotesViewCount
 	} from '@/apis/notes_service.js'
 	import {
 		weChatTimeFormat,
@@ -1283,6 +1284,9 @@
 				success: (res) => {
 					this.statusBarHeight = res.statusBarHeight;
 				}
+			})
+			updateNotesViewCount({
+				notesId: options.notesId
 			})
 			let sql = `select * from emoji_list`
 			this.$sqliteUtil.SqlSelect(sql).then(res => {

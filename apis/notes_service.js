@@ -42,3 +42,10 @@ export const collectOrCancelNotes = (params={})=>{
 		method:'POST'
 	})
 }
+
+export const updateNotesViewCount = (params={})=>{
+	return $request({
+		url:'/notes/viewNotes?notesId='+params.notesId,
+		method:'POST'
+	})
+}

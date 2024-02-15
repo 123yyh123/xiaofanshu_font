@@ -2,7 +2,7 @@
 	<view style="width: 100%;display: flex;flex-wrap: wrap;">
 		<view class="water-left">
 			<block v-for="(item,index) in leftList" :key="index">
-				<view style="position: relative;" @click="goToDetail(item.id)">
+				<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
 					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
 						style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 						<template v-slot:loading>
@@ -12,15 +12,15 @@
 							</view>
 						</template>
 					</u--image>
-					<view class="look-views" v-if="item.views!=null">
+					<view class="look-views" v-if="item.notesViewNum!=null&&item.belongUserId==userId">
 						<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
-						<view style="margin-left: 5rpx;">{{item.views}}</view>
+						<view style="margin-left: 5rpx;">{{item.notesViewNum}}</view>
 					</view>
 					<view v-if="item.notesType==1" class="video-play">
 						<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
 					</view>
 				</view>
-				<view class="title" @click="goToDetail(item.id)">{{item.title}}</view>
+				<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}</view>
 				<view style="display: flex;position: relative;padding: 20rpx;" v-if="slot_bottom">
 					<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill" :src="item.avatarUrl">
 					</image>
@@ -38,7 +38,8 @@
 						</u-transition>
 						<view v-if="item.notesLikeNum>0"
 							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">
-							{{item.notesLikeNum}}</view>
+							{{item.notesLikeNum}}
+						</view>
 					</view>
 				</view>
 				<view v-else style="display: flex;position: relative;padding: 20rpx;">
@@ -49,7 +50,7 @@
 		</view>
 		<view class="water-right">
 			<block v-for="(item,index) in rightList" :key="index">
-				<view style="position: relative;" @click="goToDetail(item.id)">
+				<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
 					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
 						style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 						<template v-slot:loading>
@@ -59,12 +60,15 @@
 							</view>
 						</template>
 					</u--image>
-					<view class="look-views" v-if="item.views!=null">
+					<view class="look-views" v-if="item.notesViewNum!=null&&item.belongUserId==userId">
 						<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
-						<view style="margin-left: 5rpx;">{{item.views}}</view>
+						<view style="margin-left: 5rpx;">{{item.notesViewNum}}</view>
+					</view>
+					<view v-if="item.notesType==1" class="video-play">
+						<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
 					</view>
 				</view>
-				<view class="title" @click="goToDetail(item.id)">{{item.title}}</view>
+				<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}</view>
 				<view style="display: flex;position: relative;padding: 20rpx;" v-if="slot_bottom">
 					<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill" :src="item.avatarUrl">
 					</image>
@@ -82,7 +86,8 @@
 						</u-transition>
 						<view v-if="item.notesLikeNum>0"
 							style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">
-							{{item.notesLikeNum}}</view>
+							{{item.notesLikeNum}}
+						</view>
 					</view>
 				</view>
 				<view v-else style="display: flex;position: relative;padding: 20rpx;">
@@ -101,6 +106,9 @@
 	import {
 		pxToRpx
 	} from '@/utils/util.js'
+	import {
+		type
+	} from 'os';
 	export default {
 		name: "water-fall",
 		data() {
@@ -109,6 +117,7 @@
 				rightList: [],
 				leftHeight: 0,
 				rightHeight: 0,
+				userId: uni.getStorageSync('userInfo').id
 			};
 		},
 		props: {
@@ -233,7 +242,7 @@
 					})
 				})
 			},
-			goToDetail(id) {
+			goToDetail(id,type) {
 				if (!this.slot_bottom) {
 					// 草稿
 					uni.navigateTo({
@@ -241,9 +250,15 @@
 					})
 				} else {
 					// 笔记
-					uni.navigateTo({
-						url: '/pages/notesDetail/notesDetail?notesId=' + id
-					})
+					if (type == 0) {
+						uni.navigateTo({
+							url: '/pages/notesDetail/notesDetail?notesId=' + id
+						})
+					} else {
+						uni.navigateTo({
+							url: '/pages/notesDetail/notesVideoDetail/noteVideoD?notesId=' + id
+						})
+					}
 				}
 			}
 		},
