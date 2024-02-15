@@ -486,7 +486,7 @@
 					// 视频
 					console.log('视频')
 					uni.navigateTo({
-						url: '/pages/notesDetail/notesVideoDetail/notesVideoDetail?notesId=' + id
+						url: '/pages/notesDetail/notesVideoDetail/noteVideoD?notesId=' + id
 					})
 				}
 			},
