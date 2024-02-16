@@ -71,6 +71,13 @@ const sqliteUtil = {
 					this.insertEmoji(res)
 				})
 			})
+			// 初始化搜索记录表
+			this.SqlExecute(`CREATE TABLE IF NOT EXISTS search_history (
+				"id"
+				INTEGER PRIMARY KEY AUTOINCREMENT,
+				content TEXT UNIQUE,
+				updateTime INTEGER
+			);`)
 		})
 	},
 	async insertEmoji(item) {

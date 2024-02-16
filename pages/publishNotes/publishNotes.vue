@@ -619,6 +619,12 @@
 					this.authority = Number(res[0].authority)
 					this.tempFilePaths = JSON.parse(res[0].tempFilePaths)
 				})
+			}else if(options.update == 2){
+				// 从编辑笔记进入
+				this.isUpdate = true
+				this.tableId = options.tableId
+				let id = options.tableId
+				
 			}
 			// 获取表情列表
 			let sql = `select * from emoji_list`

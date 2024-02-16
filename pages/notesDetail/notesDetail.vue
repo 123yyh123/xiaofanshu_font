@@ -16,10 +16,10 @@
 					@click="attention"></u-tag>
 				<u-tag v-else text="关注" plain shape="circle" color="#f56c6c" borderColor="#f56c6c"
 					@click="attention"></u-tag>
-				<u-icon name="share-square" color="#2b2b2b" size="30"></u-icon>
+				<u-icon @click="showShare=true" name="share-square" color="#2b2b2b" size="30"></u-icon>
 			</view>
 			<view v-else style="display: flex;margin-left: auto;margin-right: 15rpx;">
-				<u-icon name="more-dot-fill" color="#2b2b2b" size="26"></u-icon>
+				<u-icon @click="showShare=true" name="more-dot-fill" color="#2b2b2b" size="26"></u-icon>
 			</view>
 		</view>
 		<view :style="{height: statusBarHeight+44+ 'px'}" style="width: 100%;"></view>
@@ -327,6 +327,59 @@
 			</view>
 		</view>
 		<view style="height: 60px;"></view>
+		<u-popup :show="showShare" mode="bottom" @close="showShare=false" round="10" bgColor="#f5f5f5">
+			<view :style="{height: windowHeight*(1/3)+'px'}"
+				style="width: 750rpx;display: flex;flex-direction: column;">
+				<view
+					style="display: flex;justify-content: center;text-align: center;width: 100%;padding: 20rpx;box-sizing: border-box;position: relative;flex: 1;">
+					<view>分享至</view>
+					<u-icon style="position: absolute;right: 20rpx;" name="close" size="20"
+						@click="showShare=false"></u-icon>
+				</view>
+				<scroll-view scroll-x
+					style="white-space: nowrap;display: flex;width: 100%;border-top-style:solid;border-top-width: 1rpx;border-color: #e5e4e6;flex: 3;align-items: center;"
+					enable-flex>
+					<view
+						style="display: inline-flex;flex-direction: column;text-align: center;padding: 20rpx;justify-content: center;align-items: center;">
+						<u-icon name="weixin-circle-fill" size="50" color="#49e679"></u-icon>
+						<view style="font-size: 30rpx;color: #727171;">微信好友</view>
+					</view>
+					<view
+						style="display: inline-flex;flex-direction: column;text-align: center;padding: 20rpx;justify-content: center;align-items: center;">
+						<u-icon name="qq-circle-fill" size="50" color="#008dff"></u-icon>
+						<view style="font-size: 30rpx;color: #727171;">QQ</view>
+					</view>
+					<view
+						style="display: inline-flex;flex-direction: column;text-align: center;padding: 20rpx;justify-content: center;align-items: center;">
+						<u-icon name="weibo-circle-fill" size="50" color="#c52f2b"></u-icon>
+						<view style="font-size: 30rpx;color: #727171;">微博</view>
+					</view>
+				</scroll-view>
+				<scroll-view scroll-x v-if="userInfo.id==notesDetail.belongUserId"
+					style="white-space: nowrap;display: flex;width: 100%;border-top-style:solid;border-top-width: 1rpx;border-top-color: #e5e4e6;flex: 3;"
+					enable-flex>
+					<view @click="editNotes"
+						style="display: inline-flex;flex-direction: column;text-align: center;padding: 20rpx;justify-content: center;">
+						<view style="padding: 20rpx;border-radius: 50%;background-color: #ffffff;">
+							<u-icon name="/static/image/editNotes.png" size="35"></u-icon>
+						</view>
+						<view style="font-size: 30rpx;color: #727171;">编辑</view>
+					</view>
+					<view
+						style="display: inline-flex;flex-direction: column;text-align: center;padding: 20rpx;justify-content: center;">
+						<u-icon name="account" size="50" color="#cdcdcd"></u-icon>
+						<view style="font-size: 30rpx;color: #727171;">权限设置</view>
+					</view>
+					<view
+						style="display: inline-flex;flex-direction: column;text-align: center;padding: 20rpx;justify-content: center;">
+						<view style="padding: 20rpx;border-radius: 50%;background-color: #ffffff;">
+							<u-icon name="/static/image/delete.png" size="35"></u-icon>
+						</view>
+						<view style="font-size: 30rpx;color: #727171;">删除</view>
+					</view>
+				</scroll-view>
+			</view>
+		</u-popup>
 	</view>
 </template>
 
@@ -363,6 +416,8 @@
 	export default {
 		data() {
 			return {
+				showShare: false,
+				windowHeight: 0,
 				editPlaceholder: '爱评论的人运气都不差',
 				statusBarHeight: 0,
 				notesDetail: {},
@@ -402,6 +457,11 @@
 			}
 		},
 		methods: {
+			editNotes(){
+				// uni.navigateTo({
+				// 	url: '/pages/publishNotes/publishNotes?update=2&notesId=' + this.notesDetail.id
+				// })
+			},
 			/**
 			 * 关注用户
 			 */
@@ -1283,6 +1343,7 @@
 			uni.getSystemInfo({
 				success: (res) => {
 					this.statusBarHeight = res.statusBarHeight;
+					this.windowHeight = res.windowHeight;
 				}
 			})
 			updateNotesViewCount({

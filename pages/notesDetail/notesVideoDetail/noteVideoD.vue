@@ -10,7 +10,8 @@
 			<view
 				style="display: flex;position: absolute;top: 0;width: 750rpx;height: 44px;align-items: center;padding: 20rpx;justify-content: space-between;box-sizing: border-box;">
 				<u-icon @click="goBack" name="arrow-left" color="#f5f5f5" size="25"></u-icon>
-				<u-icon name="share-square" color="#f5f5f5" size="27"></u-icon>
+				<u-icon v-if="notesDetail.belongUserId!=userInfo.id" name="share-square" color="#f5f5f5" size="27"></u-icon>
+				<u-icon v-else name="more-dot-fill" color="#f5f5f5" size="27"></u-icon>
 			</view>
 			<video :src="notesDetail.videoUrl" autoplay controls object-fit="contain" style="width: 750rpx;" loop
 				:poster="notesDetail.coverPicture"></video>

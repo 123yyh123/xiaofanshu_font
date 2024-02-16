@@ -15,7 +15,7 @@
 				        }" itemStyle="padding-left: 20px; padding-right: 20px; height: 40px;">
 			</u-tabs>
 			<view style="position: absolute;right: 30rpx;">
-				<u-icon name="search" color="#16160e" size="29"></u-icon>
+				<u-icon @click="goToSearch" name="search" color="#16160e" size="29"></u-icon>
 			</view>
 		</view>
 		<view :style="{height: statusBarHeight+40+ 'px'}" style="width: 100%;background-color:antiquewhite;"></view>
@@ -426,6 +426,11 @@
 			}
 		},
 		methods: {
+			goToSearch() {
+				uni.navigateTo({
+					url: '/pages/searchPage/searchPage'
+				})
+			},
 			getImageHeight(s) {
 				return new Promise((resolve, reject) => {
 					uni.getImageInfo({
