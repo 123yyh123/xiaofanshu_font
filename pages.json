@@ -190,7 +190,12 @@
 			"style" : 
 			{
 				"navigationStyle": "custom",
-				"enablePullDownRefresh" : false
+				"enablePullDownRefresh" : true,
+				"app-plus": {
+					"pullToRefresh": {
+						"offset": "120px"
+					}
+				}
 			}
 		}
 	],

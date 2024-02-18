@@ -1,0 +1,20 @@
+{
+    "id": "da-dropdown-vue2",
+    "name": "da-dropdown 下拉筛选菜单(支持主题色、功能丰富，Vue2版)",
+    "displayName": "da-dropdown 下拉筛选菜单(支持主题色、功能丰富，Vue2版)",
+    "version": "2.2.1",
+    "description": "一个基于 Vue2 的头部导航栏下拉筛选菜单组件，同时支持主题换色，兼容性更强。",
+    "keywords": [
+        "dropdown",
+        "导航栏",
+        "筛选",
+        "下拉菜单",
+        "da系列"
+    ],
+    "dcloudext": {
+        "category": [
+            "前端组件",
+            "通用组件"
+        ]
+    }
+}

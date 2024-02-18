@@ -47,7 +47,8 @@
 											<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
 										</view>
 									</view>
-									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}</view>
+									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}
+									</view>
 									<view style="display: flex;position: relative;padding: 20rpx;">
 										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
 											:src="item.avatarUrl">
@@ -93,7 +94,8 @@
 											<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
 										</view>
 									</view>
-									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}</view>
+									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}
+									</view>
 									<view style="display: flex;position: relative;padding: 20rpx;">
 										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
 											:src="item.avatarUrl">
@@ -151,7 +153,7 @@
 								<block v-for="(item,index) in notesList[1].leftList" :key="index">
 									<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
 										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
-											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+											lazyLoad style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 											<template v-slot:loading>
 												<view style="height: 200rpx;text-align: center;padding: 20rpx;">
 													<u-loading-icon color="#e83929"></u-loading-icon>
@@ -164,10 +166,12 @@
 											<view style="margin-left: 5rpx;">{{item.views}}</view>
 										</view>
 										<view v-if="item.notesType==1" class="video-play">
-											<u-icon v-if="item.notesType==1" name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
+											<u-icon v-if="item.notesType==1" name="play-right-fill" color="#ffffff"
+												size="25rpx"></u-icon>
 										</view>
 									</view>
-									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}</view>
+									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}
+									</view>
 									<view style="display: flex;position: relative;padding: 20rpx;">
 										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
 											:src="item.avatarUrl">
@@ -196,7 +200,7 @@
 								<block v-for="(item,index) in notesList[1].rightList" :key="index">
 									<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
 										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
-											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+											lazyLoad style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 											<template v-slot:loading>
 												<view
 													style="height: 200rpx;text-align: center;padding: 20rpx;margin-bottom: 30rpx;">
@@ -213,7 +217,8 @@
 											<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
 										</view>
 									</view>
-									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}</view>
+									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}
+									</view>
 									<view style="display: flex;position: relative;padding: 20rpx;">
 										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
 											:src="item.avatarUrl">
@@ -270,7 +275,8 @@
 											<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
 										</view>
 									</view>
-									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}</view>
+									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}
+									</view>
 									<view style="display: flex;position: relative;padding: 20rpx;">
 										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
 											:src="item.avatarUrl">
@@ -316,7 +322,8 @@
 											<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
 										</view>
 									</view>
-									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}</view>
+									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}
+									</view>
 									<view style="display: flex;position: relative;padding: 20rpx;">
 										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
 											:src="item.avatarUrl">
@@ -359,7 +366,9 @@
 	import {
 		searchNotesNearby
 	} from '@/apis/search_service.js'
-	import {pxToRpx} from '@/utils/util.js'
+	import {
+		pxToRpx
+	} from '@/utils/util.js'
 	export default {
 		data() {
 			return {
@@ -451,7 +460,7 @@
 			},
 			praiseNotes(id, targetUserId, type, index) {
 				console.log(type)
-				let i=this.actTab;
+				let i = this.actTab;
 				praiseOrCancelNotes({
 					notesId: id,
 					userId: uni.getStorageSync('userInfo').id,
@@ -462,32 +471,36 @@
 						if (type === 1) {
 							console.log(this.notesList[i].leftList[index])
 							if (this.notesList[i].leftList[index].isLike) {
-								this.notesList[i].leftList[index].notesLikeNum = this.notesList[i].leftList[index].notesLikeNum - 1
+								this.notesList[i].leftList[index].notesLikeNum = this.notesList[i].leftList[index]
+									.notesLikeNum - 1
 								this.notesList[i].leftList[index].isLike = false
 							} else {
-								this.notesList[i].leftList[index].notesLikeNum = this.notesList[i].leftList[index].notesLikeNum + 1
+								this.notesList[i].leftList[index].notesLikeNum = this.notesList[i].leftList[index]
+									.notesLikeNum + 1
 								this.notesList[i].leftList[index].isLike = true
 							}
 						} else {
 							if (this.notesList[i].rightList[index].isLike) {
-								this.notesList[i].rightList[index].notesLikeNum = this.notesList[i].rightList[index].notesLikeNum - 1
+								this.notesList[i].rightList[index].notesLikeNum = this.notesList[i].rightList[
+									index].notesLikeNum - 1
 								this.notesList[i].rightList[index].isLike = false
 							} else {
-								this.notesList[i].rightList[index].notesLikeNum = this.notesList[i].rightList[index].notesLikeNum + 1
+								this.notesList[i].rightList[index].notesLikeNum = this.notesList[i].rightList[
+									index].notesLikeNum + 1
 								this.notesList[i].rightList[index].isLike = true
 							}
 						}
 					}
 				})
 			},
-			goToDetail(id,type) {
+			goToDetail(id, type) {
 				console.log(type)
-				if(type==0){
+				if (type == 0) {
 					// 笔记
 					uni.navigateTo({
 						url: '/pages/notesDetail/notesDetail?notesId=' + id
 					})
-				}else{
+				} else {
 					// 视频
 					console.log('视频')
 					uni.navigateTo({

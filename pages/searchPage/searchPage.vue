@@ -4,8 +4,8 @@
 			style="position: fixed;top: 0;width: 100%;z-index: 9999;background-color: #fff;"></view>
 		<view :style="{height: statusBarHeight + 'px'}"></view>
 		<view style="padding: 10rpx 15rpx;display: flex;height: 44px;">
-			<u-icon name="arrow-left" size="25"></u-icon>
-			<u-search style="margin-left: 20rpx;" :showAction="true" actionText="搜索" :animation="true"
+			<u-icon @click="goToBack" name="arrow-left" size="25"></u-icon>
+			<u-search style="margin-left: 20rpx;" :showAction="true" actionText="搜索" :animation="true" :focus="true"
 				v-model="searchValue" @search="search" @clear="clearSearch" @custom="search" @focus="focus"></u-search>
 		</view>
 		<view
@@ -72,7 +72,7 @@
 				if (this.startDelete) {
 					return;
 				}
-				this.searchValue=''
+				this.searchValue = ''
 				// 再次去除空格，以免搜索历史记录中出现空白
 				keyword = keyword.replace(/[\n\r\s]+/g, '');
 				this.$sqliteUtil.SqlExecute(
@@ -106,14 +106,20 @@
 					console.log(res);
 					this.refreshSearchList();
 				});
+			},
+			goToBack() {
+				uni.navigateBack();
 			}
 		},
-		onLoad() {
+		onLoad(options) {
 			uni.getSystemInfo({
 				success: (res) => {
 					this.statusBarHeight = res.statusBarHeight;
 				}
 			});
+			if (options.keyword) {
+				this.searchValue = options.keyword
+			}
 		},
 		onShow() {
 			this.$sqliteUtil.SqlSelect(`select * from search_history order by updateTime desc`).then(res => {
@@ -125,5 +131,7 @@
 </script>
 
 <style lang="scss">
-
+	input {
+		caret-color: #FF2442;
+	}
 </style>
