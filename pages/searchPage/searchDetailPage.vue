@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view :style="{height: statusBarHeight + 'px'}"
-			style="position: fixed;top: 0;width: 100%;background-color: #fff;"></view>
+			style="position: fixed;top: 0;width: 100%;background-color: #fff;z-index: 9999;"></view>
 		<view :style="{height: statusBarHeight + 'px'}"></view>
 		<view style="padding: 10rpx 30rpx 10rpx 15rpx;display: flex;height: 44px;align-items: center;">
 			<u-icon @click="goToBack" name="arrow-left" size="25"></u-icon>
@@ -136,51 +136,56 @@
 		<view v-if="current==1">
 			<view>用户</view>
 		</view>
-		<u-popup :show="show" mode="top" @close="show=false" :customStyle="{top: statusBarHeight + 95 + 'px'}"
-			overlayOpacity="0">
-			<view style="padding: 0 40rpx;">
-				<u-radio-group v-model="radiovalue1" placement="column" iconPlacement="right" shape="square">
-					<u-radio :customStyle="{marginBottom: '8px'}" v-for="(item, index) in radiolist1" :key="index"
-						:label="item.name" :name="item.name" @change="radioChange" activeColor="#f56c6c"
-						labelSize="35rpx" size="45rpx" :labelColor="radiovalue1 === item.name ? '#f56c6c' : '#383c3c'">
-					</u-radio>
-				</u-radio-group>
-			</view>
-		</u-popup>
-		<u-popup :show="screening" mode="top" @close="screening=false" :customStyle="{top: statusBarHeight +95 + 'px'}"
-			overlayOpacity="0">
-			<view style="padding: 20rpx;font-size: 32rpx;">
-				<view style="color: #000000;">笔记类型</view>
-				<view style="display: flex;">
-					<view @click="chooseNoteType(0)"
-						style="padding:25rpx 50rpx;border-radius: 20rpx;margin: 20rpx;border-color: #f56c6c;border-width: 1rpx;"
-						:style="{borderStyle: noteType === 0 ? 'solid' : 'none',backgroundColor: noteType === 0 ? '#fdeff2' : '#e5e4e6'}">
-						<view :style="{color: noteType === 0 ? '#f56c6c' : '#000000'}">全部</view>
-					</view>
-					<view @click="chooseNoteType(1)"
-						style="padding:25rpx 50rpx;border-radius: 20rpx;margin: 20rpx;border-color: #f56c6c;border-width: 1rpx;"
-						:style="{borderStyle: noteType === 1 ? 'solid' : 'none',backgroundColor: noteType === 1 ? '#fdeff2' : '#e5e4e6'}">
-						<view :style="{color: noteType === 1 ? '#f56c6c' : '#000000'}">图文</view>
-					</view>
-					<view @click="chooseNoteType(2)"
-						style="padding:25rpx 50rpx;border-radius: 20rpx;margin: 20rpx;border-color: #f56c6c;border-width: 1rpx;"
-						:style="{borderStyle: noteType === 2 ? 'solid' : 'none',backgroundColor: noteType === 2 ? '#fdeff2' : '#e5e4e6'}">
-						<view :style="{color: noteType === 2 ? '#f56c6c' : '#000000'}">视频</view>
+		<view @touchmove.stop.prevent="moveHandle">
+			<u-popup :show="show" mode="top" @close="show=false" :customStyle="{top: statusBarHeight + 95 + 'px'}"
+				overlayOpacity="0">
+				<view style="padding: 0 40rpx;">
+					<u-radio-group v-model="radiovalue1" placement="column" iconPlacement="right" shape="square">
+						<u-radio :customStyle="{marginBottom: '8px'}" v-for="(item, index) in radiolist1" :key="index"
+							:label="item.name" :name="item.name" @change="radioChange" activeColor="#f56c6c"
+							labelSize="35rpx" size="45rpx"
+							:labelColor="radiovalue1 === item.name ? '#f56c6c' : '#383c3c'">
+						</u-radio>
+					</u-radio-group>
+				</view>
+			</u-popup>
+			<u-popup :show="screening" mode="top" @close="screening=false"
+				:customStyle="{top: statusBarHeight +95 + 'px'}" overlayOpacity="0">
+				<view style="padding: 20rpx;font-size: 32rpx;">
+					<view style="color: #000000;">笔记类型</view>
+					<view style="display: flex;">
+						<view @click="chooseNoteType(2)"
+							style="padding:25rpx 50rpx;border-radius: 20rpx;margin: 20rpx;border-color: #f56c6c;border-width: 1rpx;"
+							:style="{borderStyle: noteType === 2 ? 'solid' : 'none',backgroundColor: noteType === 2 ? '#fdeff2' : '#e5e4e6'}">
+							<view :style="{color: noteType === 2 ? '#f56c6c' : '#000000'}">全部</view>
+						</view>
+						<view @click="chooseNoteType(0)"
+							style="padding:25rpx 50rpx;border-radius: 20rpx;margin: 20rpx;border-color: #f56c6c;border-width: 1rpx;"
+							:style="{borderStyle: noteType === 0 ? 'solid' : 'none',backgroundColor: noteType === 0 ? '#fdeff2' : '#e5e4e6'}">
+							<view :style="{color: noteType === 0 ? '#f56c6c' : '#000000'}">图文</view>
+						</view>
+						<view @click="chooseNoteType(1)"
+							style="padding:25rpx 50rpx;border-radius: 20rpx;margin: 20rpx;border-color: #f56c6c;border-width: 1rpx;"
+							:style="{borderStyle: noteType === 1 ? 'solid' : 'none',backgroundColor: noteType === 1 ? '#fdeff2' : '#e5e4e6'}">
+							<view :style="{color: noteType === 1 ? '#f56c6c' : '#000000'}">视频</view>
+						</view>
 					</view>
 				</view>
-			</view>
-		</u-popup>
+			</u-popup>
+		</view>
 	</view>
 </template>
 
 <script>
 	import {
-		getLastNotesByPage,
 		praiseOrCancelNotes
 	} from '@/apis/notes_service.js'
 	import {
 		pxToRpx
 	} from '@/utils/util.js'
+	import {
+		searchNotesByKeyword
+	} from '@/apis/search_service.js'
 	export default {
 		data() {
 			return {
@@ -191,10 +196,6 @@
 				current: 0,
 				screening: false,
 				radiolist1: [{
-						name: '全部',
-						disabled: false
-					},
-					{
 						name: '最新',
 						disabled: false
 					},
@@ -203,8 +204,8 @@
 						disabled: false
 					}
 				],
-				radiovalue1: '全部',
-				noteType: 0,
+				radiovalue1: '最新',
+				noteType: 2,
 				notesList: {
 					leftList: [],
 					rightList: [],
@@ -220,6 +221,7 @@
 			};
 		},
 		methods: {
+			moveHandle(e) {},
 			getImageHeight(s) {
 				return new Promise((resolve, reject) => {
 					uni.getImageInfo({
@@ -292,11 +294,15 @@
 					return;
 				}
 				this.notesList.status = 'loading';
-				getLastNotesByPage({
+				searchNotesByKeyword({
+					keyword: this.searchValue,
 					page: this.notesList.page,
-					pageSize: this.notesList.pageSize
+					pageSize: this.notesList.pageSize,
+					notesType: this.noteType,
+					hot: this.radiovalue1 === '最新' ? 0 : 1
 				}).then(res => {
 					if (res.code == 20010) {
+						console.log(res.data.list)
 						this.notesList.page += 1;
 						res.data.list.forEach(item => {
 							this.getImageHeight(item.coverPicture).then(res => {
@@ -323,16 +329,47 @@
 			chooseNoteType(n) {
 				this.noteType = n
 				this.screening = false
+				this.notesList = {
+					leftList: [],
+					rightList: [],
+					leftHeight: 0,
+					rightHeight: 0,
+					status: 'loadmore',
+					page: 1,
+					pageSize: 10,
+				}
+				this.getMoreNotes()
 			},
 			radioChange(n) {
 				this.radiovalue1 = n;
 				this.show = false
+				this.notesList = {
+					leftList: [],
+					rightList: [],
+					leftHeight: 0,
+					rightHeight: 0,
+					status: 'loadmore',
+					page: 1,
+					pageSize: 10,
+				}
+				this.getMoreNotes()
 			},
 			clickAll() {
 				if (this.current === 0) {
 					this.show = !this.show
 				} else {
 					this.current = 0
+					this.show = false
+					this.notesList = {
+						leftList: [],
+						rightList: [],
+						leftHeight: 0,
+						rightHeight: 0,
+						status: 'loadmore',
+						page: 1,
+						pageSize: 10,
+					}
+					this.getMoreNotes()
 				}
 			},
 			clickUser() {
@@ -372,9 +409,19 @@
 			this.getMoreNotes()
 		},
 		onPullDownRefresh() {
+			this.notesList = {
+				leftList: [],
+				rightList: [],
+				leftHeight: 0,
+				rightHeight: 0,
+				status: 'loadmore',
+				page: 1,
+				pageSize: 10,
+			}
+			this.getMoreNotes()
 			setTimeout(() => {
 				uni.stopPullDownRefresh()
-			}, 1000)
+			}, 800);
 		}
 	}
 </script>

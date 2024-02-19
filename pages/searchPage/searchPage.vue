@@ -75,6 +75,13 @@
 				this.searchValue = ''
 				// 再次去除空格，以免搜索历史记录中出现空白
 				keyword = keyword.replace(/[\n\r\s]+/g, '');
+				if(keyword.length>12){
+					uni.showToast({
+						title: '输入内容过长',
+						icon: 'none'
+					});
+					return;
+				}
 				this.$sqliteUtil.SqlExecute(
 					`update search_history set updateTime=${new Date().getTime()} where content='${keyword}'`
 				).then(res => {

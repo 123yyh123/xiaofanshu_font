@@ -7,3 +7,10 @@ export const searchNotesNearby=(params={})=>{
 		data:params.pageParam
 	})
 }
+
+export const searchNotesByKeyword=(params={})=>{
+	return $request({
+		url:'/search/notes/getNotesByKeyword?page='+params.page+'&pageSize='+params.pageSize+'&keyword='+params.keyword+'&notesType='+params.notesType+'&hot='+params.hot,
+		method:'GET'
+	})
+}
