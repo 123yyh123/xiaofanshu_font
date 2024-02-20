@@ -103,3 +103,10 @@ export const getViewUserInfo=(params={})=>{
 		method:'GET'
 	})
 }
+
+export const getUserIsBindThird=(params={})=>{
+	return $request({
+		url:'/user/getUserIsBindThird',
+		method:'GET'
+	})
+}

@@ -457,7 +457,7 @@
 			}
 		},
 		methods: {
-			editNotes(){
+			editNotes() {
 				// uni.navigateTo({
 				// 	url: '/pages/publishNotes/publishNotes?update=2&notesId=' + this.notesDetail.id
 				// })
@@ -816,6 +816,10 @@
 			 * 发送评论
 			 */
 			sendComment() {
+				uni.showLoading({
+					title: '发送中...',
+					mask: true
+				})
 				this.edit.getContents().then(res => {
 					console.log(res)
 					// 如果res.text里面只有换行符或者空格，res.html也没有<img>标签，就不允许发布	
@@ -842,12 +846,15 @@
 						addComment({
 							commentVO
 						}).then(res => {
+							uni.hideLoading()
 							console.log(res)
 							if (res.code == 20020) {
 								uni.showToast({
 									title: '评论已发布',
 									icon: 'success'
 								})
+								this.content = ''
+								this.inputField = false
 								this.commentCount++
 								res.data.createTime = weChatTimeFormat(Number(res.data.createTime))
 								console.log(res.data)
@@ -875,8 +882,6 @@
 										}
 									})
 								}
-								this.content = ''
-								this.inputField = false
 							} else {
 								uni.showToast({
 									title: res.msg == null ? '评论失败' : res.msg,
@@ -884,102 +889,163 @@
 								})
 							}
 						}).catch(err => {
+							uni.hideLoading()
 							uni.showToast({
 								title: '评论失败',
 								icon: 'none'
 							})
 						})
 						return
-					}
-					uni.uploadFile({
-						url: baseUrl + '/third/uploadImg',
-						filePath: this.commentImagesurl,
-						name: 'file',
-						header: {
-							'token': uni.getStorageSync('token')
-						},
-						success: (res) => {
-							let data = JSON.parse(res.data)
-							if (data.code === 20020) {
-								console.log(data.data)
-								this.commentImagesurl = data.data
-								let commentVO = {
-									content: this.content,
-									replyUserId: this.replyCommentUserId,
-									replyUserName: this.replyCommentUserName,
-									notesId: this.notesDetail.id,
-									commentUserId: this.userInfo.id,
-									parentId: this.parentId,
-									pictureUrl: this.commentImagesurl
-								}
-								console.log(commentVO)
-								addComment({
-									commentVO
-								}).then(res => {
-									console.log(res)
-									if (res.code == 20020) {
-										uni.showToast({
-											title: '评论已发布',
-											icon: 'success'
-										})
-										this.commentCount++
-										res.data.createTime = weChatTimeFormat(Number(res.data
-											.createTime))
-										if (this.parentId == 0) {
-											res.data.children = {
-												list: [],
-												page: 1,
-												pageSize: 10,
-												status: 'loadmore',
-												loadmoreText: '—— 展开更多回复 ——'
-											}
-											this.commentList.unshift(res.data)
-										} else {
-											this.commentList.forEach(item => {
-												if (item.id == this.parentId) {
-													console.log(item)
-													if (item.children.page == 1) {
-														item.commentReplyNum++
-														item.children.loadmoreText =
-															'—— 展开' + item
-															.commentReplyNum + '条回复 ——'
-													} else {
-														item.children.list.unshift(res
-															.data)
+					} else {
+						uni.uploadFile({
+							url: baseUrl + '/third/uploadImg',
+							filePath: this.commentImagesurl,
+							name: 'file',
+							header: {
+								'token': uni.getStorageSync('token')
+							},
+							success: (res) => {
+								let data = JSON.parse(res.data)
+								if (data.code === 20020) {
+									console.log(data.data)
+									this.commentImagesurl = data.data
+									let commentVO = {
+										content: this.content,
+										replyUserId: this.replyCommentUserId,
+										replyUserName: this.replyCommentUserName,
+										notesId: this.notesDetail.id,
+										commentUserId: this.userInfo.id,
+										parentId: this.parentId,
+										pictureUrl: this.commentImagesurl
+									}
+									console.log(commentVO)
+									addComment({
+										commentVO
+									}).then(res => {
+										console.log(res)
+										if (res.code == 20020) {
+											uni.getImageInfo({
+												src: res.data.pictureUrl,
+												success: (image) => {
+													res.data.picture = {
+														url: res.data
+															.pictureUrl,
 													}
+													// 图片长度最长为350rpx,高度最高为350rpx
+													if (image.width >= image
+														.height) {
+														if (image.width > 350) {
+															res.data.picture
+																.width = 350
+															res.data.picture
+																.height = 350 *
+																image.height /
+																image
+																.width
+														} else {
+															res.data.picture
+																.width = image
+																.width
+															res.data.picture
+																.height = image
+																.height
+														}
+													} else {
+														if (image.height > 350) {
+															res.data.picture
+																.height = 350
+															res.data.picture
+																.width = 350 *
+																image.width / image
+																.height
+														} else {
+															res.data.picture
+																.width = image
+																.width
+															res.data.picture
+																.height = image
+																.height
+														}
+													}
+													uni.hideLoading()
+													console.log(res.data.picture)
+													this.content = ''
+													this.revealcontent = ''
+													this.commentImagesurl = ''
+													this.inputField = false
+													uni.showToast({
+														title: '评论已发布',
+														icon: 'success'
+													})
+													this.commentCount++
+													res.data.createTime = weChatTimeFormat(Number(res
+														.data
+														.createTime))
+													if (this.parentId == 0) {
+														res.data.children = {
+															list: [],
+															page: 1,
+															pageSize: 10,
+															status: 'loadmore',
+															loadmoreText: '—— 展开更多回复 ——'
+														}
+														this.commentList.unshift(res.data)
+													} else {
+														this.commentList.forEach(item => {
+															if (item.id == this.parentId) {
+																console.log(item)
+																if (item.children.page == 1) {
+																	item.commentReplyNum++
+																	item.children
+																		.loadmoreText =
+																		'—— 展开' + item
+																		.commentReplyNum +
+																		'条回复 ——'
+																} else {
+																	item.children.list.unshift(
+																		res.data)
+																}
+															}
+														})
+													}
+												},
+												fail: (err) => {
+													uni.hideLoading()
+													console.log(err)
 												}
 											})
+										} else {
+											uni.hideLoading()
+											uni.showToast({
+												title: res.msg == null ? '评论失败' : res
+													.msg,
+												icon: 'none'
+											})
 										}
-										this.content = ''
-										this.revealcontent = ''
-										this.commentImagesurl = ''
-										this.inputField = false
-									} else {
+									}).catch(err => {
+										uni.hideLoading()
 										uni.showToast({
-											title: res.msg == null ? '评论失败' : res.msg,
+											title: '评论失败',
 											icon: 'none'
 										})
-									}
-								}).catch(err => {
+									})
+								} else {
+									uni.hideLoading()
 									uni.showToast({
-										title: '评论失败',
+										title: '图片上传失败',
 										icon: 'none'
 									})
-								})
-							} else {
+								}
+							},
+							fail: (err) => {
+								uni.hideLoading()
 								uni.showToast({
 									title: '图片上传失败',
 									icon: 'none'
 								})
 							}
-						},
-						fail: (err) => {
-							uni.showToast({
-								title: '图片上传失败',
-								icon: 'none'
-							})
-						}
-					})
+						})
+					}
 				})
 			},
 			/**

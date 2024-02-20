@@ -197,6 +197,14 @@
 					}
 				}
 			}
+		},
+		{
+			"path" : "pages/setting/setting",
+			"style" : 
+			{
+				"navigationBarTitleText" : "账号与安全",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"tabBar": {

@@ -49,3 +49,10 @@ export const updateNotesViewCount = (params={})=>{
 		method:'POST'
 	})
 }
+
+export const getNotesCountByUserId = (params={})=>{
+	return $request({
+		url:'/notes/getAllNotesCountAndPraiseCountAndCollectCount',
+		method:'GET'
+	})
+}

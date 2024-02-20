@@ -21,13 +21,17 @@
 			</view>
 		</view>
 		<view style="padding: 20rpx 30rpx;display: flex;flex-wrap: wrap;">
-			<view v-for="(item,index) in searchHistory" :key="index"
+			<view v-for="(item,index) in searchHistory" :key="index" v-if="index<(showHide?showCount:searchHistory.length)"
 				style="display: flex;padding: 10rpx 15rpx;border-radius: 50rpx;border-style: solid;border-color: #f3f3f2;border-width: 1rpx;margin: 20rpx;">
 				<view @click="goToSearch(item.content)"
 					style="font-size: 28rpx;color: #595857;letter-spacing: 2rpx;word-break: break-all;">{{item.content}}
 				</view>
 				<u-icon style="margin-left: 10rpx;" v-if="startDelete" @click="deleteHistory(item.id)" name="close"
 					size="15" color="#afafb0"></u-icon>
+			</view>
+			<view v-if="searchHistory.length>0" style="display: flex;padding : 10rpx 15rpx;border-radius: 50rpx;border-style: solid;border-color: #f3f3f2;border-width: 1rpx;margin: 20rpx;">
+				<u-icon v-if="showHide" @click="showHide=!showHide" name="arrow-down" size="20" color="#afafb0"></u-icon>
+				<u-icon v-else @click="showHide=!showHide" name="arrow-up" size="20" color="#afafb0"></u-icon>
 			</view>
 		</view>
 	</view>
@@ -40,7 +44,9 @@
 				statusBarHeight: 0,
 				searchHistory: [],
 				startDelete: false,
-				searchValue: ''
+				searchValue: '',
+				showCount: 5,
+				showHide: true
 			};
 		},
 		methods: {

@@ -132,6 +132,19 @@
 				</view>
 			</view>
 		</u-popup>
+		<view @touchmove.stop.prevent="moveHandle">
+			<u-popup :show="getPraiseAndCollect" mode="center" @close="getPraiseAndCollect=false" :round="10">
+				<view style="display: flex;flex-direction: column;align-items: center;width: 600rpx;">
+					<view style="font-size: 40rpx;letter-spacing: 2rpx;padding: 40rpx;text-align: center;border-bottom-style: solid;border-width: 1rpx;border-color: #e7e7eb;">获赞与收藏</view>
+					<view style="padding: 30rpx;display: flex;flex-direction: column;justify-content: space-between;font-size: 30rpx;color: #95949a;">
+						<view style="padding: 20rpx;">当前发布笔记数<text style="color: #595857;">{{' '+count.notesCount}}</text></view>
+						<view style="padding: 20rpx;">当前获得点赞数<text style="color: #595857;">{{' '+count.praiseCount}}</text></view>
+						<view style="padding: 20rpx;">当前获得收藏数<text style="color: #595857;">{{' '+count.collectCount}}</text></view>
+					</view>
+					<view @click="getPraiseAndCollect=false" style="margin: 20rpx 10rpx 60rpx 10rpx;padding: 15rpx 40rpx;background-color: #ff2442;color: #ffffff;width: 400rpx;box-sizing: border-box;text-align: center;border-radius: 80rpx;">我知道了</view>
+				</view>
+			</u-popup>
+		</view>
 		<view class="info" :style="{ height: screenHeight+'px'}">
 			<view class="filter" :style="{backgroundImage: 'url(' + userInfo.homePageBackground + ')'}"></view>
 			<view class="status-bar"
@@ -200,14 +213,14 @@
 							<view>{{userInfo.fansNum}}</view>
 							<view style="color: #e5e4e6;">粉丝</view>
 						</view>
-						<view class="guanzhu">
-							<view>8</view>
+						<view class="guanzhu" @click="getPraiseAndCollect=true">
+							<view>{{count.praiseCount+count.collectCount}}</view>
 							<view style="color: #e5e4e6;">获赞与收藏</view>
 						</view>
 					</view>
 					<view style="width: 50%;display: flex;align-items: flex-end;justify-content: space-around;">
 						<view class="tag1" @click="editData">编辑资料</view>
-						<view class="tag1" style="width: 40px;display: flex;">
+						<view class="tag1" style="width: 40px;display: flex;" @click="goToSetting">
 							<image
 								src="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%AE%BE%E7%BD%AE.png"
 								mode="heightFix"></image>
@@ -329,11 +342,18 @@
 		weChatTimeFormat
 	} from '../../utils/util.js';
 	import {
-		getNotesByUserId
+		getNotesByUserId,
+		getNotesCountByUserId
 	} from '../../apis/notes_service.js';
 	export default {
 		data() {
 			return {
+				count: {
+					notesCount: 0,
+					praiseCount: 0,
+					collectCount: 0,
+				},
+				getPraiseAndCollect: false,
 				tabsList: [{
 					name: '笔记',
 				}, {
@@ -387,6 +407,12 @@
 			};
 		},
 		methods: {
+			moveHandle(e) {},
+			goToSetting() {
+				uni.navigateTo({
+					url: '/pages/setting/setting'
+				})
+			},
 			getMoreNotes(index, authority) {
 				if (this.notesList[index].status == 'nomore' || this.notesList[index].status == 'loading') {
 					return
@@ -693,16 +719,6 @@
 					}).exec()
 				}, 1000)
 			},
-			// getImageHeight(s) {
-			// 	return new Promise((resolve, reject) => {
-			// 		uni.getImageInfo({
-			// 			src: s,
-			// 			success: (res) => {
-			// 				resolve(res.height)
-			// 			},
-			// 		})
-			// 	})
-			// },
 			onReach() {
 				if (this.actTab == 0) {
 					if (this.noteType == 2) {
@@ -716,8 +732,19 @@
 					this.getMoreNotes(2, 0)
 				}
 			},
+			getNotesCount() {
+				getNotesCountByUserId().then(res => {
+					if (res.code === 20010) {
+						this.count = res.data
+						console.log(this.count)
+					}
+				}).catch(err => {
+					console.log(err)
+				})
+			}
 		},
 		onPullDownRefresh() {
+			this.getNotesCount()
 			this.$refs.loadingMine.reset()
 			getUserInfo({
 				userId: uni.getStorageSync('userInfo').id
@@ -777,6 +804,7 @@
 				}
 			})
 			this.getMoreNotes(0, 0)
+			this.getNotesCount()
 		},
 		onReady() {
 			let query = uni.createSelectorQuery().in(this);
