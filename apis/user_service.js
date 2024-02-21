@@ -1,112 +1,133 @@
-import {$request} from '../utils/request.js'
+import {
+	$request
+} from '../utils/request.js'
 
-export const resetPassword=(params={})=>{
+export const resetPassword = (params = {}) => {
 	return $request({
-		url:'/user/resetPassword?phoneNumber='+params.phoneNumber+'&password='+params.password+'&smsCode='+params.smsCode,
-		method:'POST'
+		url: '/user/resetPassword?phoneNumber=' + params.phoneNumber + '&password=' + params.password +
+			'&smsCode=' + params.smsCode,
+		method: 'POST'
 	})
 }
 
-export const getUserInfo=(params={})=>{
+export const getUserInfo = (params = {}) => {
 	return $request({
-		url:'/user/getUserInfo?userId='+params.userId,
-		method:'GET'
+		url: '/user/getUserInfo?userId=' + params.userId,
+		method: 'GET'
 	})
 }
 
-export const updateAvatarUrl=(params={})=>{
+export const updateAvatarUrl = (params = {}) => {
 	return $request({
-		url:'/user/updateAvatarUrl',
-		method:'POST',
-		data:params.userVO
+		url: '/user/updateAvatarUrl',
+		method: 'POST',
+		data: params.userVO
 	})
 }
 
-export const updateBackgroundImage=(params={})=>{
+export const updateBackgroundImage = (params = {}) => {
 	return $request({
-		url:'/user/updateBackgroundImage',
-		method:'POST',
-		data:params.userVO
+		url: '/user/updateBackgroundImage',
+		method: 'POST',
+		data: params.userVO
 	})
 }
 
-export const updateNickname=(params={})=>{
+export const updateNickname = (params = {}) => {
 	return $request({
-		url:'/user/updateNickname',
-		method:'POST',
-		data:params.userVO
+		url: '/user/updateNickname',
+		method: 'POST',
+		data: params.userVO
 	})
 }
 
-export const updateIntroduction=(params={})=>{
+export const updateIntroduction = (params = {}) => {
 	return $request({
-		url:'/user/updateIntroduction',
-		method:'POST',
-		data:params.userVO
+		url: '/user/updateIntroduction',
+		method: 'POST',
+		data: params.userVO
 	})
 }
 
-export const updateSex=(params={})=>{
+export const updateSex = (params = {}) => {
 	return $request({
-		url:'/user/updateSex',
-		method:'POST',
-		data:params.userVO
+		url: '/user/updateSex',
+		method: 'POST',
+		data: params.userVO
 	})
 }
 
-export const updateBirthday=(params={})=>{
+export const updateBirthday = (params = {}) => {
 	return $request({
-		url:'/user/updateBirthday',
-		method:'POST',
-		data:params.userVO
+		url: '/user/updateBirthday',
+		method: 'POST',
+		data: params.userVO
 	})
 }
 
-export const updateArea=(params={})=>{
+export const updateArea = (params = {}) => {
 	return $request({
-		url:'/user/updateArea',
-		method:'POST',
-		data:params.userVO
+		url: '/user/updateArea',
+		method: 'POST',
+		data: params.userVO
 	})
 }
 
-export const getAttentionList=(params={})=>{
+export const getAttentionList = (params = {}) => {
 	return $request({
-		url:'/user/relation/attentionList?userId='+params.userId+'&pageNum='+params.pageNum+'&pageSize='+params.pageSize,
-		method:'GET'
+		url: '/user/relation/attentionList?userId=' + params.userId + '&pageNum=' + params.pageNum +
+			'&pageSize=' + params.pageSize,
+		method: 'GET'
 	})
 }
-export const getFansList=(params={})=>{
+export const getFansList = (params = {}) => {
 	return $request({
-		url:'/user/relation/fansList?userId='+params.userId+'&pageNum='+params.pageNum+'&pageSize='+params.pageSize,
-		method:'GET'
-	})
-}
-
-export const updateAttention=(params={})=>{
-	return $request({
-		url:'/user/relation/attention?userId='+params.userId+'&targetUserId='+params.targetUserId,
-		method:'POST'
+		url: '/user/relation/fansList?userId=' + params.userId + '&pageNum=' + params.pageNum +
+			'&pageSize=' + params.pageSize,
+		method: 'GET'
 	})
 }
 
-export const updateRemarkName=(params={})=>{
+export const updateAttention = (params = {}) => {
 	return $request({
-		url:'/user/relation/updateRemarkName?userId='+params.userId+'&targetUserId='+params.targetUserId+'&remarkName='+params.remarkName,
-		method:'POST'
+		url: '/user/relation/attention?userId=' + params.userId + '&targetUserId=' + params.targetUserId,
+		method: 'POST'
 	})
 }
 
-export const getViewUserInfo=(params={})=>{
+export const updateRemarkName = (params = {}) => {
 	return $request({
-		url:'/user/viewUserInfo?userId='+params.userId,
-		method:'GET'
+		url: '/user/relation/updateRemarkName?userId=' + params.userId + '&targetUserId=' + params
+			.targetUserId + '&remarkName=' + params.remarkName,
+		method: 'POST'
 	})
 }
 
-export const getUserIsBindThird=(params={})=>{
+export const getViewUserInfo = (params = {}) => {
 	return $request({
-		url:'/user/getUserIsBindThird',
-		method:'GET'
+		url: '/user/viewUserInfo?userId=' + params.userId,
+		method: 'GET'
+	})
+}
+
+export const getUserIsBindThird = (params = {}) => {
+	return $request({
+		url: '/user/getUserIsBindThird',
+		method: 'GET'
+	})
+}
+
+export const updatePhoneNumber = (params = {}) => {
+	return $request({
+		url: '/user/updatePhoneNumber?phoneNumber=' + params.phoneNumber + '&smsCode=' + params.smsCode,
+		method: 'POST'
+	})
+}
+
+export const resetPasswordByOld = (params = {}) => {
+	return $request({
+		url: '/user/resetPasswordByOld',
+		method: 'POST',
+		data: params.passwordVO
 	})
 }

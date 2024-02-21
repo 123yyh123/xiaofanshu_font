@@ -205,6 +205,38 @@
 				"navigationBarTitleText" : "账号与安全",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/setting/updateBindPhone",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/setting/updateNewPhone",
+			"style" : 
+			{
+				"navigationBarTitleText" : "更换手机号",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/setting/resetPasswordMethods",
+			"style" : 
+			{
+				"navigationBarTitleText" : "身份验证",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/setting/setPasswordByPasswordVerify",
+			"style" : 
+			{
+				"navigationBarTitleText" : "设置新密码",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"tabBar": {

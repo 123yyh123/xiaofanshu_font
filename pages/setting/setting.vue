@@ -3,8 +3,8 @@
 		<view style="padding: 40rpx;">
 			<u-cell-group :customStyle="{'backgroundColor': '#ffffff','borderRadius': '40rpx','padding':'10rpx'}"
 				:border="false">
-				<u-cell title="手机号" :isLink="true" :value="userInfo.hidePhone"></u-cell>
-				<u-cell :border="false" title="修改密码" :isLink="true"></u-cell>
+				<u-cell title="手机号" :isLink="true" :value="userInfo.hidePhone" @click="showPhoneTips"></u-cell>
+				<u-cell :border="false" title="修改密码" :isLink="true" @click="goToReset"></u-cell>
 			</u-cell-group>
 		</view>
 		<view style="padding: 0 40rpx;">
@@ -28,7 +28,7 @@
 				<u-cell :border="false" title="注销账号" :isLink="true"></u-cell>
 			</u-cell-group>
 		</view>
-		<view style="margin: 40rpx;padding: 20rpx 40rpx;text-align: center;width: 600rpx;box-sizing: border-box;background-color: #ffffff;border-radius: 30rpx;">
+		<view style="margin: 40rpx;padding: 20rpx 40rpx;text-align: center;width: 600rpx;background-color: #ffffff;border-radius: 40rpx;height: 60rpx;line-height: 60rpx;">
 			退出登录
 		</view>
 		<view @touchmove.stop.prevent="moveHandle">
@@ -57,11 +57,32 @@
 			}
 		},
 		methods: {
-			moveHandle(e) {}
+			moveHandle(e) {},
+			goToReset() {
+				uni.navigateTo({
+					url: '/pages/setting/resetPasswordMethods'
+				})
+			},
+			showPhoneTips() {
+				this.$showModal({
+					title: "更换绑定的手机号？",
+					content: '当前绑定的手机号为'+this.userInfo.hidePhone.substring(3),
+					align: "left", // 对齐方式 left/center/right
+					cancelText: "取消", // 取消按钮的文字
+					cancelColor: "#FF2442", // 取消按钮颜色
+					confirmText: "确定", // 确认按钮文字
+					confirmColor: "#FF2442", // 确认按钮颜色 
+					showCancel: true, // 是否显示取消按钮，默认为 true
+				}).then(res=>{
+					uni.navigateTo({
+						url: '/pages/setting/updateBindPhone'
+					})
+				})
+			}
 		},
 		onLoad() {
 			this.userInfo = uni.getStorageSync('userInfo');
-			this.userInfo.hidePhone = this.userInfo.phoneNumber.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+			this.userInfo.hidePhone ='+86'+this.userInfo.phoneNumber.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
 			getUserIsBindThird().then(res => {
 				this.userInfo.isBindWechat = res.data.wechatBind;
 				this.userInfo.isBindQQ = res.data.qqBind;
