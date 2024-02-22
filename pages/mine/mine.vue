@@ -85,7 +85,7 @@
 			</scroll-view>
 			<view
 				style="position: fixed;bottom: 0;display: flex;justify-content: space-between;align-items: center;width:525rpx;background-color: #ffffff;padding: 20rpx 60rpx;box-sizing: border-box;font-size: 25rpx;color: #727171;">
-				<view style="text-align: -webkit-center">
+				<view style="text-align: -webkit-center" @click="goToSetting">
 					<view
 						style="display: flex;justify-content: center;align-items: center;width: 80rpx;height: 80rpx;background-color: #dcdddd;border-radius: 50%;">
 						<image style="height: 40rpx;" mode="heightFix"
@@ -135,13 +135,21 @@
 		<view @touchmove.stop.prevent="moveHandle">
 			<u-popup :show="getPraiseAndCollect" mode="center" @close="getPraiseAndCollect=false" :round="10">
 				<view style="display: flex;flex-direction: column;align-items: center;width: 600rpx;">
-					<view style="font-size: 40rpx;letter-spacing: 2rpx;padding: 40rpx;text-align: center;border-bottom-style: solid;border-width: 1rpx;border-color: #e7e7eb;">获赞与收藏</view>
-					<view style="padding: 30rpx;display: flex;flex-direction: column;justify-content: space-between;font-size: 30rpx;color: #95949a;">
-						<view style="padding: 20rpx;">当前发布笔记数<text style="color: #595857;">{{' '+count.notesCount}}</text></view>
-						<view style="padding: 20rpx;">当前获得点赞数<text style="color: #595857;">{{' '+count.praiseCount}}</text></view>
-						<view style="padding: 20rpx;">当前获得收藏数<text style="color: #595857;">{{' '+count.collectCount}}</text></view>
+					<view
+						style="font-size: 40rpx;letter-spacing: 2rpx;padding: 40rpx;text-align: center;border-bottom-style: solid;border-width: 1rpx;border-color: #e7e7eb;">
+						获赞与收藏</view>
+					<view
+						style="padding: 30rpx;display: flex;flex-direction: column;justify-content: space-between;font-size: 30rpx;color: #95949a;">
+						<view style="padding: 20rpx;">当前发布笔记数<text
+								style="color: #595857;">{{' '+count.notesCount}}</text></view>
+						<view style="padding: 20rpx;">当前获得点赞数<text
+								style="color: #595857;">{{' '+count.praiseCount}}</text></view>
+						<view style="padding: 20rpx;">当前获得收藏数<text
+								style="color: #595857;">{{' '+count.collectCount}}</text></view>
 					</view>
-					<view @click="getPraiseAndCollect=false" style="margin: 20rpx 10rpx 60rpx 10rpx;padding: 15rpx 40rpx;background-color: #ff2442;color: #ffffff;width: 400rpx;box-sizing: border-box;text-align: center;border-radius: 80rpx;">我知道了</view>
+					<view @click="getPraiseAndCollect=false"
+						style="margin: 20rpx 10rpx 60rpx 10rpx;padding: 15rpx 40rpx;background-color: #ff2442;color: #ffffff;width: 400rpx;box-sizing: border-box;text-align: center;border-radius: 80rpx;">
+						我知道了</view>
 				</view>
 			</u-popup>
 		</view>
@@ -345,6 +353,9 @@
 		getNotesByUserId,
 		getNotesCountByUserId
 	} from '../../apis/notes_service.js';
+	import {
+		provinceToAbbr
+	} from '@/utils/addressUtils.js'
 	export default {
 		data() {
 			return {
@@ -396,9 +407,6 @@
 					pageSize: 10,
 					total: 0,
 				}],
-				status1: 'loadmore',
-				status2: 'loadmore',
-				status3: 'loadmore',
 				loadingText: '努力加载中',
 				loadmoreText: '轻轻上拉',
 				nomoreText: '实在没有了',
@@ -656,9 +664,9 @@
 				return (screenWidth * Number.parseInt(rpx)) / 750
 			},
 			changetabs(e) {
-				this.$refs.loadingMine.reset()
 				let index = e.index
 				if (this.actTab == index) {
+					this.$refs.loadingMine.reset()
 					this.notesList[index].status = 'loadmore';
 					this.notesList[index].page = 1;
 					this.notesList[index].notesList = [];
@@ -680,6 +688,7 @@
 				}
 				this.actTab = index
 				if (this.notesList[index].page == 1) {
+					this.$refs.loadingMine.reset()
 					if (index == 0) {
 						if (this.noteType == 2) {
 							this.getMoreDraftNotes()
@@ -819,13 +828,22 @@
 				let s = this.userInfo.area.split(' ')
 				if (s.length === 2) {
 					s.forEach((item, index) => {
-						this.area += item.substring(0, item.length - 1)
+						if (index == 0) {
+							this.area += provinceToAbbr(item)
+
+						} else {
+							this.area += item.substring(0, item.length - 1)
+						}
 					})
 				} else if (s.length === 3) {
 					// 只显示省市
 					s.forEach((item, index) => {
 						if (index != 2) {
-							this.area += item.substring(0, item.length - 1)
+							if (index == 0) {
+								this.area += provinceToAbbr(item)
+							} else {
+								this.area += item.substring(0, item.length - 1)
+							}
 						}
 					})
 				}

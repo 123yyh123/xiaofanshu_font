@@ -81,7 +81,7 @@
 				this.searchValue = ''
 				// 再次去除空格，以免搜索历史记录中出现空白
 				keyword = keyword.replace(/[\n\r\s]+/g, '');
-				if(keyword.length>12){
+				if(keyword.length>20){
 					uni.showToast({
 						title: '输入内容过长',
 						icon: 'none'
@@ -91,9 +91,17 @@
 				this.$sqliteUtil.SqlExecute(
 					`update search_history set updateTime=${new Date().getTime()} where content='${keyword}'`
 				).then(res => {
-					uni.navigateTo({
-						url: '/pages/searchPage/searchDetailPage?keyword=' + keyword
-					});
+					// 获取页面栈，判断是否已经存在搜索详情页面，如果存在则返回，否则跳转
+					let pages = getCurrentPages();
+					let page = pages[pages.length-2];
+					if (page.route === 'pages/searchPage/searchDetailPage') {
+						uni.$emit('updateSearch', keyword);
+						uni.navigateBack();
+					}else{
+						uni.navigateTo({
+							url: '/pages/searchPage/searchDetailPage?keyword=' + keyword
+						});
+					}
 				});
 			},
 			focus() {
@@ -136,7 +144,6 @@
 		},
 		onShow() {
 			this.$sqliteUtil.SqlSelect(`select * from search_history order by updateTime desc`).then(res => {
-				console.log(res);
 				this.searchHistory = res;
 			});
 		}

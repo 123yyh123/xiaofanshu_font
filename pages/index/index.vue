@@ -26,99 +26,65 @@
 					:refresher-enabled="enablerefresh" @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
 					:refresher-threshold="100">
 					<view class="component">
-						<view style="width: 100%;display: flex;flex-wrap: wrap;">
-							<view class="water-left">
-								<block v-for="(item,index) in notesList[0].leftList" :key="index">
-									<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
-										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
-											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
-											<template v-slot:loading>
-												<view style="height: 200rpx;text-align: center;padding: 20rpx;">
-													<u-loading-icon color="#e83929"></u-loading-icon>
-													<view style="font-size: 30rpx;">loading......</view>
-												</view>
-											</template>
-										</u--image>
-										<view class="look-views" v-if="item.views!=null">
-											<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
-											<view style="margin-left: 5rpx;">{{item.views}}</view>
-										</view>
-										<view v-if="item.notesType==1" class="video-play">
-											<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
-										</view>
-									</view>
-									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}
-									</view>
-									<view style="display: flex;position: relative;padding: 20rpx;">
-										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
-											:src="item.avatarUrl">
-										</image>
-										<view class="note-username">
-											{{item.nickname}}
-										</view>
-										<view style="display: flex;position: absolute;right: 10rpx;">
-											<u-transition :show="!item.isLike" mode="fade" duration="2000">
-												<u-icon v-if="!item.isLike" name="/static/praise.png" size="18"
-													@click="praiseNotes(item.id,item.belongUserId,1,index)"></u-icon>
-											</u-transition>
-											<u-transition :show="item.isLike" mode="fade" duration="2000">
-												<u-icon v-if="item.isLike" name="/static/praise_select.png" size="18"
-													@click="praiseNotes(item.id,item.belongUserId,1,index)"></u-icon>
-											</u-transition>
-											<view v-if="item.notesLikeNum>0"
-												style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">
-												{{item.notesLikeNum}}
-											</view>
-										</view>
-									</view>
-								</block>
+						<view v-for="(item,index) in notesList[0].notesList" :key="index">
+							<view style="display: flex;padding: 20rpx 40rpx;align-items: center;">
+								<image :src="item.avatarUrl" style="width: 80rpx;height: 80rpx;border-radius: 50%;"
+									@click="goToUser(item.belongUserId)">
+								</image>
+								<view style="margin-left: 10rpx;">
+									<view style="font-size: 32rpx;color: #2b2b2b;">{{item.nickname}}</view>
+								</view>
+								<view style="margin:0 10rpx;font-size: 26rpx;color: #afafb0;">·</view>
+								<view v-if="item.createTime!=item.updateTime" style="font-size: 26rpx;color: #afafb0;">
+									更新于</view>
+								<view style="font-size: 26rpx;color: #afafb0;">{{item.updateTime}}</view>
+								<u-icon style="margin-left: auto;" name="more-dot-fill" size="25"></u-icon>
 							</view>
-							<view class="water-right">
-								<block v-for="(item,index) in notesList[0].rightList" :key="index">
-									<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
-										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
-											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
-											<template v-slot:loading>
-												<view
-													style="height: 200rpx;text-align: center;padding: 20rpx;margin-bottom: 30rpx;">
-													<u-loading-icon color="#e83929"></u-loading-icon>
-													<view style="font-size: 30rpx;">loading......</view>
-												</view>
-											</template>
-										</u--image>
-										<view class="look-views" v-if="item.views!=null">
-											<u-icon name="eye" color="#ffffff" size="25rpx"></u-icon>
-											<view style="margin-left: 5rpx;">{{item.views}}</view>
+							<view @click="goToDetail(item.id,item.notesType)"
+								style="width: 750rpx;height: auto;background-color: #ffffff;justify-content: center;display: flex;">
+								<u--image :height="item.height+'rpx'" :width="item.width+'rpx'" :src="item.coverPicture"
+									mode="aspectFill" lazyLoad fade :duration="300">
+									<template v-slot:loading>
+										<view style="height: 200rpx;text-align: center;padding: 20rpx;">
+											<u-loading-icon color="#e83929"></u-loading-icon>
+											<view style="font-size: 30rpx;">loading......</view>
 										</view>
-										<view v-if="item.notesType==1" class="video-play">
-											<u-icon name="play-right-fill" color="#ffffff" size="25rpx"></u-icon>
-										</view>
+									</template>
+								</u--image>
+							</view>
+							<view style="padding: 20rpx;display: flex;">
+								<view style="margin-left: auto;margin-right: 20rpx;display: flex;align-items: center;">
+									<u-transition :show="!item.isLike" mode="fade" duration="2000">
+										<u-icon v-if="!item.isLike" name="/static/praise.png" size="28"
+											@click="praiseUserNotes(item.id,item.belongUserId,index)"></u-icon>
+									</u-transition>
+									<u-transition :show="item.isLike" mode="fade" duration="2000">
+										<u-icon v-if="item.isLike" name="/static/praise_select.png" size="28"
+											@click="praiseUserNotes(item.id,item.belongUserId,index)"></u-icon>
+									</u-transition>
+									<view v-if="item.notesLikeNum>0"
+										style="color: #2b2b2b;font-size: 30rpx;margin-left: 10rpx;text-align: center;">
+										{{item.notesLikeNum}}
 									</view>
-									<view class="title" @click="goToDetail(item.id,item.notesType)">{{item.title}}
+									<view style="width: 20rpx;"></view>
+									<u-transition :show="item.isCollect" mode="fade" duration="2000">
+										<u-icon v-if="item.isCollect" name="/static/collect_select.png"
+											@click="collectNotes(item.id,item.belongUserId,index)" size="28"></u-icon>
+									</u-transition>
+									<u-transition :show="!item.isCollect" mode="fade" duration="2000">
+										<u-icon v-if="!item.isCollect" name="/static/collect.png" size="28"
+											@click="collectNotes(item.id,item.belongUserId,index)"></u-icon>
+									</u-transition>
+									<view v-if="item.notesCollectNum>0"
+										style="color: #2b2b2b;font-size: 30rpx;margin-left: 10rpx;text-align: center;">
+										{{item.notesCollectNum}}
 									</view>
-									<view style="display: flex;position: relative;padding: 20rpx;">
-										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
-											:src="item.avatarUrl">
-										</image>
-										<view class="note-username">
-											{{item.nickname}}
-										</view>
-										<view style="display: flex;position: absolute;right: 10rpx;">
-											<u-transition :show="!item.isLike" mode="fade" duration="2000">
-												<u-icon v-if="!item.isLike" name="/static/praise.png" size="18"
-													@click="praiseNotes(item.id,item.belongUserId,2,index)"></u-icon>
-											</u-transition>
-											<u-transition :show="item.isLike" mode="fade" duration="2000">
-												<u-icon v-if="item.isLike" name="/static/praise_select.png" size="18"
-													@click="praiseNotes(item.id,item.belongUserId,2,index)"></u-icon>
-											</u-transition>
-											<view v-if="item.notesLikeNum>0"
-												style="color: gray;font-size: 15px;line-height: 18px;margin-left: 3rpx;">
-												{{item.notesLikeNum}}
-											</view>
-										</view>
-									</view>
-								</block>
+								</view>
+							</view>
+							<view @click="goToDetail(item.id,item.notesType)">
+								<rich-text :nodes="item.content"
+									style="padding: 0 40rpx;color: #595857;font-size: 35rpx;-webkit-line-clamp: 1;"
+									class="title"></rich-text>
 							</view>
 						</view>
 						<u-loadmore margin-top="20" line :status="notesList[0].status" :loading-text="loadingText"
@@ -174,7 +140,7 @@
 									</view>
 									<view style="display: flex;position: relative;padding: 20rpx;">
 										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
-											:src="item.avatarUrl">
+											@click="goToUser(item.belongUserId)" :src="item.avatarUrl">
 										</image>
 										<view class="note-username">
 											{{item.nickname}}
@@ -221,7 +187,7 @@
 									</view>
 									<view style="display: flex;position: relative;padding: 20rpx;">
 										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
-											:src="item.avatarUrl">
+											@click="goToUser(item.belongUserId)" :src="item.avatarUrl">
 										</image>
 										<view class="note-username">
 											{{item.nickname}}
@@ -279,7 +245,7 @@
 									</view>
 									<view style="display: flex;position: relative;padding: 20rpx;">
 										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
-											:src="item.avatarUrl">
+											@click="goToUser(item.belongUserId)" :src="item.avatarUrl">
 										</image>
 										<view class="note-username">
 											{{item.nickname}}
@@ -326,7 +292,7 @@
 									</view>
 									<view style="display: flex;position: relative;padding: 20rpx;">
 										<image style="height: 20px;width: 20px;border-radius: 50%;" mode="aspectFill"
-											:src="item.avatarUrl">
+											@click="goToUser(item.belongUserId)" :src="item.avatarUrl">
 										</image>
 										<view class="note-username">
 											{{item.nickname}}
@@ -361,13 +327,16 @@
 <script>
 	import {
 		getLastNotesByPage,
-		praiseOrCancelNotes
+		praiseOrCancelNotes,
+		getAttentionUserNotes,
+		collectOrCancelNotes
 	} from '@/apis/notes_service.js'
 	import {
 		searchNotesNearby
 	} from '@/apis/search_service.js'
 	import {
-		pxToRpx
+		pxToRpx,
+		weChatTimeFormat
 	} from '@/utils/util.js'
 	export default {
 		data() {
@@ -401,6 +370,7 @@
 				}],
 				typeTabIndex: 0,
 				notesList: [{
+					notesList: [],
 					leftList: [],
 					rightList: [],
 					leftHeight: 0,
@@ -409,6 +379,7 @@
 					page: 1,
 					pageSize: 10,
 				}, {
+					notesList: [],
 					leftList: [],
 					rightList: [],
 					leftHeight: 0,
@@ -417,6 +388,7 @@
 					page: 1,
 					pageSize: 10,
 				}, {
+					notesList: [],
 					leftList: [],
 					rightList: [],
 					leftHeight: 0,
@@ -438,6 +410,11 @@
 			goToSearch() {
 				uni.navigateTo({
 					url: '/pages/searchPage/searchPage'
+				})
+			},
+			goToUser(id) {
+				uni.navigateTo({
+					url: '/pages/mine/otherMine?userId=' + id
 				})
 			},
 			getImageHeight(s) {
@@ -493,6 +470,48 @@
 					}
 				})
 			},
+			praiseUserNotes(id, targetUserId, index) {
+				let i = this.actTab;
+				praiseOrCancelNotes({
+					notesId: id,
+					userId: uni.getStorageSync('userInfo').id,
+					targetUserId: targetUserId
+				}).then(res => {
+					console.log(res)
+					if (res.code == 20020) {
+						if (this.notesList[i].notesList[index].isLike) {
+							this.notesList[i].notesList[index].notesLikeNum = this.notesList[i].notesList[index]
+								.notesLikeNum - 1
+							this.notesList[i].notesList[index].isLike = false
+						} else {
+							this.notesList[i].notesList[index].notesLikeNum = this.notesList[i].notesList[index]
+								.notesLikeNum + 1
+							this.notesList[i].notesList[index].isLike = true
+						}
+					}
+				})
+			},
+			collectNotes(id, targetUserId, index) {
+				let i = this.actTab;
+				collectOrCancelNotes({
+					notesId: id,
+					userId: uni.getStorageSync('userInfo').id,
+					targetUserId: targetUserId
+				}).then(res => {
+					console.log(res)
+					if (res.code == 20020) {
+						if (this.notesList[i].notesList[index].isCollect) {
+							this.notesList[i].notesList[index].notesCollectNum = this.notesList[i].notesList[index]
+								.notesCollectNum - 1
+							this.notesList[i].notesList[index].isCollect = false
+						} else {
+							this.notesList[i].notesList[index].notesCollectNum = this.notesList[i].notesList[index]
+								.notesCollectNum + 1
+							this.notesList[i].notesList[index].isCollect = true
+						}
+					}
+				})
+			},
 			goToDetail(id, type) {
 				console.log(type)
 				if (type == 0) {
@@ -519,11 +538,71 @@
 				}
 			},
 			getMoreNotes(index) {
+				console.log(index)
 				if (this.notesList[index].status == 'nomore' || this.notesList[index].status == 'loading') {
 					return;
 				}
 				this.notesList[index].status = 'loading';
-				if (index == 1 || index == 0) {
+				if (index == 0) {
+					console.log('关注')
+					getAttentionUserNotes({
+						page: this.notesList[index].page,
+						pageSize: this.notesList[index].pageSize,
+					}).then(res => {
+						if (res.code == 20010) {
+							console.log(res)
+							this.notesList[index].page += 1;
+							res.data.list.forEach(item => {
+								item.createTime = weChatTimeFormat(item.createTime)
+								item.updateTime = weChatTimeFormat(item.updateTime)
+								item.content = '<p>' + item.title + '   ' + item.content.substring(3)
+								uni.getImageInfo({
+									src: item.coverPicture,
+									success: (image) => {
+										if (image.width >= image.height) {
+											item.width = 750
+											item.height = 750 * image.height / image.width
+										} else {
+											if (image.height > 800) {
+												item.height = 800
+												item.width = 800 * image.width / image.height
+												if (item.width > 750) {
+													item.width = 750
+													item.height = 750 * image.height / image
+														.width
+												}
+											} else {
+												if (image.width > 750) {
+													item.width = 750
+													item.height = 750 * image.height / image
+														.width
+												} else {
+													item.width = image.width
+													item.height = image.height
+												}
+											}
+										}
+									},
+									fail: (err) => {
+										console.log(err)
+									}
+								})
+							})
+							if (res.data.list.length < this.notesList[index]
+								.pageSize) {
+								this.notesList[index].status = 'nomore';
+							} else {
+								this.notesList[index].status = 'loadmore';
+							}
+							setTimeout(() => {
+								this.notesList[index].notesList = this.notesList[index].notesList.concat(
+									res.data.list)
+							}, 800)
+						} else {
+							this.notesList[index].status = 'nomore';
+						}
+					})
+				} else if (index == 1) {
 					getLastNotesByPage({
 						page: this.notesList[index].page,
 						pageSize: this.notesList[index].pageSize,
@@ -599,7 +678,65 @@
 					return;
 				}
 				this.notesList[index].status = 'loading';
-				if (index == 1 || index == 0) {
+				if (index == 0) {
+					getAttentionUserNotes({
+						page: 1,
+						pageSize: this.notesList[index].pageSize,
+					}).then(res => {
+						if (res.code == 20010) {
+							console.log(res)
+							res.data.list.forEach(item => {
+								item.createTime = weChatTimeFormat(item.createTime)
+								item.updateTime = weChatTimeFormat(item.updateTime)
+								item.content = '<p>' + item.title + '   ' + item.content.substring(3)
+								uni.getImageInfo({
+									src: item.coverPicture,
+									success: (image) => {
+										if (image.width >= image.height) {
+											item.width = 750
+											item.height = 750 * image.height / image.width
+										} else {
+											if (image.height > 800) {
+												item.height = 800
+												item.width = 800 * image.width / image.height
+												if (item.width > 750) {
+													item.width = 750
+													item.height = 750 * image.height / image
+														.width
+												}
+											} else {
+												if (image.width > 750) {
+													item.width = 750
+													item.height = 750 * image.height / image
+														.width
+												} else {
+													item.width = image.width
+													item.height = image.height
+												}
+											}
+										}
+									},
+									fail: (err) => {
+										console.log(err)
+									}
+								})
+							})
+							setTimeout(() => {
+								console.log(res.data)
+								this.notesList[index].notesList = res.data.list;
+								this.notesList[index].page = 2;
+							}, 800)
+							if (res.data.list.length < this.notesList[index]
+								.pageSize) {
+								this.notesList[index].status = 'nomore';
+							} else {
+								this.notesList[index].status = 'loadmore';
+							}
+						} else {
+							this.notesList[index].status = 'nomore';
+						}
+					})
+				} else if (index == 1) {
 					getLastNotesByPage({
 						page: 1,
 						pageSize: this.notesList[index].pageSize,

@@ -2,9 +2,10 @@
 	<view>
 		<view
 			style="display: flex;justify-content: space-around;font-size: 30rpx;margin-top: 30rpx;padding: 10rpx 20rpx;">
-			<view style="text-align: center;">
+			<view style="text-align: center;position: relative;" @click="goToPraiseAndCollect">
 				<view>
 					<image style="width: 85rpx;" mode="widthFix" src="../../static/image/collect.png"></image>
+					<u-badge absolute :offset="[0,0]" max="99" :value="praiseAndCollectNum"></u-badge>
 				</view>
 				<text>赞和收藏</text>
 			</view>
@@ -76,10 +77,20 @@
 				}],
 				list: [],
 				show: false,
+				praiseAndCollectNum: 0,
 				attentionUnreadNum: 0,
 			}
 		},
 		methods: {
+			goToPraiseAndCollect() {
+				this.$sqliteUtil.SqlExecute(`UPDATE system_message SET unread_num=0 WHERE id=1`).then(res => {
+					this.refreshPraiseAndCollectNum()
+					this.$ws.setCornerMark()
+					uni.navigateTo({
+						url: `/pages/praiseAndCollect/praiseAndCollect`
+					})
+				})
+			},
 			goToAttentionMessageList() {
 				this.$sqliteUtil.SqlExecute(`UPDATE system_message SET unread_num=0 WHERE id=2`).then(res => {
 					this.refreshAttentionList()
@@ -132,6 +143,11 @@
 					this.attentionUnreadNum = res[0].unread_num
 				})
 			},
+			refreshPraiseAndCollectNum() {
+				this.$sqliteUtil.SqlSelect(`SELECT unread_num FROM system_message WHERE id=1`).then(res => {
+					this.praiseAndCollectNum = res[0].unread_num
+				})
+			},
 			goToChat(item) {
 				console.log(item)
 				// 清除未读消息
@@ -155,10 +171,14 @@
 			uni.$on('updateAttentionList', () => {
 				this.refreshAttentionList()
 			})
+			uni.$on('updatePraiseAndCollectionList', () => {
+				this.refreshPraiseAndCollectNum()
+			})
 		},
 		onShow() {
 			this.refreshList()
 			this.refreshAttentionList()
+			this.refreshPraiseAndCollectNum()
 		},
 		onPullDownRefresh() {
 			this.refreshList()

@@ -17,7 +17,7 @@ import {
 //是否已经连接上ws
 let isOpenSocket = false
 //心跳间隔，单位毫秒
-let heartBeatDelay = 8000
+let heartBeatDelay = 3000
 let heartBeatInterval = null
 
 //最大重连次数
@@ -192,6 +192,24 @@ function init() {
 				})
 			}, 1000)
 		}
+		if (message.messageType == 8) {
+			console.log('新增点赞或收藏')
+			console.log(message)
+			let content = JSON.parse(message.content).text
+			let notesId = JSON.parse(message.content).notesId
+			let notesType = JSON.parse(message.content).notesType
+			let coverPicture = JSON.parse(message.content).notesCoverPicture
+			let sql =
+				`INSERT INTO praise_and_collection (user_id, avatar_url, user_name, content, notes_id, notes_type,notes_cover_picture, time) VALUES ('${message.from}', '${message.fromAvatar}', '${message.fromName}', '${content}', '${notesId}', '${notesType}', '${coverPicture}', ${message.time})`
+			sqliteUtil.SqlExecute(sql).then(res => {
+				console.log('新增点赞或收藏成功')
+				let sql2 = `UPDATE system_message SET unread_num=unread_num+1 WHERE id=1`
+				sqliteUtil.SqlExecute(sql2).then(res => {
+					uni.$emit('updatePraiseAndCollectionList')
+					setCornerMark()
+				})
+			})
+		}
 	})
 	socketTask.onClose(() => {
 		isOpenSocket = false;
@@ -314,9 +332,13 @@ function setCornerMark() {
 	let s = `select sum(unread_num) as total from message_list`
 	sqliteUtil.SqlSelect(s).then(res => {
 		let total = res[0].total
-		let sql = `SELECT unread_num FROM system_message WHERE id=2`
+		let sql = `SELECT unread_num FROM system_message`
 		sqliteUtil.SqlSelect(sql).then(res => {
-			total += res[0].unread_num
+			// total += res[0].unread_num
+			console.log(res)
+			res.forEach(item => {
+				total += item.unread_num
+			})
 			if (total > 0) {
 				uni.setTabBarBadge({
 					index: 2,

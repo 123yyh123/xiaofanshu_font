@@ -12,7 +12,7 @@
 			</view>
 		</view>
 		<view
-			style="display: flex;height: 35px;width: 100%;align-items: flex-start;border-bottom-style: solid;border-bottom-color: #dcdddd;border-bottom-width: 1rpx;">
+			style="display: flex;height: 35px;width: 100%;align-items: flex-start;border-bottom-style: solid;border-bottom-color: #f3f3f2;border-bottom-width: 1rpx;">
 			<view style="display: flex;align-items: center;width: 33%;justify-content: center;" @click="clickAll"
 				:style="{color: current === 0 ? '#16160e' : '#9fa0a0',fontWeight: current === 0 ? '600' : 'normal'}">
 				<view>{{radiovalue1}}</view>
@@ -134,7 +134,26 @@
 				:loadmore-text="loadmoreText" :nomore-text="nomoreText" />
 		</view>
 		<view v-if="current==1">
-			<view>用户</view>
+			<view style="padding: 0 30rpx;">
+				<block v-for="(item,index) in userList.list" :key="index">
+					<view
+						style="display: flex;padding: 20rpx 0;align-items: center;border-bottom-style: solid;border-width: 1rpx;border-color: #f3f3f2;height: 140rpx;">
+						<image :src="item.avatarUrl" style="height: 80rpx;width: 80rpx;border-radius: 50%;" @click="goToUserMine(item.id)"
+							mode="aspectFill"></image>
+						<view @click="goToUserMine(item.id)"
+							style="display: flex;flex-direction: column;justify-content: space-between;margin-left: 20rpx;flex: 1;">
+							<view style="font-size: 30rpx;color: #2b2b2b;">{{item.nickname}}</view>
+							<view style="height: 15rpx;"></view>
+							<view style="font-size: 25rpx;color: #afafb0;">小番薯号：{{item.uid}}</view>
+						</view>
+						<u-tag style="margin-left: auto;" text="去私信" plain shape="circle" borderColor="#afafb0"
+							color="#2b2b2b" @click="goToChat(item)"></u-tag>
+					</view>
+				</block>
+				<view style="margin-top: 70rpx;">
+					<u-loadmore :status="userList.status" loadingIcon="spinner" line></u-loadmore>
+				</view>
+			</view>
 		</view>
 		<view @touchmove.stop.prevent="moveHandle">
 			<u-popup :show="show" mode="top" @close="show=false" :customStyle="{top: statusBarHeight + 95 + 'px'}"
@@ -184,7 +203,8 @@
 		pxToRpx
 	} from '@/utils/util.js'
 	import {
-		searchNotesByKeyword
+		searchNotesByKeyword,
+		searchUserByKeyword
 	} from '@/apis/search_service.js'
 	export default {
 		data() {
@@ -215,6 +235,12 @@
 					page: 1,
 					pageSize: 10,
 				},
+				userList: {
+					list: [],
+					page: 1,
+					pageSize: 10,
+					status: 'loadmore'
+				},
 				loadingText: '加载中...',
 				loadmoreText: '加载更多',
 				nomoreText: '没有更多了',
@@ -222,6 +248,16 @@
 		},
 		methods: {
 			moveHandle(e) {},
+			goToChat(item) {
+				uni.navigateTo({
+					url: `/pages/chat/chat?userId=${item.id}&userName=${item.nickname}&avatarUrl=${item.avatarUrl}`
+				})
+			},
+			goToUserMine(id) {
+				uni.navigateTo({
+					url: `/pages/mine/otherMine?userId=${id}`
+				})
+			},
 			getImageHeight(s) {
 				return new Promise((resolve, reject) => {
 					uni.getImageInfo({
@@ -274,6 +310,34 @@
 					}
 				})
 			},
+			getMoreUser() {
+				if (this.userList.status == 'nomore' || this.userList.status == 'loading') {
+					return;
+				}
+				this.userList.status = 'loading';
+				searchUserByKeyword({
+					keyword: this.searchValue,
+					page: this.userList.page,
+					pageSize: this.userList.pageSize
+				}).then(res => {
+					if (res.code == 20010) {
+						console.log(res.data)
+						this.userList.page += 1;
+						this.userList.list = this.userList.list.concat(res.data)
+						if (res.data.length < this.userList.pageSize) {
+							this.userList.status = 'nomore';
+						} else {
+							this.userList.status = 'loadmore';
+						}
+					} else {
+						this.userList.status = 'nomore';
+						uni.showToast({
+							title: res.msg == '' ? '获取用户失败' : res.msg,
+							icon: 'none'
+						})
+					}
+				})
+			},
 			goToDetail(id, type) {
 				console.log(type)
 				if (type == 0) {
@@ -323,6 +387,10 @@
 						}
 					} else {
 						this.notesList.status = 'nomore';
+						uni.showToast({
+							title: res.msg == '' ? '获取笔记失败' : res.msg,
+							icon: 'none'
+						})
 					}
 				})
 			},
@@ -373,7 +441,20 @@
 				}
 			},
 			clickUser() {
-				this.current = 1
+				if (this.current != 1 && this.userList.list.length == 0) {
+					this.current = 1
+					this.getMoreUser()
+				} else if (this.current != 1) {
+					this.current = 1
+				} else if (this.current == 1) {
+					this.userList = {
+						list: [],
+						page: 1,
+						pageSize: 10,
+						status: 'loadmore'
+					}
+					this.getMoreUser()
+				}
 			},
 			openScreening() {
 				if (this.show) {
@@ -392,11 +473,10 @@
 				})
 			},
 			goToBack() {
-				uni.navigateBack()
+				uni.navigateBack();
 			}
 		},
 		onLoad(options) {
-			console.log(options.keyword)
 			this.searchValue = options.keyword
 			uni.getSystemInfo({
 				success: (res) => {
@@ -405,20 +485,55 @@
 			});
 			this.getMoreNotes()
 		},
+		onShow() {
+			uni.$once('updateSearch', (keyword) => {
+				console.log(keyword)
+				this.searchValue = keyword
+				if (this.current == 0) {
+					this.notesList = {
+						leftList: [],
+						rightList: [],
+						leftHeight: 0,
+						rightHeight: 0,
+						status: 'loadmore',
+						page: 1,
+						pageSize: 10,
+					}
+					this.getMoreNotes()
+				} else if (this.current == 1) {
+					this.userList = {
+						list: [],
+						page: 1,
+						pageSize: 10,
+						status: 'loadmore'
+					}
+					this.getMoreUser()
+				}
+			})
+
+		},
 		onReachBottom() {
-			this.getMoreNotes()
+			if (this.current == 0) {
+				this.getMoreNotes()
+			} else if (this.current == 1) {
+				this.getMoreUser()
+			}
 		},
 		onPullDownRefresh() {
-			this.notesList = {
-				leftList: [],
-				rightList: [],
-				leftHeight: 0,
-				rightHeight: 0,
-				status: 'loadmore',
-				page: 1,
-				pageSize: 10,
+			if (this.current == 0) {
+				this.notesList = {
+					leftList: [],
+					rightList: [],
+					leftHeight: 0,
+					rightHeight: 0,
+					status: 'loadmore',
+					page: 1,
+					pageSize: 10,
+				}
+				this.getMoreNotes()
+			} else if (this.current == 1) {
+
 			}
-			this.getMoreNotes()
 			setTimeout(() => {
 				uni.stopPullDownRefresh()
 			}, 800);

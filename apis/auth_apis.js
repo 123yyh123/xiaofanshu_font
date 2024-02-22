@@ -42,3 +42,10 @@ export const getTrtcUserSig = (params = {}) => {
 		method: 'POST'
 	})
 }
+
+export const logout=(params={})=>{
+	return $request({
+		url:'/auth/logout?userId='+params.userId,
+		method:'POST'
+	})
+}

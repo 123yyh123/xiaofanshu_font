@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<dLoading :status="true"></dLoading>
+		<dLoading :status="true" ref="loadingMine"></dLoading>
 		<view class="info" :style="{ height: screenHeight+'px'}">
 			<view class="filter" :style="{backgroundImage: 'url(' + userInfo.homePageBackground + ')'}"></view>
 			<view class="status-bar"
@@ -11,7 +11,8 @@
 					@click="goToBack">
 					<u-icon name="arrow-left" color="#16160e" size="20"></u-icon>
 				</view>
-				<view :style="{height: iconHeight}" style="opacity: 1;display: flex;flex-direction: column;justify-content: center;">
+				<view :style="{height: iconHeight}"
+					style="opacity: 1;display: flex;flex-direction: column;justify-content: center;">
 					<u-transition :show="show" mode="fade-up">
 						<image :style="{height: statusBarHeight*0.8+'px',width:statusBarHeight*0.8+'px'}"
 							:src="userInfo.avatarUrl" style="border-radius: 50%;" mode="aspectFill"></image>
@@ -113,8 +114,8 @@
 					<scroll-view :scroll-y="isScroll" :style="{height:notesHeight}" @scrolltolower="onReach"
 						lower-threshold="20">
 						<view class="component">
-							<water-fall :list="notesList" ref="water1"></water-fall>
-							<u-loadmore margin-top="20" line :status="status1" :loading-text="loadingText"
+							<water-fall :list="notesList[0].notesList" ref="water1"></water-fall>
+							<u-loadmore margin-top="20" line :status="notesList[0].status" :loading-text="loadingText"
 								:loadmore-text="loadmoreText" :nomore-text="nomoreText" />
 						</view>
 					</scroll-view>
@@ -123,18 +124,8 @@
 					<scroll-view :scroll-y="isScroll" :style="{height:notesHeight}" @scrolltolower="onReach"
 						lower-threshold="20">
 						<view class="component">
-							<water-fall :list="notesList" ref="water2"></water-fall>
-							<u-loadmore margin-top="20" line :status="status2" :loading-text="loadingText"
-								:loadmore-text="loadmoreText" :nomore-text="nomoreText" />
-						</view>
-					</scroll-view>
-				</swiper-item>
-				<swiper-item>
-					<scroll-view :scroll-y="isScroll" :style="{height:notesHeight}" @scrolltolower="onReach"
-						lower-threshold="20">
-						<view class="component">
-							<water-fall :list="notesList" ref="water3"></water-fall>
-							<u-loadmore margin-top="20" line :status="status3" :loading-text="loadingText"
+							<water-fall :list="notesList[1].notesList" ref="water2"></water-fall>
+							<u-loadmore margin-top="20" line :status="notesList[1].status" :loading-text="loadingText"
 								:loadmore-text="loadmoreText" :nomore-text="nomoreText" />
 						</view>
 					</scroll-view>
@@ -150,6 +141,13 @@
 		getViewUserInfo,
 		updateAttention
 	} from '@/apis/user_service.js'
+	import {
+		provinceToAbbr
+	} from '@/utils/addressUtils.js'
+	import {
+		getNotesByView,
+		getNotesCountByUserId
+	} from '../../apis/notes_service.js';
 	export default {
 		data() {
 			return {
@@ -174,91 +172,27 @@
 				show: false,
 				showSend: false,
 				moreShow: false,
-				status1: 'nomore',
-				status2: 'nomore',
-				status3: 'nomore',
 				loadingText: '努力加载中',
 				loadmoreText: '轻轻上拉',
 				nomoreText: '实在没有了',
 				notesList: [{
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
-						title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
-						nickname: '你好',
-						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
-						like: 8,
-						views: 10,
-					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%20%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B%20%E9%9B%A8%E5%A4%A9.png',
-						title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
-						nickname: 'dscnj',
-						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
-						like: 8,
-						views: 110,
-					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E3%80%8A%E5%8E%9F%E7%A5%9E%E3%80%8B%E6%98%8E%E9%9C%84%E7%81%AF%E6%B5%B7%20%E7%94%98%E9%9B%A8%20%E5%88%BB%E6%99%B4%20%E6%B8%B8%E6%88%8F%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
-						title: 'dncjsn生产基地那就计算机吃',
-						nickname: 'd打输出多少打输',
-						avatarUrl: '/static/image/00001.png',
-						like: 8,
-						views: 1033,
-					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%20%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B%20%E9%9B%A8%E5%A4%A9.png',
-						title: '时代潮流的基底节打输出',
-						nickname: '你成绩',
-						avatarUrl: '/static/image/00001.png',
-						like: 8,
-						views: 103,
-					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E%E5%92%8C%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E5%8A%A8%E6%BC%AB%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
-						title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
-						nickname: '你好',
-						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
-						like: 8,
-						views: 10,
-					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E5%8E%9F%E7%A5%9E%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E%E5%92%8C%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E5%8A%A8%E6%BC%AB%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
-						title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
-						nickname: 'dscnj',
-						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
-						like: 8,
-						views: 110,
-					},
-					{
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
-						title: '速度吃豆腐谁都能接受就是城市化IS几次好鸡翅尖',
-						nickname: 'dscnj',
-						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
-						like: 8,
-						views: 110,
-					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E8%83%A1%E6%A1%83%20%E5%8E%9F%E7%A5%9E%20%E5%8F%AF%E7%88%B1%E5%B0%8F%E9%AC%BC%20%E9%AB%98%E6%B8%85%20%E7%94%B5%E8%84%91%20%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
-						title: '时代潮流的基底节打输出',
-						nickname: '你成绩',
-						avatarUrl: '/static/image/00001.png',
-						like: 8,
-						views: 103,
-					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/Snipaste_2023-12-02_22-12-23.png',
-						title: 'dncjsn生产基地那就计算机吃',
-						nickname: 'd打输出多少打输',
-						avatarUrl: '/static/image/00001.png',
-						like: 8,
-						views: 1033,
-					}, {
-						img: 'https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E3%80%8A%E5%8E%9F%E7%A5%9E%E3%80%8B%E6%98%8E%E9%9C%84%E7%81%AF%E6%B5%B7%20%E7%94%98%E9%9B%A8%20%E5%88%BB%E6%99%B4%20%E6%B8%B8%E6%88%8F%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%A3%81%E7%BA%B8.jpg',
-						title: 'djcn是基础会计IS第几次都是才看见IC降低市场价就是打吃谁的错',
-						nickname: '你好',
-						avatarUrl: '/static/image/b_3d585f28151e71504d46b9ae5e9ae340.png',
-						like: 8,
-						views: 10,
-					}
-				],
+					notesList: [],
+					status: 'loadmore',
+					page: 1,
+					pageSize: 10,
+				}, {
+					notesList: [],
+					status: 'loadmore',
+					page: 1,
+					pageSize: 10,
+				}],
 			};
 		},
 		methods: {
 			goToChat() {
 				uni.navigateTo({
-					url: '/pages/chat/chat?userId=' + this.userInfo.id+'&userName='+this.userInfo.nickname+'&avatarUrl='+this.userInfo.avatarUrl
+					url: '/pages/chat/chat?userId=' + this.userInfo.id + '&userName=' + this.userInfo.nickname +
+						'&avatarUrl=' + this.userInfo.avatarUrl
 				})
 			},
 			viewAvatarUrl() {
@@ -348,11 +282,41 @@
 				return (screenWidth * Number.parseInt(rpx)) / 750
 			},
 			changetabs(e) {
-				this.actTab = e.index
+				let index = e.index
+				if (this.actTab == index) {
+					this.$refs.loadingMine.reset()
+					this.notesList[index].status = 'loadmore';
+					this.notesList[index].page = 1;
+					this.notesList[index].notesList = [];
+					if (index == 0) {
+						this.$refs.water1.clear()
+						this.getMoreNotes(0)
+					} else if (index == 1) {
+						this.$refs.water2.clear()
+						this.getMoreNotes(1)
+					}
+					return
+				}
+				this.actTab = index
+				if (this.notesList[index].page == 1) {
+					this.$refs.loadingMine.reset()
+					if (index == 0) {
+						this.getMoreNotes(0)
+					} else if (index == 1) {
+						this.getMoreNotes(1)
+					}
+				}
 			},
 			swipeIndex(e) {
 				this.actTab = e.detail.current
-				// this.setSwiperHeight()
+				let index = e.detail.current
+				if (this.notesList[index].page == 1) {
+					if (index == 0) {
+						this.getMoreNotes(0)
+					} else if (index == 1) {
+						this.getMoreNotes(1)
+					}
+				}
 			},
 			setSwiperHeight() {
 				setTimeout(() => {
@@ -364,19 +328,45 @@
 				}, 1000)
 			},
 			onReach() {
-				if (this.actTab === 0) {
-					this.status1 = 'loading'
-					this.$refs.water1.addList(this.notesList)
-				}
-				if (this.actTab === 1) {
-					this.status2 = 'loading'
-					this.$refs.water2.addList(this.notesList)
-				}
-				if (this.actTab === 2) {
-					this.status3 = 'loading'
-					this.$refs.water3.addList(this.notesList)
-				}
+				this.getMoreNotes(this.actTab)
 			},
+			getMoreNotes(index) {
+				if (this.notesList[index].status == 'nomore' || this.notesList[index].status == 'loading') {
+					return
+				}
+				this.notesList[index].status = 'loading'
+				getNotesByView({
+					page: this.notesList[index].page,
+					pageSize: this.notesList[index].pageSize,
+					type: index,
+					userId: this.userInfo.id
+				}).then(res => {
+					if (res.code === 20010) {
+						console.log(res)
+						this.notesList[index].notesList = res.data.list
+						this.notesList[index].page++
+						setTimeout(() => {
+							if (index == 0) {
+								this.$refs.water1.addList(this.notesList[0].notesList);
+							} else if (index == 1) {
+								this.$refs.water2.addList(this.notesList[1].notesList);
+							} else if (index == 2) {
+								this.$refs.water3.addList(this.notesList[2].notesList);
+							}
+							if (this.notesList[index].notesList.length < this.notesList[index]
+								.pageSize) {
+								this.notesList[index].status = 'nomore';
+							} else {
+								this.notesList[index].status = 'loadmore';
+							}
+						}, 700);
+					} else {
+						this.notesList[index].status = 'nomore';
+					}
+				}).catch(err => {
+					console.log(err)
+				})
+			}
 		},
 		onLoad(options) {
 			console.log(options.userId)
@@ -395,25 +385,34 @@
 			}).then(res => {
 				if (res.code == 20010) {
 					this.userInfo = res.data
-				}
-				console.log(this.userInfo)
-				this.area = ''
-				if (this.userInfo.area != null && this.userInfo.area != '') {
-					let s = this.userInfo.area.split(' ')
-					if (s.length === 2) {
-						s.forEach((item, index) => {
-							this.area += item.substring(0, item.length - 1)
-						})
-					} else if (s.length === 3) {
-						// 只显示省市
-						s.forEach((item, index) => {
-							if (index != 2) {
-								this.area += item.substring(0, item.length - 1)
-							}
-						})
+					this.getMoreNotes(0)
+					console.log(this.userInfo)
+					this.area = ''
+					if (this.userInfo.area != null && this.userInfo.area != '') {
+						let s = this.userInfo.area.split(' ')
+						if (s.length === 2) {
+							s.forEach((item, index) => {
+								if (index == 0) {
+									this.area += provinceToAbbr(item)
+								} else {
+									this.area += item.substring(0, item.length - 1)
+								}
+							})
+						} else if (s.length === 3) {
+							// 只显示省市
+							s.forEach((item, index) => {
+								if (index != 2) {
+									if (index == 0) {
+										this.area += provinceToAbbr(item)
+									} else {
+										this.area += item.substring(0, item.length - 1)
+									}
+								}
+							})
+						}
 					}
+					console.log(this.area)
 				}
-				console.log(this.area)
 			})
 		},
 		onPullDownRefresh() {

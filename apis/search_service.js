@@ -14,3 +14,10 @@ export const searchNotesByKeyword=(params={})=>{
 		method:'GET'
 	})
 }
+
+export const searchUserByKeyword=(params={})=>{
+	return $request({
+		url:'/search/user/getUser?page='+params.page+'&pageSize='+params.pageSize+'&keyword='+params.keyword,
+		method:'GET'
+	})
+}

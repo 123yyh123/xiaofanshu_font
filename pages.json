@@ -237,6 +237,14 @@
 				"navigationBarTitleText" : "设置新密码",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/praiseAndCollect/praiseAndCollect",
+			"style" : 
+			{
+				"navigationBarTitleText" : "收到的赞和收藏",
+				"enablePullDownRefresh" : true
+			}
 		}
 	],
 	"tabBar": {

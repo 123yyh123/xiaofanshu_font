@@ -2,7 +2,9 @@ import {
 	emojiList
 } from '@/utils/emojiUtil.js'
 
-import {saveFile} from  '@/utils/fileUtil.js'
+import {
+	saveFile
+} from '@/utils/fileUtil.js'
 
 const sqliteUtil = {
 	// 创建一些必要的数据表
@@ -58,6 +60,18 @@ const sqliteUtil = {
 				user_name TEXT,
 				content TEXT
 			);`)
+			this.SqlExecute(`CREATE TABLE IF NOT EXISTS praise_and_collection (
+				"id"
+				INTEGER PRIMARY KEY AUTOINCREMENT,
+				user_id TEXT,
+				avatar_url TEXT,
+				user_name TEXT,
+				content TEXT,
+				notes_id TEXT,
+				notes_type TEXT,
+				notes_cover_picture TEXT,
+				time INTEGER
+			);`)
 			// console.log(res)
 			this.SqlExecute(`CREATE TABLE IF NOT EXISTS emoji_list (
 				"id"
@@ -84,7 +98,7 @@ const sqliteUtil = {
 		let sql1 = `SELECT * FROM emoji_list WHERE name='${item.name}'`
 		this.SqlSelect(sql1).then(res => {
 			if (res.length == 0) {
-				
+
 				saveFile(item.url).then(res => {
 					let sql2 =
 						`INSERT INTO emoji_list (url,name) VALUES ("${res}","${item.name}")`

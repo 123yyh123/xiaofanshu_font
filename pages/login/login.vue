@@ -104,6 +104,7 @@
 						uni.setStorageSync('userInfo', res.data);
 						this.$sqliteUtil.init()
 						this.$callUtils.login(res.data.id)
+						this.$ws.completeClose()
 						this.$ws.init();
 						setTimeout(function() {
 							this.isRotate = false;
@@ -149,6 +150,7 @@
 								uni.setStorageSync('token', res.data.token);
 								uni.setStorageSync('userInfo', res.data);
 								this.$sqliteUtil.init()
+								this.$ws.completeClose()
 								this.$ws.init();
 								this.$callUtils.login(res.data.id)
 								setTimeout(function() {
