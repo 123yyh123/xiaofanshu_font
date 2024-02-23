@@ -42,7 +42,7 @@
 							</view>
 							<view @click="goToDetail(item.id,item.notesType)"
 								style="width: 750rpx;height: auto;background-color: #ffffff;justify-content: center;display: flex;">
-								<u--image :height="item.height+'rpx'" :width="item.width+'rpx'" :src="item.coverPicture"
+								<u--image :height="item.height+'rpx'" :width="item.width+'rpx'" :src="item.coverPicture" :fade="false" lazyLoad
 									mode="aspectFill" lazyLoad fade :duration="300">
 									<template v-slot:loading>
 										<view style="height: 200rpx;text-align: center;padding: 20rpx;">
@@ -118,8 +118,7 @@
 							<view class="water-left">
 								<block v-for="(item,index) in notesList[1].leftList" :key="index">
 									<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
-										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
-											lazyLoad style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+										<u--image :src="item.coverPicture" :fade="false" lazyLoad width="100%" height="auto" mode="widthFix" style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 											<template v-slot:loading>
 												<view style="height: 200rpx;text-align: center;padding: 20rpx;">
 													<u-loading-icon color="#e83929"></u-loading-icon>
@@ -165,7 +164,7 @@
 							<view class="water-right">
 								<block v-for="(item,index) in notesList[1].rightList" :key="index">
 									<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
-										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix" :fade="false"
 											lazyLoad style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 											<template v-slot:loading>
 												<view
@@ -224,7 +223,7 @@
 							<view class="water-left">
 								<block v-for="(item,index) in notesList[2].leftList" :key="index">
 									<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
-										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix" :fade="false" lazyLoad
 											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 											<template v-slot:loading>
 												<view style="height: 200rpx;text-align: center;padding: 20rpx;">
@@ -270,7 +269,7 @@
 							<view class="water-right">
 								<block v-for="(item,index) in notesList[2].rightList" :key="index">
 									<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
-										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix" :fade="false" lazyLoad
 											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 											<template v-slot:loading>
 												<view
@@ -430,7 +429,11 @@
 							if (height > maxHeight) {
 								height = maxHeight;
 							}
-							resolve(height)
+							let obj = {
+								height: height,
+								path : res.path
+							}
+							resolve(obj)
 						},
 					})
 				})
@@ -559,6 +562,7 @@
 								uni.getImageInfo({
 									src: item.coverPicture,
 									success: (image) => {
+										item.coverPicture = image.path
 										if (image.width >= image.height) {
 											item.width = 750
 											item.height = 750 * image.height / image.width
@@ -611,13 +615,14 @@
 							this.notesList[index].page += 1;
 							res.data.list.forEach(item => {
 								this.getImageHeight(item.coverPicture).then(res => {
+									item.coverPicture = res.path
 									if (this.notesList[index].leftHeight <= this.notesList[index]
 										.rightHeight) {
 										this.notesList[index].leftList.push(item)
-										this.notesList[index].leftHeight += res
+										this.notesList[index].leftHeight += res.height
 									} else {
 										this.notesList[index].rightList.push(item)
-										this.notesList[index].rightHeight += res
+										this.notesList[index].rightHeight += res.height
 									}
 								})
 							})
@@ -652,13 +657,14 @@
 							}
 							res.data.list.forEach(item => {
 								this.getImageHeight(item.coverPicture).then(res => {
+									item.coverPicture = res.path
 									if (this.notesList[index].leftHeight <= this.notesList[index]
 										.rightHeight) {
 										this.notesList[index].leftList.push(item)
-										this.notesList[index].leftHeight += res
+										this.notesList[index].leftHeight += res.height
 									} else {
 										this.notesList[index].rightList.push(item)
-										this.notesList[index].rightHeight += res
+										this.notesList[index].rightHeight += res.height
 									}
 								})
 							})
@@ -692,6 +698,7 @@
 								uni.getImageInfo({
 									src: item.coverPicture,
 									success: (image) => {
+										item.coverPicture = image.path
 										if (image.width >= image.height) {
 											item.width = 750
 											item.height = 750 * image.height / image.width
@@ -749,13 +756,14 @@
 							this.notesList[index].page = 2;
 							res.data.list.forEach(item => {
 								this.getImageHeight(item.coverPicture).then(res => {
+									item.coverPicture = res.path
 									if (this.notesList[index].leftHeight <= this.notesList[index]
 										.rightHeight) {
 										this.notesList[index].leftList.push(item)
-										this.notesList[index].leftHeight += res
+										this.notesList[index].leftHeight += res.height
 									} else {
 										this.notesList[index].rightList.push(item)
-										this.notesList[index].rightHeight += res
+										this.notesList[index].rightHeight += res.height
 									}
 								})
 							})
@@ -787,13 +795,14 @@
 							this.notesList[index].page = 2;
 							res.data.list.forEach(item => {
 								this.getImageHeight(item.coverPicture).then(res => {
+									item.coverPicture = res.path
 									if (this.notesList[index].leftHeight <= this.notesList[index]
 										.rightHeight) {
 										this.notesList[index].leftList.push(item)
-										this.notesList[index].leftHeight += res
+										this.notesList[index].leftHeight += res.height
 									} else {
 										this.notesList[index].rightList.push(item)
-										this.notesList[index].rightHeight += res
+										this.notesList[index].rightHeight += res.height
 									}
 								})
 							})

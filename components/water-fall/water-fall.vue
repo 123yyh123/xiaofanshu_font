@@ -137,6 +137,7 @@
 			init() {
 				this.list.forEach((item) => {
 					this.getImageHeight(item.coverPicture).then(res => {
+						item.coverPicture = res.path
 						if (this.leftHeight <= this.rightHeight) {
 							this.leftList.push(item)
 							this.leftHeight += res
@@ -160,7 +161,11 @@
 							if (height > maxHeight) {
 								height = maxHeight;
 							}
-							resolve(height)
+							let obj = {
+								height: height,
+								path: res.path
+							}
+							resolve(obj)
 						},
 					})
 				})
@@ -197,6 +202,7 @@
 				console.log(e)
 				e.forEach((item) => {
 					this.getImageHeight(item.coverPicture).then(res => {
+						item.coverPicture = res.path
 						if (this.leftHeight <= this.rightHeight) {
 							this.leftList.push(item)
 							this.leftHeight += res

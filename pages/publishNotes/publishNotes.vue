@@ -162,18 +162,33 @@
 								:size="15"></u-icon>
 							<view style="font-size: 25rpx;color: #2b2b2b;margin-left: 5rpx;">表情</view>
 						</view>
-						<view
-							style="padding: 15rpx;background-color: #dcdddd;border-radius: 40rpx;display: flex;margin-left: 20rpx;"
-							@click="save">
-							<u-icon
-								name="https://xiaofanshu.oss-cn-hangzhou.aliyuncs.com/2024/01/common/%E6%96%87%E4%BB%B6.png"
-								:size="14"></u-icon>
-							<view style="font-size: 25rpx;color: #2b2b2b;margin-left: 5rpx;">完成</view>
-						</view>
 					</view>
 				</view>
 			</view>
 		</view>
+		<u-popup :show="showCategory" :round="10" mode="bottom" @close="showCategory=false">
+			<view style="height: 750rpx;">
+				<view style="padding: 30rpx;height: 50rpx;text-align: center;font-size: 35rpx;line-height: 50rpx;">
+					选择分类</view>
+				<view style="padding: 0 30rpx 15rpx 30rpx;font-size: 24rpx;color: #2b2b2b;">tip:建议选择分类，ai分析生成的分类可能不准确</view>
+				<scroll-view style="height: 600rpx;" scroll-y>
+					<view v-for="rowIndex in Math.ceil(categoryList.length / 3)" :key="rowIndex"
+						style="display: flex; padding: 40rpx;">
+						<view v-for="colIndex in 3" :key="colIndex" style="text-align: center;width: 33%;"
+							v-if="(rowIndex - 1) * 3 + colIndex - 1 < categoryList.length">
+							<view @click="chooseCategoryItem(rowIndex,colIndex)"
+								style="padding: 10rpx 20rpx;border-radius: 30rpx;background-color: #afafb0;color: #ffffff;margin: 0 20rpx;" :style="categoryId==categoryList[(rowIndex - 1) * 3 + colIndex - 1].id?'background-color:#FF2442;color:#ffffff':''">
+								{{categoryList[(rowIndex - 1) * 3 + colIndex - 1].categoryName}}
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+		</u-popup>
+		<u-cell v-if="categoryName==''" icon="grid" title="选择分类" @click="chooseCategory" :isLink="true"
+			arrow-direction="right" :border="false" size="large"></u-cell>
+		<u-cell v-else icon="grid" iconStyle="color: #FF2442" titleStyle="color: #FF2442" :title="categoryName"
+			@click="chooseCategory" :isLink="true" arrow-direction="right" :border="false" size="large"></u-cell>
 		<u-cell v-if="address==''" icon="map" title="添加地点" @click="chooseAddress" :isLink="true" arrow-direction="right"
 			:border="false" size="large"></u-cell>
 		<u-cell v-else icon="map" iconStyle="color: #2ca9e1" titleStyle="color: #2ca9e1" :title="address"
@@ -209,7 +224,8 @@
 		emojiList
 	} from '@/utils/emojiUtil.js'
 	import {
-		addNote
+		addNote,
+		getNotesCategoryList
 	} from '../../apis/notes_service'
 	import {
 		baseUrl
@@ -233,6 +249,10 @@
 				title: '',
 				content: '',
 				topicname: '',
+				categoryName: '',
+				categoryId: '',
+				categoryList: [],
+				showCategory: false,
 				showAddTopic: false,
 				showAttenUser: false,
 				attentionUser: {
@@ -254,6 +274,35 @@
 			};
 		},
 		methods: {
+			// 选择分类
+			chooseCategory() {
+				if (this.categoryList.length != 0) {
+					this.showCategory = true
+					return
+				}
+				getNotesCategoryList().then(res => {
+					if (res.code == 20010) {
+						this.categoryList = res.data
+						console.log(this.categoryList)
+						this.showCategory = true
+					} else {
+						uni.showToast({
+							title: '获取分类失败',
+							icon: 'none'
+						});
+					}
+				}).catch(err => {
+					uni.showToast({
+						title: '获取分类失败',
+						icon: 'none'
+					});
+				})
+			},
+			chooseCategoryItem(rowIndex, colIndex) {
+				this.categoryName = this.categoryList[(rowIndex - 1) * 3 + colIndex - 1].categoryName
+				this.categoryId = this.categoryList[(rowIndex - 1) * 3 + colIndex - 1].id
+				this.showCategory = false
+			},
 			publishNotes() {
 				// 检查字段
 				if (this.title == '') {
@@ -299,6 +348,7 @@
 								title: this.title,
 								realContent: res.text,
 								content: res.html,
+								belongCategory: this.categoryId==''?null:this.categoryId,
 								notesType: this.type,
 								belongUserId: uni.getStorageSync('userInfo').id,
 								coverPicture: this.coverPicture,
@@ -326,12 +376,12 @@
 										});
 										uni.switchTab({
 											url: '/pages/index/index'
-										}) 
+										})
 									}, 500)
 								} else {
 									uni.hideLoading()
 									uni.showToast({
-										title: res.msg==''?'发布失败':res.msg,
+										title: res.msg == '' ? '发布失败' : res.msg,
 										icon: 'none'
 									});
 								}
@@ -515,7 +565,7 @@
 					}
 				})
 				// this.edit.insertEmoji(emojiUrl, name)
-				this.edit.insertCustomEmoji(emojiUrl, name,'15px','15px')
+				this.edit.insertCustomEmoji(emojiUrl, name, '15px', '15px')
 				this.showEmoji = false
 			},
 			editReady(edit) {
@@ -619,12 +669,12 @@
 					this.authority = Number(res[0].authority)
 					this.tempFilePaths = JSON.parse(res[0].tempFilePaths)
 				})
-			}else if(options.update == 2){
+			} else if (options.update == 2) {
 				// 从编辑笔记进入
 				this.isUpdate = true
 				this.tableId = options.tableId
 				let id = options.tableId
-				
+
 			}
 			// 获取表情列表
 			let sql = `select * from emoji_list`

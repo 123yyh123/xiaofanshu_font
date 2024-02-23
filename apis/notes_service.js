@@ -76,3 +76,10 @@ export const getNotesCountByUserId = (params = {}) => {
 		method: 'GET'
 	})
 }
+
+export const getNotesCategoryList=()=>{
+	return $request({
+		url:'/notes/category/getNotesCategoryList',
+		method:'GET'
+	})
+}

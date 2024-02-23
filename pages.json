@@ -14,8 +14,8 @@
 		{
 			"path": "pages/category/category",
 			"style": {
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "分类"
 			}
 		},
 		{
@@ -168,29 +168,26 @@
 			}
 		},
 		{
-			"path" : "pages/notesDetail/notesVideoDetail/noteVideoD",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false,
+			"path": "pages/notesDetail/notesVideoDetail/noteVideoD",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
 				"navigationStyle": "custom",
 				"navigationBarTextStyle": "white"
 			}
 		},
 		{
-			"path" : "pages/searchPage/searchPage",
-			"style" : 
-			{
+			"path": "pages/searchPage/searchPage",
+			"style": {
 				"navigationStyle": "custom",
-				"enablePullDownRefresh" : false
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/searchPage/searchDetailPage",
-			"style" : 
-			{
+			"path": "pages/searchPage/searchDetailPage",
+			"style": {
 				"navigationStyle": "custom",
-				"enablePullDownRefresh" : true,
+				"enablePullDownRefresh": true,
 				"app-plus": {
 					"pullToRefresh": {
 						"offset": "120px"
@@ -199,50 +196,52 @@
 			}
 		},
 		{
-			"path" : "pages/setting/setting",
-			"style" : 
-			{
-				"navigationBarTitleText" : "账号与安全",
-				"enablePullDownRefresh" : false
+			"path": "pages/setting/setting",
+			"style": {
+				"navigationBarTitleText": "账号与安全",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/setting/updateBindPhone",
+			"path": "pages/setting/updateBindPhone",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/setting/updateNewPhone",
+			"style": {
+				"navigationBarTitleText": "更换手机号",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/setting/resetPasswordMethods",
+			"style": {
+				"navigationBarTitleText": "身份验证",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/setting/setPasswordByPasswordVerify",
+			"style": {
+				"navigationBarTitleText": "设置新密码",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/praiseAndCollect/praiseAndCollect",
+			"style": {
+				"navigationBarTitleText": "收到的赞和收藏",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path" : "pages/category/categoryDetail",
 			"style" : 
 			{
 				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
-			}
-		},
-		{
-			"path" : "pages/setting/updateNewPhone",
-			"style" : 
-			{
-				"navigationBarTitleText" : "更换手机号",
-				"enablePullDownRefresh" : false
-			}
-		},
-		{
-			"path" : "pages/setting/resetPasswordMethods",
-			"style" : 
-			{
-				"navigationBarTitleText" : "身份验证",
-				"enablePullDownRefresh" : false
-			}
-		},
-		{
-			"path" : "pages/setting/setPasswordByPasswordVerify",
-			"style" : 
-			{
-				"navigationBarTitleText" : "设置新密码",
-				"enablePullDownRefresh" : false
-			}
-		},
-		{
-			"path" : "pages/praiseAndCollect/praiseAndCollect",
-			"style" : 
-			{
-				"navigationBarTitleText" : "收到的赞和收藏",
 				"enablePullDownRefresh" : true
 			}
 		}

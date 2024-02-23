@@ -271,7 +271,11 @@
 							if (height > maxHeight) {
 								height = maxHeight;
 							}
-							resolve(height)
+							let obj = {
+								height: height,
+								path: res.path
+							}
+							resolve(obj)
 						},
 					})
 				})
@@ -370,6 +374,7 @@
 						this.notesList.page += 1;
 						res.data.list.forEach(item => {
 							this.getImageHeight(item.coverPicture).then(res => {
+								item.coverPicture = res.path
 								if (this.notesList.leftHeight <= this.notesList
 									.rightHeight) {
 									this.notesList.leftList.push(item)
