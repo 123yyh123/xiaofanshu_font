@@ -84,7 +84,7 @@ const sqliteUtil = {
 				emojiList.forEach((res, index) => {
 					this.insertEmoji(res)
 				})
-			})
+			})	
 			// 初始化搜索记录表
 			this.SqlExecute(`CREATE TABLE IF NOT EXISTS search_history (
 				"id"

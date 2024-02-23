@@ -26,7 +26,7 @@
 					:refresher-enabled="enablerefresh" @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
 					:refresher-threshold="100">
 					<view class="component">
-						<view v-for="(item,index) in notesList[0].notesList" :key="index">
+						<view v-for="(item,index) in notesList[0].notesList" :key="index" style="border-bottom-style: solid;border-bottom-width: 1rpx;border-bottom-color: #f3f3f2;padding-bottom: 40rpx;">
 							<view style="display: flex;padding: 20rpx 40rpx;align-items: center;">
 								<image :src="item.avatarUrl" style="width: 80rpx;height: 80rpx;border-radius: 50%;"
 									@click="goToUser(item.belongUserId)">
@@ -42,8 +42,8 @@
 							</view>
 							<view @click="goToDetail(item.id,item.notesType)"
 								style="width: 750rpx;height: auto;background-color: #ffffff;justify-content: center;display: flex;">
-								<u--image :height="item.height+'rpx'" :width="item.width+'rpx'" :src="item.coverPicture" :fade="false" lazyLoad
-									mode="aspectFill" lazyLoad fade :duration="300">
+								<u--image :height="item.height+'rpx'" :width="item.width+'rpx'" :src="item.coverPicture"
+									:fade="false" lazyLoad mode="aspectFill" :duration="300">
 									<template v-slot:loading>
 										<view style="height: 200rpx;text-align: center;padding: 20rpx;">
 											<u-loading-icon color="#e83929"></u-loading-icon>
@@ -93,7 +93,7 @@
 				</scroll-view>
 			</swiper-item>
 			<swiper-item>
-				<view style="width: 100%;height: 40px;background-color: #fffz;z-index: 9999;">
+				<!-- <view style="width: 100%;height: 40px;background-color: #fffz;z-index: 9999;">
 					<u-tabs @click='changeType' :current="typeTabIndex" :list="findList" lineWidth="0"
 						lineColor="#f56c6c" :activeStyle="{
 				            color: '#16160e',
@@ -109,8 +109,8 @@
 							<u-icon name="list" size="24" bold></u-icon>
 						</view>
 					</u-tabs>
-				</view>
-				<scroll-view scroll-y :style="{height: notesHeight-40 + 'px'}" @scrolltolower="onReach"
+				</view> -->
+				<scroll-view scroll-y :style="{height: notesHeight + 'px'}" @scrolltolower="onReach"
 					:refresher-enabled="enablerefresh" @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
 					:refresher-threshold="100">
 					<view class="component">
@@ -118,7 +118,9 @@
 							<view class="water-left">
 								<block v-for="(item,index) in notesList[1].leftList" :key="index">
 									<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
-										<u--image :src="item.coverPicture" :fade="false" lazyLoad width="100%" height="auto" mode="widthFix" style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+										<u--image :src="item.coverPicture" :fade="false" lazyLoad width="100%"
+											height="auto" mode="widthFix"
+											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 											<template v-slot:loading>
 												<view style="height: 200rpx;text-align: center;padding: 20rpx;">
 													<u-loading-icon color="#e83929"></u-loading-icon>
@@ -164,8 +166,9 @@
 							<view class="water-right">
 								<block v-for="(item,index) in notesList[1].rightList" :key="index">
 									<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
-										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix" :fade="false"
-											lazyLoad style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
+										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+											:fade="false" lazyLoad
+											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 											<template v-slot:loading>
 												<view
 													style="height: 200rpx;text-align: center;padding: 20rpx;margin-bottom: 30rpx;">
@@ -223,7 +226,8 @@
 							<view class="water-left">
 								<block v-for="(item,index) in notesList[2].leftList" :key="index">
 									<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
-										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix" :fade="false" lazyLoad
+										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+											:fade="false" lazyLoad
 											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 											<template v-slot:loading>
 												<view style="height: 200rpx;text-align: center;padding: 20rpx;">
@@ -269,7 +273,8 @@
 							<view class="water-right">
 								<block v-for="(item,index) in notesList[2].rightList" :key="index">
 									<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
-										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix" :fade="false" lazyLoad
+										<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+											:fade="false" lazyLoad
 											style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 											<template v-slot:loading>
 												<view
@@ -431,7 +436,7 @@
 							}
 							let obj = {
 								height: height,
-								path : res.path
+								path: res.path
 							}
 							resolve(obj)
 						},
@@ -619,10 +624,12 @@
 									if (this.notesList[index].leftHeight <= this.notesList[index]
 										.rightHeight) {
 										this.notesList[index].leftList.push(item)
-										this.notesList[index].leftHeight += res.height
+										this.notesList[index].leftHeight += (res.height + pxToRpx(
+											50))
 									} else {
 										this.notesList[index].rightList.push(item)
-										this.notesList[index].rightHeight += res.height
+										this.notesList[index].rightHeight += (res.height + pxToRpx(
+											50))
 									}
 								})
 							})
@@ -661,10 +668,12 @@
 									if (this.notesList[index].leftHeight <= this.notesList[index]
 										.rightHeight) {
 										this.notesList[index].leftList.push(item)
-										this.notesList[index].leftHeight += res.height
+										this.notesList[index].leftHeight += (res.height + pxToRpx(
+											50))
 									} else {
 										this.notesList[index].rightList.push(item)
-										this.notesList[index].rightHeight += res.height
+										this.notesList[index].rightHeight += (res.height + pxToRpx(
+											50))
 									}
 								})
 							})
@@ -760,10 +769,12 @@
 									if (this.notesList[index].leftHeight <= this.notesList[index]
 										.rightHeight) {
 										this.notesList[index].leftList.push(item)
-										this.notesList[index].leftHeight += res.height
+										this.notesList[index].leftHeight += (res.height + pxToRpx(
+											50))
 									} else {
 										this.notesList[index].rightList.push(item)
-										this.notesList[index].rightHeight += res.height
+										this.notesList[index].rightHeight += (res.height + pxToRpx(
+											50))
 									}
 								})
 							})
@@ -799,10 +810,12 @@
 									if (this.notesList[index].leftHeight <= this.notesList[index]
 										.rightHeight) {
 										this.notesList[index].leftList.push(item)
-										this.notesList[index].leftHeight += res.height
+										this.notesList[index].leftHeight += (res.height + pxToRpx(
+											50))
 									} else {
 										this.notesList[index].rightList.push(item)
-										this.notesList[index].rightHeight += res.height
+										this.notesList[index].rightHeight += (res.height + pxToRpx(
+											50))
 									}
 								})
 							})

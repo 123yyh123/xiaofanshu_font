@@ -83,3 +83,10 @@ export const getNotesCategoryList=()=>{
 		method:'GET'
 	})
 }
+
+export const getNotesByCategoryId=(params={})=>{
+	return $request({
+		url:'/notes/getNotesByCategoryId?categoryId='+params.categoryId+'&page='+params.page+'&pageSize='+params.pageSize+'&type='+params.type+'&notesType='+params.notesType,
+		method:'GET'
+	})
+}

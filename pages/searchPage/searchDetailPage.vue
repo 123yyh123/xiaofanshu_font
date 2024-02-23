@@ -378,10 +378,10 @@
 								if (this.notesList.leftHeight <= this.notesList
 									.rightHeight) {
 									this.notesList.leftList.push(item)
-									this.notesList.leftHeight += res
+									this.notesList.leftHeight += res.height+pxToRpx(50)
 								} else {
 									this.notesList.rightList.push(item)
-									this.notesList.rightHeight += res
+									this.notesList.rightHeight += res.height+pxToRpx(50)
 								}
 							})
 						})
@@ -537,7 +537,13 @@
 				}
 				this.getMoreNotes()
 			} else if (this.current == 1) {
-
+				this.userList = {
+					list: [],
+					page: 1,
+					pageSize: 10,
+					status: 'loadmore'
+				}
+				this.getMoreUser()
 			}
 			setTimeout(() => {
 				uni.stopPullDownRefresh()

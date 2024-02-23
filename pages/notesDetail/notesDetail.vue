@@ -1198,7 +1198,6 @@
 											item.picture.height = image.height
 										}
 									}
-									console.log(item.picture)
 								},
 								fail: (err) => {
 									console.log(err)

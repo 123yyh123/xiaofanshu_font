@@ -3,7 +3,7 @@
 		<view class="water-left">
 			<block v-for="(item,index) in leftList" :key="index">
 				<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
-					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix" :fade="false" lazyLoad
 						style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 						<template v-slot:loading>
 							<view style="height: 200rpx;text-align: center;padding: 20rpx;">
@@ -51,7 +51,7 @@
 		<view class="water-right">
 			<block v-for="(item,index) in rightList" :key="index">
 				<view style="position: relative;" @click="goToDetail(item.id,item.notesType)">
-					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix"
+					<u--image :src="item.coverPicture" width="100%" height="auto" mode="widthFix" :fade="false" lazyLoad
 						style="max-height: 500rpx;overflow: hidden;border-radius: 20rpx;">
 						<template v-slot:loading>
 							<view style="height: 200rpx;text-align: center;padding: 20rpx;margin-bottom: 30rpx;">
@@ -106,9 +106,6 @@
 	import {
 		pxToRpx
 	} from '@/utils/util.js'
-	import {
-		type
-	} from 'os';
 	export default {
 		name: "water-fall",
 		data() {
@@ -140,10 +137,10 @@
 						item.coverPicture = res.path
 						if (this.leftHeight <= this.rightHeight) {
 							this.leftList.push(item)
-							this.leftHeight += res
+							this.leftHeight += res.height+pxToRpx(50)
 						} else {
 							this.rightList.push(item)
-							this.rightHeight += res
+							this.rightHeight += res.height+pxToRpx(50)
 						}
 					})
 				})
@@ -205,10 +202,10 @@
 						item.coverPicture = res.path
 						if (this.leftHeight <= this.rightHeight) {
 							this.leftList.push(item)
-							this.leftHeight += res
+							this.leftHeight += res.height+pxToRpx(50)
 						} else {
 							this.rightList.push(item)
-							this.rightHeight += res
+							this.rightHeight += res.height+pxToRpx(50)
 						}
 					})
 				})
@@ -248,7 +245,7 @@
 					})
 				})
 			},
-			goToDetail(id,type) {
+			goToDetail(id, type) {
 				if (!this.slot_bottom) {
 					// 草稿
 					uni.navigateTo({
