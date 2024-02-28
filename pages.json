@@ -157,17 +157,6 @@
 			}
 		},
 		{
-			"path": "pages/notesDetail/notesVideoDetail/notesVideoDetail",
-			"style": {
-				"enablePullDownRefresh": false,
-				"navigationStyle": "custom",
-				"navigationBarTextStyle": "white",
-				"app-plus": {
-					"background": "#000"
-				}
-			}
-		},
-		{
 			"path": "pages/notesDetail/notesVideoDetail/noteVideoD",
 			"style": {
 				"navigationBarTitleText": "",

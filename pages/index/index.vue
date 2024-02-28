@@ -19,14 +19,15 @@
 			</view>
 		</view>
 		<view :style="{height: statusBarHeight+40+ 'px'}" style="width: 100%;background-color:antiquewhite;"></view>
-		<swiper @change="swipeIndex" :current="actTab" :duration="300" previous-margin="0"
+		<swiper @change="swipeIndex" :current="actTab" :duration="300" previous-margin="0" @touchmove.stop;]
 			:style="{height: notesHeight + 'px'}" @transition="transition" @animationfinish="animationFinish">
 			<swiper-item>
 				<scroll-view scroll-y :style="{height: notesHeight + 'px'}" @scrolltolower="onReach"
 					:refresher-enabled="enablerefresh" @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
 					:refresher-threshold="100">
-					<view class="component">
-						<view v-for="(item,index) in notesList[0].notesList" :key="index" style="border-bottom-style: solid;border-bottom-width: 1rpx;border-bottom-color: #f3f3f2;padding-bottom: 40rpx;">
+					<view :id="'component' + actTab">
+						<view v-for="(item,index) in notesList[0].notesList" :key="index"
+							style="border-bottom-style: solid;border-bottom-width: 1rpx;border-bottom-color: #f3f3f2;padding-bottom: 40rpx;">
 							<view style="display: flex;padding: 20rpx 40rpx;align-items: center;">
 								<image :src="item.avatarUrl" style="width: 80rpx;height: 80rpx;border-radius: 50%;"
 									@click="goToUser(item.belongUserId)">
@@ -113,7 +114,7 @@
 				<scroll-view scroll-y :style="{height: notesHeight + 'px'}" @scrolltolower="onReach"
 					:refresher-enabled="enablerefresh" @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
 					:refresher-threshold="100">
-					<view class="component">
+					<view :id="'component' + actTab">
 						<view style="width: 100%;display: flex;flex-wrap: wrap;">
 							<view class="water-left">
 								<block v-for="(item,index) in notesList[1].leftList" :key="index">
@@ -221,7 +222,7 @@
 				<scroll-view scroll-y :style="{height: notesHeight + 'px'}" @scrolltolower="onReach"
 					:refresher-enabled="enablerefresh" @refresherrefresh="onRefresh" :refresher-triggered="refreshing"
 					:refresher-threshold="100">
-					<view class="component">
+					<view :id="'component' + actTab">
 						<view style="width: 100%;display: flex;flex-wrap: wrap;">
 							<view class="water-left">
 								<block v-for="(item,index) in notesList[2].leftList" :key="index">

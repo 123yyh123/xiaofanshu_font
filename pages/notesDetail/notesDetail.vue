@@ -370,7 +370,7 @@
 						<u-icon name="account" size="50" color="#cdcdcd"></u-icon>
 						<view style="font-size: 30rpx;color: #727171;">权限设置</view>
 					</view>
-					<view
+					<view @click="deleteNotes"
 						style="display: inline-flex;flex-direction: column;text-align: center;padding: 20rpx;justify-content: center;">
 						<view style="padding: 20rpx;border-radius: 50%;background-color: #ffffff;">
 							<u-icon name="/static/image/delete.png" size="35"></u-icon>
@@ -391,7 +391,8 @@
 		getNotesByNotesId,
 		praiseOrCancelNotes,
 		collectOrCancelNotes,
-		updateNotesViewCount
+		updateNotesViewCount,
+		deleteNotes
 	} from '@/apis/notes_service.js'
 	import {
 		weChatTimeFormat,
@@ -457,6 +458,37 @@
 			}
 		},
 		methods: {
+			deleteNotes() {
+				this.$showModal({
+					title: '提示',
+					content: '是否删除笔记?',
+					cancelText: "取消", // 取消按钮的文字
+					cancelColor: "#949495", // 取消按钮的文字颜色
+					confirmText: "确定", // 确认按钮文字
+					confirmColor: "#FF2442", // 确认按钮颜色 
+					showCancel: true, // 是否显示取消按钮，默认为 true
+				}).then(res => {
+					deleteNotes({
+						notesId: this.notesDetail.id
+					}).then(res => {
+						console.log(res)
+						if (res.code == 20040) {
+							uni.showToast({
+								title: '删除成功',
+								icon: 'none'
+							})
+							uni.navigateBack({
+								delta: 1
+							})
+						}else{
+							uni.showToast({
+								title: res.msg==''?'删除失败':res.msg,
+								icon: 'none'
+							})
+						}
+					})
+				})
+			},
 			editNotes() {
 				// uni.navigateTo({
 				// 	url: '/pages/publishNotes/publishNotes?update=2&notesId=' + this.notesDetail.id
@@ -1486,6 +1518,8 @@
 				notesId: options.notesId
 			}).then(res => {
 				this.commentCount = res.data
+			}).catch(err => {
+				console.log(err)
 			})
 			this.getFirstComment(options.notesId)
 		},

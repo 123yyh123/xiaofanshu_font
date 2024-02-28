@@ -90,3 +90,10 @@ export const getNotesByCategoryId=(params={})=>{
 		method:'GET'
 	})
 }
+
+export const deleteNotes=(params={})=>{
+	return $request({
+		url:'/notes/deleteNotes?notesId='+params.notesId,
+		method:'DELETE'
+	})
+}

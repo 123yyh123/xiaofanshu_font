@@ -214,6 +214,47 @@ export const weChatTimeFormat = (time) => {
 	}
 }
 
+export const weChatTimeFormat2 = (time) => {
+	const today = new Date();
+	const timeDate = new Date(time);
+
+	// 获取当前时间的年月日时分秒
+	const currentYear = today.getFullYear();
+	const currentMonth = today.getMonth();
+	const currentDay = today.getDate();
+	const currentHour = today.getHours();
+	const currentMinute = today.getMinutes();
+
+	// 获取消息时间的年月日时分秒
+	const messageYear = timeDate.getFullYear();
+	const messageMonth = timeDate.getMonth();
+	const messageDay = timeDate.getDate();
+	const messageHour = timeDate.getHours();
+	const messageMinute = timeDate.getMinutes();
+
+	const subDays = currentDay - messageDay;
+
+	if (currentYear > messageYear) {
+		// 显示完整日期时间
+		return `${formatTime2("yyyy年MM月dd日", timeDate)}`;
+	} else if (subDays === 0) {
+		// 今天
+		return `${todayTimeFormat(messageHour)} ${formatTime2("hh:mm", timeDate)}`;
+	} else if (subDays === 1) {
+		// 昨天
+		return `昨天 ${formatTime2("hh:mm", timeDate)}`;
+	} else if (subDays === 2) {
+		// 前天
+		return `前天 ${formatTime2("hh:mm", timeDate)}`;
+	} else if (isShowWeekDay(subDays, timeDate.getDay())) {
+		// 一周内，显示周几
+		return `${weekFormat(timeDate.getDay())}`;
+	} else if (currentYear === messageYear) {
+		// 其他情况，显示日期和时间
+		return `${formatTime2("MM月dd日", timeDate)}`;
+	}
+}
+
 
 
 

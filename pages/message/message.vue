@@ -53,9 +53,9 @@
 		sqliteUtil
 	} from '../../utils/sqliteUtil.js'
 	import {
-		timestampFormat,
 		stringDateFormat,
-		replaceImageTags
+		replaceImageTags,
+		weChatTimeFormat2
 	} from '../../utils/util.js'
 	export default {
 		data() {
@@ -132,7 +132,7 @@
 			refreshList() {
 				this.$sqliteUtil.SqlSelect(`SELECT * FROM message_list ORDER BY last_time DESC`).then(res => {
 					res.forEach(item => {
-						item.last_time = timestampFormat(Number(item.last_time))
+						item.last_time =weChatTimeFormat2 (Number(item.last_time))
 						item.last_message = replaceImageTags(item.last_message)
 					})
 					this.list = res

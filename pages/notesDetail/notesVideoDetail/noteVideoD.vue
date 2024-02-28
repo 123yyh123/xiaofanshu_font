@@ -10,7 +10,8 @@
 			<view
 				style="display: flex;position: absolute;top: 0;width: 750rpx;height: 44px;align-items: center;padding: 20rpx;justify-content: space-between;box-sizing: border-box;">
 				<u-icon @click="goBack" name="arrow-left" color="#f5f5f5" size="25"></u-icon>
-				<u-icon v-if="notesDetail.belongUserId!=userInfo.id" name="share-square" color="#f5f5f5" size="27"></u-icon>
+				<u-icon v-if="notesDetail.belongUserId!=userInfo.id" name="share-square" color="#f5f5f5"
+					size="27"></u-icon>
 				<u-icon v-else name="more-dot-fill" color="#f5f5f5" size="27"></u-icon>
 			</view>
 			<video :src="notesDetail.videoUrl" autoplay controls object-fit="contain" style="width: 750rpx;" loop
@@ -874,45 +875,114 @@
 								}).then(res => {
 									console.log(res)
 									if (res.code == 20020) {
-										uni.showToast({
-											title: '评论已发布',
-											icon: 'success'
-										})
-										this.commentCount++
-										res.data.createTime = weChatTimeFormat(Number(res.data
-											.createTime))
-										if (this.parentId == 0) {
-											res.data.children = {
-												list: [],
-												page: 1,
-												pageSize: 10,
-												status: 'loadmore',
-												loadmoreText: '—— 展开更多回复 ——'
-											}
-											this.commentList.unshift(res.data)
-										} else {
-											this.commentList.forEach(item => {
-												if (item.id == this.parentId) {
-													console.log(item)
-													if (item.children.page == 1) {
-														item.commentReplyNum++
-														item.children.loadmoreText =
-															'—— 展开' + item
-															.commentReplyNum + '条回复 ——'
+										uni.getImageInfo({
+											src: res.data.pictureUrl,
+											success: (image) => {
+												res.data.picture = {
+													url: res.data
+														.pictureUrl,
+												}
+												// 图片长度最长为350rpx,高度最高为350rpx
+												if (image.width >= image
+													.height) {
+													if (image.width > 350) {
+														res.data.picture
+															.width = 350
+														res.data.picture
+															.height = 350 *
+															image.height /
+															image
+															.width
 													} else {
-														item.children.list.unshift(res
-															.data)
+														res.data.picture
+															.width = image
+															.width
+														res.data.picture
+															.height = image
+															.height
+													}
+												} else {
+													if (image.height > 350) {
+														res.data.picture
+															.height = 350
+														res.data.picture
+															.width = 350 *
+															image.width / image
+															.height
+													} else {
+														res.data.picture
+															.width = image
+															.width
+														res.data.picture
+															.height = image
+															.height
 													}
 												}
-											})
-										}
-										this.content = ''
-										this.revealcontent = ''
-										this.commentImagesurl = ''
-										this.inputField = false
+												uni.hideLoading()
+												console.log(res.data.picture)
+												this.content = ''
+												this.revealcontent = ''
+												this.commentImagesurl = ''
+												this.inputField = false
+												uni.showToast({
+													title: '评论已发布',
+													icon: 'success'
+												})
+												this.commentCount++
+												res.data.createTime =
+													weChatTimeFormat(Number(res
+														.data
+														.createTime))
+												if (this.parentId == 0) {
+													res.data.children = {
+														list: [],
+														page: 1,
+														pageSize: 10,
+														status: 'loadmore',
+														loadmoreText: '—— 展开更多回复 ——'
+													}
+													this.commentList.unshift(res
+														.data)
+												} else {
+													this.commentList.forEach(
+														item => {
+															if (item.id == this
+																.parentId) {
+																console.log(
+																	item)
+																if (item
+																	.children
+																	.page == 1
+																	) {
+																	item.commentReplyNum++
+																	item.children
+																		.loadmoreText =
+																		'—— 展开' +
+																		item
+																		.commentReplyNum +
+																		'条回复 ——'
+																} else {
+																	item.children
+																		.list
+																		.unshift(
+																			res
+																			.data
+																			)
+																}
+															}
+														})
+												}
+											},
+											fail: (err) => {
+												uni.hideLoading()
+												console.log(err)
+											}
+										})
 									} else {
+										uni.hideLoading()
 										uni.showToast({
-											title: res.msg == null ? '评论失败' : res.msg,
+											title: res.msg == null ? '评论失败' : res
+												.msg,
 											icon: 'none'
 										})
 									}
